@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\x86">
+      <UniqueIdentifier>{1938e851-99e0-45c0-bd46-c6b2f9c28b7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\asm">
+      <UniqueIdentifier>{06b6b83b-83be-411a-ab45-c45b677dd1a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\x86">
+      <UniqueIdentifier>{9e0689dc-a8ba-4745-979c-31adc32782aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\x86\SSE">
+      <UniqueIdentifier>{e56ff63c-eaab-4daa-b7dd-2ac105fd0d9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\SSE">
+      <UniqueIdentifier>{9bf9fc85-8d28-43e0-bff8-a8d3c9cb85be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\SSE\asm">
+      <UniqueIdentifier>{1f8e79d3-4346-4fc8-b91e-2899e154b93c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\asm\has">
+      <UniqueIdentifier>{7eb78262-6499-490c-a7df-a362a3cb494b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Def Files">
+      <UniqueIdentifier>{f1b8cb8e-8f1b-49e5-a64d-1cef5bba00cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\asm">
+      <UniqueIdentifier>{0b881db6-d010-495c-898f-73a42963a025}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\asm\notdone">
+      <UniqueIdentifier>{7f643c05-37b4-4102-b4cb-8d4eb037276b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXmsseintrin.h">
+      <Filter>Header Files\x86\SSE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\uXmBaseDefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\uXmPreprocessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\uXmExp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\uXmVers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\resource\resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\uasmlib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\uXmTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXmx86intrin.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXmx86Cpu.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\uasmlib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\uXmx86Cpu.cpp">
+      <Filter>Source Files\x86</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\uXmx86intrin.cpp">
+      <Filter>Source Files\x86</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\src\x86\SSE\asm\xmmtypes.inc">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </None>
+    <None Include="..\..\..\src\x86\asm\uXmx86asm.inc">
+      <Filter>Source Files\x86\asm</Filter>
+    </None>
+    <None Include="..\export\uasmlib-export.def">
+      <Filter>Def Files</Filter>
+    </None>
+    <None Include="..\..\..\src\x86\asm\uXmx86Cpu.inc">
+      <Filter>Source Files\x86\asm</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <UASM Include="..\..\..\src\x86\asm\uXmcpuidex.asm">
+      <Filter>Source Files\x86\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\asm\uXmcpuid.asm">
+      <Filter>Source Files\x86\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\asm\uXmxgetbv.asm">
+      <Filter>Source Files\x86\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\asm\uXmxsetbv.asm">
+      <Filter>Source Files\x86\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\asm\uXmDLL.asm">
+      <Filter>Source Files\x86\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\asm\uXmx86Cpua.asm">
+      <Filter>Source Files\x86\asm</Filter>
+    </UASM>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\resource\Resource.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
