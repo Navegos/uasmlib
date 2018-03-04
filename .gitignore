@@ -68,7 +68,7 @@ dkms.conf
 [Rr]elease/
 [Rr]eleases/
 bld/
-[Bb]in/
+# [Bb]in/
 [Oo]bj/
 [Ll]og/
 
