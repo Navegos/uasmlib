@@ -17,10 +17,10 @@
 
 	.code
 			align 16
-uXm_xgetbv proto VECCALL
+uXm_xgetbv proto UX_VECCALL
 
 			align 16
-uXm_xgetbv proc VECCALL
+uXm_xgetbv proc UX_VECCALL
 
 	ifndef __X64__
 			;mov				ecx,			esp

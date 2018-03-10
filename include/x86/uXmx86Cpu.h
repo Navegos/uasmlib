@@ -411,10 +411,15 @@ public:
 	static bool has_enabled_YMM(void);
 	static bool has_enabled_ZMM(void);
 
+	static void CpuType(int * vendor, int * family, int * model);
+
+	static char* ProcessorName(void);
+
 };
 
 typedef uXmCPUFeatures puXmCPUFeatures;
 
+/* Assembly externals */
 extern void _uXmCPUFeatures_Init(void);
 extern void _uXmCPUFeatures_Destroy(void);
 
@@ -606,6 +611,10 @@ extern bool _uXmCPUFeatures_has_AVX2_VPCLMULQDQ(void);
 extern bool _uXmCPUFeatures_has_enabled_XMM(void);
 extern bool _uXmCPUFeatures_has_enabled_YMM(void);
 extern bool _uXmCPUFeatures_has_enabled_ZMM(void);
+
+extern void _uXmCPUFeatures_CpuType(int * vendor, int * family, int * model);
+
+extern char* _uXmCPUFeatures_ProcessorName(void);
 
 #endif /*_CLASS_CPUFEATURES*/
 

@@ -22,6 +22,9 @@
     <UASM Include="..\..\..\src\x86\asm\uXmcpuid.asm" />
     <UASM Include="..\..\..\src\x86\asm\uXmcpuidex.asm" />
     <UASM Include="..\..\..\src\x86\asm\uXmDLL.asm" />
+    <None Include="..\..\..\src\x86\asm\uXmmacros.inc">
+      <FileType>Document</FileType>
+    </None>
     <UASM Include="..\..\..\src\x86\asm\uXmx86Cpua.asm" />
     <UASM Include="..\..\..\src\x86\asm\uXmxgetbv.asm" />
     <UASM Include="..\..\..\src\x86\asm\uXmxsetbv.asm" />
@@ -45,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\.gitignore" />
+    <None Include="..\..\..\src\x86\asm\uXmmacros_remove.inc" />
     <None Include="..\..\..\src\x86\asm\uXmx86asm.inc" />
     <None Include="..\..\..\src\x86\asm\uXmx86Cpu.inc" />
     <None Include="..\..\..\src\x86\SSE\asm\xmmtypes.inc" />

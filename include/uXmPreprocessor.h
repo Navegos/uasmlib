@@ -64,6 +64,9 @@ Compiler defines
 #   elif defined(_MSC_VER) && (_MSC_VER == 1912)
 #		define uXm_VC14_12 1
 #		define uXm_COMPILER "Microsoft Visual C++ 14.12"
+#   elif defined(_MSC_VER) && (_MSC_VER == 1913)
+#		define uXm_VC14_13 1
+#		define uXm_COMPILER "Microsoft Visual C++ 14.13"
 #	else
 #error ERROR: add your vc compiler version
 #	endif

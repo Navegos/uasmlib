@@ -22,10 +22,10 @@
 
 	.code
 			align 16
-uXm_cpuidex proto VECCALL
+uXm_cpuidex proto UX_VECCALL
 
 			align 16
-uXm_cpuidex proc VECCALL
+uXm_cpuidex proc UX_VECCALL
 
 		;CPUInfo$ = 8
 		;CPUInfoType$ = 16

@@ -17,10 +17,10 @@
 
 	.code
 			align 16
-DllMain proto VECCALL (dword) ;hModule:ptr, dwReason:dword, dwReserved:ptr
+DllMain proto UX_VECCALL (dword) ;hModule:ptr, dwReason:dword, dwReserved:ptr
 
 			align 16
-DllMain proc VECCALL (dword);hModule:ptr, dwReason:dword, dwReserved:ptr
+DllMain proc UX_VECCALL (dword);hModule:ptr, dwReason:dword, dwReserved:ptr
 
 		mov			eax,		1
 		ret
