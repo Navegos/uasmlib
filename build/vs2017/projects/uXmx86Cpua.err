@@ -1,7 +1,3 @@
 ..\..\..\src\x86\asm\uXmx86Cpua.asm(1054) : Warning A4268: Procedure argument or local not referenced: thisPtr
  UX_ENDMETHOD(11)[uXmmacros.inc]: Macro called from
   ..\..\..\src\x86\asm\uXmx86Cpua.asm(1054): Main line code
-..\..\..\src\x86\asm\uXmx86Cpua.asm(3063) : Error A2174: Cannot add two relocatable labels
-..\..\..\src\x86\asm\uXmx86Cpua.asm(3066) : Error A2174: Cannot add two relocatable labels
-..\..\..\src\x86\asm\uXmx86Cpua.asm(3067) : Error A2174: Cannot add two relocatable labels
-..\..\..\src\x86\asm\uXmx86Cpua.asm(3069) : Error A2174: Cannot add two relocatable labels

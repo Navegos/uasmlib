@@ -2842,7 +2842,7 @@ descriptortable_ label byte
 		db 0ECh, 3, 3, 23                      ; 24 Mb L3 data cache
 descriptortablelength equ ($ - descriptortable_) / sizeof descriptor_record
 
-		dlayout data_layout <>
+		;dlayout data_layout <>
 		drecord descriptor_record <>
 	_DATA ends
 
@@ -2857,7 +2857,7 @@ descriptortablelength equ ($ - descriptortable_) / sizeof descriptor_record
 	endif
         ; check if called before
 			lea					r9, [dataref]
-			cmp			dword ptr [r9+dlayout.ok], 1       ; ok
+			cmp			dword ptr [r9+data_layout.ok], 1       ; ok
 			je					D800
         
         ; find cpu vendor
@@ -2908,15 +2908,15 @@ D800:   ; cache data known, get desired return value
 			mov     rax, [r9 + r14*8]      ; size of selected cache
 			jmp     D850
 D820:   ; level = 0. Get size of largest level cache
-			mov     rax, [r9 + dlayout.level3]     ; level3
+			mov     rax, [r9 + data_layout.level3]     ; level3
 			test    rax, rax
 			jnz     D850
-			mov     rax, [r9 + dlayout.level2]     ; level2
+			mov     rax, [r9 + data_layout.level2]     ; level2
 			test    rax, rax
 			jnz     D850
-			mov     rax, [r9 + dlayout.level1]     ; level1
+			mov     rax, [r9 + data_layout.level1]     ; level1
 D850:		
-			mov     dword ptr [r9 + dlayout.ok], 1     ; remember called, whether success or not
+			mov     dword ptr [r9 + data_layout.ok], 1     ; remember called, whether success or not
 D900:   
 	ifdef  WINDOWS
 			pop     rdi
@@ -3029,7 +3029,7 @@ I200:
 			jb      I100                   ; next cache
 I500:   ; loop finished
         ; check if OK
-			mov     rax, [r9+dlayout.level1]       ; level1
+			mov     rax, [r9+data_layout.level1]       ; level1
 			cmp     rax, 1024
 I900:  
 			ret                            ; carry flag set if fail
@@ -3060,13 +3060,13 @@ J100:
 			mov     ebx, descriptortablelength-1  ; loop counter
         ; loop to search in descriptortable
 J200:   
-			cmp     eax, [r9 + dlayout.descriptortable + rbx*4 + drecord.d_key]
+			cmp     eax, [r9 + data_layout.descriptortable + rbx*4 + descriptor_record.d_key]
 			jne     J300
         ; descriptor found
-			movzx   eax, byte ptr [r9 + dlayout.descriptortable + rbx*4 + drecord.d_sizem]
-			mov     ecx,  [r9 + dlayout.descriptortable + rbx*4 + drecord.d_2pow]
+			movzx   eax, byte ptr [r9 + data_layout.descriptortable + rbx*4 + descriptor_record.d_sizem]
+			mov     ecx,  [r9 + data_layout.descriptortable + rbx*4 + descriptor_record.d_2pow]
 			shl     eax, cl                ; compute size
-			movzx   ecx, byte ptr [r9 + dlayout.descriptortable + rbx*4 + drecord.d_level]
+			movzx   ecx, byte ptr [r9 + data_layout.descriptortable + rbx*4 + descriptor_record.d_level]
         ; check that level = 1-3
 			cmp     ecx, 3
 			ja      J300
@@ -3078,7 +3078,7 @@ J300:
 			jns     J100                   ; outer loop
 			add     rsp, 16                ; remove from stack
         ; check if OK
-			mov     rax, [r9 + dlayout.level1]
+			mov     rax, [r9 + data_layout.level1]
 			cmp     rax, 1024
 J900:   
 			ret                            ; carry flag set if fail
@@ -3097,12 +3097,12 @@ AMDMethod:
 			cpuid                          ; get L1 cache size
 			shr     ecx, 24                ; L1 data cache size in kbytes
 			shl     ecx, 10                ; L1 data cache size in bytes
-			mov     [r9 + dlayout.level1], rcx     ; store L1 data cache size
+			mov     [r9 + data_layout.level1], rcx     ; store L1 data cache size
 			mov     eax, 80000006H
 			cpuid                          ; get L2 and L3 cache sizes
 			shr     ecx, 16                ; L2 data cache size in kbytes
 			shl     ecx, 10                ; L2 data cache size in bytes
-			mov     [r9 + dlayout.level2], rcx     ; store L2 data cache size
+			mov     [r9 + data_layout.level2], rcx     ; store L2 data cache size
 			mov     ecx, edx
 			shr     ecx, 18                ; L3 data cache size / 512 kbytes
 			shl     rcx, 19                ; L3 data cache size in bytes
@@ -3120,9 +3120,9 @@ if 0   ; AMD manual is unclear:
 			add     rcx, rax
 endif
 K100:   
-			mov     [r9 + dlayout.level3], rcx     ; store L3 data cache size
+			mov     [r9 + data_layout.level3], rcx     ; store L3 data cache size
         ; check if OK
-			mov     rax, [r9 + dlayout.level1]
+			mov     rax, [r9 + data_layout.level1]
 			cmp     rax, 1024
 K900:   
 			ret                            ; carry flag set if fail

@@ -22,6 +22,7 @@
     <UASM Include="..\..\..\src\x86\asm\uXmcpuid.asm" />
     <UASM Include="..\..\..\src\x86\asm\uXmcpuidex.asm" />
     <UASM Include="..\..\..\src\x86\asm\uXmDLL.asm" />
+    <None Include="..\..\..\README.md" />
     <None Include="..\..\..\src\x86\asm\uXmmacros.inc">
       <FileType>Document</FileType>
     </None>

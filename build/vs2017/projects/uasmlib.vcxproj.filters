@@ -104,6 +104,7 @@
     <None Include="..\..\..\src\x86\asm\uXmmacros.inc">
       <Filter>Source Files\x86\asm</Filter>
     </None>
+    <None Include="..\..\..\README.md" />
   </ItemGroup>
   <ItemGroup>
     <UASM Include="..\..\..\src\x86\asm\uXmcpuidex.asm">
