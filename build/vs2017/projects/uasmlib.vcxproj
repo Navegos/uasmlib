@@ -48,7 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\.gitignore" />
-    <None Include="..\..\..\src\x86\asm\uXmmacros_remove.inc" />
     <None Include="..\..\..\src\x86\asm\uXmx86asm.inc" />
     <None Include="..\..\..\src\x86\asm\uXmx86Cpu.inc" />
     <None Include="..\..\..\src\x86\SSE\asm\xmmtypes.inc" />

@@ -2,54 +2,54 @@
 ; HFA   = no
 ; HVA   = no
     __uXm128ib struct 16
-	    b0 BYTE ?
-	    b1 BYTE ?
-	    b2 BYTE ?
-	    b3 BYTE ?
-	    b4 BYTE ?
-	    b5 BYTE ?
-	    b6 BYTE ?
-	    b7 BYTE ?
-	    b8 BYTE ?
-	    b9 BYTE ?
-	    b10 BYTE ?
-	    b11 BYTE ?
-	    b12 BYTE ?
-	    b13 BYTE ?
-	    b14 BYTE ?
-	    b15 BYTE ?	
+	    b0 byte ?
+	    b1 byte ?
+	    b2 byte ?
+	    b3 byte ?
+	    b4 byte ?
+	    b5 byte ?
+	    b6 byte ?
+	    b7 byte ?
+	    b8 byte ?
+	    b9 byte ?
+	    b10 byte ?
+	    b11 byte ?
+	    b12 byte ?
+	    b13 byte ?
+	    b14 byte ?
+	    b15 byte ?	
     __uXm128ib ends
 
 ; MM128 = yes
 ; HFA   = no
 ; HVA   = no
     __uXm128iw struct 16
-    	w0 WORD ?
-	    w1 WORD ?
-    	w2 WORD ?
-    	w3 WORD ?
-    	w4 WORD ?
-       	w5 WORD ?
-    	w6 WORD ?
-    	w7 WORD ?	
+    	w0 word ?
+	    w1 word ?
+    	w2 word ?
+    	w3 word ?
+    	w4 word ?
+       	w5 word ?
+    	w6 word ?
+    	w7 word ?	
     __uXm128iw ends
 
 ; MM128 = yes
 ; HFA   = no
 ; HVA   = no
     __uXm128id struct 16
-    	i0 DWORD ?
-    	i1 DWORD ?
-    	i2 DWORD ?
-    	i3 DWORD ?	
+    	i0 dword ?
+    	i1 dword ?
+    	i2 dword ?
+    	i3 dword ?	
     __uXm128id ends
 
 ; MM128 = yes
 ; HFA   = no
 ; HVA   = no
     __uXm128iq struct 16
-    	q0 QWORD ?
-    	q1 QWORD ?
+    	q0 qword ?
+    	q1 qword ?
     __uXm128iq ends
 
 ; MM128 = yes

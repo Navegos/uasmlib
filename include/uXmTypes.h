@@ -6,11 +6,16 @@
 
 #include "uXmBaseDefs.h"
 
+// Define type size_t
+#ifndef _SIZE_T_DEFINED
+#include "stddef.h"
+#endif
+
 #ifndef _MSC_VER
-typedef __int8 char;
-typedef __int16 short;
-typedef __int32 long;
-typedef __int64 long long;
+typedef char __int8;
+typedef short __int16;
+typedef long __int32;
+typedef long long __int64;
 #endif
 
 #endif /*uXm_TYPES_H*/

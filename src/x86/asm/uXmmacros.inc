@@ -256,6 +256,678 @@ uxarginvoke macro argNo:REQ, invCnt:REQ, func:REQ, args:VARARG
 	endif
 endm
 
+UX_ARRAY macro arrType:REQ, sizeArr:REQ
+	cdef textequ <__&arrType&_def>
+	% IFDEF cdef
+			mov		r8,		8
+	else
+			mov		r8,		sizeof(arrType)
+	endif
+			imul	r8,		sizeArr
+		MEMALLOC(r8)
+		exitm<rax>
+endm
+
+UX_DELETEARRAY macro arrPtr:REQ
+	MEMFREE(arrPtr)
+endm
+
+UX_OINTERFACE macro CName:REQ
+	% __&CName&_def = 1
+	% __&CName&_size = 16
+	curClass textequ <CName>
+	@CatStr(CName, <vtbl CSTRUCT >)
+	__0 dq 0
+	__1 dq 0
+	ptrDefS textequ <psr>
+	ptrDefS catstr ptrDefS, <&curClass&>, < typedef ptr >, <&curClass&>
+	% ptrDefS
+endm
+
+UX_ENDOINTERFACE macro
+	curClass ends
+	;ptrDefS textequ <psr>
+	;ptrDefS catstr ptrDefS, <&curClass&>, < typedef ptr >, <&curClass&>
+	;% ptrDefS
+endm
+
+UX_CVIRTUAL macro method:REQ, retType:REQ, protoDef:VARARG
+		local sz1, sz2
+		pDef catstr < typedef proto >, <(&retType&)>, < thisPtr:ptr>
+	ifnb <protoDef>
+		pDef catstr pDef, <, >, <&protoDef>
+	endif
+		sz2 catstr <_>, curClass, <_&method>, <Pto>
+		% &sz2 &pDef
+		% sz1 typedef ptr &sz2
+		% method sz1 0
+		% __&curClass&_size = __&curClass&_size + 8
+		fnex textequ <_>
+		fnex catstr fnex, curClass, <_>, <&method&>, < proto >, <(&retType&)>, < thisPtr:psr>, curClass
+	ifnb <&protoDef>
+		fnex catstr fnex, <, >, <&protoDef&>
+	else
+	endif
+		fnex
+endm
+
+UX_CLASS macro CName:REQ
+	% __&CName&_def = 1
+	% __&CName&_size = 16
+	curClass textequ <CName>
+	@CatStr(CName, <vtbl CSTRUCT >)
+	ctorS textequ <ctor dq offset _&CName&_Init>
+	dtorS textequ <dtor dq offset _&CName&_Destroy>
+	ctorS
+	dtorS
+endm
+
+UX_ENDCLASS macro
+	curClass ends
+	.data
+	align 16
+	% _stat&curClass&vtbl &curClass&vtbl <>
+	align 16
+	% _stat&curClass& curClass <>
+	ptrDefS textequ <psr>
+	ptrDefS catstr ptrDefS, <&curClass&>, < typedef ptr >, <&curClass&>
+	% ptrDefS
+	ptrDefS2 textequ <psr>
+	ptrDefS2 catstr ptrDefS2, <&curClass&vtbl>, < typedef ptr >, <&curClass&vtbl>
+	% ptrDefS2
+	.code
+endm
+
+UX_ENDMETHODS macro	
+	local evtbl
+	% evtbl catstr <&curClass&>, <vtbl>, < ends>
+	evtbl
+	@CatStr(curClass, < CSTRUCT >)
+	% pVtbl dq offset _stat&curClass&vtbl
+endm
+
+UX_CMETHOD macro method:REQ
+	local sz1, sz2
+	sz2 catstr <_>, curClass, <_&method>, <Pto>
+	% sz1 typedef ptr &sz2
+	% method sz1 offset _&curClass&_&method&
+	% __&curClass&_size = __&curClass&_size + 8
+endm
+
+UX_CSTATIC macro method:REQ
+	local sz1, sz2
+	sz2 catstr <_>, curClass, <_&method>, <Pto>
+	% sz1 typedef ptr &sz2
+	% method sz1 offset _&curClass&_&method&
+	% __&curClass&_size = __&curClass&_size + 8
+endm
+
+UX_METHOD macro className:REQ, method:REQ, retType:REQ, usesStr:REQ, args:VARARG
+		curClass textequ <className>
+		curMethod textequ <method>
+		fnex textequ <_>
+		fnex catstr fnex, <&className&>
+		fnex catstr fnex, <_>
+		fnex catstr fnex, <&method&>
+		fnex catstr fnex, < proto >, <(&retType&)>, < thisPtr:psr>, <&className&>
+	ifnb <args>
+		fnex catstr fnex, <, >, <&args&>
+	else
+	endif
+		fnex
+		fnex textequ <_>
+		fnex catstr fnex, <&className&>
+		fnex catstr fnex, <_>
+		fnex catstr fnex, <&method&>
+		fnex catstr fnex, <Pto typedef proto >, <(&retType&)>, < thisPtr:psr>, <&className&>
+	ifnb <args>
+		fnex catstr fnex, <, >, <&args&>
+	else
+	endif
+		fnex
+		fnex textequ <_>
+		fnex catstr fnex, <&className&>
+		fnex catstr fnex, <_>
+		fnex catstr fnex, <&method&>
+		fnex catstr fnex, < proc>, <(&retType&)>, < >, <&usesStr&>, < thisPtr:psr>, <&className&>
+	ifnb <args>
+		fnex catstr fnex, <, >, <&args&>
+	else
+	endif
+	ifdef WINDOWS
+			assume rcx:ptr curClass
+	else
+			assume rdi:ptr curClass
+	endif
+		align 16
+			fnex
+endm
+
+UX_STATICMETHOD macro className:REQ, method:REQ, retType:REQ, usesStr:REQ, args:VARARG
+		curClass textequ <className>
+		curMethod textequ <method>
+		fnex textequ <_>
+		fnex catstr fnex, <&className&>
+		fnex catstr fnex, <_>
+		fnex catstr fnex, <&method&>
+		fnex catstr fnex, < proto >, <(&retType&)>
+	ifnb <args>
+		fnex catstr fnex, < >, <&args&>
+	else
+	endif
+		fnex
+		fnex textequ <_>
+		fnex catstr fnex, <&className&>
+		fnex catstr fnex, <_>
+		fnex catstr fnex, <&method&>
+		fnex catstr fnex, <Pto typedef proto >, <(&retType&)>
+	ifnb <args>
+		fnex catstr fnex, < >, <&args&>
+	else
+	endif
+		fnex
+		fnex textequ <_>
+		fnex catstr fnex, <&className&>
+		fnex catstr fnex, <_>
+		fnex catstr fnex, <&method&>
+		fnex catstr fnex, < proc>, <(&retType&)>, < >, <&usesStr&>
+	ifnb <args>
+		fnex catstr fnex, < >, <&args&>
+	else
+	endif
+	ifdef WINDOWS
+			assume rcx:ptr curClass
+	else
+			assume rdi:ptr curClass
+	endif
+		align 16
+			fnex
+endm
+
+UX_VECMETHOD macro className:REQ, method:REQ, retType:REQ, usesStr:REQ, args:VARARG
+		curClass textequ <className>
+		curMethod textequ <method>
+		fnex textequ <_>
+		fnex catstr fnex, <&className&>
+		fnex catstr fnex, <_>
+		fnex catstr fnex, <&method&>
+		fnex catstr fnex, < proto UX_VECCALL >, <(&retType&)>, < thisPtr:psr>, <&className&>
+	ifnb <args>
+		fnex catstr fnex, <, >, <&args&>
+	else
+	endif
+		fnex
+		fnex textequ <_>
+		fnex catstr fnex, <&className&>
+		fnex catstr fnex, <_>
+		fnex catstr fnex, <&method&>
+		fnex catstr fnex, <Pto typedef proto UX_VECCALL >, <(&retType&)>, < thisPtr:psr>, <&className&>
+	ifnb <args>
+		fnex catstr fnex, <, >, <&args&>
+	else
+	endif
+		fnex
+		fnex textequ <_>
+		fnex catstr fnex, <&className&>
+		fnex catstr fnex, <_>
+		fnex catstr fnex, <&method&>
+		fnex catstr fnex, < proc UX_VECCALL >, <(&retType&)>, < >, <&usesStr&>, < thisPtr:psr>, <&className&>
+	ifnb <args>
+		fnex catstr fnex, <, >, <&args&>
+	else
+	endif
+	ifdef WINDOWS
+			assume rcx:ptr curClass
+	else
+			assume rdi:ptr curClass
+	endif
+		align 16
+		fnex
+endm
+
+UX_STATICVECMETHOD macro className:REQ, method:REQ, retType:REQ, usesStr:REQ, args:VARARG
+		curClass textequ <className>
+		curMethod textequ <method>
+		fnex textequ <_>
+		fnex catstr fnex, <&className&>
+		fnex catstr fnex, <_>
+		fnex catstr fnex, <&method&>
+		fnex catstr fnex, < proto UX_VECCALL >, <(&retType&)>
+	ifnb <args>
+		fnex catstr fnex, < >, <&args&>
+	else
+	endif
+		fnex
+		fnex textequ <_>
+		fnex catstr fnex, <&className&>
+		fnex catstr fnex, <_>
+		fnex catstr fnex, <&method&>
+		fnex catstr fnex, <Pto typedef proto UX_VECCALL >, <(&retType&)>
+	ifnb <args>
+		fnex catstr fnex, < >, <&args&>
+	else
+	endif
+		fnex
+		fnex textequ <_>
+		fnex catstr fnex, <&className&>
+		fnex catstr fnex, <_>
+		fnex catstr fnex, <&method&>
+		fnex catstr fnex, < proc UX_VECCALL >, <(&retType&)>, < >, <&usesStr&>
+	ifnb <args>
+		fnex catstr fnex, < >, <&args&>
+	else
+	endif
+	ifdef WINDOWS
+			assume rcx:ptr curClass
+	else
+			assume rdi:ptr curClass
+	endif
+		align 16
+		fnex
+endm
+
+UX_ENDMETHOD macro
+	ifdef WINDOWS
+			assume rcx:nothing
+	else
+			assume rdi:nothing
+	endif
+		fnex textequ <_>
+		fnex catstr fnex, curClass
+		fnex catstr fnex, <_>
+		fnex catstr fnex, curMethod
+		fnex catstr fnex, < ENDP>
+		fnex
+endm
+
+UX_DECLARE macro varName:REQ, typeName:VARARG
+	ldef textequ <local &varName&>
+	ldef catstr ldef, < : >
+	ldef catstr ldef, <typeName>
+	% ldef
+endm
+
+UX_STATICREF macro reg:REQ, classType:REQ
+	% lea reg, _stat&classType&
+endm
+
+UX_NEW macro className:REQ, ctorArgs:VARARG
+		% mov	r8,		sizeof(className)
+		MEMALLOC(r8)
+	.if(rax != 0)
+		mov		rdi,	rax
+		% lea	rsi,	_stat&className
+		% mov	rcx,	sizeof(className)
+		rep movsb
+		fnex textequ <_>
+		fnex catstr fnex, <&className&>
+		fnex catstr fnex, <_>
+		fnex catstr fnex, <Init>
+	ifnb <ctorArgs>
+		fnex2 textequ <invoke fnex, rax, ctorArgs>
+	else
+		fnex2 textequ <invoke fnex, rax>
+	endif
+		fnex2
+	.endif
+		exitm<rax>
+endm
+
+UX_RBXNEW macro className:REQ, ctorArgs:VARARG
+		% mov	r8,		sizeof(className)
+		MEMALLOC(r8)
+	.if (rax != 0)
+		mov		rdi,	rax
+		% lea	rsi,	_stat&className
+		% mov	rcx,	sizeof(className)
+		rep movsb
+		fnex textequ <_>
+		fnex catstr fnex, <&className&>
+		fnex catstr fnex, <_>
+		fnex catstr fnex, <Init>
+	ifnb <ctorArgs>
+		fnex2 textequ <invoke fnex, rax, ctorArgs>
+	else
+		fnex2 textequ <invoke fnex, rax>
+	endif
+		fnex2
+		mov rbx, rax
+	.endif
+		exitm<rbx>
+endm
+
+UX_ITEM macro objPtr:REQ, idx:REQ
+	exitm<[_V(objPtr, Iterator, Items, idx)]>
+endm
+
+UX_ITEMR macro objPtr:REQ, idx:REQ
+	exitm<_V(objPtr, Iterator, Items, idx)>
+endm
+
+UX_INVOKE macro className:REQ, method:REQ, objPtr:REQ, args:VARARG
+		fnex textequ <_>
+		fnex catstr fnex, <&className&>
+		fnex catstr fnex, <_>
+		fnex catstr fnex, <&method&>
+	ifnb <args>
+		fnex2 textequ <invoke fnex, &objPtr&, &args&>
+	else
+		fnex2 textequ <invoke fnex, &objPtr&>
+	endif
+		fnex2
+endm
+
+UX_I macro className:REQ, method:REQ, objPtr:REQ, args:VARARG
+		fnex textequ <_>
+		fnex catstr fnex, <&className&>
+		fnex catstr fnex, <_>
+		fnex catstr fnex, <&method&>
+		fnex2 textequ <invoke fnex, &objPtr&, &args&>
+		fnex2
+	if @LastReturnType EQ 0
+		exitm <al>
+	elseif @LastReturnType EQ 0x40
+		exitm <al>
+	elseif @LastReturnType EQ 1
+		exitm <ax>
+	elseif @LastReturnType EQ 0x41
+		exitm <ax>
+	elseif @LastReturnType EQ 2
+		exitm <eax>
+	elseif @LastReturnType EQ 0x42
+		exitm <eax>
+	elseif @LastReturnType EQ 3
+		exitm <rax>
+	elseif @LastReturnType EQ 0x43
+		exitm <rax>
+	elseif @LastReturnType EQ 0xc3
+		exitm <rax>
+	elseif @LastReturnType EQ 6
+		exitm <xmm0>
+	elseif @LastReturnType EQ 7
+		exitm <ymm0>
+	elseif @LastReturnType EQ 8
+		exitm <zmm0>
+	elseif @LastReturnType EQ 0x22
+		exitm <xmm0>
+	elseif @LastReturnType EQ 0x23
+		exitm <xmm0>
+	else
+		exitm <eax>
+	endif
+endm
+
+UX_STATIC macro className:REQ, method:REQ, args:VARARG
+		fnex textequ <_>
+		fnex catstr fnex, <&className&>
+		fnex catstr fnex, <_>
+		fnex catstr fnex, <&method&>
+		fnex2 textequ <invoke fnex, &args&>
+		fnex2
+	if @LastReturnType EQ 0
+		exitm <al>
+	elseif @LastReturnType EQ 0x40
+		exitm <al>
+	elseif @LastReturnType EQ 1
+		exitm <ax>
+	elseif @LastReturnType EQ 0x41
+		exitm <ax>
+	elseif @LastReturnType EQ 2
+		exitm <eax>
+	elseif @LastReturnType EQ 0x42
+		exitm <eax>
+	elseif @LastReturnType EQ 3
+		exitm <rax>
+	elseif @LastReturnType EQ 0x43
+		exitm <rax>
+	elseif @LastReturnType EQ 0xc3
+		exitm <rax>
+	elseif @LastReturnType EQ 6
+		exitm <xmm0>
+	elseif @LastReturnType EQ 7
+		exitm <ymm0>
+	elseif @LastReturnType EQ 8
+		exitm <zmm0>
+	elseif @LastReturnType EQ 0x22
+		exitm <xmm0>
+	elseif @LastReturnType EQ 0x23
+		exitm <xmm0>
+	else
+		exitm <eax>
+	endif
+endm
+
+UX_DELETE macro objPtr:REQ
+	ifdef WINDOWS
+		mov rcx, objPtr
+		mov rax, [rcx]
+		call qword ptr[rax + 8]
+	else
+		mov rdi, objPtr
+		mov rax, [rdi]
+		call qword ptr[rax + 8]
+	endif
+		MEMFREE(objPtr)
+endm
+
+UX_VINVOKE macro pInterface:REQ, Interface:REQ, Function:REQ, args:VARARG
+	InterfacePtr textequ <_>
+	InterfacePtr catstr InterfacePtr, <&Interface>, <_>, <&Function>, <Pto>
+	if(OPATTR(pInterface)) and 00010000b
+		ifnb <args>
+			ifdef WINDOWS
+					ifdifi <&pInterface>, <rcx>
+						mov rcx, &pInterface
+					endif
+					mov r15, [rcx]
+					invoke(InterfacePtr ptr[r15].&Interface&vtbl.&Function), rcx, &args
+			else
+					mov rdi, &pInterface
+					mov r15, [rdi]
+					invoke(InterfacePtr ptr[r15].&Interface&vtbl.&Function), rdi, &args
+			endif
+		else
+			ifdef WINDOWS
+					ifdifi <&pInterface>, <rcx>
+						mov rcx,&pInterface
+					endif
+					mov r15,[rcx]
+					invoke(InterfacePtr ptr[r15].&Interface&vtbl.&Function), rcx
+			else
+					mov rdi,&pInterface
+					mov r15,[rdi]
+					invoke(InterfacePtr ptr[r15].&Interface&vtbl.&Function), rdi
+			endif
+		endif
+	else
+		ifdef WINDOWS
+				ifdifi <&pInterface>, <rcx>
+					mov rcx,pInterface
+				endif
+				mov r15,[rcx]
+		else
+				ifdifi <&pInterface>, <rdi>
+					mov rdi,pInterface
+				endif
+				mov r15,[rdi]
+		endif
+		ifdef WINDOWS
+				ifnb <args>
+					for arg, <args>
+						ifidni <&arg>, <rcx>
+							.err <rcx is not allowed as a Method parameter with indirect object label>
+						endif
+					endm
+					invoke(InterfacePtr ptr[r15].&Interface&vtbl.&Function), rcx, &args
+				else
+					invoke(InterfacePtr ptr[r15].&Interface&vtbl.&Function), rcx
+				endif
+		else
+				ifnb <args>
+					for arg, <args>
+						ifidni <&arg>, <rdi>
+							.err <rdi is not allowed as a Method parameter with indirect object label>
+						endif
+					endm
+					invoke(InterfacePtr ptr[r15].&Interface&vtbl.&Function), rdi, &args
+				else
+					invoke(InterfacePtr ptr[r15].&Interface&vtbl.&Function), rdi
+				endif
+		endif
+	endif
+endm
+
+UX_V macro pInterface:REQ, Interface:REQ, Function:REQ, args:VARARG
+	InterfacePtr textequ <_>
+	InterfacePtr catstr InterfacePtr, <&Interface>, <_>, <&Function>, <Pto>
+	if(OPATTR(pInterface)) and 00010000b
+		ifnb <args>
+			ifdef WINDOWS
+					ifdifi <&pInterface>, <rcx>
+						mov rcx,&pInterface
+					endif
+					mov r15,[rcx]
+					invoke(InterfacePtr ptr[r15].&Interface&vtbl.&Function), rcx, &args
+			else
+					mov rdi,&pInterface
+					mov r15,[rdi]
+					invoke(InterfacePtr ptr[r15].&Interface&vtbl.&Function), rdi, &args
+			endif
+		else
+			ifdef WINDOWS
+					ifdifi <&pInterface>, <rcx>
+						mov rcx,&pInterface
+					endif
+					mov r15,[rcx]
+					invoke(InterfacePtr ptr[r15].&Interface&vtbl.&Function), rcx
+			else
+					mov rdi,&pInterface
+					mov r15,[rdi]
+					invoke(InterfacePtr ptr[r15].&Interface&vtbl.&Function), rdi
+			endif
+		endif
+	else
+		ifdef WINDOWS
+				ifdifi <&pInterface>, <rcx>
+					mov rcx,pInterface
+				endif
+				mov r15,[rcx]
+				ifnb <args>
+					for arg, <args>
+						ifidni <&arg>, <rcx>
+							.err <rcx is not allowed as a Method parameter with indirect object label>
+						endif
+					endm
+					invoke(InterfacePtr ptr[r15].&Interface&vtbl.&Function), rcx, &args
+				else
+					invoke(InterfacePtr ptr[r15].&Interface&vtbl.&Function), rcx
+				endif
+		else
+				mov rdi,pInterface
+				mov r15,[rdi]
+				ifnb <args>
+					for arg, <args>
+						ifidni <&arg>, <rdi>
+							.err <rdi is not allowed as a Method parameter with indirect object label>
+						endif
+					endm
+					invoke(InterfacePtr ptr[r15].&Interface&vtbl.&Function), rdi, &args
+				else
+					invoke(InterfacePtr ptr[r15].&Interface&vtbl.&Function), rdi
+				endif
+		endif
+	endif
+	if @LastReturnType EQ 0
+		exitm <al>
+	elseif @LastReturnType EQ 0x40
+		exitm <al>
+	elseif @LastReturnType EQ 1
+		exitm <ax>
+	elseif @LastReturnType EQ 0x41
+		exitm <ax>
+	elseif @LastReturnType EQ 2
+		exitm <eax>
+	elseif @LastReturnType EQ 0x42
+		exitm <eax>
+	elseif @LastReturnType EQ 3
+		exitm <rax>
+	elseif @LastReturnType EQ 0x43
+		exitm <rax>
+	elseif @LastReturnType EQ 0xc3
+		exitm <rax>
+	elseif @LastReturnType EQ 6
+		exitm <xmm0>
+	elseif @LastReturnType EQ 7
+		exitm <ymm0>
+	elseif @LastReturnType EQ 8
+		exitm <zmm0>
+	elseif @LastReturnType EQ 0x22
+		exitm <xmm0>
+	elseif @LastReturnType EQ 0x23
+		exitm <xmm0>
+	else
+		exitm <eax>
+	endif
+endm
+
+UX_UINVOKE macro func:REQ, args:VARARG
+	ifb <args>
+		invoke func
+	else
+		invoke func, args
+	endif
+	if @LastReturnType EQ 0
+		exitm <al>
+	elseif @LastReturnType EQ 0x40
+		exitm <al>
+	elseif @LastReturnType EQ 1
+		exitm <ax>
+	elseif @LastReturnType EQ 0x41
+		exitm <ax>
+	elseif @LastReturnType EQ 2
+		exitm <eax>
+	elseif @LastReturnType EQ 0x42
+		exitm <eax>
+	elseif @LastReturnType EQ 3
+		exitm <rax>
+	elseif @LastReturnType EQ 0x43
+		exitm <rax>
+	elseif @LastReturnType EQ 0xc3
+		exitm <rax>
+	elseif @LastReturnType EQ 6
+		exitm <xmm0>
+	elseif @LastReturnType EQ 7
+		exitm <ymm0>
+	elseif @LastReturnType EQ 8
+		exitm <zmm0>
+	elseif @LastReturnType EQ 0x22
+		exitm <xmm0>
+	elseif @LastReturnType EQ 0x23
+		exitm <xmm0>
+	else
+		exitm <eax>
+	endif
+endm
+
+;delete release, acquire, _vd, _vb, _vw, _vf
+
+UX_COMINTERFACE macro CName:REQ
+	curClass textequ <CName>
+	% __&CName&_size = 24
+	@CatStr(CName, <vtbl COMSTRUCT>)
+	ptrDefS textequ <psr>
+	ptrDefS catstr ptrDefS, <&curClass&>, < typedef ptr >, <&curClass&>
+	% ptrDefS
+	CVIRTUAL QueryInterface, <qword>, :ptr
+	CVIRTUAL AddRef, <dword>
+	CVIRTUAL Release, <dword>
+endm
+
+UX_ENDCOMINTERFACE macro
+	UX_ENDMETHODS
+	curClass ends
+endm
+
 UX_VCOMINVOKE macro pInterface:REQ, Interface:REQ, Function:REQ, args:VARARG
 InterfacePtr textequ <_>
 InterfacePtr catstr InterfacePtr, <&Interface>, <_>, <&Function>, <Pto>

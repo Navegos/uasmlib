@@ -207,6 +207,10 @@ extern bool uXm_has_enabled_XMM(void);
 extern bool uXm_has_enabled_YMM(void);
 extern bool uXm_has_enabled_ZMM(void);
 
+extern void uXm_CpuType(int* vendor, int* family, int* model);
+
+extern char* uXm_ProcessorName(void);
+
 uXm_PACK_POP
 
 uXm_EXTERNC_END

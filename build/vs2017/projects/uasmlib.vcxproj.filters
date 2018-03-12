@@ -101,9 +101,6 @@
       <Filter>Source Files\x86\asm</Filter>
     </None>
     <None Include="..\..\..\.gitignore" />
-    <None Include="..\..\..\src\x86\asm\uXmmacros_remove.inc">
-      <Filter>Source Files\x86\asm</Filter>
-    </None>
     <None Include="..\..\..\src\x86\asm\uXmmacros.inc">
       <Filter>Source Files\x86\asm</Filter>
     </None>

@@ -199,7 +199,9 @@ UX_CLASS uXmCPUFeatures
 	
 	UX_CSTATIC CpuType
 	
-	;UX_CSTATIC ProcessorName
+	UX_CSTATIC ProcessorName
+	
+	UX_CSTATIC DataCacheSize
 	
 UX_ENDMETHODS
 
@@ -397,6 +399,12 @@ UX_ENDMETHODS
 	var_enabled_YMM						db 0
 	var_enabled_ZMM						db 0
 	
+	;var_vendor							dd 0
+	;var_family							dd 0
+	;var_model							dd 0
+	
+	var_ProcessorName					db 50H dup(0)
+
 	var_0H_EBX							dd 0
 	var_0H_ECX							dd 0
 	var_1H_ECX							dd 0
@@ -406,6 +414,7 @@ UX_ENDMETHODS
 	var_7H_EDX							dd 0
 	var_80000001H_ECX					dd 0
 	var_80000001H_EDX					dd 0
+
 UX_ENDCLASS
 
 ; A Pointer to Object type.
