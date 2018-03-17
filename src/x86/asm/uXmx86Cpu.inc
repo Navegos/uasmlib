@@ -1,5 +1,24 @@
 
 
+ifndef _INC_CLASS_uXmCPUFEATURES
+_INC_CLASS_uXmCPUFEATURES equ 1
+
+	cpu_data_layout struct
+		ok     dword 2 dup(?)
+		level1 qword 1 dup(?)
+		level2 qword 1 dup(?)
+		level3 qword 1 dup(?)
+		level4 qword 1 dup(?)
+		descriptortable dword 60 dup(?)
+	cpu_data_layout ends
+
+	cpu_descriptor_record struct			; record for table of cache descriptors
+		d_key	dword 1 dup(?)			; key from cpuid instruction
+		d_level	dword 1 dup(?)			; cache level
+		d_sizem	dword 1 dup(?)			; size multiplier
+		d_2pow	dword 1 dup(?)			; power of 2. size = d_sizem << d_2pow
+	cpu_descriptor_record ends
+		
 			;align 16
 UX_CLASS uXmCPUFeatures
 ;	CMETHOD PrintName
@@ -202,7 +221,13 @@ UX_CLASS uXmCPUFeatures
 	UX_CSTATIC ProcessorName
 	
 	UX_CSTATIC DataCacheSize
-	
+
+	UX_CSTATIC WriteHex
+
+	UX_CSTATIC IntelNewMethod
+	UX_CSTATIC IntelOldMethod
+	UX_CSTATIC AMDMethod
+
 UX_ENDMETHODS
 
 	;/* find supported instruction set
@@ -414,8 +439,95 @@ UX_ENDMETHODS
 	var_7H_EDX							dd 0
 	var_80000001H_ECX					dd 0
 	var_80000001H_EDX					dd 0
-
+		
 UX_ENDCLASS
 
 ; A Pointer to Object type.
 puXmCPUFeatures typedef ptr uXmCPUFeatures
+
+	;_DATA segment 'DATA?'
+			;align 16
+	;_DATA ends
+
+	_DATA segment '.data'
+			align 16
+
+	cpu_dataref label ptr qword                              ; reference point
+		cpu_ok_       dd      0, 0                ; 1 when values are determined
+		cpu_level1_   dq      0                   ; level 1 data cache size
+		cpu_level2_   dq      0                   ; level 2 data cache size
+		cpu_level3_   dq      0                   ; level 3 data cache size
+		cpu_level4_   dq      0                   ; level 4 data cache size
+	cpu_numlevels  equ     4                   ; max level
+
+		; From "Intel Processor Identification and the CPUID Instruction, Application note 485
+		; table of Intel cache descriptors
+	cpu_descriptortable_ label byte
+		db 0Ah, 1, 1, 13                       ; 8 kb L1 data cache
+		db 0Ch, 1, 1, 14                       ; 16 kb L1 data cache
+		db 0Dh, 1, 1, 14                       ; 16 kb L1 data cache
+		db 21h, 2, 1, 18                       ; 256 kb L2 data cache
+		db 22h, 3, 1, 19                       ; 512 kb L3 data cache
+		db 23h, 3, 1, 20                       ; 1 Mb L3 data cache
+		db 25h, 3, 1, 21                       ; 2 Mb L3 data cache
+		db 29h, 3, 1, 22                       ; 4 Mb L3 data cache
+		db 2Ch, 1, 1, 15                       ; 32 kb L1 data cache
+		db 39h, 2, 1, 17                       ; 128 kb L2 data cache
+		db 3Ah, 2, 3, 16                       ; 192 kb L2 data cache
+		db 3Bh, 2, 1, 17                       ; 128 kb L1 data cache
+		db 3Ch, 2, 1, 18                       ; 256 kb L1 data cache
+		db 3Dh, 2, 3, 17                       ; 384 kb L2 data cache
+		db 3Eh, 2, 1, 19                       ; 512 kb L2 data cache
+		db 41h, 2, 1, 17                       ; 128 kb L2 data cache
+		db 42h, 2, 1, 18                       ; 256 kb L2 data cache
+		db 43h, 2, 1, 19                       ; 512 kb L2 data cache
+		db 44h, 2, 1, 20                       ; 1 Mb L2 data cache
+		db 45h, 2, 1, 21                       ; 2 Mb L2 data cache
+		db 46h, 3, 1, 22                       ; 4 Mb L3 data cache
+		db 47h, 3, 1, 23                       ; 8 Mb L3 data cache
+		db 48h, 2, 3, 20                       ; 3 Mb L2 data cache
+		db 49h, 2, 1, 22                       ; 4 Mb L2 or 3 data cache
+		db 4Ah, 3, 3, 21                       ; 6 Mb L3 data cache
+		db 4Bh, 3, 1, 23                       ; 8 Mb L3 data cache
+		db 4Ch, 3, 3, 22                       ; 12 Mb L3 data cache
+		db 4Dh, 3, 1, 24                       ; 16 Mb L3 data cache
+		db 4Eh, 2, 3, 21                       ; 6 Mb L2 data cache
+		db 60h, 1, 1, 14                       ; 16 kb L1 data cache
+		db 66h, 1, 1, 13                       ; 8 kb L1 data cache
+		db 67h, 1, 1, 14                       ; 16 kb L1 data cache
+		db 68h, 1, 1, 15                       ; 32 kb L1 data cache
+		db 78h, 2, 1, 20                       ; 1 Mb L2 data cache
+		db 79h, 2, 1, 17                       ; 128 kb L2 data cache
+		db 7Ah, 2, 1, 18                       ; 256 kb L2 data cache
+		db 7Bh, 2, 1, 19                       ; 512 kb L2 data cache
+		db 7Ch, 2, 1, 20                       ; 1 Mb L2 data cache
+		db 7Dh, 2, 1, 21                       ; 2 Mb L2 data cache
+		db 7Fh, 2, 1, 19                       ; 512 kb L2 data cache
+		db 82h, 2, 1, 18                       ; 256 kb L2 data cache
+		db 83h, 2, 1, 19                       ; 512 kb L2 data cache
+		db 84h, 2, 1, 20                       ; 1 Mb L2 data cache
+		db 85h, 2, 1, 21                       ; 2 Mb L2 data cache
+		db 86h, 2, 1, 19                       ; 512 kb L2 data cache
+		db 87h, 2, 1, 20                       ; 1 Mb L2 data cache
+		db 0D0h, 3, 1, 19                      ; 512 kb L3 data cache
+		db 0D1h, 3, 1, 20                      ; 1 Mb L3 data cache
+		db 0D2h, 3, 1, 21                      ; 2 Mb L3 data cache
+		db 0D6h, 3, 1, 20                      ; 1 Mb L3 data cache
+		db 0D7h, 3, 1, 21                      ; 2 Mb L3 data cache
+		db 0D8h, 3, 1, 22                      ; 4 Mb L3 data cache
+		db 0DCh, 3, 3, 19                      ; 1.5 Mb L3 data cache
+		db 0DDh, 3, 3, 20                      ; 3 Mb L3 data cache
+		db 0DEh, 3, 3, 21                      ; 6 Mb L3 data cache
+		db 0E2h, 3, 1, 21                      ; 2 Mb L3 data cache
+		db 0E3h, 3, 1, 22                      ; 4 Mb L3 data cache
+		db 0E4h, 3, 1, 23                      ; 8 Mb L3 data cache
+		db 0EAh, 3, 3, 22                      ; 12 Mb L3 data cache
+		db 0EBh, 3, 9, 21                      ; 18 Mb L3 data cache
+		db 0ECh, 3, 3, 23                      ; 24 Mb L3 data cache
+	cpu_descriptortablelength equ ($ - cpu_descriptortable_) / sizeof cpu_descriptor_record
+
+		;dlayout data_layout <>
+		;drecord descriptor_record <>
+	_DATA ends
+	
+endif ;_CLASS_uXmCPUFEATURES

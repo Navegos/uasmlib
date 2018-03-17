@@ -1,3 +1,0 @@
-..\..\..\src\x86\asm\uXmx86Cpua.asm(1054) : Warning A4268: Procedure argument or local not referenced: thisPtr
- UX_ENDMETHOD(11)[uXmmacros.inc]: Macro called from
-  ..\..\..\src\x86\asm\uXmx86Cpua.asm(1054): Main line code

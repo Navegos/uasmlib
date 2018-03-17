@@ -67,7 +67,7 @@ ifdef WINDOWS
 		;Parameters RCX/XMM0, RDX/XMM1, R8/XMM2, R9/XMM3 + XMM0-XMM5/YMM0-YMM5
 		;Preserve RBX, RBP, RDI, RSI, RSP, R12, R13, R14, R15, XMM6:XMM15
 		;Return EAX:EDX/XMM0:XMM3
-	else	
+	else ;__X64__
 		ifdef __X32_VECTORCALL__ ;not available with uasm macrolib
 			ifndef DEFINED_VECTORCALL
 				define DEFINED_VECTORCALL
@@ -86,7 +86,7 @@ ifdef WINDOWS
 			;Return EAX:EDX/XMM0:XMM3
 		endif
 	endif ;__X64__
-else
+else ;WINDOWS
 	ifdef __X64__
 		ifndef DEFINED_SYSTEMV
 			define DEFINED_SYSTEMV
@@ -95,7 +95,7 @@ else
 		;Parameters RDI, RSI, RDX, RCX, R8, R9, XMM0–XMM7/YMM0–YMM7
 		;Preserve RBX, RSP, RBP, R12, R13, R14, R15
 		;Return EAX:EDX/XMM0:XMM3
-	else
+	else ;__X64__
 		ifdef __X32_SYSTEMV__
 			ifndef DEFINED_SYSTEMV
 				define DEFINED_SYSTEMV

@@ -15,20 +15,20 @@
 	endif
 			option	frame:auto
 
-	.data
-			align 16
+	;.data
+	;		align 16
 
 	;_bss segment 'BSS'
 	;		align 16
 			;NameBuffer db 50H dup(0)             ; Static buffer to contain name
 	;_bss ends
+	
+	include uXmx86Cpu.inc
 
 	.code
-
+	
 ifndef _CLASS_uXmCPUFEATURES
 _CLASS_uXmCPUFEATURES equ 1
-
-	include uXmx86Cpu.inc
 
 ; Constructor
 			align 16		
@@ -2358,37 +2358,96 @@ UX_STATICVECMETHOD uXmCPUFeatures, CpuType, <VOIDARG>, <UX_USESRBX>;, vendor:ptr
 			push				ebx
 			push				edi
 			push				esi
-			evendor	textequ		<esp+16>
-			efamily	textequ		<esp+20>
-			emodel	textequ		<esp+24>
+			ifndef EVENDOR_DEFINED
+				define EVENDOR_DEFINED
+				evendor	textequ		<esp+16>
+			endif
+			ifndef EFAMELY_DEFINED
+				define EFAMELY_DEFINED
+				efamily	textequ		<esp+20>
+			endif
+			ifndef EMODEL_DEFINED
+				define EMODEL_DEFINED
+				emodel	textequ		<esp+24>
+			endif
 	else
 		ifdef WINDOWS
+			push				rcx
 			push				rdi
 			push				rsi
 			push				r10
 			push				r11
+			push				r12
 	; -> The proc arguments conform to vectorcall calling convention: rcx=thisPtr, rdx=vendor, r8=family, r9=model
-			rvendor	textequ		<rdi>
-			rfamily	textequ		<r8>
-			rmodel	textequ		<r9>
-			mov					rvendor,				rdx ;family
-			rdvendor textequ	<esi>
-			rdfamily textequ	<r10d>
-			rdmodel	textequ		<r11d>
-		else
+			ifndef RVENDOR_DEFINED
+				define RVENDOR_DEFINED
+				rvendor	textequ		<rdi>
+			endif
+			ifndef RFAMELY_DEFINED
+				define RFAMELY_DEFINED
+				rfamily	textequ		<r8>
+			endif
+			ifndef RMODEL_DEFINED
+				define RMODEL_DEFINED
+				rmodel	textequ		<r9>
+			endif
+			ifndef RDVENDOR_DEFINED
+				define RDVENDOR_DEFINED
+				rdvendor textequ	<esi>
+			endif
+			ifndef RDFAMELY_DEFINED
+				define RDFAMELY_DEFINED
+				rdfamily textequ	<r10d>
+			endif
+			ifndef RDMODEL_DEFINED
+				define RDMODEL_DEFINED
+				rdmodel	textequ		<r11d>
+			endif
+			ifndef RSAVETHISPTR_DEFINED
+				define RSAVETHISPTR_DEFINED
+				rsavethisptr	textequ		<r12>
+			endif
+			mov					rsavethisptr,			[UX_INSTPTR] ;thisPtr
+			mov					rvendor,				rdx ;vendor
+		else ;UNIX
+			push				rdi
 			push				r10
 			push				r11
 			push				r12
+			push				r13
 	; -> The proc arguments conform to systemv calling convention: rdi=thisPtr, rsi=vendor, rdx=family, rcx=model
-			rvendor	textequ		<rsi>
-			rfamily	textequ		<r8>
-			rmodel	textequ		<r9>
-			;mov					rvendor,				
-			mov					rfamily,				rdx
-			mov					rmodel,					rcx
-			rdvendor textequ	<r10d>
-			rdfamily textequ	<r11d>
-			rdmodel	textequ		<r12d>
+			ifndef RVENDOR_DEFINED
+				define RVENDOR_DEFINED
+				rvendor	textequ		<rsi>
+			endif
+			ifndef RFAMELY_DEFINED
+				define RFAMELY_DEFINED
+				rfamily	textequ		<r8>
+			endif
+			ifndef RMODEL_DEFINED
+				define RMODEL_DEFINED
+				rmodel	textequ		<r9>
+			endif
+			ifndef RSAVETHISPTR_DEFINED
+				define RSAVETHISPTR_DEFINED
+				rsavethisptr	textequ		<r13>
+			endif
+			mov					rsavethisptr,			rdi ;thisPtr
+			;mov					rvendor,			rsi	;vendor
+			mov					rfamily,				rdx ;family
+			mov					rmodel,					rcx ;model
+			ifndef RDVENDOR_DEFINED
+				define RDVENDOR_DEFINED
+				rdvendor textequ	<r10d>
+			endif
+			ifndef RDFAMELY_DEFINED
+				define RDFAMELY_DEFINED
+				rdfamily textequ	<r11d>
+			endif
+			ifndef RDMODEL_DEFINED
+				define RDMODEL_DEFINED
+				rdmodel	textequ		<r12d>
+			endif
 		endif
 	endif ;__X64__
     
@@ -2401,9 +2460,15 @@ UX_STATICVECMETHOD uXmCPUFeatures, CpuType, <VOIDARG>, <UX_USESRBX>;, vendor:ptr
 			xor					edi,					edi               ; family
 	else
 ; parameters
-; vendor  rdi
-; family  rsi
-; model   r8
+; vendor  rsi
+; family  r8
+; model   r9
+
+		ifdef WINDOWS
+			xor					rcx,					rcx
+		else
+			xor					rdi,					rdi
+		endif
 
 			xor					rdvendor,				rdvendor            ; vendor
 			xor					rdfamily,				rdfamily            ; family
@@ -2568,6 +2633,8 @@ C330:
 			;mov					[family],				rfamily
 			;mov					[model],				rmodel
 	    
+			mov					[UX_INSTPTR],					rsavethisptr
+
 			xor					eax,					eax
 
         ; return
@@ -2577,14 +2644,18 @@ C330:
 			pop					ebx
 	else
 		ifdef  WINDOWS
+			pop					r12
 			pop					r11
 			pop					r10
 			pop					rsi
 			pop					rdi
-		else		
+			pop					rcx
+		else
+			pop					r13
 			pop					r12
 			pop					r11
 			pop					r10
+			pop					rdi
 		endif
 	endif ;__X64__
 	     
@@ -2619,16 +2690,30 @@ UX_STATICVECMETHOD uXmCPUFeatures, ProcessorName, <ptr>, <UX_USESRBX>
 	else
 		ifdef WINDOWS
 				push				rdi
+				push				rcx
 			ifndef RDEST_DEFINED
 				define RDEST_DEFINED
 				rdest	textequ		<rdi>
 			endif
+			ifndef RSAVETHISPTR_DEFINED
+				define RSAVETHISPTR_DEFINED
+				rsavethisptr	textequ		<r8>
+			endif
+				mov					rsavethisptr,			[UX_INSTPTR] ;thisPtr
+				xor					rcx,					rcx
 		else
+				push				rdi
 				push				rsi
 			ifndef RDEST_DEFINED
 				define RDEST_DEFINED
-				rdest	textequ		<rsi>
+				rdest	textequ		<rdi>
 			endif
+			ifndef RSAVETHISPTR_DEFINED
+				define RSAVETHISPTR_DEFINED
+				rsavethisptr	textequ		<rsi>
+			endif
+				mov					rsavethisptr,			[UX_INSTPTR]
+				xor					rdi,					rdi
 		endif
 	endif
 	
@@ -2707,7 +2792,7 @@ get_family_and_model:
 			shr					ecx,					20
 			and					ecx,					0FFH              ; Extended family
 			add					eax,					ecx               ; Family + extended family
-			call				WriteHex               ; Write as hexadecimal
+			call				_uXmCPUFeatures_WriteHex               ; Write as hexadecimal
 
 			mov		dword ptr [rdest],					'H Mo' ; Write text "H Model "
 			mov		dword ptr [rdest+4],				'del '
@@ -2720,7 +2805,7 @@ get_family_and_model:
 			shr					ecx,					12
 			and					ecx,					0F0H              ; Extended model
 			or					eax,					ecx               ; Model | extended model
-			call				WriteHex               ; Write as hexadecimal
+			call				_uXmCPUFeatures_WriteHex               ; Write as hexadecimal
 
 			mov		dword ptr [rdest],					'H'       ; Write text "H"
         
@@ -2734,6 +2819,16 @@ PNEND:  ; finished
 	else
 			lea					rax,					[[UX_INSTPTR].var_ProcessorName]      ; Pointer to result
 	endif
+	
+	ifdef __X64__
+		ifdef UNIX
+			mov					rdest, 					rsavethisptr        ; Restore ThisPointer address
+			pop					rsavethisptr
+		else
+			mov					rcx,					rsavethisptr         ; Restore ThisPointer address
+			pop					rsavethisptr
+		endif
+	endif
 
 			pop					rdest
 			;pop					rbx
@@ -2743,193 +2838,204 @@ PNEND:  ; finished
 UX_ENDMETHOD
 
 			align 16
-UX_STATICVECMETHOD uXmCPUFeatures, DataCacheSize, <UX_SIZET>, <UX_USESRBX>
+UX_STATICVECMETHOD uXmCPUFeatures, DataCacheSize, <UX_SIZET>, <UX_USESRBX>;, level:dword
 
-	data_layout struct
-		ok     dword 2 dup(?)
-		level1 qword 1 dup(?)
-		level2 qword 1 dup(?)
-		level3 qword 1 dup(?)
-		level4 qword 1 dup(?)
-		descriptortable dword 60 dup(?)
-	data_layout ends
+	ifndef __X64__
+	else
+			;push				rbx
 
-	descriptor_record struct			; record for table of cache descriptors
-		d_key	dword 1 dup(?)			; key from cpuid instruction
-		d_level	dword 1 dup(?)			; cache level
-		d_sizem	dword 1 dup(?)			; size multiplier
-		d_2pow	dword 1 dup(?)			; power of 2. size = d_sizem << d_2pow
-	descriptor_record ends
-		
-	;_DATA segment 'DATA?'
-			;align 16
-	;_DATA ends
-
-	_DATA segment ' .data '
-			;align 16
-
-		dataref label ptr qword                              ; reference point
-		ok_       dd      0, 0                ; 1 when values are determined
-		level1_   dq      0                   ; level 1 data cache size
-		level2_   dq      0                   ; level 2 data cache size
-		level3_   dq      0                   ; level 3 data cache size
-		level4_   dq      0                   ; level 4 data cache size
-		numlevels  equ     4                   ; max level
-
-		; From "Intel Processor Identification and the CPUID Instruction, Application note 485
-		; table of Intel cache descriptors
-descriptortable_ label byte
-		db 0Ah, 1, 1, 13                       ; 8 kb L1 data cache
-		db 0Ch, 1, 1, 14                       ; 16 kb L1 data cache
-		db 0Dh, 1, 1, 14                       ; 16 kb L1 data cache
-		db 21h, 2, 1, 18                       ; 256 kb L2 data cache
-		db 22h, 3, 1, 19                       ; 512 kb L3 data cache
-		db 23h, 3, 1, 20                       ; 1 Mb L3 data cache
-		db 25h, 3, 1, 21                       ; 2 Mb L3 data cache
-		db 29h, 3, 1, 22                       ; 4 Mb L3 data cache
-		db 2Ch, 1, 1, 15                       ; 32 kb L1 data cache
-		db 39h, 2, 1, 17                       ; 128 kb L2 data cache
-		db 3Ah, 2, 3, 16                       ; 192 kb L2 data cache
-		db 3Bh, 2, 1, 17                       ; 128 kb L1 data cache
-		db 3Ch, 2, 1, 18                       ; 256 kb L1 data cache
-		db 3Dh, 2, 3, 17                       ; 384 kb L2 data cache
-		db 3Eh, 2, 1, 19                       ; 512 kb L2 data cache
-		db 41h, 2, 1, 17                       ; 128 kb L2 data cache
-		db 42h, 2, 1, 18                       ; 256 kb L2 data cache
-		db 43h, 2, 1, 19                       ; 512 kb L2 data cache
-		db 44h, 2, 1, 20                       ; 1 Mb L2 data cache
-		db 45h, 2, 1, 21                       ; 2 Mb L2 data cache
-		db 46h, 3, 1, 22                       ; 4 Mb L3 data cache
-		db 47h, 3, 1, 23                       ; 8 Mb L3 data cache
-		db 48h, 2, 3, 20                       ; 3 Mb L2 data cache
-		db 49h, 2, 1, 22                       ; 4 Mb L2 or 3 data cache
-		db 4Ah, 3, 3, 21                       ; 6 Mb L3 data cache
-		db 4Bh, 3, 1, 23                       ; 8 Mb L3 data cache
-		db 4Ch, 3, 3, 22                       ; 12 Mb L3 data cache
-		db 4Dh, 3, 1, 24                       ; 16 Mb L3 data cache
-		db 4Eh, 2, 3, 21                       ; 6 Mb L2 data cache
-		db 60h, 1, 1, 14                       ; 16 kb L1 data cache
-		db 66h, 1, 1, 13                       ; 8 kb L1 data cache
-		db 67h, 1, 1, 14                       ; 16 kb L1 data cache
-		db 68h, 1, 1, 15                       ; 32 kb L1 data cache
-		db 78h, 2, 1, 20                       ; 1 Mb L2 data cache
-		db 79h, 2, 1, 17                       ; 128 kb L2 data cache
-		db 7Ah, 2, 1, 18                       ; 256 kb L2 data cache
-		db 7Bh, 2, 1, 19                       ; 512 kb L2 data cache
-		db 7Ch, 2, 1, 20                       ; 1 Mb L2 data cache
-		db 7Dh, 2, 1, 21                       ; 2 Mb L2 data cache
-		db 7Fh, 2, 1, 19                       ; 512 kb L2 data cache
-		db 82h, 2, 1, 18                       ; 256 kb L2 data cache
-		db 83h, 2, 1, 19                       ; 512 kb L2 data cache
-		db 84h, 2, 1, 20                       ; 1 Mb L2 data cache
-		db 85h, 2, 1, 21                       ; 2 Mb L2 data cache
-		db 86h, 2, 1, 19                       ; 512 kb L2 data cache
-		db 87h, 2, 1, 20                       ; 1 Mb L2 data cache
-		db 0D0h, 3, 1, 19                      ; 512 kb L3 data cache
-		db 0D1h, 3, 1, 20                      ; 1 Mb L3 data cache
-		db 0D2h, 3, 1, 21                      ; 2 Mb L3 data cache
-		db 0D6h, 3, 1, 20                      ; 1 Mb L3 data cache
-		db 0D7h, 3, 1, 21                      ; 2 Mb L3 data cache
-		db 0D8h, 3, 1, 22                      ; 4 Mb L3 data cache
-		db 0DCh, 3, 3, 19                      ; 1.5 Mb L3 data cache
-		db 0DDh, 3, 3, 20                      ; 3 Mb L3 data cache
-		db 0DEh, 3, 3, 21                      ; 6 Mb L3 data cache
-		db 0E2h, 3, 1, 21                      ; 2 Mb L3 data cache
-		db 0E3h, 3, 1, 22                      ; 4 Mb L3 data cache
-		db 0E4h, 3, 1, 23                      ; 8 Mb L3 data cache
-		db 0EAh, 3, 3, 22                      ; 12 Mb L3 data cache
-		db 0EBh, 3, 9, 21                      ; 18 Mb L3 data cache
-		db 0ECh, 3, 3, 23                      ; 24 Mb L3 data cache
-descriptortablelength equ ($ - descriptortable_) / sizeof descriptor_record
-
-		;dlayout data_layout <>
-		drecord descriptor_record <>
-	_DATA ends
-
-	        push				rbx
-			push				r14
-	ifdef  WINDOWS
-			push				rsi
+		ifdef WINDOWS
+	; -> The proc arguments conform to vectorcall calling convention: rcx=thisPtr, rdx=level
+			push				rcx
 			push				rdi
-			mov					r14d, ecx              ; level
-	else   ; UNIX
-			mov					r14d, edi              ; level
-	endif
+			push				rsi
+			push				r10
+						
+			ifndef RLEVEL_DEFINED
+				define RLEVEL_DEFINED
+				elevel	textequ		<edx>
+				rlevel	textequ		<rdx>
+			endif
+
+			ifndef RCPUPARAM1
+				define RCPUPARAM1
+				ecpuparam1	textequ		<elevel>
+				rcpuparam1	textequ		<rlevel>
+			endif
+
+			ifndef RCPUPARAM2
+				define RCPUPARAM2
+				ecpuparam2	textequ		<r8d>
+				rcpuparam2	textequ		<r8>
+			endif
+
+			ifndef RCPUPARAM3
+				define RCPUPARAM3
+				ecpuparam3	textequ		<r9d>
+				rcpuparam3	textequ		<r9>
+			endif
+				
+			ifndef RCALLADRESS
+				define RCALLADRESS
+				ecalladress	textequ		<r10d>
+				rcalladress	textequ		<r10>
+			endif
+				
+			ifndef RLOOPADRESS
+				define RLOOPADRESS
+				eloopadress	textequ		<esi>
+				rloopadress	textequ		<rsi>
+			endif				
+			
+			ifndef RSAVETHISPTR_DEFINED
+				define RSAVETHISPTR_DEFINED
+				rsavethisptr	textequ		<r11>
+			endif
+				mov					rsavethisptr,			rcx
+				xor					rcx,					rcx
+
+		else ;UNIX
+
+	; -> The proc arguments conform to systemv calling convention: rdi=thisPtr, rsi=level
+				push				rdi
+
+			ifndef RLEVEL_DEFINED
+				define RLEVEL_DEFINED
+				elevel	textequ		<esi>
+				rlevel	textequ		<rsi>
+			endif
+
+			ifndef RCPUPARAM1
+				define RCPUPARAM1
+				ecpuparam1	textequ		<elevel>
+				rcpuparam1	textequ		<rlevel>
+			endif
+
+			ifndef RCPUPARAM2
+				define RCPUPARAM2
+				ecpuparam2	textequ		<edx>
+				rcpuparam2	textequ		<rdx>
+			endif
+
+			ifndef RCPUPARAM3
+				define RCPUPARAM3
+				ecpuparam3	textequ		<ecx>
+				rcpuparam3	textequ		<rcx>
+			endif
+				
+			ifndef RCALLADRESS
+				define RCALLADRESS
+				ecalladress	textequ		<r8d>
+				rcalladress	textequ		<r8>
+			endif				
+			
+			ifndef RLOOPADRESS
+				define RLOOPADRESS
+				eloopadress	textequ		<r9d>
+				rloopadress	textequ		<r9>
+			endif				
+			
+			ifndef RSAVETHISPTR_DEFINED
+				define RSAVETHISPTR_DEFINED
+				rsavethisptr	textequ		<r10>
+			endif
+				mov					rsavethisptr,			rdi
+				xor					rdi,					rdi
+
+		endif ;WINDOWS
+		
+			push				r14
+			mov					r14d, 					elevel              ; level
+
+	endif ;__X64__
+    
+
         ; check if called before
-			lea					r9, [dataref]
-			cmp			dword ptr [r9+data_layout.ok], 1       ; ok
+			lea					rcalladress, 					[cpu_dataref]
+			cmp			dword ptr [rcalladress+cpu_data_layout.ok], 	1       ; ok
 			je					D800
         
         ; find cpu vendor
-			push					0
-	ifdef  WINDOWS
-			mov					rcx, rsp
-			xor					edx, edx
-			xor					r8d, r8d
-	else   ; UNIX
-			mov					rdi, rsp
-			xor					esi, esi
-			xor					edx, edx
-	endif        
+			push				0
+
+			mov					rcpuparam1, 			rsp
+			xor					rcpuparam2, 			rcpuparam2
+			xor					rcpuparam3, 			rcpuparam3
+			
+	; -> The proc arguments conform to vectorcall calling convention: rcx=thisPtr, rdx=vendor, r8=family, r9=model
+	; -> The proc arguments conform to systemv calling convention: rdi=thisPtr, rsi=vendor, rdx=family, rcx=mode
 			call				_uXmCPUFeatures_CpuType
-			lea					r9, [dataref]
+			lea					rcalladress, 					[cpu_dataref]
 			pop					rax                    ; eax = vendor
 			dec					eax
-			jz      Intel
-			dec     eax
-			jz      AMD
-			dec     eax
-			jz      VIA
+			jz					Intel
+			dec					eax
+			jz					AMD
+			dec					eax
+			jz					VIA
         ; unknown vendor, try all methods
-			call    IntelNewMethod
-			jnc     D800                   ; not carry = success
-			call    AMDMethod
-			jnc     D800                   ; not carry = success
-			call    IntelOldMethod
-			jmp     D800                   ; return whether success or not
+			call				_uXmCPUFeatures_IntelNewMethod
+			jnc					D800                   ; not carry = success
+			call				_uXmCPUFeatures_AMDMethod
+			jnc					D800                   ; not carry = success
+			call				_uXmCPUFeatures_IntelOldMethod
+			jmp					D800                   ; return whether success or not
         
 Intel:  
-			call    IntelNewMethod
-			jnc     D800                   ; not carry = success
-			call    IntelOldMethod
-			jmp     D800                   ; return whether success or not
+			call				_uXmCPUFeatures_IntelNewMethod
+			jnc					D800                   ; not carry = success
+			call				_uXmCPUFeatures_IntelOldMethod
+			jmp					D800                   ; return whether success or not
 
 AMD:    ; AMD and VIA use same method
 VIA:    
-			call    AMDMethod
+			call				_uXmCPUFeatures_AMDMethod
         
 D800:   ; cache data known, get desired return value
-			xor     eax, eax
-			cmp     r14d, numlevels
-			ja      D900
-			cmp     r14d, 0
-			je      D820
+			xor					eax, 					eax
+			cmp					r14d, 					cpu_numlevels
+			ja					D900
+			cmp					r14d, 					0
+			je					D820
         ; level = 1 .. numlevels
-			mov     rax, [r9 + r14*8]      ; size of selected cache
-			jmp     D850
+			mov					rax, 					[rcalladress + r14*8]      ; size of selected cache
+			jmp					D850
 D820:   ; level = 0. Get size of largest level cache
-			mov     rax, [r9 + data_layout.level3]     ; level3
-			test    rax, rax
-			jnz     D850
-			mov     rax, [r9 + data_layout.level2]     ; level2
-			test    rax, rax
-			jnz     D850
-			mov     rax, [r9 + data_layout.level1]     ; level1
+			mov					rax, 					[rcalladress + cpu_data_layout.level3]     ; level3
+			test				rax, 					rax
+			jnz					D850
+			mov					rax, 					[rcalladress + cpu_data_layout.level2]     ; level2
+			test				rax, 					rax
+			jnz					D850
+			mov					rax, 					[rcalladress + cpu_data_layout.level1]     ; level1
 D850:		
-			mov     dword ptr [r9 + data_layout.ok], 1     ; remember called, whether success or not
+			mov 	dword ptr [rcalladress + cpu_data_layout.ok], 	1     ; remember called, whether success or not
 D900:   
+
+			pop					r14
+
 	ifdef  WINDOWS
-			pop     rdi
-			pop     rsi
+			mov					rcx, 					rsavethisptr
+			pop					r11
+			pop					r10
+			pop					rsi
+			pop     			rdi
+			pop					rcx
+	else
+			mov					rdi, 					rsavethisptr
+			pop					r10
+			pop					rdi
 	endif
-			pop     r14
-			pop     rbx
+			;pop					rbx
 
 			ret
 		
 UX_ENDMETHOD
 	
-WriteHex:                              ; Local function: Write 2 hexadecimal digits
+			align 16
+UX_STATICVECMETHOD uXmCPUFeatures, WriteHex, <VOIDARG>, <>
+
+;WriteHex:                              ; Local function: Write 2 hexadecimal digits
         ; Parameters: AL = number to write, RDI = text destination
 	
 	ifndef __X64__
@@ -2983,150 +3089,263 @@ W4:			mov					[rdest+1], 				cl            ; write digit
 		endif
 
 			ret
-
+	
+UX_ENDMETHOD
+	
 ; Determine cache sizes by CPUID function 4
 ; input: esi = pointer to dataref
 ; output: values returned in dataref + level1, level2, level3
 ; carry flag = 0 on succes
-IntelNewMethod:
-			xor     eax, eax
+			align 16
+UX_STATICVECMETHOD uXmCPUFeatures, IntelNewMethod, <VOIDARG>, <>;, level:dword
+
+;IntelNewMethod:
+
+	ifndef __X64__
+	else
+			;push				rbx
+
+		ifdef WINDOWS
+
+			ifndef RCALLADRESS
+				define RCALLADRESS
+			push				r10
+				ecalladress	textequ		<r10d>
+				rcalladress	textequ		<r10>
+			endif
+				
+			ifndef RLOOPADRESS
+				define RLOOPADRESS
+				eloopadress	textequ		<esi>
+				rloopadress	textequ		<rsi>
+			endif				
+			
+		else ;UNIX
+
+			ifndef RCALLADRESS
+				define RCALLADRESS
+				ecalladress	textequ		<r8d>
+				rcalladress	textequ		<r8>
+			endif				
+			
+			ifndef RLOOPADRESS
+				define RLOOPADRESS
+				eloopadress	textequ		<r9d>
+				rloopadress	textequ		<r9>
+			endif				
+			
+		endif ;WINDOWS
+		
+	endif ;__X64__
+    
+			xor					eax, 					eax
 			cpuid                          ; get number of CPUID functions
-			cmp     eax, 4
-			jb      I900                   ; fail
-			xor     esi, esi               ; loop counter
+			cmp					eax, 					4
+			jb					I900                   ; fail
+			xor					eloopadress, 					eloopadress               ; loop counter
 I100:   
-			mov     eax, 4
-			mov     ecx, esi
+			mov					eax, 					4
+			mov					ecx, 					eloopadress
 			cpuid                          ; get cache parameters
-			mov     edx, eax
-			and     edx, 11111b            ; cache type
-			jz      I500                   ; no more caches
-			cmp     edx, 2
-			je      I200                   ; code cache, ignore
-			inc     ecx                    ; sets
-			mov     edx, ebx
-			shr     edx, 22
-			inc     edx                    ; ways
-			imul    ecx, edx
-			mov     edx, ebx
-			shr     edx, 12
-			and     edx, 1111111111b
-			inc     edx                    ; partitions
-			imul    ecx, edx
-			and     ebx, 111111111111b        
-			inc     ebx                    ; line size
-			imul    rcx, rbx               ; calculated cache size (64 bit)
-			shr     eax, 5
-			and     eax, 111b              ; cache level
-			cmp     eax, numlevels
-			jna     I180
-			mov     eax, numlevels         ; limit higher levels
+			mov					edx, 					eax
+			and					edx, 					11111b            ; cache type
+			jz					I500                   ; no more caches
+			cmp					edx, 					2
+			je					I200                   ; code cache, ignore
+			inc					ecx                    ; sets
+			mov					edx, 					ebx
+			shr					edx, 					22
+			inc					edx                    ; ways
+			imul				ecx, 					edx
+			mov					edx, 					ebx
+			shr					edx, 					12
+			and					edx, 					1111111111b
+			inc					edx                    ; partitions
+			imul				ecx, 					edx
+			and					ebx, 					111111111111b        
+			inc					ebx                    ; line size
+			imul				rcx, 					rbx               ; calculated cache size (64 bit)
+			shr					eax, 					5
+			and					eax, 					111b              ; cache level
+			cmp					eax, 					cpu_numlevels
+			jna					I180
+			mov					eax, 					cpu_numlevels         ; limit higher levels
 I180:   
-			mov     [r9+rax*8], rcx        ; store size of data cache level eax
+			mov					[rcalladress+rax*8], 			rcx        ; store size of data cache level eax
 I200:   
-			inc     esi
-			cmp     esi, 100h              ; avoid infinite loop
-			jb      I100                   ; next cache
+			inc					eloopadress
+			cmp					eloopadress, 					100h              ; avoid infinite loop
+			jb					I100                   ; next cache
 I500:   ; loop finished
         ; check if OK
-			mov     rax, [r9+data_layout.level1]       ; level1
-			cmp     rax, 1024
+		
+			;push				rbx
+
+		ifdef WINDOWS
+			pop					r10
+		endif
+
+			mov					rax, 					[rcalladress+cpu_data_layout.level1]       ; level1
+			cmp					rax, 					1024
 I900:  
 			ret                            ; carry flag set if fail
 
+UX_ENDMETHOD
+	
 ; Determine cache sizes by CPUID function 2
 ; input: esi = pointer to dataref
 ; output: values returned in dataref + level1, level2, level3
 ; carry flag = 0 on succes
-IntelOldMethod:
-			xor     eax, eax
+			align 16
+UX_STATICVECMETHOD uXmCPUFeatures, IntelOldMethod, <VOIDARG>, <>;, level:dword
+
+;IntelOldMethod:
+
+	ifndef __X64__
+	else
+			;push				rbx
+
+		ifdef WINDOWS
+
+			ifndef RCALLADRESS
+				define RCALLADRESS
+			;push				r10
+				ecalladress	textequ		<r10d>
+				rcalladress	textequ		<r10>
+			endif
+				
+		else ;UNIX
+
+			ifndef RCALLADRESS
+				define RCALLADRESS
+				ecalladress	textequ		<r8d>
+				rcalladress	textequ		<r8>
+			endif				
+			
+		endif ;WINDOWS
+		
+	endif ;__X64__
+    
+			xor					eax,  					eax
 			cpuid                          ; get number of CPUID functions
-			cmp     eax, 2
-			jb      J900                   ; fail
-			mov     eax, 2
-			xor     ecx, ecx
+			cmp					eax,  					2
+			jb					J900                   ; fail
+			mov					eax,  					2
+			xor					ecx,  					ecx
 			cpuid                          ; get 16 descriptor bytes in eax, ebx, ecx, edx
-			mov     al, 0                  ; al does not contain a descriptor
-			sub     rsp, 16
-			mov     [rsp],    eax          ; save all descriptors
-			mov     [rsp+4],  ebx
-			mov     [rsp+8],  ecx
-			mov     [rsp+12], edx
-			mov     edx, 15                ; loop counter
+			mov					al,  					0                  ; al does not contain a descriptor
+			sub					rsp,  					16
+			mov					[rsp],     				eax          ; save all descriptors
+			mov					[rsp+4],   				ebx
+			mov					[rsp+8],   				ecx
+			mov					[rsp+12],  				edx
+			mov					edx, 15                ; loop counter
         ; loop to read 16 descriptor bytes
 J100:   
-			mov     al, byte ptr [rsp+rdx]
+			mov					al,  			byte ptr [rsp+rdx]
         ; find in table
-			mov     ebx, descriptortablelength-1  ; loop counter
+			mov					ebx,  					cpu_descriptortablelength-1  ; loop counter
         ; loop to search in descriptortable
 J200:   
-			cmp     eax, [r9 + data_layout.descriptortable + rbx*4 + descriptor_record.d_key]
-			jne     J300
+			cmp					eax,  					[rcalladress + cpu_data_layout.descriptortable + rbx*4 + cpu_descriptor_record.d_key]
+			jne					J300
         ; descriptor found
-			movzx   eax, byte ptr [r9 + data_layout.descriptortable + rbx*4 + descriptor_record.d_sizem]
-			mov     ecx,  [r9 + data_layout.descriptortable + rbx*4 + descriptor_record.d_2pow]
-			shl     eax, cl                ; compute size
-			movzx   ecx, byte ptr [r9 + data_layout.descriptortable + rbx*4 + descriptor_record.d_level]
+			movzx				eax,  			byte ptr [rcalladress + cpu_data_layout.descriptortable + rbx*4 + cpu_descriptor_record.d_sizem]
+			mov					ecx,   					[rcalladress + cpu_data_layout.descriptortable + rbx*4 + cpu_descriptor_record.d_2pow]
+			shl					eax,  					cl                ; compute size
+			movzx				ecx,  			byte ptr [rcalladress + cpu_data_layout.descriptortable + rbx*4 + cpu_descriptor_record.d_level]
         ; check that level = 1-3
-			cmp     ecx, 3
-			ja      J300
-			mov     [r9+rcx*8], rax        ; store size eax of data cache level ecx
+			cmp					ecx,  					3
+			ja					J300
+			mov					[rcalladress+rcx*8], 			rax        ; store size eax of data cache level ecx
 J300:   
-			dec     ebx
-			jns     J200                   ; inner loop
-			dec     edx
-			jns     J100                   ; outer loop
-			add     rsp, 16                ; remove from stack
+			dec					ebx
+			jns					J200                   ; inner loop
+			dec					edx
+			jns					J100                   ; outer loop
+			add					rsp,  					16                ; remove from stack
         ; check if OK
-			mov     rax, [r9 + data_layout.level1]
-			cmp     rax, 1024
+			mov					rax,  					[rcalladress + cpu_data_layout.level1]
+			cmp					rax,  					1024
 J900:   
 			ret                            ; carry flag set if fail
 
-
+UX_ENDMETHOD
+	
 ; Determine cache sizes by CPUID function 80000005H - 80000006H
 ; input: esi = pointer to dataref
 ; output: values returned in dataref
 ; carry flag = 0 on succes
-AMDMethod:
-			mov     eax, 80000000H
+			align 16
+UX_STATICVECMETHOD uXmCPUFeatures, AMDMethod, <VOIDARG>, <>;, level:dword
+
+;AMDMethod:
+
+	ifndef __X64__
+	else
+			;push				rbx
+
+		ifdef WINDOWS
+
+			ifndef RCALLADRESS
+				define RCALLADRESS
+			;push				r10
+				ecalladress	textequ		<r10d>
+				rcalladress	textequ		<r10>
+			endif
+				
+		else ;UNIX
+
+			ifndef RCALLADRESS
+				define RCALLADRESS
+				ecalladress	textequ		<r8d>
+				rcalladress	textequ		<r8>
+			endif				
+			
+		endif ;WINDOWS
+		
+	endif ;__X64__
+    
+			mov					eax,  					80000000H
 			cpuid                          ; get number of CPUID functions
-			cmp     eax, 6
-			jb      K900                   ; fail
-			mov     eax, 80000005H
+			cmp					eax,  					6
+			jb					K900                   ; fail
+			mov					eax,  					80000005H
 			cpuid                          ; get L1 cache size
-			shr     ecx, 24                ; L1 data cache size in kbytes
-			shl     ecx, 10                ; L1 data cache size in bytes
-			mov     [r9 + data_layout.level1], rcx     ; store L1 data cache size
-			mov     eax, 80000006H
+			shr					ecx,  					24                ; L1 data cache size in kbytes
+			shl					ecx,  					10                ; L1 data cache size in bytes
+			mov				[rcalladress + cpu_data_layout.level1], rcx     ; store L1 data cache size
+			mov					eax,  					80000006H
 			cpuid                          ; get L2 and L3 cache sizes
-			shr     ecx, 16                ; L2 data cache size in kbytes
-			shl     ecx, 10                ; L2 data cache size in bytes
-			mov     [r9 + data_layout.level2], rcx     ; store L2 data cache size
-			mov     ecx, edx
-			shr     ecx, 18                ; L3 data cache size / 512 kbytes
-			shl     rcx, 19                ; L3 data cache size in bytes
+			shr					ecx,  					16                ; L2 data cache size in kbytes
+			shl					ecx,  					10                ; L2 data cache size in bytes
+			mov				[rcalladress + cpu_data_layout.level2], rcx     ; store L2 data cache size
+			mov					ecx,  					edx
+			shr					ecx,  					18                ; L3 data cache size / 512 kbytes
+			shl					rcx,  					19                ; L3 data cache size in bytes
 if 0   ; AMD manual is unclear: 
         ; do we have to increase the value if the number of ways is not a power or 2?
-			shr     edx, 12
-			and     edx, 1111b             ; L3 associativity
-			cmp     edx, 3
-			jb      K100
-			test    edx, 1
-			jz      K100
+			shr					edx,  					12
+			and					edx,  					1111b             ; L3 associativity
+			cmp					edx,  					3
+			jb					K100
+			test				edx,  					1
+			jz					K100
 			; number of ways is not a power of 2, multiply by 1.5 ?
-			mov     rax, rcx
-			shr     rax, 1
-			add     rcx, rax
+			mov					rax,  					rcx
+			shr					rax,  					1
+			add					rcx,  					rax
 endif
 K100:   
-			mov     [r9 + data_layout.level3], rcx     ; store L3 data cache size
+			mov				[rcalladress + cpu_data_layout.level3], rcx     ; store L3 data cache size
         ; check if OK
-			mov     rax, [r9 + data_layout.level1]
-			cmp     rax, 1024
+			mov					rax,  					[rcalladress + cpu_data_layout.level1]
+			cmp					rax,  					1024
 K900:   
 			ret                            ; carry flag set if fail
 
+UX_ENDMETHOD
+	
 endif ;_CLASS_uXmCPUFEATURES
 
 	end ;.code
