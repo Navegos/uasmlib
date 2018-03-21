@@ -253,7 +253,7 @@ UX_ENDMETHODS
 	var_intrinset						dd 0
 	
 	; /* EFLAGS %eax=00H, %ebx=00H */
-	var_CPUID 							dd 0
+	var_CPUID 							db 0
 
 	; /* %eax=00H, %ecx */
 	var_ntel							db 0	; 'GenuineIntel'
@@ -424,12 +424,20 @@ UX_ENDMETHODS
 	var_enabled_YMM						db 0
 	var_enabled_ZMM						db 0
 	
-	;var_vendor							dd 0
-	;var_family							dd 0
-	;var_model							dd 0
+	var_vendor							dd 0
+	var_family							dd 0
+	var_model							dd 0
 	
 	var_ProcessorName					db 50H dup(0)
-
+	
+	var_infolevel						dd 0
+		
+ifndef __X64__
+	var_DataCacheSize					dd 0
+else			
+	var_DataCacheSize					dq 0
+endif ;__X64__
+		
 	var_0H_EBX							dd 0
 	var_0H_ECX							dd 0
 	var_1H_ECX							dd 0
@@ -439,7 +447,7 @@ UX_ENDMETHODS
 	var_7H_EDX							dd 0
 	var_80000001H_ECX					dd 0
 	var_80000001H_EDX					dd 0
-		
+	
 UX_ENDCLASS
 
 ; A Pointer to Object type.
@@ -451,6 +459,8 @@ puXmCPUFeatures typedef ptr uXmCPUFeatures
 
 	_DATA segment '.data'
 			align 16
+			
+	input_datacachelevel				dword ?
 
 	cpu_dataref label ptr qword                              ; reference point
 		cpu_ok_       dd      0, 0                ; 1 when values are determined

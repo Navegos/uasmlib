@@ -219,7 +219,7 @@ uXm_PACK_PUSH16
 class uXmCPUFeatures
 {
 public:
-	uXmCPUFeatures(void);
+	uXmCPUFeatures(int infolevel);
 	~uXmCPUFeatures(void);
 
 	/* find supported instruction set
@@ -422,7 +422,7 @@ public:
 typedef uXmCPUFeatures puXmCPUFeatures;
 
 /* Assembly externals */
-extern void _uXmCPUFeatures_Init(void);
+extern void _uXmCPUFeatures_Init(int);
 extern void _uXmCPUFeatures_Destroy(void);
 
 /* find supported instruction set

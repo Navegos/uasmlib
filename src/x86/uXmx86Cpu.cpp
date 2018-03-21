@@ -4,9 +4,9 @@ uXm_EXTERNC_BEGIN
 
 uXm_PACK_PUSH16
 
-uXmCPUFeatures::uXmCPUFeatures(void)
+uXmCPUFeatures::uXmCPUFeatures(int infolevel)
 {
-	_uXmCPUFeatures_Init();
+	_uXmCPUFeatures_Init(infolevel);
 }
 
 uXmCPUFeatures::~uXmCPUFeatures(void)
@@ -748,6 +748,11 @@ void uXm_CALLCONV uXmCPUFeatures::CpuType(int* vendor, int* family, int* model)
 char* uXm_CALLCONV uXmCPUFeatures::ProcessorName(void)
 {
 	return _uXmCPUFeatures_ProcessorName();
+}
+
+size_t uXm_CALLCONV uXmCPUFeatures::DataCacheSize(int level)
+{
+	return _uXmCPUFeatures_DataCacheSize(level);
 }
 
 uXm_PACK_POP

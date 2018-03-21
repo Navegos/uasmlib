@@ -32,8 +32,52 @@ _CLASS_uXmCPUFEATURES equ 1
 
 ; Constructor
 			align 16		
-UX_VECMETHOD uXmCPUFeatures, Init, <VOIDARG>, <UX_USESRBX>
+UX_VECMETHOD uXmCPUFeatures, Init, <VOIDARG>, <UX_USESRBX>;, infolevel:dword
 		
+	ifndef __X64__
+			push				edi
+			push				esi
+			r00ecx	textequ		<edi>
+			r01edx	textequ		<esi>
+			r07ebx	textequ		<edi>
+			r01ecx	textequ		<esi>
+			r07ecx	textequ		<edi>
+			r81ecx	textequ		<esi>
+			r81edx	textequ		<edi>
+			r07edx	textequ		<esi>
+	else
+		ifdef WINDOWS
+			push				rdi
+			push				rsi
+			r00ecx	textequ		<edi>
+		else			
+			r00ecx	textequ		<r8d>
+		endif
+			push				r10
+			push				r11
+			push				r12
+			push				r13
+			r01edx	textequ		<esi>
+			r07ebx	textequ		<r8d>
+			r01ecx	textequ		<r9d>
+			r07ecx	textequ		<r10d>
+			r81ecx	textequ		<r11d>
+			r81edx	textequ		<r12d>
+			r07edx	textequ		<r13d>
+	endif
+	
+	ifndef __X64__
+			mov			[UX_INSTPTR].var_infolevel,		edx
+			xor					edx,					edx
+	else
+		ifdef WINDOWS
+			mov			[UX_INSTPTR].var_infolevel,		edx
+			xor					edx,					edx
+		else	
+			mov			[UX_INSTPTR].var_infolevel,		esi
+		endif
+	endif
+
 	ifndef __X64__
 			push				ebx
 			; detect if cpuidinstruction supported by microprocessor:
@@ -171,53 +215,7 @@ UX_VECMETHOD uXmCPUFeatures, Init, <VOIDARG>, <UX_USESRBX>
 			pop					rax
 	endif
 	
-	ifndef __X64__
-			push				edi
-			push				esi
-			r00ecx	textequ		<edi>
-			r01edx	textequ		<esi>
-			r07ebx	textequ		<edi>
-			r01ecx	textequ		<esi>
-			r07ecx	textequ		<edi>
-			r81ecx	textequ		<esi>
-			r81edx	textequ		<edi>
-			r07edx	textequ		<esi>
-	else
-		ifdef WINDOWS
-			push				rdi
-			push				rsi
-			r00ecx	textequ		<edi>
-		else			
-			r00ecx	textequ		<r8d>
-		endif
-			push				r10
-			push				r11
-			push				r12
-			push				r13
-			;push				r14
-			;push				r15
-			r01edx	textequ		<esi>
-			r07ebx	textequ		<r8d>
-			r01ecx	textequ		<r9d>
-			r07ecx	textequ		<r10d>
-			r81ecx	textequ		<r11d>
-			r81edx	textequ		<r12d>
-			r07edx	textequ		<r13d>
-			;mreg8	textequ		<r14d>
-			;mreg9	textequ		<r15d>
-	endif
-
 			mov					r00ecx,		[UX_INSTPTR].var_0H_ECX
-			mov					r01edx,		[UX_INSTPTR].var_1H_EDX
-
-	ifdef __X64__			
-			mov					r07ebx,		[UX_INSTPTR].var_7H_EBX
-			mov					r01ecx,		[UX_INSTPTR].var_1H_ECX
-			mov					r07ecx,		[UX_INSTPTR].var_7H_ECX
-			mov					r81ecx,		[UX_INSTPTR].var_80000001H_ECX
-			mov					r81edx,		[UX_INSTPTR].var_80000001H_EDX
-			mov					r07edx,		[UX_INSTPTR].var_7H_EDX
-	endif
 
 			and					r00ecx,					bit_ntel
 			cmp					r00ecx,					bit_ntel			; 'GenuineIntel'
@@ -263,7 +261,397 @@ UX_VECMETHOD uXmCPUFeatures, Init, <VOIDARG>, <UX_USESRBX>
 			.endif
         
 	bvendor:
+			.if([UX_INSTPTR].var_infolevel >= 1)
+ifndef __X64__
+				efamily textequ	<edi>
+				emodel textequ <ebx>
+else
+				efamily textequ	<r8d>
+				emodel textequ	<r9d>
+endif
+
+				.if([UX_INSTPTR].var_ntel == true)
+				mov		[UX_INSTPTR].var_vendor,			1
+				.endif
+			
+				.if([UX_INSTPTR].var_cAMD == true)
+				mov		[UX_INSTPTR].var_vendor,			2
+				.endif
+
+				.if([UX_INSTPTR].var_Cent == true)
+				mov		[UX_INSTPTR].var_vendor,			3
+				.endif
+			
+				.if([UX_INSTPTR].var_VIA == true)
+				mov		[UX_INSTPTR].var_vendor,			3
+				.endif
+			
+				.if([UX_INSTPTR].var_Cyri == true)
+				mov		[UX_INSTPTR].var_vendor,			4
+				.endif
+			
+				.if([UX_INSTPTR].var_NexG == true)
+				mov		[UX_INSTPTR].var_vendor,			5
+				.endif
+					
+	ifndef __X64__
+				push				eax
+				push				ebx
+				push				ecx
+				push				edx
+	else
+				push				rax
+				push				rbx
+				push				rcx
+				push				rdx
+	endif		
 	
+				; Get family and model
+				mov					eax,					1H
+				cpuid
+				mov					ebx,					eax
+
+				mov					efamily,				eax
+
+				shr					ebx,					8
+				and					ebx,					0FH               ; Family
+			
+				shr					efamily,				20
+				and					efamily,				0FFH             ; Extended family
+				add					efamily,				ebx              ; Family + extended family
+        
+				mov					emodel,					eax
+				shr					emodel,					4
+				and					emodel,					0FH              ; Model
+
+	ifndef __X64__
+				mov					ecx,					eax
+				shr					ecx, 					12
+				and					ecx, 					0F0H             ; Extended model
+				or					emodel,					ecx              ; extended model | Model
+	else
+				shr					eax,					12
+				and					eax,					0F0H              ; Extended model
+				or					emodel,					eax              ; extended model | Model
+	endif ;__X64__
+	
+				mov		[UX_INSTPTR].var_family,			efamily
+				mov		[UX_INSTPTR].var_model,				emodel
+				
+				xor					eax,					eax
+				xor					ebx,					ebx
+				xor					ecx,					ecx
+
+	ifndef __X64__
+				pop					edx
+				pop					ecx
+				pop					ebx
+				pop					eax
+	else
+				pop					rdx
+				pop					rcx
+				pop					rbx
+				pop					rax
+	endif			
+
+	
+	ifndef __X64__
+				push				eax
+				push				ebx
+				push				ecx
+				push				edx
+				push				edi
+				rdest	textequ		<edi>
+	else
+				push				rax
+				push				rbx
+				push				rcx
+				push				rdx
+				push				rdi
+				rdest	textequ		<rdi>	
+	endif		
+	
+	ifndef __X64__
+				mov					rdest, 					[UX_INSTPTR].var_ProcessorName        ; Pointer to result
+	else
+				lea					rdest,					[[UX_INSTPTR].var_ProcessorName]      ; text pointer
+	endif
+	        
+	ifndef __X64__
+				.if([UX_INSTPTR].var_CPUID == false)
+        ; processor has no CPUID
+				mov		dword ptr [rdest], 					'8038'    ; Write text '80386 or 80486'
+				mov		dword ptr [rdest+4], 				'6 or'
+				mov		dword ptr [rdest+8], 				' 804'
+				mov		dword ptr [rdest+12],				'86'   ; End with 0
+				jmp			PNEND        
+				.endif
+	endif
+
+				mov					eax,					80000000H
+				cpuid
+				cmp					eax,					80000004H         ; text if extended vendor string available
+				jb					no_ext_vendor_string
+
+			; Has extended vendor string
+				mov					eax,					80000002H
+				cpuid
+				mov					[rdest],				eax             ; store 16 bytes of extended vendor string
+				mov					[rdest+4],				ebx
+				mov					[rdest+8],				ecx
+				mov					[rdest+0CH],			edx
+				mov					eax,					80000003H
+				cpuid
+				mov					[rdest+10H],			eax         ; next 16 bytes
+				mov					[rdest+14H],			ebx
+				mov					[rdest+18H],			ecx
+				mov					[rdest+1CH],			edx
+				mov					eax,					80000004H
+				cpuid
+				mov					[rdest+20H],			eax         ; next 16 bytes
+				mov					[rdest+24H],			ebx
+				mov					[rdest+28H],			ecx
+				mov					[rdest+2CH],			edx
+				jmp					get_family_and_model
+        
+no_ext_vendor_string:
+        ; No extended vendor string. Get short vendor string
+				xor					eax,					eax
+				cpuid
+				mov					[rdest],				ebx              ; store short vendor string
+				mov					[rdest+4],				edx
+				mov					[rdest+8],				ecx
+				mov			byte ptr [rdest+12],			0    ; terminate string
+        
+get_family_and_model:
+	ifndef __X64__
+				push				rdest                   ; Save string address
+	endif
+				xor					eax,					eax
+				mov					ecx,					30H
+				cld
+				repne				scasb                  ; find end of text
+				dec					rdest
+        
+				mov		dword ptr [rdest],					' Fam'   ; Append text " Family "
+				mov		dword ptr [rdest+4],				'ily '
+				add					rdest,					8
+
+				mov					eax,					1
+				cpuid                          ; Get family and model
+				mov					ebx,					eax
+				mov					ecx,					eax
+				shr					eax,					8
+				and					eax,					0FH               ; Family
+				shr					ecx,					20
+				and					ecx,					0FFH              ; Extended family
+				add					eax,					ecx               ; Family + extended family
+				call				_uXmCPUFeatures_WriteHex               ; Write as hexadecimal
+
+				mov		dword ptr [rdest],					'H Mo' ; Write text "H Model "
+				mov		dword ptr [rdest+4],				'del '
+				add					rdest, 					8
+        
+				mov					eax,					ebx
+				shr					eax,					4
+				and					eax,					0FH               ; Model
+				mov					ecx,					ebx
+				shr					ecx,					12
+				and					ecx,					0F0H              ; Extended model
+				or					eax,					ecx               ; Model | extended model
+				call				_uXmCPUFeatures_WriteHex               ; Write as hexadecimal
+
+				mov		dword ptr [rdest],					'H'       ; Write text "H"
+        
+	ifndef __X64__
+				pop					rdest                    ; Restore string address
+	endif
+	
+	ifndef __X64__
+				mov		[UX_INSTPTR].var_ProcessorName, 	rdest        ; Pointer to result
+	endif
+	
+PNEND:  ; finished
+				xor					eax,					eax
+				xor					ebx,					ebx
+				xor					ecx,					ecx
+
+				pop					rdest
+				
+	ifndef __X64__
+				pop					edx
+				pop					ecx
+				pop					ebx
+				pop					eax
+	else
+				pop					rdx
+				pop					rcx
+				pop					rbx
+				pop					rax
+	endif			
+
+
+	
+	ifndef __X64__
+				push				eax
+				push				ebx
+				push				ecx
+				push				edx
+				push				edi
+				push				esi
+				push				ebp
+				push				esp
+	else
+				push				rax
+				push				rbx
+				push				rcx
+				push				rdx
+				push				rdi
+				push				rsi
+				push				rbp
+				push				rsp
+	endif		
+	
+	ifndef __X64__
+				rreturn		textequ		<eax>
+				rsindex		textequ		<esi>
+				rlevel		textequ		<ebp>
+	else	
+		ifdef WINDOWS
+	; -> The proc arguments conform to vectorcall calling convention: rcx=thisPtr, rdx=level
+				rcpuparam1	textequ		<rdx>
+				rcpuparam2	textequ		<r8>
+				rcpuparam3	textequ		<r9>				
+				
+		else ;UNIX
+
+	; -> The proc arguments conform to systemv calling convention: rdi=thisPtr, rsi=level
+				rcpuparam1	textequ		<rsi>
+				rcpuparam2	textequ		<rdx>
+				rcpuparam3	textequ		<rcx>
+				
+		endif ;WINDOWS	
+		
+				rreturn		textequ		<rax>
+				rsindex		textequ		<rsi>
+				rlevel		textequ		<rbp>
+	endif ;__X64__
+	
+				elevel		textequ		<ebp>
+
+				mov					elevel,					input_datacachelevel              ; level				
+
+        ; check if called before
+	ifndef __X64__
+				mov					rsindex,				cpu_dataref      ; point to dataref
+	else			
+				lea					rsindex,				[cpu_dataref]      ; point to dataref
+	endif ;__X64__
+				cmp	dword ptr [rsindex+cpu_data_layout.ok], 1       ; ok
+				je					D800
+        
+        ; find cpu vendor
+				push				0
+	ifndef __X64__
+				mov					eax,					esp
+				push    			0
+				push 				0
+				push    			eax
+	else			
+				mov					rcpuparam1,				rsp
+				xor					rcpuparam2, 			rcpuparam2
+				xor					rcpuparam3, 			rcpuparam3
+	endif ;__X64__
+			
+	; -> The proc arguments conform to vectorcall calling convention: rcx=thisPtr, rdx=vendor, r8=family, r9=model
+	; -> The proc arguments conform to systemv calling convention: rdi=thisPtr, rsi=vendor, rdx=family, rcx=mode
+				call				_uXmCPUFeatures_CpuType
+	ifndef __X64__
+				mov					rsindex,				cpu_dataref      ; point to dataref
+				add					esp, 					12
+	else			
+				lea					rsindex, 				[cpu_dataref]
+	endif ;__X64__
+				pop					rreturn                    ; eax = vendor
+				dec					eax
+				jz					Intel
+				dec					eax
+				jz					AMD
+				dec					eax
+				jz					VIA
+        ; unknown vendor, try all methods
+				call				_uXmCPUFeatures_IntelNewMethod
+				jnc					D800                   ; not carry = success
+				call				_uXmCPUFeatures_AMDMethod
+				jnc					D800                   ; not carry = success
+				call				_uXmCPUFeatures_IntelOldMethod
+				jmp					D800                   ; return whether success or not
+        
+Intel:  
+				call				_uXmCPUFeatures_IntelNewMethod
+				jnc					D800                   ; not carry = success
+				call				_uXmCPUFeatures_IntelOldMethod
+				jmp					D800                   ; return whether success or not
+
+AMD:    ; AMD and VIA use same method
+VIA:    
+				call				_uXmCPUFeatures_AMDMethod
+        
+D800:   ; cache data known, get desired return value
+				xor					eax, 					eax
+				cmp					elevel, 				cpu_numlevels
+				ja					D900
+				cmp					elevel, 				0
+				je					D820
+        ; level = 1 .. numlevels
+				mov					rreturn, 				[rsindex + rlevel*reg_t_size]      ; size of selected cache
+				jmp					D850
+D820:   ; level = 0. Get size of largest level cache
+				mov					rreturn, 				[rsindex + cpu_data_layout.level3]     ; level3
+				test				rreturn, 				rreturn
+				jnz					D850
+				mov					rreturn, 				[rsindex + cpu_data_layout.level2]     ; level2
+				test				rreturn, 				rreturn
+				jnz					D850
+				mov					rreturn, 				[rsindex + cpu_data_layout.level1]     ; level1
+D850:		
+				mov 	dword ptr [rsindex + cpu_data_layout.ok], 	1     ; remember called, whether success or not
+				mov		[UX_INSTPTR].var_DataCacheSize, 	rreturn
+D900:   
+
+	ifndef __X64__
+				pop					esp
+				pop					ebp
+				pop					esi
+				pop					edi
+				pop					edx
+				pop					ecx
+				pop					ebx
+				pop					eax
+	else
+				pop					rsp
+				pop					rbp
+				pop					rsi
+				pop					rdi
+				pop					rdx
+				pop					rcx
+				pop					rbx
+				pop					rax
+	endif			
+
+			.endif ;infolevel >= 1
+			
+			mov					r01edx,		[UX_INSTPTR].var_1H_EDX
+
+	ifdef __X64__			
+			mov					r07ebx,		[UX_INSTPTR].var_7H_EBX
+			mov					r01ecx,		[UX_INSTPTR].var_1H_ECX
+			mov					r07ecx,		[UX_INSTPTR].var_7H_ECX
+			mov					r81ecx,		[UX_INSTPTR].var_80000001H_ECX
+			mov					r81edx,		[UX_INSTPTR].var_80000001H_EDX
+			mov					r07edx,		[UX_INSTPTR].var_7H_EDX
+	endif
+
 	ifndef __X64__
 
 			;/* %eax=01H, %edx */
@@ -338,6 +726,7 @@ UX_VECMETHOD uXmCPUFeatures, Init, <VOIDARG>, <UX_USESRBX>
 			jz					not_supported
 			mov		[UX_INSTPTR].var_FXSR,				true
 			
+			push				ebx
 			push				ecx
 			push				edx
 			mov					ebx, 					esp					; save stack pointer
@@ -359,6 +748,7 @@ TESTPS   EQU 10CH															; position to write TESTDATA = upper part of XMM
 			cmp     			ecx, 					TESTDATA			; test if XMM6 was changed correctly
 			pop    				edx
 			pop     			ecx
+			pop     			ebx
 			jne     			not_supported
 			
 			;/* %eax=01H, %edx */
@@ -383,6 +773,7 @@ TESTPS   EQU 10CH															; position to write TESTDATA = upper part of XMM
 			mov		[UX_INSTPTR].var_SSE2,				true
 			
 	else ;__X64__
+
 			mov		[UX_INSTPTR].var_intrinset,			20					; at least SSE2 supported in 64 bit mode
 			mov		[UX_INSTPTR].var_FPU,				true
 			.if([UX_INSTPTR].var_cAMD == true)
@@ -734,10 +1125,12 @@ TESTPS   EQU 10CH															; position to write TESTDATA = upper part of XMM
 			
 	ifndef __X64__
 			push				eax
+			push				ebx
 			push				ecx
 			push				edx
 	else
 			push				rax
+			push				rbx
 			push				rcx
 			push				rdx
 	endif
@@ -749,10 +1142,12 @@ TESTPS   EQU 10CH															; position to write TESTDATA = upper part of XMM
 	ifndef __X64__
 			pop					edx
 			pop					ecx
+			pop					ebx
 			pop					eax
 	else
 			pop					rdx
 			pop					rcx
+			pop					rbx
 			pop					rax
 	endif
 			jne					not_supported
@@ -866,15 +1261,16 @@ TESTPS   EQU 10CH															; position to write TESTDATA = upper part of XMM
 			.if([UX_INSTPTR].var_ntel == true)
 	ifndef __X64__
 			push				eax
+			push				ebx
 			push				ecx
 			push				edx
 	else
 			push				rax
+			push				rbx
 			push				rcx
 			push				rdx
 	endif
 			xor					ecx,					ecx
-			xor					edx,					edx
 			;db					0FH, 01H, 0D0H								; XGETBV
 			xgetbv
 			and					eax,					0E6h
@@ -882,10 +1278,12 @@ TESTPS   EQU 10CH															; position to write TESTDATA = upper part of XMM
 	ifndef __X64__
 			pop					edx
 			pop					ecx
+			pop					ebx
 			pop					eax
 	else
 			pop					rdx
 			pop					rcx
+			pop					rbx
 			pop					rax
 	endif
 			jne					not_supported
@@ -1041,14 +1439,193 @@ UX_VECMETHOD uXmCPUFeatures, Destroy, <VOIDARG>, <>
 	
 		; warning A4268: Procedure argument or local not referenced: thisPtr
 	ifndef __X64__
+			rareg		textequ		<eax>
 			xor					eax,					eax
 			;mov				[thisPtr],				eax
-			mov					[UX_INSTPTR],			eax
 	else
+			rareg		textequ		<rax>
 			xor					rax,					rax
 			;mov				[thisPtr],				rax
-			mov					[UX_INSTPTR],			rax
 	endif
+	
+			mov		[UX_INSTPTR].var_DataCacheSize,				rareg
+			mov		[UX_INSTPTR].var_infolevel,					eax
+			mov		[UX_INSTPTR].var_ProcessorName,				al
+			mov		[UX_INSTPTR].var_model,						eax
+			mov		[UX_INSTPTR].var_family,					eax
+			mov		[UX_INSTPTR].var_vendor,					eax
+
+			mov		[UX_INSTPTR].var_enabled_ZMM,				al
+			mov		[UX_INSTPTR].var_enabled_YMM,				al
+			mov		[UX_INSTPTR].var_enabled_XMM,				al
+			
+	;/* %eax=07H, %ecx, %ebx | %eax=01H, %ecx , %edx */
+			mov		[UX_INSTPTR].var_AVX2_VPCLMULQDQ,			al
+			mov		[UX_INSTPTR].var_AVX2_VAES,					al
+			mov		[UX_INSTPTR].var_AVX2_GFNI,					al
+			mov		[UX_INSTPTR].var_AVX_VPCLMULQDQ,			al
+			mov		[UX_INSTPTR].var_AVX_VAES,					al
+			mov		[UX_INSTPTR].var_AVX_GFNI,					al
+			mov		[UX_INSTPTR].var_SSE42_PCLMULQDQ,			al
+			mov		[UX_INSTPTR].var_SSE42_GFNI,				al
+			mov		[UX_INSTPTR].var_SSE42_AES,					al
+			mov		[UX_INSTPTR].var_SSE41_PCLMULQDQ,			al
+			mov		[UX_INSTPTR].var_SSE41_GFNI,				al
+			mov		[UX_INSTPTR].var_SSE41_AES,					al
+			mov		[UX_INSTPTR].var_SSSE3_PCLMULQDQ,			al
+			mov		[UX_INSTPTR].var_SSSE3_GFNI,				al
+			mov		[UX_INSTPTR].var_SSSE3_AES,					al
+			mov		[UX_INSTPTR].var_SSE3_PCLMULQDQ,			al
+			mov		[UX_INSTPTR].var_SSE3_GFNI,					al
+			mov		[UX_INSTPTR].var_SSE3_AES,					al
+			mov		[UX_INSTPTR].var_SSE2_PCLMULQDQ,			al
+			mov		[UX_INSTPTR].var_SSE2_GFNI,					al
+			mov		[UX_INSTPTR].var_SSE2_AES,					al
+			mov		[UX_INSTPTR].var_SSE_PCLMULQDQ,				al
+			mov		[UX_INSTPTR].var_SSE_GFNI,					al
+			mov		[UX_INSTPTR].var_SSE_AES,					al
+			
+	;/* %eax=07H, %ebx, %ecx */
+			mov		[UX_INSTPTR].var_AVX512CD_VL,				al
+			mov		[UX_INSTPTR].var_AVX512DQ_VL,				al
+			mov		[UX_INSTPTR].var_AVX512DQ_VPCLMULQDQ_VL,	al
+			mov		[UX_INSTPTR].var_AVX512DQ_VPCLMULQDQ,		al
+			mov		[UX_INSTPTR].var_AVX512DQ_VAES_VL,			al
+			mov		[UX_INSTPTR].var_AVX512DQ_VAES,				al
+			mov		[UX_INSTPTR].var_AVX512DQ_GFNI_VL,			al
+			mov		[UX_INSTPTR].var_AVX512DQ_GFNI,				al
+			mov		[UX_INSTPTR].var_AVX512BW_VL,				al
+			mov		[UX_INSTPTR].var_AVX512BW_VPCLMULQDQ_VL,	al
+			mov		[UX_INSTPTR].var_AVX512BW_VPCLMULQDQ,		al
+			mov		[UX_INSTPTR].var_AVX512BW_VAES_VL,			al
+			mov		[UX_INSTPTR].var_AVX512BW_VAES,				al
+			mov		[UX_INSTPTR].var_AVX512BW_GFNI_VL,			al
+			mov		[UX_INSTPTR].var_AVX512BW_GFNI,				al
+			mov		[UX_INSTPTR].var_AVX512_VPOPCNTDQ_VL,		al
+			mov		[UX_INSTPTR].var_AVX512_BITALG_VL,			al
+			mov		[UX_INSTPTR].var_AVX512_VNNI_VL,			al
+			mov		[UX_INSTPTR].var_AVX512_VBMI2_VL,			al
+			mov		[UX_INSTPTR].var_AVX512_VBMI_VL,			al
+			mov		[UX_INSTPTR].var_AVX512_IFMA_VL,			al
+			mov		[UX_INSTPTR].var_AVX512_VPCLMULQDQ_VL,		al
+			mov		[UX_INSTPTR].var_AVX512_VPCLMULQDQ,			al
+			mov		[UX_INSTPTR].var_AVX512_VAES_VL,			al
+			mov		[UX_INSTPTR].var_AVX512_VAES,				al
+			mov		[UX_INSTPTR].var_AVX512_GFNI_VL,			al
+			mov		[UX_INSTPTR].var_AVX512_GFNI,				al
+
+	;/* %eax=80000001H, %edx */
+			mov		[UX_INSTPTR].var_3DNOW,						al
+			mov		[UX_INSTPTR].var_3DNOWEXT,					al
+			mov		[UX_INSTPTR].var_RDTSCP,					al
+			mov		[UX_INSTPTR].var_MMXEXT,					al
+			mov		[UX_INSTPTR].var_SYSCALL,					al
+
+	;/* %eax=80000001H, %ecx */
+			mov		[UX_INSTPTR].var_MWAITX,					al
+			mov		[UX_INSTPTR].var_TBM,						al
+			mov		[UX_INSTPTR].var_FMA4,						al
+			mov		[UX_INSTPTR].var_LWP,						al
+			mov		[UX_INSTPTR].var_XOP,						al
+			mov		[UX_INSTPTR].var_PREFETCHW,					al
+			mov		[UX_INSTPTR].var_SSE4a,						al
+			mov		[UX_INSTPTR].var_ABM,						al
+			mov		[UX_INSTPTR].var_LZCNT,						al
+			mov		[UX_INSTPTR].var_LAHF,						al
+
+	;/* %eax=07H, %edx */
+			mov		[UX_INSTPTR].var_AVX512_4FMAPS,				al
+			mov		[UX_INSTPTR].var_AVX512_4VNNIW,				al
+
+	;/* %eax=07H, %ecx */
+			mov		[UX_INSTPTR].var_RDPID,						al
+			mov		[UX_INSTPTR].var_AVX512_VPOPCNTDQ,			al
+			mov		[UX_INSTPTR].var_AVX512_BITALG,				al
+			mov		[UX_INSTPTR].var_AVX512_VNNI,				al
+			mov		[UX_INSTPTR].var_VPCLMULQDQ,				al
+			mov		[UX_INSTPTR].var_VAES,						al
+			mov		[UX_INSTPTR].var_GFNI,						al
+			mov		[UX_INSTPTR].var_AVX512_VBMI2,				al
+			mov		[UX_INSTPTR].var_OSPKE,						al
+			mov		[UX_INSTPTR].var_PKU,						al
+			mov		[UX_INSTPTR].var_UMIP,						al
+			mov		[UX_INSTPTR].var_AVX512_VBMI,				al
+			mov		[UX_INSTPTR].var_PREFETCHWT1,				al
+
+	;/* %eax=07H, %ebx */
+			mov		[UX_INSTPTR].var_AVX512VL,					al
+			mov		[UX_INSTPTR].var_AVX512BW,					al
+			mov		[UX_INSTPTR].var_SHA,						al
+			mov		[UX_INSTPTR].var_AVX512CD,					al
+			mov		[UX_INSTPTR].var_AVX512ER,					al
+			mov		[UX_INSTPTR].var_AVX512PF,					al
+			mov		[UX_INSTPTR].var_CLWB,						al
+			mov		[UX_INSTPTR].var_CLFLUSHOPT,				al
+			mov		[UX_INSTPTR].var_AVX512_IFMA,				al
+			mov		[UX_INSTPTR].var_SMAP,						al
+			mov		[UX_INSTPTR].var_ADX,						al
+			mov		[UX_INSTPTR].var_RDSEED,					al
+			mov		[UX_INSTPTR].var_AVX512DQ,					al
+			mov		[UX_INSTPTR].var_AVX512F,					al
+			mov		[UX_INSTPTR].var_MPX,						al
+			mov		[UX_INSTPTR].var_RTM,						al
+			mov		[UX_INSTPTR].var_INVPCID,					al
+			mov		[UX_INSTPTR].var_ERMS,						al
+			mov		[UX_INSTPTR].var_BMI2,						al
+			mov		[UX_INSTPTR].var_SMEP,						al
+			mov		[UX_INSTPTR].var_AVX2,						al
+			mov		[UX_INSTPTR].var_HLE,						al
+			mov		[UX_INSTPTR].var_BMI1,						al
+			mov		[UX_INSTPTR].var_SGX,						al
+			mov		[UX_INSTPTR].var_FSGSBASE,					al
+
+	;/* %eax=01H, %edx */
+			mov		[UX_INSTPTR].var_SSE2,						al
+			mov		[UX_INSTPTR].var_SSE,						al
+			mov		[UX_INSTPTR].var_FXSR,						al
+			mov		[UX_INSTPTR].var_MMX,						al
+			mov		[UX_INSTPTR].var_CLFSH,						al
+			mov		[UX_INSTPTR].var_CMOV,						al
+			mov		[UX_INSTPTR].var_SEP,						al
+			mov		[UX_INSTPTR].var_CMPXCHG8B,					al
+			mov		[UX_INSTPTR].var_MSR,						al
+			mov		[UX_INSTPTR].var_TSC,						al
+			mov		[UX_INSTPTR].var_FPU,						al
+
+	;/* %eax=01H, %ecx */
+			mov		[UX_INSTPTR].var_RDRAND,					al
+			mov		[UX_INSTPTR].var_F16C,						al
+			mov		[UX_INSTPTR].var_AVX,						al
+			mov		[UX_INSTPTR].var_OSXSAVE,					al
+			mov		[UX_INSTPTR].var_XSAVE,						al
+			mov		[UX_INSTPTR].var_AES,						al
+			mov		[UX_INSTPTR].var_POPCNT,					al
+			mov		[UX_INSTPTR].var_MOVBE,						al
+			mov		[UX_INSTPTR].var_SSE42,						al
+			mov		[UX_INSTPTR].var_SSE41,						al
+			mov		[UX_INSTPTR].var_CMPXCHG16B,				al
+			mov		[UX_INSTPTR].var_FMA,						al
+			mov		[UX_INSTPTR].var_SSSE3,						al
+			mov		[UX_INSTPTR].var_MONITOR,					al
+			mov		[UX_INSTPTR].var_PCLMULQDQ,					al
+			mov		[UX_INSTPTR].var_SSE3,						al
+	
+	; /* %eax=00H, %ebx */
+			mov		[UX_INSTPTR].var_NexG,						al
+			mov		[UX_INSTPTR].var_Cyri,						al
+			mov		[UX_INSTPTR].var_VIA,						al
+			mov		[UX_INSTPTR].var_Cent,						al
+
+	; /* %eax=00H, %ecx */
+			mov		[UX_INSTPTR].var_cAMD,						al
+			mov		[UX_INSTPTR].var_ntel,						al
+	
+	; /* EFLAGS %eax=00H, %ebx=00H */
+			mov		[UX_INSTPTR].var_CPUID,						al
+
+			mov		[UX_INSTPTR].var_intrinset,					eax
+			
+			mov		[UX_INSTPTR],								rareg
 
 			ret
 UX_ENDMETHOD
@@ -2355,678 +2932,73 @@ UX_ENDMETHOD
 UX_STATICVECMETHOD uXmCPUFeatures, CpuType, <VOIDARG>, <UX_USESRBX>;, vendor:ptr dword, family:ptr dword, model:ptr dword
 
 	ifndef __X64__
-			push				ebx
-			push				edi
-			push				esi
-			ifndef EVENDOR_DEFINED
-				define EVENDOR_DEFINED
 				evendor	textequ		<esp+16>
-			endif
-			ifndef EFAMELY_DEFINED
-				define EFAMELY_DEFINED
 				efamily	textequ		<esp+20>
-			endif
-			ifndef EMODEL_DEFINED
-				define EMODEL_DEFINED
 				emodel	textequ		<esp+24>
-			endif
 	else
 		ifdef WINDOWS
-			push				rcx
-			push				rdi
-			push				rsi
-			push				r10
-			push				r11
-			push				r12
 	; -> The proc arguments conform to vectorcall calling convention: rcx=thisPtr, rdx=vendor, r8=family, r9=model
-			ifndef RVENDOR_DEFINED
-				define RVENDOR_DEFINED
-				rvendor	textequ		<rdi>
-			endif
-			ifndef RFAMELY_DEFINED
-				define RFAMELY_DEFINED
-				rfamily	textequ		<r8>
-			endif
-			ifndef RMODEL_DEFINED
-				define RMODEL_DEFINED
-				rmodel	textequ		<r9>
-			endif
-			ifndef RDVENDOR_DEFINED
-				define RDVENDOR_DEFINED
-				rdvendor textequ	<esi>
-			endif
-			ifndef RDFAMELY_DEFINED
-				define RDFAMELY_DEFINED
-				rdfamily textequ	<r10d>
-			endif
-			ifndef RDMODEL_DEFINED
-				define RDMODEL_DEFINED
-				rdmodel	textequ		<r11d>
-			endif
-			ifndef RSAVETHISPTR_DEFINED
-				define RSAVETHISPTR_DEFINED
-				rsavethisptr	textequ		<r12>
-			endif
-			mov					rsavethisptr,			[UX_INSTPTR] ;thisPtr
-			mov					rvendor,				rdx ;vendor
+				evendor	textequ		<edx>
+				efamily	textequ		<r8d>
+				emodel	textequ		<r9d>
 		else ;UNIX
-			push				rdi
-			push				r10
-			push				r11
-			push				r12
-			push				r13
 	; -> The proc arguments conform to systemv calling convention: rdi=thisPtr, rsi=vendor, rdx=family, rcx=model
-			ifndef RVENDOR_DEFINED
-				define RVENDOR_DEFINED
-				rvendor	textequ		<rsi>
-			endif
-			ifndef RFAMELY_DEFINED
-				define RFAMELY_DEFINED
-				rfamily	textequ		<r8>
-			endif
-			ifndef RMODEL_DEFINED
-				define RMODEL_DEFINED
-				rmodel	textequ		<r9>
-			endif
-			ifndef RSAVETHISPTR_DEFINED
-				define RSAVETHISPTR_DEFINED
-				rsavethisptr	textequ		<r13>
-			endif
-			mov					rsavethisptr,			rdi ;thisPtr
-			;mov					rvendor,			rsi	;vendor
-			mov					rfamily,				rdx ;family
-			mov					rmodel,					rcx ;model
-			ifndef RDVENDOR_DEFINED
-				define RDVENDOR_DEFINED
-				rdvendor textequ	<r10d>
-			endif
-			ifndef RDFAMELY_DEFINED
-				define RDFAMELY_DEFINED
-				rdfamily textequ	<r11d>
-			endif
-			ifndef RDMODEL_DEFINED
-				define RDMODEL_DEFINED
-				rdmodel	textequ		<r12d>
-			endif
+				evendor	textequ		<esi>
+				efamily	textequ		<edx>
+				emodel	textequ		<ecx>
 		endif
 	endif ;__X64__
     
-	ifndef __X64__
-			;dvendor textequ <esp+16>
-			;dfamily textequ <esp+20>
-			;dmodel textequ <esp+24>
-
-			xor					esi,					esi               ; vendor
-			xor					edi,					edi               ; family
-	else
-; parameters
-; vendor  rsi
-; family  r8
-; model   r9
-
-		ifdef WINDOWS
-			xor					rcx,					rcx
-		else
-			xor					rdi,					rdi
-		endif
-
-			xor					rdvendor,				rdvendor            ; vendor
-			xor					rdfamily,				rdfamily            ; family
-			xor					rdmodel,				rdmodel             ; model
-	endif ;__X64__
-
-        ; ecx = last  4 characters of vendor string
-        ; ebx = first 4 characters of vendor string
-		
-			.if([UX_INSTPTR].var_ntel == true)
-	ifndef __X64__
-			or					esi,					1
-			je					C200
-	else
-			or					rdvendor,				1
-			je					C200
-	endif ;__X64__
-			.endif
-			
-			.if([UX_INSTPTR].var_cAMD == true)
-	ifndef __X64__
-			or					esi,					2
-			je					C200
-	else
-			or					rdvendor,				2
-			je					C200
-	endif ;__X64__
-			.endif
-
-			.if([UX_INSTPTR].var_Cent == true)
-	ifndef __X64__
-			or					esi,					3
-			je					C200
-	else
-			or					rdvendor,				3
-			je					C200
-	endif ;__X64__
-			.endif
-			
-			.if([UX_INSTPTR].var_VIA == true)
-	ifndef __X64__
-			or					esi,					3
-			je					C200
-	else
-			or					rdvendor,				3
-			je					C200
-	endif ;__X64__
-			.endif
-			
-			.if([UX_INSTPTR].var_Cyri == true)
-	ifndef __X64__
-			or					esi,					4
-			je					C200
-	else
-			or					rdvendor,				4
-			je					C200
-	endif ;__X64__
-			.endif
-			
-			.if([UX_INSTPTR].var_NexG == true)
-	ifndef __X64__
-			or					esi,					5
-			je					C200
-	else
-			or					rdvendor,				5
-			je					C200
-	endif ;__X64__
-			.endif
-			
-C200:   
-
-	ifndef __X64__
-			.if([UX_INSTPTR].var_CPUID == false)
-			je					C900
-			.endif
-	endif ;__X64__
-
-        ; Get family and model
-			mov					eax,					1
-			cpuid
-			mov					ebx,					eax
-
-	ifndef __X64__
-			mov					edi,					eax
-	else
-			mov					rdfamily,				eax
-	endif ;__X64__
-
-			shr					ebx,					8
-			and					ebx,					0FH               ; Family
-			
-	ifndef __X64__
-			shr					edi,					20
-			and					edi,					0FFH             ; Extended family
-			add					edi,					ebx              ; Family + extended family
-        
-			mov					ebx,					eax
-			shr					ebx,					4
-			and					ebx,					0FH              ; Model
-			mov					ecx,					eax
-	else
-			shr					rdfamily,				20
-			and					rdfamily,				0FFH             ; Extended family
-			add					rdfamily,				ebx              ; Family + extended family
-        
-			mov					rdmodel,				eax
-			shr					rdmodel,				4
-			and					rdmodel,				0FH              ; Model
-	endif ;__X64__
-
-			shr					eax,					12
-			and					eax,					0F0H              ; Extended model
-			
-	ifndef __X64__
-			or					ebx,					ecx              ; extended model | Model
-	else
-			or					rdmodel,				eax              ; extended model | Model
-	endif ;__X64__
-	        
-C300:   ; return rdvendor = vendor, rdfamily = family, rdmodel = model
-	ifndef __X64__
-			mov					eax,					[evendor]
-			test				eax,					eax
-			jz					C310
-			mov					[eax],					esi
-	else
-			test				rvendor,				rvendor
-			jz					C310
-			;mov				[UX_INSTPTR].var_vendor,	rdvendor
-			mov					[rvendor],				rdvendor
-	endif ;__X64__
-	       
-C310:   		
-	ifndef __X64__
-			mov					eax,					[efamily]
-			test				eax,					eax
-			jz					C320
-			mov					[eax],					edi
-	else
-			test				rfamily,				rfamily
-			jz					C320
-			;mov				[UX_INSTPTR].var_family,	rdfamily		
-			mov					[rfamily],				rdfamily
-	endif ;__X64__
-	    
-C320:   	
-	ifndef __X64__
-			mov					eax,					[emodel]
-			test				eax,					eax
-			jz					C330
-			mov					[eax],					ebx
-	else
-			test				rmodel,					rmodel
-			jz					C330
-			;mov				[UX_INSTPTR].var_model,		rdmodel
-			mov					[rmodel],				rdmodel
-	endif ;__X64__
-	       
+C300:   ; return r9d = vendor, r10d = family, r11d = model
+			test			evendor,  				evendor
+			jz				C310
+			mov				evendor,				[UX_INSTPTR].var_vendor
+C310:   
+			test			efamily,  				efamily
+			jz				C320
+			mov				efamily,				[UX_INSTPTR].var_family
+C320:   
+			test			emodel,  				emodel
+			jz				C330
+			mov				emodel,					[UX_INSTPTR].var_model
 C330:   
 
-			;mov					[vendor],				rvendor
-			;mov					[family],				rfamily
-			;mov					[model],				rmodel
-	    
-			mov					[UX_INSTPTR],					rsavethisptr
-
-			xor					eax,					eax
-
-        ; return
-	ifndef __X64__
-			pop					esi
-			pop					edi
-			pop					ebx
-	else
-		ifdef  WINDOWS
-			pop					r12
-			pop					r11
-			pop					r10
-			pop					rsi
-			pop					rdi
-			pop					rcx
-		else
-			pop					r13
-			pop					r12
-			pop					r11
-			pop					r10
-			pop					rdi
-		endif
-	endif ;__X64__
-	     
 			ret
-
-	ifndef __X64__
-C900:   ; no cpuid
-			xor					ebx,					ebx
-			jmp					C300
-	endif ;__X64__	
 
 UX_ENDMETHOD
 
 			align 16
 UX_STATICVECMETHOD uXmCPUFeatures, ProcessorName, <ptr>, <UX_USESRBX>
 			
-	;_DATA segment 'DATA'
-	;		align 16
-	;		NameBuffer db 50H dup(0)             ; Static buffer to contain name
-	;_DATA ends
-
-			;local NameBuffer db 50H dup(0)             ; Static buffer to contain name
-			
-			;push    rbx
-
 	ifndef __X64__
-				push				edi
-			ifndef RDEST_DEFINED
-				define RDEST_DEFINED
-				rdest	textequ		<edi>
-			endif
-	else
-		ifdef WINDOWS
-				push				rdi
-				push				rcx
-			ifndef RDEST_DEFINED
-				define RDEST_DEFINED
-				rdest	textequ		<rdi>
-			endif
-			ifndef RSAVETHISPTR_DEFINED
-				define RSAVETHISPTR_DEFINED
-				rsavethisptr	textequ		<r8>
-			endif
-				mov					rsavethisptr,			[UX_INSTPTR] ;thisPtr
-				xor					rcx,					rcx
-		else
-				push				rdi
-				push				rsi
-			ifndef RDEST_DEFINED
-				define RDEST_DEFINED
-				rdest	textequ		<rdi>
-			endif
-			ifndef RSAVETHISPTR_DEFINED
-				define RSAVETHISPTR_DEFINED
-				rsavethisptr	textequ		<rsi>
-			endif
-				mov					rsavethisptr,			[UX_INSTPTR]
-				xor					rdi,					rdi
-		endif
-	endif
-	
-	ifndef __X64__
-			mov					rdest, 					[UX_INSTPTR].var_ProcessorName        ; Pointer to result
-	else
-			lea					rdest,					[[UX_INSTPTR].var_ProcessorName]      ; text pointer
-	endif
-	        
-	ifndef __X64__
-			.if([UX_INSTPTR].var_CPUID == false)
-        ; processor has no CPUID
-			mov		dword ptr [rdest], 					'8038'    ; Write text '80386 or 80486'
-			mov		dword ptr [rdest+4], 				'6 or'
-			mov		dword ptr [rdest+8], 				' 804'
-			mov		dword ptr [rdest+12],				'86'   ; End with 0
-			jmp			PNEND        
-			.endif
-	endif
-
-			mov					eax,					80000000H
-			cpuid
-			cmp					eax,					80000004H         ; text if extended vendor string available
-			jb					no_ext_vendor_string
-
-			; Has extended vendor string
-			mov					eax,					80000002H
-			cpuid
-			mov					[rdest],				eax             ; store 16 bytes of extended vendor string
-			mov					[rdest+4],				ebx
-			mov					[rdest+8],				ecx
-			mov					[rdest+0CH],			edx
-			mov					eax,					80000003H
-			cpuid
-			mov					[rdest+10H],			eax         ; next 16 bytes
-			mov					[rdest+14H],			ebx
-			mov					[rdest+18H],			ecx
-			mov					[rdest+1CH],			edx
-			mov					eax,					80000004H
-			cpuid
-			mov					[rdest+20H],			eax         ; next 16 bytes
-			mov					[rdest+24H],			ebx
-			mov					[rdest+28H],			ecx
-			mov					[rdest+2CH],			edx
-			jmp					get_family_and_model
-        
-no_ext_vendor_string:
-        ; No extended vendor string. Get short vendor string
-			xor					eax,					eax
-			cpuid
-			mov					[rdest],				ebx              ; store short vendor string
-			mov					[rdest+4],				edx
-			mov					[rdest+8],				ecx
-			mov			byte ptr [rdest+12],			0    ; terminate string
-        
-get_family_and_model:
-	ifndef __X64__
-			push				rdest                   ; Save string address
-	endif
-			xor					eax,					eax
-			mov					ecx,					30H
-			cld
-			repne				scasb                  ; find end of text
-			dec					rdest
-        
-			mov		dword ptr [rdest],					' Fam'   ; Append text " Family "
-			mov		dword ptr [rdest+4],				'ily '
-			add					rdest,					8
-
-			mov					eax,					1
-			cpuid                          ; Get family and model
-			mov					ebx,					eax
-			mov					ecx,					eax
-			shr					eax,					8
-			and					eax,					0FH               ; Family
-			shr					ecx,					20
-			and					ecx,					0FFH              ; Extended family
-			add					eax,					ecx               ; Family + extended family
-			call				_uXmCPUFeatures_WriteHex               ; Write as hexadecimal
-
-			mov		dword ptr [rdest],					'H Mo' ; Write text "H Model "
-			mov		dword ptr [rdest+4],				'del '
-			add					rdest, 					8
-        
-			mov					eax,					ebx
-			shr					eax,					4
-			and					eax,					0FH               ; Model
-			mov					ecx,					ebx
-			shr					ecx,					12
-			and					ecx,					0F0H              ; Extended model
-			or					eax,					ecx               ; Model | extended model
-			call				_uXmCPUFeatures_WriteHex               ; Write as hexadecimal
-
-			mov		dword ptr [rdest],					'H'       ; Write text "H"
-        
-	ifndef __X64__
-			pop					rdest                    ; Restore string address
-	endif
-
-PNEND:  ; finished
-	ifndef __X64__
-			mov					eax, 					rdest        ; Pointer to result
+			mov					eax, 					[UX_INSTPTR].var_ProcessorName        ; Pointer to result
 	else
 			lea					rax,					[[UX_INSTPTR].var_ProcessorName]      ; Pointer to result
 	endif
 	
-	ifdef __X64__
-		ifdef UNIX
-			mov					rdest, 					rsavethisptr        ; Restore ThisPointer address
-			pop					rsavethisptr
-		else
-			mov					rcx,					rsavethisptr         ; Restore ThisPointer address
-			pop					rsavethisptr
-		endif
-	endif
-
-			pop					rdest
-			;pop					rbx
-
 			ret
 		
 UX_ENDMETHOD
 
 			align 16
-UX_STATICVECMETHOD uXmCPUFeatures, DataCacheSize, <UX_SIZET>, <UX_USESRBX>;, level:dword
+UX_STATICVECMETHOD uXmCPUFeatures, DataCacheSize, <UX_SIZE_T>, <UX_USESRBX>;, level:dword
 
 	ifndef __X64__
-	else
-			;push				rbx
-
-		ifdef WINDOWS
-	; -> The proc arguments conform to vectorcall calling convention: rcx=thisPtr, rdx=level
-			push				rcx
-			push				rdi
-			push				rsi
-			push				r10
-						
-			ifndef RLEVEL_DEFINED
-				define RLEVEL_DEFINED
-				elevel	textequ		<edx>
-				rlevel	textequ		<rdx>
-			endif
-
-			ifndef RCPUPARAM1
-				define RCPUPARAM1
-				ecpuparam1	textequ		<elevel>
-				rcpuparam1	textequ		<rlevel>
-			endif
-
-			ifndef RCPUPARAM2
-				define RCPUPARAM2
-				ecpuparam2	textequ		<r8d>
-				rcpuparam2	textequ		<r8>
-			endif
-
-			ifndef RCPUPARAM3
-				define RCPUPARAM3
-				ecpuparam3	textequ		<r9d>
-				rcpuparam3	textequ		<r9>
-			endif
-				
-			ifndef RCALLADRESS
-				define RCALLADRESS
-				ecalladress	textequ		<r10d>
-				rcalladress	textequ		<r10>
-			endif
-				
-			ifndef RLOOPADRESS
-				define RLOOPADRESS
-				eloopadress	textequ		<esi>
-				rloopadress	textequ		<rsi>
-			endif				
-			
-			ifndef RSAVETHISPTR_DEFINED
-				define RSAVETHISPTR_DEFINED
-				rsavethisptr	textequ		<r11>
-			endif
-				mov					rsavethisptr,			rcx
-				xor					rcx,					rcx
-
-		else ;UNIX
-
-	; -> The proc arguments conform to systemv calling convention: rdi=thisPtr, rsi=level
-				push				rdi
-
-			ifndef RLEVEL_DEFINED
-				define RLEVEL_DEFINED
-				elevel	textequ		<esi>
-				rlevel	textequ		<rsi>
-			endif
-
-			ifndef RCPUPARAM1
-				define RCPUPARAM1
-				ecpuparam1	textequ		<elevel>
-				rcpuparam1	textequ		<rlevel>
-			endif
-
-			ifndef RCPUPARAM2
-				define RCPUPARAM2
-				ecpuparam2	textequ		<edx>
-				rcpuparam2	textequ		<rdx>
-			endif
-
-			ifndef RCPUPARAM3
-				define RCPUPARAM3
-				ecpuparam3	textequ		<ecx>
-				rcpuparam3	textequ		<rcx>
-			endif
-				
-			ifndef RCALLADRESS
-				define RCALLADRESS
-				ecalladress	textequ		<r8d>
-				rcalladress	textequ		<r8>
-			endif				
-			
-			ifndef RLOOPADRESS
-				define RLOOPADRESS
-				eloopadress	textequ		<r9d>
-				rloopadress	textequ		<r9>
-			endif				
-			
-			ifndef RSAVETHISPTR_DEFINED
-				define RSAVETHISPTR_DEFINED
-				rsavethisptr	textequ		<r10>
-			endif
-				mov					rsavethisptr,			rdi
-				xor					rdi,					rdi
-
-		endif ;WINDOWS
-		
-			push				r14
-			mov					r14d, 					elevel              ; level
-
+			rreturn		textequ		<eax>
+	else	
+			rreturn		textequ		<rax>
 	endif ;__X64__
-    
 
-        ; check if called before
-			lea					rcalladress, 					[cpu_dataref]
-			cmp			dword ptr [rcalladress+cpu_data_layout.ok], 	1       ; ok
-			je					D800
-        
-        ; find cpu vendor
-			push				0
-
-			mov					rcpuparam1, 			rsp
-			xor					rcpuparam2, 			rcpuparam2
-			xor					rcpuparam3, 			rcpuparam3
-			
-	; -> The proc arguments conform to vectorcall calling convention: rcx=thisPtr, rdx=vendor, r8=family, r9=model
-	; -> The proc arguments conform to systemv calling convention: rdi=thisPtr, rsi=vendor, rdx=family, rcx=mode
-			call				_uXmCPUFeatures_CpuType
-			lea					rcalladress, 					[cpu_dataref]
-			pop					rax                    ; eax = vendor
-			dec					eax
-			jz					Intel
-			dec					eax
-			jz					AMD
-			dec					eax
-			jz					VIA
-        ; unknown vendor, try all methods
-			call				_uXmCPUFeatures_IntelNewMethod
-			jnc					D800                   ; not carry = success
-			call				_uXmCPUFeatures_AMDMethod
-			jnc					D800                   ; not carry = success
-			call				_uXmCPUFeatures_IntelOldMethod
-			jmp					D800                   ; return whether success or not
-        
-Intel:  
-			call				_uXmCPUFeatures_IntelNewMethod
-			jnc					D800                   ; not carry = success
-			call				_uXmCPUFeatures_IntelOldMethod
-			jmp					D800                   ; return whether success or not
-
-AMD:    ; AMD and VIA use same method
-VIA:    
-			call				_uXmCPUFeatures_AMDMethod
-        
-D800:   ; cache data known, get desired return value
-			xor					eax, 					eax
-			cmp					r14d, 					cpu_numlevels
-			ja					D900
-			cmp					r14d, 					0
-			je					D820
-        ; level = 1 .. numlevels
-			mov					rax, 					[rcalladress + r14*8]      ; size of selected cache
-			jmp					D850
-D820:   ; level = 0. Get size of largest level cache
-			mov					rax, 					[rcalladress + cpu_data_layout.level3]     ; level3
-			test				rax, 					rax
-			jnz					D850
-			mov					rax, 					[rcalladress + cpu_data_layout.level2]     ; level2
-			test				rax, 					rax
-			jnz					D850
-			mov					rax, 					[rcalladress + cpu_data_layout.level1]     ; level1
-D850:		
-			mov 	dword ptr [rcalladress + cpu_data_layout.ok], 	1     ; remember called, whether success or not
-D900:   
-
-			pop					r14
-
-	ifdef  WINDOWS
-			mov					rcx, 					rsavethisptr
-			pop					r11
-			pop					r10
-			pop					rsi
-			pop     			rdi
-			pop					rcx
+	ifndef __X64__
+			mov		input_datacachelevel,	edx
 	else
-			mov					rdi, 					rsavethisptr
-			pop					r10
-			pop					rdi
-	endif
-			;pop					rbx
+		ifdef WINDOWS
+			mov		input_datacachelevel,	edx
+		else	
+			mov		input_datacachelevel,	esi
+		endif
+	endif ;__X64__
+			mov					rreturn, 					[UX_INSTPTR].var_DataCacheSize        ; Pointer to result
 
 			ret
 		
@@ -3039,27 +3011,17 @@ UX_STATICVECMETHOD uXmCPUFeatures, WriteHex, <VOIDARG>, <>
         ; Parameters: AL = number to write, RDI = text destination
 	
 	ifndef __X64__
-			ifndef RDEST_DEFINED
-				push				edi
-				define RDEST_DEFINED
-				rdest	textequ		<edi>
-			endif
+			push				eax
+			push				ecx
+			push				edi
+			rdest	textequ		<edi>
 	else
-		ifdef WINDOWS
-			ifndef RDEST_DEFINED
-				push				rdi
-				define RDEST_DEFINED
-				rdest	textequ		<rdi>
-			endif
-		else
-			ifndef RDEST_DEFINED
-				push				rsi
-				define RDEST_DEFINED
-				rdest	textequ		<rsi>
-			endif
-		endif
+			push				rax
+			push				rcx
+			push				rdi
+			rdest	textequ		<rdi>
 	endif
-
+	
 			mov					ecx, 					eax
 			shr					ecx, 					4
 			and					ecx, 					0FH               ; most significant digit first
@@ -3084,10 +3046,16 @@ W3:			; A - F
 W4:			mov					[rdest+1], 				cl            ; write digit
 			add					rdest, 					2                 ; advance string pointer
 			
-		ifndef RDEST_DEFINED
 			pop					rdest
-		endif
-
+			
+	ifndef __X64__
+			pop					ecx
+			pop					eax
+	else
+			pop					rcx
+			pop					rax
+	endif
+	
 			ret
 	
 UX_ENDMETHOD
@@ -3102,50 +3070,43 @@ UX_STATICVECMETHOD uXmCPUFeatures, IntelNewMethod, <VOIDARG>, <>;, level:dword
 ;IntelNewMethod:
 
 	ifndef __X64__
+			push				eax
+			push				ebx
+			push				ecx
+			push				edx
+			push				edi
+			push				esi
 	else
-			;push				rbx
-
-		ifdef WINDOWS
-
-			ifndef RCALLADRESS
-				define RCALLADRESS
-			push				r10
-				ecalladress	textequ		<r10d>
-				rcalladress	textequ		<r10>
-			endif
-				
-			ifndef RLOOPADRESS
-				define RLOOPADRESS
-				eloopadress	textequ		<esi>
-				rloopadress	textequ		<rsi>
-			endif				
-			
-		else ;UNIX
-
-			ifndef RCALLADRESS
-				define RCALLADRESS
-				ecalladress	textequ		<r8d>
-				rcalladress	textequ		<r8>
-			endif				
-			
-			ifndef RLOOPADRESS
-				define RLOOPADRESS
-				eloopadress	textequ		<r9d>
-				rloopadress	textequ		<r9>
-			endif				
-			
-		endif ;WINDOWS
-		
+			push				rax
+			push				rbx
+			push				rcx
+			push				rdx
+			push				rdi
+			push				rsi
+	endif		
+	
+	ifndef __X64__
+			rreturn		textequ		<eax>
+			rsindex		textequ		<esi>
+			rbreg		textequ		<ebx>
+			rcreg		textequ		<ecx>
+	else	
+			rbreg		textequ		<rbx>
+			rcreg		textequ		<rcx>
+			rreturn		textequ		<rax>
+			rsindex		textequ		<rsi>
 	endif ;__X64__
-    
+
+			eloopcount	textequ		<edi>
+
 			xor					eax, 					eax
 			cpuid                          ; get number of CPUID functions
 			cmp					eax, 					4
 			jb					I900                   ; fail
-			xor					eloopadress, 					eloopadress               ; loop counter
+			xor					eloopcount, 			eloopcount               ; loop counter
 I100:   
 			mov					eax, 					4
-			mov					ecx, 					eloopadress
+			mov					ecx, 					eloopcount
 			cpuid                          ; get cache parameters
 			mov					edx, 					eax
 			and					edx, 					11111b            ; cache type
@@ -3164,30 +3125,41 @@ I100:
 			imul				ecx, 					edx
 			and					ebx, 					111111111111b        
 			inc					ebx                    ; line size
-			imul				rcx, 					rbx               ; calculated cache size (64 bit)
+			imul				rcreg, 					rbreg				; calculated cache size (64 bit)
 			shr					eax, 					5
-			and					eax, 					111b              ; cache level
+			and					eax, 					111b				; cache level
 			cmp					eax, 					cpu_numlevels
 			jna					I180
-			mov					eax, 					cpu_numlevels         ; limit higher levels
+			mov					eax, 					cpu_numlevels       ; limit higher levels
 I180:   
-			mov					[rcalladress+rax*8], 			rcx        ; store size of data cache level eax
+			mov		[rsindex+rreturn*reg_t_size], 		rcreg				; store size of data cache level eax
 I200:   
-			inc					eloopadress
-			cmp					eloopadress, 					100h              ; avoid infinite loop
+			inc					eloopcount
+			cmp					eloopcount, 			100h				; avoid infinite loop
 			jb					I100                   ; next cache
 I500:   ; loop finished
         ; check if OK
 		
-			;push				rbx
-
-		ifdef WINDOWS
-			pop					r10
-		endif
-
-			mov					rax, 					[rcalladress+cpu_data_layout.level1]       ; level1
-			cmp					rax, 					1024
+			mov					rreturn, 				[rsindex+cpu_data_layout.level1]       ; level1
+			cmp					rreturn, 				1024
 I900:  
+
+	ifndef __X64__
+			pop					esi
+			pop					edi
+			pop					edx
+			pop					ecx
+			pop					ebx
+			pop					eax
+	else
+			pop					rsi
+			pop					rdi
+			pop					rdx
+			pop					rcx
+			pop					rbx
+			pop					rax
+	endif			
+
 			ret                            ; carry flag set if fail
 
 UX_ENDMETHOD
@@ -3202,30 +3174,37 @@ UX_STATICVECMETHOD uXmCPUFeatures, IntelOldMethod, <VOIDARG>, <>;, level:dword
 ;IntelOldMethod:
 
 	ifndef __X64__
+			push				eax
+			push				ebx
+			push				ecx
+			push				edx
+			push				esi
+			push				esp
 	else
-			;push				rbx
-
-		ifdef WINDOWS
-
-			ifndef RCALLADRESS
-				define RCALLADRESS
-			;push				r10
-				ecalladress	textequ		<r10d>
-				rcalladress	textequ		<r10>
-			endif
-				
-		else ;UNIX
-
-			ifndef RCALLADRESS
-				define RCALLADRESS
-				ecalladress	textequ		<r8d>
-				rcalladress	textequ		<r8>
-			endif				
-			
-		endif ;WINDOWS
-		
+			push				rax
+			push				rbx
+			push				rcx
+			push				rdx
+			push				rsi
+			push				rsp
+	endif		
+	
+	ifndef __X64__
+			rreturn		textequ		<eax>
+			rsindex		textequ		<esi>
+			rbreg		textequ		<ebx>
+			rcreg		textequ		<ecx>
+			rdreg		textequ		<edx>
+			rspreg		textequ		<esp>
+	else	
+			rreturn		textequ		<rax>
+			rsindex		textequ		<rsi>
+			rbreg		textequ		<rbx>
+			rcreg		textequ		<rcx>
+			rdreg		textequ		<rdx>
+			rspreg		textequ		<rsp>
 	endif ;__X64__
-    
+	
 			xor					eax,  					eax
 			cpuid                          ; get number of CPUID functions
 			cmp					eax,  					2
@@ -3234,40 +3213,64 @@ UX_STATICVECMETHOD uXmCPUFeatures, IntelOldMethod, <VOIDARG>, <>;, level:dword
 			xor					ecx,  					ecx
 			cpuid                          ; get 16 descriptor bytes in eax, ebx, ecx, edx
 			mov					al,  					0                  ; al does not contain a descriptor
+	ifndef __X64__
+			push				eax                    ; save all descriptors
+			push				ebx
+			push				ecx
+			push				edx                    ; now esp points to descriptors
+	else	
 			sub					rsp,  					16
 			mov					[rsp],     				eax          ; save all descriptors
 			mov					[rsp+4],   				ebx
 			mov					[rsp+8],   				ecx
 			mov					[rsp+12],  				edx
+	endif ;__X64__
 			mov					edx, 15                ; loop counter
         ; loop to read 16 descriptor bytes
 J100:   
-			mov					al,  			byte ptr [rsp+rdx]
+			mov					al,  			byte ptr [rspreg+rdreg]
         ; find in table
 			mov					ebx,  					cpu_descriptortablelength-1  ; loop counter
         ; loop to search in descriptortable
 J200:   
-			cmp					eax,  					[rcalladress + cpu_data_layout.descriptortable + rbx*4 + cpu_descriptor_record.d_key]
+			cmp					eax,  					[rsindex + cpu_data_layout.descriptortable + rbreg*4 + cpu_descriptor_record.d_key]
 			jne					J300
         ; descriptor found
-			movzx				eax,  			byte ptr [rcalladress + cpu_data_layout.descriptortable + rbx*4 + cpu_descriptor_record.d_sizem]
-			mov					ecx,   					[rcalladress + cpu_data_layout.descriptortable + rbx*4 + cpu_descriptor_record.d_2pow]
+			movzx				eax,  			byte ptr [rsindex + cpu_data_layout.descriptortable + rbreg*4 + cpu_descriptor_record.d_sizem]
+			mov					ecx,   					[rsindex + cpu_data_layout.descriptortable + rbreg*4 + cpu_descriptor_record.d_2pow]
 			shl					eax,  					cl                ; compute size
-			movzx				ecx,  			byte ptr [rcalladress + cpu_data_layout.descriptortable + rbx*4 + cpu_descriptor_record.d_level]
+			movzx				ecx,  			byte ptr [rsindex + cpu_data_layout.descriptortable + rbreg*4 + cpu_descriptor_record.d_level]
         ; check that level = 1-3
 			cmp					ecx,  					3
 			ja					J300
-			mov					[rcalladress+rcx*8], 			rax        ; store size eax of data cache level ecx
+			mov		[rsindex+rcreg*reg_t_size], 		rreturn        ; store size eax of data cache level ecx
 J300:   
 			dec					ebx
 			jns					J200                   ; inner loop
 			dec					edx
 			jns					J100                   ; outer loop
-			add					rsp,  					16                ; remove from stack
+			add					rspreg,  				16                ; remove from stack
         ; check if OK
-			mov					rax,  					[rcalladress + cpu_data_layout.level1]
-			cmp					rax,  					1024
+			mov					rreturn,  				[rsindex + cpu_data_layout.level1]
+			cmp					rreturn,  				1024
 J900:   
+
+	ifndef __X64__
+			pop					esp
+			pop					esi
+			pop					edx
+			pop					ecx
+			pop					ebx
+			pop					eax
+	else
+			pop					rsp
+			pop					rsi
+			pop					rdx
+			pop					rcx
+			pop					rbx
+			pop					rax
+	endif			
+
 			ret                            ; carry flag set if fail
 
 UX_ENDMETHOD
@@ -3282,30 +3285,29 @@ UX_STATICVECMETHOD uXmCPUFeatures, AMDMethod, <VOIDARG>, <>;, level:dword
 ;AMDMethod:
 
 	ifndef __X64__
+			push				eax
+			push				ebx
+			push				ecx
+			push				edx
+			push				esi
 	else
-			;push				rbx
-
-		ifdef WINDOWS
-
-			ifndef RCALLADRESS
-				define RCALLADRESS
-			;push				r10
-				ecalladress	textequ		<r10d>
-				rcalladress	textequ		<r10>
-			endif
-				
-		else ;UNIX
-
-			ifndef RCALLADRESS
-				define RCALLADRESS
-				ecalladress	textequ		<r8d>
-				rcalladress	textequ		<r8>
-			endif				
-			
-		endif ;WINDOWS
-		
+			push				rax
+			push				rbx
+			push				rcx
+			push				rdx
+			push				rsi
+	endif		
+	
+	ifndef __X64__
+			rreturn		textequ		<eax>
+			rsindex		textequ		<esi>
+			rcreg		textequ		<ecx>
+	else	
+			rreturn		textequ		<rax>
+			rsindex		textequ		<rsi>
+			rcreg		textequ		<rcx>
 	endif ;__X64__
-    
+	
 			mov					eax,  					80000000H
 			cpuid                          ; get number of CPUID functions
 			cmp					eax,  					6
@@ -3314,15 +3316,15 @@ UX_STATICVECMETHOD uXmCPUFeatures, AMDMethod, <VOIDARG>, <>;, level:dword
 			cpuid                          ; get L1 cache size
 			shr					ecx,  					24                ; L1 data cache size in kbytes
 			shl					ecx,  					10                ; L1 data cache size in bytes
-			mov				[rcalladress + cpu_data_layout.level1], rcx     ; store L1 data cache size
+			mov				[rsindex + cpu_data_layout.level1], rcreg     ; store L1 data cache size
 			mov					eax,  					80000006H
 			cpuid                          ; get L2 and L3 cache sizes
 			shr					ecx,  					16                ; L2 data cache size in kbytes
 			shl					ecx,  					10                ; L2 data cache size in bytes
-			mov				[rcalladress + cpu_data_layout.level2], rcx     ; store L2 data cache size
+			mov				[rsindex + cpu_data_layout.level2], rcreg     ; store L2 data cache size
 			mov					ecx,  					edx
 			shr					ecx,  					18                ; L3 data cache size / 512 kbytes
-			shl					rcx,  					19                ; L3 data cache size in bytes
+			shl					rcreg,  				19                ; L3 data cache size in bytes
 if 0   ; AMD manual is unclear: 
         ; do we have to increase the value if the number of ways is not a power or 2?
 			shr					edx,  					12
@@ -3332,16 +3334,31 @@ if 0   ; AMD manual is unclear:
 			test				edx,  					1
 			jz					K100
 			; number of ways is not a power of 2, multiply by 1.5 ?
-			mov					rax,  					rcx
-			shr					rax,  					1
-			add					rcx,  					rax
+			mov					rreturn,  				rcreg
+			shr					rreturn,  				1
+			add					rcreg,  				rreturn
 endif
 K100:   
-			mov				[rcalladress + cpu_data_layout.level3], rcx     ; store L3 data cache size
+			mov		[rsindex + cpu_data_layout.level3], rcreg     ; store L3 data cache size
         ; check if OK
-			mov					rax,  					[rcalladress + cpu_data_layout.level1]
-			cmp					rax,  					1024
+			mov					rreturn,  				[rsindex + cpu_data_layout.level1]
+			cmp					rreturn,  				1024
 K900:   
+
+	ifndef __X64__
+			pop					esi
+			pop					edx
+			pop					ecx
+			pop					ebx
+			pop					eax
+	else
+			pop					rsi
+			pop					rdx
+			pop					rcx
+			pop					rbx
+			pop					rax
+	endif			
+
 			ret                            ; carry flag set if fail
 
 UX_ENDMETHOD

@@ -145,9 +145,13 @@ else
 endif ;WINDOWS
 
 ifdef __X64__
-	UX_SIZET textequ <qword>
+	reg_t_size	equ		8
+	UX_SIZE_T textequ <qword>
+	size_t_size	equ		8
 else
-	UX_SIZET textequ <dword>
+	reg_t_size	equ		4
+	UX_SIZE_T textequ <dword>
+	size_t_size	equ		4
 endif ;__X64__
 
 false	equ		0
