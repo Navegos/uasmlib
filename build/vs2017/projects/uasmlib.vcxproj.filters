@@ -25,12 +25,6 @@
     <Filter Include="Header Files\x86\SSE">
       <UniqueIdentifier>{e56ff63c-eaab-4daa-b7dd-2ac105fd0d9a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\x86\SSE">
-      <UniqueIdentifier>{9bf9fc85-8d28-43e0-bff8-a8d3c9cb85be}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\x86\SSE\asm">
-      <UniqueIdentifier>{1f8e79d3-4346-4fc8-b91e-2899e154b93c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\x86\asm\has">
       <UniqueIdentifier>{7eb78262-6499-490c-a7df-a362a3cb494b}</UniqueIdentifier>
     </Filter>
@@ -43,11 +37,14 @@
     <Filter Include="Source Files\x86\asm\notdone">
       <UniqueIdentifier>{7f643c05-37b4-4102-b4cb-8d4eb037276b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\x86\SSE">
+      <UniqueIdentifier>{9bf9fc85-8d28-43e0-bff8-a8d3c9cb85be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\SSE\asm">
+      <UniqueIdentifier>{1f8e79d3-4346-4fc8-b91e-2899e154b93c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\include\x86\SSE\uXmsseintrin.h">
-      <Filter>Header Files\x86\SSE</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\uXmBaseDefs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -69,11 +66,23 @@
     <ClInclude Include="..\..\..\include\uXmTypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXmx86intrin.h">
-      <Filter>Header Files\x86</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\x86\uXmx86Cpu.h">
       <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXmsseStructs.h">
+      <Filter>Header Files\x86\SSE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXmsseIntrin.h">
+      <Filter>Header Files\x86\SSE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXmx86Intrin.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXmxmmintrin.h">
+      <Filter>Header Files\x86\SSE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXmemmintrin.h">
+      <Filter>Header Files\x86\SSE</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -83,7 +92,7 @@
     <ClCompile Include="..\..\..\src\x86\uXmx86Cpu.cpp">
       <Filter>Source Files\x86</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\x86\uXmx86intrin.cpp">
+    <ClCompile Include="..\..\..\src\x86\uXmx86Intrin.cpp">
       <Filter>Source Files\x86</Filter>
     </ClCompile>
   </ItemGroup>
@@ -97,20 +106,17 @@
     <None Include="..\export\uasmlib-export.def">
       <Filter>Def Files</Filter>
     </None>
-    <None Include="..\..\..\src\x86\asm\uXmx86Cpu.inc">
-      <Filter>Source Files\x86\asm</Filter>
-    </None>
     <None Include="..\..\..\.gitignore" />
     <None Include="..\..\..\src\x86\asm\uXmmacros.inc">
       <Filter>Source Files\x86\asm</Filter>
     </None>
     <None Include="..\..\..\README.md" />
+    <None Include="..\..\..\src\x86\asm\uXmx86cpu.inc">
+      <Filter>Source Files\x86\asm</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <UASM Include="..\..\..\src\x86\asm\uXmcpuidex.asm">
-      <Filter>Source Files\x86\asm</Filter>
-    </UASM>
-    <UASM Include="..\..\..\src\x86\asm\uXmcpuid.asm">
       <Filter>Source Files\x86\asm</Filter>
     </UASM>
     <UASM Include="..\..\..\src\x86\asm\uXmxgetbv.asm">
@@ -119,10 +125,16 @@
     <UASM Include="..\..\..\src\x86\asm\uXmxsetbv.asm">
       <Filter>Source Files\x86\asm</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\asm\uXmDLL.asm">
+    <UASM Include="..\..\..\src\x86\asm\uXmx86cpua.asm">
       <Filter>Source Files\x86\asm</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\asm\uXmx86Cpua.asm">
+    <UASM Include="..\..\..\src\x86\asm\uXmdll.asm">
+      <Filter>Source Files\x86\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\asm\uXmcpuid.asm">
       <Filter>Source Files\x86\asm</Filter>
     </UASM>
   </ItemGroup>

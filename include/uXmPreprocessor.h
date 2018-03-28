@@ -292,6 +292,7 @@ Compiler defines
 #undef uXm_ENDIAN_LITTLE
 #		define uXm_ENDIAN_LITTLE 1
 #		define uXm_POINTER_SIZE 4
+#		define uXm_SIZE_T_SIZE 4
 #		define uXm_INTRINSICS 1
 #		define uXm_ARCH_SUPPORTS_INT64 1
 #		define uXm_NUM_SIMD_REGISTERS 8
@@ -306,6 +307,7 @@ Compiler defines
 #undef uXm_ENDIAN_LITTLE
 #		define uXm_ENDIAN_LITTLE 1
 #		define uXm_POINTER_SIZE 8
+#		define uXm_SIZE_T_SIZE 8
 #		define uXm_INTRINSICS 1
 #		define uXm_ARCH_SUPPORTS_DOUBLE 1
 #		define uXm_ARCH_SUPPORTS_INT64 1
@@ -346,6 +348,7 @@ Compiler defines
 #undef uXm_ENDIAN_LITTLE
 #		define uXm_ENDIAN_LITTLE 1
 #		define uXm_POINTER_SIZE 4
+#		define uXm_SIZE_T_SIZE 4
 #		define uXm_INTRINSICS 1
 #		define uXm_NUM_SIMD_REGISTERS 16
 #		define uXm_ARCH_STR "x86"
@@ -359,6 +362,7 @@ Compiler defines
 #undef uXm_ENDIAN_LITTLE
 #		define uXm_ENDIAN_LITTLE 1
 #		define uXm_POINTER_SIZE 8
+#		define uXm_SIZE_T_SIZE 8
 #		define uXm_INTRINSICS 1
 #		define uXm_ARCH_SUPPORTS_DOUBLE 1
 #		define uXm_ARCH_SUPPORTS_INT64 1
@@ -389,6 +393,7 @@ Compiler defines
 #undef uXm_ENDIAN_BIG
 #		define uXm_ENDIAN_BIG	1
 #		define uXm_POINTER_SIZE 4
+#		define uXm_SIZE_T_SIZE 4
 #		define uXm_ARCH_SUPPORTS_DOUBLE 1
 #		define uXm_ARCH_SUPPORTS_INT64 1
 #		define uXm_NUM_SIMD_REGISTERS 8
@@ -444,6 +449,7 @@ Compiler defines
 #undef uXm_ENDIAN_BIG
 #		define uXm_ENDIAN_BIG	1
 #		define uXm_POINTER_SIZE 4
+#		define uXm_SIZE_T_SIZE 4
 #		define uXm_ARCH_SUPPORTS_DOUBLE 1
 #		define uXm_ARCH_SUPPORTS_INT64 1
 #		define uXm_NUM_SIMD_REGISTERS 8
@@ -474,6 +480,7 @@ Compiler defines
 #undef uXm_ENDIAN_BIG
 #		define uXm_ENDIAN_BIG	1
 #		define uXm_POINTER_SIZE 4
+#		define uXm_SIZE_T_SIZE 4
 #		define uXm_ARCH_SUPPORTS_DOUBLE 1
 #		define uXm_ARCH_SUPPORTS_INT64
 #		define uXm_NUM_SIMD_REGISTERS 32
@@ -493,6 +500,7 @@ Compiler defines
 #undef uXm_ENDIAN_BIG
 #		define uXm_ENDIAN_BIG	1
 #		define uXm_POINTER_SIZE 4
+#		define uXm_SIZE_T_SIZE 4
 #		define uXm_ARCH_SUPPORTS_INT64 1
 #		define uXm_NUM_SIMD_REGISTERS 128
 #		define uXm_PLATFORM_IS_CONSOLE 1
@@ -577,6 +585,7 @@ Compiler defines
 #		define uXm_PLATFORM_A64 1
 #		define uXm_ARM_ABI64 1
 #		define uXm_POINTER_SIZE 8
+#		define uXm_SIZE_T_SIZE 8
 #		define uXm_ARCH_SUPPORTS_DOUBLE 1
 #		define uXm_ARCH_SUPPORTS_INT64 1
 #		define uXm_NUM_SIMD_REGISTERS 16
@@ -592,6 +601,7 @@ Compiler defines
 #		define uXm_PLATFORM_A32 1
 #		define uXm_ARM_ABI32 1
 #		define uXm_POINTER_SIZE 4
+#		define uXm_SIZE_T_SIZE 4
 #		define uXm_ARCH_SUPPORTS_INT64 1
 #		define uXm_NUM_SIMD_REGISTERS 8
 #		define uXm_ARCH_STR "Arm32"
@@ -789,6 +799,8 @@ Platform define
 #		define uXm_PLATFORM_NACL 1
 #		undef uXm_POINTER_SIZE
 #		define uXm_POINTER_SIZE 4 // always 4 in NaCl
+#		undef uXm_SIZE_T_SIZE
+#		define uXm_SIZE_T_SIZE 4 // always 4 in NaCl
 #    endif
 #  elif defined(__CYGWIN__)
 #   	define uXm_CYGWIN 1

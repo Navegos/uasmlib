@@ -18,7 +18,7 @@ uXm_EXTERNC_END
 
 #ifdef uXm_X86_OR_X64_CPU
 #include "x86/uXmx86Cpu.h"
-#include "x86/uXmx86intrin.h"
+#include "x86/uXmx86Intrin.h"
 #endif
 
 #endif // UASM_LIB_H

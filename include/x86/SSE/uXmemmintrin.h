@@ -1,8 +1,8 @@
 
 #pragma once
 
-#ifndef uXm_SSE_INTRIN_H
-#define uXm_SSE_INTRIN_H
+#ifndef uXm_EMM_INTRIN_H
+#define uXm_EMM_INTRIN_H
 
 #include "uXmTypes.h"
 
@@ -20,4 +20,4 @@ uXm_EXTERNC_END
 
 #endif /*defined(uXm_INTRINSICS_SUPPORT) && defined(uXm_X86_OR_X64_CPU) && !defined(uXm_NO_INTRINSICS_SUPPORT)*/
 
-#endif // uXm_SSE_INTRIN_H
+#endif // uXm_EMM_INTRIN_H

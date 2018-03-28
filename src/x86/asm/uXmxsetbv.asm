@@ -5,21 +5,22 @@
 	ifndef __X64__
 			.686P
 			.xmm
-			.model	flat, c
+			.model	flat
 	else
 			.X64P
 			.xmm
-			option	win64:11
+			option	win64:15
 			option	stackbase:rsp
 	endif
 			option	frame:auto
 
 
-	.code
-			align 16
+	;.code
+_TEXT segment
+			align 8
 uXm_xsetbv proto UX_VECCALL
 
-			align 16
+			align 8
 uXm_xsetbv proc UX_VECCALL
 
 	ifndef __X64__
@@ -33,5 +34,6 @@ uXm_xsetbv proc UX_VECCALL
 			ret
 
 uXm_xsetbv endp
+_TEXT ends
 
-	end ;.code
+	end

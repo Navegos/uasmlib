@@ -145,15 +145,19 @@ else
 endif ;WINDOWS
 
 ifdef __X64__
+	ptr_t_size	equ		8
 	reg_t_size	equ		8
 	UX_SIZE_T textequ <qword>
 	size_t_size	equ		8
 else
+	ptr_t_size	equ		4
 	reg_t_size	equ		4
 	UX_SIZE_T textequ <dword>
 	size_t_size	equ		4
 endif ;__X64__
 
+bool			textequ		<dword>
+dbool			textequ		<dd>
 false	equ		0
 true	equ		1
 
@@ -292,5 +296,34 @@ bit_RDTSCP					equ		08000000h	; 1 << 27
 bit_3DNOWEXT				equ		40000000h	; 1 << 30
 bit_3DNOW					equ		80000000h	; 1 << 31
 
+; /* supported instruction set return values */
+
+intrinset_80386				equ		0h	;0            = 80386 instruction set
+intrinset_MMX				equ		8h	;8   or above = MMX (MMX) supported by CPU (not testing for O.S. support)
+intrinset_CMOV				equ		9h	;9   or above = CMOV supported by CPU
+intrinset_SSE				equ		0ah ;10  or above = SSE (XMM) supported by CPU and operating system
+intrinset_SSE2				equ		14h ;20  or above = SSE2
+intrinset_SSE3				equ		1eh ;30  or above = SSE3
+intrinset_SSSE3				equ		1fh ;31  or above = Supplementary SSE3 (SSSE3)
+intrinset_SSE41				equ		29h ;41  or above = SSE4.1
+intrinset_SSE42				equ		2ah ;42  or above = SSE4.2 & POPCNT
+intrinset_AVX				equ		32h ;50  or above = AVX (YMM) supported by CPU and operating system
+intrinset_PCLMULAES			equ		33h ;51  or above = PCLMUL & AES
+intrinset_AVX2				equ		34h ;52  or above = AVX2
+intrinset_FMATOLZCNT		equ		39h ;57  or above = FMA3, F16C, BMI1, BMI2, LZCNT
+intrinset_AVX512F			equ		3ch ;60  or above = AVX512F (ZMM) supported by CPU and operating system
+intrinset_AVX512DQ			equ		3dh ;61  or above = AVX512DQ
+intrinset_AVX512BW			equ		3eh ;62  or above = AVX512BW
+intrinset_AVX512VL			equ		3fh ;63  or above = AVX512VL
+
+; /* CMPPS Opcodes Condition Predicate */
+CMPPS_EQ					equ		0h
+CMPPS_LT					equ		1h
+CMPPS_LE					equ		2h
+CMPPS_UNORD					equ		3h
+CMPPS_NEQ					equ		4h
+CMPPS_NLT					equ		5h
+CMPPS_NLE					equ		6h
+CMPPS_ORD					equ		7h
 
 include uXmmacros.inc

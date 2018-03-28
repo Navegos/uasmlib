@@ -5,11 +5,11 @@
 	ifndef __X64__
 			.686P
 			.xmm
-			.model	flat, c
+			.model	flat
 	else
 			.X64P
 			.xmm
-			option	win64:11
+			option	win64:15
 			option	stackbase:rsp
 	endif
 			option	frame:auto
@@ -20,11 +20,12 @@
 ; Input: a = eax, c = ecx
 ; Output: abcd[0] = eax, abcd[1] = ebx, abcd[2] = ecx, abcd[3] = edx
 
-	.code
-			align 16
+	;.code
+_TEXT segment
+			align ptr_t_size
 uXm_cpuidex proto UX_VECCALL
 
-			align 16
+			align ptr_t_size
 uXm_cpuidex proc UX_VECCALL
 
 		;CPUInfo$ = 8
@@ -71,5 +72,6 @@ uXm_cpuidex proc UX_VECCALL
 			ret
 		
 uXm_cpuidex endp
+_TEXT ends
 
-	end ;.code
+	end

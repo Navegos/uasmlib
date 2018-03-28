@@ -175,6 +175,14 @@ _uXmCPUFeatures_has_enabled_XMM
 _uXmCPUFeatures_has_enabled_YMM
 _uXmCPUFeatures_has_enabled_ZMM
 
+;/* Check if CPUFeatures is initiated */
+_uXmCPUFeatures_Is_Inited
+
+;/* Extra info functions*/
+_uXmCPUFeatures_CpuType
+_uXmCPUFeatures_ProcessorName
+_uXmCPUFeatures_DataCacheSize
+
 uXm_cpuidex
 uXm_cpuid
 uXm_xgetbv
@@ -348,3 +356,7 @@ uXm_has_AVX2_VPCLMULQDQ
 uXm_has_enabled_XMM
 uXm_has_enabled_YMM
 uXm_has_enabled_ZMM
+
+uXm_CpuType
+uXm_ProcessorName
+uXm_DataCacheSize

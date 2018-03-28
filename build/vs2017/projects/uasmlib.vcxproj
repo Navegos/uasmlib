@@ -19,16 +19,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <UASM Include="..\..\..\src\x86\asm\uXmcpuid.asm" />
+    <UASM Include="..\..\..\src\x86\asm\uXmcpuid.asm">
+      <FileType>Document</FileType>
+    </UASM>
     <UASM Include="..\..\..\src\x86\asm\uXmcpuidex.asm" />
-    <UASM Include="..\..\..\src\x86\asm\uXmDLL.asm" />
+    <UASM Include="..\..\..\src\x86\asm\uXmdll.asm" />
     <None Include="..\..\..\README.md" />
     <None Include="..\..\..\src\x86\asm\uXmmacros.inc">
       <FileType>Document</FileType>
     </None>
-    <UASM Include="..\..\..\src\x86\asm\uXmx86Cpua.asm" />
+    <UASM Include="..\..\..\src\x86\asm\uXmx86cpua.asm" />
     <UASM Include="..\..\..\src\x86\asm\uXmxgetbv.asm" />
     <UASM Include="..\..\..\src\x86\asm\uXmxsetbv.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmintrin.asm" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\uasmlib.h" />
@@ -37,20 +40,23 @@
     <ClInclude Include="..\..\..\include\uXmPreprocessor.h" />
     <ClInclude Include="..\..\..\include\uXmTypes.h" />
     <ClInclude Include="..\..\..\include\uXmVers.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXmsseintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\SSE\uXmemmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\SSE\uXmsseIntrin.h" />
+    <ClInclude Include="..\..\..\include\x86\SSE\uXmsseStructs.h" />
+    <ClInclude Include="..\..\..\include\x86\SSE\uXmxmmintrin.h" />
     <ClInclude Include="..\..\..\include\x86\uXmx86Cpu.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmx86intrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmx86Intrin.h" />
     <ClInclude Include="..\..\resource\resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\uasmlib.cpp" />
     <ClCompile Include="..\..\..\src\x86\uXmx86Cpu.cpp" />
-    <ClCompile Include="..\..\..\src\x86\uXmx86intrin.cpp" />
+    <ClCompile Include="..\..\..\src\x86\uXmx86Intrin.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\.gitignore" />
     <None Include="..\..\..\src\x86\asm\uXmx86asm.inc" />
-    <None Include="..\..\..\src\x86\asm\uXmx86Cpu.inc" />
+    <None Include="..\..\..\src\x86\asm\uXmx86cpu.inc" />
     <None Include="..\..\..\src\x86\SSE\asm\xmmtypes.inc" />
     <None Include="..\export\uasmlib-export.def" />
   </ItemGroup>
@@ -141,9 +147,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <AdditionalIncludeDirectories>../../../include;../../../include/x86;../../../include/x86/SSE;</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
       <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
-      <CallingConvention>VectorCall</CallingConvention>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -152,7 +156,7 @@
     </Link>
     <UASM>
       <PreprocessorDefinitions>WIN32;WINDOWS;DEBUG</PreprocessorDefinitions>
-      <IncludePaths>../../../src/x86/asm/</IncludePaths>
+      <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/</IncludePaths>
     </UASM>
     <ResourceCompile>
       <PreprocessorDefinitions>_MANIFEST;WIN32;_WIN32;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;_DEBUG;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -174,7 +178,6 @@ copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win32\vc14</Command>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <AdditionalIncludeDirectories>../../../include;../../../include/x86;../../../include/x86/SSE;</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
       <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
     </ClCompile>
     <Link>
@@ -184,7 +187,7 @@ copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win32\vc14</Command>
     </Link>
     <UASM>
       <PreprocessorDefinitions>__X64__;WIN64;WINDOWS;DEBUG</PreprocessorDefinitions>
-      <IncludePaths>../../../src/x86/asm/</IncludePaths>
+      <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/</IncludePaths>
     </UASM>
     <ResourceCompile>
       <PreprocessorDefinitions>_MANIFEST;__x64__;WIN64;_WIN64;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;_DEBUG;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -201,15 +204,12 @@ copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win64\vc14</Command>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>Full</Optimization>
       <PreprocessorDefinitions>WIN32;_WIN32;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DebugInformationFormat>None</DebugInformationFormat>
       <OmitFramePointers />
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <AdditionalIncludeDirectories>../../../include;../../../include/x86;../../../include/x86/SSE;</AdditionalIncludeDirectories>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
       <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
-      <CallingConvention>VectorCall</CallingConvention>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -219,7 +219,7 @@ copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win64\vc14</Command>
     <UASM>
       <PreprocessorDefinitions>WIN32;WINDOWS;NDEBUG</PreprocessorDefinitions>
       <UseSafeExceptionHandlers>true</UseSafeExceptionHandlers>
-      <IncludePaths>../../../src/x86/asm/</IncludePaths>
+      <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/</IncludePaths>
     </UASM>
     <ResourceCompile>
       <PreprocessorDefinitions>_MANIFEST;WIN32;_WIN32;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;NDEBUG;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -235,12 +235,10 @@ copy $(OutDir)$(TargetName).lib $(UASMLIB_PATH)\lib\Win32\vc14</Command>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>Full</Optimization>
       <PreprocessorDefinitions>__x64__;WIN64;_WIN64;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DebugInformationFormat>None</DebugInformationFormat>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <AdditionalIncludeDirectories>../../../include;../../../include/x86;../../../include/x86/SSE;</AdditionalIncludeDirectories>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
       <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
     </ClCompile>
     <Link>
@@ -250,7 +248,7 @@ copy $(OutDir)$(TargetName).lib $(UASMLIB_PATH)\lib\Win32\vc14</Command>
     </Link>
     <UASM>
       <PreprocessorDefinitions>__X64__;WIN64;WINDOWS;NDEBUG</PreprocessorDefinitions>
-      <IncludePaths>../../../src/x86/asm/</IncludePaths>
+      <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/</IncludePaths>
     </UASM>
     <ResourceCompile>
       <PreprocessorDefinitions>_MANIFEST;__x64__;WIN64;_WIN64;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;NDEBUG;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
