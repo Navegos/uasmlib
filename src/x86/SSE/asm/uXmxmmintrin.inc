@@ -1,0 +1,1064 @@
+
+;uXm_xmm_shuffle4 macro V3,V2,V1,V0
+;    exitm %((V3 shl 6) or (V2 shl 4) or (V1 shl 2) or (V0))
+;endm
+
+;xmm4shuffle(1:3<<6,1:3<<4,1:3<<2,1:3)
+xmm4shuffle0000 equ 0
+xmm4shuffle0001 equ 1
+xmm4shuffle0002 equ 2
+xmm4shuffle0003 equ 3
+xmm4shuffle0010 equ 4
+xmm4shuffle0011 equ 5
+xmm4shuffle0012 equ 6
+xmm4shuffle0013 equ 7
+xmm4shuffle0020 equ 8
+xmm4shuffle0021 equ 9
+xmm4shuffle0022 equ 10
+xmm4shuffle0023 equ 11
+xmm4shuffle0030 equ 12
+xmm4shuffle0031 equ 13
+xmm4shuffle0032 equ 14
+xmm4shuffle0033 equ 15
+xmm4shuffle0100 equ 16
+xmm4shuffle0101 equ 17
+xmm4shuffle0102 equ 18
+xmm4shuffle0103 equ 19
+xmm4shuffle0110 equ 20
+xmm4shuffle0111 equ 21
+xmm4shuffle0112 equ 22
+xmm4shuffle0113 equ 23
+xmm4shuffle0120 equ 24
+xmm4shuffle0121 equ 25
+xmm4shuffle0122 equ 26
+xmm4shuffle0123 equ 27
+xmm4shuffle0130 equ 28
+xmm4shuffle0131 equ 29
+xmm4shuffle0132 equ 30
+xmm4shuffle0133 equ 31
+xmm4shuffle0200 equ 32
+xmm4shuffle0201 equ 33
+xmm4shuffle0202 equ 34
+xmm4shuffle0203 equ 35
+xmm4shuffle0210 equ 36
+xmm4shuffle0211 equ 37
+xmm4shuffle0212 equ 38
+xmm4shuffle0213 equ 39
+xmm4shuffle0220 equ 40
+xmm4shuffle0221 equ 41
+xmm4shuffle0222 equ 42
+xmm4shuffle0223 equ 43
+xmm4shuffle0230 equ 44
+xmm4shuffle0231 equ 45
+xmm4shuffle0232 equ 46
+xmm4shuffle0233 equ 47
+xmm4shuffle0300 equ 48
+xmm4shuffle0301 equ 49
+xmm4shuffle0302 equ 50
+xmm4shuffle0303 equ 51
+xmm4shuffle0310 equ 52
+xmm4shuffle0311 equ 53
+xmm4shuffle0312 equ 54
+xmm4shuffle0313 equ 55
+xmm4shuffle0320 equ 56
+xmm4shuffle0321 equ 57
+xmm4shuffle0322 equ 58
+xmm4shuffle0323 equ 59
+xmm4shuffle0330 equ 60
+xmm4shuffle0331 equ 61
+xmm4shuffle0332 equ 62
+xmm4shuffle0333 equ 63
+xmm4shuffle1000 equ 64
+xmm4shuffle1001 equ 65
+xmm4shuffle1002 equ 66
+xmm4shuffle1003 equ 67
+xmm4shuffle1010 equ 68
+xmm4shuffle1011 equ 69
+xmm4shuffle1012 equ 70
+xmm4shuffle1013 equ 71
+xmm4shuffle1020 equ 72
+xmm4shuffle1021 equ 73
+xmm4shuffle1022 equ 74
+xmm4shuffle1023 equ 75
+xmm4shuffle1030 equ 76
+xmm4shuffle1031 equ 77
+xmm4shuffle1032 equ 78
+xmm4shuffle1033 equ 79
+xmm4shuffle1100 equ 80
+xmm4shuffle1101 equ 81
+xmm4shuffle1102 equ 82
+xmm4shuffle1103 equ 83
+xmm4shuffle1110 equ 84
+xmm4shuffle1111 equ 85
+xmm4shuffle1112 equ 86
+xmm4shuffle1113 equ 87
+xmm4shuffle1120 equ 88
+xmm4shuffle1121 equ 89
+xmm4shuffle1122 equ 90
+xmm4shuffle1123 equ 91
+xmm4shuffle1130 equ 92
+xmm4shuffle1131 equ 93
+xmm4shuffle1132 equ 94
+xmm4shuffle1133 equ 95
+xmm4shuffle1200 equ 96
+xmm4shuffle1201 equ 97
+xmm4shuffle1202 equ 98
+xmm4shuffle1203 equ 99
+xmm4shuffle1210 equ 100
+xmm4shuffle1211 equ 101
+xmm4shuffle1212 equ 102
+xmm4shuffle1213 equ 103
+xmm4shuffle1220 equ 104
+xmm4shuffle1221 equ 105
+xmm4shuffle1222 equ 106
+xmm4shuffle1223 equ 107
+xmm4shuffle1230 equ 108
+xmm4shuffle1231 equ 109
+xmm4shuffle1232 equ 110
+xmm4shuffle1233 equ 111
+xmm4shuffle1300 equ 112
+xmm4shuffle1301 equ 113
+xmm4shuffle1302 equ 114
+xmm4shuffle1303 equ 115
+xmm4shuffle1310 equ 116
+xmm4shuffle1311 equ 117
+xmm4shuffle1312 equ 118
+xmm4shuffle1313 equ 119
+xmm4shuffle1320 equ 120
+xmm4shuffle1321 equ 121
+xmm4shuffle1322 equ 122
+xmm4shuffle1323 equ 123
+xmm4shuffle1330 equ 124
+xmm4shuffle1331 equ 125
+xmm4shuffle1332 equ 126
+xmm4shuffle1333 equ 127
+xmm4shuffle2000 equ 128
+xmm4shuffle2001 equ 129
+xmm4shuffle2002 equ 130
+xmm4shuffle2003 equ 131
+xmm4shuffle2010 equ 132
+xmm4shuffle2011 equ 133
+xmm4shuffle2012 equ 134
+xmm4shuffle2013 equ 135
+xmm4shuffle2020 equ 136
+xmm4shuffle2021 equ 137
+xmm4shuffle2022 equ 138
+xmm4shuffle2023 equ 139
+xmm4shuffle2030 equ 140
+xmm4shuffle2031 equ 141
+xmm4shuffle2032 equ 142
+xmm4shuffle2033 equ 143
+xmm4shuffle2100 equ 144
+xmm4shuffle2101 equ 145
+xmm4shuffle2102 equ 146
+xmm4shuffle2103 equ 147
+xmm4shuffle2110 equ 148
+xmm4shuffle2111 equ 149
+xmm4shuffle2112 equ 150
+xmm4shuffle2113 equ 151
+xmm4shuffle2120 equ 152
+xmm4shuffle2121 equ 153
+xmm4shuffle2122 equ 154
+xmm4shuffle2123 equ 155
+xmm4shuffle2130 equ 156
+xmm4shuffle2131 equ 157
+xmm4shuffle2132 equ 158
+xmm4shuffle2133 equ 159
+xmm4shuffle2200 equ 160
+xmm4shuffle2201 equ 161
+xmm4shuffle2202 equ 162
+xmm4shuffle2203 equ 163
+xmm4shuffle2210 equ 164
+xmm4shuffle2211 equ 165
+xmm4shuffle2212 equ 166
+xmm4shuffle2213 equ 167
+xmm4shuffle2220 equ 168
+xmm4shuffle2221 equ 169
+xmm4shuffle2222 equ 170
+xmm4shuffle2223 equ 171
+xmm4shuffle2230 equ 172
+xmm4shuffle2231 equ 173
+xmm4shuffle2232 equ 174
+xmm4shuffle2233 equ 175
+xmm4shuffle2300 equ 176
+xmm4shuffle2301 equ 177
+xmm4shuffle2302 equ 178
+xmm4shuffle2303 equ 179
+xmm4shuffle2310 equ 180
+xmm4shuffle2311 equ 181
+xmm4shuffle2312 equ 182
+xmm4shuffle2313 equ 183
+xmm4shuffle2320 equ 184
+xmm4shuffle2321 equ 185
+xmm4shuffle2322 equ 186
+xmm4shuffle2323 equ 187
+xmm4shuffle2330 equ 188
+xmm4shuffle2331 equ 189
+xmm4shuffle2332 equ 190
+xmm4shuffle2333 equ 191
+xmm4shuffle3000 equ 192
+xmm4shuffle3001 equ 193
+xmm4shuffle3002 equ 194
+xmm4shuffle3003 equ 195
+xmm4shuffle3010 equ 196
+xmm4shuffle3011 equ 197
+xmm4shuffle3012 equ 198
+xmm4shuffle3013 equ 199
+xmm4shuffle3020 equ 200
+xmm4shuffle3021 equ 201
+xmm4shuffle3022 equ 202
+xmm4shuffle3023 equ 203
+xmm4shuffle3030 equ 204
+xmm4shuffle3031 equ 205
+xmm4shuffle3032 equ 206
+xmm4shuffle3033 equ 207
+xmm4shuffle3100 equ 208
+xmm4shuffle3101 equ 209
+xmm4shuffle3102 equ 210
+xmm4shuffle3103 equ 211
+xmm4shuffle3110 equ 212
+xmm4shuffle3111 equ 213
+xmm4shuffle3112 equ 214
+xmm4shuffle3113 equ 215
+xmm4shuffle3120 equ 216
+xmm4shuffle3121 equ 217
+xmm4shuffle3122 equ 218
+xmm4shuffle3123 equ 219
+xmm4shuffle3130 equ 220
+xmm4shuffle3131 equ 221
+xmm4shuffle3132 equ 222
+xmm4shuffle3133 equ 223
+xmm4shuffle3200 equ 224
+xmm4shuffle3201 equ 225
+xmm4shuffle3202 equ 226
+xmm4shuffle3203 equ 227
+xmm4shuffle3210 equ 228
+xmm4shuffle3211 equ 229
+xmm4shuffle3212 equ 230
+xmm4shuffle3213 equ 231
+xmm4shuffle3220 equ 232
+xmm4shuffle3221 equ 233
+xmm4shuffle3222 equ 234
+xmm4shuffle3223 equ 235
+xmm4shuffle3230 equ 236
+xmm4shuffle3231 equ 237
+xmm4shuffle3232 equ 238
+xmm4shuffle3233 equ 239
+xmm4shuffle3300 equ 240
+xmm4shuffle3301 equ 241
+xmm4shuffle3302 equ 242
+xmm4shuffle3303 equ 243
+xmm4shuffle3310 equ 244
+xmm4shuffle3311 equ 245
+xmm4shuffle3312 equ 246
+xmm4shuffle3313 equ 247
+xmm4shuffle3320 equ 248
+xmm4shuffle3321 equ 249
+xmm4shuffle3322 equ 250
+xmm4shuffle3323 equ 251
+xmm4shuffle3330 equ 252
+xmm4shuffle3331 equ 253
+xmm4shuffle3332 equ 254
+xmm4shuffle3333 equ 255
+
+uXm_xmm4shuffled_ps macro reg0, reg1, reg2
+	.switch reg2
+	.case xmm4shuffle0000
+		shufps				reg0,			reg1,			xmm4shuffle0000
+		.break
+	.case xmm4shuffle0001
+		shufps				reg0,			reg1,			xmm4shuffle0001
+		.break
+	.case xmm4shuffle0002
+		shufps				reg0,			reg1,			xmm4shuffle0002
+		.break
+	.case xmm4shuffle0003
+		shufps				reg0,			reg1,			xmm4shuffle0003
+		.break
+	.case xmm4shuffle0010
+		shufps				reg0,			reg1,			xmm4shuffle0010
+		.break
+	.case xmm4shuffle0011
+		shufps				reg0,			reg1,			xmm4shuffle0011
+		.break
+	.case xmm4shuffle0012
+		shufps				reg0,			reg1,			xmm4shuffle0012
+		.break
+	.case xmm4shuffle0013
+		shufps				reg0,			reg1,			xmm4shuffle0013
+		.break
+	.case xmm4shuffle0020
+		shufps				reg0,			reg1,			xmm4shuffle0020
+		.break
+	.case xmm4shuffle0021
+		shufps				reg0,			reg1,			xmm4shuffle0021
+		.break
+	.case xmm4shuffle0022
+		shufps				reg0,			reg1,			xmm4shuffle0022
+		.break
+	.case xmm4shuffle0023
+		shufps				reg0,			reg1,			xmm4shuffle0023
+		.break
+	.case xmm4shuffle0030
+		shufps				reg0,			reg1,			xmm4shuffle0030
+		.break
+	.case xmm4shuffle0031
+		shufps				reg0,			reg1,			xmm4shuffle0031
+		.break
+	.case xmm4shuffle0032
+		shufps				reg0,			reg1,			xmm4shuffle0032
+		.break
+	.case xmm4shuffle0033
+		shufps				reg0,			reg1,			xmm4shuffle0033
+		.break
+	.case xmm4shuffle0100
+		shufps				reg0,			reg1,			xmm4shuffle0100
+		.break
+	.case xmm4shuffle0101
+		shufps				reg0,			reg1,			xmm4shuffle0101
+		.break
+	.case xmm4shuffle0102
+		shufps				reg0,			reg1,			xmm4shuffle0102
+		.break
+	.case xmm4shuffle0103
+		shufps				reg0,			reg1,			xmm4shuffle0103
+		.break
+	.case xmm4shuffle0110
+		shufps				reg0,			reg1,			xmm4shuffle0110
+		.break
+	.case xmm4shuffle0111
+		shufps				reg0,			reg1,			xmm4shuffle0111
+		.break
+	.case xmm4shuffle0112
+		shufps				reg0,			reg1,			xmm4shuffle0112
+		.break
+	.case xmm4shuffle0113
+		shufps				reg0,			reg1,			xmm4shuffle0113
+		.break
+	.case xmm4shuffle0120
+		shufps				reg0,			reg1,			xmm4shuffle0120
+		.break
+	.case xmm4shuffle0121
+		shufps				reg0,			reg1,			xmm4shuffle0121
+		.break
+	.case xmm4shuffle0122
+		shufps				reg0,			reg1,			xmm4shuffle0122
+		.break
+	.case xmm4shuffle0123
+		shufps				reg0,			reg1,			xmm4shuffle0123
+		.break
+	.case xmm4shuffle0130
+		shufps				reg0,			reg1,			xmm4shuffle0130
+		.break
+	.case xmm4shuffle0131
+		shufps				reg0,			reg1,			xmm4shuffle0131
+		.break
+	.case xmm4shuffle0132
+		shufps				reg0,			reg1,			xmm4shuffle0132
+		.break
+	.case xmm4shuffle0133
+		shufps				reg0,			reg1,			xmm4shuffle0133
+		.break
+	.case xmm4shuffle0200
+		shufps				reg0,			reg1,			xmm4shuffle0200
+		.break
+	.case xmm4shuffle0201
+		shufps				reg0,			reg1,			xmm4shuffle0201
+		.break
+	.case xmm4shuffle0202
+		shufps				reg0,			reg1,			xmm4shuffle0202
+		.break
+	.case xmm4shuffle0203
+		shufps				reg0,			reg1,			xmm4shuffle0203
+		.break
+	.case xmm4shuffle0210
+		shufps				reg0,			reg1,			xmm4shuffle0210
+		.break
+	.case xmm4shuffle0211
+		shufps				reg0,			reg1,			xmm4shuffle0211
+		.break
+	.case xmm4shuffle0212
+		shufps				reg0,			reg1,			xmm4shuffle0212
+		.break
+	.case xmm4shuffle0213
+		shufps				reg0,			reg1,			xmm4shuffle0213
+		.break
+	.case xmm4shuffle0220
+		shufps				reg0,			reg1,			xmm4shuffle0220
+		.break
+	.case xmm4shuffle0221
+		shufps				reg0,			reg1,			xmm4shuffle0221
+		.break
+	.case xmm4shuffle0222
+		shufps				reg0,			reg1,			xmm4shuffle0222
+		.break
+	.case xmm4shuffle0223
+		shufps				reg0,			reg1,			xmm4shuffle0223
+		.break
+	.case xmm4shuffle0230
+		shufps				reg0,			reg1,			xmm4shuffle0230
+		.break
+	.case xmm4shuffle0231
+		shufps				reg0,			reg1,			xmm4shuffle0231
+		.break
+	.case xmm4shuffle0232
+		shufps				reg0,			reg1,			xmm4shuffle0232
+		.break
+	.case xmm4shuffle0233
+		shufps				reg0,			reg1,			xmm4shuffle0233
+		.break
+	.case xmm4shuffle0300
+		shufps				reg0,			reg1,			xmm4shuffle0300
+		.break
+	.case xmm4shuffle0301
+		shufps				reg0,			reg1,			xmm4shuffle0301
+		.break
+	.case xmm4shuffle0302
+		shufps				reg0,			reg1,			xmm4shuffle0302
+		.break
+	.case xmm4shuffle0303
+		shufps				reg0,			reg1,			xmm4shuffle0303
+		.break
+	.case xmm4shuffle0310
+		shufps				reg0,			reg1,			xmm4shuffle0310
+		.break
+	.case xmm4shuffle0311
+		shufps				reg0,			reg1,			xmm4shuffle0311
+		.break
+	.case xmm4shuffle0312
+		shufps				reg0,			reg1,			xmm4shuffle0312
+		.break
+	.case xmm4shuffle0313
+		shufps				reg0,			reg1,			xmm4shuffle0313
+		.break
+	.case xmm4shuffle0320
+		shufps				reg0,			reg1,			xmm4shuffle0320
+		.break
+	.case xmm4shuffle0321
+		shufps				reg0,			reg1,			xmm4shuffle0321
+		.break
+	.case xmm4shuffle0322
+		shufps				reg0,			reg1,			xmm4shuffle0322
+		.break
+	.case xmm4shuffle0323
+		shufps				reg0,			reg1,			xmm4shuffle0323
+		.break
+	.case xmm4shuffle0330
+		shufps				reg0,			reg1,			xmm4shuffle0330
+		.break
+	.case xmm4shuffle0331
+		shufps				reg0,			reg1,			xmm4shuffle0331
+		.break
+	.case xmm4shuffle0332
+		shufps				reg0,			reg1,			xmm4shuffle0332
+		.break
+	.case xmm4shuffle0333
+		shufps				reg0,			reg1,			xmm4shuffle0333
+		.break
+	.case xmm4shuffle1000
+		shufps				reg0,			reg1,			xmm4shuffle1000
+		.break
+	.case xmm4shuffle1001
+		shufps				reg0,			reg1,			xmm4shuffle1001
+		.break
+	.case xmm4shuffle1002
+		shufps				reg0,			reg1,			xmm4shuffle1002
+		.break
+	.case xmm4shuffle1003
+		shufps				reg0,			reg1,			xmm4shuffle1003
+		.break
+	.case xmm4shuffle1010
+		shufps				reg0,			reg1,			xmm4shuffle1010
+		.break
+	.case xmm4shuffle1011
+		shufps				reg0,			reg1,			xmm4shuffle1011
+		.break
+	.case xmm4shuffle1012
+		shufps				reg0,			reg1,			xmm4shuffle1012
+		.break
+	.case xmm4shuffle1013
+		shufps				reg0,			reg1,			xmm4shuffle1013
+		.break
+	.case xmm4shuffle1020
+		shufps				reg0,			reg1,			xmm4shuffle1020
+		.break
+	.case xmm4shuffle1021
+		shufps				reg0,			reg1,			xmm4shuffle1021
+		.break
+	.case xmm4shuffle1022
+		shufps				reg0,			reg1,			xmm4shuffle1022
+		.break
+	.case xmm4shuffle1023
+		shufps				reg0,			reg1,			xmm4shuffle1023
+		.break
+	.case xmm4shuffle1030
+		shufps				reg0,			reg1,			xmm4shuffle1030
+		.break
+	.case xmm4shuffle1031
+		shufps				reg0,			reg1,			xmm4shuffle1031
+		.break
+	.case xmm4shuffle1032
+		shufps				reg0,			reg1,			xmm4shuffle1032
+		.break
+	.case xmm4shuffle1033
+		shufps				reg0,			reg1,			xmm4shuffle1033
+		.break
+	.case xmm4shuffle1100
+		shufps				reg0,			reg1,			xmm4shuffle1100
+		.break
+	.case xmm4shuffle1101
+		shufps				reg0,			reg1,			xmm4shuffle1101
+		.break
+	.case xmm4shuffle1102
+		shufps				reg0,			reg1,			xmm4shuffle1102
+		.break
+	.case xmm4shuffle1103
+		shufps				reg0,			reg1,			xmm4shuffle1103
+		.break
+	.case xmm4shuffle1110
+		shufps				reg0,			reg1,			xmm4shuffle1110
+		.break
+	.case xmm4shuffle1111
+		shufps				reg0,			reg1,			xmm4shuffle1111
+		.break
+	.case xmm4shuffle1112
+		shufps				reg0,			reg1,			xmm4shuffle1112
+		.break
+	.case xmm4shuffle1113
+		shufps				reg0,			reg1,			xmm4shuffle1113
+		.break
+	.case xmm4shuffle1120
+		shufps				reg0,			reg1,			xmm4shuffle1120
+		.break
+	.case xmm4shuffle1121
+		shufps				reg0,			reg1,			xmm4shuffle1121
+		.break
+	.case xmm4shuffle1122
+		shufps				reg0,			reg1,			xmm4shuffle1122
+		.break
+	.case xmm4shuffle1123
+		shufps				reg0,			reg1,			xmm4shuffle1123
+		.break
+	.case xmm4shuffle1130
+		shufps				reg0,			reg1,			xmm4shuffle1130
+		.break
+	.case xmm4shuffle1131
+		shufps				reg0,			reg1,			xmm4shuffle1131
+		.break
+	.case xmm4shuffle1132
+		shufps				reg0,			reg1,			xmm4shuffle1132
+		.break
+	.case xmm4shuffle1133
+		shufps				reg0,			reg1,			xmm4shuffle1133
+		.break
+	.case xmm4shuffle1200
+		shufps				reg0,			reg1,			xmm4shuffle1200
+		.break
+	.case xmm4shuffle1201
+		shufps				reg0,			reg1,			xmm4shuffle1201
+		.break
+	.case xmm4shuffle1202
+		shufps				reg0,			reg1,			xmm4shuffle1202
+		.break
+	.case xmm4shuffle1203
+		shufps				reg0,			reg1,			xmm4shuffle1203
+		.break
+	.case xmm4shuffle1210
+		shufps				reg0,			reg1,			xmm4shuffle1210
+		.break
+	.case xmm4shuffle1211
+		shufps				reg0,			reg1,			xmm4shuffle1211
+		.break
+	.case xmm4shuffle1212
+		shufps				reg0,			reg1,			xmm4shuffle1212
+		.break
+	.case xmm4shuffle1213
+		shufps				reg0,			reg1,			xmm4shuffle1213
+		.break
+	.case xmm4shuffle1220
+		shufps				reg0,			reg1,			xmm4shuffle1220
+		.break
+	.case xmm4shuffle1221
+		shufps				reg0,			reg1,			xmm4shuffle1221
+		.break
+	.case xmm4shuffle1222
+		shufps				reg0,			reg1,			xmm4shuffle1222
+		.break
+	.case xmm4shuffle1223
+		shufps				reg0,			reg1,			xmm4shuffle1223
+		.break
+	.case xmm4shuffle1230
+		shufps				reg0,			reg1,			xmm4shuffle1230
+		.break
+	.case xmm4shuffle1231
+		shufps				reg0,			reg1,			xmm4shuffle1231
+		.break
+	.case xmm4shuffle1232
+		shufps				reg0,			reg1,			xmm4shuffle1232
+		.break
+	.case xmm4shuffle1233
+		shufps				reg0,			reg1,			xmm4shuffle1233
+		.break
+	.case xmm4shuffle1300
+		shufps				reg0,			reg1,			xmm4shuffle1300
+		.break
+	.case xmm4shuffle1301
+		shufps				reg0,			reg1,			xmm4shuffle1301
+		.break
+	.case xmm4shuffle1302
+		shufps				reg0,			reg1,			xmm4shuffle1302
+		.break
+	.case xmm4shuffle1303
+		shufps				reg0,			reg1,			xmm4shuffle1303
+		.break
+	.case xmm4shuffle1310
+		shufps				reg0,			reg1,			xmm4shuffle1310
+		.break
+	.case xmm4shuffle1311
+		shufps				reg0,			reg1,			xmm4shuffle1311
+		.break
+	.case xmm4shuffle1312
+		shufps				reg0,			reg1,			xmm4shuffle1312
+		.break
+	.case xmm4shuffle1313
+		shufps				reg0,			reg1,			xmm4shuffle1313
+		.break
+	.case xmm4shuffle1320
+		shufps				reg0,			reg1,			xmm4shuffle1320
+		.break
+	.case xmm4shuffle1321
+		shufps				reg0,			reg1,			xmm4shuffle1321
+		.break
+	.case xmm4shuffle1322
+		shufps				reg0,			reg1,			xmm4shuffle1322
+		.break
+	.case xmm4shuffle1323
+		shufps				reg0,			reg1,			xmm4shuffle1323
+		.break
+	.case xmm4shuffle1330
+		shufps				reg0,			reg1,			xmm4shuffle1330
+		.break
+	.case xmm4shuffle1331
+		shufps				reg0,			reg1,			xmm4shuffle1331
+		.break
+	.case xmm4shuffle1332
+		shufps				reg0,			reg1,			xmm4shuffle1332
+		.break
+	.case xmm4shuffle1333
+		shufps				reg0,			reg1,			xmm4shuffle1333
+		.break
+	.case xmm4shuffle2000
+		shufps				reg0,			reg1,			xmm4shuffle2000
+		.break
+	.case xmm4shuffle2001
+		shufps				reg0,			reg1,			xmm4shuffle2001
+		.break
+	.case xmm4shuffle2002
+		shufps				reg0,			reg1,			xmm4shuffle2002
+		.break
+	.case xmm4shuffle2003
+		shufps				reg0,			reg1,			xmm4shuffle2003
+		.break
+	.case xmm4shuffle2010
+		shufps				reg0,			reg1,			xmm4shuffle2010
+		.break
+	.case xmm4shuffle2011
+		shufps				reg0,			reg1,			xmm4shuffle2011
+		.break
+	.case xmm4shuffle2012
+		shufps				reg0,			reg1,			xmm4shuffle2012
+		.break
+	.case xmm4shuffle2013
+		shufps				reg0,			reg1,			xmm4shuffle2013
+		.break
+	.case xmm4shuffle2020
+		shufps				reg0,			reg1,			xmm4shuffle2020
+		.break
+	.case xmm4shuffle2021
+		shufps				reg0,			reg1,			xmm4shuffle2021
+		.break
+	.case xmm4shuffle2022
+		shufps				reg0,			reg1,			xmm4shuffle2022
+		.break
+	.case xmm4shuffle2023
+		shufps				reg0,			reg1,			xmm4shuffle2023
+		.break
+	.case xmm4shuffle2030
+		shufps				reg0,			reg1,			xmm4shuffle2030
+		.break
+	.case xmm4shuffle2031
+		shufps				reg0,			reg1,			xmm4shuffle2031
+		.break
+	.case xmm4shuffle2032
+		shufps				reg0,			reg1,			xmm4shuffle2032
+		.break
+	.case xmm4shuffle2033
+		shufps				reg0,			reg1,			xmm4shuffle2033
+		.break
+	.case xmm4shuffle2100
+		shufps				reg0,			reg1,			xmm4shuffle2100
+		.break
+	.case xmm4shuffle2101
+		shufps				reg0,			reg1,			xmm4shuffle2101
+		.break
+	.case xmm4shuffle2102
+		shufps				reg0,			reg1,			xmm4shuffle2102
+		.break
+	.case xmm4shuffle2103
+		shufps				reg0,			reg1,			xmm4shuffle2103
+		.break
+	.case xmm4shuffle2110
+		shufps				reg0,			reg1,			xmm4shuffle2110
+		.break
+	.case xmm4shuffle2111
+		shufps				reg0,			reg1,			xmm4shuffle2111
+		.break
+	.case xmm4shuffle2112
+		shufps				reg0,			reg1,			xmm4shuffle2112
+		.break
+	.case xmm4shuffle2113
+		shufps				reg0,			reg1,			xmm4shuffle2113
+		.break
+	.case xmm4shuffle2120
+		shufps				reg0,			reg1,			xmm4shuffle2120
+		.break
+	.case xmm4shuffle2121
+		shufps				reg0,			reg1,			xmm4shuffle2121
+		.break
+	.case xmm4shuffle2122
+		shufps				reg0,			reg1,			xmm4shuffle2122
+		.break
+	.case xmm4shuffle2123
+		shufps				reg0,			reg1,			xmm4shuffle2123
+		.break
+	.case xmm4shuffle2130
+		shufps				reg0,			reg1,			xmm4shuffle2130
+		.break
+	.case xmm4shuffle2131
+		shufps				reg0,			reg1,			xmm4shuffle2131
+		.break
+	.case xmm4shuffle2132
+		shufps				reg0,			reg1,			xmm4shuffle2132
+		.break
+	.case xmm4shuffle2133
+		shufps				reg0,			reg1,			xmm4shuffle2133
+		.break
+	.case xmm4shuffle2200
+		shufps				reg0,			reg1,			xmm4shuffle2200
+		.break
+	.case xmm4shuffle2201
+		shufps				reg0,			reg1,			xmm4shuffle2201
+		.break
+	.case xmm4shuffle2202
+		shufps				reg0,			reg1,			xmm4shuffle2202
+		.break
+	.case xmm4shuffle2203
+		shufps				reg0,			reg1,			xmm4shuffle2203
+		.break
+	.case xmm4shuffle2210
+		shufps				reg0,			reg1,			xmm4shuffle2210
+		.break
+	.case xmm4shuffle2211
+		shufps				reg0,			reg1,			xmm4shuffle2211
+		.break
+	.case xmm4shuffle2212
+		shufps				reg0,			reg1,			xmm4shuffle2212
+		.break
+	.case xmm4shuffle2213
+		shufps				reg0,			reg1,			xmm4shuffle2213
+		.break
+	.case xmm4shuffle2220
+		shufps				reg0,			reg1,			xmm4shuffle2220
+		.break
+	.case xmm4shuffle2221
+		shufps				reg0,			reg1,			xmm4shuffle2221
+		.break
+	.case xmm4shuffle2222
+		shufps				reg0,			reg1,			xmm4shuffle2222
+		.break
+	.case xmm4shuffle2223
+		shufps				reg0,			reg1,			xmm4shuffle2223
+		.break
+	.case xmm4shuffle2230
+		shufps				reg0,			reg1,			xmm4shuffle2230
+		.break
+	.case xmm4shuffle2231
+		shufps				reg0,			reg1,			xmm4shuffle2231
+		.break
+	.case xmm4shuffle2232
+		shufps				reg0,			reg1,			xmm4shuffle2232
+		.break
+	.case xmm4shuffle2233
+		shufps				reg0,			reg1,			xmm4shuffle2233
+		.break
+	.case xmm4shuffle2300
+		shufps				reg0,			reg1,			xmm4shuffle2300
+		.break
+	.case xmm4shuffle2301
+		shufps				reg0,			reg1,			xmm4shuffle2301
+		.break
+	.case xmm4shuffle2302
+		shufps				reg0,			reg1,			xmm4shuffle2302
+		.break
+	.case xmm4shuffle2303
+		shufps				reg0,			reg1,			xmm4shuffle2303
+		.break
+	.case xmm4shuffle2310
+		shufps				reg0,			reg1,			xmm4shuffle2310
+		.break
+	.case xmm4shuffle2311
+		shufps				reg0,			reg1,			xmm4shuffle2311
+		.break
+	.case xmm4shuffle2312
+		shufps				reg0,			reg1,			xmm4shuffle2312
+		.break
+	.case xmm4shuffle2313
+		shufps				reg0,			reg1,			xmm4shuffle2313
+		.break
+	.case xmm4shuffle2320
+		shufps				reg0,			reg1,			xmm4shuffle2320
+		.break
+	.case xmm4shuffle2321
+		shufps				reg0,			reg1,			xmm4shuffle2321
+		.break
+	.case xmm4shuffle2322
+		shufps				reg0,			reg1,			xmm4shuffle2322
+		.break
+	.case xmm4shuffle2323
+		shufps				reg0,			reg1,			xmm4shuffle2323
+		.break
+	.case xmm4shuffle2330
+		shufps				reg0,			reg1,			xmm4shuffle2330
+		.break
+	.case xmm4shuffle2331
+		shufps				reg0,			reg1,			xmm4shuffle2331
+		.break
+	.case xmm4shuffle2332
+		shufps				reg0,			reg1,			xmm4shuffle2332
+		.break
+	.case xmm4shuffle2333
+		shufps				reg0,			reg1,			xmm4shuffle2333
+		.break
+	.case xmm4shuffle3000
+		shufps				reg0,			reg1,			xmm4shuffle3000
+		.break
+	.case xmm4shuffle3001
+		shufps				reg0,			reg1,			xmm4shuffle3001
+		.break
+	.case xmm4shuffle3002
+		shufps				reg0,			reg1,			xmm4shuffle3002
+		.break
+	.case xmm4shuffle3003
+		shufps				reg0,			reg1,			xmm4shuffle3003
+		.break
+	.case xmm4shuffle3010
+		shufps				reg0,			reg1,			xmm4shuffle3010
+		.break
+	.case xmm4shuffle3011
+		shufps				reg0,			reg1,			xmm4shuffle3011
+		.break
+	.case xmm4shuffle3012
+		shufps				reg0,			reg1,			xmm4shuffle3012
+		.break
+	.case xmm4shuffle3013
+		shufps				reg0,			reg1,			xmm4shuffle3013
+		.break
+	.case xmm4shuffle3020
+		shufps				reg0,			reg1,			xmm4shuffle3020
+		.break
+	.case xmm4shuffle3021
+		shufps				reg0,			reg1,			xmm4shuffle3021
+		.break
+	.case xmm4shuffle3022
+		shufps				reg0,			reg1,			xmm4shuffle3022
+		.break
+	.case xmm4shuffle3023
+		shufps				reg0,			reg1,			xmm4shuffle3023
+		.break
+	.case xmm4shuffle3030
+		shufps				reg0,			reg1,			xmm4shuffle3030
+		.break
+	.case xmm4shuffle3031
+		shufps				reg0,			reg1,			xmm4shuffle3031
+		.break
+	.case xmm4shuffle3032
+		shufps				reg0,			reg1,			xmm4shuffle3032
+		.break
+	.case xmm4shuffle3033
+		shufps				reg0,			reg1,			xmm4shuffle3033
+		.break
+	.case xmm4shuffle3100
+		shufps				reg0,			reg1,			xmm4shuffle3100
+		.break
+	.case xmm4shuffle3101
+		shufps				reg0,			reg1,			xmm4shuffle3101
+		.break
+	.case xmm4shuffle3102
+		shufps				reg0,			reg1,			xmm4shuffle3102
+		.break
+	.case xmm4shuffle3103
+		shufps				reg0,			reg1,			xmm4shuffle3103
+		.break
+	.case xmm4shuffle3110
+		shufps				reg0,			reg1,			xmm4shuffle3110
+		.break
+	.case xmm4shuffle3111
+		shufps				reg0,			reg1,			xmm4shuffle3111
+		.break
+	.case xmm4shuffle3112
+		shufps				reg0,			reg1,			xmm4shuffle3112
+		.break
+	.case xmm4shuffle3113
+		shufps				reg0,			reg1,			xmm4shuffle3113
+		.break
+	.case xmm4shuffle3120
+		shufps				reg0,			reg1,			xmm4shuffle3120
+		.break
+	.case xmm4shuffle3121
+		shufps				reg0,			reg1,			xmm4shuffle3121
+		.break
+	.case xmm4shuffle3122
+		shufps				reg0,			reg1,			xmm4shuffle3122
+		.break
+	.case xmm4shuffle3123
+		shufps				reg0,			reg1,			xmm4shuffle3123
+		.break
+	.case xmm4shuffle3130
+		shufps				reg0,			reg1,			xmm4shuffle3130
+		.break
+	.case xmm4shuffle3131
+		shufps				reg0,			reg1,			xmm4shuffle3131
+		.break
+	.case xmm4shuffle3132
+		shufps				reg0,			reg1,			xmm4shuffle3132
+		.break
+	.case xmm4shuffle3133
+		shufps				reg0,			reg1,			xmm4shuffle3133
+		.break
+	.case xmm4shuffle3200
+		shufps				reg0,			reg1,			xmm4shuffle3200
+		.break
+	.case xmm4shuffle3201
+		shufps				reg0,			reg1,			xmm4shuffle3201
+		.break
+	.case xmm4shuffle3202
+		shufps				reg0,			reg1,			xmm4shuffle3202
+		.break
+	.case xmm4shuffle3203
+		shufps				reg0,			reg1,			xmm4shuffle3203
+		.break
+	.case xmm4shuffle3210
+		shufps				reg0,			reg1,			xmm4shuffle3210
+		.break
+	.case xmm4shuffle3211
+		shufps				reg0,			reg1,			xmm4shuffle3211
+		.break
+	.case xmm4shuffle3212
+		shufps				reg0,			reg1,			xmm4shuffle3212
+		.break
+	.case xmm4shuffle3213
+		shufps				reg0,			reg1,			xmm4shuffle3213
+		.break
+	.case xmm4shuffle3220
+		shufps				reg0,			reg1,			xmm4shuffle3220
+		.break
+	.case xmm4shuffle3221
+		shufps				reg0,			reg1,			xmm4shuffle3221
+		.break
+	.case xmm4shuffle3222
+		shufps				reg0,			reg1,			xmm4shuffle3222
+		.break
+	.case xmm4shuffle3223
+		shufps				reg0,			reg1,			xmm4shuffle3223
+		.break
+	.case xmm4shuffle3230
+		shufps				reg0,			reg1,			xmm4shuffle3230
+		.break
+	.case xmm4shuffle3231
+		shufps				reg0,			reg1,			xmm4shuffle3231
+		.break
+	.case xmm4shuffle3232
+		shufps				reg0,			reg1,			xmm4shuffle3232
+		.break
+	.case xmm4shuffle3233
+		shufps				reg0,			reg1,			xmm4shuffle3233
+		.break
+	.case xmm4shuffle3300
+		shufps				reg0,			reg1,			xmm4shuffle3300
+		.break
+	.case xmm4shuffle3301
+		shufps				reg0,			reg1,			xmm4shuffle3301
+		.break
+	.case xmm4shuffle3302
+		shufps				reg0,			reg1,			xmm4shuffle3302
+		.break
+	.case xmm4shuffle3303
+		shufps				reg0,			reg1,			xmm4shuffle3303
+		.break
+	.case xmm4shuffle3310
+		shufps				reg0,			reg1,			xmm4shuffle3310
+		.break
+	.case xmm4shuffle3311
+		shufps				reg0,			reg1,			xmm4shuffle3311
+		.break
+	.case xmm4shuffle3312
+		shufps				reg0,			reg1,			xmm4shuffle3312
+		.break
+	.case xmm4shuffle3313
+		shufps				reg0,			reg1,			xmm4shuffle3313
+		.break
+	.case xmm4shuffle3320
+		shufps				reg0,			reg1,			xmm4shuffle3320
+		.break
+	.case xmm4shuffle3321
+		shufps				reg0,			reg1,			xmm4shuffle3321
+		.break
+	.case xmm4shuffle3322
+		shufps				reg0,			reg1,			xmm4shuffle3322
+		.break
+	.case xmm4shuffle3323
+		shufps				reg0,			reg1,			xmm4shuffle3323
+		.break
+	.case xmm4shuffle3330
+		shufps				reg0,			reg1,			xmm4shuffle3330
+		.break
+	.case xmm4shuffle3331
+		shufps				reg0,			reg1,			xmm4shuffle3331
+		.break
+	.case xmm4shuffle3332
+		shufps				reg0,			reg1,			xmm4shuffle3332
+		.break
+	.case xmm4shuffle3333
+		shufps				reg0,			reg1,			xmm4shuffle3333
+		.break
+	.endswitch
+endm
+
+;uXm_xmm_shuffled4 macro reg0, reg1, reg2
+;	.switch reg2
+;	.case uXm_xmm_shuffle4(0,0,0,0)
+;		shufps				reg0,			reg1,			uXm_xmm_shuffle4(0,0,0,0)
+;		.break
+;	.case uXm_xmm_shuffle4(0,0,0,1)
+;		shufps				reg0,			reg1,			uXm_xmm_shuffle4(0,0,0,1)
+;		.break
+;	.case uXm_xmm_shuffle4(0,0,1,1)
+;		shufps				reg0,			reg1,			uXm_xmm_shuffle4(0,0,1,1)
+;		.break
+;	.case uXm_xmm_shuffle4(0,1,1,1)
+;		shufps				reg0,			reg1,			uXm_xmm_shuffle4(0,1,1,1)
+;		.break
+;	.case uXm_xmm_shuffle4(1,1,1,1)
+;		shufps				reg0,			reg1,			uXm_xmm_shuffle4(1,1,1,1)
+;		.break
+;	.case uXm_xmm_shuffle4(0,0,0,0)
+;		shufps				reg0,			reg1,			uXm_xmm_shuffle4(0,0,0,0)
+;		.break
+;	.case uXm_xmm_shuffle4(0,0,0,0)
+;		shufps				reg0,			reg1,			uXm_xmm_shuffle4(0,0,0,0)
+;		.break
+;	.case uXm_xmm_shuffle4(0,0,0,0)
+;		shufps				reg0,			reg1,			uXm_xmm_shuffle4(0,0,0,0)
+;		.break
+;	.endswitch
+;endm

@@ -67,6 +67,31 @@ ifdef WINDOWS
 		;Parameters RCX/XMM0, RDX/XMM1, R8/XMM2, R9/XMM3 + XMM0-XMM5/YMM0-YMM5
 		;Preserve RBX, RBP, RDI, RSI, RSP, R12, R13, R14, R15, XMM6:XMM15
 		;Return EAX:EDX/XMM0:XMM3
+
+		;64bits
+		rreturn		textequ		<rax>
+		rparam1		textequ		<rcx>
+		rparam2		textequ		<rdx>
+		rparam3		textequ		<r8>
+		rparam4		textequ		<r9>
+		;32bits
+		dreturn		textequ		<eax>
+		dparam1		textequ		<ecx>
+		dparam2		textequ		<edx>
+		dparam3		textequ		<r8d>
+		dparam4		textequ		<r9d>
+		;16bits
+		wreturn		textequ		<ax>
+		wparam1		textequ		<cx>
+		wparam2		textequ		<dx>
+		wparam3		textequ		<r8w>
+		wparam4		textequ		<r9w>
+		;8bits
+		breturn		textequ		<al>
+		bparam1		textequ		<cl>
+		bparam2		textequ		<dl>
+		bparam3		textequ		<r8b>
+		bparam4		textequ		<r9b>
 	else ;__X64__
 		ifdef __X32_VECTORCALL__ ;not available with uasm macrolib
 			ifndef DEFINED_VECTORCALL
@@ -85,6 +110,12 @@ ifdef WINDOWS
 			;Preserve EBX
 			;Return EAX:EDX/XMM0:XMM3
 		endif
+		ereturn		textequ		<eax>
+		rreturn		textequ		<eax>
+		eparam1		textequ		<ecx>
+		eparam2		textequ		<edx>
+		rparam1		textequ		<ecx>
+		rparam2		textequ		<edx>
 	endif ;__X64__
 else ;WINDOWS
 	ifdef __X64__
@@ -95,6 +126,12 @@ else ;WINDOWS
 		;Parameters RDI, RSI, RDX, RCX, R8, R9, XMM0–XMM7/YMM0–YMM7
 		;Preserve RBX, RSP, RBP, R12, R13, R14, R15
 		;Return EAX:EDX/XMM0:XMM3
+		ereturn		textequ		<eax>
+		rreturn		textequ		<eax>
+		eparam1		textequ		<edi>
+		eparam2		textequ		<esi>
+		rparam1		textequ		<rdi>
+		rparam2		textequ		<rsi>
 	else ;__X64__
 		ifdef __X32_SYSTEMV__
 			ifndef DEFINED_SYSTEMV
@@ -113,6 +150,12 @@ else ;WINDOWS
 			;Preserve EBX
 			;Return EAX:EDX/XMM0:XMM3
 		endif
+		ereturn		textequ		<eax>
+		rreturn		textequ		<eax>
+		eparam1		textequ		<ecx>
+		eparam2		textequ		<edx>
+		rparam1		textequ		<ecx>
+		rparam2		textequ		<edx>
 	endif ;__X64__
 endif ;WINDOWS
 
@@ -156,10 +199,8 @@ else
 	size_t_size	equ		4
 endif ;__X64__
 
-bool			textequ		<dword>
-dbool			textequ		<dd>
-false	equ		0
-true	equ		1
+false	equ		0h
+true	equ		1h
 
 ; /* EFLAGS %eax=00H, %ebx=00H */
 bit_CPUID 					equ		00200000h	; 1 << 21

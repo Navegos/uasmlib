@@ -40,12 +40,15 @@
     <ClInclude Include="..\..\..\include\uXmPreprocessor.h" />
     <ClInclude Include="..\..\..\include\uXmTypes.h" />
     <ClInclude Include="..\..\..\include\uXmVers.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXmemmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXmsseIntrin.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXmsseStructs.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXmxmmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmemmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmmmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmmmxIntrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmmmxStructs.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmsseIntrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmsseStructs.h" />
     <ClInclude Include="..\..\..\include\x86\uXmx86Cpu.h" />
     <ClInclude Include="..\..\..\include\x86\uXmx86Intrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmxmmintrin.h" />
     <ClInclude Include="..\..\resource\resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +60,7 @@
     <None Include="..\..\..\.gitignore" />
     <None Include="..\..\..\src\x86\asm\uXmx86asm.inc" />
     <None Include="..\..\..\src\x86\asm\uXmx86cpu.inc" />
+    <None Include="..\..\..\src\x86\SSE\asm\uXmxmmintrin.inc" />
     <None Include="..\..\..\src\x86\SSE\asm\xmmtypes.inc" />
     <None Include="..\export\uasmlib-export.def" />
   </ItemGroup>
@@ -145,7 +149,7 @@
       <PreprocessorDefinitions>WIN32;_WIN32;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <OmitFramePointers />
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../../../include;../../../include/x86;../../../include/x86/SSE;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../include;../../../include/x86;</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
     </ClCompile>
@@ -176,7 +180,7 @@ copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win32\vc14</Command>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>__x64__;WIN64;_WIN64;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../../../include;../../../include/x86;../../../include/x86/SSE;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../include;../../../include/x86;</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
     </ClCompile>
@@ -208,7 +212,7 @@ copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win64\vc14</Command>
       <DebugInformationFormat>None</DebugInformationFormat>
       <OmitFramePointers />
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../../../include;../../../include/x86;../../../include/x86/SSE;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../include;../../../include/x86;</AdditionalIncludeDirectories>
       <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
     </ClCompile>
     <Link>
@@ -238,7 +242,7 @@ copy $(OutDir)$(TargetName).lib $(UASMLIB_PATH)\lib\Win32\vc14</Command>
       <PreprocessorDefinitions>__x64__;WIN64;_WIN64;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DebugInformationFormat>None</DebugInformationFormat>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../../../include;../../../include/x86;../../../include/x86/SSE;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../include;../../../include/x86;</AdditionalIncludeDirectories>
       <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
     </ClCompile>
     <Link>

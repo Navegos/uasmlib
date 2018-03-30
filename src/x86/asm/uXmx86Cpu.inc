@@ -255,178 +255,178 @@ UX_ENDMETHODS
 	var_intrinset						dd 0
 	
 	; /* EFLAGS %eax=00H, %ebx=00H */
-	var_CPUID 							dd 0
+	var_CPUID 							db 0
 
 	; /* %eax=00H, %ecx */
-	var_ntel							dd 0	; 'GenuineIntel'
-	var_cAMD							dd 0	; 'AuthenticAMD'
+	var_ntel							db 0	; 'GenuineIntel'
+	var_cAMD							db 0	; 'AuthenticAMD'
 	
 	; /* %eax=00H, %ebx */
-	var_Cent							dd 0	; 'CentaurHauls'
-	var_VIA								dd 0	; 'VIA VIA VIA'
-	var_Cyri							dd 0	; 'CyrixInstead'
-	var_NexG							dd 0	; 'NexGenDriven'
+	var_Cent							db 0	; 'CentaurHauls'
+	var_VIA								db 0	; 'VIA VIA VIA'
+	var_Cyri							db 0	; 'CyrixInstead'
+	var_NexG							db 0	; 'NexGenDriven'
 
 	;/* %eax=01H, %ecx */
-	var_SSE3							dd 0
-	var_PCLMULQDQ						dd 0
-	var_MONITOR							dd 0
-	var_SSSE3							dd 0
-	var_FMA								dd 0
-	var_CMPXCHG16B						dd 0
-	var_SSE41							dd 0
-	var_SSE42							dd 0
-	var_MOVBE							dd 0
-	var_POPCNT							dd 0
-	var_AES								dd 0
-	var_XSAVE							dd 0
-	var_OSXSAVE							dd 0
-	var_AVX								dd 0
-	var_F16C							dd 0
-	var_RDRAND							dd 0
+	var_SSE3							db 0
+	var_PCLMULQDQ						db 0
+	var_MONITOR							db 0
+	var_SSSE3							db 0
+	var_FMA								db 0
+	var_CMPXCHG16B						db 0
+	var_SSE41							db 0
+	var_SSE42							db 0
+	var_MOVBE							db 0
+	var_POPCNT							db 0
+	var_AES								db 0
+	var_XSAVE							db 0
+	var_OSXSAVE							db 0
+	var_AVX								db 0
+	var_F16C							db 0
+	var_RDRAND							db 0
 
 	;/* %eax=01H, %edx */
-	var_FPU								dd 0
-	var_TSC								dd 0
-	var_MSR								dd 0
-	var_CMPXCHG8B						dd 0
-	var_SEP								dd 0
-	var_CMOV							dd 0
-	var_CLFSH							dd 0
-	var_MMX								dd 0
-	var_FXSR							dd 0
-	var_SSE   							dd 0
-	var_SSE2							dd 0
+	var_FPU								db 0
+	var_TSC								db 0
+	var_MSR								db 0
+	var_CMPXCHG8B						db 0
+	var_SEP								db 0
+	var_CMOV							db 0
+	var_CLFSH							db 0
+	var_MMX								db 0
+	var_FXSR							db 0
+	var_SSE   							db 0
+	var_SSE2							db 0
 
 	;/* %eax=07H, %ebx */
-	var_FSGSBASE						dd 0
-	var_SGX								dd 0
-	var_BMI1							dd 0
-	var_HLE								dd 0
-	var_AVX2							dd 0
-	var_SMEP							dd 0
-	var_BMI2							dd 0
-	var_ERMS							dd 0
-	var_INVPCID							dd 0
-	var_RTM								dd 0
-	var_MPX								dd 0
-	var_AVX512F							dd 0
-	var_AVX512DQ						dd 0
-	var_RDSEED							dd 0
-	var_ADX								dd 0
-	var_SMAP							dd 0
-	var_AVX512_IFMA						dd 0
-	var_CLFLUSHOPT						dd 0
-	var_CLWB							dd 0
-	var_AVX512PF						dd 0
-	var_AVX512ER						dd 0
-	var_AVX512CD						dd 0
-	var_SHA								dd 0
-	var_AVX512BW						dd 0
-	var_AVX512VL						dd 0
+	var_FSGSBASE						db 0
+	var_SGX								db 0
+	var_BMI1							db 0
+	var_HLE								db 0
+	var_AVX2							db 0
+	var_SMEP							db 0
+	var_BMI2							db 0
+	var_ERMS							db 0
+	var_INVPCID							db 0
+	var_RTM								db 0
+	var_MPX								db 0
+	var_AVX512F							db 0
+	var_AVX512DQ						db 0
+	var_RDSEED							db 0
+	var_ADX								db 0
+	var_SMAP							db 0
+	var_AVX512_IFMA						db 0
+	var_CLFLUSHOPT						db 0
+	var_CLWB							db 0
+	var_AVX512PF						db 0
+	var_AVX512ER						db 0
+	var_AVX512CD						db 0
+	var_SHA								db 0
+	var_AVX512BW						db 0
+	var_AVX512VL						db 0
 
 	;/* %eax=07H, %ecx */
-	var_PREFETCHWT1						dd 0
-	var_AVX512_VBMI						dd 0
-	var_UMIP							dd 0
-	var_PKU								dd 0
-	var_OSPKE							dd 0
-	var_AVX512_VBMI2					dd 0
-	var_GFNI							dd 0
-	var_VAES							dd 0
-	var_VPCLMULQDQ						dd 0
-	var_AVX512_VNNI						dd 0
-	var_AVX512_BITALG					dd 0
-	var_AVX512_VPOPCNTDQ				dd 0
-	var_RDPID							dd 0
+	var_PREFETCHWT1						db 0
+	var_AVX512_VBMI						db 0
+	var_UMIP							db 0
+	var_PKU								db 0
+	var_OSPKE							db 0
+	var_AVX512_VBMI2					db 0
+	var_GFNI							db 0
+	var_VAES							db 0
+	var_VPCLMULQDQ						db 0
+	var_AVX512_VNNI						db 0
+	var_AVX512_BITALG					db 0
+	var_AVX512_VPOPCNTDQ				db 0
+	var_RDPID							db 0
 
 	;/* %eax=07H, %edx */
-	var_AVX512_4VNNIW					dd 0
-	var_AVX512_4FMAPS					dd 0
+	var_AVX512_4VNNIW					db 0
+	var_AVX512_4FMAPS					db 0
 
 	;/* %eax=80000001H, %ecx */
-	var_LAHF							dd 0
-	var_LZCNT							dd 0
-	var_ABM								dd 0
-	var_SSE4a							dd 0
-	var_PREFETCHW						dd 0
-	var_XOP								dd 0
-	var_LWP								dd 0
-	var_FMA4							dd 0
-	var_TBM								dd 0
-	var_MWAITX							dd 0
+	var_LAHF							db 0
+	var_LZCNT							db 0
+	var_ABM								db 0
+	var_SSE4a							db 0
+	var_PREFETCHW						db 0
+	var_XOP								db 0
+	var_LWP								db 0
+	var_FMA4							db 0
+	var_TBM								db 0
+	var_MWAITX							db 0
 
 	;/* %eax=80000001H, %edx */
-	var_SYSCALL							dd 0
-	var_MMXEXT							dd 0
-	var_RDTSCP							dd 0
-	var_3DNOWEXT						dd 0
-	var_3DNOW							dd 0
+	var_SYSCALL							db 0
+	var_MMXEXT							db 0
+	var_RDTSCP							db 0
+	var_3DNOWEXT						db 0
+	var_3DNOW							db 0
 
 	;/* %eax=07H, %ebx, %ecx */
-	var_AVX512_GFNI						dd 0
-	var_AVX512_GFNI_VL					dd 0
-	var_AVX512_VAES						dd 0
-	var_AVX512_VAES_VL					dd 0
-	var_AVX512_VPCLMULQDQ				dd 0
-	var_AVX512_VPCLMULQDQ_VL			dd 0
+	var_AVX512_GFNI						db 0
+	var_AVX512_GFNI_VL					db 0
+	var_AVX512_VAES						db 0
+	var_AVX512_VAES_VL					db 0
+	var_AVX512_VPCLMULQDQ				db 0
+	var_AVX512_VPCLMULQDQ_VL			db 0
 
-	var_AVX512_IFMA_VL					dd 0
-	var_AVX512_VBMI_VL					dd 0
-	var_AVX512_VBMI2_VL					dd 0
-	var_AVX512_VNNI_VL					dd 0
-	var_AVX512_BITALG_VL				dd 0
-	var_AVX512_VPOPCNTDQ_VL				dd 0
+	var_AVX512_IFMA_VL					db 0
+	var_AVX512_VBMI_VL					db 0
+	var_AVX512_VBMI2_VL					db 0
+	var_AVX512_VNNI_VL					db 0
+	var_AVX512_BITALG_VL				db 0
+	var_AVX512_VPOPCNTDQ_VL				db 0
 
-	var_AVX512BW_GFNI					dd 0
-	var_AVX512BW_GFNI_VL				dd 0
-	var_AVX512BW_VAES					dd 0
-	var_AVX512BW_VAES_VL				dd 0
-	var_AVX512BW_VPCLMULQDQ				dd 0
-	var_AVX512BW_VPCLMULQDQ_VL			dd 0
-	var_AVX512BW_VL						dd 0
+	var_AVX512BW_GFNI					db 0
+	var_AVX512BW_GFNI_VL				db 0
+	var_AVX512BW_VAES					db 0
+	var_AVX512BW_VAES_VL				db 0
+	var_AVX512BW_VPCLMULQDQ				db 0
+	var_AVX512BW_VPCLMULQDQ_VL			db 0
+	var_AVX512BW_VL						db 0
 
-	var_AVX512DQ_GFNI					dd 0
-	var_AVX512DQ_GFNI_VL				dd 0
-	var_AVX512DQ_VAES					dd 0
-	var_AVX512DQ_VAES_VL				dd 0
-	var_AVX512DQ_VPCLMULQDQ				dd 0
-	var_AVX512DQ_VPCLMULQDQ_VL			dd 0
-	var_AVX512DQ_VL						dd 0
+	var_AVX512DQ_GFNI					db 0
+	var_AVX512DQ_GFNI_VL				db 0
+	var_AVX512DQ_VAES					db 0
+	var_AVX512DQ_VAES_VL				db 0
+	var_AVX512DQ_VPCLMULQDQ				db 0
+	var_AVX512DQ_VPCLMULQDQ_VL			db 0
+	var_AVX512DQ_VL						db 0
 
-	var_AVX512CD_VL						dd 0
+	var_AVX512CD_VL						db 0
 
 	;/* %eax=07H, %ecx, %ebx | %eax=01H, %ecx , %edx */
-	var_SSE_AES							dd 0
-	var_SSE_GFNI						dd 0
-	var_SSE_PCLMULQDQ					dd 0
-	var_SSE2_AES						dd 0
-	var_SSE2_GFNI						dd 0
-	var_SSE2_PCLMULQDQ					dd 0
-	var_SSE3_AES						dd 0
-	var_SSE3_GFNI						dd 0
-	var_SSE3_PCLMULQDQ					dd 0
-	var_SSSE3_AES						dd 0
-	var_SSSE3_GFNI						dd 0
-	var_SSSE3_PCLMULQDQ					dd 0
-	var_SSE41_AES						dd 0
-	var_SSE41_GFNI						dd 0
-	var_SSE41_PCLMULQDQ					dd 0
-	var_SSE42_AES						dd 0
-	var_SSE42_GFNI						dd 0
-	var_SSE42_PCLMULQDQ					dd 0
-	var_AVX_GFNI						dd 0
-	var_AVX_VAES						dd 0
-	var_AVX_VPCLMULQDQ					dd 0
-	var_AVX2_GFNI						dd 0
-	var_AVX2_VAES						dd 0
-	var_AVX2_VPCLMULQDQ					dd 0
+	var_SSE_AES							db 0
+	var_SSE_GFNI						db 0
+	var_SSE_PCLMULQDQ					db 0
+	var_SSE2_AES						db 0
+	var_SSE2_GFNI						db 0
+	var_SSE2_PCLMULQDQ					db 0
+	var_SSE3_AES						db 0
+	var_SSE3_GFNI						db 0
+	var_SSE3_PCLMULQDQ					db 0
+	var_SSSE3_AES						db 0
+	var_SSSE3_GFNI						db 0
+	var_SSSE3_PCLMULQDQ					db 0
+	var_SSE41_AES						db 0
+	var_SSE41_GFNI						db 0
+	var_SSE41_PCLMULQDQ					db 0
+	var_SSE42_AES						db 0
+	var_SSE42_GFNI						db 0
+	var_SSE42_PCLMULQDQ					db 0
+	var_AVX_GFNI						db 0
+	var_AVX_VAES						db 0
+	var_AVX_VPCLMULQDQ					db 0
+	var_AVX2_GFNI						db 0
+	var_AVX2_VAES						db 0
+	var_AVX2_VPCLMULQDQ					db 0
 
-	var_enabled_XMM						dd 0
-	var_enabled_YMM						dd 0
-	var_enabled_ZMM						dd 0
+	var_enabled_XMM						db 0
+	var_enabled_YMM						db 0
+	var_enabled_ZMM						db 0
 	
-	var_Inited							dd 0
+	var_Inited							db 0
 		
 	var_vendor							dd 0
 	var_family							dd 0

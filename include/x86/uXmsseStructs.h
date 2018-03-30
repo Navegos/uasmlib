@@ -96,9 +96,6 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128ib
 	/** Type cast operator to convert to __uXm128i. */
 	operator __uXm128i(void) const;
 
-	/** Type cast operator to convert to __uXm128fd. */
-	operator __uXm128fd(void) const;
-
 	/** Type cast operator to convert to __uXm128fed. */
 	operator __uXm128fed(void) const;
 

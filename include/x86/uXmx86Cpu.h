@@ -247,177 +247,178 @@ public:
 	62  or above = AVX512BW
 	63  or above = AVX512VL
 	*/
-	static int uXm_CALLCONV intrinset(void);
+	static const int uXm_CALLCONV intrinset(void);
 
+	uXm_PACK1
 	/* %eax=00H, %ecx */
-	static int uXm_CALLCONV is_Intel(void);
-	static int uXm_CALLCONV is_AMD(void);
+	static const unsigned __int8 uXm_CALLCONV is_Intel(void);
+	static const unsigned __int8 uXm_CALLCONV is_AMD(void);
 
 	/* %eax=01H, %ecx */
-	static int uXm_CALLCONV has_SSE3(void);
-	static int uXm_CALLCONV has_PCLMULQDQ(void);
-	static int uXm_CALLCONV has_MONITOR(void);
-	static int uXm_CALLCONV has_SSSE3(void);
-	static int uXm_CALLCONV has_FMA(void);
-	static int uXm_CALLCONV has_CMPXCHG16B(void);
-	static int uXm_CALLCONV has_SSE41(void);
-	static int uXm_CALLCONV has_SSE42(void);
-	static int uXm_CALLCONV has_MOVBE(void);
-	static int uXm_CALLCONV has_POPCNT(void);
-	static int uXm_CALLCONV has_AES(void);
-	static int uXm_CALLCONV has_XSAVE(void);
-	static int uXm_CALLCONV has_OSXSAVE(void);
-	static int uXm_CALLCONV has_AVX(void);
-	static int uXm_CALLCONV has_F16C(void);
-	static int uXm_CALLCONV has_RDRAND(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSE3(void);
+	static const unsigned __int8 uXm_CALLCONV has_PCLMULQDQ(void);
+	static const unsigned __int8 uXm_CALLCONV has_MONITOR(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSSE3(void);
+	static const unsigned __int8 uXm_CALLCONV has_FMA(void);
+	static const unsigned __int8 uXm_CALLCONV has_CMPXCHG16B(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSE41(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSE42(void);
+	static const unsigned __int8 uXm_CALLCONV has_MOVBE(void);
+	static const unsigned __int8 uXm_CALLCONV has_POPCNT(void);
+	static const unsigned __int8 uXm_CALLCONV has_AES(void);
+	static const unsigned __int8 uXm_CALLCONV has_XSAVE(void);
+	static const unsigned __int8 uXm_CALLCONV has_OSXSAVE(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX(void);
+	static const unsigned __int8 uXm_CALLCONV has_F16C(void);
+	static const unsigned __int8 uXm_CALLCONV has_RDRAND(void);
 
 	/* %eax=01H, %edx */
-	static int uXm_CALLCONV has_FPU(void);
-	static int uXm_CALLCONV has_TSC(void);
-	static int uXm_CALLCONV has_MSR(void);
-	static int uXm_CALLCONV has_CMPXCHG8B(void);
-	static int uXm_CALLCONV has_SEP(void);
-	static int uXm_CALLCONV has_CMOV(void);
-	static int uXm_CALLCONV has_CLFSH(void);
-	static int uXm_CALLCONV has_MMX(void);
-	static int uXm_CALLCONV has_FXSR(void);
-	static int uXm_CALLCONV has_SSE(void);
-	static int uXm_CALLCONV has_SSE2(void);
+	static const unsigned __int8 uXm_CALLCONV has_FPU(void);
+	static const unsigned __int8 uXm_CALLCONV has_TSC(void);
+	static const unsigned __int8 uXm_CALLCONV has_MSR(void);
+	static const unsigned __int8 uXm_CALLCONV has_CMPXCHG8B(void);
+	static const unsigned __int8 uXm_CALLCONV has_SEP(void);
+	static const unsigned __int8 uXm_CALLCONV has_CMOV(void);
+	static const unsigned __int8 uXm_CALLCONV has_CLFSH(void);
+	static const unsigned __int8 uXm_CALLCONV has_MMX(void);
+	static const unsigned __int8 uXm_CALLCONV has_FXSR(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSE(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSE2(void);
 
 	/* %eax=07H, %ebx */
-	static int uXm_CALLCONV has_FSGSBASE(void);
-	static int uXm_CALLCONV has_SGX(void);
-	static int uXm_CALLCONV has_BMI1(void);
-	static int uXm_CALLCONV has_HLE(void);
-	static int uXm_CALLCONV has_AVX2(void);
-	static int uXm_CALLCONV has_SMEP(void);
-	static int uXm_CALLCONV has_BMI2(void);
-	static int uXm_CALLCONV has_ERMS(void);
-	static int uXm_CALLCONV has_INVPCID(void);
-	static int uXm_CALLCONV has_RTM(void);
-	static int uXm_CALLCONV has_MPX(void);
-	static int uXm_CALLCONV has_AVX512F(void);
-	static int uXm_CALLCONV has_AVX512DQ(void);
-	static int uXm_CALLCONV has_RDSEED(void);
-	static int uXm_CALLCONV has_ADX(void);
-	static int uXm_CALLCONV has_SMAP(void);
-	static int uXm_CALLCONV has_AVX512_IFMA(void);
-	static int uXm_CALLCONV has_CLFLUSHOPT(void);
-	static int uXm_CALLCONV has_CLWB(void);
-	static int uXm_CALLCONV has_AVX512PF(void);
-	static int uXm_CALLCONV has_AVX512ER(void);
-	static int uXm_CALLCONV has_AVX512CD(void);
-	static int uXm_CALLCONV has_SHA(void);
-	static int uXm_CALLCONV has_AVX512BW(void);
-	static int uXm_CALLCONV has_AVX512VL(void);
+	static const unsigned __int8 uXm_CALLCONV has_FSGSBASE(void);
+	static const unsigned __int8 uXm_CALLCONV has_SGX(void);
+	static const unsigned __int8 uXm_CALLCONV has_BMI1(void);
+	static const unsigned __int8 uXm_CALLCONV has_HLE(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX2(void);
+	static const unsigned __int8 uXm_CALLCONV has_SMEP(void);
+	static const unsigned __int8 uXm_CALLCONV has_BMI2(void);
+	static const unsigned __int8 uXm_CALLCONV has_ERMS(void);
+	static const unsigned __int8 uXm_CALLCONV has_INVPCID(void);
+	static const unsigned __int8 uXm_CALLCONV has_RTM(void);
+	static const unsigned __int8 uXm_CALLCONV has_MPX(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512F(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512DQ(void);
+	static const unsigned __int8 uXm_CALLCONV has_RDSEED(void);
+	static const unsigned __int8 uXm_CALLCONV has_ADX(void);
+	static const unsigned __int8 uXm_CALLCONV has_SMAP(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512_IFMA(void);
+	static const unsigned __int8 uXm_CALLCONV has_CLFLUSHOPT(void);
+	static const unsigned __int8 uXm_CALLCONV has_CLWB(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512PF(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512ER(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512CD(void);
+	static const unsigned __int8 uXm_CALLCONV has_SHA(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512BW(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512VL(void);
 
 	/* %eax=07H, %ecx */
-	static int uXm_CALLCONV has_PREFETCHWT1(void);
-	static int uXm_CALLCONV has_AVX512_VBMI(void);
-	static int uXm_CALLCONV has_UMIP(void);
-	static int uXm_CALLCONV has_PKU(void);
-	static int uXm_CALLCONV has_OSPKE(void);
-	static int uXm_CALLCONV has_AVX512_VBMI2(void);
-	static int uXm_CALLCONV has_GFNI(void);
-	static int uXm_CALLCONV has_VAES(void);
-	static int uXm_CALLCONV has_VPCLMULQDQ(void);
-	static int uXm_CALLCONV has_AVX512_VNNI(void);
-	static int uXm_CALLCONV has_AVX512_BITALG(void);
-	static int uXm_CALLCONV has_AVX512_VPOPCNTDQ(void);
-	static int uXm_CALLCONV has_RDPID(void);
+	static const unsigned __int8 uXm_CALLCONV has_PREFETCHWT1(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512_VBMI(void);
+	static const unsigned __int8 uXm_CALLCONV has_UMIP(void);
+	static const unsigned __int8 uXm_CALLCONV has_PKU(void);
+	static const unsigned __int8 uXm_CALLCONV has_OSPKE(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512_VBMI2(void);
+	static const unsigned __int8 uXm_CALLCONV has_GFNI(void);
+	static const unsigned __int8 uXm_CALLCONV has_VAES(void);
+	static const unsigned __int8 uXm_CALLCONV has_VPCLMULQDQ(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512_VNNI(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512_BITALG(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512_VPOPCNTDQ(void);
+	static const unsigned __int8 uXm_CALLCONV has_RDPID(void);
 
 	/* %eax=07H, %edx */
-	static int uXm_CALLCONV has_AVX512_4VNNIW(void);
-	static int uXm_CALLCONV has_AVX512_4FMAPS(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512_4VNNIW(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512_4FMAPS(void);
 
 	/* %eax=80000001H, %ecx */
-	static int uXm_CALLCONV has_LAHF(void);
-	static int uXm_CALLCONV has_LZCNT(void);
-	static int uXm_CALLCONV has_ABM(void);
-	static int uXm_CALLCONV has_SSE4a(void);
-	static int uXm_CALLCONV has_PREFETCHW(void);
-	static int uXm_CALLCONV has_XOP(void);
-	static int uXm_CALLCONV has_LWP(void);
-	static int uXm_CALLCONV has_FMA4(void);
-	static int uXm_CALLCONV has_TBM(void);
-	static int uXm_CALLCONV has_MWAITX(void);
+	static const unsigned __int8 uXm_CALLCONV has_LAHF(void);
+	static const unsigned __int8 uXm_CALLCONV has_LZCNT(void);
+	static const unsigned __int8 uXm_CALLCONV has_ABM(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSE4a(void);
+	static const unsigned __int8 uXm_CALLCONV has_PREFETCHW(void);
+	static const unsigned __int8 uXm_CALLCONV has_XOP(void);
+	static const unsigned __int8 uXm_CALLCONV has_LWP(void);
+	static const unsigned __int8 uXm_CALLCONV has_FMA4(void);
+	static const unsigned __int8 uXm_CALLCONV has_TBM(void);
+	static const unsigned __int8 uXm_CALLCONV has_MWAITX(void);
 
 	/* %eax=80000001H, %edx */
-	static int uXm_CALLCONV has_SYSCALL(void);
-	static int uXm_CALLCONV has_MMXEXT(void);
-	static int uXm_CALLCONV has_RDTSCP(void);
-	static int uXm_CALLCONV has_3DNOWEXT(void);
-	static int uXm_CALLCONV has_3DNOW(void);
+	static const unsigned __int8 uXm_CALLCONV has_SYSCALL(void);
+	static const unsigned __int8 uXm_CALLCONV has_MMXEXT(void);
+	static const unsigned __int8 uXm_CALLCONV has_RDTSCP(void);
+	static const unsigned __int8 uXm_CALLCONV has_3DNOWEXT(void);
+	static const unsigned __int8 uXm_CALLCONV has_3DNOW(void);
 
 	/* %eax=07H, %ebx, %ecx */
-	static int uXm_CALLCONV has_AVX512_GFNI(void);
-	static int uXm_CALLCONV has_AVX512_GFNI_VL(void);
-	static int uXm_CALLCONV has_AVX512_VAES(void);
-	static int uXm_CALLCONV has_AVX512_VAES_VL(void);
-	static int uXm_CALLCONV has_AVX512_VPCLMULQDQ(void);
-	static int uXm_CALLCONV has_AVX512_VPCLMULQDQ_VL(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512_GFNI(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512_GFNI_VL(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512_VAES(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512_VAES_VL(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512_VPCLMULQDQ(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512_VPCLMULQDQ_VL(void);
 
-	static int uXm_CALLCONV has_AVX512_IFMA_VL(void);
-	static int uXm_CALLCONV has_AVX512_VBMI_VL(void);
-	static int uXm_CALLCONV has_AVX512_VBMI2_VL(void);
-	static int uXm_CALLCONV has_AVX512_VNNI_VL(void);
-	static int uXm_CALLCONV has_AVX512_BITALG_VL(void);
-	static int uXm_CALLCONV has_AVX512_VPOPCNTDQ_VL(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512_IFMA_VL(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512_VBMI_VL(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512_VBMI2_VL(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512_VNNI_VL(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512_BITALG_VL(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512_VPOPCNTDQ_VL(void);
 
-	static int uXm_CALLCONV has_AVX512BW_GFNI(void);
-	static int uXm_CALLCONV has_AVX512BW_GFNI_VL(void);
-	static int uXm_CALLCONV has_AVX512BW_VAES(void);
-	static int uXm_CALLCONV has_AVX512BW_VAES_VL(void);
-	static int uXm_CALLCONV has_AVX512BW_VPCLMULQDQ(void);
-	static int uXm_CALLCONV has_AVX512BW_VPCLMULQDQ_VL(void);
-	static int uXm_CALLCONV has_AVX512BW_VL(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512BW_GFNI(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512BW_GFNI_VL(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512BW_VAES(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512BW_VAES_VL(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512BW_VPCLMULQDQ(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512BW_VPCLMULQDQ_VL(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512BW_VL(void);
 
-	static int uXm_CALLCONV has_AVX512DQ_GFNI(void);
-	static int uXm_CALLCONV has_AVX512DQ_GFNI_VL(void);
-	static int uXm_CALLCONV has_AVX512DQ_VAES(void);
-	static int uXm_CALLCONV has_AVX512DQ_VAES_VL(void);
-	static int uXm_CALLCONV has_AVX512DQ_VPCLMULQDQ(void);
-	static int uXm_CALLCONV has_AVX512DQ_VPCLMULQDQ_VL(void);
-	static int uXm_CALLCONV has_AVX512DQ_VL(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512DQ_GFNI(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512DQ_GFNI_VL(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512DQ_VAES(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512DQ_VAES_VL(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512DQ_VPCLMULQDQ(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512DQ_VPCLMULQDQ_VL(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512DQ_VL(void);
 
-	static int uXm_CALLCONV has_AVX512CD_VL(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX512CD_VL(void);
 
 	/* %eax=07H, %ecx, %ebx | %eax=01H, %ecx , %edx */
-	static int uXm_CALLCONV has_SSE_AES(void);
-	static int uXm_CALLCONV has_SSE_GFNI(void);
-	static int uXm_CALLCONV has_SSE_PCLMULQDQ(void);
-	static int uXm_CALLCONV has_SSE2_AES(void);
-	static int uXm_CALLCONV has_SSE2_GFNI(void);
-	static int uXm_CALLCONV has_SSE2_PCLMULQDQ(void);
-	static int uXm_CALLCONV has_SSE3_AES(void);
-	static int uXm_CALLCONV has_SSE3_GFNI(void);
-	static int uXm_CALLCONV has_SSE3_PCLMULQDQ(void);
-	static int uXm_CALLCONV has_SSSE3_AES(void);
-	static int uXm_CALLCONV has_SSSE3_GFNI(void);
-	static int uXm_CALLCONV has_SSSE3_PCLMULQDQ(void);
-	static int uXm_CALLCONV has_SSE41_AES(void);
-	static int uXm_CALLCONV has_SSE41_GFNI(void);
-	static int uXm_CALLCONV has_SSE41_PCLMULQDQ(void);
-	static int uXm_CALLCONV has_SSE42_AES(void);
-	static int uXm_CALLCONV has_SSE42_GFNI(void);
-	static int uXm_CALLCONV has_SSE42_PCLMULQDQ(void);
-	static int uXm_CALLCONV has_AVX_AES(void);
-	static int uXm_CALLCONV has_AVX_GFNI(void);
-	static int uXm_CALLCONV has_AVX_PCLMULQDQ(void);
-	static int uXm_CALLCONV has_AVX_VAES(void);
-	static int uXm_CALLCONV has_AVX_VPCLMULQDQ(void);
-	static int uXm_CALLCONV has_AVX2_AES(void);
-	static int uXm_CALLCONV has_AVX2_GFNI(void);
-	static int uXm_CALLCONV has_AVX2_PCLMULQDQ(void);
-	static int uXm_CALLCONV has_AVX2_VAES(void);
-	static int uXm_CALLCONV has_AVX2_VPCLMULQDQ(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSE_AES(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSE_GFNI(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSE_PCLMULQDQ(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSE2_AES(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSE2_GFNI(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSE2_PCLMULQDQ(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSE3_AES(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSE3_GFNI(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSE3_PCLMULQDQ(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSSE3_AES(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSSE3_GFNI(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSSE3_PCLMULQDQ(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSE41_AES(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSE41_GFNI(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSE41_PCLMULQDQ(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSE42_AES(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSE42_GFNI(void);
+	static const unsigned __int8 uXm_CALLCONV has_SSE42_PCLMULQDQ(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX_AES(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX_GFNI(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX_PCLMULQDQ(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX_VAES(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX_VPCLMULQDQ(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX2_AES(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX2_GFNI(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX2_PCLMULQDQ(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX2_VAES(void);
+	static const unsigned __int8 uXm_CALLCONV has_AVX2_VPCLMULQDQ(void);
 
-	static int uXm_CALLCONV has_enabled_XMM(void);
-	static int uXm_CALLCONV has_enabled_YMM(void);
-	static int uXm_CALLCONV has_enabled_ZMM(void);
+	static const unsigned __int8 uXm_CALLCONV has_enabled_XMM(void);
+	static const unsigned __int8 uXm_CALLCONV has_enabled_YMM(void);
+	static const unsigned __int8 uXm_CALLCONV has_enabled_ZMM(void);
 
 	/* Check if CPUFeatures is initiated */
-	static int uXm_CALLCONV Is_Inited(void);
+	static const unsigned __int8 uXm_CALLCONV Is_Inited(void);
 
 	uXm_PACK_POINTER
 	static void uXm_CALLCONV CpuType(int* vendor, int* family, int* model);
@@ -432,7 +433,7 @@ typedef uXmCPUFeatures puXmCPUFeatures;
 
 uXm_PACK_POP
 
-/* Assembly externals */
+/* Assembly externals *!!!DONT TOUCH!!!* */
 
 uXm_PACK_PUSH_SIZET
 
@@ -469,175 +470,179 @@ uXm_PACK_PUSH4
 ;*/
 extern int _uXmCPUFeatures_intrinset(void);
 
+uXm_PACK_POP
+
+uXm_PACK_PUSH1
+
 /* %eax=00H, %ecx */
-extern int _uXmCPUFeatures_is_Intel(void);
-extern int _uXmCPUFeatures_is_AMD(void);
+extern unsigned __int8 _uXmCPUFeatures_is_Intel(void);
+extern unsigned __int8 _uXmCPUFeatures_is_AMD(void);
 
 /* %eax=01H, %ecx */
-extern int _uXmCPUFeatures_has_SSE3(void);
-extern int _uXmCPUFeatures_has_PCLMULQDQ(void);
-extern int _uXmCPUFeatures_has_MONITOR(void);
-extern int _uXmCPUFeatures_has_SSSE3(void);
-extern int _uXmCPUFeatures_has_FMA(void);
-extern int _uXmCPUFeatures_has_CMPXCHG16B(void);
-extern int _uXmCPUFeatures_has_SSE41(void);
-extern int _uXmCPUFeatures_has_SSE42(void);
-extern int _uXmCPUFeatures_has_MOVBE(void);
-extern int _uXmCPUFeatures_has_POPCNT(void);
-extern int _uXmCPUFeatures_has_AES(void);
-extern int _uXmCPUFeatures_has_XSAVE(void);
-extern int _uXmCPUFeatures_has_OSXSAVE(void);
-extern int _uXmCPUFeatures_has_AVX(void);
-extern int _uXmCPUFeatures_has_F16C(void);
-extern int _uXmCPUFeatures_has_RDRAND(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSE3(void);
+extern unsigned __int8 _uXmCPUFeatures_has_PCLMULQDQ(void);
+extern unsigned __int8 _uXmCPUFeatures_has_MONITOR(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSSE3(void);
+extern unsigned __int8 _uXmCPUFeatures_has_FMA(void);
+extern unsigned __int8 _uXmCPUFeatures_has_CMPXCHG16B(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSE41(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSE42(void);
+extern unsigned __int8 _uXmCPUFeatures_has_MOVBE(void);
+extern unsigned __int8 _uXmCPUFeatures_has_POPCNT(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AES(void);
+extern unsigned __int8 _uXmCPUFeatures_has_XSAVE(void);
+extern unsigned __int8 _uXmCPUFeatures_has_OSXSAVE(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX(void);
+extern unsigned __int8 _uXmCPUFeatures_has_F16C(void);
+extern unsigned __int8 _uXmCPUFeatures_has_RDRAND(void);
 
 /* %eax=01H, %edx */
-extern int _uXmCPUFeatures_has_FPU(void);
-extern int _uXmCPUFeatures_has_TSC(void);
-extern int _uXmCPUFeatures_has_MSR(void);
-extern int _uXmCPUFeatures_has_CMPXCHG8B(void);
-extern int _uXmCPUFeatures_has_SEP(void);
-extern int _uXmCPUFeatures_has_CMOV(void);
-extern int _uXmCPUFeatures_has_CLFSH(void);
-extern int _uXmCPUFeatures_has_MMX(void);
-extern int _uXmCPUFeatures_has_FXSR(void);
-extern int _uXmCPUFeatures_has_SSE(void);
-extern int _uXmCPUFeatures_has_SSE2(void);
+extern unsigned __int8 _uXmCPUFeatures_has_FPU(void);
+extern unsigned __int8 _uXmCPUFeatures_has_TSC(void);
+extern unsigned __int8 _uXmCPUFeatures_has_MSR(void);
+extern unsigned __int8 _uXmCPUFeatures_has_CMPXCHG8B(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SEP(void);
+extern unsigned __int8 _uXmCPUFeatures_has_CMOV(void);
+extern unsigned __int8 _uXmCPUFeatures_has_CLFSH(void);
+extern unsigned __int8 _uXmCPUFeatures_has_MMX(void);
+extern unsigned __int8 _uXmCPUFeatures_has_FXSR(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSE(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSE2(void);
 
 /* %eax=07H, %ebx */
-extern int _uXmCPUFeatures_has_FSGSBASE(void);
-extern int _uXmCPUFeatures_has_SGX(void);
-extern int _uXmCPUFeatures_has_BMI1(void);
-extern int _uXmCPUFeatures_has_HLE(void);
-extern int _uXmCPUFeatures_has_AVX2(void);
-extern int _uXmCPUFeatures_has_SMEP(void);
-extern int _uXmCPUFeatures_has_BMI2(void);
-extern int _uXmCPUFeatures_has_ERMS(void);
-extern int _uXmCPUFeatures_has_INVPCID(void);
-extern int _uXmCPUFeatures_has_RTM(void);
-extern int _uXmCPUFeatures_has_MPX(void);
-extern int _uXmCPUFeatures_has_AVX512F(void);
-extern int _uXmCPUFeatures_has_AVX512DQ(void);
-extern int _uXmCPUFeatures_has_RDSEED(void);
-extern int _uXmCPUFeatures_has_ADX(void);
-extern int _uXmCPUFeatures_has_SMAP(void);
-extern int _uXmCPUFeatures_has_AVX512_IFMA(void);
-extern int _uXmCPUFeatures_has_CLFLUSHOPT(void);
-extern int _uXmCPUFeatures_has_CLWB(void);
-extern int _uXmCPUFeatures_has_AVX512PF(void);
-extern int _uXmCPUFeatures_has_AVX512ER(void);
-extern int _uXmCPUFeatures_has_AVX512CD(void);
-extern int _uXmCPUFeatures_has_SHA(void);
-extern int _uXmCPUFeatures_has_AVX512BW(void);
-extern int _uXmCPUFeatures_has_AVX512VL(void);
+extern unsigned __int8 _uXmCPUFeatures_has_FSGSBASE(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SGX(void);
+extern unsigned __int8 _uXmCPUFeatures_has_BMI1(void);
+extern unsigned __int8 _uXmCPUFeatures_has_HLE(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX2(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SMEP(void);
+extern unsigned __int8 _uXmCPUFeatures_has_BMI2(void);
+extern unsigned __int8 _uXmCPUFeatures_has_ERMS(void);
+extern unsigned __int8 _uXmCPUFeatures_has_INVPCID(void);
+extern unsigned __int8 _uXmCPUFeatures_has_RTM(void);
+extern unsigned __int8 _uXmCPUFeatures_has_MPX(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512F(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ(void);
+extern unsigned __int8 _uXmCPUFeatures_has_RDSEED(void);
+extern unsigned __int8 _uXmCPUFeatures_has_ADX(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SMAP(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512_IFMA(void);
+extern unsigned __int8 _uXmCPUFeatures_has_CLFLUSHOPT(void);
+extern unsigned __int8 _uXmCPUFeatures_has_CLWB(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512PF(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512ER(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512CD(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SHA(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512VL(void);
 
 /* %eax=07H, %ecx */
-extern int _uXmCPUFeatures_has_PREFETCHWT1(void);
-extern int _uXmCPUFeatures_has_AVX512_VBMI(void);
-extern int _uXmCPUFeatures_has_UMIP(void);
-extern int _uXmCPUFeatures_has_PKU(void);
-extern int _uXmCPUFeatures_has_OSPKE(void);
-extern int _uXmCPUFeatures_has_AVX512_VBMI2(void);
-extern int _uXmCPUFeatures_has_GFNI(void);
-extern int _uXmCPUFeatures_has_VAES(void);
-extern int _uXmCPUFeatures_has_VPCLMULQDQ(void);
-extern int _uXmCPUFeatures_has_AVX512_VNNI(void);
-extern int _uXmCPUFeatures_has_AVX512_BITALG(void);
-extern int _uXmCPUFeatures_has_AVX512_VPOPCNTDQ(void);
-extern int _uXmCPUFeatures_has_RDPID(void);
+extern unsigned __int8 _uXmCPUFeatures_has_PREFETCHWT1(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VBMI(void);
+extern unsigned __int8 _uXmCPUFeatures_has_UMIP(void);
+extern unsigned __int8 _uXmCPUFeatures_has_PKU(void);
+extern unsigned __int8 _uXmCPUFeatures_has_OSPKE(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VBMI2(void);
+extern unsigned __int8 _uXmCPUFeatures_has_GFNI(void);
+extern unsigned __int8 _uXmCPUFeatures_has_VAES(void);
+extern unsigned __int8 _uXmCPUFeatures_has_VPCLMULQDQ(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VNNI(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512_BITALG(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VPOPCNTDQ(void);
+extern unsigned __int8 _uXmCPUFeatures_has_RDPID(void);
 
 /* %eax=07H, %edx */
-extern int _uXmCPUFeatures_has_AVX512_4VNNIW(void);
-extern int _uXmCPUFeatures_has_AVX512_4FMAPS(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512_4VNNIW(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512_4FMAPS(void);
 
 /* %eax=80000001H, %ecx */
-extern int _uXmCPUFeatures_has_LAHF(void);
-extern int _uXmCPUFeatures_has_LZCNT(void);
-extern int _uXmCPUFeatures_has_ABM(void);
-extern int _uXmCPUFeatures_has_SSE4a(void);
-extern int _uXmCPUFeatures_has_PREFETCHW(void);
-extern int _uXmCPUFeatures_has_XOP(void);
-extern int _uXmCPUFeatures_has_LWP(void);
-extern int _uXmCPUFeatures_has_FMA4(void);
-extern int _uXmCPUFeatures_has_TBM(void);
-extern int _uXmCPUFeatures_has_MWAITX(void);
+extern unsigned __int8 _uXmCPUFeatures_has_LAHF(void);
+extern unsigned __int8 _uXmCPUFeatures_has_LZCNT(void);
+extern unsigned __int8 _uXmCPUFeatures_has_ABM(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSE4a(void);
+extern unsigned __int8 _uXmCPUFeatures_has_PREFETCHW(void);
+extern unsigned __int8 _uXmCPUFeatures_has_XOP(void);
+extern unsigned __int8 _uXmCPUFeatures_has_LWP(void);
+extern unsigned __int8 _uXmCPUFeatures_has_FMA4(void);
+extern unsigned __int8 _uXmCPUFeatures_has_TBM(void);
+extern unsigned __int8 _uXmCPUFeatures_has_MWAITX(void);
 
 /* %eax=80000001H, %edx */
-extern int _uXmCPUFeatures_has_SYSCALL(void);
-extern int _uXmCPUFeatures_has_MMXEXT(void);
-extern int _uXmCPUFeatures_has_RDTSCP(void);
-extern int _uXmCPUFeatures_has_3DNOWEXT(void);
-extern int _uXmCPUFeatures_has_3DNOW(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SYSCALL(void);
+extern unsigned __int8 _uXmCPUFeatures_has_MMXEXT(void);
+extern unsigned __int8 _uXmCPUFeatures_has_RDTSCP(void);
+extern unsigned __int8 _uXmCPUFeatures_has_3DNOWEXT(void);
+extern unsigned __int8 _uXmCPUFeatures_has_3DNOW(void);
 
 /* %eax=07H, %ebx, %ecx */
-extern int _uXmCPUFeatures_has_AVX512_GFNI(void);
-extern int _uXmCPUFeatures_has_AVX512_GFNI_VL(void);
-extern int _uXmCPUFeatures_has_AVX512_VAES(void);
-extern int _uXmCPUFeatures_has_AVX512_VAES_VL(void);
-extern int _uXmCPUFeatures_has_AVX512_VPCLMULQDQ(void);
-extern int _uXmCPUFeatures_has_AVX512_VPCLMULQDQ_VL(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512_GFNI(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512_GFNI_VL(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VAES(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VAES_VL(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VPCLMULQDQ(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VPCLMULQDQ_VL(void);
 
-extern int _uXmCPUFeatures_has_AVX512_IFMA_VL(void);
-extern int _uXmCPUFeatures_has_AVX512_VBMI_VL(void);
-extern int _uXmCPUFeatures_has_AVX512_VBMI2_VL(void);
-extern int _uXmCPUFeatures_has_AVX512_VNNI_VL(void);
-extern int _uXmCPUFeatures_has_AVX512_BITALG_VL(void);
-extern int _uXmCPUFeatures_has_AVX512_VPOPCNTDQ_VL(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512_IFMA_VL(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VBMI_VL(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VBMI2_VL(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VNNI_VL(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512_BITALG_VL(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VPOPCNTDQ_VL(void);
 
-extern int _uXmCPUFeatures_has_AVX512BW_GFNI(void);
-extern int _uXmCPUFeatures_has_AVX512BW_GFNI_VL(void);
-extern int _uXmCPUFeatures_has_AVX512BW_VAES(void);
-extern int _uXmCPUFeatures_has_AVX512BW_VAES_VL(void);
-extern int _uXmCPUFeatures_has_AVX512BW_VPCLMULQDQ(void);
-extern int _uXmCPUFeatures_has_AVX512BW_VPCLMULQDQ_VL(void);
-extern int _uXmCPUFeatures_has_AVX512BW_VL(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW_GFNI(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW_GFNI_VL(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW_VAES(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW_VAES_VL(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW_VPCLMULQDQ(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW_VPCLMULQDQ_VL(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW_VL(void);
 
-extern int _uXmCPUFeatures_has_AVX512DQ_GFNI(void);
-extern int _uXmCPUFeatures_has_AVX512DQ_GFNI_VL(void);
-extern int _uXmCPUFeatures_has_AVX512DQ_VAES(void);
-extern int _uXmCPUFeatures_has_AVX512DQ_VAES_VL(void);
-extern int _uXmCPUFeatures_has_AVX512DQ_VPCLMULQDQ(void);
-extern int _uXmCPUFeatures_has_AVX512DQ_VPCLMULQDQ_VL(void);
-extern int _uXmCPUFeatures_has_AVX512DQ_VL(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ_GFNI(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ_GFNI_VL(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ_VAES(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ_VAES_VL(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ_VPCLMULQDQ(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ_VPCLMULQDQ_VL(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ_VL(void);
 
-extern int _uXmCPUFeatures_has_AVX512CD_VL(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX512CD_VL(void);
 
 /* %eax=07H, %ecx, %ebx | %eax=01H, %ecx , %edx */
-extern int _uXmCPUFeatures_has_SSE_AES(void);
-extern int _uXmCPUFeatures_has_SSE_GFNI(void);
-extern int _uXmCPUFeatures_has_SSE_PCLMULQDQ(void);
-extern int _uXmCPUFeatures_has_SSE2_AES(void);
-extern int _uXmCPUFeatures_has_SSE2_GFNI(void);
-extern int _uXmCPUFeatures_has_SSE2_PCLMULQDQ(void);
-extern int _uXmCPUFeatures_has_SSE3_AES(void);
-extern int _uXmCPUFeatures_has_SSE3_GFNI(void);
-extern int _uXmCPUFeatures_has_SSE3_PCLMULQDQ(void);
-extern int _uXmCPUFeatures_has_SSSE3_AES(void);
-extern int _uXmCPUFeatures_has_SSSE3_GFNI(void);
-extern int _uXmCPUFeatures_has_SSSE3_PCLMULQDQ(void);
-extern int _uXmCPUFeatures_has_SSE41_AES(void);
-extern int _uXmCPUFeatures_has_SSE41_GFNI(void);
-extern int _uXmCPUFeatures_has_SSE41_PCLMULQDQ(void);
-extern int _uXmCPUFeatures_has_SSE42_AES(void);
-extern int _uXmCPUFeatures_has_SSE42_GFNI(void);
-extern int _uXmCPUFeatures_has_SSE42_PCLMULQDQ(void);
-extern int _uXmCPUFeatures_has_AVX_AES(void);
-extern int _uXmCPUFeatures_has_AVX_GFNI(void);
-extern int _uXmCPUFeatures_has_AVX_PCLMULQDQ(void);
-extern int _uXmCPUFeatures_has_AVX_VAES(void);
-extern int _uXmCPUFeatures_has_AVX_VPCLMULQDQ(void);
-extern int _uXmCPUFeatures_has_AVX2_AES(void);
-extern int _uXmCPUFeatures_has_AVX2_GFNI(void);
-extern int _uXmCPUFeatures_has_AVX2_PCLMULQDQ(void);
-extern int _uXmCPUFeatures_has_AVX2_VAES(void);
-extern int _uXmCPUFeatures_has_AVX2_VPCLMULQDQ(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSE_AES(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSE_GFNI(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSE_PCLMULQDQ(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSE2_AES(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSE2_GFNI(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSE2_PCLMULQDQ(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSE3_AES(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSE3_GFNI(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSE3_PCLMULQDQ(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSSE3_AES(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSSE3_GFNI(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSSE3_PCLMULQDQ(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSE41_AES(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSE41_GFNI(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSE41_PCLMULQDQ(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSE42_AES(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSE42_GFNI(void);
+extern unsigned __int8 _uXmCPUFeatures_has_SSE42_PCLMULQDQ(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX_AES(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX_GFNI(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX_PCLMULQDQ(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX_VAES(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX_VPCLMULQDQ(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX2_AES(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX2_GFNI(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX2_PCLMULQDQ(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX2_VAES(void);
+extern unsigned __int8 _uXmCPUFeatures_has_AVX2_VPCLMULQDQ(void);
 
-extern int _uXmCPUFeatures_has_enabled_XMM(void);
-extern int _uXmCPUFeatures_has_enabled_YMM(void);
-extern int _uXmCPUFeatures_has_enabled_ZMM(void);
+extern unsigned __int8 _uXmCPUFeatures_has_enabled_XMM(void);
+extern unsigned __int8 _uXmCPUFeatures_has_enabled_YMM(void);
+extern unsigned __int8 _uXmCPUFeatures_has_enabled_ZMM(void);
 
 /* Check if CPUFeatures is initiated */
-extern int _uXmCPUFeatures_Is_Inited(void);
+extern unsigned __int8 _uXmCPUFeatures_Is_Inited(void);
 
 uXm_PACK_POP
 

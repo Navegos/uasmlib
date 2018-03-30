@@ -22,9 +22,6 @@
     <Filter Include="Header Files\x86">
       <UniqueIdentifier>{9e0689dc-a8ba-4745-979c-31adc32782aa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\x86\SSE">
-      <UniqueIdentifier>{e56ff63c-eaab-4daa-b7dd-2ac105fd0d9a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\x86\asm\has">
       <UniqueIdentifier>{7eb78262-6499-490c-a7df-a362a3cb494b}</UniqueIdentifier>
     </Filter>
@@ -69,20 +66,29 @@
     <ClInclude Include="..\..\..\include\x86\uXmx86Cpu.h">
       <Filter>Header Files\x86</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\SSE\uXmsseStructs.h">
-      <Filter>Header Files\x86\SSE</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\SSE\uXmsseIntrin.h">
-      <Filter>Header Files\x86\SSE</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\x86\uXmx86Intrin.h">
       <Filter>Header Files\x86</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\SSE\uXmxmmintrin.h">
-      <Filter>Header Files\x86\SSE</Filter>
+    <ClInclude Include="..\..\..\include\x86\uXmemmintrin.h">
+      <Filter>Header Files\x86</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\SSE\uXmemmintrin.h">
-      <Filter>Header Files\x86\SSE</Filter>
+    <ClInclude Include="..\..\..\include\x86\uXmmmintrin.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXmmmxIntrin.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXmmmxStructs.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXmsseIntrin.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXmsseStructs.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXmxmmintrin.h">
+      <Filter>Header Files\x86</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +119,9 @@
     <None Include="..\..\..\README.md" />
     <None Include="..\..\..\src\x86\asm\uXmx86cpu.inc">
       <Filter>Source Files\x86\asm</Filter>
+    </None>
+    <None Include="..\..\..\src\x86\SSE\asm\uXmxmmintrin.inc">
+      <Filter>Source Files\x86\SSE\asm</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -25,13 +25,14 @@
 	__uXm128fd textequ <xmmword>
 	__uXm128fed textequ <xmmword>
 	
-	;include uXmx86cpua.asm
+	include uXmxmmintrin.inc
 	
 	_DATA segment
 	ifndef __X64__
 			align 4
-		xmm_has_SSE2			dd 0
+		xmm_has_SSE2			db 0
 	endif
+	_Imm8	db 0
 	_DATA ends
 
 	;CPU_Rep0 puXmCPUFeatures 0		; A global variable to hold a reference to a Person type.
@@ -51,19 +52,19 @@ uXm_xmmintrin_CPUFeatures proto UX_VECCALL
 uXm_xmmintrin_CPUFeatures proc UX_VECCALL
 			
 	ifndef __X64__
-			xor				eax,			eax
+			xor				dreturn,			dreturn
 			call			_uXmCPUFeatures_Is_Inited
-		.if(al < 1)
-			xor				ecx,			ecx
+		.if(breturn < 1)
+			xor				eparam1,			eparam1
 			call			_uXmCPUFeatures_Init
 		.endif
 			call			_uXmCPUFeatures_has_SSE2
-			mov		xmm_has_SSE2,		eax
+			mov		xmm_has_SSE2,			breturn
 	else
-			xor				rax,			rax
+			xor				rreturn,			rreturn
 			call			_uXmCPUFeatures_Is_Inited
-		.if(al < 1)
-			xor				ecx,			ecx
+		.if(breturn < 1)
+			xor				rparam1,			rparam1
 			call			_uXmCPUFeatures_Init
 		.endif
 			;mov	xmm_has_SSE2,		1
@@ -72,6 +73,10 @@ uXm_xmmintrin_CPUFeatures proc UX_VECCALL
 			ret
 uXm_xmmintrin_CPUFeatures endp
 _TEXT ends
+
+;******************
+; FP, arithmetic
+;******************
 
 _TEXT segment
 			align 16
@@ -307,6 +312,10 @@ uXm_xmm_max_ps proc UX_VECCALL (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
 uXm_xmm_max_ps endp
 _TEXT ends
 
+;******************
+; FP, logical
+;******************
+
 _TEXT segment
 			align 16
 uXm_xmm_and_ps proto UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
@@ -358,6 +367,10 @@ uXm_xmm_xor_ps proc UX_VECCALL (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
 			ret
 uXm_xmm_xor_ps endp
 _TEXT ends
+
+;******************
+; FP, comparison
+;******************
 
 _TEXT segment
 			align 16
@@ -863,18 +876,22 @@ uXm_xmm_cmpunord_ps proc UX_VECCALL (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xm
 uXm_xmm_cmpunord_ps endp
 _TEXT ends
 
+;******************
+; FP, comparison return int
+;******************
+
 _TEXT segment
 			align 16
-uXm_xmm_comieq_ss proto UX_VECCALL (dword) ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_comieq_ss proto UX_VECCALL (byte) ;InXmm_A:xmmword, InXmm_B:xmmword
 
 			align 16
-uXm_xmm_comieq_ss proc UX_VECCALL (dword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_comieq_ss proc UX_VECCALL (byte) frame ;InXmm_A:xmmword, InXmm_B:xmmword
 			
 			comiss			xmm0,			xmm1
 			je label_comieq_ss
-			xor				eax,			eax
+			xor				rreturn,			rreturn
 	label_comieq_ss:
-			mov				eax,			1
+			mov				breturn,			true
 
 			ret
 uXm_xmm_comieq_ss endp
@@ -882,16 +899,16 @@ _TEXT ends
 
 _TEXT segment
 			align 16
-uXm_xmm_comilt_ss proto UX_VECCALL (dword) ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_comilt_ss proto UX_VECCALL (byte) ;InXmm_A:xmmword, InXmm_B:xmmword
 
 			align 16
-uXm_xmm_comilt_ss proc UX_VECCALL (dword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_comilt_ss proc UX_VECCALL (byte) frame ;InXmm_A:xmmword, InXmm_B:xmmword
 			
 			comiss			xmm0,			xmm1
 			jb label_comilt_ss
-			xor				eax,			eax
+			xor				rreturn,			rreturn
 	label_comilt_ss:
-			mov				eax,			1
+			mov				breturn,			true
 
 			ret
 uXm_xmm_comilt_ss endp
@@ -899,16 +916,16 @@ _TEXT ends
 
 _TEXT segment
 			align 16
-uXm_xmm_comile_ss proto UX_VECCALL (dword) ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_comile_ss proto UX_VECCALL (byte) ;InXmm_A:xmmword, InXmm_B:xmmword
 
 			align 16
-uXm_xmm_comile_ss proc UX_VECCALL (dword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_comile_ss proc UX_VECCALL (byte) frame ;InXmm_A:xmmword, InXmm_B:xmmword
 			
 			comiss			xmm0,			xmm1
 			jbe label_comile_ss
-			xor				eax,			eax
+			xor				rreturn,			rreturn
 	label_comile_ss:
-			mov				eax,			1
+			mov				breturn,			true
 
 			ret
 uXm_xmm_comile_ss endp
@@ -916,16 +933,16 @@ _TEXT ends
 
 _TEXT segment
 			align 16
-uXm_xmm_comigt_ss proto UX_VECCALL (dword) ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_comigt_ss proto UX_VECCALL (byte) ;InXmm_A:xmmword, InXmm_B:xmmword
 
 			align 16
-uXm_xmm_comigt_ss proc UX_VECCALL (dword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_comigt_ss proc UX_VECCALL (byte) frame ;InXmm_A:xmmword, InXmm_B:xmmword
 			
 			comiss			xmm0,			xmm1
 			ja label_comigt_ss
-			xor				eax,			eax
+			xor				rreturn,			rreturn
 	label_comigt_ss:
-			mov				eax,			1
+			mov				breturn,			true
 
 			ret
 uXm_xmm_comigt_ss endp
@@ -933,16 +950,16 @@ _TEXT ends
 
 _TEXT segment
 			align 16
-uXm_xmm_comige_ss proto UX_VECCALL (dword) ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_comige_ss proto UX_VECCALL (byte) ;InXmm_A:xmmword, InXmm_B:xmmword
 
 			align 16
-uXm_xmm_comige_ss proc UX_VECCALL (dword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_comige_ss proc UX_VECCALL (byte) frame ;InXmm_A:xmmword, InXmm_B:xmmword
 			
 			comiss			xmm0,			xmm1
 			jae label_comige_ss
-			xor				eax,			eax
+			xor				rreturn,			rreturn
 	label_comige_ss:
-			mov				eax,			1
+			mov				breturn,			true
 
 			ret
 uXm_xmm_comige_ss endp
@@ -950,16 +967,16 @@ _TEXT ends
 
 _TEXT segment
 			align 16
-uXm_xmm_comineq_ss proto UX_VECCALL (dword) ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_comineq_ss proto UX_VECCALL (byte) ;InXmm_A:xmmword, InXmm_B:xmmword
 
 			align 16
-uXm_xmm_comineq_ss proc UX_VECCALL (dword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_comineq_ss proc UX_VECCALL (byte) frame ;InXmm_A:xmmword, InXmm_B:xmmword
 			
 			comiss			xmm0,			xmm1
 			jne label_comineq_ss
-			xor				eax,			eax
+			xor				rreturn,			rreturn
 	label_comineq_ss:
-			mov				eax,			1
+			mov				breturn,			true
 
 			ret
 uXm_xmm_comineq_ss endp
@@ -967,16 +984,16 @@ _TEXT ends
 
 _TEXT segment
 			align 16
-uXm_xmm_ucomieq_ss proto UX_VECCALL (dword) ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_ucomieq_ss proto UX_VECCALL (byte) ;InXmm_A:xmmword, InXmm_B:xmmword
 
 			align 16
-uXm_xmm_ucomieq_ss proc UX_VECCALL (dword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_ucomieq_ss proc UX_VECCALL (byte) frame ;InXmm_A:xmmword, InXmm_B:xmmword
 			
 			ucomiss			xmm0,			xmm1
 			je label_ucomieq_ss
-			xor				eax,			eax
+			xor				rreturn,			rreturn
 	label_ucomieq_ss:
-			mov				eax,			1
+			mov				breturn,			true
 
 			ret
 uXm_xmm_ucomieq_ss endp
@@ -984,16 +1001,16 @@ _TEXT ends
 
 _TEXT segment
 			align 16
-uXm_xmm_ucomilt_ss proto UX_VECCALL (dword) ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_ucomilt_ss proto UX_VECCALL (byte) ;InXmm_A:xmmword, InXmm_B:xmmword
 
 			align 16
-uXm_xmm_ucomilt_ss proc UX_VECCALL (dword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_ucomilt_ss proc UX_VECCALL (byte) frame ;InXmm_A:xmmword, InXmm_B:xmmword
 			
 			comiss			xmm0,			xmm1
 			jb label_ucomilt_ss
-			xor				eax,			eax
+			xor				rreturn,			rreturn
 	label_ucomilt_ss:
-			mov				eax,			1
+			mov				breturn,			true
 
 			ret
 uXm_xmm_ucomilt_ss endp
@@ -1001,16 +1018,16 @@ _TEXT ends
 
 _TEXT segment
 			align 16
-uXm_xmm_ucomile_ss proto UX_VECCALL (dword) ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_ucomile_ss proto UX_VECCALL (byte) ;InXmm_A:xmmword, InXmm_B:xmmword
 
 			align 16
-uXm_xmm_ucomile_ss proc UX_VECCALL (dword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_ucomile_ss proc UX_VECCALL (byte) frame ;InXmm_A:xmmword, InXmm_B:xmmword
 			
 			comiss			xmm0,			xmm1
 			jbe label_ucomile_ss
-			xor				eax,			eax
+			xor				rreturn,			rreturn
 	label_ucomile_ss:
-			mov				eax,			1
+			mov				breturn,			true
 
 			ret
 uXm_xmm_ucomile_ss endp
@@ -1018,16 +1035,16 @@ _TEXT ends
 
 _TEXT segment
 			align 16
-uXm_xmm_ucomigt_ss proto UX_VECCALL (dword) ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_ucomigt_ss proto UX_VECCALL (byte) ;InXmm_A:xmmword, InXmm_B:xmmword
 
 			align 16
-uXm_xmm_ucomigt_ss proc UX_VECCALL (dword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_ucomigt_ss proc UX_VECCALL (byte) frame ;InXmm_A:xmmword, InXmm_B:xmmword
 			
 			comiss			xmm0,			xmm1
 			ja label_ucomigt_ss
-			xor				eax,			eax
+			xor				rreturn,			rreturn
 	label_ucomigt_ss:
-			mov				eax,			1
+			mov				breturn,			true
 
 			ret
 uXm_xmm_ucomigt_ss endp
@@ -1035,16 +1052,16 @@ _TEXT ends
 
 _TEXT segment
 			align 16
-uXm_xmm_ucomige_ss proto UX_VECCALL (dword) ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_ucomige_ss proto UX_VECCALL (byte) ;InXmm_A:xmmword, InXmm_B:xmmword
 
 			align 16
-uXm_xmm_ucomige_ss proc UX_VECCALL (dword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_ucomige_ss proc UX_VECCALL (byte) frame ;InXmm_A:xmmword, InXmm_B:xmmword
 			
 			comiss			xmm0,			xmm1
 			jae label_ucomige_ss
-			xor				eax,			eax
+			xor				rreturn,			rreturn
 	label_ucomige_ss:
-			mov				eax,			1
+			mov				breturn,			true
 
 			ret
 uXm_xmm_ucomige_ss endp
@@ -1052,20 +1069,24 @@ _TEXT ends
 
 _TEXT segment
 			align 16
-uXm_xmm_ucomineq_ss proto UX_VECCALL (dword) ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_ucomineq_ss proto UX_VECCALL (byte) ;InXmm_A:xmmword, InXmm_B:xmmword
 
 			align 16
-uXm_xmm_ucomineq_ss proc UX_VECCALL (dword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_xmm_ucomineq_ss proc UX_VECCALL (byte) frame ;InXmm_A:xmmword, InXmm_B:xmmword
 			
 			comiss			xmm0,			xmm1
 			jne label_ucomineq_ss
-			xor				eax,			eax
+			xor				rreturn,			rreturn
 	label_ucomineq_ss:
-			mov				eax,			1
+			mov				breturn,			true
 
 			ret
 uXm_xmm_ucomineq_ss endp
 _TEXT ends
+
+;******************
+; FP, conversions
+;******************
 
 _TEXT segment
 			align 16
@@ -1074,7 +1095,7 @@ uXm_xmm_cvt_ss2si proto UX_VECCALL (dword) ;InXmm_A:xmmword
 			align 16
 uXm_xmm_cvt_ss2si proc UX_VECCALL (dword) frame ;InXmm_A:xmmword
 			
-			cvtss2si			eax,			xmm0
+			cvtss2si			rreturn,			xmm0
 
 			ret
 uXm_xmm_cvt_ss2si endp
@@ -1087,7 +1108,7 @@ uXm_xmm_cvtt_ss2si proto UX_VECCALL (dword) ;InXmm_A:xmmword
 			align 16
 uXm_xmm_cvtt_ss2si proc UX_VECCALL (dword) frame ;InXmm_A:xmmword
 			
-			cvttss2si			eax,			xmm0
+			cvttss2si			rreturn,			xmm0
 
 			ret
 uXm_xmm_cvtt_ss2si endp
@@ -1095,12 +1116,12 @@ _TEXT ends
 
 _TEXT segment
 			align 16
-uXm_xmm_cvt_si2ss proto UX_VECCALL (xmmword) ;InXmm_A:xmmword
+uXm_xmm_cvt_si2ss proto UX_VECCALL (xmmword) ;InXmm_A:xmmword InInt_B:dword
 
 			align 16
 uXm_xmm_cvt_si2ss proc UX_VECCALL (xmmword) frame ;InXmm_A:xmmword InInt_B:dword
 			
-			cvtsi2ss			xmm0,			ecx
+			cvtsi2ss			xmm0,			dparam2
 
 			ret
 uXm_xmm_cvt_si2ss endp
@@ -1118,5 +1139,148 @@ uXm_xmm_cvtss_f32 proc UX_VECCALL (real4) frame ;InXmm_A:xmmword
 			ret
 uXm_xmm_cvtss_f32 endp
 _TEXT ends
+
+ifndef __X64__
+;******************
+; FP, conversions, Support for MMX extension intrinsics
+;******************
+_TEXT segment
+			align 16
+uXm_xmm_cvt_ps2pi proto UX_VECCALL (mmword) ;InXmm_A:xmmword
+
+			align 16
+uXm_xmm_cvt_ps2pi proc UX_VECCALL (mmword) frame ;InXmm_A:xmmword
+			
+			cvtps2pi			mm0,			xmm0
+
+			ret
+uXm_xmm_cvt_ps2pi endp
+_TEXT ends
+
+_TEXT segment
+			align 16
+uXm_xmm_cvtt_ps2pi proto UX_VECCALL (mmword) ;InXmm_A:xmmword
+
+			align 16
+uXm_xmm_cvtt_ps2pi proc UX_VECCALL (mmword) frame ;InXmm_A:xmmword
+			
+			cvttps2pi			mm0,			xmm0
+
+			ret
+uXm_xmm_cvtt_ps2pi endp
+_TEXT ends
+
+_TEXT segment
+			align 16
+uXm_xmm_cvt_pi2ps proto UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:mmword
+
+			align 16
+uXm_xmm_cvt_pi2ps proc UX_VECCALL (xmmword) frame ;InXmm_A:xmmword, InXmm_B:mmword
+			
+			cvtpi2ps			xmm0,			mm1
+
+			ret
+uXm_xmm_cvt_pi2ps endp
+_TEXT ends
+endif ;!__X64__
+
+ifdef __X64__
+;******************
+; FP, conversions, 64-bit intrinsics
+;******************
+_TEXT segment
+			align 16
+uXm_xmm_cvtss_si64 proto UX_VECCALL (qword) ;InXmm_A:xmmword
+
+			align 16
+uXm_xmm_cvtss_si64 proc UX_VECCALL (qword) frame ;InXmm_A:xmmword
+			
+			cvtss2si			rax,			xmm0
+
+			ret
+uXm_xmm_cvtss_si64 endp
+_TEXT ends
+
+_TEXT segment
+			align 16
+uXm_xmm_cvttss_si64 proto UX_VECCALL (qword) ;InXmm_A:xmmword
+
+			align 16
+uXm_xmm_cvttss_si64 proc UX_VECCALL (qword) frame ;InXmm_A:xmmword
+			
+			cvttss2si			rax,			xmm0
+
+			ret
+uXm_xmm_cvttss_si64 endp
+_TEXT ends
+
+_TEXT segment
+			align 16
+uXm_xmm_cvtsi64_ss proto UX_VECCALL (xmmword) ;InXmm_A:xmmword, InInt_B:qword
+
+			align 16
+uXm_xmm_cvtsi64_ss proc UX_VECCALL (xmmword) frame ;InXmm_A:xmmword, InInt_B:qword
+			
+			cvtsi2ss			xmm0,			rparam2
+
+			ret
+uXm_xmm_cvtsi64_ss endp
+_TEXT ends
+endif ;__X64__
+
+;******************
+; FP, misc
+;******************
+_TEXT segment
+			align 16
+uXm_xmm_shuffle_ps proto UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword, _Imm8:dword
+
+			align 16
+uXm_xmm_shuffle_ps proc UX_VECCALL (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword, _Imm8:dword
+			
+			uXm_xmm4shuffled_ps xmm0, xmm1, rparam3 
+
+			ret
+uXm_xmm_shuffle_ps endp
+_TEXT ends
+
+_TEXT segment
+			align 16
+uXm_xmm_unpackhi_ps proto UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
+
+			align 16
+uXm_xmm_unpackhi_ps proc UX_VECCALL (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+			
+			unpckhps 				xmm0,			xmm1
+
+			ret
+uXm_xmm_unpackhi_ps endp
+_TEXT ends
+
+_TEXT segment
+			align 16
+uXm_xmm_unpacklo_ps proto UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
+
+			align 16
+uXm_xmm_unpacklo_ps proc UX_VECCALL (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+			
+			unpcklps 				xmm0,			xmm1
+
+			ret
+uXm_xmm_unpacklo_ps endp
+_TEXT ends
+
+;_TEXT segment
+;			align 16
+;uXm_xmm_loadh_pi proto UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
+
+;			align 16
+;uXm_xmm_loadh_pi proc UX_VECCALL (xmmword) frame ;InXmm_A:xmmword, InXmm_B:mmword*
+			
+;			unpcklps 				xmm0,			m64
+
+;			ret
+;uXm_xmm_loadh_pi endp
+;_TEXT ends
 
 	end

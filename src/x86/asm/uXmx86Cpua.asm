@@ -106,18 +106,7 @@ UX_VECMETHOD uXmCPUFeatures, Init, <VOIDARG>, <UX_USESRBX>;, infolevel:dword
 			mov		[UX_INSTPTR].var_CPUID,				true
 	endif
 	
-	ifndef __X64__
-			push				eax
-	else
-			push				rax
-	endif
-			mov					eax,					1
-			mov		[UX_INSTPTR].var_Inited,			eax
-	ifndef __X64__
-			pop					eax
-	else
-			pop					rax
-	endif
+			mov		[UX_INSTPTR].var_Inited,			true
 
 	ifndef __X64__
 			push				eax
@@ -1471,173 +1460,173 @@ UX_VECMETHOD uXmCPUFeatures, Destroy, <VOIDARG>, <>
 			mov		[UX_INSTPTR].var_family,					eax
 			mov		[UX_INSTPTR].var_vendor,					eax
 
-			mov		[UX_INSTPTR].var_enabled_ZMM,				eax
-			mov		[UX_INSTPTR].var_enabled_YMM,				eax
-			mov		[UX_INSTPTR].var_enabled_XMM,				eax
+			mov		[UX_INSTPTR].var_enabled_ZMM,				al
+			mov		[UX_INSTPTR].var_enabled_YMM,				al
+			mov		[UX_INSTPTR].var_enabled_XMM,				al
 			
 	;/* %eax=07H, %ecx, %ebx | %eax=01H, %ecx , %edx */
-			mov		[UX_INSTPTR].var_AVX2_VPCLMULQDQ,			eax
-			mov		[UX_INSTPTR].var_AVX2_VAES,					eax
-			mov		[UX_INSTPTR].var_AVX2_GFNI,					eax
-			mov		[UX_INSTPTR].var_AVX_VPCLMULQDQ,			eax
-			mov		[UX_INSTPTR].var_AVX_VAES,					eax
-			mov		[UX_INSTPTR].var_AVX_GFNI,					eax
-			mov		[UX_INSTPTR].var_SSE42_PCLMULQDQ,			eax
-			mov		[UX_INSTPTR].var_SSE42_GFNI,				eax
-			mov		[UX_INSTPTR].var_SSE42_AES,					eax
-			mov		[UX_INSTPTR].var_SSE41_PCLMULQDQ,			eax
-			mov		[UX_INSTPTR].var_SSE41_GFNI,				eax
-			mov		[UX_INSTPTR].var_SSE41_AES,					eax
-			mov		[UX_INSTPTR].var_SSSE3_PCLMULQDQ,			eax
-			mov		[UX_INSTPTR].var_SSSE3_GFNI,				eax
-			mov		[UX_INSTPTR].var_SSSE3_AES,					eax
-			mov		[UX_INSTPTR].var_SSE3_PCLMULQDQ,			eax
-			mov		[UX_INSTPTR].var_SSE3_GFNI,					eax
-			mov		[UX_INSTPTR].var_SSE3_AES,					eax
-			mov		[UX_INSTPTR].var_SSE2_PCLMULQDQ,			eax
-			mov		[UX_INSTPTR].var_SSE2_GFNI,					eax
-			mov		[UX_INSTPTR].var_SSE2_AES,					eax
-			mov		[UX_INSTPTR].var_SSE_PCLMULQDQ,				eax
-			mov		[UX_INSTPTR].var_SSE_GFNI,					eax
-			mov		[UX_INSTPTR].var_SSE_AES,					eax
+			mov		[UX_INSTPTR].var_AVX2_VPCLMULQDQ,			al
+			mov		[UX_INSTPTR].var_AVX2_VAES,					al
+			mov		[UX_INSTPTR].var_AVX2_GFNI,					al
+			mov		[UX_INSTPTR].var_AVX_VPCLMULQDQ,			al
+			mov		[UX_INSTPTR].var_AVX_VAES,					al
+			mov		[UX_INSTPTR].var_AVX_GFNI,					al
+			mov		[UX_INSTPTR].var_SSE42_PCLMULQDQ,			al
+			mov		[UX_INSTPTR].var_SSE42_GFNI,				al
+			mov		[UX_INSTPTR].var_SSE42_AES,					al
+			mov		[UX_INSTPTR].var_SSE41_PCLMULQDQ,			al
+			mov		[UX_INSTPTR].var_SSE41_GFNI,				al
+			mov		[UX_INSTPTR].var_SSE41_AES,					al
+			mov		[UX_INSTPTR].var_SSSE3_PCLMULQDQ,			al
+			mov		[UX_INSTPTR].var_SSSE3_GFNI,				al
+			mov		[UX_INSTPTR].var_SSSE3_AES,					al
+			mov		[UX_INSTPTR].var_SSE3_PCLMULQDQ,			al
+			mov		[UX_INSTPTR].var_SSE3_GFNI,					al
+			mov		[UX_INSTPTR].var_SSE3_AES,					al
+			mov		[UX_INSTPTR].var_SSE2_PCLMULQDQ,			al
+			mov		[UX_INSTPTR].var_SSE2_GFNI,					al
+			mov		[UX_INSTPTR].var_SSE2_AES,					al
+			mov		[UX_INSTPTR].var_SSE_PCLMULQDQ,				al
+			mov		[UX_INSTPTR].var_SSE_GFNI,					al
+			mov		[UX_INSTPTR].var_SSE_AES,					al
 			
 	;/* %eax=07H, %ebx, %ecx */
-			mov		[UX_INSTPTR].var_AVX512CD_VL,				eax
-			mov		[UX_INSTPTR].var_AVX512DQ_VL,				eax
-			mov		[UX_INSTPTR].var_AVX512DQ_VPCLMULQDQ_VL,	eax
-			mov		[UX_INSTPTR].var_AVX512DQ_VPCLMULQDQ,		eax
-			mov		[UX_INSTPTR].var_AVX512DQ_VAES_VL,			eax
-			mov		[UX_INSTPTR].var_AVX512DQ_VAES,				eax
-			mov		[UX_INSTPTR].var_AVX512DQ_GFNI_VL,			eax
-			mov		[UX_INSTPTR].var_AVX512DQ_GFNI,				eax
-			mov		[UX_INSTPTR].var_AVX512BW_VL,				eax
-			mov		[UX_INSTPTR].var_AVX512BW_VPCLMULQDQ_VL,	eax
-			mov		[UX_INSTPTR].var_AVX512BW_VPCLMULQDQ,		eax
-			mov		[UX_INSTPTR].var_AVX512BW_VAES_VL,			eax
-			mov		[UX_INSTPTR].var_AVX512BW_VAES,				eax
-			mov		[UX_INSTPTR].var_AVX512BW_GFNI_VL,			eax
-			mov		[UX_INSTPTR].var_AVX512BW_GFNI,				eax
-			mov		[UX_INSTPTR].var_AVX512_VPOPCNTDQ_VL,		eax
-			mov		[UX_INSTPTR].var_AVX512_BITALG_VL,			eax
-			mov		[UX_INSTPTR].var_AVX512_VNNI_VL,			eax
-			mov		[UX_INSTPTR].var_AVX512_VBMI2_VL,			eax
-			mov		[UX_INSTPTR].var_AVX512_VBMI_VL,			eax
-			mov		[UX_INSTPTR].var_AVX512_IFMA_VL,			eax
-			mov		[UX_INSTPTR].var_AVX512_VPCLMULQDQ_VL,		eax
-			mov		[UX_INSTPTR].var_AVX512_VPCLMULQDQ,			eax
-			mov		[UX_INSTPTR].var_AVX512_VAES_VL,			eax
-			mov		[UX_INSTPTR].var_AVX512_VAES,				eax
-			mov		[UX_INSTPTR].var_AVX512_GFNI_VL,			eax
-			mov		[UX_INSTPTR].var_AVX512_GFNI,				eax
+			mov		[UX_INSTPTR].var_AVX512CD_VL,				al
+			mov		[UX_INSTPTR].var_AVX512DQ_VL,				al
+			mov		[UX_INSTPTR].var_AVX512DQ_VPCLMULQDQ_VL,	al
+			mov		[UX_INSTPTR].var_AVX512DQ_VPCLMULQDQ,		al
+			mov		[UX_INSTPTR].var_AVX512DQ_VAES_VL,			al
+			mov		[UX_INSTPTR].var_AVX512DQ_VAES,				al
+			mov		[UX_INSTPTR].var_AVX512DQ_GFNI_VL,			al
+			mov		[UX_INSTPTR].var_AVX512DQ_GFNI,				al
+			mov		[UX_INSTPTR].var_AVX512BW_VL,				al
+			mov		[UX_INSTPTR].var_AVX512BW_VPCLMULQDQ_VL,	al
+			mov		[UX_INSTPTR].var_AVX512BW_VPCLMULQDQ,		al
+			mov		[UX_INSTPTR].var_AVX512BW_VAES_VL,			al
+			mov		[UX_INSTPTR].var_AVX512BW_VAES,				al
+			mov		[UX_INSTPTR].var_AVX512BW_GFNI_VL,			al
+			mov		[UX_INSTPTR].var_AVX512BW_GFNI,				al
+			mov		[UX_INSTPTR].var_AVX512_VPOPCNTDQ_VL,		al
+			mov		[UX_INSTPTR].var_AVX512_BITALG_VL,			al
+			mov		[UX_INSTPTR].var_AVX512_VNNI_VL,			al
+			mov		[UX_INSTPTR].var_AVX512_VBMI2_VL,			al
+			mov		[UX_INSTPTR].var_AVX512_VBMI_VL,			al
+			mov		[UX_INSTPTR].var_AVX512_IFMA_VL,			al
+			mov		[UX_INSTPTR].var_AVX512_VPCLMULQDQ_VL,		al
+			mov		[UX_INSTPTR].var_AVX512_VPCLMULQDQ,			al
+			mov		[UX_INSTPTR].var_AVX512_VAES_VL,			al
+			mov		[UX_INSTPTR].var_AVX512_VAES,				al
+			mov		[UX_INSTPTR].var_AVX512_GFNI_VL,			al
+			mov		[UX_INSTPTR].var_AVX512_GFNI,				al
 
 	;/* %eax=80000001H, %edx */
-			mov		[UX_INSTPTR].var_3DNOW,						eax
-			mov		[UX_INSTPTR].var_3DNOWEXT,					eax
-			mov		[UX_INSTPTR].var_RDTSCP,					eax
-			mov		[UX_INSTPTR].var_MMXEXT,					eax
-			mov		[UX_INSTPTR].var_SYSCALL,					eax
+			mov		[UX_INSTPTR].var_3DNOW,						al
+			mov		[UX_INSTPTR].var_3DNOWEXT,					al
+			mov		[UX_INSTPTR].var_RDTSCP,					al
+			mov		[UX_INSTPTR].var_MMXEXT,					al
+			mov		[UX_INSTPTR].var_SYSCALL,					al
 
 	;/* %eax=80000001H, %ecx */
-			mov		[UX_INSTPTR].var_MWAITX,					eax
-			mov		[UX_INSTPTR].var_TBM,						eax
-			mov		[UX_INSTPTR].var_FMA4,						eax
-			mov		[UX_INSTPTR].var_LWP,						eax
-			mov		[UX_INSTPTR].var_XOP,						eax
-			mov		[UX_INSTPTR].var_PREFETCHW,					eax
-			mov		[UX_INSTPTR].var_SSE4a,						eax
-			mov		[UX_INSTPTR].var_ABM,						eax
-			mov		[UX_INSTPTR].var_LZCNT,						eax
-			mov		[UX_INSTPTR].var_LAHF,						eax
+			mov		[UX_INSTPTR].var_MWAITX,					al
+			mov		[UX_INSTPTR].var_TBM,						al
+			mov		[UX_INSTPTR].var_FMA4,						al
+			mov		[UX_INSTPTR].var_LWP,						al
+			mov		[UX_INSTPTR].var_XOP,						al
+			mov		[UX_INSTPTR].var_PREFETCHW,					al
+			mov		[UX_INSTPTR].var_SSE4a,						al
+			mov		[UX_INSTPTR].var_ABM,						al
+			mov		[UX_INSTPTR].var_LZCNT,						al
+			mov		[UX_INSTPTR].var_LAHF,						al
 
 	;/* %eax=07H, %edx */
-			mov		[UX_INSTPTR].var_AVX512_4FMAPS,				eax
-			mov		[UX_INSTPTR].var_AVX512_4VNNIW,				eax
+			mov		[UX_INSTPTR].var_AVX512_4FMAPS,				al
+			mov		[UX_INSTPTR].var_AVX512_4VNNIW,				al
 
 	;/* %eax=07H, %ecx */
-			mov		[UX_INSTPTR].var_RDPID,						eax
-			mov		[UX_INSTPTR].var_AVX512_VPOPCNTDQ,			eax
-			mov		[UX_INSTPTR].var_AVX512_BITALG,				eax
-			mov		[UX_INSTPTR].var_AVX512_VNNI,				eax
-			mov		[UX_INSTPTR].var_VPCLMULQDQ,				eax
-			mov		[UX_INSTPTR].var_VAES,						eax
-			mov		[UX_INSTPTR].var_GFNI,						eax
-			mov		[UX_INSTPTR].var_AVX512_VBMI2,				eax
-			mov		[UX_INSTPTR].var_OSPKE,						eax
-			mov		[UX_INSTPTR].var_PKU,						eax
-			mov		[UX_INSTPTR].var_UMIP,						eax
-			mov		[UX_INSTPTR].var_AVX512_VBMI,				eax
-			mov		[UX_INSTPTR].var_PREFETCHWT1,				eax
+			mov		[UX_INSTPTR].var_RDPID,						al
+			mov		[UX_INSTPTR].var_AVX512_VPOPCNTDQ,			al
+			mov		[UX_INSTPTR].var_AVX512_BITALG,				al
+			mov		[UX_INSTPTR].var_AVX512_VNNI,				al
+			mov		[UX_INSTPTR].var_VPCLMULQDQ,				al
+			mov		[UX_INSTPTR].var_VAES,						al
+			mov		[UX_INSTPTR].var_GFNI,						al
+			mov		[UX_INSTPTR].var_AVX512_VBMI2,				al
+			mov		[UX_INSTPTR].var_OSPKE,						al
+			mov		[UX_INSTPTR].var_PKU,						al
+			mov		[UX_INSTPTR].var_UMIP,						al
+			mov		[UX_INSTPTR].var_AVX512_VBMI,				al
+			mov		[UX_INSTPTR].var_PREFETCHWT1,				al
 
 	;/* %eax=07H, %ebx */
-			mov		[UX_INSTPTR].var_AVX512VL,					eax
-			mov		[UX_INSTPTR].var_AVX512BW,					eax
-			mov		[UX_INSTPTR].var_SHA,						eax
-			mov		[UX_INSTPTR].var_AVX512CD,					eax
-			mov		[UX_INSTPTR].var_AVX512ER,					eax
-			mov		[UX_INSTPTR].var_AVX512PF,					eax
-			mov		[UX_INSTPTR].var_CLWB,						eax
-			mov		[UX_INSTPTR].var_CLFLUSHOPT,				eax
-			mov		[UX_INSTPTR].var_AVX512_IFMA,				eax
-			mov		[UX_INSTPTR].var_SMAP,						eax
-			mov		[UX_INSTPTR].var_ADX,						eax
-			mov		[UX_INSTPTR].var_RDSEED,					eax
-			mov		[UX_INSTPTR].var_AVX512DQ,					eax
-			mov		[UX_INSTPTR].var_AVX512F,					eax
-			mov		[UX_INSTPTR].var_MPX,						eax
-			mov		[UX_INSTPTR].var_RTM,						eax
-			mov		[UX_INSTPTR].var_INVPCID,					eax
-			mov		[UX_INSTPTR].var_ERMS,						eax
-			mov		[UX_INSTPTR].var_BMI2,						eax
-			mov		[UX_INSTPTR].var_SMEP,						eax
-			mov		[UX_INSTPTR].var_AVX2,						eax
-			mov		[UX_INSTPTR].var_HLE,						eax
-			mov		[UX_INSTPTR].var_BMI1,						eax
-			mov		[UX_INSTPTR].var_SGX,						eax
-			mov		[UX_INSTPTR].var_FSGSBASE,					eax
+			mov		[UX_INSTPTR].var_AVX512VL,					al
+			mov		[UX_INSTPTR].var_AVX512BW,					al
+			mov		[UX_INSTPTR].var_SHA,						al
+			mov		[UX_INSTPTR].var_AVX512CD,					al
+			mov		[UX_INSTPTR].var_AVX512ER,					al
+			mov		[UX_INSTPTR].var_AVX512PF,					al
+			mov		[UX_INSTPTR].var_CLWB,						al
+			mov		[UX_INSTPTR].var_CLFLUSHOPT,				al
+			mov		[UX_INSTPTR].var_AVX512_IFMA,				al
+			mov		[UX_INSTPTR].var_SMAP,						al
+			mov		[UX_INSTPTR].var_ADX,						al
+			mov		[UX_INSTPTR].var_RDSEED,					al
+			mov		[UX_INSTPTR].var_AVX512DQ,					al
+			mov		[UX_INSTPTR].var_AVX512F,					al
+			mov		[UX_INSTPTR].var_MPX,						al
+			mov		[UX_INSTPTR].var_RTM,						al
+			mov		[UX_INSTPTR].var_INVPCID,					al
+			mov		[UX_INSTPTR].var_ERMS,						al
+			mov		[UX_INSTPTR].var_BMI2,						al
+			mov		[UX_INSTPTR].var_SMEP,						al
+			mov		[UX_INSTPTR].var_AVX2,						al
+			mov		[UX_INSTPTR].var_HLE,						al
+			mov		[UX_INSTPTR].var_BMI1,						al
+			mov		[UX_INSTPTR].var_SGX,						al
+			mov		[UX_INSTPTR].var_FSGSBASE,					al
 
 	;/* %eax=01H, %edx */
-			mov		[UX_INSTPTR].var_SSE2,						eax
-			mov		[UX_INSTPTR].var_SSE,						eax
-			mov		[UX_INSTPTR].var_FXSR,						eax
-			mov		[UX_INSTPTR].var_MMX,						eax
-			mov		[UX_INSTPTR].var_CLFSH,						eax
-			mov		[UX_INSTPTR].var_CMOV,						eax
-			mov		[UX_INSTPTR].var_SEP,						eax
-			mov		[UX_INSTPTR].var_CMPXCHG8B,					eax
-			mov		[UX_INSTPTR].var_MSR,						eax
-			mov		[UX_INSTPTR].var_TSC,						eax
-			mov		[UX_INSTPTR].var_FPU,						eax
+			mov		[UX_INSTPTR].var_SSE2,						al
+			mov		[UX_INSTPTR].var_SSE,						al
+			mov		[UX_INSTPTR].var_FXSR,						al
+			mov		[UX_INSTPTR].var_MMX,						al
+			mov		[UX_INSTPTR].var_CLFSH,						al
+			mov		[UX_INSTPTR].var_CMOV,						al
+			mov		[UX_INSTPTR].var_SEP,						al
+			mov		[UX_INSTPTR].var_CMPXCHG8B,					al
+			mov		[UX_INSTPTR].var_MSR,						al
+			mov		[UX_INSTPTR].var_TSC,						al
+			mov		[UX_INSTPTR].var_FPU,						al
 
 	;/* %eax=01H, %ecx */
-			mov		[UX_INSTPTR].var_RDRAND,					eax
-			mov		[UX_INSTPTR].var_F16C,						eax
-			mov		[UX_INSTPTR].var_AVX,						eax
-			mov		[UX_INSTPTR].var_OSXSAVE,					eax
-			mov		[UX_INSTPTR].var_XSAVE,						eax
-			mov		[UX_INSTPTR].var_AES,						eax
-			mov		[UX_INSTPTR].var_POPCNT,					eax
-			mov		[UX_INSTPTR].var_MOVBE,						eax
-			mov		[UX_INSTPTR].var_SSE42,						eax
-			mov		[UX_INSTPTR].var_SSE41,						eax
-			mov		[UX_INSTPTR].var_CMPXCHG16B,				eax
-			mov		[UX_INSTPTR].var_FMA,						eax
-			mov		[UX_INSTPTR].var_SSSE3,						eax
-			mov		[UX_INSTPTR].var_MONITOR,					eax
-			mov		[UX_INSTPTR].var_PCLMULQDQ,					eax
-			mov		[UX_INSTPTR].var_SSE3,						eax
+			mov		[UX_INSTPTR].var_RDRAND,					al
+			mov		[UX_INSTPTR].var_F16C,						al
+			mov		[UX_INSTPTR].var_AVX,						al
+			mov		[UX_INSTPTR].var_OSXSAVE,					al
+			mov		[UX_INSTPTR].var_XSAVE,						al
+			mov		[UX_INSTPTR].var_AES,						al
+			mov		[UX_INSTPTR].var_POPCNT,					al
+			mov		[UX_INSTPTR].var_MOVBE,						al
+			mov		[UX_INSTPTR].var_SSE42,						al
+			mov		[UX_INSTPTR].var_SSE41,						al
+			mov		[UX_INSTPTR].var_CMPXCHG16B,				al
+			mov		[UX_INSTPTR].var_FMA,						al
+			mov		[UX_INSTPTR].var_SSSE3,						al
+			mov		[UX_INSTPTR].var_MONITOR,					al
+			mov		[UX_INSTPTR].var_PCLMULQDQ,					al
+			mov		[UX_INSTPTR].var_SSE3,						al
 	
 	; /* %eax=00H, %ebx */
-			mov		[UX_INSTPTR].var_NexG,						eax
-			mov		[UX_INSTPTR].var_Cyri,						eax
-			mov		[UX_INSTPTR].var_VIA,						eax
-			mov		[UX_INSTPTR].var_Cent,						eax
+			mov		[UX_INSTPTR].var_NexG,						al
+			mov		[UX_INSTPTR].var_Cyri,						al
+			mov		[UX_INSTPTR].var_VIA,						al
+			mov		[UX_INSTPTR].var_Cent,						al
 
 	; /* %eax=00H, %ecx */
-			mov		[UX_INSTPTR].var_cAMD,						eax
-			mov		[UX_INSTPTR].var_ntel,						eax
+			mov		[UX_INSTPTR].var_cAMD,						al
+			mov		[UX_INSTPTR].var_ntel,						al
 	
 	; /* EFLAGS %eax=00H, %ebx=00H */
-			mov		[UX_INSTPTR].var_CPUID,						eax
+			mov		[UX_INSTPTR].var_CPUID,						al
 
 			mov		[UX_INSTPTR].var_intrinset,					eax
 			
@@ -1681,9 +1670,9 @@ _TEXT ends
 	; /* %eax=00H, %ecx */	
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, is_Intel, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, is_Intel, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_ntel
+		mov				al,				[UX_INSTPTR].var_ntel
 
 		ret
 UX_ENDMETHOD
@@ -1691,9 +1680,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, is_AMD, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, is_AMD, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_cAMD
+		mov				al,				[UX_INSTPTR].var_cAMD
 
 		ret
 UX_ENDMETHOD
@@ -1702,19 +1691,9 @@ _TEXT ends
 	;/* %eax=01H, %ecx */
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSE3, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSE3, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_SSE3
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_PCLMULQDQ, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_PCLMULQDQ
+		mov				al,				[UX_INSTPTR].var_SSE3
 
 		ret
 UX_ENDMETHOD
@@ -1722,19 +1701,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_MONITOR, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_PCLMULQDQ, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_MONITOR
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSSE3, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_SSSE3
+		mov				al,				[UX_INSTPTR].var_PCLMULQDQ
 
 		ret
 UX_ENDMETHOD
@@ -1742,19 +1711,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_FMA, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_MONITOR, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_FMA
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_CMPXCHG16B, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_CMPXCHG16B
+		mov				al,				[UX_INSTPTR].var_MONITOR
 
 		ret
 UX_ENDMETHOD
@@ -1762,19 +1721,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSE41, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSSE3, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_SSE41
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSE42, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_SSE42
+		mov				al,				[UX_INSTPTR].var_SSSE3
 
 		ret
 UX_ENDMETHOD
@@ -1782,19 +1731,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_MOVBE, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_FMA, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_MOVBE
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_POPCNT, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_POPCNT
+		mov				al,				[UX_INSTPTR].var_FMA
 
 		ret
 UX_ENDMETHOD
@@ -1802,19 +1741,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AES, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_CMPXCHG16B, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_AES
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_XSAVE, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_XSAVE
+		mov				al,				[UX_INSTPTR].var_CMPXCHG16B
 
 		ret
 UX_ENDMETHOD
@@ -1822,19 +1751,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_OSXSAVE, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSE41, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_OSXSAVE
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_AVX
+		mov				al,				[UX_INSTPTR].var_SSE41
 
 		ret
 UX_ENDMETHOD
@@ -1842,9 +1761,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_F16C, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSE42, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_F16C
+		mov				al,				[UX_INSTPTR].var_SSE42
 
 		ret
 UX_ENDMETHOD
@@ -1852,9 +1771,79 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_RDRAND, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_MOVBE, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_RDRAND
+		mov				al,				[UX_INSTPTR].var_MOVBE
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_POPCNT, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_POPCNT
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_AES, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_AES
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_XSAVE, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_XSAVE
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_OSXSAVE, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_OSXSAVE
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_AVX
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_F16C, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_F16C
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_RDRAND, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_RDRAND
 
 		ret
 UX_ENDMETHOD
@@ -1863,19 +1852,9 @@ _TEXT ends
 	;/* %eax=01H, %edx */
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_FPU, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_FPU, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_FPU
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_TSC, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_TSC
+		mov				al,				[UX_INSTPTR].var_FPU
 
 		ret
 UX_ENDMETHOD
@@ -1883,19 +1862,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_MSR, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_TSC, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_MSR
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_CMPXCHG8B, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_CMPXCHG8B
+		mov				al,				[UX_INSTPTR].var_TSC
 
 		ret
 UX_ENDMETHOD
@@ -1903,19 +1872,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SEP, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_MSR, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_SEP
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_CMOV, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_CMOV
+		mov				al,				[UX_INSTPTR].var_MSR
 
 		ret
 UX_ENDMETHOD
@@ -1923,19 +1882,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_CLFSH, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_CMPXCHG8B, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_CLFSH
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_MMX, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_MMX
+		mov				al,				[UX_INSTPTR].var_CMPXCHG8B
 
 		ret
 UX_ENDMETHOD
@@ -1943,19 +1892,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_FXSR, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SEP, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_FXSR
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSE, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_SSE
+		mov				al,				[UX_INSTPTR].var_SEP
 
 		ret
 UX_ENDMETHOD
@@ -1963,9 +1902,59 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSE2, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_CMOV, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_SSE2
+		mov				al,				[UX_INSTPTR].var_CMOV
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_CLFSH, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_CLFSH
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_MMX, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_MMX
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_FXSR, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_FXSR
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSE, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_SSE
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSE2, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_SSE2
 
 		ret
 UX_ENDMETHOD
@@ -1974,19 +1963,9 @@ _TEXT ends
 	;/* %eax=07H, %ebx */
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_FSGSBASE, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_FSGSBASE, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_FSGSBASE
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SGX, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_SGX
+		mov				al,				[UX_INSTPTR].var_FSGSBASE
 
 		ret
 UX_ENDMETHOD
@@ -1994,19 +1973,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_BMI1, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SGX, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_BMI1
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_HLE, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_HLE
+		mov				al,				[UX_INSTPTR].var_SGX
 
 		ret
 UX_ENDMETHOD
@@ -2014,19 +1983,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_BMI1, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_AVX2
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SMEP, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_SMEP
+		mov				al,				[UX_INSTPTR].var_BMI1
 
 		ret
 UX_ENDMETHOD
@@ -2034,19 +1993,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_BMI2, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_HLE, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_BMI2
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_ERMS, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_ERMS
+		mov				al,				[UX_INSTPTR].var_HLE
 
 		ret
 UX_ENDMETHOD
@@ -2054,19 +2003,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_INVPCID, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_INVPCID
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_RTM, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_RTM
+		mov				al,				[UX_INSTPTR].var_AVX2
 
 		ret
 UX_ENDMETHOD
@@ -2074,19 +2013,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_MPX, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SMEP, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_MPX
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512F, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_AVX512F
+		mov				al,				[UX_INSTPTR].var_SMEP
 
 		ret
 UX_ENDMETHOD
@@ -2094,19 +2023,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_BMI2, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_AVX512DQ
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_RDSEED, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_RDSEED
+		mov				al,				[UX_INSTPTR].var_BMI2
 
 		ret
 UX_ENDMETHOD
@@ -2114,19 +2033,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_ADX, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_ERMS, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_ADX
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SMAP, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_SMAP
+		mov				al,				[UX_INSTPTR].var_ERMS
 
 		ret
 UX_ENDMETHOD
@@ -2134,19 +2043,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_IFMA, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_INVPCID, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_AVX512_IFMA
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_CLFLUSHOPT, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_CLFLUSHOPT
+		mov				al,				[UX_INSTPTR].var_INVPCID
 
 		ret
 UX_ENDMETHOD
@@ -2154,19 +2053,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_CLWB, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_RTM, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_CLWB
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512PF, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_AVX512PF
+		mov				al,				[UX_INSTPTR].var_RTM
 
 		ret
 UX_ENDMETHOD
@@ -2174,19 +2063,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512ER, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_MPX, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_AVX512ER
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512CD, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_AVX512CD
+		mov				al,				[UX_INSTPTR].var_MPX
 
 		ret
 UX_ENDMETHOD
@@ -2194,19 +2073,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SHA, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512F, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_SHA
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_AVX512BW
+		mov				al,				[UX_INSTPTR].var_AVX512F
 
 		ret
 UX_ENDMETHOD
@@ -2214,9 +2083,129 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512VL, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_AVX512VL
+		mov				al,				[UX_INSTPTR].var_AVX512DQ
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_RDSEED, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_RDSEED
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_ADX, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_ADX
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_SMAP, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_SMAP
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_IFMA, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_AVX512_IFMA
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_CLFLUSHOPT, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_CLFLUSHOPT
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_CLWB, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_CLWB
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512PF, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_AVX512PF
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512ER, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_AVX512ER
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512CD, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_AVX512CD
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_SHA, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_SHA
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_AVX512BW
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512VL, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_AVX512VL
 
 		ret
 UX_ENDMETHOD
@@ -2225,19 +2214,9 @@ _TEXT ends
 	;/* %eax=07H, %ecx */
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_PREFETCHWT1, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_PREFETCHWT1, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_PREFETCHWT1
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VBMI, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_AVX512_VBMI
+		mov				al,				[UX_INSTPTR].var_PREFETCHWT1
 
 		ret
 UX_ENDMETHOD
@@ -2245,19 +2224,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_UMIP, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VBMI, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_UMIP
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_PKU, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_PKU
+		mov				al,				[UX_INSTPTR].var_AVX512_VBMI
 
 		ret
 UX_ENDMETHOD
@@ -2265,19 +2234,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_OSPKE, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_UMIP, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_OSPKE
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VBMI2, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_AVX512_VBMI2
+		mov				al,				[UX_INSTPTR].var_UMIP
 
 		ret
 UX_ENDMETHOD
@@ -2285,19 +2244,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_GFNI, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_PKU, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_GFNI
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_VAES, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_VAES
+		mov				al,				[UX_INSTPTR].var_PKU
 
 		ret
 UX_ENDMETHOD
@@ -2305,19 +2254,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_VPCLMULQDQ, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_OSPKE, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_VPCLMULQDQ
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VNNI, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_AVX512_VNNI
+		mov				al,				[UX_INSTPTR].var_OSPKE
 
 		ret
 UX_ENDMETHOD
@@ -2325,19 +2264,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_BITALG, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VBMI2, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_AVX512_BITALG
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VPOPCNTDQ, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_AVX512_VPOPCNTDQ
+		mov				al,				[UX_INSTPTR].var_AVX512_VBMI2
 
 		ret
 UX_ENDMETHOD
@@ -2345,9 +2274,69 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_RDPID, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_GFNI, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_RDPID
+		mov				al,				[UX_INSTPTR].var_GFNI
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_VAES, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_VAES
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_VPCLMULQDQ, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_VPCLMULQDQ
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VNNI, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_AVX512_VNNI
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_BITALG, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_AVX512_BITALG
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VPOPCNTDQ, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_AVX512_VPOPCNTDQ
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_RDPID, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_RDPID
 
 		ret
 UX_ENDMETHOD
@@ -2356,9 +2345,9 @@ _TEXT ends
 	;/* %eax=07H, %edx */
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_4VNNIW, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_4VNNIW, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_AVX512_4VNNIW
+		mov				al,				[UX_INSTPTR].var_AVX512_4VNNIW
 
 		ret
 UX_ENDMETHOD
@@ -2366,9 +2355,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_4FMAPS, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_4FMAPS, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_AVX512_4FMAPS
+		mov				al,				[UX_INSTPTR].var_AVX512_4FMAPS
 
 		ret
 UX_ENDMETHOD
@@ -2377,19 +2366,9 @@ _TEXT ends
 	;/* %eax=80000001H, %ecx */
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_LAHF, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_LAHF, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_LAHF
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_LZCNT, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_LZCNT
+		mov				al,				[UX_INSTPTR].var_LAHF
 
 		ret
 UX_ENDMETHOD
@@ -2397,19 +2376,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_ABM, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_LZCNT, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_ABM
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSE4a, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_SSE4a
+		mov				al,				[UX_INSTPTR].var_LZCNT
 
 		ret
 UX_ENDMETHOD
@@ -2417,19 +2386,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_PREFETCHW, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_ABM, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_PREFETCHW
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_XOP, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_XOP
+		mov				al,				[UX_INSTPTR].var_ABM
 
 		ret
 UX_ENDMETHOD
@@ -2437,19 +2396,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_LWP, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSE4a, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_LWP
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_FMA4, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_FMA4
+		mov				al,				[UX_INSTPTR].var_SSE4a
 
 		ret
 UX_ENDMETHOD
@@ -2457,9 +2406,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_TBM, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_PREFETCHW, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_TBM
+		mov				al,				[UX_INSTPTR].var_PREFETCHW
 
 		ret
 UX_ENDMETHOD
@@ -2467,9 +2416,49 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_MWAITX, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_XOP, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_MWAITX
+		mov				al,				[UX_INSTPTR].var_XOP
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_LWP, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_LWP
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_FMA4, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_FMA4
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_TBM, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_TBM
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_MWAITX, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_MWAITX
 
 		ret
 UX_ENDMETHOD
@@ -2478,19 +2467,9 @@ _TEXT ends
 	;/* %eax=80000001H, %edx */
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SYSCALL, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SYSCALL, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_SYSCALL
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_MMXEXT, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_MMXEXT
+		mov				al,				[UX_INSTPTR].var_SYSCALL
 
 		ret
 UX_ENDMETHOD
@@ -2498,19 +2477,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_RDTSCP, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_MMXEXT, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_RDTSCP
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_3DNOWEXT, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_3DNOWEXT
+		mov				al,				[UX_INSTPTR].var_MMXEXT
 
 		ret
 UX_ENDMETHOD
@@ -2518,9 +2487,29 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_3DNOW, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_RDTSCP, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_3DNOW
+		mov				al,				[UX_INSTPTR].var_RDTSCP
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_3DNOWEXT, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_3DNOWEXT
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, has_3DNOW, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_3DNOW
 
 		ret
 UX_ENDMETHOD
@@ -2529,10 +2518,10 @@ _TEXT ends
 	;/* %eax=07H, %ebx, %ecx */
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_GFNI, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512F == true && [UX_INSTPTR].var_GFNI == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2541,10 +2530,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_GFNI_VL, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_GFNI_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512F == true && [UX_INSTPTR].var_GFNI == true && [UX_INSTPTR].var_AVX512VL == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2553,10 +2542,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VAES, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VAES, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512F == true && [UX_INSTPTR].var_VAES == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2565,10 +2554,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VAES_VL, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VAES_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512F == true && [UX_INSTPTR].var_VAES == true && [UX_INSTPTR].var_AVX512VL == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2577,10 +2566,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VPCLMULQDQ, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VPCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512F == true && [UX_INSTPTR].var_VPCLMULQDQ == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2589,10 +2578,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VPCLMULQDQ_VL, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VPCLMULQDQ_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512F == true && [UX_INSTPTR].var_VPCLMULQDQ == true && [UX_INSTPTR].var_AVX512VL == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2601,10 +2590,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_IFMA_VL, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_IFMA_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512_IFMA == true && [UX_INSTPTR].var_AVX512VL == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2613,10 +2602,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VBMI_VL, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VBMI_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512_VBMI == true && [UX_INSTPTR].var_AVX512VL == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2625,10 +2614,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VBMI2_VL, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VBMI2_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512_VBMI2 == true && [UX_INSTPTR].var_AVX512VL == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2637,10 +2626,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VNNI_VL, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VNNI_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512_VNNI == true && [UX_INSTPTR].var_AVX512VL == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2649,10 +2638,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_BITALG_VL, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_BITALG_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512_BITALG == true && [UX_INSTPTR].var_AVX512VL == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2661,10 +2650,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VPOPCNTDQ_VL, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VPOPCNTDQ_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512_VPOPCNTDQ == true && [UX_INSTPTR].var_AVX512VL == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2673,10 +2662,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_GFNI, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512BW == true && [UX_INSTPTR].var_GFNI == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2685,10 +2674,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_GFNI_VL, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_GFNI_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512BW == true && [UX_INSTPTR].var_GFNI == true && [UX_INSTPTR].var_AVX512VL == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2697,10 +2686,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_VAES, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_VAES, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512BW == true && [UX_INSTPTR].var_VAES == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2709,10 +2698,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_VAES_VL, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_VAES_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512BW == true && [UX_INSTPTR].var_VAES == true && [UX_INSTPTR].var_AVX512VL == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2721,10 +2710,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_VPCLMULQDQ, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_VPCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512BW == true && [UX_INSTPTR].var_VPCLMULQDQ == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2733,10 +2722,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_VPCLMULQDQ_VL, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_VPCLMULQDQ_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512BW == true && [UX_INSTPTR].var_VPCLMULQDQ == true && [UX_INSTPTR].var_AVX512VL == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2745,10 +2734,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_VL, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512BW == true && [UX_INSTPTR].var_AVX512VL == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2757,10 +2746,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_GFNI, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512DQ == true && [UX_INSTPTR].var_GFNI == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2769,10 +2758,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_GFNI_VL, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_GFNI_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512DQ == true && [UX_INSTPTR].var_GFNI == true && [UX_INSTPTR].var_AVX512VL == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2781,10 +2770,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_VAES, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_VAES, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512DQ == true && [UX_INSTPTR].var_VAES == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2793,10 +2782,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_VAES_VL, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_VAES_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512DQ == true && [UX_INSTPTR].var_VAES == true && [UX_INSTPTR].var_AVX512VL == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2805,10 +2794,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_VPCLMULQDQ, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_VPCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512DQ == true && [UX_INSTPTR].var_VPCLMULQDQ == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2817,10 +2806,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_VPCLMULQDQ_VL, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_VPCLMULQDQ_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512DQ == true && [UX_INSTPTR].var_VPCLMULQDQ == true && [UX_INSTPTR].var_AVX512VL == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2829,10 +2818,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_VL, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512DQ == true && [UX_INSTPTR].var_AVX512VL == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2841,10 +2830,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512CD_VL, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512CD_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512CD == true && [UX_INSTPTR].var_AVX512VL == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2854,10 +2843,10 @@ _TEXT ends
 	;/* %eax=07H, %ecx, %ebx | %eax=01H, %ecx , %edx */
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSE_AES, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSE_AES, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE == true && [UX_INSTPTR].var_AES == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2866,10 +2855,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSE_GFNI, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSE_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE == true && [UX_INSTPTR].var_GFNI == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2878,10 +2867,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSE_PCLMULQDQ, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSE_PCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE == true && [UX_INSTPTR].var_PCLMULQDQ == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2890,10 +2879,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSE2_AES, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSE2_AES, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE2 == true && [UX_INSTPTR].var_AES == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2902,10 +2891,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSE2_GFNI, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSE2_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE2 == true && [UX_INSTPTR].var_GFNI == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2914,10 +2903,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSE2_PCLMULQDQ, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSE2_PCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE2 == true && [UX_INSTPTR].var_PCLMULQDQ == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2926,10 +2915,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSE3_AES, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSE3_AES, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE3 == true && [UX_INSTPTR].var_AES == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2938,10 +2927,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSE3_GFNI, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSE3_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE3 == true && [UX_INSTPTR].var_GFNI == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2950,10 +2939,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSE3_PCLMULQDQ, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSE3_PCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE3 == true && [UX_INSTPTR].var_PCLMULQDQ == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2962,10 +2951,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSSE3_AES, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSSE3_AES, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSSE3 == true && [UX_INSTPTR].var_AES == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2974,10 +2963,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSSE3_GFNI, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSSE3_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSSE3 == true && [UX_INSTPTR].var_GFNI == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2986,10 +2975,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSSE3_PCLMULQDQ, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSSE3_PCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSSE3 == true && [UX_INSTPTR].var_PCLMULQDQ == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -2998,10 +2987,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSE41_AES, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSE41_AES, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE41 == true && [UX_INSTPTR].var_AES == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -3010,10 +2999,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSE41_GFNI, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSE41_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE41 == true && [UX_INSTPTR].var_GFNI == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -3022,10 +3011,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSE41_PCLMULQDQ, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSE41_PCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE41 == true && [UX_INSTPTR].var_PCLMULQDQ == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -3034,10 +3023,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSE42_AES, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSE42_AES, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE42 == true && [UX_INSTPTR].var_AES == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -3046,10 +3035,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSE42_GFNI, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSE42_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE42 == true && [UX_INSTPTR].var_GFNI == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -3058,10 +3047,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_SSE42_PCLMULQDQ, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_SSE42_PCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE42 == true && [UX_INSTPTR].var_PCLMULQDQ == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -3070,10 +3059,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX_AES, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX_AES, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX == true && [UX_INSTPTR].var_AES == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -3082,10 +3071,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX_GFNI, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX == true && [UX_INSTPTR].var_GFNI == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -3094,10 +3083,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX_PCLMULQDQ, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX_PCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX == true && [UX_INSTPTR].var_PCLMULQDQ == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -3106,10 +3095,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX_VAES, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX_VAES, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX == true && [UX_INSTPTR].var_VAES == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -3118,10 +3107,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX_VPCLMULQDQ, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX_VPCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX == true && [UX_INSTPTR].var_VPCLMULQDQ == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -3130,10 +3119,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2_AES, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2_AES, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX2 == true && [UX_INSTPTR].var_AES == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -3142,10 +3131,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2_GFNI, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX2 == true && [UX_INSTPTR].var_GFNI == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -3154,10 +3143,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2_PCLMULQDQ, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2_PCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX2 == true && [UX_INSTPTR].var_PCLMULQDQ == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -3166,10 +3155,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2_VAES, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2_VAES, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX2 == true && [UX_INSTPTR].var_VAES == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -3178,10 +3167,10 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2_VPCLMULQDQ, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2_VPCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX2 == true && [UX_INSTPTR].var_VPCLMULQDQ == true)
-		mov				eax,				true
+		mov				al,				true
 		.endif
 
 		ret
@@ -3190,19 +3179,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_enabled_XMM, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_enabled_XMM, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_enabled_XMM
-
-		ret
-UX_ENDMETHOD
-_TEXT ends
-
-_TEXT segment
-			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_enabled_YMM, <dword>, <>
-
-		mov				eax,				[UX_INSTPTR].var_enabled_YMM
+		mov				al,				[UX_INSTPTR].var_enabled_XMM
 
 		ret
 UX_ENDMETHOD
@@ -3210,9 +3189,9 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, has_enabled_ZMM, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_enabled_YMM, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_enabled_ZMM
+		mov				al,				[UX_INSTPTR].var_enabled_YMM
 
 		ret
 UX_ENDMETHOD
@@ -3220,9 +3199,19 @@ _TEXT ends
 
 _TEXT segment
 			align 4
-UX_STATICVECMETHOD uXmCPUFeatures, Is_Inited, <dword>, <>
+UX_STATICVECMETHOD uXmCPUFeatures, has_enabled_ZMM, <byte>, <>
 
-		mov				eax,				[UX_INSTPTR].var_Inited
+		mov				al,				[UX_INSTPTR].var_enabled_ZMM
+
+		ret
+UX_ENDMETHOD
+_TEXT ends
+
+_TEXT segment
+			align 4
+UX_STATICVECMETHOD uXmCPUFeatures, Is_Inited, <byte>, <>
+
+		mov				al,				[UX_INSTPTR].var_Inited
 
 		ret
 UX_ENDMETHOD
