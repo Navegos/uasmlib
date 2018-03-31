@@ -111,7 +111,7 @@ uXm_xmm_sub_ss proto UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
 			align 16
 uXm_xmm_sub_ss proc UX_VECCALL (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
 
-			addss			xmm0,			xmm1
+			subss			xmm0,			xmm1
 
 			ret
 uXm_xmm_sub_ss endp
@@ -124,7 +124,7 @@ uXm_xmm_sub_ps proto UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
 			align 16
 uXm_xmm_sub_ps proc UX_VECCALL (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
 
-			addps			xmm0,			xmm1
+			subps			xmm0,			xmm1
 
 			ret
 uXm_xmm_sub_ps endp
@@ -1233,12 +1233,12 @@ endif ;__X64__
 ;******************
 _TEXT segment
 			align 16
-uXm_xmm_shuffle_ps proto UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword, _Imm8:dword
+uXm_xmm_shuffle_ps proto UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword, _Imm8:byte
 
 			align 16
-uXm_xmm_shuffle_ps proc UX_VECCALL (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword, _Imm8:dword
+uXm_xmm_shuffle_ps proc UX_VECCALL (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword, _Imm8:byte
 			
-			uXm_xmm4shuffled_ps xmm0, xmm1, rparam3 
+			uXm_xmm4shuffled2_ps  				xmm0,			xmm1,			bparam3
 
 			ret
 uXm_xmm_shuffle_ps endp

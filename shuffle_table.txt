@@ -38,6 +38,7 @@ shuffle(0,0,3,0) = 12
 shuffle(0,0,3,1) = 13
 shuffle(0,0,3,2) = 14
 shuffle(0,0,3,3) = 15
+
 shuffle(0,1,0,0) = 16
 shuffle(0,1,0,1) = 17
 shuffle(0,1,0,2) = 18
@@ -54,6 +55,7 @@ shuffle(0,1,3,0) = 28
 shuffle(0,1,3,1) = 29
 shuffle(0,1,3,2) = 30
 shuffle(0,1,3,3) = 31
+
 shuffle(0,2,0,0) = 32
 shuffle(0,2,0,1) = 33
 shuffle(0,2,0,2) = 34
@@ -70,6 +72,7 @@ shuffle(0,2,3,0) = 44
 shuffle(0,2,3,1) = 45
 shuffle(0,2,3,2) = 46
 shuffle(0,2,3,3) = 47
+
 shuffle(0,3,0,0) = 48
 shuffle(0,3,0,1) = 49
 shuffle(0,3,0,2) = 50
@@ -86,6 +89,7 @@ shuffle(0,3,3,0) = 60
 shuffle(0,3,3,1) = 61
 shuffle(0,3,3,2) = 62
 shuffle(0,3,3,3) = 63
+
 shuffle(1,0,0,0) = 64
 shuffle(1,0,0,1) = 65
 shuffle(1,0,0,2) = 66
@@ -102,6 +106,7 @@ shuffle(1,0,3,0) = 76
 shuffle(1,0,3,1) = 77
 shuffle(1,0,3,2) = 78
 shuffle(1,0,3,3) = 79
+
 shuffle(1,1,0,0) = 80
 shuffle(1,1,0,1) = 81
 shuffle(1,1,0,2) = 82
@@ -118,6 +123,7 @@ shuffle(1,1,3,0) = 92
 shuffle(1,1,3,1) = 93
 shuffle(1,1,3,2) = 94
 shuffle(1,1,3,3) = 95
+
 shuffle(1,2,0,0) = 96
 shuffle(1,2,0,1) = 97
 shuffle(1,2,0,2) = 98
@@ -134,6 +140,7 @@ shuffle(1,2,3,0) = 108
 shuffle(1,2,3,1) = 109
 shuffle(1,2,3,2) = 110
 shuffle(1,2,3,3) = 111
+
 shuffle(1,3,0,0) = 112
 shuffle(1,3,0,1) = 113
 shuffle(1,3,0,2) = 114
@@ -150,6 +157,7 @@ shuffle(1,3,3,0) = 124
 shuffle(1,3,3,1) = 125
 shuffle(1,3,3,2) = 126
 shuffle(1,3,3,3) = 127
+
 shuffle(2,0,0,0) = 128
 shuffle(2,0,0,1) = 129
 shuffle(2,0,0,2) = 130
@@ -166,6 +174,7 @@ shuffle(2,0,3,0) = 140
 shuffle(2,0,3,1) = 141
 shuffle(2,0,3,2) = 142
 shuffle(2,0,3,3) = 143
+
 shuffle(2,1,0,0) = 144
 shuffle(2,1,0,1) = 145
 shuffle(2,1,0,2) = 146
@@ -182,6 +191,7 @@ shuffle(2,1,3,0) = 156
 shuffle(2,1,3,1) = 157
 shuffle(2,1,3,2) = 158
 shuffle(2,1,3,3) = 159
+
 shuffle(2,2,0,0) = 160
 shuffle(2,2,0,1) = 161
 shuffle(2,2,0,2) = 162
@@ -198,6 +208,7 @@ shuffle(2,2,3,0) = 172
 shuffle(2,2,3,1) = 173
 shuffle(2,2,3,2) = 174
 shuffle(2,2,3,3) = 175
+
 shuffle(2,3,0,0) = 176
 shuffle(2,3,0,1) = 177
 shuffle(2,3,0,2) = 178
@@ -214,6 +225,7 @@ shuffle(2,3,3,0) = 188
 shuffle(2,3,3,1) = 189
 shuffle(2,3,3,2) = 190
 shuffle(2,3,3,3) = 191
+
 shuffle(3,0,0,0) = 192
 shuffle(3,0,0,1) = 193
 shuffle(3,0,0,2) = 194
@@ -230,6 +242,7 @@ shuffle(3,0,3,0) = 204
 shuffle(3,0,3,1) = 205
 shuffle(3,0,3,2) = 206
 shuffle(3,0,3,3) = 207
+
 shuffle(3,1,0,0) = 208
 shuffle(3,1,0,1) = 209
 shuffle(3,1,0,2) = 210
@@ -246,6 +259,7 @@ shuffle(3,1,3,0) = 220
 shuffle(3,1,3,1) = 221
 shuffle(3,1,3,2) = 222
 shuffle(3,1,3,3) = 223
+
 shuffle(3,2,0,0) = 224
 shuffle(3,2,0,1) = 225
 shuffle(3,2,0,2) = 226
@@ -262,6 +276,7 @@ shuffle(3,2,3,0) = 236
 shuffle(3,2,3,1) = 237
 shuffle(3,2,3,2) = 238
 shuffle(3,2,3,3) = 239
+
 shuffle(3,3,0,0) = 240
 shuffle(3,3,0,1) = 241
 shuffle(3,3,0,2) = 242

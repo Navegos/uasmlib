@@ -1,0 +1,1318 @@
+
+		.if(reg2 >= 0)
+			shufps				reg0,			reg1,			xmm4shuffle0000
+		.endif
+	
+xmm4shuffle0000:
+0
+xmm4shuffle0001:
+1
+xmm4shuffle0002:
+2
+xmm4shuffle0003:
+3
+xmm4shuffle0010:
+4
+xmm4shuffle0011:
+5
+xmm4shuffle0012:
+6
+xmm4shuffle0013:
+7
+xmm4shuffle0020:
+8
+xmm4shuffle0021:
+9
+xmm4shuffle0022:
+10
+xmm4shuffle0023:
+11
+xmm4shuffle0030:
+12
+xmm4shuffle0031:
+13
+xmm4shuffle0032:
+14
+xmm4shuffle0033:
+15
+xmm4shuffle0100:
+16
+xmm4shuffle0101:
+17
+xmm4shuffle0102:
+18
+xmm4shuffle0103:
+19
+xmm4shuffle0110:
+20
+xmm4shuffle0111:
+21
+xmm4shuffle0112:
+22
+xmm4shuffle0113:
+23
+xmm4shuffle0120:
+24
+xmm4shuffle0121:
+25
+xmm4shuffle0122:
+26
+xmm4shuffle0123:
+27
+xmm4shuffle0130:
+28
+xmm4shuffle0131:
+29
+xmm4shuffle0132:
+30
+xmm4shuffle0133:
+31
+xmm4shuffle0200:
+32
+xmm4shuffle0201:
+33
+xmm4shuffle0202:
+34
+xmm4shuffle0203:
+35
+xmm4shuffle0210:
+36
+xmm4shuffle0211:
+37
+xmm4shuffle0212:
+38
+xmm4shuffle0213:
+39
+xmm4shuffle0220:
+40
+xmm4shuffle0221:
+41
+xmm4shuffle0222:
+42
+xmm4shuffle0223:
+43
+xmm4shuffle0230:
+44
+xmm4shuffle0231:
+45
+xmm4shuffle0232:
+46
+xmm4shuffle0233:
+47
+xmm4shuffle0300:
+48
+xmm4shuffle0301:
+49
+xmm4shuffle0302:
+50
+xmm4shuffle0303:
+51
+xmm4shuffle0310:
+52
+xmm4shuffle0311:
+53
+xmm4shuffle0312:
+54
+xmm4shuffle0313:
+55
+xmm4shuffle0320:
+56
+xmm4shuffle0321:
+57
+xmm4shuffle0322:
+58
+xmm4shuffle0323:
+59
+xmm4shuffle0330:
+60
+xmm4shuffle0331:
+61
+xmm4shuffle0332:
+62
+xmm4shuffle0333:
+63
+xmm4shuffle1000:
+64
+xmm4shuffle1001:
+65
+xmm4shuffle1002:
+66
+xmm4shuffle1003:
+67
+xmm4shuffle1010:
+68
+xmm4shuffle1011:
+69
+xmm4shuffle1012:
+70
+xmm4shuffle1013:
+71
+xmm4shuffle1020:
+72
+xmm4shuffle1021:
+73
+xmm4shuffle1022:
+74
+xmm4shuffle1023:
+75
+xmm4shuffle1030:
+76
+xmm4shuffle1031:
+77
+xmm4shuffle1032:
+78
+xmm4shuffle1033:
+79
+xmm4shuffle1100:
+80
+xmm4shuffle1101:
+81
+xmm4shuffle1102:
+82
+xmm4shuffle1103:
+83
+xmm4shuffle1110:
+84
+xmm4shuffle1111:
+85
+xmm4shuffle1112:
+86
+xmm4shuffle1113:
+87
+xmm4shuffle1120:
+88
+xmm4shuffle1121:
+89
+xmm4shuffle1122:
+90
+xmm4shuffle1123:
+91
+xmm4shuffle1130:
+92
+xmm4shuffle1131:
+93
+xmm4shuffle1132:
+94
+xmm4shuffle1133:
+95
+xmm4shuffle1200:
+96
+xmm4shuffle1201:
+97
+xmm4shuffle1202:
+98
+xmm4shuffle1203:
+99
+xmm4shuffle1210:
+100
+xmm4shuffle1211:
+101
+xmm4shuffle1212:
+102
+xmm4shuffle1213:
+103
+xmm4shuffle1220:
+104
+xmm4shuffle1221:
+105
+xmm4shuffle1222:
+106
+xmm4shuffle1223:
+107
+xmm4shuffle1230:
+108
+xmm4shuffle1231:
+109
+xmm4shuffle1232:
+110
+xmm4shuffle1233:
+111
+xmm4shuffle1300:
+112
+xmm4shuffle1301:
+113
+xmm4shuffle1302:
+114
+xmm4shuffle1303:
+115
+xmm4shuffle1310:
+116
+xmm4shuffle1311:
+117
+xmm4shuffle1312:
+118
+xmm4shuffle1313:
+119
+xmm4shuffle1320:
+120
+xmm4shuffle1321:
+121
+xmm4shuffle1322:
+122
+xmm4shuffle1323:
+123
+xmm4shuffle1330:
+124
+xmm4shuffle1331:
+125
+xmm4shuffle1332:
+126
+xmm4shuffle1333:
+127
+xmm4shuffle2000:
+128
+xmm4shuffle2001:
+129
+xmm4shuffle2002:
+130
+xmm4shuffle2003:
+131
+xmm4shuffle2010:
+132
+xmm4shuffle2011:
+133
+xmm4shuffle2012:
+134
+xmm4shuffle2013:
+135
+xmm4shuffle2020:
+136
+xmm4shuffle2021:
+137
+xmm4shuffle2022:
+138
+xmm4shuffle2023:
+139
+xmm4shuffle2030:
+140
+xmm4shuffle2031:
+141
+xmm4shuffle2032:
+142
+xmm4shuffle2033:
+143
+xmm4shuffle2100:
+144
+xmm4shuffle2101:
+145
+xmm4shuffle2102: 
+146
+xmm4shuffle2103:
+147
+xmm4shuffle2110:
+148
+xmm4shuffle2111:
+149
+xmm4shuffle2112:
+150
+xmm4shuffle2113:
+151
+xmm4shuffle2120:
+152
+xmm4shuffle2121:
+153
+xmm4shuffle2122: 
+154
+xmm4shuffle2123:
+155
+xmm4shuffle2130:
+156
+xmm4shuffle2131:
+157
+xmm4shuffle2132:
+158
+xmm4shuffle2133:
+159
+xmm4shuffle2200:
+160
+xmm4shuffle2201:
+161
+xmm4shuffle2202:
+162
+xmm4shuffle2203:
+163
+xmm4shuffle2210:
+164
+xmm4shuffle2211:
+165
+xmm4shuffle2212:
+166
+xmm4shuffle2213:
+167
+xmm4shuffle2220:
+168
+xmm4shuffle2221:
+169
+xmm4shuffle2222:
+170
+xmm4shuffle2223:
+171
+xmm4shuffle2230:
+172
+xmm4shuffle2231:
+173
+xmm4shuffle2232: 
+174
+xmm4shuffle2233:
+175
+xmm4shuffle2300:
+176
+xmm4shuffle2301:
+177
+xmm4shuffle2302:
+178
+xmm4shuffle2303:
+179
+xmm4shuffle2310:
+180
+xmm4shuffle2311:
+181
+xmm4shuffle2312:
+182
+xmm4shuffle2313:
+183
+xmm4shuffle2320:
+184
+xmm4shuffle2321:
+185
+xmm4shuffle2322:
+186
+xmm4shuffle2323:
+187
+xmm4shuffle2330:
+188
+xmm4shuffle2331:
+189
+xmm4shuffle2332:
+190
+xmm4shuffle2333:
+191
+xmm4shuffle3000:
+192
+xmm4shuffle3001:
+193
+xmm4shuffle3002:
+194
+xmm4shuffle3003:
+195
+xmm4shuffle3010:
+196
+xmm4shuffle3011:
+197
+xmm4shuffle3012:
+198
+xmm4shuffle3013:
+199
+xmm4shuffle3020:
+200
+xmm4shuffle3021:
+201
+xmm4shuffle3022:
+202
+xmm4shuffle3023:
+203
+xmm4shuffle3030:
+204
+xmm4shuffle3031:
+205
+xmm4shuffle3032:
+206
+xmm4shuffle3033:
+207
+xmm4shuffle3100:
+208
+xmm4shuffle3101:
+209
+xmm4shuffle3102:
+210
+xmm4shuffle3103:
+211
+xmm4shuffle3110:
+212
+xmm4shuffle3111:
+213
+xmm4shuffle3112:
+214
+xmm4shuffle3113:
+215
+xmm4shuffle3120:
+216
+xmm4shuffle3121:
+217
+xmm4shuffle3122:
+218
+xmm4shuffle3123:
+219
+xmm4shuffle3130:
+220
+xmm4shuffle3131:
+221
+xmm4shuffle3132:
+222
+xmm4shuffle3133:
+223
+xmm4shuffle3200:
+224
+xmm4shuffle3201:
+225
+xmm4shuffle3202:
+226
+xmm4shuffle3203:
+227
+xmm4shuffle3210:
+228
+xmm4shuffle3211:
+229
+xmm4shuffle3212:
+230
+xmm4shuffle3213:
+231
+xmm4shuffle3220:
+232
+xmm4shuffle3221:
+233
+xmm4shuffle3222:
+234
+xmm4shuffle3223:
+235
+xmm4shuffle3230:
+236
+xmm4shuffle3231:
+237
+xmm4shuffle3232:
+238
+xmm4shuffle3233:
+239
+xmm4shuffle3300:
+240
+xmm4shuffle3301:
+241
+xmm4shuffle3302:
+242
+xmm4shuffle3303:
+243
+xmm4shuffle3310:
+244
+xmm4shuffle3311:
+245
+xmm4shuffle3312:
+246
+xmm4shuffle3313:
+247
+xmm4shuffle3320:
+248
+xmm4shuffle3321:
+249
+xmm4shuffle3322:
+250
+xmm4shuffle3323:
+251
+xmm4shuffle3330:
+252
+xmm4shuffle3331:
+253
+xmm4shuffle3332:
+254
+xmm4shuffle3333:
+255
+
+
+		.if(reg2 == xmm4shuffle0000)
+			shufps				reg0,			reg1,			xmm4shuffle0000
+		.endif
+		.if(reg2 == xmm4shuffle0001)
+			shufps				reg0,			reg1,			xmm4shuffle0001
+		.endif
+		.if(reg2 == xmm4shuffle0002)
+			shufps				reg0,			reg1,			xmm4shuffle0002
+		.endif
+		.if(reg2 == xmm4shuffle0003)
+			shufps				reg0,			reg1,			xmm4shuffle0003
+		.endif
+		.if(reg2 == xmm4shuffle0010)
+			shufps				reg0,			reg1,			xmm4shuffle0010
+		.endif
+		.if(reg2 == xmm4shuffle0011)
+			shufps				reg0,			reg1,			xmm4shuffle0011
+		.endif
+		.if(reg2 == xmm4shuffle0012)
+			shufps				reg0,			reg1,			xmm4shuffle0012
+		.endif
+		.if(reg2 == xmm4shuffle0013)
+			shufps				reg0,			reg1,			xmm4shuffle0013
+		.endif
+		.if(reg2 == xmm4shuffle0020)
+			shufps				reg0,			reg1,			xmm4shuffle0020
+		.endif
+		.if(reg2 == xmm4shuffle0021)
+			shufps				reg0,			reg1,			xmm4shuffle0021
+		.endif
+		.if(reg2 == xmm4shuffle0022)
+			shufps				reg0,			reg1,			xmm4shuffle0022
+		.endif
+		.if(reg2 == xmm4shuffle0023)
+			shufps				reg0,			reg1,			xmm4shuffle0023
+		.endif
+		.if(reg2 == xmm4shuffle0030)
+			shufps				reg0,			reg1,			xmm4shuffle0030
+		.endif
+		.if(reg2 == xmm4shuffle0031)
+			shufps				reg0,			reg1,			xmm4shuffle0031
+		.endif
+		.if(reg2 == xmm4shuffle0032)
+			shufps				reg0,			reg1,			xmm4shuffle0032
+		.endif
+		.if(reg2 == xmm4shuffle0033)
+			shufps				reg0,			reg1,			xmm4shuffle0033
+		.endif
+		
+		
+		.if(reg2 == xmm4shuffle0100)
+			shufps				reg0,			reg1,			xmm4shuffle0100
+		.endif
+		.if(reg2 == xmm4shuffle0101)
+			shufps				reg0,			reg1,			xmm4shuffle0101
+		.endif
+		.if(reg2 == xmm4shuffle0102)
+			shufps				reg0,			reg1,			xmm4shuffle0102
+		.endif
+		.if(reg2 == xmm4shuffle0103)
+			shufps				reg0,			reg1,			xmm4shuffle0103
+		.endif
+		.if(reg2 == xmm4shuffle0110)
+			shufps				reg0,			reg1,			xmm4shuffle0110
+		.endif
+		.if(reg2 == xmm4shuffle0111)
+			shufps				reg0,			reg1,			xmm4shuffle0111
+		.endif
+		.if(reg2 == xmm4shuffle0112)
+			shufps				reg0,			reg1,			xmm4shuffle0112
+		.endif
+		.if(reg2 == xmm4shuffle0113)
+			shufps				reg0,			reg1,			xmm4shuffle0113
+		.endif
+		.if(reg2 == xmm4shuffle0120)
+			shufps				reg0,			reg1,			xmm4shuffle0120
+		.endif
+		.if(reg2 == xmm4shuffle0121)
+			shufps				reg0,			reg1,			xmm4shuffle0121
+		.endif
+		.if(reg2 == xmm4shuffle0122)
+			shufps				reg0,			reg1,			xmm4shuffle0122
+		.endif
+		.if(reg2 == xmm4shuffle0123)
+			shufps				reg0,			reg1,			xmm4shuffle0123
+		.endif
+		.if(reg2 == xmm4shuffle0130)
+			shufps				reg0,			reg1,			xmm4shuffle0130
+		.endif
+		.if(reg2 == xmm4shuffle0131)
+			shufps				reg0,			reg1,			xmm4shuffle0131
+		.endif
+		.if(reg2 == xmm4shuffle0132)
+			shufps				reg0,			reg1,			xmm4shuffle0132
+		.endif
+		.if(reg2 == xmm4shuffle0133)
+			shufps				reg0,			reg1,			xmm4shuffle0133
+		.endif
+		
+		
+		.if(reg2 == xmm4shuffle0200)
+			shufps				reg0,			reg1,			xmm4shuffle0200
+		.endif
+		.if(reg2 == xmm4shuffle0201)
+			shufps				reg0,			reg1,			xmm4shuffle0201
+		.endif
+		.if(reg2 == xmm4shuffle0202)
+			shufps				reg0,			reg1,			xmm4shuffle0202
+		.endif
+		.if(reg2 == xmm4shuffle0203)
+			shufps				reg0,			reg1,			xmm4shuffle0203
+		.endif
+		.if(reg2 == xmm4shuffle0210)
+			shufps				reg0,			reg1,			xmm4shuffle0210
+		.endif
+		.if(reg2 == xmm4shuffle0211)
+			shufps				reg0,			reg1,			xmm4shuffle0211
+		.endif
+		.if(reg2 == xmm4shuffle0212)
+			shufps				reg0,			reg1,			xmm4shuffle0212
+		.endif
+		.if(reg2 == xmm4shuffle0213)
+			shufps				reg0,			reg1,			xmm4shuffle0213
+		.endif
+		.if(reg2 == xmm4shuffle0220)
+			shufps				reg0,			reg1,			xmm4shuffle0220
+		.endif
+		.if(reg2 == xmm4shuffle0221)
+			shufps				reg0,			reg1,			xmm4shuffle0221
+		.endif
+		.if(reg2 == xmm4shuffle0222)
+			shufps				reg0,			reg1,			xmm4shuffle0222
+		.endif
+		.if(reg2 == xmm4shuffle0223)
+			shufps				reg0,			reg1,			xmm4shuffle0223
+		.endif
+		.if(reg2 == xmm4shuffle0230)
+			shufps				reg0,			reg1,			xmm4shuffle0230
+		.endif
+		.if(reg2 == xmm4shuffle0231)
+			shufps				reg0,			reg1,			xmm4shuffle0231
+		.endif
+		.if(reg2 == xmm4shuffle0232)
+			shufps				reg0,			reg1,			xmm4shuffle0232
+		.endif
+		.if(reg2 == xmm4shuffle0233)
+			shufps				reg0,			reg1,			xmm4shuffle0233
+		.endif
+		
+		
+		.if(reg2 == xmm4shuffle0300)
+			shufps				reg0,			reg1,			xmm4shuffle0300
+		.endif
+		.if(reg2 == xmm4shuffle0301)
+			shufps				reg0,			reg1,			xmm4shuffle0301
+		.endif
+		.if(reg2 == xmm4shuffle0302)
+			shufps				reg0,			reg1,			xmm4shuffle0302
+		.endif
+		.if(reg2 == xmm4shuffle0303)
+			shufps				reg0,			reg1,			xmm4shuffle0303
+		.endif
+		.if(reg2 == xmm4shuffle0310)
+			shufps				reg0,			reg1,			xmm4shuffle0310
+		.endif
+		.if(reg2 == xmm4shuffle0311)
+			shufps				reg0,			reg1,			xmm4shuffle0311
+		.endif
+		.if(reg2 == xmm4shuffle0312)
+			shufps				reg0,			reg1,			xmm4shuffle0312
+		.endif
+		.if(reg2 == xmm4shuffle0313)
+			shufps				reg0,			reg1,			xmm4shuffle0313
+		.endif
+		.if(reg2 == xmm4shuffle0320)
+			shufps				reg0,			reg1,			xmm4shuffle0320
+		.endif
+		.if(reg2 == xmm4shuffle0321)
+			shufps				reg0,			reg1,			xmm4shuffle0321
+		.endif
+		.if(reg2 == xmm4shuffle0322)
+			shufps				reg0,			reg1,			xmm4shuffle0322
+		.endif
+		.if(reg2 == xmm4shuffle0323)
+			shufps				reg0,			reg1,			xmm4shuffle0323
+		.endif
+		.if(reg2 == xmm4shuffle0330)
+			shufps				reg0,			reg1,			xmm4shuffle0330
+		.endif
+		.if(reg2 == xmm4shuffle0331)
+			shufps				reg0,			reg1,			xmm4shuffle0331
+		.endif
+		.if(reg2 == xmm4shuffle0332)
+			shufps				reg0,			reg1,			xmm4shuffle0332
+		.endif
+		.if(reg2 == xmm4shuffle0333)
+			shufps				reg0,			reg1,			xmm4shuffle0333
+		.endif
+		
+		
+		.if(reg2 == xmm4shuffle1000)
+			shufps				reg0,			reg1,			xmm4shuffle1000
+		.endif
+		.if(reg2 == xmm4shuffle1001)
+			shufps				reg0,			reg1,			xmm4shuffle1001
+		.endif
+		.if(reg2 == xmm4shuffle1002)
+			shufps				reg0,			reg1,			xmm4shuffle1002
+		.endif
+		.if(reg2 == xmm4shuffle1003)
+			shufps				reg0,			reg1,			xmm4shuffle1003
+		.endif
+		.if(reg2 == xmm4shuffle1010)
+			shufps				reg0,			reg1,			xmm4shuffle1010
+		.endif
+		.if(reg2 == xmm4shuffle1011)
+			shufps				reg0,			reg1,			xmm4shuffle1011
+		.endif
+		.if(reg2 == xmm4shuffle1012)
+			shufps				reg0,			reg1,			xmm4shuffle1012
+		.endif
+		.if(reg2 == xmm4shuffle1013)
+			shufps				reg0,			reg1,			xmm4shuffle1013
+		.endif
+		.if(reg2 == xmm4shuffle1020)
+			shufps				reg0,			reg1,			xmm4shuffle1020
+		.endif
+		.if(reg2 == xmm4shuffle1021)
+			shufps				reg0,			reg1,			xmm4shuffle1021
+		.endif
+		.if(reg2 == xmm4shuffle1022)
+			shufps				reg0,			reg1,			xmm4shuffle1022
+		.endif
+		.if(reg2 == xmm4shuffle1023)
+			shufps				reg0,			reg1,			xmm4shuffle1023
+		.endif
+		.if(reg2 == xmm4shuffle1030)
+			shufps				reg0,			reg1,			xmm4shuffle1030
+		.endif
+		.if(reg2 == xmm4shuffle1031)
+			shufps				reg0,			reg1,			xmm4shuffle1031
+		.endif
+		.if(reg2 == xmm4shuffle1032)
+			shufps				reg0,			reg1,			xmm4shuffle1032
+		.endif
+		.if(reg2 == xmm4shuffle1033)
+			shufps				reg0,			reg1,			xmm4shuffle1033
+		.endif
+		
+		
+		.if(reg2 == xmm4shuffle1100)
+			shufps				reg0,			reg1,			xmm4shuffle1100
+		.endif
+		.if(reg2 == xmm4shuffle1101)
+			shufps				reg0,			reg1,			xmm4shuffle1101
+		.endif
+		.if(reg2 == xmm4shuffle1102)
+			shufps				reg0,			reg1,			xmm4shuffle1102
+		.endif
+		.if(reg2 == xmm4shuffle1103)
+			shufps				reg0,			reg1,			xmm4shuffle1103
+		.endif
+		.if(reg2 == xmm4shuffle1110)
+			shufps				reg0,			reg1,			xmm4shuffle1110
+		.endif
+		.if(reg2 == xmm4shuffle1111)
+			shufps				reg0,			reg1,			xmm4shuffle1111
+		.endif
+		.if(reg2 == xmm4shuffle1112)
+			shufps				reg0,			reg1,			xmm4shuffle1112
+		.endif
+		.if(reg2 == xmm4shuffle1113)
+			shufps				reg0,			reg1,			xmm4shuffle1113
+		.endif
+		.if(reg2 == xmm4shuffle1120)
+			shufps				reg0,			reg1,			xmm4shuffle1120
+		.endif
+		.if(reg2 == xmm4shuffle1121)
+			shufps				reg0,			reg1,			xmm4shuffle1121
+		.endif
+		.if(reg2 == xmm4shuffle1122)
+			shufps				reg0,			reg1,			xmm4shuffle1122
+		.endif
+		.if(reg2 == xmm4shuffle1123)
+			shufps				reg0,			reg1,			xmm4shuffle1123
+		.endif
+		.if(reg2 == xmm4shuffle1130)
+			shufps				reg0,			reg1,			xmm4shuffle1130
+		.endif
+		.if(reg2 == xmm4shuffle1131)
+			shufps				reg0,			reg1,			xmm4shuffle1131
+		.endif
+		.if(reg2 == xmm4shuffle1132)
+			shufps				reg0,			reg1,			xmm4shuffle1132
+		.endif
+		.if(reg2 == xmm4shuffle1133)
+			shufps				reg0,			reg1,			xmm4shuffle1133
+		.endif
+		
+		
+		.if(reg2 == xmm4shuffle1200)
+			shufps				reg0,			reg1,			xmm4shuffle1200
+		.endif
+		.if(reg2 == xmm4shuffle1201)
+			shufps				reg0,			reg1,			xmm4shuffle1201
+		.endif
+		.if(reg2 == xmm4shuffle1202)
+			shufps				reg0,			reg1,			xmm4shuffle1202
+		.endif
+		.if(reg2 == xmm4shuffle1203)
+			shufps				reg0,			reg1,			xmm4shuffle1203
+		.endif
+		.if(reg2 == xmm4shuffle1210)
+			shufps				reg0,			reg1,			xmm4shuffle1210
+		.endif
+		.if(reg2 == xmm4shuffle1211)
+			shufps				reg0,			reg1,			xmm4shuffle1211
+		.endif
+		.if(reg2 == xmm4shuffle1212)
+			shufps				reg0,			reg1,			xmm4shuffle1212
+		.endif
+		.if(reg2 == xmm4shuffle1213)
+			shufps				reg0,			reg1,			xmm4shuffle1213
+		.endif
+		.if(reg2 == xmm4shuffle1220)
+			shufps				reg0,			reg1,			xmm4shuffle1220
+		.endif
+		.if(reg2 == xmm4shuffle1221)
+			shufps				reg0,			reg1,			xmm4shuffle1221
+		.endif
+		.if(reg2 == xmm4shuffle1222)
+			shufps				reg0,			reg1,			xmm4shuffle1222
+		.endif
+		.if(reg2 == xmm4shuffle1223)
+			shufps				reg0,			reg1,			xmm4shuffle1223
+		.endif
+		.if(reg2 == xmm4shuffle1230)
+			shufps				reg0,			reg1,			xmm4shuffle1230
+		.endif
+		.if(reg2 == xmm4shuffle1231)
+			shufps				reg0,			reg1,			xmm4shuffle1231
+		.endif
+		.if(reg2 == xmm4shuffle1232)
+			shufps				reg0,			reg1,			xmm4shuffle1232
+		.endif
+		.if(reg2 == xmm4shuffle1233)
+			shufps				reg0,			reg1,			xmm4shuffle1233
+		.endif
+		
+		
+		.if(reg2 == xmm4shuffle1300)
+			shufps				reg0,			reg1,			xmm4shuffle1300
+		.endif
+		.if(reg2 == xmm4shuffle1301)
+			shufps				reg0,			reg1,			xmm4shuffle1301
+		.endif
+		.if(reg2 == xmm4shuffle1302)
+			shufps				reg0,			reg1,			xmm4shuffle1302
+		.endif
+		.if(reg2 == xmm4shuffle1303)
+			shufps				reg0,			reg1,			xmm4shuffle1303
+		.endif
+		.if(reg2 == xmm4shuffle1310)
+			shufps				reg0,			reg1,			xmm4shuffle1310
+		.endif
+		.if(reg2 == xmm4shuffle1311)
+			shufps				reg0,			reg1,			xmm4shuffle1311
+		.endif
+		.if(reg2 == xmm4shuffle1312)
+			shufps				reg0,			reg1,			xmm4shuffle1312
+		.endif
+		.if(reg2 == xmm4shuffle1313)
+			shufps				reg0,			reg1,			xmm4shuffle1313
+		.endif
+		.if(reg2 == xmm4shuffle1320)
+			shufps				reg0,			reg1,			xmm4shuffle1320
+		.endif
+		.if(reg2 == xmm4shuffle1321)
+			shufps				reg0,			reg1,			xmm4shuffle1321
+		.endif
+		.if(reg2 == xmm4shuffle1322)
+			shufps				reg0,			reg1,			xmm4shuffle1322
+		.endif
+		.if(reg2 == xmm4shuffle1323)
+			shufps				reg0,			reg1,			xmm4shuffle1323
+		.endif
+		.if(reg2 == xmm4shuffle1330)
+			shufps				reg0,			reg1,			xmm4shuffle1330
+		.endif
+		.if(reg2 == xmm4shuffle1331)
+			shufps				reg0,			reg1,			xmm4shuffle1331
+		.endif
+		.if(reg2 == xmm4shuffle1332)
+			shufps				reg0,			reg1,			xmm4shuffle1332
+		.endif
+		.if(reg2 == xmm4shuffle1333)
+			shufps				reg0,			reg1,			xmm4shuffle1333
+		.endif
+		
+		
+		.if(reg2 == xmm4shuffle2000)
+			shufps				reg0,			reg1,			xmm4shuffle2000
+		.endif
+		.if(reg2 == xmm4shuffle2001)
+			shufps				reg0,			reg1,			xmm4shuffle2001
+		.endif
+		.if(reg2 == xmm4shuffle2002)
+			shufps				reg0,			reg1,			xmm4shuffle2002
+		.endif
+		.if(reg2 == xmm4shuffle2003)
+			shufps				reg0,			reg1,			xmm4shuffle2003
+		.endif
+		.if(reg2 == xmm4shuffle2010)
+			shufps				reg0,			reg1,			xmm4shuffle2010
+		.endif
+		.if(reg2 == xmm4shuffle2011)
+			shufps				reg0,			reg1,			xmm4shuffle2011
+		.endif
+		.if(reg2 == xmm4shuffle2012)
+			shufps				reg0,			reg1,			xmm4shuffle2012
+		.endif
+		.if(reg2 == xmm4shuffle2013)
+			shufps				reg0,			reg1,			xmm4shuffle2013
+		.endif
+		.if(reg2 == xmm4shuffle2020)
+			shufps				reg0,			reg1,			xmm4shuffle2020
+		.endif
+		.if(reg2 == xmm4shuffle2021)
+			shufps				reg0,			reg1,			xmm4shuffle2021
+		.endif
+		.if(reg2 == xmm4shuffle2022)
+			shufps				reg0,			reg1,			xmm4shuffle2022
+		.endif
+		.if(reg2 == xmm4shuffle2023)
+			shufps				reg0,			reg1,			xmm4shuffle2023
+		.endif
+		.if(reg2 == xmm4shuffle2030)
+			shufps				reg0,			reg1,			xmm4shuffle2030
+		.endif
+		.if(reg2 == xmm4shuffle2031)
+			shufps				reg0,			reg1,			xmm4shuffle2031
+		.endif
+		.if(reg2 == xmm4shuffle2032)
+			shufps				reg0,			reg1,			xmm4shuffle2032
+		.endif
+		.if(reg2 == xmm4shuffle2033)
+			shufps				reg0,			reg1,			xmm4shuffle2033
+		.endif
+		
+		
+		.if(reg2 == xmm4shuffle2100)
+			shufps				reg0,			reg1,			xmm4shuffle2100
+		.endif
+		.if(reg2 == xmm4shuffle2101)
+			shufps				reg0,			reg1,			xmm4shuffle2101
+		.endif
+		.if(reg2 == xmm4shuffle2102)
+			shufps				reg0,			reg1,			xmm4shuffle2102
+		.endif
+		.if(reg2 == xmm4shuffle2103)
+			shufps				reg0,			reg1,			xmm4shuffle2103
+		.endif
+		.if(reg2 == xmm4shuffle2110)
+			shufps				reg0,			reg1,			xmm4shuffle2110
+		.endif
+		.if(reg2 == xmm4shuffle2111)
+			shufps				reg0,			reg1,			xmm4shuffle2111
+		.endif
+		.if(reg2 == xmm4shuffle2112)
+			shufps				reg0,			reg1,			xmm4shuffle2112
+		.endif
+		.if(reg2 == xmm4shuffle2113)
+			shufps				reg0,			reg1,			xmm4shuffle2113
+		.endif
+		.if(reg2 == xmm4shuffle2120)
+			shufps				reg0,			reg1,			xmm4shuffle2120
+		.endif
+		.if(reg2 == xmm4shuffle2121)
+			shufps				reg0,			reg1,			xmm4shuffle2121
+		.endif
+		.if(reg2 == xmm4shuffle2122)
+			shufps				reg0,			reg1,			xmm4shuffle2122
+		.endif
+		.if(reg2 == xmm4shuffle2123)
+			shufps				reg0,			reg1,			xmm4shuffle2123
+		.endif
+		.if(reg2 == xmm4shuffle2130)
+			shufps				reg0,			reg1,			xmm4shuffle2130
+		.endif
+		.if(reg2 == xmm4shuffle2131)
+			shufps				reg0,			reg1,			xmm4shuffle2131
+		.endif
+		.if(reg2 == xmm4shuffle2132)
+			shufps				reg0,			reg1,			xmm4shuffle2132
+		.endif
+		.if(reg2 == xmm4shuffle2133)
+			shufps				reg0,			reg1,			xmm4shuffle2133
+		.endif
+		
+		
+		.if(reg2 == xmm4shuffle2200)
+			shufps				reg0,			reg1,			xmm4shuffle2200
+		.endif
+		.if(reg2 == xmm4shuffle2201)
+			shufps				reg0,			reg1,			xmm4shuffle2201
+		.endif
+		.if(reg2 == xmm4shuffle2202)
+			shufps				reg0,			reg1,			xmm4shuffle2202
+		.endif
+		.if(reg2 == xmm4shuffle2203)
+			shufps				reg0,			reg1,			xmm4shuffle2203
+		.endif
+		.if(reg2 == xmm4shuffle2210)
+			shufps				reg0,			reg1,			xmm4shuffle2210
+		.endif
+		.if(reg2 == xmm4shuffle2211)
+			shufps				reg0,			reg1,			xmm4shuffle2211
+		.endif
+		.if(reg2 == xmm4shuffle2212)
+			shufps				reg0,			reg1,			xmm4shuffle2212
+		.endif
+		.if(reg2 == xmm4shuffle2213)
+			shufps				reg0,			reg1,			xmm4shuffle2213
+		.endif
+		.if(reg2 == xmm4shuffle2220)
+			shufps				reg0,			reg1,			xmm4shuffle2220
+		.endif
+		.if(reg2 == xmm4shuffle2221)
+			shufps				reg0,			reg1,			xmm4shuffle2221
+		.endif
+		.if(reg2 == xmm4shuffle2222)
+			shufps				reg0,			reg1,			xmm4shuffle2222
+		.endif
+		.if(reg2 == xmm4shuffle2223)
+			shufps				reg0,			reg1,			xmm4shuffle2223
+		.endif
+		.if(reg2 == xmm4shuffle2230)
+			shufps				reg0,			reg1,			xmm4shuffle2230
+		.endif
+		.if(reg2 == xmm4shuffle2231)
+			shufps				reg0,			reg1,			xmm4shuffle2231
+		.endif
+		.if(reg2 == xmm4shuffle2232)
+			shufps				reg0,			reg1,			xmm4shuffle2232
+		.endif
+		.if(reg2 == xmm4shuffle2233)
+			shufps				reg0,			reg1,			xmm4shuffle2233
+		.endif
+		
+		
+		.if(reg2 == xmm4shuffle2300)
+			shufps				reg0,			reg1,			xmm4shuffle2300
+		.endif
+		.if(reg2 == xmm4shuffle2301)
+			shufps				reg0,			reg1,			xmm4shuffle2301
+		.endif
+		.if(reg2 == xmm4shuffle2302)
+			shufps				reg0,			reg1,			xmm4shuffle2302
+		.endif
+		.if(reg2 == xmm4shuffle2303)
+			shufps				reg0,			reg1,			xmm4shuffle2303
+		.endif
+		.if(reg2 == xmm4shuffle2310)
+			shufps				reg0,			reg1,			xmm4shuffle2310
+		.endif
+		.if(reg2 == xmm4shuffle2311)
+			shufps				reg0,			reg1,			xmm4shuffle2311
+		.endif
+		.if(reg2 == xmm4shuffle2312)
+			shufps				reg0,			reg1,			xmm4shuffle2312
+		.endif
+		.if(reg2 == xmm4shuffle2313)
+			shufps				reg0,			reg1,			xmm4shuffle2313
+		.endif
+		.if(reg2 == xmm4shuffle2320)
+			shufps				reg0,			reg1,			xmm4shuffle2320
+		.endif
+		.if(reg2 == xmm4shuffle2321)
+			shufps				reg0,			reg1,			xmm4shuffle2321
+		.endif
+		.if(reg2 == xmm4shuffle2322)
+			shufps				reg0,			reg1,			xmm4shuffle2322
+		.endif
+		.if(reg2 == xmm4shuffle2323)
+			shufps				reg0,			reg1,			xmm4shuffle2323
+		.endif
+		.if(reg2 == xmm4shuffle2330)
+			shufps				reg0,			reg1,			xmm4shuffle2330
+		.endif
+		.if(reg2 == xmm4shuffle2331)
+			shufps				reg0,			reg1,			xmm4shuffle2331
+		.endif
+		.if(reg2 == xmm4shuffle2332)
+			shufps				reg0,			reg1,			xmm4shuffle2332
+		.endif
+		.if(reg2 == xmm4shuffle2333)
+			shufps				reg0,			reg1,			xmm4shuffle2333
+		.endif
+		
+		
+		.if(reg2 == xmm4shuffle3000)
+			shufps				reg0,			reg1,			xmm4shuffle3000
+		.endif
+		.if(reg2 == xmm4shuffle3001)
+			shufps				reg0,			reg1,			xmm4shuffle3001
+		.endif
+		.if(reg2 == xmm4shuffle3002)
+			shufps				reg0,			reg1,			xmm4shuffle3002
+		.endif
+		.if(reg2 == xmm4shuffle3003)
+			shufps				reg0,			reg1,			xmm4shuffle3003
+		.endif
+		.if(reg2 == xmm4shuffle3010)
+			shufps				reg0,			reg1,			xmm4shuffle3010
+		.endif
+		.if(reg2 == xmm4shuffle3011)
+			shufps				reg0,			reg1,			xmm4shuffle3011
+		.endif
+		.if(reg2 == xmm4shuffle3012)
+			shufps				reg0,			reg1,			xmm4shuffle3012
+		.endif
+		.if(reg2 == xmm4shuffle3013)
+			shufps				reg0,			reg1,			xmm4shuffle3013
+		.endif
+		.if(reg2 == xmm4shuffle3020)
+			shufps				reg0,			reg1,			xmm4shuffle3020
+		.endif
+		.if(reg2 == xmm4shuffle3021)
+			shufps				reg0,			reg1,			xmm4shuffle3021
+		.endif
+		.if(reg2 == xmm4shuffle3022)
+			shufps				reg0,			reg1,			xmm4shuffle3022
+		.endif
+		.if(reg2 == xmm4shuffle3023)
+			shufps				reg0,			reg1,			xmm4shuffle3023
+		.endif
+		.if(reg2 == xmm4shuffle3030)
+			shufps				reg0,			reg1,			xmm4shuffle3030
+		.endif
+		.if(reg2 == xmm4shuffle3031)
+			shufps				reg0,			reg1,			xmm4shuffle3031
+		.endif
+		.if(reg2 == xmm4shuffle3032)
+			shufps				reg0,			reg1,			xmm4shuffle3032
+		.endif
+		.if(reg2 == xmm4shuffle3033)
+			shufps				reg0,			reg1,			xmm4shuffle3033
+		.endif
+		
+		
+		.if(reg2 == xmm4shuffle3100)
+			shufps				reg0,			reg1,			xmm4shuffle3100
+		.endif
+		.if(reg2 == xmm4shuffle3101)
+			shufps				reg0,			reg1,			xmm4shuffle3101
+		.endif
+		.if(reg2 == xmm4shuffle3102)
+			shufps				reg0,			reg1,			xmm4shuffle3102
+		.endif
+		.if(reg2 == xmm4shuffle3103)
+			shufps				reg0,			reg1,			xmm4shuffle3103
+		.endif
+		.if(reg2 == xmm4shuffle3110)
+			shufps				reg0,			reg1,			xmm4shuffle3110
+		.endif
+		.if(reg2 == xmm4shuffle3111)
+			shufps				reg0,			reg1,			xmm4shuffle3111
+		.endif
+		.if(reg2 == xmm4shuffle3112)
+			shufps				reg0,			reg1,			xmm4shuffle3112
+		.endif
+		.if(reg2 == xmm4shuffle3113)
+			shufps				reg0,			reg1,			xmm4shuffle3113
+		.endif
+		.if(reg2 == xmm4shuffle3120)
+			shufps				reg0,			reg1,			xmm4shuffle3120
+		.endif
+		.if(reg2 == xmm4shuffle3121)
+			shufps				reg0,			reg1,			xmm4shuffle3121
+		.endif
+		.if(reg2 == xmm4shuffle3122)
+			shufps				reg0,			reg1,			xmm4shuffle3122
+		.endif
+		.if(reg2 == xmm4shuffle3123)
+			shufps				reg0,			reg1,			xmm4shuffle3123
+		.endif
+		.if(reg2 == xmm4shuffle3130)
+			shufps				reg0,			reg1,			xmm4shuffle3130
+		.endif
+		.if(reg2 == xmm4shuffle3131)
+			shufps				reg0,			reg1,			xmm4shuffle3131
+		.endif
+		.if(reg2 == xmm4shuffle3132)
+			shufps				reg0,			reg1,			xmm4shuffle3132
+		.endif
+		.if(reg2 == xmm4shuffle3133)
+			shufps				reg0,			reg1,			xmm4shuffle3133
+		.endif
+		
+		
+		.if(reg2 == xmm4shuffle3200)
+			shufps				reg0,			reg1,			xmm4shuffle3200
+		.endif
+		.if(reg2 == xmm4shuffle3201)
+			shufps				reg0,			reg1,			xmm4shuffle3201
+		.endif
+		.if(reg2 == xmm4shuffle3202)
+			shufps				reg0,			reg1,			xmm4shuffle3202
+		.endif
+		.if(reg2 == xmm4shuffle3203)
+			shufps				reg0,			reg1,			xmm4shuffle3203
+		.endif
+		.if(reg2 == xmm4shuffle3210)
+			shufps				reg0,			reg1,			xmm4shuffle3210
+		.endif
+		.if(reg2 == xmm4shuffle3211)
+			shufps				reg0,			reg1,			xmm4shuffle3211
+		.endif
+		.if(reg2 == xmm4shuffle3212)
+			shufps				reg0,			reg1,			xmm4shuffle3212
+		.endif
+		.if(reg2 == xmm4shuffle3213)
+			shufps				reg0,			reg1,			xmm4shuffle3213
+		.endif
+		.if(reg2 == xmm4shuffle3220)
+			shufps				reg0,			reg1,			xmm4shuffle3220
+		.endif
+		.if(reg2 == xmm4shuffle3221)
+			shufps				reg0,			reg1,			xmm4shuffle3221
+		.endif
+		.if(reg2 == xmm4shuffle3222)
+			shufps				reg0,			reg1,			xmm4shuffle3222
+		.endif
+		.if(reg2 == xmm4shuffle3223)
+			shufps				reg0,			reg1,			xmm4shuffle3223
+		.endif
+		.if(reg2 == xmm4shuffle3230)
+			shufps				reg0,			reg1,			xmm4shuffle3230
+		.endif
+		.if(reg2 == xmm4shuffle3231)
+			shufps				reg0,			reg1,			xmm4shuffle3231
+		.endif
+		.if(reg2 == xmm4shuffle3232)
+			shufps				reg0,			reg1,			xmm4shuffle3232
+		.endif
+		.if(reg2 == xmm4shuffle3233)
+			shufps				reg0,			reg1,			xmm4shuffle3233
+		.endif
+		
+		
+		.if(reg2 == xmm4shuffle3300)
+			shufps				reg0,			reg1,			xmm4shuffle3300
+		.endif
+		.if(reg2 == xmm4shuffle3301)
+			shufps				reg0,			reg1,			xmm4shuffle3301
+		.endif
+		.if(reg2 == xmm4shuffle3302)
+			shufps				reg0,			reg1,			xmm4shuffle3302
+		.endif
+		.if(reg2 == xmm4shuffle3303)
+			shufps				reg0,			reg1,			xmm4shuffle3303
+		.endif
+		.if(reg2 == xmm4shuffle3310)
+			shufps				reg0,			reg1,			xmm4shuffle3310
+		.endif
+		.if(reg2 == xmm4shuffle3311)
+			shufps				reg0,			reg1,			xmm4shuffle3311
+		.endif
+		.if(reg2 == xmm4shuffle3312)
+			shufps				reg0,			reg1,			xmm4shuffle3312
+		.endif
+		.if(reg2 == xmm4shuffle3313)
+			shufps				reg0,			reg1,			xmm4shuffle3313
+		.endif
+		.if(reg2 == xmm4shuffle3320)
+			shufps				reg0,			reg1,			xmm4shuffle3320
+		.endif
+		.if(reg2 == xmm4shuffle3321)
+			shufps				reg0,			reg1,			xmm4shuffle3321
+		.endif
+		.if(reg2 == xmm4shuffle3322)
+			shufps				reg0,			reg1,			xmm4shuffle3322
+		.endif
+		.if(reg2 == xmm4shuffle3323)
+			shufps				reg0,			reg1,			xmm4shuffle3323
+		.endif
+		.if(reg2 == xmm4shuffle3330)
+			shufps				reg0,			reg1,			xmm4shuffle3330
+		.endif
+		.if(reg2 == xmm4shuffle3331)
+			shufps				reg0,			reg1,			xmm4shuffle3331
+		.endif
+		.if(reg2 == xmm4shuffle3332)
+			shufps				reg0,			reg1,			xmm4shuffle3332
+		.endif
+		.if(reg2 == xmm4shuffle3333)
+			shufps				reg0,			reg1,			xmm4shuffle3333
+		.endif
+	
