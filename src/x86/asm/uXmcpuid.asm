@@ -20,8 +20,7 @@
 ; Input: a = eax, c = ecx
 ; Output: abcd[0] = eax, abcd[1] = ebx, abcd[2] = ecx, abcd[3] = edx
 
-	;.code
-_TEXT segment
+	.code
 			align ptr_t_size
 uXm_cpuid proto UX_VECCALL
 
@@ -41,9 +40,8 @@ uXm_cpuid proc UX_VECCALL
 	endif
 			jmp			uXm_cpuidex
 
-			ret
+			;ret
 
 uXm_cpuid endp
-_TEXT ends
 
 	end

@@ -15,8 +15,7 @@
 			option	frame:auto
 
 
-	;.code
-_TEXT segment
+	.code
 			align 8
 uXm_xsetbv proto UX_VECCALL
 
@@ -34,6 +33,5 @@ uXm_xsetbv proc UX_VECCALL
 			ret
 
 uXm_xsetbv endp
-_TEXT ends
 
 	end

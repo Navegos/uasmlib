@@ -74,24 +74,32 @@ ifdef WINDOWS
 		rparam2		textequ		<rdx>
 		rparam3		textequ		<r8>
 		rparam4		textequ		<r9>
+		rsindex		textequ		<rsi>
+		rdindex		textequ		<rdi>
 		;32bits
 		dreturn		textequ		<eax>
 		dparam1		textequ		<ecx>
 		dparam2		textequ		<edx>
 		dparam3		textequ		<r8d>
 		dparam4		textequ		<r9d>
+		dsindex		textequ		<esi>
+		ddindex		textequ		<ddi>
 		;16bits
 		wreturn		textequ		<ax>
 		wparam1		textequ		<cx>
 		wparam2		textequ		<dx>
 		wparam3		textequ		<r8w>
 		wparam4		textequ		<r9w>
+		wsindex		textequ		<si>
+		wdindex		textequ		<di>
 		;8bits
 		breturn		textequ		<al>
 		bparam1		textequ		<cl>
 		bparam2		textequ		<dl>
 		bparam3		textequ		<r8b>
 		bparam4		textequ		<r9b>
+		bsindex		textequ		<sil>
+		dindex		textequ		<dil>
 	else ;__X64__
 		ifdef __X32_VECTORCALL__ ;not available with uasm macrolib
 			ifndef DEFINED_VECTORCALL

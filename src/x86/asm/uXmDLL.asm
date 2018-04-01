@@ -15,8 +15,7 @@
 			option	frame:auto
 
 
-	;.code
-_TEXT segment
+	.code
 			align ptr_t_size
 DllMain proto UX_VECCALL (dword) ;hModule:ptr, dwReason:dword, dwReserved:ptr
 
@@ -27,6 +26,5 @@ DllMain proc UX_VECCALL (dword) ;hModule:ptr, dwReason:dword, dwReserved:ptr
 		ret
 
 DllMain endp
-_TEXT ends
 
 	end

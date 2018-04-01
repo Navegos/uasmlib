@@ -141,31 +141,31 @@ extern __uXm128  uXm_xmm_cvtsi64_ss(__uXm128 InXmm_A, __int64 InInt_B);
 extern __uXm128 uXm_xmm_shuffle_ps(__uXm128 InXmm_A, __uXm128 InXmm_B, unsigned int _Imm8);
 extern __uXm128 uXm_xmm_unpackhi_ps(__uXm128 InXmm_A, __uXm128 InXmm_B);
 extern __uXm128 uXm_xmm_unpacklo_ps(__uXm128 InXmm_A, __uXm128 InXmm_B);
-extern __uXm128 uXm_xmm_loadh_pi(__uXm128, __uXm64 const*);
-extern __uXm128 uXm_xmm_movehl_ps(__uXm128, __uXm128 InXmm_A);
-extern __uXm128 uXm_xmm_movelh_ps(__uXm128, __uXm128 InXmm_A);
-extern void uXm_xmm_storeh_pi(__uXm64 *, __uXm128 InXmm_A);
-extern __uXm128 uXm_xmm_loadl_pi(__uXm128, __uXm64 const*);
-extern void uXm_xmm_storel_pi(__uXm64 *, __uXm128);
+extern __uXm128 uXm_xmm_loadh_pi(__uXm128 InXmm_A, const __uXm64* InXmm_B);
+extern __uXm128 uXm_xmm_movehl_ps(__uXm128 InXmm_A, __uXm128 InXmm_B);
+extern __uXm128 uXm_xmm_movelh_ps(__uXm128 InXmm_A, __uXm128 InXmm_B);
+extern void uXm_xmm_storeh_pi(__uXm64* OutXmm_A, __uXm128 InXmm_B);
+extern __uXm128 uXm_xmm_loadl_pi(__uXm128 InXmm_A, const __uXm64* InXmm_B);
+extern void uXm_xmm_storel_pi(__uXm64* OutXmm_A, __uXm128 InXmm_B);
 extern int uXm_xmm_movemask_ps(__uXm128 InXmm_A);
 
 #if defined(uXm_X86)
 /*
 * Integer (MMX) extensions
 */
-extern int _m_pextrw(__uXm64, int);
-extern __uXm64 _m_pinsrw(__uXm64, int, int);
-extern __uXm64 _m_pmaxsw(__uXm64, __uXm64);
-extern __uXm64 _m_pmaxub(__uXm64, __uXm64);
-extern __uXm64 _m_pminsw(__uXm64, __uXm64);
-extern __uXm64 _m_pminub(__uXm64, __uXm64);
-extern int _m_pmovmskb(__uXm64);
-extern __uXm64 _m_pmulhuw(__uXm64, __uXm64);
-extern __uXm64 _m_pshufw(__uXm64, int);
-extern void _m_maskmovq(__uXm64, __uXm64, char *);
-extern __uXm64 _m_pavgb(__uXm64, __uXm64);
-extern __uXm64 _m_pavgw(__uXm64, __uXm64);
-extern __uXm64 _m_psadbw(__uXm64, __uXm64);
+extern int uXm_xmm_pextrw(__uXm64 InXmm_A, int InInt_B);
+extern __uXm64 uXm_xmm_pinsrw(__uXm64 InXmm_A, int InInt_B, int InInt_C);
+extern __uXm64 uXm_xmm_pmaxsw(__uXm64 InXmm_A, __uXm64 InXmm_B);
+extern __uXm64 uXm_xmm_pmaxub(__uXm64 InXmm_A, __uXm64 InXmm_B);
+extern __uXm64 uXm_xmm_pminsw(__uXm64 InXmm_A, __uXm64 InXmm_B);
+extern __uXm64 uXm_xmm_pminub(__uXm64 InXmm_A, __uXm64 InXmm_B);
+extern int uXm_xmm_pmovmskb(__uXm64 InXmm_A);
+extern __uXm64 uXm_xmm_pmulhuw(__uXm64 InXmm_A, __uXm64 InXmm_B);
+extern __uXm64 uXm_xmm_pshufw(__uXm64 InXmm_A, int InInt_B);
+extern void uXm_xmm_maskmovq(__uXm64 InXmm_A, __uXm64 InXmm_B, char * OutInt8_C);
+extern __uXm64 uXm_xmm_pavgb(__uXm64 InXmm_A, __uXm64 InXmm_B);
+extern __uXm64 uXm_xmm_pavgw(__uXm64 InXmm_A, __uXm64 InXmm_B);
+extern __uXm64 uXm_xmm_psadbw(__uXm64 InXmm_A, __uXm64 InXmm_B);
 #endif
 
 /*
@@ -213,19 +213,19 @@ uXm_EXTERNC_END
 #define uXm_xmm_cvtps_pi32    uXm_xmm_cvt_ps2pi
 #define uXm_xmm_cvttps_pi32   uXm_xmm_cvtt_ps2pi
 #define uXm_xmm_cvtpi32_ps    uXm_xmm_cvt_pi2ps
-#define uXm_xmm_extract_pi16  _m_pextrw
-#define uXm_xmm_insert_pi16   _m_pinsrw
-#define uXm_xmm_max_pi16      _m_pmaxsw
-#define uXm_xmm_max_pu8       _m_pmaxub
-#define uXm_xmm_min_pi16      _m_pminsw
-#define uXm_xmm_min_pu8       _m_pminub
-#define uXm_xmm_movemask_pi8  _m_pmovmskb
-#define uXm_xmm_mulhi_pu16    _m_pmulhuw
-#define uXm_xmm_shuffle_pi16  _m_pshufw
-#define uXm_xmm_maskmove_si64 _m_maskmovq
-#define uXm_xmm_avg_pu8       _m_pavgb
-#define uXm_xmm_avg_pu16      _m_pavgw
-#define uXm_xmm_sad_pu8       _m_psadbw*/
+#define uXm_xmm_extract_pi16  uXm_xmm_pextrw
+#define uXm_xmm_insert_pi16   uXm_xmm_pinsrw
+#define uXm_xmm_max_pi16      uXm_xmm_pmaxsw
+#define uXm_xmm_max_pu8       uXm_xmm_pmaxub
+#define uXm_xmm_min_pi16      uXm_xmm_pminsw
+#define uXm_xmm_min_pu8       uXm_xmm_pminub
+#define uXm_xmm_movemask_pi8  uXm_xmm_pmovmskb
+#define uXm_xmm_mulhi_pu16    uXm_xmm_pmulhuw
+#define uXm_xmm_shuffle_pi16  uXm_xmm_pshufw
+#define uXm_xmm_maskmove_si64 uXm_xmm_maskmovq
+#define uXm_xmm_avg_pu8       uXm_xmm_pavgb
+#define uXm_xmm_avg_pu16      uXm_xmm_pavgw
+#define uXm_xmm_sad_pu8       uXm_xmm_psadbw*/
 #endif
 #define uXm_xmm_cvtss_si32    uXm_xmm_cvt_ss2si
 #define uXm_xmm_cvttss_si32   uXm_xmm_cvtt_ss2si

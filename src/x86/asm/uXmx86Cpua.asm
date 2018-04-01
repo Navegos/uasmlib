@@ -15,6 +15,90 @@
 	endif
 			option	frame:auto
 
+	include uXmx86cpu.inc
+
+	.data
+			;align 16
+			
+	input_datacachelevel				dword ?
+
+	cpu_dataref label ptr qword                              ; reference point
+		cpu_ok_       dd      0, 0                ; 1 when values are determined
+		cpu_level1_   dq      0                   ; level 1 data cache size
+		cpu_level2_   dq      0                   ; level 2 data cache size
+		cpu_level3_   dq      0                   ; level 3 data cache size
+		cpu_level4_   dq      0                   ; level 4 data cache size
+	cpu_numlevels  equ     4                   ; max level
+
+		; From "Intel Processor Identification and the CPUID Instruction, Application note 485
+		; table of Intel cache descriptors
+	cpu_descriptortable_ label byte
+		db 0Ah, 1, 1, 13                       ; 8 kb L1 data cache
+		db 0Ch, 1, 1, 14                       ; 16 kb L1 data cache
+		db 0Dh, 1, 1, 14                       ; 16 kb L1 data cache
+		db 21h, 2, 1, 18                       ; 256 kb L2 data cache
+		db 22h, 3, 1, 19                       ; 512 kb L3 data cache
+		db 23h, 3, 1, 20                       ; 1 Mb L3 data cache
+		db 25h, 3, 1, 21                       ; 2 Mb L3 data cache
+		db 29h, 3, 1, 22                       ; 4 Mb L3 data cache
+		db 2Ch, 1, 1, 15                       ; 32 kb L1 data cache
+		db 39h, 2, 1, 17                       ; 128 kb L2 data cache
+		db 3Ah, 2, 3, 16                       ; 192 kb L2 data cache
+		db 3Bh, 2, 1, 17                       ; 128 kb L1 data cache
+		db 3Ch, 2, 1, 18                       ; 256 kb L1 data cache
+		db 3Dh, 2, 3, 17                       ; 384 kb L2 data cache
+		db 3Eh, 2, 1, 19                       ; 512 kb L2 data cache
+		db 41h, 2, 1, 17                       ; 128 kb L2 data cache
+		db 42h, 2, 1, 18                       ; 256 kb L2 data cache
+		db 43h, 2, 1, 19                       ; 512 kb L2 data cache
+		db 44h, 2, 1, 20                       ; 1 Mb L2 data cache
+		db 45h, 2, 1, 21                       ; 2 Mb L2 data cache
+		db 46h, 3, 1, 22                       ; 4 Mb L3 data cache
+		db 47h, 3, 1, 23                       ; 8 Mb L3 data cache
+		db 48h, 2, 3, 20                       ; 3 Mb L2 data cache
+		db 49h, 2, 1, 22                       ; 4 Mb L2 or 3 data cache
+		db 4Ah, 3, 3, 21                       ; 6 Mb L3 data cache
+		db 4Bh, 3, 1, 23                       ; 8 Mb L3 data cache
+		db 4Ch, 3, 3, 22                       ; 12 Mb L3 data cache
+		db 4Dh, 3, 1, 24                       ; 16 Mb L3 data cache
+		db 4Eh, 2, 3, 21                       ; 6 Mb L2 data cache
+		db 60h, 1, 1, 14                       ; 16 kb L1 data cache
+		db 66h, 1, 1, 13                       ; 8 kb L1 data cache
+		db 67h, 1, 1, 14                       ; 16 kb L1 data cache
+		db 68h, 1, 1, 15                       ; 32 kb L1 data cache
+		db 78h, 2, 1, 20                       ; 1 Mb L2 data cache
+		db 79h, 2, 1, 17                       ; 128 kb L2 data cache
+		db 7Ah, 2, 1, 18                       ; 256 kb L2 data cache
+		db 7Bh, 2, 1, 19                       ; 512 kb L2 data cache
+		db 7Ch, 2, 1, 20                       ; 1 Mb L2 data cache
+		db 7Dh, 2, 1, 21                       ; 2 Mb L2 data cache
+		db 7Fh, 2, 1, 19                       ; 512 kb L2 data cache
+		db 82h, 2, 1, 18                       ; 256 kb L2 data cache
+		db 83h, 2, 1, 19                       ; 512 kb L2 data cache
+		db 84h, 2, 1, 20                       ; 1 Mb L2 data cache
+		db 85h, 2, 1, 21                       ; 2 Mb L2 data cache
+		db 86h, 2, 1, 19                       ; 512 kb L2 data cache
+		db 87h, 2, 1, 20                       ; 1 Mb L2 data cache
+		db 0D0h, 3, 1, 19                      ; 512 kb L3 data cache
+		db 0D1h, 3, 1, 20                      ; 1 Mb L3 data cache
+		db 0D2h, 3, 1, 21                      ; 2 Mb L3 data cache
+		db 0D6h, 3, 1, 20                      ; 1 Mb L3 data cache
+		db 0D7h, 3, 1, 21                      ; 2 Mb L3 data cache
+		db 0D8h, 3, 1, 22                      ; 4 Mb L3 data cache
+		db 0DCh, 3, 3, 19                      ; 1.5 Mb L3 data cache
+		db 0DDh, 3, 3, 20                      ; 3 Mb L3 data cache
+		db 0DEh, 3, 3, 21                      ; 6 Mb L3 data cache
+		db 0E2h, 3, 1, 21                      ; 2 Mb L3 data cache
+		db 0E3h, 3, 1, 22                      ; 4 Mb L3 data cache
+		db 0E4h, 3, 1, 23                      ; 8 Mb L3 data cache
+		db 0EAh, 3, 3, 22                      ; 12 Mb L3 data cache
+		db 0EBh, 3, 9, 21                      ; 18 Mb L3 data cache
+		db 0ECh, 3, 3, 23                      ; 24 Mb L3 data cache
+	cpu_descriptortablelength equ ($ - cpu_descriptortable_) / sizeof cpu_descriptor_record
+
+		;dlayout data_layout <>
+		;drecord descriptor_record <>
+	
 	;.data
 	;		align 16
 
@@ -23,15 +107,12 @@
 			;NameBuffer db 50H dup(0)             ; Static buffer to contain name
 	;_bss ends
 	
-	include uXmx86cpu.inc
-
-	;.code
+	.code
 	
 ifndef _CLASS_uXmCPUFEATURES
 _CLASS_uXmCPUFEATURES equ 1
 
 ; Constructor
-_TEXT segment
 			align size_t_size	
 UX_VECMETHOD uXmCPUFeatures, Init, <VOIDARG>, <UX_USESRBX>;, infolevel:dword
 		
@@ -1435,10 +1516,8 @@ not_supported:
 
 			ret
 UX_ENDMETHOD
-_TEXT ends
 
 ; Destructor
-_TEXT segment
 			align size_t_size
 UX_VECMETHOD uXmCPUFeatures, Destroy, <VOIDARG>, <>
 	
@@ -1634,8 +1713,6 @@ UX_VECMETHOD uXmCPUFeatures, Destroy, <VOIDARG>, <>
 
 			ret
 UX_ENDMETHOD
-_TEXT ends
-
 
 	;/* find supported instruction set
 	;return value:
@@ -1657,7 +1734,6 @@ _TEXT ends
 	;62  or above = AVX512BW
 	;63  or above = AVX512VL
 	;*/
-_TEXT segment
 			align 4
 UX_STATICVECMETHOD uXmCPUFeatures, intrinset, <dword>, <>
 
@@ -1665,544 +1741,436 @@ UX_STATICVECMETHOD uXmCPUFeatures, intrinset, <dword>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 	
 	; /* %eax=00H, %ecx */	
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, is_Intel, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_ntel
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, is_AMD, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_cAMD
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
 	;/* %eax=01H, %ecx */
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSE3, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_SSE3
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_PCLMULQDQ, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_PCLMULQDQ
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_MONITOR, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_MONITOR
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSSE3, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_SSSE3
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_FMA, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_FMA
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_CMPXCHG16B, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_CMPXCHG16B
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSE41, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_SSE41
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSE42, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_SSE42
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_MOVBE, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_MOVBE
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_POPCNT, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_POPCNT
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AES, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_AES
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_XSAVE, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_XSAVE
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_OSXSAVE, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_OSXSAVE
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_AVX
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_F16C, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_F16C
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_RDRAND, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_RDRAND
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
 	;/* %eax=01H, %edx */
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_FPU, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_FPU
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_TSC, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_TSC
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_MSR, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_MSR
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_CMPXCHG8B, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_CMPXCHG8B
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SEP, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_SEP
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_CMOV, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_CMOV
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_CLFSH, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_CLFSH
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_MMX, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_MMX
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_FXSR, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_FXSR
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSE, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_SSE
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSE2, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_SSE2
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
 	;/* %eax=07H, %ebx */
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_FSGSBASE, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_FSGSBASE
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SGX, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_SGX
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_BMI1, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_BMI1
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_HLE, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_HLE
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_AVX2
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SMEP, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_SMEP
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_BMI2, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_BMI2
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_ERMS, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_ERMS
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_INVPCID, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_INVPCID
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_RTM, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_RTM
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_MPX, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_MPX
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512F, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_AVX512F
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_AVX512DQ
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_RDSEED, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_RDSEED
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_ADX, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_ADX
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SMAP, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_SMAP
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_IFMA, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_AVX512_IFMA
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_CLFLUSHOPT, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_CLFLUSHOPT
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_CLWB, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_CLWB
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512PF, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_AVX512PF
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512ER, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_AVX512ER
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512CD, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_AVX512CD
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SHA, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_SHA
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_AVX512BW
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512VL, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_AVX512VL
@@ -2213,127 +2181,103 @@ _TEXT ends
 
 	;/* %eax=07H, %ecx */
 _TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_PREFETCHWT1, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_PREFETCHWT1
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VBMI, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_AVX512_VBMI
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_UMIP, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_UMIP
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_PKU, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_PKU
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_OSPKE, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_OSPKE
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VBMI2, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_AVX512_VBMI2
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_GFNI, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_GFNI
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_VAES, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_VAES
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_VPCLMULQDQ, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_VPCLMULQDQ
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VNNI, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_AVX512_VNNI
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_BITALG, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_AVX512_BITALG
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VPOPCNTDQ, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_AVX512_VPOPCNTDQ
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_RDPID, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_RDPID
@@ -2344,17 +2288,15 @@ _TEXT ends
 
 	;/* %eax=07H, %edx */
 _TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_4VNNIW, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_AVX512_4VNNIW
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_4FMAPS, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_AVX512_4FMAPS
@@ -2365,97 +2307,79 @@ _TEXT ends
 
 	;/* %eax=80000001H, %ecx */
 _TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_LAHF, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_LAHF
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_LZCNT, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_LZCNT
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_ABM, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_ABM
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSE4a, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_SSE4a
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_PREFETCHW, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_PREFETCHW
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_XOP, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_XOP
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_LWP, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_LWP
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_FMA4, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_FMA4
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_TBM, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_TBM
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_MWAITX, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_MWAITX
@@ -2466,47 +2390,39 @@ _TEXT ends
 
 	;/* %eax=80000001H, %edx */
 _TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SYSCALL, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_SYSCALL
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_MMXEXT, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_MMXEXT
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_RDTSCP, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_RDTSCP
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_3DNOWEXT, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_3DNOWEXT
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_3DNOW, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_3DNOW
@@ -2517,7 +2433,7 @@ _TEXT ends
 
 	;/* %eax=07H, %ebx, %ecx */
 _TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512F == true && [UX_INSTPTR].var_GFNI == true)
@@ -2526,10 +2442,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_GFNI, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_GFNI_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512F == true && [UX_INSTPTR].var_GFNI == true && [UX_INSTPTR].var_AVX512VL == true)
@@ -2538,10 +2452,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_GFNI_VL, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VAES, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512F == true && [UX_INSTPTR].var_VAES == true)
@@ -2550,10 +2462,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VAES, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VAES_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512F == true && [UX_INSTPTR].var_VAES == true && [UX_INSTPTR].var_AVX512VL == true)
@@ -2562,10 +2472,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VAES_VL, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VPCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512F == true && [UX_INSTPTR].var_VPCLMULQDQ == true)
@@ -2574,10 +2482,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VPCLMULQDQ, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VPCLMULQDQ_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512F == true && [UX_INSTPTR].var_VPCLMULQDQ == true && [UX_INSTPTR].var_AVX512VL == true)
@@ -2586,10 +2492,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VPCLMULQDQ_VL, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_IFMA_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512_IFMA == true && [UX_INSTPTR].var_AVX512VL == true)
@@ -2598,10 +2502,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_IFMA_VL, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VBMI_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512_VBMI == true && [UX_INSTPTR].var_AVX512VL == true)
@@ -2610,10 +2512,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VBMI_VL, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VBMI2_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512_VBMI2 == true && [UX_INSTPTR].var_AVX512VL == true)
@@ -2622,10 +2522,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VBMI2_VL, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VNNI_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512_VNNI == true && [UX_INSTPTR].var_AVX512VL == true)
@@ -2634,10 +2532,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VNNI_VL, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_BITALG_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512_BITALG == true && [UX_INSTPTR].var_AVX512VL == true)
@@ -2646,10 +2542,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_BITALG_VL, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VPOPCNTDQ_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512_VPOPCNTDQ == true && [UX_INSTPTR].var_AVX512VL == true)
@@ -2658,10 +2552,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512_VPOPCNTDQ_VL, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512BW == true && [UX_INSTPTR].var_GFNI == true)
@@ -2670,10 +2562,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_GFNI, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_GFNI_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512BW == true && [UX_INSTPTR].var_GFNI == true && [UX_INSTPTR].var_AVX512VL == true)
@@ -2682,10 +2572,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_GFNI_VL, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_VAES, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512BW == true && [UX_INSTPTR].var_VAES == true)
@@ -2694,10 +2582,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_VAES, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_VAES_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512BW == true && [UX_INSTPTR].var_VAES == true && [UX_INSTPTR].var_AVX512VL == true)
@@ -2706,10 +2592,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_VAES_VL, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_VPCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512BW == true && [UX_INSTPTR].var_VPCLMULQDQ == true)
@@ -2718,10 +2602,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_VPCLMULQDQ, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_VPCLMULQDQ_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512BW == true && [UX_INSTPTR].var_VPCLMULQDQ == true && [UX_INSTPTR].var_AVX512VL == true)
@@ -2730,10 +2612,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_VPCLMULQDQ_VL, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512BW == true && [UX_INSTPTR].var_AVX512VL == true)
@@ -2742,10 +2622,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512BW_VL, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512DQ == true && [UX_INSTPTR].var_GFNI == true)
@@ -2754,10 +2632,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_GFNI, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_GFNI_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512DQ == true && [UX_INSTPTR].var_GFNI == true && [UX_INSTPTR].var_AVX512VL == true)
@@ -2766,10 +2642,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_GFNI_VL, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_VAES, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512DQ == true && [UX_INSTPTR].var_VAES == true)
@@ -2778,10 +2652,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_VAES, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_VAES_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512DQ == true && [UX_INSTPTR].var_VAES == true && [UX_INSTPTR].var_AVX512VL == true)
@@ -2790,10 +2662,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_VAES_VL, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_VPCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512DQ == true && [UX_INSTPTR].var_VPCLMULQDQ == true)
@@ -2802,10 +2672,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_VPCLMULQDQ, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_VPCLMULQDQ_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512DQ == true && [UX_INSTPTR].var_VPCLMULQDQ == true && [UX_INSTPTR].var_AVX512VL == true)
@@ -2814,10 +2682,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_VPCLMULQDQ_VL, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512DQ == true && [UX_INSTPTR].var_AVX512VL == true)
@@ -2826,10 +2692,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512DQ_VL, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX512CD_VL, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX512CD == true && [UX_INSTPTR].var_AVX512VL == true)
@@ -2842,7 +2706,7 @@ _TEXT ends
 
 	;/* %eax=07H, %ecx, %ebx | %eax=01H, %ecx , %edx */
 _TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSE_AES, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE == true && [UX_INSTPTR].var_AES == true)
@@ -2851,10 +2715,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_SSE_AES, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSE_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE == true && [UX_INSTPTR].var_GFNI == true)
@@ -2863,10 +2725,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_SSE_GFNI, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSE_PCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE == true && [UX_INSTPTR].var_PCLMULQDQ == true)
@@ -2875,10 +2735,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_SSE_PCLMULQDQ, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSE2_AES, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE2 == true && [UX_INSTPTR].var_AES == true)
@@ -2887,10 +2745,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_SSE2_AES, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSE2_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE2 == true && [UX_INSTPTR].var_GFNI == true)
@@ -2899,10 +2755,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_SSE2_GFNI, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSE2_PCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE2 == true && [UX_INSTPTR].var_PCLMULQDQ == true)
@@ -2911,10 +2765,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_SSE2_PCLMULQDQ, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSE3_AES, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE3 == true && [UX_INSTPTR].var_AES == true)
@@ -2923,10 +2775,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_SSE3_AES, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSE3_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE3 == true && [UX_INSTPTR].var_GFNI == true)
@@ -2935,10 +2785,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_SSE3_GFNI, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSE3_PCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE3 == true && [UX_INSTPTR].var_PCLMULQDQ == true)
@@ -2947,10 +2795,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_SSE3_PCLMULQDQ, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSSE3_AES, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSSE3 == true && [UX_INSTPTR].var_AES == true)
@@ -2959,10 +2805,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_SSSE3_AES, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSSE3_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSSE3 == true && [UX_INSTPTR].var_GFNI == true)
@@ -2971,10 +2815,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_SSSE3_GFNI, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSSE3_PCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSSE3 == true && [UX_INSTPTR].var_PCLMULQDQ == true)
@@ -2983,10 +2825,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_SSSE3_PCLMULQDQ, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSE41_AES, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE41 == true && [UX_INSTPTR].var_AES == true)
@@ -2995,10 +2835,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_SSE41_AES, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSE41_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE41 == true && [UX_INSTPTR].var_GFNI == true)
@@ -3007,10 +2845,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_SSE41_GFNI, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSE41_PCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE41 == true && [UX_INSTPTR].var_PCLMULQDQ == true)
@@ -3019,10 +2855,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_SSE41_PCLMULQDQ, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSE42_AES, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE42 == true && [UX_INSTPTR].var_AES == true)
@@ -3031,10 +2865,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_SSE42_AES, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSE42_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE42 == true && [UX_INSTPTR].var_GFNI == true)
@@ -3043,10 +2875,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_SSE42_GFNI, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_SSE42_PCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_SSE42 == true && [UX_INSTPTR].var_PCLMULQDQ == true)
@@ -3055,10 +2885,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_SSE42_PCLMULQDQ, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX_AES, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX == true && [UX_INSTPTR].var_AES == true)
@@ -3067,10 +2895,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX_AES, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX == true && [UX_INSTPTR].var_GFNI == true)
@@ -3079,10 +2905,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX_GFNI, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX_PCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX == true && [UX_INSTPTR].var_PCLMULQDQ == true)
@@ -3091,10 +2915,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX_PCLMULQDQ, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX_VAES, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX == true && [UX_INSTPTR].var_VAES == true)
@@ -3103,10 +2925,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX_VAES, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX_VPCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX == true && [UX_INSTPTR].var_VPCLMULQDQ == true)
@@ -3115,10 +2935,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX_VPCLMULQDQ, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2_AES, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX2 == true && [UX_INSTPTR].var_AES == true)
@@ -3127,10 +2945,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2_AES, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2_GFNI, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX2 == true && [UX_INSTPTR].var_GFNI == true)
@@ -3139,10 +2955,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2_GFNI, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2_PCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX2 == true && [UX_INSTPTR].var_PCLMULQDQ == true)
@@ -3151,10 +2965,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2_PCLMULQDQ, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2_VAES, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX2 == true && [UX_INSTPTR].var_VAES == true)
@@ -3163,10 +2975,8 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2_VAES, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2_VPCLMULQDQ, <byte>, <>
 
 		.if([UX_INSTPTR].var_AVX2 == true && [UX_INSTPTR].var_VPCLMULQDQ == true)
@@ -3175,49 +2985,39 @@ UX_STATICVECMETHOD uXmCPUFeatures, has_AVX2_VPCLMULQDQ, <byte>, <>
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_enabled_XMM, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_enabled_XMM
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_enabled_YMM, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_enabled_YMM
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, has_enabled_ZMM, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_enabled_ZMM
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
-			align 4
+			align 1
 UX_STATICVECMETHOD uXmCPUFeatures, Is_Inited, <byte>, <>
 
 		mov				al,				[UX_INSTPTR].var_Inited
 
 		ret
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
 			align ptr_t_size
 UX_STATICVECMETHOD uXmCPUFeatures, CpuType, <VOIDARG>, <>;, vendor:ptr dword, family:ptr dword, model:ptr dword
 
@@ -3256,9 +3056,7 @@ C330:
 			ret
 
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
 			align ptr_t_size
 UX_STATICVECMETHOD uXmCPUFeatures, ProcessorName, <ptr>, <>
 			
@@ -3271,9 +3069,7 @@ UX_STATICVECMETHOD uXmCPUFeatures, ProcessorName, <ptr>, <>
 			ret
 		
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
 			align size_t_size
 UX_STATICVECMETHOD uXmCPUFeatures, DataCacheSize, <UX_SIZE_T>, <>;, level:dword
 
@@ -3297,9 +3093,7 @@ UX_STATICVECMETHOD uXmCPUFeatures, DataCacheSize, <UX_SIZE_T>, <>;, level:dword
 			ret
 		
 UX_ENDMETHOD
-_TEXT ends
 
-_TEXT segment
 UX_STATICVECMETHOD uXmCPUFeatures, WriteHex, <VOIDARG>, <>
 
 ;WriteHex:                              ; Local function: Write 2 hexadecimal digits

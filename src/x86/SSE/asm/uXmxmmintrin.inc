@@ -1,4 +1,15 @@
 
+	__uXm128ib textequ <xmmword>
+	__uXm128iw textequ <xmmword>
+	__uXm128id textequ <xmmword>
+	__uXm128iq textequ <xmmword>
+	__uXm128i textequ <xmmword>
+	__uXm128f textequ <xmmword>
+	__uXm128 textequ <xmmword>
+	__uXm128d textequ <xmmword>
+	__uXm128fd textequ <xmmword>
+	__uXm128fed textequ <xmmword>
+	
 ;uXm_xmm_shuffle4 macro V3,V2,V1,V0
 ;    exitm ((V3 shl 6) or (V2 shl 4) or (V1 shl 2) or (V0))
 ;endm
@@ -260,10 +271,6 @@ xmm4shuffle3330 equ 252
 xmm4shuffle3331 equ 253
 xmm4shuffle3332 equ 254
 xmm4shuffle3333 equ 255
-
-	;_DATA segment
-
-	;_DATA ends
 
 uXm_xmm_shuffle4 macro V0
     exitm %(V0)

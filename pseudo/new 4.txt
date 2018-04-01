@@ -1,5 +1,780 @@
 
+		shufflepsjmptable dd shuffleps_0, shuffleps_1, shuffleps_2, shuffleps_3, shuffleps_4, shuffleps_5, shuffleps_6, shuffleps_7, shuffleps_8, shuffleps_9, shuffleps_10, shuffleps_11, shuffleps_12, shuffleps_13, shuffleps_14, shuffleps_15, shuffleps_16, shuffleps_17, shuffleps_18, shuffleps_19, shuffleps_20, shuffleps_21, shuffleps_22, shuffleps_23, shuffleps_24, shuffleps_25, shuffleps_26, shuffleps_27, shuffleps_28, shuffleps_29, shuffleps_30, shuffleps_31, shuffleps_32, shuffleps_33, shuffleps_34, shuffleps_35, shuffleps_36, shuffleps_37, shuffleps_38, shuffleps_39, shuffleps_40, shuffleps_41, shuffleps_42, shuffleps_43, shuffleps_44, shuffleps_45, shuffleps_46, shuffleps_47, shuffleps_48, shuffleps_49, shuffleps_50, shuffleps_51, shuffleps_52, shuffleps_53, shuffleps_54, shuffleps_55, shuffleps_56, shuffleps_57, shuffleps_58, shuffleps_59, shuffleps_60, shuffleps_61, shuffleps_62, shuffleps_63, shuffleps_64, shuffleps_65, shuffleps_66, shuffleps_67, shuffleps_68, shuffleps_69, shuffleps_70, shuffleps_71, shuffleps_72, shuffleps_73, shuffleps_74, shuffleps_75, shuffleps_76, shuffleps_77, shuffleps_78, shuffleps_79, shuffleps_80, shuffleps_81, shuffleps_82, shuffleps_83, shuffleps_84, shuffleps_85, shuffleps_86, shuffleps_87, shuffleps_88, shuffleps_89, shuffleps_90, shuffleps_91, shuffleps_92, shuffleps_93, shuffleps_94, shuffleps_95, shuffleps_96, shuffleps_97, shuffleps_98, shuffleps_99, shuffleps_100, shuffleps_101, shuffleps_102, shuffleps_103, shuffleps_104, shuffleps_105, shuffleps_106, shuffleps_107, shuffleps_108, shuffleps_109, shuffleps_110, shuffleps_111, shuffleps_112, shuffleps_113, shuffleps_114, shuffleps_115, shuffleps_116, shuffleps_117, shuffleps_118, shuffleps_119, shuffleps_120, shuffleps_121, shuffleps_122, shuffleps_123, shuffleps_124, shuffleps_125, shuffleps_126, shuffleps_127, shuffleps_128, shuffleps_129, shuffleps_130, shuffleps_131, shuffleps_132, shuffleps_133, shuffleps_134, shuffleps_135, shuffleps_136, shuffleps_137, shuffleps_138, shuffleps_139, shuffleps_140, shuffleps_141, shuffleps_142, shuffleps_143, shuffleps_144, shuffleps_145, shuffleps_146, shuffleps_147, shuffleps_148, shuffleps_149, shuffleps_150, shuffleps_151, shuffleps_152, shuffleps_153, shuffleps_154, shuffleps_155, shuffleps_156, shuffleps_157, shuffleps_158, shuffleps_159, shuffleps_160, shuffleps_161, shuffleps_162, shuffleps_163, shuffleps_164, shuffleps_165, shuffleps_166, shuffleps_167, shuffleps_168, shuffleps_169, shuffleps_170, shuffleps_171, shuffleps_172, shuffleps_173, shuffleps_174, shuffleps_175, shuffleps_176, shuffleps_177, shuffleps_178, shuffleps_179, shuffleps_180, shuffleps_181, shuffleps_182, shuffleps_183, shuffleps_184, shuffleps_185, shuffleps_186, shuffleps_187, shuffleps_188, shuffleps_189, shuffleps_190, shuffleps_191, shuffleps_192, shuffleps_193, shuffleps_194, shuffleps_195, shuffleps_196, shuffleps_197, shuffleps_198, shuffleps_199, shuffleps_200, shuffleps_201, shuffleps_202, shuffleps_203, shuffleps_204, shuffleps_205, shuffleps_206, shuffleps_207, shuffleps_208, shuffleps_209, shuffleps_210, shuffleps_211, shuffleps_212, shuffleps_213, shuffleps_214, shuffleps_215, shuffleps_216, shuffleps_217, shuffleps_218, shuffleps_219, shuffleps_220, shuffleps_221, shuffleps_222, shuffleps_223, shuffleps_224, shuffleps_225, shuffleps_226, shuffleps_227, shuffleps_228, shuffleps_229, shuffleps_230, shuffleps_231, shuffleps_232, shuffleps_233, shuffleps_234, shuffleps_235, shuffleps_236, shuffleps_237, shuffleps_238, shuffleps_239, shuffleps_240, shuffleps_241, shuffleps_242, shuffleps_243, shuffleps_244, shuffleps_245, shuffleps_246, shuffleps_247, shuffleps_248, shuffleps_249, shuffleps_250, shuffleps_251, shuffleps_252, shuffleps_253, shuffleps_254, shuffleps_255
+				
+		
+		
+		
+			shuffleps_0:
+				shufps				xmm0,			xmm1,			0
+				ret
+			shuffleps_1:
+				shufps				xmm0,			xmm1,			1
+				ret
+			shuffleps_2:
+				shufps				xmm0,			xmm1,			2
+				ret
+			shuffleps_3:
+				shufps				xmm0,			xmm1,			3
+				ret
+			shuffleps_4:
+				shufps				xmm0,			xmm1,			4
+				ret
+			shuffleps_5:
+				shufps				xmm0,			xmm1,			5
+				ret
+			shuffleps_6:
+				shufps				xmm0,			xmm1,			6
+				ret
+			shuffleps_7:
+				shufps				xmm0,			xmm1,			7
+				ret
+			shuffleps_8:
+				shufps				xmm0,			xmm1,			8
+				ret
+			shuffleps_9:
+				shufps				xmm0,			xmm1,			9
+				ret
+			shuffleps_10:
+				shufps				xmm0,			xmm1,			10
+				ret
+			shuffleps_11:
+				shufps				xmm0,			xmm1,			11
+				ret
+			shuffleps_12:
+				shufps				xmm0,			xmm1,			12
+				ret
+			shuffleps_13:
+				shufps				xmm0,			xmm1,			13
+				ret
+			shuffleps_14:
+				shufps				xmm0,			xmm1,			14
+				ret
+			shuffleps_15:
+				shufps				xmm0,			xmm1,			15
+				ret
+			shuffleps_16:
+				shufps				xmm0,			xmm1,			16
+				ret
+			shuffleps_17:
+				shufps				xmm0,			xmm1,			17
+				ret
+			shuffleps_18:
+				shufps				xmm0,			xmm1,			18
+				ret
+			shuffleps_19:
+				shufps				xmm0,			xmm1,			19
+				ret
+			shuffleps_20:
+				shufps				xmm0,			xmm1,			20
+				ret
+			shuffleps_21:
+				shufps				xmm0,			xmm1,			21
+				ret
+			shuffleps_22:
+				shufps				xmm0,			xmm1,			22
+				ret
+			shuffleps_23:
+				shufps				xmm0,			xmm1,			23
+				ret
+			shuffleps_24:
+				shufps				xmm0,			xmm1,			24
+				ret
+			shuffleps_25:
+				shufps				xmm0,			xmm1,			25
+				ret
+			shuffleps_26:
+				shufps				xmm0,			xmm1,			26
+				ret
+			shuffleps_27:
+				shufps				xmm0,			xmm1,			27
+				ret
+			shuffleps_28:
+				shufps				xmm0,			xmm1,			28
+				ret
+			shuffleps_29:
+				shufps				xmm0,			xmm1,			29
+				ret
+			shuffleps_30:
+				shufps				xmm0,			xmm1,			30
+				ret
+			shuffleps_31:
+				shufps				xmm0,			xmm1,			31
+				ret
+			shuffleps_32:
+				shufps				xmm0,			xmm1,			32
+				ret
+			shuffleps_33:
+				shufps				xmm0,			xmm1,			33
+				ret
+			shuffleps_34:
+				shufps				xmm0,			xmm1,			34
+				ret
+			shuffleps_35:
+				shufps				xmm0,			xmm1,			35
+				ret
+			shuffleps_36:
+				shufps				xmm0,			xmm1,			36
+				ret
+			shuffleps_37:
+				shufps				xmm0,			xmm1,			37
+				ret
+			shuffleps_38:
+				shufps				xmm0,			xmm1,			38
+				ret
+			shuffleps_39:
+				shufps				xmm0,			xmm1,			39
+				ret
+			shuffleps_40:
+				shufps				xmm0,			xmm1,			40
+				ret
+			shuffleps_41:
+				shufps				xmm0,			xmm1,			41
+				ret
+			shuffleps_42:
+				shufps				xmm0,			xmm1,			42
+				ret
+			shuffleps_43:
+				shufps				xmm0,			xmm1,			43
+				ret
+			shuffleps_44:
+				shufps				xmm0,			xmm1,			44
+				ret
+			shuffleps_45:
+				shufps				xmm0,			xmm1,			45
+				ret
+			shuffleps_46:
+				shufps				xmm0,			xmm1,			46
+				ret
+			shuffleps_47:
+				shufps				xmm0,			xmm1,			47
+				ret
+			shuffleps_48:
+				shufps				xmm0,			xmm1,			48
+				ret
+			shuffleps_49:
+				shufps				xmm0,			xmm1,			49
+				ret
+			shuffleps_50:
+				shufps				xmm0,			xmm1,			50
+				ret
+			shuffleps_51:
+				shufps				xmm0,			xmm1,			51
+				ret
+			shuffleps_52:
+				shufps				xmm0,			xmm1,			52
+				ret
+			shuffleps_53:
+				shufps				xmm0,			xmm1,			53
+				ret
+			shuffleps_54:
+				shufps				xmm0,			xmm1,			54
+				ret
+			shuffleps_55:
+				shufps				xmm0,			xmm1,			55
+				ret
+			shuffleps_56:
+				shufps				xmm0,			xmm1,			56
+				ret
+			shuffleps_57:
+				shufps				xmm0,			xmm1,			57
+				ret
+			shuffleps_58:
+				shufps				xmm0,			xmm1,			58
+				ret
+			shuffleps_59:
+				shufps				xmm0,			xmm1,			59
+				ret
+			shuffleps_60:
+				shufps				xmm0,			xmm1,			60
+				ret
+			shuffleps_61:
+				shufps				xmm0,			xmm1,			61
+				ret
+			shuffleps_62:
+				shufps				xmm0,			xmm1,			62
+				ret
+			shuffleps_63:
+				shufps				xmm0,			xmm1,			63
+				ret
+			shuffleps_64:
+				shufps				xmm0,			xmm1,			64
+				ret
+			shuffleps_65:
+				shufps				xmm0,			xmm1,			65
+				ret
+			shuffleps_66:
+				shufps				xmm0,			xmm1,			66
+				ret
+			shuffleps_67:
+				shufps				xmm0,			xmm1,			67
+				ret
+			shuffleps_68:
+				shufps				xmm0,			xmm1,			68
+				ret
+			shuffleps_69:
+				shufps				xmm0,			xmm1,			69
+				ret
+			shuffleps_70:
+				shufps				xmm0,			xmm1,			70
+				ret
+			shuffleps_71:
+				shufps				xmm0,			xmm1,			71
+				ret
+			shuffleps_72:
+				shufps				xmm0,			xmm1,			72
+				ret
+			shuffleps_73:
+				shufps				xmm0,			xmm1,			73
+				ret
+			shuffleps_74:
+				shufps				xmm0,			xmm1,			74
+				ret
+			shuffleps_75:
+				shufps				xmm0,			xmm1,			75
+				ret
+			shuffleps_76:
+				shufps				xmm0,			xmm1,			76
+				ret
+			shuffleps_77:
+				shufps				xmm0,			xmm1,			77
+				ret
+			shuffleps_78:
+				shufps				xmm0,			xmm1,			78
+				ret
+			shuffleps_79:
+				shufps				xmm0,			xmm1,			79
+				ret
+			shuffleps_80:
+				shufps				xmm0,			xmm1,			80
+				ret
+			shuffleps_81:
+				shufps				xmm0,			xmm1,			81
+				ret
+			shuffleps_82:
+				shufps				xmm0,			xmm1,			82
+				ret
+			shuffleps_83:
+				shufps				xmm0,			xmm1,			83
+				ret
+			shuffleps_84:
+				shufps				xmm0,			xmm1,			84
+				ret
+			shuffleps_85:
+				shufps				xmm0,			xmm1,			85
+				ret
+			shuffleps_86:
+				shufps				xmm0,			xmm1,			86
+				ret
+			shuffleps_87:
+				shufps				xmm0,			xmm1,			87
+				ret
+			shuffleps_88:
+				shufps				xmm0,			xmm1,			88
+				ret
+			shuffleps_89:
+				shufps				xmm0,			xmm1,			89
+				ret
+			shuffleps_90:
+				shufps				xmm0,			xmm1,			90
+				ret
+			shuffleps_91:
+				shufps				xmm0,			xmm1,			91
+				ret
+			shuffleps_92:
+				shufps				xmm0,			xmm1,			92
+				ret
+			shuffleps_93:
+				shufps				xmm0,			xmm1,			93
+				ret
+			shuffleps_94:
+				shufps				xmm0,			xmm1,			94
+				ret
+			shuffleps_95:
+				shufps				xmm0,			xmm1,			95
+				ret
+			shuffleps_96:
+				shufps				xmm0,			xmm1,			96
+				ret
+			shuffleps_97:
+				shufps				xmm0,			xmm1,			97
+				ret
+			shuffleps_98:
+				shufps				xmm0,			xmm1,			98
+				ret
+			shuffleps_99:
+				shufps				xmm0,			xmm1,			99
+				ret
+			shuffleps_100:
+				shufps				xmm0,			xmm1,			100
+				ret
+			shuffleps_101:
+				shufps				xmm0,			xmm1,			101
+				ret
+			shuffleps_102:
+				shufps				xmm0,			xmm1,			102
+				ret
+			shuffleps_103:
+				shufps				xmm0,			xmm1,			103
+				ret
+			shuffleps_104:
+				shufps				xmm0,			xmm1,			104
+				ret
+			shuffleps_105:
+				shufps				xmm0,			xmm1,			105
+				ret
+			shuffleps_106:
+				shufps				xmm0,			xmm1,			106
+				ret
+			shuffleps_107:
+				shufps				xmm0,			xmm1,			107
+				ret
+			shuffleps_108:
+				shufps				xmm0,			xmm1,			108
+				ret
+			shuffleps_109:
+				shufps				xmm0,			xmm1,			109
+				ret
+			shuffleps_110:
+				shufps				xmm0,			xmm1,			110
+				ret
+			shuffleps_111:
+				shufps				xmm0,			xmm1,			111
+				ret
+			shuffleps_112:
+				shufps				xmm0,			xmm1,			112
+				ret
+			shuffleps_113:
+				shufps				xmm0,			xmm1,			113
+				ret
+			shuffleps_114:
+				shufps				xmm0,			xmm1,			114
+				ret
+			shuffleps_115:
+				shufps				xmm0,			xmm1,			115
+				ret
+			shuffleps_116:
+				shufps				xmm0,			xmm1,			116
+				ret
+			shuffleps_117:
+				shufps				xmm0,			xmm1,			117
+				ret
+			shuffleps_118:
+				shufps				xmm0,			xmm1,			118
+				ret
+			shuffleps_119:
+				shufps				xmm0,			xmm1,			119
+				ret
+			shuffleps_120:
+				shufps				xmm0,			xmm1,			120
+				ret
+			shuffleps_121:
+				shufps				xmm0,			xmm1,			121
+				ret
+			shuffleps_122:
+				shufps				xmm0,			xmm1,			122
+				ret
+			shuffleps_123:
+				shufps				xmm0,			xmm1,			123
+				ret
+			shuffleps_124:
+				shufps				xmm0,			xmm1,			124
+				ret
+			shuffleps_125:
+				shufps				xmm0,			xmm1,			125
+				ret
+			shuffleps_126:
+				shufps				xmm0,			xmm1,			126
+				ret
+			shuffleps_127:
+				shufps				xmm0,			xmm1,			127
+				ret
+			shuffleps_128:
+				shufps				xmm0,			xmm1,			128
+				ret
+			shuffleps_129:
+				shufps				xmm0,			xmm1,			129
+				ret
+			shuffleps_130:
+				shufps				xmm0,			xmm1,			130
+				ret
+			shuffleps_131:
+				shufps				xmm0,			xmm1,			131
+				ret
+			shuffleps_132:
+				shufps				xmm0,			xmm1,			132
+				ret
+			shuffleps_133:
+				shufps				xmm0,			xmm1,			133
+				ret
+			shuffleps_134:
+				shufps				xmm0,			xmm1,			134
+				ret
+			shuffleps_135:
+				shufps				xmm0,			xmm1,			135
+				ret
+			shuffleps_136:
+				shufps				xmm0,			xmm1,			136
+				ret
+			shuffleps_137:
+				shufps				xmm0,			xmm1,			137
+				ret
+			shuffleps_138:
+				shufps				xmm0,			xmm1,			138
+				ret
+			shuffleps_139:
+				shufps				xmm0,			xmm1,			139
+				ret
+			shuffleps_140:
+				shufps				xmm0,			xmm1,			140
+				ret
+			shuffleps_141:
+				shufps				xmm0,			xmm1,			141
+				ret
+			shuffleps_142:
+				shufps				xmm0,			xmm1,			142
+				ret
+			shuffleps_143:
+				shufps				xmm0,			xmm1,			143
+				ret
+			shuffleps_144:
+				shufps				xmm0,			xmm1,			144
+				ret
+			shuffleps_145:
+				shufps				xmm0,			xmm1,			145
+				ret
+			shuffleps_146:
+				shufps				xmm0,			xmm1,			146
+				ret
+			shuffleps_147:
+				shufps				xmm0,			xmm1,			147
+				ret
+			shuffleps_148:
+				shufps				xmm0,			xmm1,			148
+				ret
+			shuffleps_149:
+				shufps				xmm0,			xmm1,			149
+				ret
+			shuffleps_150:
+				shufps				xmm0,			xmm1,			150
+				ret
+			shuffleps_151:
+				shufps				xmm0,			xmm1,			151
+				ret
+			shuffleps_152:
+				shufps				xmm0,			xmm1,			152
+				ret
+			shuffleps_153:
+				shufps				xmm0,			xmm1,			153
+				ret
+			shuffleps_154:
+				shufps				xmm0,			xmm1,			154
+				ret
+			shuffleps_155:
+				shufps				xmm0,			xmm1,			155
+				ret
+			shuffleps_156:
+				shufps				xmm0,			xmm1,			156
+				ret
+			shuffleps_157:
+				shufps				xmm0,			xmm1,			157
+				ret
+			shuffleps_158:
+				shufps				xmm0,			xmm1,			158
+				ret
+			shuffleps_159:
+				shufps				xmm0,			xmm1,			159
+				ret
+			shuffleps_160:
+				shufps				xmm0,			xmm1,			160
+				ret
+			shuffleps_161:
+				shufps				xmm0,			xmm1,			161
+				ret
+			shuffleps_162:
+				shufps				xmm0,			xmm1,			162
+				ret
+			shuffleps_163:
+				shufps				xmm0,			xmm1,			163
+				ret
+			shuffleps_164:
+				shufps				xmm0,			xmm1,			164
+				ret
+			shuffleps_165:
+				shufps				xmm0,			xmm1,			165
+				ret
+			shuffleps_166:
+				shufps				xmm0,			xmm1,			166
+				ret
+			shuffleps_167:
+				shufps				xmm0,			xmm1,			167
+				ret
+			shuffleps_168:
+				shufps				xmm0,			xmm1,			168
+				ret
+			shuffleps_169:
+				shufps				xmm0,			xmm1,			169
+				ret
+			shuffleps_170:
+				shufps				xmm0,			xmm1,			170
+				ret
+			shuffleps_171:
+				shufps				xmm0,			xmm1,			171
+				ret
+			shuffleps_172:
+				shufps				xmm0,			xmm1,			172
+				ret
+			shuffleps_173:
+				shufps				xmm0,			xmm1,			173
+				ret
+			shuffleps_174:
+				shufps				xmm0,			xmm1,			174
+				ret
+			shuffleps_175:
+				shufps				xmm0,			xmm1,			175
+				ret
+			shuffleps_176:
+				shufps				xmm0,			xmm1,			176
+				ret
+			shuffleps_177:
+				shufps				xmm0,			xmm1,			177
+				ret
+			shuffleps_178:
+				shufps				xmm0,			xmm1,			178
+				ret
+			shuffleps_179:
+				shufps				xmm0,			xmm1,			179
+				ret
+			shuffleps_180:
+				shufps				xmm0,			xmm1,			180
+				ret
+			shuffleps_181:
+				shufps				xmm0,			xmm1,			181
+				ret
+			shuffleps_182:
+				shufps				xmm0,			xmm1,			182
+				ret
+			shuffleps_183:
+				shufps				xmm0,			xmm1,			183
+				ret
+			shuffleps_184:
+				shufps				xmm0,			xmm1,			184
+				ret
+			shuffleps_185:
+				shufps				xmm0,			xmm1,			185
+				ret
+			shuffleps_186:
+				shufps				xmm0,			xmm1,			186
+				ret
+			shuffleps_187:
+				shufps				xmm0,			xmm1,			187
+				ret
+			shuffleps_188:
+				shufps				xmm0,			xmm1,			188
+				ret
+			shuffleps_189:
+				shufps				xmm0,			xmm1,			189
+				ret
+			shuffleps_190:
+				shufps				xmm0,			xmm1,			190
+				ret
+			shuffleps_191:
+				shufps				xmm0,			xmm1,			191
+				ret
+			shuffleps_192:
+				shufps				xmm0,			xmm1,			192
+				ret
+			shuffleps_193:
+				shufps				xmm0,			xmm1,			193
+				ret
+			shuffleps_194:
+				shufps				xmm0,			xmm1,			194
+				ret
+			shuffleps_195:
+				shufps				xmm0,			xmm1,			195
+				ret
+			shuffleps_196:
+				shufps				xmm0,			xmm1,			196
+				ret
+			shuffleps_197:
+				shufps				xmm0,			xmm1,			197
+				ret
+			shuffleps_198:
+				shufps				xmm0,			xmm1,			198
+				ret
+			shuffleps_199:
+				shufps				xmm0,			xmm1,			199
+				ret
+			shuffleps_200:
+				shufps				xmm0,			xmm1,			200
+				ret
+			shuffleps_201:
+				shufps				xmm0,			xmm1,			201
+				ret
+			shuffleps_202:
+				shufps				xmm0,			xmm1,			202
+				ret
+			shuffleps_203:
+				shufps				xmm0,			xmm1,			203
+				ret
+			shuffleps_204:
+				shufps				xmm0,			xmm1,			204
+				ret
+			shuffleps_205:
+				shufps				xmm0,			xmm1,			205
+				ret
+			shuffleps_206:
+				shufps				xmm0,			xmm1,			206
+				ret
+			shuffleps_207:
+				shufps				xmm0,			xmm1,			207
+				ret
+			shuffleps_208:
+				shufps				xmm0,			xmm1,			208
+				ret
+			shuffleps_209:
+				shufps				xmm0,			xmm1,			209
+				ret
+			shuffleps_210:
+				shufps				xmm0,			xmm1,			210
+				ret
+			shuffleps_211:
+				shufps				xmm0,			xmm1,			211
+				ret
+			shuffleps_212:
+				shufps				xmm0,			xmm1,			212
+				ret
+			shuffleps_213:
+				shufps				xmm0,			xmm1,			213
+				ret
+			shuffleps_214:
+				shufps				xmm0,			xmm1,			214
+				ret
+			shuffleps_215:
+				shufps				xmm0,			xmm1,			215
+				ret
+			shuffleps_216:
+				shufps				xmm0,			xmm1,			216
+				ret
+			shuffleps_217:
+				shufps				xmm0,			xmm1,			217
+				ret
+			shuffleps_218:
+				shufps				xmm0,			xmm1,			218
+				ret
+			shuffleps_219:
+				shufps				xmm0,			xmm1,			219
+				ret
+			shuffleps_220:
+				shufps				xmm0,			xmm1,			220
+				ret
+			shuffleps_221:
+				shufps				xmm0,			xmm1,			221
+				ret
+			shuffleps_222:
+				shufps				xmm0,			xmm1,			222
+				ret
+			shuffleps_223:
+				shufps				xmm0,			xmm1,			223
+				ret
+			shuffleps_224:
+				shufps				xmm0,			xmm1,			224
+				ret
+			shuffleps_225:
+				shufps				xmm0,			xmm1,			225
+				ret
+			shuffleps_226:
+				shufps				xmm0,			xmm1,			226
+				ret
+			shuffleps_227:
+				shufps				xmm0,			xmm1,			227
+				ret
+			shuffleps_228:
+				shufps				xmm0,			xmm1,			228
+				ret
+			shuffleps_229:
+				shufps				xmm0,			xmm1,			229
+				ret
+			shuffleps_230:
+				shufps				xmm0,			xmm1,			230
+				ret
+			shuffleps_231:
+				shufps				xmm0,			xmm1,			231
+				ret
+			shuffleps_232:
+				shufps				xmm0,			xmm1,			232
+				ret
+			shuffleps_233:
+				shufps				xmm0,			xmm1,			233
+				ret
+			shuffleps_234:
+				shufps				xmm0,			xmm1,			234
+				ret
+			shuffleps_235:
+				shufps				xmm0,			xmm1,			235
+				ret
+			shuffleps_236:
+				shufps				xmm0,			xmm1,			236
+				ret
+			shuffleps_237:
+				shufps				xmm0,			xmm1,			237
+				ret
+			shuffleps_238:
+				shufps				xmm0,			xmm1,			238
+				ret
+			shuffleps_239:
+				shufps				xmm0,			xmm1,			239
+				ret
+			shuffleps_240:
+				shufps				xmm0,			xmm1,			240
+				ret
+			shuffleps_241:
+				shufps				xmm0,			xmm1,			241
+				ret
+			shuffleps_242:
+				shufps				xmm0,			xmm1,			242
+				ret
+			shuffleps_243:
+				shufps				xmm0,			xmm1,			243
+				ret
+			shuffleps_244:
+				shufps				xmm0,			xmm1,			244
+				ret
+			shuffleps_245:
+				shufps				xmm0,			xmm1,			245
+				ret
+			shuffleps_246:
+				shufps				xmm0,			xmm1,			246
+				ret
+			shuffleps_247:
+				shufps				xmm0,			xmm1,			247
+				ret
+			shuffleps_248:
+				shufps				xmm0,			xmm1,			248
+				ret
+			shuffleps_249:
+				shufps				xmm0,			xmm1,			249
+				ret
+			shuffleps_250:
+				shufps				xmm0,			xmm1,			250
+				ret
+			shuffleps_251:
+				shufps				xmm0,			xmm1,			251
+				ret
+			shuffleps_252:
+				shufps				xmm0,			xmm1,			252
+				ret
+			shuffleps_253:
+				shufps				xmm0,			xmm1,			253
+				ret
+			shuffleps_254:
+				shufps				xmm0,			xmm1,			254
+				ret
+			shuffleps_255:
+				shufps				xmm0,			xmm1,			255
+				ret
 
+		
+		
 		db 0
 		db 1
 		db 2
