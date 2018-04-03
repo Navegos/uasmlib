@@ -146,6 +146,9 @@
     <UASM Include="..\..\..\src\x86\asm\uXmcpuid.asm">
       <Filter>Source Files\x86\asm</Filter>
     </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmshuffleps.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\resource\Resource.rc">

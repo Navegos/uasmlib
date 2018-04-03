@@ -11,8 +11,12 @@
 	__uXm128fed textequ <xmmword>
 	
 ;uXm_xmm_shuffle4 macro V3,V2,V1,V0
-;    exitm ((V3 shl 6) or (V2 shl 4) or (V1 shl 2) or (V0))
+;    exitm %((V3 shl 6) or (V2 shl 4) or (V1 shl 2) or (V0))
 ;endm
+
+uXm_xmm_shuffle4 macro V0
+    exitm %((V0) or)
+endm
 
 ;xmm4shuffle(1:3<<6,1:3<<4,1:3<<2,1:3)
 xmm4shuffle0000 equ 0

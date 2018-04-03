@@ -32,6 +32,7 @@
     <UASM Include="..\..\..\src\x86\asm\uXmxgetbv.asm" />
     <UASM Include="..\..\..\src\x86\asm\uXmxsetbv.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmintrin.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmshuffleps.asm" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\uasmlib.h" />

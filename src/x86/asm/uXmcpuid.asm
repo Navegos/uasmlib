@@ -25,7 +25,7 @@
 uXm_cpuid proto UX_VECCALL
 
 ;uXm_cpuidex proto UX_VECCALL
-extrn UX_VECCALL uXm_cpuidex:proc
+extern UX_VECCALL uXm_cpuidex:proc
 
 			align ptr_t_size
 uXm_cpuid proc UX_VECCALL
