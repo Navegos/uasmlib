@@ -8,11 +8,21 @@
 
 #if defined(uXm_INTRINSICS_SUPPORT) && defined(uXm_X86_OR_X64_CPU) && !defined(uXm_NO_INTRINSICS_SUPPORT)
 
-#include "intrin.h"
+#ifndef _MMINTRIN_H_INCLUDED
+#include <mmintrin.h>
+#endif  /* _MMINTRIN_H_INCLUDED */
 
-uXm_EXTERNC_BEGIN
+uXm_EXTERNCC_BEGIN
 
 uXm_PACK_PUSH8
+
+struct __uXm64ib;
+struct __uXm64iw;
+struct __uXm64id;
+struct __uXm64iq;
+struct __uXm64i;
+struct __uXm64f;
+struct __uXm64;
 
 typedef struct uXmVC_VEC_INTRINTYPE8 __uXm64ib
 {

@@ -1,19 +1,9 @@
 
 	include uXmx86asm.inc
 
-			option	casemap:none
-	ifndef __X64__
-			.686P
-			.xmm
-			.model	flat
-	else
-			.X64P
-			.xmm
-			option	win64:15			; 11/15 for RSP and 1-7 for RBP.
-			option	stackbase:rsp		; RSP or RBP are supported options for the stackbase.
+	ifdef __X64__
 			option	vtable:off		; [ON/OFF] dictates whether c-style method invocations use the vtable (slower but method pointers can be modified) or the (faster but fixed) direct invocation.
 	endif
-			option	frame:auto
 
 	include uXmx86cpu.inc
 

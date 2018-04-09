@@ -76,6 +76,14 @@ ifdef WINDOWS
 		rparam4		textequ		<r9>
 		rsindex		textequ		<rsi>
 		rdindex		textequ		<rdi>
+		;64bits
+		qreturn		textequ		<rax>
+		qparam1		textequ		<rcx>
+		qparam2		textequ		<rdx>
+		qparam3		textequ		<r8>
+		qparam4		textequ		<r9>
+		qsindex		textequ		<rsi>
+		qdindex		textequ		<rdi>
 		;32bits
 		dreturn		textequ		<eax>
 		dparam1		textequ		<ecx>
@@ -365,14 +373,27 @@ intrinset_AVX512DQ			equ		3dh ;61  or above = AVX512DQ
 intrinset_AVX512BW			equ		3eh ;62  or above = AVX512BW
 intrinset_AVX512VL			equ		3fh ;63  or above = AVX512VL
 
-; /* CMPPS Opcodes Condition Predicate */
-CMPPS_EQ					equ		0h
-CMPPS_LT					equ		1h
-CMPPS_LE					equ		2h
-CMPPS_UNORD					equ		3h
-CMPPS_NEQ					equ		4h
-CMPPS_NLT					equ		5h
-CMPPS_NLE					equ		6h
-CMPPS_ORD					equ		7h
+; /* CMPP S/D Opcodes Condition Predicate */
+CMPP_EQ						equ		0h
+CMPP_LT						equ		1h
+CMPP_LE						equ		2h
+CMPP_UNORD					equ		3h
+CMPP_NEQ					equ		4h
+CMPP_NLT					equ		5h
+CMPP_NLE					equ		6h
+CMPP_ORD					equ		7h
 
 include uXmmacros.inc
+
+			option	casemap:none
+	ifndef __X64__
+			.686P
+			.xmm
+			.model	flat
+	else
+			.X64P
+			.xmm
+			option	win64:15			; 11/15 for RSP and 1-7 for RBP.
+			option	stackbase:rsp		; RSP or RBP are supported options for the stackbase.
+	endif
+			option	frame:auto

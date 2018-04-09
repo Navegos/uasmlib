@@ -240,6 +240,8 @@ uXm_PACK_POP
 
 uXm_EXTERNC_END
 
+#include "uXmemmintrin.h"
+
 #endif /*defined(uXm_INTRINSICS_SUPPORT) && defined(uXm_X86_OR_X64_CPU) && !defined(uXm_NO_INTRINSICS_SUPPORT)*/
 
 #endif // uXm_INTRIN_H

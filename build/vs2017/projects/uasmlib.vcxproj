@@ -28,10 +28,18 @@
     <None Include="..\..\..\src\x86\asm\uXmmacros.inc">
       <FileType>Document</FileType>
     </None>
+    <UASM Include="..\..\..\src\x86\asm\uXmintrincpu.asm" />
     <UASM Include="..\..\..\src\x86\asm\uXmx86cpua.asm" />
     <UASM Include="..\..\..\src\x86\asm\uXmxgetbv.asm" />
     <UASM Include="..\..\..\src\x86\asm\uXmxsetbv.asm" />
+    <UASM Include="..\..\..\src\x86\MMX\asm\uXmmmintrin.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintrin.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmintrin.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmintshifts.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmpermutepd.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmpermuteps.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmpshufw.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmshufflepd.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmshuffleps.asm" />
   </ItemGroup>
   <ItemGroup>
@@ -43,13 +51,16 @@
     <ClInclude Include="..\..\..\include\uXmVers.h" />
     <ClInclude Include="..\..\..\include\x86\uXmemmintrin.h" />
     <ClInclude Include="..\..\..\include\x86\uXmmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmmmxIntrin.h" />
     <ClInclude Include="..\..\..\include\x86\uXmmmxStructs.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmsseIntrin.h" />
     <ClInclude Include="..\..\..\include\x86\uXmsseStructs.h" />
     <ClInclude Include="..\..\..\include\x86\uXmx86Cpu.h" />
     <ClInclude Include="..\..\..\include\x86\uXmx86Intrin.h" />
     <ClInclude Include="..\..\..\include\x86\uXmxmmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmxmmpermutepd.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmxmmpermuteps.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmxmmpshufw.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmxmmshufflepd.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmxmmshuffleps.h" />
     <ClInclude Include="..\..\resource\resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -61,7 +72,7 @@
     <None Include="..\..\..\.gitignore" />
     <None Include="..\..\..\src\x86\asm\uXmx86asm.inc" />
     <None Include="..\..\..\src\x86\asm\uXmx86cpu.inc" />
-    <None Include="..\..\..\src\x86\SSE\asm\uXmxmmintrin.inc" />
+    <None Include="..\..\..\src\x86\SSE\asm\uXmsseintrin.inc" />
     <None Include="..\..\..\src\x86\SSE\asm\xmmtypes.inc" />
     <None Include="..\export\uasmlib-export.def" />
   </ItemGroup>

@@ -1,19 +1,6 @@
 
 	include uXmx86asm.inc
 
-			option	casemap:none
-	ifndef __X64__
-			.686P
-			.xmm
-			.model	flat
-	else
-			.X64P
-			.xmm
-			option	win64:15
-			option	stackbase:rsp
-	endif
-			option	frame:auto
-
 ; ********** cpuid_ex function **********
 ; C++ prototype:
 ; extern "C" void cpuid_ex (int abcd[4], int a, int c);

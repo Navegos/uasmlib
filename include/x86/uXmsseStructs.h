@@ -8,11 +8,32 @@
 
 #if defined(uXm_INTRINSICS_SUPPORT) && defined(uXm_X86_OR_X64_CPU) && !defined(uXm_NO_INTRINSICS_SUPPORT)
 
-#include "intrin.h"
+#ifndef _INCLUDED_MM2
+#include <xmmintrin.h>
+#endif  /* _INCLUDED_MM2 */
 
-uXm_EXTERNC_BEGIN
+#ifndef _INCLUDED_EMM
+#include <emmintrin.h>
+#endif  /* _INCLUDED_EMM */
+
+#ifndef uXm_MMX_STRUCTS_H
+#include "uXmmmxStructs.h"
+#endif  /* uXm_MMX_STRUCTS_H */
+
+uXm_EXTERNCC_BEGIN
 
 uXm_PACK_PUSH16
+
+struct __uXm128ib;
+struct __uXm128iw;
+struct __uXm128id;
+struct __uXm128iq;
+struct __uXm128i;
+struct __uXm128f;
+struct __uXm128;
+struct __uXm128d;
+struct __uXm128fd;
+struct __uXm128fed;
 
 typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128ib
 {
