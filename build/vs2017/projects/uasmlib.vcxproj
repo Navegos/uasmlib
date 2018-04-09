@@ -33,9 +33,13 @@
     <UASM Include="..\..\..\src\x86\asm\uXmxgetbv.asm" />
     <UASM Include="..\..\..\src\x86\asm\uXmxsetbv.asm" />
     <UASM Include="..\..\..\src\x86\MMX\asm\uXmmmintrin.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintrin.asm" />
+    <None Include="..\..\..\src\x86\SSE\asm\uXmemmintrin.asm">
+      <FileType>Document</FileType>
+    </None>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmintrin.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmintshifts.asm" />
+    <None Include="..\..\..\src\x86\SSE\asm\uXmemmintshifts.asm">
+      <FileType>Document</FileType>
+    </None>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmpermutepd.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmpermuteps.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmpshufw.asm" />

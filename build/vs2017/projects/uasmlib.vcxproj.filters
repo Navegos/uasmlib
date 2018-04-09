@@ -185,7 +185,7 @@
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmpermutepd.asm">
       <Filter>Source Files\x86\SSE\asm</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmintshifts.asm">
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintshifts.asm">
       <Filter>Source Files\x86\SSE\asm</Filter>
     </UASM>
   </ItemGroup>
