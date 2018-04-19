@@ -12,7 +12,7 @@
 #include <mmintrin.h>
 #endif  /* _MMINTRIN_H_INCLUDED */
 
-uXm_EXTERNCC_BEGIN
+uXm_EXTERNC_BEGIN
 
 uXm_PACK_PUSH8
 

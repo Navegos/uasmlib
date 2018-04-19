@@ -20,7 +20,7 @@
 #include "uXmmmxStructs.h"
 #endif  /* uXm_MMX_STRUCTS_H */
 
-uXm_EXTERNCC_BEGIN
+uXm_EXTERNC_BEGIN
 
 uXm_PACK_PUSH16
 
@@ -54,42 +54,42 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128ib
      *
      * @param InXmmiw Value to copy from.
      */
-	__uXm128ib(const __uXm128iw& InXmmiw);
+	__uXm128ib(const __uXm128iw InXmmiw);
 	
     /**
      * Constructor initialization from type __uXm128id.
      *
      * @param InXmmid Value to copy from.
      */
-	__uXm128ib(const __uXm128id& InXmmid);
+	__uXm128ib(const __uXm128id InXmmid);
 	
     /**
      * Constructor initialization from type __uXm128iq.
      *
      * @param InXmmiq Value to copy from.
      */
-	__uXm128ib(const __uXm128iq& InXmmiq);
+	__uXm128ib(const __uXm128iq InXmmiq);
 	
     /**
      * Constructor initialization from type __uXm128i.
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm128ib(const __uXm128i& InXmmi);
+	__uXm128ib(const __uXm128i InXmmi);
 	
     /**
      * Constructor initialization from type __uXm128fed.
      *
      * @param InXmmfed Value to copy from.
      */
-	__uXm128ib(const __uXm128fed& InXmmfed);
+	__uXm128ib(const __uXm128fed InXmmfed);
 	
     /**
      * Constructor initialization from type __m128i.
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm128ib(const __m128i& InXmmi);
+	__uXm128ib(const __m128i InXmmi);
 	
     /**
      * Constructor initialization from type __int8*.
@@ -134,42 +134,42 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128ib
      *
      * @param InXmmiw Value to copy from.
      */
-    __uXm128ib& operator=(const __uXm128iw& InXmmiw);
+    __uXm128ib& operator=(const __uXm128iw InXmmiw);
 	
     /**
      * Assignment operator to convert from type __uXm128id. 
      *
      * @param InXmmid Value to copy from.
      */
-    __uXm128ib& operator=(const __uXm128id& InXmmid);
+    __uXm128ib& operator=(const __uXm128id InXmmid);
 	
     /**
      * Assignment operator to convert from type __uXm128iq. 
      *
      * @param InXmmiq Value to copy from.
      */
-    __uXm128ib& operator=(const __uXm128iq& InXmmiq);
+    __uXm128ib& operator=(const __uXm128iq InXmmiq);
 	
     /**
      * Assignment operator to convert from type __uXm128i. 
      *
      * @param InXmmi Value to copy from.
      */
-    __uXm128ib& operator=(const __uXm128i& InXmmi);
+    __uXm128ib& operator=(const __uXm128i InXmmi);
 	
     /**
      * Assignment operator to convert from type __uXm128fed. 
      *
      * @param InXmmfed Value to copy from.
      */
-    __uXm128ib& operator=(const __uXm128fed& InXmmfed);
+    __uXm128ib& operator=(const __uXm128fed InXmmfed);
 	
     /**
      * Assignment operator to convert from type __m128i. 
      *
      * @param InXmmi Value to copy from.
      */
-    __uXm128ib& operator=(const __m128i& InXmmi);
+    __uXm128ib& operator=(const __m128i InXmmi);
 	
     /**
      * Assignment operator to convert from type __int8*. 
@@ -203,42 +203,42 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128iw
      *
      * @param InXmmib Value to copy from.
      */
-	__uXm128iw(const __uXm128ib& InXmmib);
+	__uXm128iw(const __uXm128ib InXmmib);
 	
     /**
      * Constructor initialization from type __uXm128id.
      *
      * @param InXmmid Value to copy from.
      */
-	__uXm128iw(const __uXm128id& InXmmid);
+	__uXm128iw(const __uXm128id InXmmid);
 	
     /**
      * Constructor initialization from type __uXm128iq.
      *
      * @param InXmmiq Value to copy from.
      */
-	__uXm128iw(const __uXm128iq& InXmmiq);
+	__uXm128iw(const __uXm128iq InXmmiq);
 	
     /**
      * Constructor initialization from type __uXm128i.
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm128iw(const __uXm128i& InXmmi);
+	__uXm128iw(const __uXm128i InXmmi);
 	
     /**
      * Constructor initialization from type __uXm128fed.
      *
      * @param InXmmfed Value to copy from.
      */
-	__uXm128iw(const __uXm128fed& InXmmfed);
+	__uXm128iw(const __uXm128fed InXmmfed);
 	
     /**
      * Constructor initialization from type __m128i.
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm128iw(const __m128i& InXmmi);
+	__uXm128iw(const __m128i InXmmi);
 	
     /**
      * Constructor initialization from type __int16*.
@@ -283,42 +283,42 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128iw
      *
      * @param InXmmib Value to copy from.
      */
-	__uXm128iw& operator=(const __uXm128ib& InXmmib);
+	__uXm128iw& operator=(const __uXm128ib InXmmib);
 	
     /**
      * Assignment operator to convert from type __uXm128id. 
      *
      * @param InXmmid Value to copy from.
      */
-	__uXm128iw& operator=(const __uXm128id& InXmmid);
+	__uXm128iw& operator=(const __uXm128id InXmmid);
 	
     /**
      * Assignment operator to convert from type __uXm128iq. 
      *
      * @param InXmmiq Value to copy from.
      */
-	__uXm128iw& operator=(const __uXm128iq& InXmmiq);
+	__uXm128iw& operator=(const __uXm128iq InXmmiq);
 	
     /**
      * Assignment operator to convert from type __uXm128i. 
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm128iw& operator=(const __uXm128i& InXmmi);
+	__uXm128iw& operator=(const __uXm128i InXmmi);
 	
     /**
      * Assignment operator to convert from type __uXm128fed. 
      *
      * @param InXmmfed Value to copy from.
      */
-	__uXm128iw& operator=(const __uXm128fed& InXmmfed);
+	__uXm128iw& operator=(const __uXm128fed InXmmfed);
 	
     /**
      * Assignment operator to convert from type __m128i. 
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm128iw& operator=(const __m128i& InXmmi);
+	__uXm128iw& operator=(const __m128i InXmmi);
 	
     /**
      * Assignment operator to convert from type __int16*. 
@@ -352,42 +352,42 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128id
      *
      * @param InXmmib Value to copy from.
      */
-	__uXm128id(const __uXm128ib& InXmmib);
+	__uXm128id(const __uXm128ib InXmmib);
 	
     /**
      * Constructor initialization from type __uXm128iw.
      *
      * @param InXmmiw Value to copy from.
      */
-	__uXm128id(const __uXm128iw& InXmmiw);
+	__uXm128id(const __uXm128iw InXmmiw);
 	
     /**
      * Constructor initialization from type __uXm128iq.
      *
      * @param InXmmiq Value to copy from.
      */
-	__uXm128id(const __uXm128iq& InXmmiq);
+	__uXm128id(const __uXm128iq InXmmiq);
 	
     /**
      * Constructor initialization from type __uXm128i.
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm128id(const __uXm128i& InXmmi);
+	__uXm128id(const __uXm128i InXmmi);
 	
     /**
      * Constructor initialization from type __uXm128fed.
      *
      * @param InXmmfed Value to copy from.
      */
-	__uXm128id(const __uXm128fed& InXmmfed);
+	__uXm128id(const __uXm128fed InXmmfed);
 	
     /**
      * Constructor initialization from type __m128i.
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm128id(const __m128i& InXmmi);
+	__uXm128id(const __m128i InXmmi);
 	
     /**
      * Constructor initialization from type __int32*.
@@ -432,42 +432,42 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128id
      *
      * @param InXmmib Value to copy from.
      */
-	__uXm128id& operator=(const __uXm128ib& InXmmib);
+	__uXm128id& operator=(const __uXm128ib InXmmib);
 	
     /**
      * Assignment operator to convert from type __uXm128iw. 
      *
      * @param InXmmiw Value to copy from.
      */
-	__uXm128id& operator=(const __uXm128iw& InXmmiw);
+	__uXm128id& operator=(const __uXm128iw InXmmiw);
 	
     /**
      * Assignment operator to convert from type __uXm128iq. 
      *
      * @param InXmmiq Value to copy from.
      */
-	__uXm128id& operator=(const __uXm128iq& InXmmiq);
+	__uXm128id& operator=(const __uXm128iq InXmmiq);
 	
     /**
      * Assignment operator to convert from type __uXm128i. 
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm128id& operator=(const __uXm128i& InXmmi);
+	__uXm128id& operator=(const __uXm128i InXmmi);
 	
     /**
      * Assignment operator to convert from type __uXm128fed. 
      *
      * @param InXmmfed Value to copy from.
      */
-	__uXm128id& operator=(const __uXm128fed& InXmmfed);
+	__uXm128id& operator=(const __uXm128fed InXmmfed);
 	
     /**
      * Assignment operator to convert from type __m128i. 
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm128id& operator=(const __m128i& InXmmi);
+	__uXm128id& operator=(const __m128i InXmmi);
 	
     /**
      * Assignment operator to convert from type __int32*. 
@@ -501,42 +501,42 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128iq
      *
      * @param InXmmib Value to copy from.
      */
-	__uXm128iq(const __uXm128ib& InXmmib);
+	__uXm128iq(const __uXm128ib InXmmib);
 	
     /**
      * Constructor initialization from type __uXm128iw.
      *
      * @param InXmmiw Value to copy from.
      */
-	__uXm128iq(const __uXm128iw& InXmmiw);
+	__uXm128iq(const __uXm128iw InXmmiw);
 	
     /**
      * Constructor initialization from type __uXm128id.
      *
      * @param InXmmid Value to copy from.
      */
-	__uXm128iq(const __uXm128id& InXmmid);
+	__uXm128iq(const __uXm128id InXmmid);
 	
     /**
      * Constructor initialization from type __uXm128i.
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm128iq(const __uXm128i& InXmmi);
+	__uXm128iq(const __uXm128i InXmmi);
 	
     /**
      * Constructor initialization from type __uXm128fed.
      *
      * @param InXmmfed Value to copy from.
      */
-	__uXm128iq(const __uXm128fed& InXmmfed);
+	__uXm128iq(const __uXm128fed InXmmfed);
 	
     /**
      * Constructor initialization from type __m128i.
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm128iq(const __m128i& InXmmi);
+	__uXm128iq(const __m128i InXmmi);
 	
     /**
      * Constructor initialization from type __int64*.
@@ -581,42 +581,42 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128iq
      *
      * @param InXmmib Value to copy from.
      */
-	__uXm128iq& operator=(const __uXm128ib& InXmmib);
+	__uXm128iq& operator=(const __uXm128ib InXmmib);
 	
     /**
      * Assignment operator to convert from type __uXm128iw. 
      *
      * @param InXmmiw Value to copy from.
      */
-	__uXm128iq& operator=(const __uXm128iw& InXmmiw);
+	__uXm128iq& operator=(const __uXm128iw InXmmiw);
 	
     /**
      * Assignment operator to convert from type __uXm128id. 
      *
      * @param InXmmid Value to copy from.
      */
-	__uXm128iq& operator=(const __uXm128id& InXmmid);
+	__uXm128iq& operator=(const __uXm128id InXmmid);
 	
     /**
      * Assignment operator to convert from type __uXm128i. 
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm128iq& operator=(const __uXm128i& InXmmi);
+	__uXm128iq& operator=(const __uXm128i InXmmi);
 	
     /**
      * Assignment operator to convert from type __uXm128fed. 
      *
      * @param InXmmfed Value to copy from.
      */
-	__uXm128iq& operator=(const __uXm128fed& InXmmfed);
+	__uXm128iq& operator=(const __uXm128fed InXmmfed);
 	
     /**
      * Assignment operator to convert from type __m128i. 
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm128iq& operator=(const __m128i& InXmmi);
+	__uXm128iq& operator=(const __m128i InXmmi);
 	
     /**
      * Assignment operator to convert from type __int64*. 
@@ -656,42 +656,42 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128i
      *
      * @param InXmmib Value to copy from.
      */
-	__uXm128i(const __uXm128ib& InXmmib);
+	__uXm128i(const __uXm128ib InXmmib);
 	
     /**
      * Constructor initialization from type __uXm128iw.
      *
      * @param InXmmiw Value to copy from.
      */
-	__uXm128i(const __uXm128iw& InXmmiw);
+	__uXm128i(const __uXm128iw InXmmiw);
 	
     /**
      * Constructor initialization from type __uXm128id.
      *
      * @param InXmmid Value to copy from.
      */
-	__uXm128i(const __uXm128id& InXmmid);
+	__uXm128i(const __uXm128id InXmmid);
 	
     /**
      * Constructor initialization from type __uXm128iq.
      *
      * @param InXmmiq Value to copy from.
      */
-	__uXm128i(const __uXm128iq& InXmmiq);
+	__uXm128i(const __uXm128iq InXmmiq);
 	
     /**
      * Constructor initialization from type __uXm128fed.
      *
      * @param InXmmfed Value to copy from.
      */
-	__uXm128i(const __uXm128fed& InXmmfed);
+	__uXm128i(const __uXm128fed InXmmfed);
 	
     /**
      * Constructor initialization from type __m128i.
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm128i(const __m128i& InXmmi);
+	__uXm128i(const __m128i InXmmi);
 	
     /**
      * Constructor initialization from type __int8*.
@@ -796,42 +796,42 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128i
      *
      * @param InXmmib Value to copy from.
      */
-	__uXm128i& operator=(const __uXm128ib& InXmmib);
+	__uXm128i& operator=(const __uXm128ib InXmmib);
 	
     /**
      * Assignment operator to convert from type __uXm128iw. 
      *
      * @param InXmmiw Value to copy from.
      */
-	__uXm128i& operator=(const __uXm128iw& InXmmiw);
+	__uXm128i& operator=(const __uXm128iw InXmmiw);
 	
     /**
      * Assignment operator to convert from type __uXm128id. 
      *
      * @param InXmmid Value to copy from.
      */
-	__uXm128i& operator=(const __uXm128id& InXmmid);
+	__uXm128i& operator=(const __uXm128id InXmmid);
 	
     /**
      * Assignment operator to convert from type __uXm128iq. 
      *
      * @param InXmmiq Value to copy from.
      */
-	__uXm128i& operator=(const __uXm128iq& InXmmiq);
+	__uXm128i& operator=(const __uXm128iq InXmmiq);
 	
     /**
      * Assignment operator to convert from type __uXm128fed. 
      *
      * @param InXmmfed Value to copy from.
      */
-	__uXm128i& operator=(const __uXm128fed& InXmmfed);
+	__uXm128i& operator=(const __uXm128fed InXmmfed);
 	
     /**
      * Assignment operator to convert from type __m128i. 
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm128i& operator=(const __m128i& InXmmi);
+	__uXm128i& operator=(const __m128i InXmmi);
 	
     /**
      * Assignment operator to convert from type __int8*. 
@@ -893,8 +893,13 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128i
 
 typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128f
 {
-	float               m128_f[4];
-	
+	union
+	{
+		float               m128_f[4];
+		__m128              m128;
+		//__uXm128            Uxm128;
+	};
+
 	__uXm128f(void)uXm_CTOR_DEFAULT;
 	~__uXm128f(void)uXm_CTOR_DEFAULT;
 	
@@ -903,14 +908,14 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128f
      *
      * @param InXmm Value to copy from.
      */
-	__uXm128f(const __uXm128& InXmm);
+	__uXm128f(const __uXm128 InXmm);
 	
     /**
      * Constructor initialization from type __m128.
      *
      * @param InXmm Value to copy from.
      */
-	__uXm128f(const __m128& InXmm);
+	__uXm128f(const __m128 InXmm);
 	
     /**
      * Constructor initialization from type float*.
@@ -933,14 +938,14 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128f
      *
      * @param InXmm Value to copy from.
      */
-	__uXm128f& operator=(const __uXm128& InXmm);
+	__uXm128f& operator=(const __uXm128 InXmm);
 	
     /**
      * Assignment operator to convert from type __m128. 
      *
      * @param InXmm Value to copy from.
      */
-	__uXm128f& operator=(const __m128& InXmm);
+	__uXm128f& operator=(const __m128 InXmm);
 	
     /**
      * Assignment operator to convert from type float*. 
@@ -964,6 +969,7 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128
 		unsigned __int32    m128_ud[4];
 		__int64             m128_iq[2];
 		unsigned __int64    m128_uq[2];
+		__m128              m128;
 	};
 	
 	__uXm128(void)uXm_CTOR_DEFAULT;
@@ -974,14 +980,14 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128
      *
      * @param InXmmf Value to copy from.
      */
-	__uXm128(const __uXm128f& InXmmf);
+	__uXm128(const __uXm128f InXmmf);
 	
     /**
      * Constructor initialization from type __m128.
      *
      * @param InXmm Value to copy from.
      */
-	__uXm128(const __m128& InXmm);
+	__uXm128(const __m128 InXmm);
 	
     /**
      * Constructor initialization from type float*.
@@ -1081,14 +1087,14 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128
      *
      * @param InXmmf Value to copy from.
      */
-	__uXm128& operator=(const __uXm128f& InXmmf);
+	__uXm128& operator=(const __uXm128f InXmmf);
 	
     /**
      * Assignment operator to convert from type __m128. 
      *
      * @param InXmm Value to copy from.
      */
-	__uXm128& operator=(const __m128& InXmm);
+	__uXm128& operator=(const __m128 InXmm);
 	
     /**
      * Assignment operator to convert from type float*. 
@@ -1167,21 +1173,21 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128d
      *
      * @param InXmmfd Value to copy from.
      */
-	__uXm128d(const __uXm128fd& InXmmfd);
+	__uXm128d(const __uXm128fd InXmmfd);
 	
     /**
      * Constructor initialization from type __uXm128fed.
      *
      * @param InXmmfed Value to copy from.
      */
-	__uXm128d(const __uXm128fed& InXmmfed);
+	__uXm128d(const __uXm128fed InXmmfed);
 	
     /**
      * Constructor initialization from type __m128d.
      *
      * @param InXmmd Value to copy from.
      */
-	__uXm128d(const __m128d& InXmmd);
+	__uXm128d(const __m128d InXmmd);
 	
     /**
      * Constructor initialization from type double*.
@@ -1207,21 +1213,21 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128d
      *
      * @param InXmmfd Value to copy from.
      */
-	__uXm128d& operator=(const __uXm128fd& InXmmfd);
+	__uXm128d& operator=(const __uXm128fd InXmmfd);
 	
     /**
      * Assignment operator to convert from type __uXm128fed. 
      *
      * @param InXmmfed Value to copy from.
      */
-	__uXm128d& operator=(const __uXm128fed& InXmmfed);
+	__uXm128d& operator=(const __uXm128fed InXmmfed);
 	
     /**
      * Assignment operator to convert from type __m128d. 
      *
      * @param InXmmd Value to copy from.
      */
-	__uXm128d& operator=(const __m128d& InXmmd);
+	__uXm128d& operator=(const __m128d InXmmd);
 	
     /**
      * Assignment operator to convert from type double*. 
@@ -1248,42 +1254,42 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128fd
      *
      * @param InXmmf Value to copy from.
      */
-	__uXm128fd(const __uXm128f& InXmmf);
+	__uXm128fd(const __uXm128f InXmmf);
 	
     /**
      * Constructor initialization from type __uXm128.
      *
      * @param InXmm Value to copy from.
      */
-	__uXm128fd(const __uXm128& InXmm);
+	__uXm128fd(const __uXm128 InXmm);
 	
     /**
      * Constructor initialization from type __uXm128d.
      *
      * @param InXmmd Value to copy from.
      */
-	__uXm128fd(const __uXm128d& InXmmd);
+	__uXm128fd(const __uXm128d InXmmd);
 	
     /**
      * Constructor initialization from type __uXm128fed.
      *
      * @param InXmmfed Value to copy from.
      */
-	__uXm128fd(const __uXm128fed& InXmmfed);
+	__uXm128fd(const __uXm128fed InXmmfed);
 	
     /**
      * Constructor initialization from type __m128.
      *
      * @param InXmm Value to copy from.
      */
-	__uXm128fd(const __m128& InXmm);
+	__uXm128fd(const __m128 InXmm);
 	
     /**
      * Constructor initialization from type __m128d.
      *
      * @param InXmmd Value to copy from.
      */
-	__uXm128fd(const __m128d& InXmmd);
+	__uXm128fd(const __m128d InXmmd);
 	
     /**
      * Constructor initialization from type float*.
@@ -1328,42 +1334,42 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128fd
      *
      * @param InXmmf Value to copy from.
      */
-	__uXm128fd& operator=(const __uXm128f& InXmmf);
+	__uXm128fd& operator=(const __uXm128f InXmmf);
 	
     /**
      * Assignment operator to convert from type __uXm128. 
      *
      * @param InXmm Value to copy from.
      */
-	__uXm128fd& operator=(const __uXm128& InXmm);
+	__uXm128fd& operator=(const __uXm128 InXmm);
 	
     /**
      * Assignment operator to convert from type __uXm128d. 
      *
      * @param InXmmd Value to copy from.
      */
-	__uXm128fd& operator=(const __uXm128d& InXmmd);
+	__uXm128fd& operator=(const __uXm128d InXmmd);
 	
     /**
      * Assignment operator to convert from type __uXm128fed. 
      *
      * @param InXmmfed Value to copy from.
      */
-	__uXm128fd& operator=(const __uXm128fed& InXmmfed);
+	__uXm128fd& operator=(const __uXm128fed InXmmfed);
 	
     /**
      * Assignment operator to convert from type __m128. 
      *
      * @param InXmm Value to copy from.
      */
-	__uXm128fd& operator=(const __m128& InXmm);
+	__uXm128fd& operator=(const __m128 InXmm);
 	
     /**
      * Assignment operator to convert from type __m128d. 
      *
      * @param InXmmd Value to copy from.
      */
-	__uXm128fd& operator=(const __m128d& InXmmd);
+	__uXm128fd& operator=(const __m128d InXmmd);
 	
     /**
      * Assignment operator to convert from type float*. 
@@ -1405,84 +1411,84 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128fed
      *
      * @param InXmmib Value to copy from.
      */
-	__uXm128fed(const __uXm128ib& InXmmib);
+	__uXm128fed(const __uXm128ib InXmmib);
 	
     /**
      * Constructor initialization from type __uXm128iw.
      *
      * @param InXmmiw Value to copy from.
      */
-	__uXm128fed(const __uXm128iw& InXmmiw);
+	__uXm128fed(const __uXm128iw InXmmiw);
 	
     /**
      * Constructor initialization from type __uXm128id.
      *
      * @param InXmmid Value to copy from.
      */
-	__uXm128fed(const __uXm128id& InXmmid);
+	__uXm128fed(const __uXm128id InXmmid);
 	
     /**
      * Constructor initialization from type __uXm128iq.
      *
      * @param InXmmiq Value to copy from.
      */
-	__uXm128fed(const __uXm128iq& InXmmiq);
+	__uXm128fed(const __uXm128iq InXmmiq);
 	
     /**
      * Constructor initialization from type __uXm128i.
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm128fed(const __uXm128i& InXmmi);
+	__uXm128fed(const __uXm128i InXmmi);
 	
     /**
      * Constructor initialization from type __uXm128f.
      *
      * @param InXmmf Value to copy from.
      */
-	__uXm128fed(const __uXm128f& InXmmf);
+	__uXm128fed(const __uXm128f InXmmf);
 	
     /**
      * Constructor initialization from type __uXm128.
      *
      * @param InXmm Value to copy from.
      */
-	__uXm128fed(const __uXm128& InXmm);
+	__uXm128fed(const __uXm128 InXmm);
 	
     /**
      * Constructor initialization from type __uXm128d.
      *
      * @param InXmmd Value to copy from.
      */
-	__uXm128fed(const __uXm128d& InXmmd);
+	__uXm128fed(const __uXm128d InXmmd);
 	
     /**
      * Constructor initialization from type __uXm128fd.
      *
      * @param InXmmfd Value to copy from.
      */
-	__uXm128fed(const __uXm128fd& InXmmfd);
+	__uXm128fed(const __uXm128fd InXmmfd);
 	
     /**
      * Constructor initialization from type __m128.
      *
      * @param InXmm Value to copy from.
      */
-	__uXm128fed(const __m128& InXmm);
+	__uXm128fed(const __m128 InXmm);
 	
     /**
      * Constructor initialization from type __m128i.
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm128fed(const __m128i& InXmmi);
+	__uXm128fed(const __m128i InXmmi);
 	
     /**
      * Constructor initialization from type __m128d.
      *
      * @param InXmmd Value to copy from.
      */
-	__uXm128fed(const __m128d& InXmmd);
+	__uXm128fed(const __m128d InXmmd);
 	
     /**
      * Constructor initialization from type float*.
@@ -1625,84 +1631,84 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128fed
      *
      * @param InXmmib Value to copy from.
      */
-	__uXm128fed& operator=(const __uXm128ib& InXmmib);
+	__uXm128fed& operator=(const __uXm128ib InXmmib);
 	
     /**
      * Assignment operator to convert from type __uXm128iw. 
      *
      * @param InXmmiw Value to copy from.
      */
-	__uXm128fed& operator=(const __uXm128iw& InXmmiw);
+	__uXm128fed& operator=(const __uXm128iw InXmmiw);
 	
     /**
      * Assignment operator to convert from type __uXm128id. 
      *
      * @param InXmmid Value to copy from.
      */
-	__uXm128fed& operator=(const __uXm128id& InXmmid);
+	__uXm128fed& operator=(const __uXm128id InXmmid);
 	
     /**
      * Assignment operator to convert from type __uXm128iq. 
      *
      * @param InXmmiq Value to copy from.
      */
-	__uXm128fed& operator=(const __uXm128iq& InXmmiq);
+	__uXm128fed& operator=(const __uXm128iq InXmmiq);
 	
     /**
      * Assignment operator to convert from type __uXm128i. 
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm128fed& operator=(const __uXm128i& InXmmi);
+	__uXm128fed& operator=(const __uXm128i InXmmi);
 	
     /**
      * Assignment operator to convert from type __uXm128f. 
      *
      * @param InXmmf Value to copy from.
      */
-	__uXm128fed& operator=(const __uXm128f& InXmmf);
+	__uXm128fed& operator=(const __uXm128f InXmmf);
 	
     /**
      * Assignment operator to convert from type __uXm128. 
      *
      * @param InXmm Value to copy from.
      */
-	__uXm128fed& operator=(const __uXm128& InXmm);
+	__uXm128fed& operator=(const __uXm128 InXmm);
 	
     /**
      * Assignment operator to convert from type __uXm128d. 
      *
      * @param InXmmd Value to copy from.
      */
-	__uXm128fed& operator=(const __uXm128d& InXmmd);
+	__uXm128fed& operator=(const __uXm128d InXmmd);
 	
     /**
      * Assignment operator to convert from type __uXm128fd. 
      *
      * @param InXmmfd Value to copy from.
      */
-	__uXm128fed& operator=(const __uXm128fd& InXmmfd);
+	__uXm128fed& operator=(const __uXm128fd InXmmfd);
 	
     /**
      * Assignment operator to convert from type __m128. 
      *
      * @param InXmm Value to copy from.
      */
-	__uXm128fed& operator=(const __m128& InXmm);
+	__uXm128fed& operator=(const __m128 InXmm);
 	
     /**
      * Assignment operator to convert from type __m128i. 
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm128fed& operator=(const __m128i& InXmmi);
+	__uXm128fed& operator=(const __m128i InXmmi);
 	
     /**
      * Assignment operator to convert from type __m128d. 
      *
      * @param InXmmd Value to copy from.
      */
-	__uXm128fed& operator=(const __m128d& InXmmd);
+	__uXm128fed& operator=(const __m128d InXmmd);
 	
     /**
      * Assignment operator to convert from type float*. 
@@ -1775,6 +1781,18 @@ typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128fed
 	__uXm128fed& operator=(const double* Indouble);
 	
 }uXmGC_VEC_INTRINTYPE16 __uXm128fed;
+
+extern void uXm_mm_store_ps(__uXm128f* OutPXmm_A, __uXm128f InXmm_B);
+extern void uXm_mm_store_ps(__uXm128f* OutPXmm_A, __uXm128 InXmm_B);
+extern void uXm_mm_store_ps(__uXm128f* OutPXmm_A, __m128 InXmm_B);
+
+extern void uXm_mm_store_ps(__uXm128* OutPXmm_A, __uXm128 InXmm_B);
+extern void uXm_mm_store_ps(__uXm128* OutPXmm_A, __uXm128f InXmm_B);
+extern void uXm_mm_store_ps(__uXm128* OutPXmm_A, __m128 InXmm_B);
+
+extern void _mm_store_ps(__m128* OutPXmm_A, __uXm128f InXmm_B);
+extern void _mm_store_ps(__m128* OutPXmm_A, __uXm128 InXmm_B);
+
 
 uXm_PACK_POP
 

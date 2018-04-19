@@ -1,6 +1,10 @@
 
 	include uXmx86asm.inc
 	
+	.xmm
+	option arch:sse
+	option evex:0
+
 	.code
 
 ;******************
@@ -47,9 +51,9 @@ uXm_mm_permute_pd proc UX_VECCALL (xmmword) ;InXmm_A:xmmword, _Imm8:dword
 			push			esi
 			endif
 			movzx			eax,	byte ptr [dparam2]
-			lea				ebx,			[pmpdjmptable]
+			lea				ebx,			[mmpermpdjmptable]
 			mov				eax,			[ebx+eax*4]
-			mov				esi,			pmpdjmptable
+			mov				esi,			mmpermpdjmptable
 			sub				ebx,			esi
 			add				ebx,			rax
 			ifdef WINDOWS
@@ -61,9 +65,9 @@ uXm_mm_permute_pd proc UX_VECCALL (xmmword) ;InXmm_A:xmmword, _Imm8:dword
 			push			rsi
 			endif
 			movzx			rax,	byte ptr [rparam2]
-			lea				rbx,			[pmpdjmptable]
+			lea				rbx,			[mmpermpdjmptable]
 			mov				eax,			[rbx+rax*8]
-			mov				rsi,			pmpdjmptable
+			mov				rsi,			mmpermpdjmptable
 			sub				rbx,			rsi
 			add				rbx,			rax
 			ifdef WINDOWS
@@ -73,23 +77,23 @@ uXm_mm_permute_pd proc UX_VECCALL (xmmword) ;InXmm_A:xmmword, _Imm8:dword
 		endif
 
 		ifndef __X64__			
-			pmpdword		textequ		<dword>
-			pmpdiword		textequ		<dd>
+			mmpermpdword		textequ		<dword>
+			mmpermpdiword		textequ		<dd>
 		else
-			pmpdword		textequ		<qword>
-			pmpdiword		textequ		<dq>
+			mmpermpdword		textequ		<qword>
+			mmpermpdiword		textequ		<dq>
 		endif
 		
-		pmpdjmptable label pmpdword
-			pmpdiword	offset pmpd_0, offset pmpd_1, offset pmpd_2, offset pmpd_3				
+		mmpermpdjmptable label mmpermpdword
+			mmpermpdiword	offset mmpermpd_0, offset mmpermpd_1, offset mmpermpd_2, offset mmpermpd_3				
 
-			pmpd_0 label pmpdword
+			mmpermpd_0 label mmpermpdword
 				jmp		uXm_mm_permute_00_pd
-			pmpd_1 label pmpdword
+			mmpermpd_1 label mmpermpdword
 				jmp		uXm_mm_permute_01_pd
-			pmpd_2 label pmpdword
+			mmpermpd_2 label mmpermpdword
 				jmp		uXm_mm_permute_10_pd
-			pmpd_3 label pmpdword
+			mmpermpd_3 label mmpermpdword
 				jmp		uXm_mm_permute_11_pd
 
 uXm_mm_permute_pd endp

@@ -16,6 +16,214 @@
 #include "uxmssestructs.h"
 #endif  /* uXm_SSE_STRUCTS_H */
 
+typedef struct uXmVC_VEC_INTRINTYPE16 __uXm128
+{
+	union
+	{
+		float               m128_f[4];
+		__int8              m128_ib[16];
+		unsigned __int8     m128_ub[16];
+		__int16             m128_iw[8];
+		unsigned __int16    m128_uw[8];
+		__int32             m128_id[4];
+		unsigned __int32    m128_ud[4];
+		__int64             m128_iq[2];
+		unsigned __int64    m128_uq[2];
+		double              m128_d[2];
+		__m128              m128;
+		__m128i             m128i;
+		__m128d             m128d;
+	};
+
+	__uXm128(void)uXm_CTOR_DEFAULT;
+	~__uXm128(void)uXm_CTOR_DEFAULT;
+
+	/**
+	* Constructor initialization from type __uXm128f.
+	*
+	* @param InXmmf Value to copy from.
+	*/
+	__uXm128(const __uXm128f InXmmf);
+
+	/**
+	* Constructor initialization from type __m128.
+	*
+	* @param InXmm Value to copy from.
+	*/
+	__uXm128(const __m128 InXmm);
+
+	/**
+	* Constructor initialization from type float*.
+	*
+	* @param Infloat Value to copy from.
+	*/
+	__uXm128(const float* Infloat);
+
+	/**
+	* Constructor initialization from type __int8*.
+	*
+	* @param Inint8 Value to copy from.
+	*/
+	__uXm128(const __int8* Inint8);
+
+	/**
+	* Constructor initialization from type unsigned __int8*.
+	*
+	* @param Inint8 Value to copy from.
+	*/
+	__uXm128(const unsigned __int8* Inint8);
+
+	/**
+	* Constructor initialization from type __int16*.
+	*
+	* @param Inint16 Value to copy from.
+	*/
+	__uXm128(const __int16* Inint16);
+
+	/**
+	* Constructor initialization from type unsigned __int16*.
+	*
+	* @param Inint16 Value to copy from.
+	*/
+	__uXm128(const unsigned __int16* Inint16);
+
+	/**
+	* Constructor initialization from type __int32*.
+	*
+	* @param Inint32 Value to copy from.
+	*/
+	__uXm128(const __int32* Inint32);
+
+	/**
+	* Constructor initialization from type unsigned __int32*.
+	*
+	* @param Inint32 Value to copy from.
+	*/
+	__uXm128(const unsigned __int32* Inint32);
+
+	/**
+	* Constructor initialization from type __int64*.
+	*
+	* @param Inint64 Value to copy from.
+	*/
+	__uXm128(const __int64* Inint64);
+
+	/**
+	* Constructor initialization from type unsigned __int64*.
+	*
+	* @param Inint64 Value to copy from.
+	*/
+	__uXm128(const unsigned __int64* Inint64);
+
+	/** Type cast operator to convert to __m128. */
+	operator __m128(void) const;
+
+	/** Type cast operator to convert to float*. */
+	operator float*(void) const;
+
+	/** Type cast operator to convert to __int8*. */
+	operator __int8*(void) const;
+
+	/** Type cast operator to convert to unsigned __int8*. */
+	operator unsigned __int8*(void) const;
+
+	/** Type cast operator to convert to __int16*. */
+	operator __int16*(void) const;
+
+	/** Type cast operator to convert to unsigned __int16*. */
+	operator unsigned __int16*(void) const;
+
+	/** Type cast operator to convert to __int32*. */
+	operator __int32*(void) const;
+
+	/** Type cast operator to convert to unsigned __int32*. */
+	operator unsigned __int32*(void) const;
+
+	/** Type cast operator to convert to __int64*. */
+	operator __int64*(void) const;
+
+	/** Type cast operator to convert to unsigned __int64*. */
+	operator unsigned __int64*(void) const;
+
+	/**
+	* Assignment operator to convert from type __uXm128f.
+	*
+	* @param InXmmf Value to copy from.
+	*/
+	__uXm128& operator=(const __uXm128f InXmmf);
+
+	/**
+	* Assignment operator to convert from type __m128.
+	*
+	* @param InXmm Value to copy from.
+	*/
+	__uXm128& operator=(const __m128 InXmm);
+
+	/**
+	* Assignment operator to convert from type float*.
+	*
+	* @param Infloat Value to copy from.
+	*/
+	__uXm128& operator=(const float* Infloat);
+
+	/**
+	* Assignment operator to convert from type __int8*.
+	*
+	* @param Inint8 Value to copy from.
+	*/
+	__uXm128& operator=(const __int8* Inint8);
+
+	/**
+	* Assignment operator to convert from type unsigned __int8*.
+	*
+	* @param Inint8 Value to copy from.
+	*/
+	__uXm128& operator=(const unsigned __int8* Inint8);
+
+	/**
+	* Assignment operator to convert from type __int16*.
+	*
+	* @param Inint16 Value to copy from.
+	*/
+	__uXm128& operator=(const __int16* Inint16);
+
+	/**
+	* Assignment operator to convert from type unsigned __int16*.
+	*
+	* @param Inint16 Value to copy from.
+	*/
+	__uXm128& operator=(const unsigned __int16* Inint16);
+
+	/**
+	* Assignment operator to convert from type __int32*.
+	*
+	* @param Inint32 Value to copy from.
+	*/
+	__uXm128& operator=(const __int32* Inint32);
+
+	/**
+	* Assignment operator to convert from type unsigned __int32*.
+	*
+	* @param Inint32 Value to copy from.
+	*/
+	__uXm128& operator=(const unsigned __int32* Inint32);
+
+	/**
+	* Assignment operator to convert from type __int64*.
+	*
+	* @param Inint64 Value to copy from.
+	*/
+	__uXm128& operator=(const __int64* Inint64);
+
+	/**
+	* Assignment operator to convert from type unsigned __int64*.
+	*
+	* @param Inint64 Value to copy from.
+	*/
+	__uXm128& operator=(const unsigned __int64* Inint64);
+
+}uXmGC_VEC_INTRINTYPE16 __uXm128;
+
 /*******************************************************/
 /* MACRO for shuffle parameter for uXm_mm_shuffle_ps(). */
 /* Argument fp3 is a digit[0123] that represents the fp*/
@@ -147,6 +355,7 @@
 /* now holds column 0 of the original matrix, row1 now */
 /* holds column 1 of the original matrix, etc.         */
 /*******************************************************/
+/*
 #define uXm_MM_TRANSPOSE4_PS(row0, row1, row2, row3) {                 \
             __uXm128 _Tmp3, _Tmp2, _Tmp1, _Tmp0;                        \
 																		\
@@ -183,7 +392,7 @@
 																			\
             (row0) = uXm_MM_PERMUTE_IMR_PS(_Tmp0, _Tmp1, 0,2,0,2);         \
             (row1) = uXm_MM_PERMUTE_IMR_PS(_Tmp0, _Tmp1, 1,3,1,3);         \
-            (row2) = uXm_MM_PERMUTE_IMR_PS(_Tmp2, _Tmp3, 2,0,2,0);         \
+            (row2) = uXm_MM_PERMUTE_IMR_PS(_Tmp2, _Tmp3, 0,2,0,2);         \
             (row3) = uXm_MM_PERMUTE_IMR_PS(_Tmp2, _Tmp3, 1,3,1,3);         \
         }
 #define uXm_MM_TRANSPOSE4F_IM_PS(row0, row1, row2, row3) {					\
@@ -198,9 +407,9 @@
             (row1) = uXm_MM_PERMUTE_IMR_PS(_Tmp0, _Tmp1, 1,3,1,3);			\
             (row2) = uXm_MM_PERMUTE_IMR_PS(_Tmp2, _Tmp3, 0,2,0,2);			\
             (row3) = uXm_MM_PERMUTE_IMR_PS(_Tmp2, _Tmp3, 1,3,1,3);			\
-        }
+        }*/
 
-uXm_EXTERNCC_BEGIN
+uXm_EXTERNC_BEGIN
 
 uXm_PACK_PUSH16
 
@@ -386,31 +595,33 @@ extern __uXm128  uXm_mm_cvtsi64_ss(__uXm128 InXmm_A, __int64 InInt_B);
 /*
 * FP, misc
 */
-#include "uXmxmmshuffleps.h"
 extern __uXm128f uXm_mm_shuffle_ps(__uXm128f InXmm_A, __uXm128f InXmm_B, unsigned int _Imm8);
-#include "uXmxmmpermuteps.h"
 extern __uXm128f uXm_mm_permute_ps(__uXm128f InXmm_A, unsigned int _Imm8);
+extern void uXm_mm_transpose4_ps(__uXm128f InXmm_Row0, __uXm128f InXmm_Row1, __uXm128f InXmm_Row2, __uXm128f InXmm_Row3);
 extern __uXm128f uXm_mm_unpackhi_ps(__uXm128f InXmm_A, __uXm128f InXmm_B);
 extern __uXm128f uXm_mm_unpacklo_ps(__uXm128f InXmm_A, __uXm128f InXmm_B);
-extern __uXm128f uXm_mm_loadh_pi(__uXm128f InXmm_A, const __uXm64* InPmm_B);
-extern __uXm128f uXm_mm_movehl_ps(__uXm128f InXmm_A, __uXm128f InXmm_B);
-extern __uXm128f uXm_mm_movelh_ps(__uXm128f InXmm_A, __uXm128f InXmm_B);
+extern void uXm_mm_movehl_ps(__uXm128f OutXmm_A, __uXm128f InXmm_B, __uXm128f InXmm_C);
+extern void uXm_mm_movelh_ps(__uXm128f OutXmm_A, __uXm128f InXmm_B, __uXm128f InXmm_C);
+extern void uXm_mm_loadh_pi(__uXm128f OutXmm_A, __uXm128f InXmm_B, const __uXm64* InPmm_C);
+extern void uXm_mm_loadl_pi(__uXm128f OutXmm_A, __uXm128f InXmm_B, const __uXm64* InPmm_C);
 extern void uXm_mm_storeh_pi(__uXm64* OutPmm_A, __uXm128f InXmm_B);
-extern __uXm128f uXm_mm_loadl_pi(__uXm128f InXmm_A, const __uXm64* InPmm_B);
 extern void uXm_mm_storel_pi(__uXm64* OutPmm_A, __uXm128f InXmm_B);
 extern int uXm_mm_movemask_ps(__uXm128f InXmm_A);
 
 extern __uXm128 uXm_mm_shuffle_ps(__uXm128 InXmm_A, __uXm128 InXmm_B, unsigned int _Imm8);
 extern __uXm128 uXm_mm_permute_ps(__uXm128 InXmm_A, unsigned int _Imm8);
+extern void uXm_mm_transpose4_ps(__uXm128 InXmm_Row0, __uXm128 InXmm_Row1, __uXm128 InXmm_Row2, __uXm128 InXmm_Row3);
 extern __uXm128 uXm_mm_unpackhi_ps(__uXm128 InXmm_A, __uXm128 InXmm_B);
 extern __uXm128 uXm_mm_unpacklo_ps(__uXm128 InXmm_A, __uXm128 InXmm_B);
-extern __uXm128 uXm_mm_loadh_pi(__uXm128 InXmm_A, const __uXm64* InPmm_B);
-extern __uXm128 uXm_mm_movehl_ps(__uXm128 InXmm_A, __uXm128 InXmm_B);
-extern __uXm128 uXm_mm_movelh_ps(__uXm128 InXmm_A, __uXm128 InXmm_B);
+extern void uXm_mm_movehl_ps(__uXm128 OutXmm_A, __uXm128 InXmm_B, __uXm128 InXmm_C);
+extern void uXm_mm_movelh_ps(__uXm128 OutXmm_A, __uXm128 InXmm_B, __uXm128 InXmm_C);
+extern void uXm_mm_loadh_pi(__uXm128 OutXmm_A, __uXm128 InXmm_B, const __uXm64* InPmm_C);
+extern void uXm_mm_loadl_pi(__uXm128 OutXmm_A, __uXm128 InXmm_B, const __uXm64* InPmm_C);
 extern void uXm_mm_storeh_pi(__uXm64* OutPmm_A, __uXm128 InXmm_B);
-extern __uXm128 uXm_mm_loadl_pi(__uXm128 InXmm_A, const __uXm64* InPmm_B);
 extern void uXm_mm_storel_pi(__uXm64* OutPmm_A, __uXm128 InXmm_B);
 extern int uXm_mm_movemask_ps(__uXm128 InXmm_A);
+#include "uXmxmmshuffleps.h"
+#include "uXmxmmpermuteps.h"
 
 #if defined(uXm_X86)
 uXm_PACK_PUSH8
@@ -429,7 +640,7 @@ extern __uXm64 uXm_mm_pmulhuw(__uXm64 Inmm_A, __uXm64 Inmm_B);
 #include "uXmxmmpshufw.h"
 
 extern __uXm64 uXm_mm_pshufw(__uXm64 Inmm_A, int _Imm8);
-extern void uXm_mm_maskmovq(__uXm64 Inmm_A, __uXm64 Inmm_B, char*  OutPInt8_C);
+extern void uXm_mm_maskmovq(__uXm64 Inmm_A, __uXm64 Inmm_B, __int8*  OutPInt8_C);
 extern __uXm64 uXm_mm_pavgb(__uXm64 Inmm_A, __uXm64 Inmm_B);
 extern __uXm64 uXm_mm_pavgw(__uXm64 Inmm_A, __uXm64 Inmm_B);
 extern __uXm64 uXm_mm_psadbw(__uXm64 Inmm_A, __uXm64 Inmm_B);
@@ -441,17 +652,19 @@ uXm_PACK_PUSH16
 * memory & initialization
 */
 
-extern __uXm128f uXm_mmf_set_ss(float Infloat_A);
-extern __uXm128f uXm_mmf_set_ps1(float Infloat_A);
-extern __uXm128f uXm_mmf_set_ps(float Infloat_D, float Infloat_C, float Infloat_B, float Infloat_A);
-extern __uXm128f uXm_mmf_setr_ps(float Infloat_A, float Infloat_B, float Infloat_C, float Infloat_D);
-extern __uXm128f uXm_mmf_setzero_ps(void);
-extern __uXm128f uXm_mmf_load_ss(const float* InPfloat_A);
-extern __uXm128f uXm_mmf_load_ps1(const float* InPfloat_A);
-extern __uXm128f uXm_mmf_load_ps(const float* InPfloat_A);
-extern __uXm128f uXm_mmf_loadr_ps(const float* InPfloat_A);
-extern __uXm128f uXm_mmf_loadu_ps(const float* InPfloat_A);
-extern __uXm128f uXm_mmf_loadur_ps(const float* InPfloat_A);
+extern void uXm_mm_set_ss(__uXm128f OutXmm_A, float Infloat_B);
+extern void uXm_mm_set_ps1(__uXm128f OutXmm_A, float Infloat_B);
+extern void uXm_mm_set_ps(__uXm128f OutXmm_A, float Infloat_3, float Infloat_2, float Infloat_1, float Infloat_0);
+extern void uXm_mm_setr_ps(__uXm128f OutXmm_A, float Infloat_0, float Infloat_1, float Infloat_2, float Infloat_3);
+extern void uXm_mm_setzero_ps(void);
+extern void uXm_mm_load_ss(__uXm128f OutXmm_A, const float* InPfloat_B);
+extern void uXm_mm_load_ps1(__uXm128f OutXmm_A, const float* InPfloat_B);
+extern void uXm_mm_load_ps(__uXm128f OutXmm_A, const float* InPfloat_B);
+extern void uXm_mm_loadr_ps(__uXm128f OutXmm_A, const float* InPfloat_B);
+extern void uXm_mm_loadu_ps(__uXm128f OutXmm_A, const float* InPfloat_B);
+extern void uXm_mm_loadur_ps(__uXm128f OutXmm_A, const float* InPfloat_B);
+extern void uXm_mm_loadh_ps(__uXm128f OutXmm_A, const float* InPfloat_B);
+extern void uXm_mm_loadl_ps(__uXm128f OutXmm_A, const float* InPfloat_B);
 extern void uXm_mm_store_ss(float* OutPfloat_A, __uXm128f InXmm_B);
 extern void uXm_mm_store_ps1(float* OuPfloat_V, __uXm128f InXmm_B);
 extern void uXm_mm_storeu_ps1(float* OuPfloat_V, __uXm128f InXmm_B);
@@ -459,18 +672,22 @@ extern void uXm_mm_store_ps(float* OutPfloat_A, __uXm128f InXmm_B);
 extern void uXm_mm_storeu_ps(float* OutPfloat_A, __uXm128f InXmm_B);
 extern void uXm_mm_storer_ps(float* OutPfloat_A, __uXm128f InXmm_B);
 extern void uXm_mm_storeur_ps(float* OutPfloat_A, __uXm128f InXmm_B);
+extern void uXm_mm_storeh_ps(float* OutPfloat_A, __uXm128f InXmm_B);
+extern void uXm_mm_storel_ps(float* OutPfloat_A, __uXm128f InXmm_B);
 
-extern __uXm128 uXm_mm_set_ss(float Infloat_A);
-extern __uXm128 uXm_mm_set_ps1(float Infloat_A);
-extern __uXm128 uXm_mm_set_ps(float Infloat_D, float Infloat_C, float Infloat_B, float Infloat_A);
-extern __uXm128 uXm_mm_setr_ps(float Infloat_A, float Infloat_B, float Infloat_C, float Infloat_D);
-extern __uXm128 uXm_mm_setzero_ps(void);
-extern __uXm128 uXm_mm_load_ss(const float* InPfloat_A);
-extern __uXm128 uXm_mm_load_ps1(const float* InPfloat_A);
-extern __uXm128 uXm_mm_load_ps(const float* InPfloat_A);
-extern __uXm128 uXm_mm_loadr_ps(const float* InPfloat_A);
-extern __uXm128 uXm_mm_loadu_ps(const float* InPfloat_A);
-extern __uXm128 uXm_mm_loadur_ps(const float* InPfloat_A);
+extern void uXm_mm_set_ss(__uXm128 OutXmm_A, float Infloat_B);
+extern void uXm_mm_set_ps1(__uXm128 OutXmm_A, float Infloat_B);
+extern void uXm_mm_set_ps(__uXm128 OutXmm_A, float Infloat_3, float Infloat_2, float Infloat_1, float Infloat_0);
+extern void uXm_mm_setr_ps(__uXm128 OutXmm_A, float Infloat_0, float Infloat_1, float Infloat_2, float Infloat_3);
+extern void uXm_mm_setzero_ps(void);
+extern void uXm_mm_load_ss(__uXm128 OutXmm_A, const float* InPfloat_B);
+extern void uXm_mm_load_ps1(__uXm128 OutXmm_A, const float* InPfloat_B);
+extern void uXm_mm_load_ps(__uXm128 OutXmm_A, const float* InPfloat_B);
+extern void uXm_mm_loadr_ps(__uXm128 OutXmm_A, const float* InPfloat_B);
+extern void uXm_mm_loadu_ps(__uXm128 OutXmm_A, const float* InPfloat_B);
+extern void uXm_mm_loadur_ps(__uXm128 OutXmm_A, const float* InPfloat_B);
+extern void uXm_mm_loadh_ps(__uXm128 OutXmm_A, const float* InPfloat_B);
+extern void uXm_mm_loadl_ps(__uXm128 OutXmm_A, const float* InPfloat_B);
 extern void uXm_mm_store_ss(float* OutPfloat_A, __uXm128 InXmm_B);
 extern void uXm_mm_store_ps1(float* OuPfloat_V, __uXm128 InXmm_B);
 extern void uXm_mm_storeu_ps1(float* OuPfloat_V, __uXm128 InXmm_B);
@@ -478,30 +695,36 @@ extern void uXm_mm_store_ps(float* OutPfloat_A, __uXm128 InXmm_B);
 extern void uXm_mm_storeu_ps(float* OutPfloat_A, __uXm128 InXmm_B);
 extern void uXm_mm_storer_ps(float* OutPfloat_A, __uXm128 InXmm_B);
 extern void uXm_mm_storeur_ps(float* OutPfloat_A, __uXm128 InXmm_B);
+extern void uXm_mm_storeh_ps(float* OutPfloat_A, __uXm128 InXmm_B);
+extern void uXm_mm_storel_ps(float* OutPfloat_A, __uXm128 InXmm_B);
 
 /*
 * FP, moves
 */
-extern __uXm128f uXm_mm_move_ss(__uXm128f InXmm_A, __uXm128f InXmm_B);
+extern void uXm_mm_move_ss(__uXm128f OutXmm_A, __uXm128f InXmm_B, __uXm128f InXmm_C);
 extern void uXm_mm_move_ps(__uXm128f OutXmm_A, __uXm128f InXmm_B);
 extern void uXm_mm_mover_ps(__uXm128f OutXmm_A, __uXm128f InXmm_B);
+extern void uXm_mm_move_ss(__uXm128f OutXmm_A, __uXm128f InXmm_B, __uXm128 InXmm_C);
 extern void uXm_mm_move_ps(__uXm128f OutXmm_A, __uXm128 InXmm_B);
 extern void uXm_mm_mover_ps(__uXm128f OutXmm_A, __uXm128 InXmm_B);
+extern void uXm_mm_mover_ps(__uXm128f OutXmm_A, __m128 InXmm_B);
 
-extern __uXm128 uXm_mm_move_ss(__uXm128 InXmm_A, __uXm128 InXmm_B);
+extern void uXm_mm_move_ss(__uXm128 OutXmm_A, __uXm128 InXmm_B, __uXm128 InXmm_C);
 extern void uXm_mm_move_ps(__uXm128 OutXmm_A, __uXm128 InXmm_B);
 extern void uXm_mm_mover_ps(__uXm128 OutXmm_A, __uXm128 InXmm_B);
+extern void uXm_mm_move_ss(__uXm128 OutXmm_A, __uXm128 InXmm_B, __uXm128f InXmm_C);
 extern void uXm_mm_move_ps(__uXm128 OutXmm_A, __uXm128f InXmm_B);
 extern void uXm_mm_mover_ps(__uXm128 OutXmm_A, __uXm128f InXmm_B);
+extern void uXm_mm_mover_ps(__uXm128 OutXmm_A, __m128 InXmm_B);
 
 /*
 * Cacheability support
 */
-extern void uXm_mm_prefetch_0(const char* InPInt8_A);
-extern void uXm_mm_prefetch_1(const char* InPInt8_A);
-extern void uXm_mm_prefetch_2(const char* InPInt8_A);
-extern void uXm_mm_prefetch_3(const char* InPInt8_A);
-extern void uXm_mm_prefetch(const char* InPInt8_A, int InInt_BSel);
+extern void uXm_mm_prefetch_0(const __int8* InPInt8_A);
+extern void uXm_mm_prefetch_1(const __int8* InPInt8_A);
+extern void uXm_mm_prefetch_2(const __int8* InPInt8_A);
+extern void uXm_mm_prefetch_3(const __int8* InPInt8_A);
+extern void uXm_mm_prefetch(const __int8* InPInt8_A, int InInt_BSel);
 
 #if defined(uXm_X86)
 uXm_PACK_PUSH8
@@ -645,7 +868,7 @@ __inline __uXm128 uXm_mm_cvtpu8_ps(__uXm64 _A)
 /*                values to 4 8-bit integer values    */
 /*  IN : __uXm128 _A                                     */
 /*  OUT : none                                        */
-/*  RETURN : __uXm64 : (char)_A                          */
+/*  RETURN : __uXm64 : (__int8)_A                          */
 /******************************************************/
 __inline __uXm64 uXm_mm_cvtps_pi8(__uXm128 _A)
 {

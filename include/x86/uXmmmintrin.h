@@ -12,7 +12,7 @@
 #include "uxmmmxStructs.h"
 #endif  /* uXm_MMX_STRUCTS_H */
 
-uXm_EXTERNCC_BEGIN
+uXm_EXTERNC_BEGIN
 
 uXm_PACK_PUSH8
 

@@ -1,6 +1,10 @@
 
 	include uXmx86asm.inc
 	
+	.xmm
+	option arch:sse
+	option evex:0
+
 	.code
 
 ;******************
@@ -47,9 +51,9 @@ uXm_mm_shuffle_pd proc UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword, _
 			push			esi
 			endif
 			movzx			eax,	byte ptr [dparam3]
-			lea				ebx,			[shpdjmptable]
+			lea				ebx,			[mmshufpdjmptable]
 			mov				eax,			[ebx+eax*4]
-			mov				esi,			shpdjmptable
+			mov				esi,			mmshufpdjmptable
 			sub				ebx,			esi
 			add				ebx,			rax
 			ifdef WINDOWS
@@ -61,9 +65,9 @@ uXm_mm_shuffle_pd proc UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword, _
 			push			rsi
 			endif
 			movzx			rax,	byte ptr [rparam3]
-			lea				rbx,			[shpdjmptable]
+			lea				rbx,			[mmshufpdjmptable]
 			mov				eax,			[rbx+rax*8]
-			mov				rsi,			shpdjmptable
+			mov				rsi,			mmshufpdjmptable
 			sub				rbx,			rsi
 			add				rbx,			rax
 			ifdef WINDOWS
@@ -73,23 +77,23 @@ uXm_mm_shuffle_pd proc UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword, _
 		endif
 			
 		ifndef __X64__			
-			shpdword		textequ		<dword>
-			shpdiword		textequ		<dd>
+			mmshufpdword		textequ		<dword>
+			mmshufpdiword		textequ		<dd>
 		else
-			shpdword		textequ		<qword>
-			shpdiword		textequ		<dq>
+			mmshufpdword		textequ		<qword>
+			mmshufpdiword		textequ		<dq>
 		endif
 		
-		shpdjmptable label shpdword
-			shpdiword	offset shpd_0, offset shpd_1, offset shpd_2, offset shpd_3				
+		mmshufpdjmptable label mmshufpdword
+			mmshufpdiword	offset mmshufpd_0, offset mmshufpd_1, offset mmshufpd_2, offset mmshufpd_3				
 
-			shpd_0 label shpdword
+			mmshufpd_0 label mmshufpdword
 				jmp		uXm_mm_shuffle_00_pd
-			shpd_1 label shpdword
+			mmshufpd_1 label mmshufpdword
 				jmp		uXm_mm_shuffle_01_pd
-			shpd_2 label shpdword
+			mmshufpd_2 label mmshufpdword
 				jmp		uXm_mm_shuffle_10_pd
-			shpd_3 label shpdword
+			mmshufpd_3 label mmshufpdword
 				jmp		uXm_mm_shuffle_11_pd
 
 uXm_mm_shuffle_pd endp

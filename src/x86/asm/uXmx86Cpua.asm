@@ -1,6 +1,6 @@
 
 	include uXmx86asm.inc
-
+	
 	ifdef __X64__
 			option	vtable:off		; [ON/OFF] dictates whether c-style method invocations use the vtable (slower but method pointers can be modified) or the (faster but fixed) direct invocation.
 	endif
@@ -588,7 +588,7 @@ PNEND:  ; finished
 	
 	ifndef __X64__
 				rreturn		textequ		<eax>
-				rsindex		textequ		<esi>
+				;rsidx		textequ		<esi>
 				rlevel		textequ		<ebp>
 	else	
 		ifdef WINDOWS
@@ -607,7 +607,7 @@ PNEND:  ; finished
 		endif ;WINDOWS	
 		
 				rreturn		textequ		<rax>
-				rsindex		textequ		<rsi>
+				;rsidx		textequ		<rsi>
 				rlevel		textequ		<rbp>
 	endif ;__X64__
 	
@@ -617,11 +617,11 @@ PNEND:  ; finished
 
         ; check if called before
 	ifndef __X64__
-				mov					rsindex,				cpu_dataref      ; point to dataref
+				mov					rsidx,				cpu_dataref      ; point to dataref
 	else			
-				lea					rsindex,				[cpu_dataref]      ; point to dataref
+				lea					rsidx,				[cpu_dataref]      ; point to dataref
 	endif ;__X64__
-				cmp	dword ptr [rsindex+cpu_data_layout.ok], 1       ; ok
+				cmp	dword ptr [rsidx+cpu_data_layout.ok], 1       ; ok
 				je					D800
         
         ; find cpu vendor
@@ -641,10 +641,10 @@ PNEND:  ; finished
 	; -> The proc arguments conform to systemv calling convention: rdi=thisPtr, rsi=vendor, rdx=family, rcx=mode
 				call				_uXmCPUFeatures_CpuType
 	ifndef __X64__
-				mov					rsindex,				cpu_dataref      ; point to dataref
+				mov					rsidx,				cpu_dataref      ; point to dataref
 				add					esp, 					12
 	else			
-				lea					rsindex, 				[cpu_dataref]
+				lea					rsidx, 				[cpu_dataref]
 	endif ;__X64__
 				pop					rreturn                    ; eax = vendor
 				dec					eax
@@ -678,18 +678,18 @@ D800:   ; cache data known, get desired return value
 				cmp					elevel, 				0
 				je					D820
         ; level = 1 .. numlevels
-				mov					rreturn, 				[rsindex + rlevel*reg_t_size]      ; size of selected cache
+				mov					rreturn, 				[rsidx + rlevel*reg_t_size]      ; size of selected cache
 				jmp					D850
 D820:   ; level = 0. Get size of largest level cache
-				mov					rreturn, 				[rsindex + cpu_data_layout.level3]     ; level3
+				mov					rreturn, 				[rsidx + cpu_data_layout.level3]     ; level3
 				test				rreturn, 				rreturn
 				jnz					D850
-				mov					rreturn, 				[rsindex + cpu_data_layout.level2]     ; level2
+				mov					rreturn, 				[rsidx + cpu_data_layout.level2]     ; level2
 				test				rreturn, 				rreturn
 				jnz					D850
-				mov					rreturn, 				[rsindex + cpu_data_layout.level1]     ; level1
+				mov					rreturn, 				[rsidx + cpu_data_layout.level1]     ; level1
 D850:		
-				mov 	dword ptr [rsindex + cpu_data_layout.ok], 	1     ; remember called, whether success or not
+				mov 	dword ptr [rsidx + cpu_data_layout.ok], 	1     ; remember called, whether success or not
 				mov		[UX_INSTPTR].var_DataCacheSize, 	rreturn
 D900:   
 
@@ -3167,14 +3167,14 @@ UX_STATICVECMETHOD uXmCPUFeatures, IntelNewMethod, <VOIDARG>, <>;, level:dword
 	
 	ifndef __X64__
 			rreturn		textequ		<eax>
-			rsindex		textequ		<esi>
+			;rsidx		textequ		<esi>
 			rbreg		textequ		<ebx>
 			rcreg		textequ		<ecx>
 	else	
 			rbreg		textequ		<rbx>
 			rcreg		textequ		<rcx>
 			rreturn		textequ		<rax>
-			rsindex		textequ		<rsi>
+			;rsidx		textequ		<rsi>
 	endif ;__X64__
 
 			eloopcount	textequ		<edi>
@@ -3212,7 +3212,7 @@ I100:
 			jna					I180
 			mov					eax, 					cpu_numlevels       ; limit higher levels
 I180:   
-			mov		[rsindex+rreturn*reg_t_size], 		rcreg				; store size of data cache level eax
+			mov		[rsidx+rreturn*reg_t_size], 		rcreg				; store size of data cache level eax
 I200:   
 			inc					eloopcount
 			cmp					eloopcount, 			100h				; avoid infinite loop
@@ -3220,7 +3220,7 @@ I200:
 I500:   ; loop finished
         ; check if OK
 		
-			mov					rreturn, 				[rsindex+cpu_data_layout.level1]       ; level1
+			mov					rreturn, 				[rsidx+cpu_data_layout.level1]       ; level1
 			cmp					rreturn, 				1024
 I900:  
 
@@ -3272,14 +3272,14 @@ UX_STATICVECMETHOD uXmCPUFeatures, IntelOldMethod, <VOIDARG>, <>;, level:dword
 	
 	ifndef __X64__
 			rreturn		textequ		<eax>
-			rsindex		textequ		<esi>
+			rsidx		textequ		<esi>
 			rbreg		textequ		<ebx>
 			rcreg		textequ		<ecx>
 			rdreg		textequ		<edx>
 			rspreg		textequ		<esp>
 	else	
 			rreturn		textequ		<rax>
-			rsindex		textequ		<rsi>
+			rsidx		textequ		<rsi>
 			rbreg		textequ		<rbx>
 			rcreg		textequ		<rcx>
 			rdreg		textequ		<rdx>
@@ -3314,17 +3314,17 @@ J100:
 			mov					ebx,  					cpu_descriptortablelength-1  ; loop counter
         ; loop to search in descriptortable
 J200:   
-			cmp					eax,  					[rsindex + cpu_data_layout.descriptortable + rbreg*4 + cpu_descriptor_record.d_key]
+			cmp					eax,  					[rsidx + cpu_data_layout.descriptortable + rbreg*4 + cpu_descriptor_record.d_key]
 			jne					J300
         ; descriptor found
-			movzx				eax,  			byte ptr [rsindex + cpu_data_layout.descriptortable + rbreg*4 + cpu_descriptor_record.d_sizem]
-			mov					ecx,   					[rsindex + cpu_data_layout.descriptortable + rbreg*4 + cpu_descriptor_record.d_2pow]
+			movzx				eax,  			byte ptr [rsidx + cpu_data_layout.descriptortable + rbreg*4 + cpu_descriptor_record.d_sizem]
+			mov					ecx,   					[rsidx + cpu_data_layout.descriptortable + rbreg*4 + cpu_descriptor_record.d_2pow]
 			shl					eax,  					cl                ; compute size
-			movzx				ecx,  			byte ptr [rsindex + cpu_data_layout.descriptortable + rbreg*4 + cpu_descriptor_record.d_level]
+			movzx				ecx,  			byte ptr [rsidx + cpu_data_layout.descriptortable + rbreg*4 + cpu_descriptor_record.d_level]
         ; check that level = 1-3
 			cmp					ecx,  					3
 			ja					J300
-			mov		[rsindex+rcreg*reg_t_size], 		rreturn        ; store size eax of data cache level ecx
+			mov		[rsidx+rcreg*reg_t_size], 		rreturn        ; store size eax of data cache level ecx
 J300:   
 			dec					ebx
 			jns					J200                   ; inner loop
@@ -3332,7 +3332,7 @@ J300:
 			jns					J100                   ; outer loop
 			add					rspreg,  				16                ; remove from stack
         ; check if OK
-			mov					rreturn,  				[rsindex + cpu_data_layout.level1]
+			mov					rreturn,  				[rsidx + cpu_data_layout.level1]
 			cmp					rreturn,  				1024
 J900:   
 
@@ -3382,11 +3382,11 @@ UX_STATICVECMETHOD uXmCPUFeatures, AMDMethod, <VOIDARG>, <>;, level:dword
 	
 	ifndef __X64__
 			rreturn		textequ		<eax>
-			rsindex		textequ		<esi>
+			rsidx		textequ		<esi>
 			rcreg		textequ		<ecx>
 	else	
 			rreturn		textequ		<rax>
-			rsindex		textequ		<rsi>
+			rsidx		textequ		<rsi>
 			rcreg		textequ		<rcx>
 	endif ;__X64__
 	
@@ -3398,12 +3398,12 @@ UX_STATICVECMETHOD uXmCPUFeatures, AMDMethod, <VOIDARG>, <>;, level:dword
 			cpuid                          ; get L1 cache size
 			shr					ecx,  					24                ; L1 data cache size in kbytes
 			shl					ecx,  					10                ; L1 data cache size in bytes
-			mov				[rsindex + cpu_data_layout.level1], rcreg     ; store L1 data cache size
+			mov				[rsidx + cpu_data_layout.level1], rcreg     ; store L1 data cache size
 			mov					eax,  					80000006H
 			cpuid                          ; get L2 and L3 cache sizes
 			shr					ecx,  					16                ; L2 data cache size in kbytes
 			shl					ecx,  					10                ; L2 data cache size in bytes
-			mov				[rsindex + cpu_data_layout.level2], rcreg     ; store L2 data cache size
+			mov				[rsidx + cpu_data_layout.level2], rcreg     ; store L2 data cache size
 			mov					ecx,  					edx
 			shr					ecx,  					18                ; L3 data cache size / 512 kbytes
 			shl					rcreg,  				19                ; L3 data cache size in bytes
@@ -3421,9 +3421,9 @@ if 0   ; AMD manual is unclear:
 			add					rcreg,  				rreturn
 endif
 K100:   
-			mov		[rsindex + cpu_data_layout.level3], rcreg     ; store L3 data cache size
+			mov		[rsidx + cpu_data_layout.level3], rcreg     ; store L3 data cache size
         ; check if OK
-			mov					rreturn,  				[rsindex + cpu_data_layout.level1]
+			mov					rreturn,  				[rsidx + cpu_data_layout.level1]
 			cmp					rreturn,  				1024
 K900:   
 

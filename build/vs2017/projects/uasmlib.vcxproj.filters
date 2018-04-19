@@ -84,9 +84,6 @@
     <ClInclude Include="..\..\..\include\x86\uXmmmxStructs.h">
       <Filter>Header Files\x86</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXmsseStructs.h">
-      <Filter>Header Files\x86</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\x86\uXmxmmintrin.h">
       <Filter>Header Files\x86</Filter>
     </ClInclude>
@@ -105,6 +102,18 @@
     <ClInclude Include="..\..\..\include\x86\uXmxmmshufflepd.h">
       <Filter>Header Files\x86</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXmemmintshifts.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXmemmintmisc.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXmemmintshuffle.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXmSSEStructs.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\uasmlib.cpp">
@@ -115,6 +124,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\x86\uXmx86Intrin.cpp">
       <Filter>Source Files\x86</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\uXmSSEStructs.cpp">
+      <Filter>Source Files\x86\SSE</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -176,13 +188,19 @@
     <UASM Include="..\..\..\src\x86\asm\uXmintrincpu.asm">
       <Filter>Source Files\x86\asm</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintrin.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
-    </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmshufflepd.asm">
       <Filter>Source Files\x86\SSE\asm</Filter>
     </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmpermutepd.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintmisc.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintshuffle.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintrin.asm">
       <Filter>Source Files\x86\SSE\asm</Filter>
     </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintshifts.asm">

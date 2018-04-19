@@ -1,6 +1,6 @@
 
 	include uXmx86asm.inc
-
+	
 	.data
 	ifndef __X64__
 		public intrin_has_SSE2

@@ -70,44 +70,109 @@ ifdef WINDOWS
 
 		;64bits
 		rreturn		textequ		<rax>
-		rparam1		textequ		<rcx>
-		rparam2		textequ		<rdx>
-		rparam3		textequ		<r8>
-		rparam4		textequ		<r9>
-		rsindex		textequ		<rsi>
-		rdindex		textequ		<rdi>
+		rparam1		textequ		<rcx> ;8
+		rparam2		textequ		<rdx> ;16
+		rparam3		textequ		<r8> ;24
+		rparam4		textequ		<r9> ;32
+		rparam5		textequ		<[rsp+40]> ;40
+		rparam6		textequ		<[rsp+48]> ;48
+		rparam7		textequ		<[rsp+56]> ;56
+		rparam8		textequ		<[rsp+64]> ;64
+		rparam9		textequ		<[rsp+72]> ;72
+		rparam10	textequ		<[rsp+80]> ;80
+		rparam11	textequ		<[rsp+88]> ;88
+		rparam12	textequ		<[rsp+96]> ;96
+		rparam13	textequ		<[rsp+104]> ;104
+		rparam14	textequ		<[rsp+112]> ;112
+		rparam15	textequ		<[rsp+120]> ;120
+		rparam16	textequ		<[rsp+128]> ;128
+		rparam17	textequ		<[rsp+136]> ;136
+		rsidx		textequ		<rsi>
+		rdidx		textequ		<rdi>
 		;64bits
 		qreturn		textequ		<rax>
-		qparam1		textequ		<rcx>
-		qparam2		textequ		<rdx>
-		qparam3		textequ		<r8>
-		qparam4		textequ		<r9>
-		qsindex		textequ		<rsi>
-		qdindex		textequ		<rdi>
+		qparam1		textequ		<rcx> ;8
+		qparam2		textequ		<rdx> ;16
+		qparam3		textequ		<r8> ;24
+		qparam4		textequ		<r9> ;32
+		qparam5		textequ		<[rsp+40]> ;40
+		qparam6		textequ		<[rsp+48]> ;48
+		qparam7		textequ		<[rsp+56]> ;56
+		qparam8		textequ		<[rsp+64]> ;64
+		qparam9		textequ		<[rsp+72]> ;72
+		qparam10	textequ		<[rsp+80]> ;80
+		qparam11	textequ		<[rsp+88]> ;88
+		qparam12	textequ		<[rsp+96]> ;96
+		qparam13	textequ		<[rsp+104]> ;104
+		qparam14	textequ		<[rsp+112]> ;112
+		qparam15	textequ		<[rsp+120]> ;120
+		qparam16	textequ		<[rsp+128]> ;128
+		qparam17	textequ		<[rsp+136]> ;136
+		qsidx		textequ		<rsi>
+		qdidx		textequ		<rdi>
 		;32bits
 		dreturn		textequ		<eax>
-		dparam1		textequ		<ecx>
-		dparam2		textequ		<edx>
-		dparam3		textequ		<r8d>
-		dparam4		textequ		<r9d>
-		dsindex		textequ		<esi>
-		ddindex		textequ		<ddi>
+		dparam1		textequ		<ecx> ;4
+		dparam2		textequ		<edx> ;8
+		dparam3		textequ		<r8d> ;12
+		dparam4		textequ		<r9d> ;16
+		dparam5		textequ		<[esp+20]> ;20
+		dparam6		textequ		<[esp+24]> ;24
+		dparam7		textequ		<[esp+28]> ;28
+		dparam8		textequ		<[esp+32]> ;32
+		dparam9		textequ		<[esp+36]> ;36
+		dparam10	textequ		<[esp+40]> ;40
+		dparam11	textequ		<[esp+44]> ;44
+		dparam12	textequ		<[esp+48]> ;48
+		dparam13	textequ		<[esp+52]> ;52
+		dparam14	textequ		<[esp+56]> ;56
+		dparam15	textequ		<[esp+60]> ;60
+		dparam16	textequ		<[esp+64]> ;64
+		dparam17	textequ		<[esp+68]> ;68
+		dsidx		textequ		<esi>
+		ddidx		textequ		<edi>
 		;16bits
 		wreturn		textequ		<ax>
-		wparam1		textequ		<cx>
-		wparam2		textequ		<dx>
-		wparam3		textequ		<r8w>
-		wparam4		textequ		<r9w>
-		wsindex		textequ		<si>
-		wdindex		textequ		<di>
+		wparam1		textequ		<cx> ;2
+		wparam2		textequ		<dx> ;4
+		wparam3		textequ		<r8w> ;6
+		wparam4		textequ		<r9w> ;8
+		wparam5		textequ		<[sp+10]> ;10
+		wparam6		textequ		<[sp+12]> ;12
+		wparam7		textequ		<[sp+14]> ;14
+		wparam8		textequ		<[sp+16]> ;16
+		wparam9		textequ		<[sp+18]> ;18
+		wparam10	textequ		<[sp+20]> ;20
+		wparam11	textequ		<[sp+22]> ;22
+		wparam12	textequ		<[sp+24]> ;24
+		wparam13	textequ		<[sp+26]> ;26
+		wparam14	textequ		<[sp+28]> ;28
+		wparam15	textequ		<[sp+30]> ;30
+		wparam16	textequ		<[sp+32]> ;32
+		wparam17	textequ		<[sp+34]> ;34
+		wsidx		textequ		<si>
+		wdidx		textequ		<di>
 		;8bits
 		breturn		textequ		<al>
-		bparam1		textequ		<cl>
-		bparam2		textequ		<dl>
-		bparam3		textequ		<r8b>
-		bparam4		textequ		<r9b>
-		bsindex		textequ		<sil>
-		dindex		textequ		<dil>
+		bparam1		textequ		<cl> ;1
+		bparam2		textequ		<dl> ;2
+		bparam3		textequ		<r8b> ;3
+		bparam4		textequ		<r9b> ;4
+		bparam5		textequ		<[spl+5]> ;5
+		bparam6		textequ		<[spl+6]> ;6
+		bparam7		textequ		<[spl+7]> ;7
+		bparam8		textequ		<[spl+8]> ;8		
+		bparam9		textequ		<[spl+9]> ;9
+		bparam10	textequ		<[spl+10]> ;10
+		bparam11	textequ		<[spl+11]> ;11
+		bparam12	textequ		<[spl+12]> ;12
+		bparam13	textequ		<[spl+13]> ;13
+		bparam14	textequ		<[spl+14]> ;14
+		bparam15	textequ		<[spl+15]> ;15
+		bparam16	textequ		<[spl+16]> ;16
+		bparam17	textequ		<[spl+17]> ;17
+		bsidx		textequ		<sil>
+		bdidx		textequ		<dil>
 	else ;__X64__
 		ifdef __X32_VECTORCALL__ ;not available with uasm macrolib
 			ifndef DEFINED_VECTORCALL
@@ -383,16 +448,39 @@ CMPP_NLT					equ		5h
 CMPP_NLE					equ		6h
 CMPP_ORD					equ		7h
 
+; byte machine opcodes
+OP_xmm0_xmm0				equ		0c0h
+OP_xmm0_xmm1				equ		0c1h
+OP_xmm1_xmm0				equ		0c8h
+OP_xmm1_xmm1				equ		0c9h
+
+; imediates
+OP_Ib_MMX_PSLLW				textequ <0fh,71h>
+OP_Ib_SSE2_PSLLW			textequ <66h,0fh,71h>
+OP_Ib_MMX_PSLLD				textequ <0fh,71h>
+OP_Ib_SSE2_PSLLD			textequ <66h,0fh,71h>
+
+; regs
+OP_MMX_PSLLW				textequ <0fh,f1h>
+OP_SSE2_PSLLW				textequ <66h,0fh,f1h>
+OP_MMX_PSLLD				textequ <0fh,f2h>
+OP_SSE2_PSLLD				textequ <66h,0fh,f2h>
+
+
+UX_MOP macro args
+	mopex textequ <byte args>
+	exitm 
+endm
+
+
 include uXmmacros.inc
 
 			option	casemap:none
 	ifndef __X64__
 			.686P
-			.xmm
 			.model	flat
 	else
 			.X64P
-			.xmm
 			option	win64:15			; 11/15 for RSP and 1-7 for RBP.
 			option	stackbase:rsp		; RSP or RBP are supported options for the stackbase.
 	endif

@@ -1,5 +1,6 @@
 
 	include uXmx86asm.inc
+	
 
 ; ********** cpuid_ex function **********
 ; C++ prototype:

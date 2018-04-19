@@ -1,5 +1,9 @@
 
 	include uXmx86asm.inc
+	
+	.xmm
+	option arch:sse
+	option evex:0
 
 	include uXmsseintrin.inc
 	
@@ -90,14 +94,15 @@ uXm_mm_cvtss_si64 proto UX_VECCALL (qword) ;InXmm_A:xmmword
 uXm_mm_cvttss_si64 proto UX_VECCALL (qword) ;InXmm_A:xmmword
 uXm_mm_cvtsi64_ss proto UX_VECCALL (xmmword) ;InXmm_A:xmmword, InInt_B:qword
 endif ;__X64__
+uXm_mm_transpose4_ps proto UX_VECCALL (voidarg) ;InXmm_row0:xmmword, InXmm_row1:xmmword, InXmm_row2:xmmword, InXmm_row3:xmmword
 uXm_mm_unpackhi_ps proto UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
 uXm_mm_unpacklo_ps proto UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-uXm_mm_loadh_pi proto UX_VECCALL (xmmword) ;InXmm_A:xmmword, Inmm_B:ptr mmword
-uXm_mm_movehl_ps proto UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-uXm_mm_movelh_ps proto UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-uXm_mm_storeh_pi proto UX_VECCALL (voidarg) ;Outmm_A:ptr mmword, InXmm_B:xmmword
-uXm_mm_loadl_pi proto UX_VECCALL (xmmword) ;InXmm_A:xmmword, Inmm_B:ptr mmword
-uXm_mm_storel_pi proto UX_VECCALL (voidarg) ;Outmm_A:ptr mmword, InXmm_B:xmmword
+uXm_mm_movehl_ps proto UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InXmm_B:xmmword, InXmm_C:xmmword
+uXm_mm_movelh_ps proto UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InXmm_B:xmmword, InXmm_C:xmmword
+uXm_mm_loadh_pi proto UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InXmm_B:xmmword, InPmm_C:ptr mmword
+uXm_mm_loadl_pi proto UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InXmm_B:xmmword, InPmm_C:ptr mmword
+uXm_mm_storeh_pi proto UX_VECCALL (voidarg) ;OutPmm_A:ptr mmword, InXmm_B:xmmword
+uXm_mm_storel_pi proto UX_VECCALL (voidarg) ;OutPmm_A:ptr mmword, InXmm_B:xmmword
 uXm_mm_movemask_ps proto UX_VECCALL (dword) ;InXmm_A:xmmword
 ifdef __X32__
 uXm_mm_pextrw_0 proto UX_VECCALL (dword) ;Inmm_A:mmword,  _Imm8:dword
@@ -121,28 +126,19 @@ uXm_mm_pavgb proto UX_VECCALL (mmword) ;Inmm_A:mmword, Inmm_B:mmword
 uXm_mm_pavgw proto UX_VECCALL (mmword) ;Inmm_A:mmword, Inmm_B:mmword
 uXm_mm_psadbw proto UX_VECCALL (mmword) ;Inmm_A:mmword, Inmm_B:mmword
 endif ;!__X32__
-uXm_mmf_set_ss proto UX_VECCALL (xmmword) ;Inreal4_A:real4
-uXm_mmf_set_ps1 proto UX_VECCALL (xmmword) ;Inreal4_A:real4
-uXm_mmf_set_ps proto UX_VECCALL (xmmword) ;Inreal4_D:real4 ;Inreal4_C:real4 ;Inreal4_B:real4 ;Inreal4_A:real4
-uXm_mmf_setr_ps proto UX_VECCALL (xmmword) ;Inreal4_A:real4 ;Inreal4_B:real4 ;Inreal4_C:real4 ;Inreal4_D:real4
-uXm_mmf_setzero_ps proto UX_VECCALL (xmmword)
-uXm_mmf_load_ss proto UX_VECCALL (xmmword) ;InPreal4_A:ptr real4
-uXm_mmf_load_ps1 proto UX_VECCALL (xmmword) ;InPreal4_A:ptr real4
-uXm_mmf_load_ps proto UX_VECCALL (xmmword) ;InPreal4_A:ptr xmmword
-uXm_mmf_loadr_ps proto UX_VECCALL (xmmword) ;InPreal4_A:ptr xmmword
-uXm_mmf_loadu_ps proto UX_VECCALL (xmmword) ;InPreal4_A:ptr xmmword
-uXm_mmf_loadur_ps proto UX_VECCALL (xmmword) ;InPreal4_A:ptr xmmword
-uXm_mm_set_ss proto UX_VECCALL (xmmword) ;Inreal4_A:real4
-uXm_mm_set_ps1 proto UX_VECCALL (xmmword) ;Inreal4_A:real4
-uXm_mm_set_ps proto UX_VECCALL (xmmword) ;Inreal4_D:real4 ;Inreal4_C:real4 ;Inreal4_B:real4 ;Inreal4_A:real4
-uXm_mm_setr_ps proto UX_VECCALL (xmmword) ;Inreal4_A:real4 ;Inreal4_B:real4 ;Inreal4_C:real4 ;Inreal4_D:real4
-uXm_mm_setzero_ps proto UX_VECCALL (xmmword)
-uXm_mm_load_ss proto UX_VECCALL (xmmword) ;InPreal4_A:ptr real4
-uXm_mm_load_ps1 proto UX_VECCALL (xmmword) ;InPreal4_A:ptr real4
-uXm_mm_load_ps proto UX_VECCALL (xmmword) ;InPreal4_A:ptr xmmword
-uXm_mm_loadr_ps proto UX_VECCALL (xmmword) ;InPreal4_A:ptr xmmword
-uXm_mm_loadu_ps proto UX_VECCALL (xmmword) ;InPreal4_A:ptr xmmword
-uXm_mm_loadur_ps proto UX_VECCALL (xmmword) ;InPreal4_A:ptr xmmword
+uXm_mm_set_ss proto UX_VECCALL (voidarg) ;Outxmm_A:xmmword, Inreal4_A:real4
+uXm_mm_set_ps1 proto UX_VECCALL (voidarg) ;Outxmm_A:xmmword, Inreal4_A:real4
+uXm_mm_set_ps proto UX_VECCALL (voidarg) ;Outxmm_A:xmmword, Inreal4_D:real4 ;Inreal4_C:real4 ;Inreal4_B:real4 ;Inreal4_A:real4
+uXm_mm_setr_ps proto UX_VECCALL (voidarg) ;Outxmm_A:xmmword, Inreal4_A:real4 ;Inreal4_B:real4 ;Inreal4_C:real4 ;Inreal4_D:real4
+uXm_mm_setzero_ps proto UX_VECCALL (voidarg) ;Outxmm_A:xmmword
+uXm_mm_load_ss proto UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InPreal4_A:ptr real4
+uXm_mm_load_ps1 proto UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InPreal4_A:ptr real4
+uXm_mm_load_ps proto UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InPreal4_A:ptr xmmword
+uXm_mm_loadr_ps proto UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InPreal4_A:ptr xmmword
+uXm_mm_loadu_ps proto UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InPreal4_A:ptr xmmword
+uXm_mm_loadur_ps proto UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InPreal4_A:ptr xmmword
+uXm_mm_loadh_ps proto UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InXmm_A:xmmword, InPreal4_B:ptr mmword
+uXm_mm_loadl_ps proto UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InXmm_A:xmmword, InPreal4_B:ptr mmword
 uXm_mm_store_ss proto UX_VECCALL (voidarg) ;OutPreal4_A:ptr real4, InXmm_B:xmmword
 uXm_mm_store_ps1 proto UX_VECCALL (voidarg) ;OutPreal4_A:ptr real4, InXmm_B:xmmword
 uXm_mm_storeu_ps1 proto UX_VECCALL (voidarg) ;OutPreal4_A:ptr real4, InXmm_B:xmmword
@@ -150,6 +146,11 @@ uXm_mm_store_ps proto UX_VECCALL (voidarg) ;OutPreal4_A:ptr xmmword, InXmm_B:xmm
 uXm_mm_storeu_ps proto UX_VECCALL (voidarg) ;OutPreal4_A:ptr xmmword, InXmm_B:xmmword
 uXm_mm_storer_ps proto UX_VECCALL (voidarg) ;OutPreal4_A:ptr xmmword, InXmm_B:xmmword
 uXm_mm_storeur_ps proto UX_VECCALL (voidarg) ;OutPreal4_A:ptr xmmword, InXmm_B:xmmword
+uXm_mm_storeh_ps proto UX_VECCALL (voidarg) ;OutPreal8_A:ptr xmmword, InXmm_B:xmmword
+uXm_mm_storel_ps proto UX_VECCALL (voidarg) ;OutPreal8_A:ptr xmmword, InXmm_B:xmmword
+uXm_mm_move_ss proto UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InXmm_B:xmmword, InXmm_C:xmmword
+uXm_mm_move_ps proto UX_VECCALL (voidarg) ;OutXmm_A:xmmword, InXmm_B:xmmword
+uXm_mm_mover_ps proto UX_VECCALL (voidarg) ;OutXmm_A:xmmword, InXmm_B:xmmword
 uXm_mm_prefetch_0 proto UX_VECCALL (voidarg) ;InPInt8_A:ptr byte
 uXm_mm_prefetch_1 proto UX_VECCALL (voidarg) ;InPInt8_A:ptr byte
 uXm_mm_prefetch_2 proto UX_VECCALL (voidarg) ;InPInt8_A:ptr byte
@@ -159,9 +160,6 @@ ifdef __X32__
 uXm_mm_stream_pi proto UX_VECCALL (dword) ;OutPmm_A:ptr mmword,Inmm_B:mmword
 endif ;__X32__
 uXm_mm_stream_ps proto UX_VECCALL (dword) ;OutPfloat_A:ptr xmmword, InXmm_B:xmmword
-uXm_mm_move_ss proto UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-uXm_mm_move_ps proto UX_VECCALL (voidarg) ;OutXmm_A:xmmword, InXmm_B:xmmword
-uXm_mm_mover_ps proto UX_VECCALL (voidarg) ;OutXmm_A:xmmword, InXmm_B:xmmword
 uXm_mm_sfence proto UX_VECCALL (voidarg)
 uXm_mm_getcsr proto UX_VECCALL (dword)
 uXm_mm_setcsr proto UX_VECCALL (voidarg) ;InInt_A:dword
@@ -910,7 +908,6 @@ uXm_mm_ucomineq_ss proc UX_VECCALL (byte) ;InXmm_A:xmmword, InXmm_B:xmmword
 			ret
 uXm_mm_ucomineq_ss endp
 
-
 ;******************
 ; FP, conversions
 ;******************
@@ -1008,6 +1005,30 @@ endif ;__X64__
 ; FP, misc
 ;******************
 			align 16
+uXm_mm_transpose4_ps proc UX_VECCALL (voidarg) ;InXmm_row0:xmmword, InXmm_row1:xmmword, InXmm_row2:xmmword, InXmm_row3:xmmword
+			
+				movaps			xmm4, 			xmm0
+				movaps			xmm5, 			xmm2
+
+				shufps			xmm0,			xmm1,			uXm_mm_shuffler4(0,1,0,1) ; 044h
+				shufps			xmm4,			xmm1,			uXm_mm_shuffler4(2,3,2,3) ; 0eeh
+				shufps			xmm2,			xmm3,			uXm_mm_shuffler4(0,1,0,1) ; 044h
+				shufps			xmm5,			xmm3,			uXm_mm_shuffler4(2,3,2,3) ; 0eeh
+				
+				movaps			xmm1, 			xmm0
+				movaps			xmm3, 			xmm4
+				
+				shufps			xmm0,			xmm2,			uXm_mm_shuffler4(0,2,0,2) ; 088h
+				shufps			xmm1,			xmm2,			uXm_mm_shuffler4(1,3,1,3) ; 0ddh
+				shufps			xmm4,			xmm5,			uXm_mm_shuffler4(0,2,0,2) ; 088h
+				shufps			xmm3,			xmm5,			uXm_mm_shuffler4(1,3,1,3) ; 0ddh
+				
+				movaps			xmm2, 			xmm4
+				
+			ret
+uXm_mm_transpose4_ps endp
+
+			align 16
 uXm_mm_unpackhi_ps proc UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
 			
 			unpckhps 				xmm0,			xmm1
@@ -1024,28 +1045,40 @@ uXm_mm_unpacklo_ps proc UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
 uXm_mm_unpacklo_ps endp
 
 			align 16
-uXm_mm_loadh_pi proc UX_VECCALL (xmmword) ;frame InXmm_A:xmmword, InPmm_B:ptr mmword
+uXm_mm_movehl_ps proc UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InXmm_B:xmmword, InXmm_C:xmmword
 			
-			movhps 				xmm0,	mmword ptr [rparam2]
-
-			ret
-uXm_mm_loadh_pi endp
-
-			align 16
-uXm_mm_movehl_ps proc UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-			
-			movhlps 				xmm0,			xmm1
+			movaps			xmm0,			xmm1
+			movhlps			xmm0,			xmm2
 
 			ret
 uXm_mm_movehl_ps endp
 
 			align 16
-uXm_mm_movelh_ps proc UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
+uXm_mm_movelh_ps proc UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InXmm_B:xmmword, InXmm_C:xmmword
 			
-			movlhps 				xmm0,			xmm1
+			movaps			xmm0,			xmm1
+			movlhps 		xmm0,			xmm2
 
 			ret
 uXm_mm_movelh_ps endp
+
+			align 16
+uXm_mm_loadh_pi proc UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InXmm_B:xmmword, InPmm_C:ptr mmword
+			
+			movaps			xmm0,			xmm1
+			movhps 			xmm0,	mmword ptr [rparam3]
+
+			ret
+uXm_mm_loadh_pi endp
+
+			align 16
+uXm_mm_loadl_pi proc UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InXmm_B:xmmword, InPmm_C:ptr mmword
+			
+			movaps			xmm0,			xmm1
+			movlps			xmm0,	mmword ptr [rparam3]
+
+			ret
+uXm_mm_loadl_pi endp
 
 			align 16
 uXm_mm_storeh_pi proc UX_VECCALL (voidarg) ;OutPmm_A:ptr mmword, InXmm_B:xmmword
@@ -1054,14 +1087,6 @@ uXm_mm_storeh_pi proc UX_VECCALL (voidarg) ;OutPmm_A:ptr mmword, InXmm_B:xmmword
 
 			ret
 uXm_mm_storeh_pi endp
-
-			align 16
-uXm_mm_loadl_pi proc UX_VECCALL (xmmword) ;InXmm_A:xmmword, InPmm_B:ptr mmword
-			
-			movlps 				xmm0,	mmword ptr [rparam2]
-
-			ret
-uXm_mm_loadl_pi endp
 
 			align 16
 uXm_mm_storel_pi proc UX_VECCALL (voidarg) ;OutPmm_A:ptr mmword, InXmm_B:xmmword
@@ -1122,9 +1147,9 @@ uXm_mm_pextrw proc UX_VECCALL (dword) ;Inmm_A:mmword,  _Imm8:dword
 			push			esi
 			endif
 			movzx			eax,	byte ptr [dparam2]
-			lea				ebx,			[pextrwjmptable]
+			lea				ebx,			[mmpextrwjmptable]
 			mov				eax,			[ebx+eax*4]
-			mov				esi,			pextrwjmptable
+			mov				esi,			mmpextrwjmptable
 			sub				ebx,			esi
 			add				ebx,			rax
 			xor				eax
@@ -1133,19 +1158,19 @@ uXm_mm_pextrw proc UX_VECCALL (dword) ;Inmm_A:mmword,  _Imm8:dword
 			endif
 			jmp				ebx
 					
-			pextrwword		textequ		<dword>
-			pextrwiword		textequ		<dd>
+			mmpextrwword		textequ		<dword>
+			mmpextrwiword		textequ		<dd>
 		
-		pextrwjmptable label pextrwword
-			pextrwiword	offset pextrw_0, offset pextrw_1, offset pextrw_2, offset pextrw_3
+		mmpextrwjmptable label mmpextrwword
+			mmpextrwiword	offset mmpextrw_0, offset mmpextrw_1, offset mmpextrw_2, offset mmpextrw_3
 			
-			pextrw_0 label pextrwword
+			mmpextrw_0 label mmpextrwword
 				jmp		uXm_mm_pextrw_0
-			pextrw_1 label pextrwword
+			mmpextrw_1 label mmpextrwword
 				jmp		uXm_mm_pextrw_1
-			pextrw_2 label pextrwword
+			mmpextrw_2 label mmpextrwword
 				jmp		uXm_mm_pextrw_2
-			pextrw_3 label pextrwword
+			mmpextrw_3 label mmpextrwword
 				jmp		uXm_mm_pextrw_3
 
 uXm_mm_pextrw endp
@@ -1189,9 +1214,9 @@ uXm_mm_pinsrw proc UX_VECCALL (mmword) ;Inmm_A:mmword,  InInt_B:dword,  _Imm8:dw
 			push			esi
 			endif
 			movzx			eax,	byte ptr [dparam2]
-			lea				ebx,			[pextrwjmptable]
+			lea				ebx,			[mmpinsrwjmptable]
 			mov				eax,			[ebx+eax*4]
-			mov				esi,			pextrwjmptable
+			mov				esi,			mmpinsrwjmptable
 			sub				ebx,			esi
 			add				ebx,			rax
 			xor				eax
@@ -1200,19 +1225,19 @@ uXm_mm_pinsrw proc UX_VECCALL (mmword) ;Inmm_A:mmword,  InInt_B:dword,  _Imm8:dw
 			endif
 			jmp				ebx
 					
-			pinsrwword		textequ		<dword>
-			pinsrwiword		textequ		<dd>
+			mmpinsrwword		textequ		<dword>
+			mmpinsrwiword		textequ		<dd>
 		
-		pinsrwjmptable label pinsrwword
-			pinsrwiword	offset pinsrw_0, offset pinsrw_1, offset pinsrw_2, offset pinsrw_3
+		mmpinsrwjmptable label mmpinsrwword
+			mmpinsrwiword	offset mmpinsrw_0, offset mmpinsrw_1, offset mmpinsrw_2, offset mmpinsrw_3
 			
-			pinsrw_0 label pinsrwword
+			mmpinsrw_0 label mmpinsrwword
 				jmp		uXm_mm_pinsrw_0
-			pinsrw_1 label pinsrwword
+			mmpinsrw_1 label mmpinsrwword
 				jmp		uXm_mm_pinsrw_1
-			pinsrw_2 label pinsrwword
+			mmpinsrw_2 label mmpinsrwword
 				jmp		uXm_mm_pinsrw_2
-			pinsrw_3 label pinsrwword
+			mmpinsrw_3 label mmpinsrwword
 				jmp		uXm_mm_pinsrw_3
 
 uXm_mm_pinsrw endp
@@ -1266,9 +1291,12 @@ uXm_mm_pmulhuw proc UX_VECCALL (mmword) ;Inmm_A:mmword, Inmm_B:mmword
 uXm_mm_pmulhuw endp
 
 			align 8
-uXm_mm_maskmovq proc UX_VECCALL (voidarg) ;Inmm_A:mmword, Inmm_B:mmword, OutInt8_C:ptr byte
+uXm_mm_maskmovq proc UX_VECCALL (voidarg) ;Inmm_A:mmword, Inmm_B:mmword, OutInt8_C:ptr byte			
 			
-			maskmovq			mm0,			mm1,			byte ptr [rparam3]
+			push			rdidx
+			mov				rdidx,	byte ptr [rparam3]
+			maskmovq		mm0,			mm1
+			pop				rdidx
 
 			ret
 uXm_mm_maskmovq endp
@@ -1298,204 +1326,139 @@ uXm_mm_psadbw proc UX_VECCALL (mmword) ;Inmm_A:mmword, Inmm_B:mmword
 uXm_mm_psadbw endp
 endif ;__X32__
 
-uXm_mmf_set_ss proc UX_VECCALL (xmmword) ;Inreal4_A:real4
-
-			movss			xmm0,			xmm0
-			ret
-uXm_mmf_set_ss endp
-
-uXm_mmf_set_ps1 proc UX_VECCALL (xmmword) ;Inreal4_A:real4
-
-			movss			xmm0,			xmm0
-			shufps			xmm0,			xmm0,			0
-
-			ret
-uXm_mmf_set_ps1 endp
-
-uXm_mmf_set_ps proc UX_VECCALL (xmmword) ;Inreal4_D:real4 ;Inreal4_C:real4 ;Inreal4_B:real4 ;Inreal4_A:real4
-
-			movss			xmm0,			xmm0
-			shufps			xmm0,			xmm0,			uXm_mm_shuffle4(0,0,0,0)
+;******************
+; memory & initialization
+;******************
+			align 16
+uXm_mm_set_ss proc UX_VECCALL (voidarg) ;Outxmm_A:xmmword, Inreal4_A:real4
 
 			movss			xmm0,			xmm1
-			shufps			xmm0,			xmm0,			uXm_mm_shuffle4(3,0,0,0)
 
-			movss			xmm0,			xmm2
-			shufps			xmm0,			xmm0,			uXm_mm_shuffle4(3,2,0,0)
-
-			movss			xmm0,			xmm3
-
-			ret
-uXm_mmf_set_ps endp
-
-uXm_mmf_setr_ps proc UX_VECCALL (xmmword) ;Inreal4_A:real4 ;Inreal4_B:real4 ;Inreal4_C:real4 ;Inreal4_D:real4
-
-			movss			xmm0,			xmm0
-			shufps			xmm0,			xmm0,			uXm_mm_shuffler4(0,0,0,0)
-
-			movss			xmm0,			xmm1
-			shufps			xmm0,			xmm0,			uXm_mm_shuffler4(0,0,0,3)
-
-			movss			xmm0,			xmm2
-			shufps			xmm0,			xmm0,			uXm_mm_shuffler4(0,0,2,3)
-
-			movss			xmm0,			xmm3
-			shufps			xmm0,			xmm0,			uXm_mm_shuffler4(3,2,1,0)
-
-			ret
-uXm_mmf_setr_ps endp
-
-uXm_mmf_setzero_ps proc UX_VECCALL (xmmword)
-
-			xorps			xmm0,			xmm0
-
-			ret
-uXm_mmf_setzero_ps endp
-
-uXm_mmf_load_ss proc UX_VECCALL (xmmword) ;InPreal4_A:ptr real4
-
-			movss			xmm0,		real4 ptr [rparam1]
-
-			ret
-uXm_mmf_load_ss endp
-
-uXm_mmf_load_ps1 proc UX_VECCALL (xmmword) ;InPreal4_A:ptr real4
-
-			movss			xmm0,		real4 ptr [rparam1]
-			shufps			xmm0,			xmm0,			0
-
-			ret
-uXm_mmf_load_ps1 endp
-
-uXm_mmf_load_ps proc UX_VECCALL (xmmword) ;InPreal4_A:ptr xmmword
-
-			movaps			xmm0,		xmmword ptr [rparam1]
-
-			ret
-uXm_mmf_load_ps endp
-
-uXm_mmf_loadr_ps proc UX_VECCALL (xmmword) ;InPreal4_A:ptr xmmword
-
-			movaps			xmm0,		xmmword ptr [rparam1]
-			shufps			xmm0,			xmm0,			uXm_mm_shuffler4(3,2,1,0)
-
-			ret
-uXm_mmf_loadr_ps endp
-
-uXm_mmf_loadu_ps proc UX_VECCALL (xmmword) ;InPreal4_A:ptr xmmword
-
-			movups			xmm0,		xmmword ptr [rparam1]
-
-			ret
-uXm_mmf_loadu_ps endp
-
-uXm_mmf_loadur_ps proc UX_VECCALL (xmmword) ;InPreal4_A:ptr xmmword
-
-			movups			xmm0,		xmmword ptr [rparam1]
-			shufps			xmm0,			xmm0,			uXm_mm_shuffler4(3,2,1,0)
-
-			ret
-uXm_mmf_loadur_ps endp
-
-uXm_mm_set_ss proc UX_VECCALL (xmmword) ;Inreal4_A:real4
-
-			movss			xmm0,			xmm0
 			ret
 uXm_mm_set_ss endp
 
-uXm_mm_set_ps1 proc UX_VECCALL (xmmword) ;Inreal4_A:real4
+			align 16
+uXm_mm_set_ps1 proc UX_VECCALL (voidarg) ;Outxmm_A:xmmword, Inreal4_A:real4
 
-			movss			xmm0,			xmm0
+			movss			xmm0,			xmm1
 			shufps			xmm0,			xmm0,			0
 
 			ret
 uXm_mm_set_ps1 endp
 
-uXm_mm_set_ps proc UX_VECCALL (xmmword) ;Inreal4_D:real4 ;Inreal4_C:real4 ;Inreal4_B:real4 ;Inreal4_A:real4
-
-			movss			xmm0,			xmm0
-			shufps			xmm0,			xmm0,			uXm_mm_shuffle4(0,0,0,0)
+			align 16
+uXm_mm_set_ps proc UX_VECCALL (voidarg) ;Outxmm_A:xmmword, Inreal4_D:real4 ;Inreal4_C:real4 ;Inreal4_B:real4 ;Inreal4_A:real4
 
 			movss			xmm0,			xmm1
-			shufps			xmm0,			xmm0,			uXm_mm_shuffle4(3,0,0,0)
+			shufps			xmm0,			xmm0,			uXm_mm_shuffle4(0,0,0,0)
 
 			movss			xmm0,			xmm2
-			shufps			xmm0,			xmm0,			uXm_mm_shuffle4(3,2,0,0)
+			shufps			xmm0,			xmm0,			uXm_mm_shuffle4(3,0,0,0)
 
 			movss			xmm0,			xmm3
+			shufps			xmm0,			xmm0,			uXm_mm_shuffle4(3,2,0,0)
+
+			movss			xmm0,			xmm4
 
 			ret
 uXm_mm_set_ps endp
 
-uXm_mm_setr_ps proc UX_VECCALL (xmmword) ;Inreal4_A:real4 ;Inreal4_B:real4 ;Inreal4_C:real4 ;Inreal4_D:real4
-
-			movss			xmm0,			xmm0
-			shufps			xmm0,			xmm0,			uXm_mm_shuffler4(0,0,0,0)
+			align 16
+uXm_mm_setr_ps proc UX_VECCALL (voidarg) ;Outxmm_A:xmmword, Inreal4_A:real4 ;Inreal4_B:real4 ;Inreal4_C:real4 ;Inreal4_D:real4
 
 			movss			xmm0,			xmm1
-			shufps			xmm0,			xmm0,			uXm_mm_shuffler4(0,0,0,3)
+			shufps			xmm0,			xmm0,			uXm_mm_shuffler4(0,0,0,0)
 
 			movss			xmm0,			xmm2
-			shufps			xmm0,			xmm0,			uXm_mm_shuffler4(0,0,2,3)
+			shufps			xmm0,			xmm0,			uXm_mm_shuffler4(0,0,0,3)
 
 			movss			xmm0,			xmm3
+			shufps			xmm0,			xmm0,			uXm_mm_shuffler4(0,0,2,3)
+
+			movss			xmm0,			xmm4
 			shufps			xmm0,			xmm0,			uXm_mm_shuffler4(3,2,1,0)
 
 			ret
 uXm_mm_setr_ps endp
 
-uXm_mm_setzero_ps proc UX_VECCALL (xmmword)
+			align 16
+uXm_mm_setzero_ps proc UX_VECCALL (voidarg) ;Outxmm_A:xmmword
 
 			xorps			xmm0,			xmm0
 
 			ret
 uXm_mm_setzero_ps endp
 
-uXm_mm_load_ss proc UX_VECCALL (xmmword) ;InPreal4_A:ptr real4
+			align 16
+uXm_mm_load_ss proc UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InPreal4_A:ptr real4
 
-			movss			xmm0,		real4 ptr [rparam1]
+			movss			xmm0,		real4 ptr [rparam2]
 
 			ret
 uXm_mm_load_ss endp
 
-uXm_mm_load_ps1 proc UX_VECCALL (xmmword) ;InPreal4_A:ptr real4
+			align 16
+uXm_mm_load_ps1 proc UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InPreal4_A:ptr real4
 
-			movss			xmm0,		real4 ptr [rparam1]
+			movss			xmm0,		real4 ptr [rparam2]
 			shufps			xmm0,			xmm0,			0
 
 			ret
 uXm_mm_load_ps1 endp
 
-uXm_mm_load_ps proc UX_VECCALL (xmmword) ;InPreal4_A:ptr xmmword
+			align 16
+uXm_mm_load_ps proc UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InPreal4_A:ptr xmmword
 
-			movaps			xmm0,		xmmword ptr [rparam1]
+			movaps			xmm0,		xmmword ptr [rparam2]
 
 			ret
 uXm_mm_load_ps endp
 
-uXm_mm_loadr_ps proc UX_VECCALL (xmmword) ;InPreal4_A:ptr xmmword
+			align 16
+uXm_mm_loadr_ps proc UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InPreal4_A:ptr xmmword
 
-			movaps			xmm0,		xmmword ptr [rparam1]
+			movaps			xmm0,		xmmword ptr [rparam2]
 			shufps			xmm0,			xmm0,			uXm_mm_shuffler4(3,2,1,0)
 
 			ret
 uXm_mm_loadr_ps endp
 
-uXm_mm_loadu_ps proc UX_VECCALL (xmmword) ;InPreal4_A:ptr xmmword
+			align 16
+uXm_mm_loadu_ps proc UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InPreal4_A:ptr xmmword
 
-			movups			xmm0,		xmmword ptr [rparam1]
+			movups			xmm0,		xmmword ptr [rparam2]
 
 			ret
 uXm_mm_loadu_ps endp
 
-uXm_mm_loadur_ps proc UX_VECCALL (xmmword) ;InPreal4_A:ptr xmmword
+			align 16
+uXm_mm_loadur_ps proc UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InPreal4_A:ptr xmmword
 
-			movups			xmm0,		xmmword ptr [rparam1]
+			movups			xmm0,		xmmword ptr [rparam2]
 			shufps			xmm0,			xmm0,			uXm_mm_shuffler4(3,2,1,0)
 
 			ret
 uXm_mm_loadur_ps endp
 
+			align 16
+uXm_mm_loadh_ps proc UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InXmm_A:xmmword, InPreal4_B:ptr mmword
+
+			movhps			xmm1,		mmword ptr [rparam2]
+			movaps			xmm0,			xmm1
+
+			ret
+uXm_mm_loadh_ps endp
+
+			align 16
+uXm_mm_loadl_ps proc UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InXmm_A:xmmword, InPreal4_B:ptr mmword
+
+			movlps			xmm1,		mmword ptr [rparam2]
+			movaps			xmm0,			xmm1
+
+			ret
+uXm_mm_loadl_ps endp
+
+			align 16
 uXm_mm_store_ss proc UX_VECCALL (voidarg) ;OutPreal4_A:ptr real4, InXmm_B:xmmword
 
 			movss		real4 ptr [rparam1],			xmm1
@@ -1503,6 +1466,7 @@ uXm_mm_store_ss proc UX_VECCALL (voidarg) ;OutPreal4_A:ptr real4, InXmm_B:xmmwor
 			ret
 uXm_mm_store_ss endp
 
+			align 16
 uXm_mm_store_ps1 proc UX_VECCALL (voidarg) ;OutPreal4_A:ptr real4, InXmm_B:xmmword
 
 			movaps 			xmm0,			xmm1
@@ -1512,6 +1476,7 @@ uXm_mm_store_ps1 proc UX_VECCALL (voidarg) ;OutPreal4_A:ptr real4, InXmm_B:xmmwo
 			ret
 uXm_mm_store_ps1 endp
 
+			align 16
 uXm_mm_storeu_ps1 proc UX_VECCALL (voidarg) ;OutPreal4_A:ptr real4, InXmm_B:xmmword
 
 			movaps 			xmm0,			xmm1
@@ -1521,6 +1486,7 @@ uXm_mm_storeu_ps1 proc UX_VECCALL (voidarg) ;OutPreal4_A:ptr real4, InXmm_B:xmmw
 			ret
 uXm_mm_storeu_ps1 endp
 
+			align 16
 uXm_mm_store_ps proc UX_VECCALL (voidarg) ;OutPreal4_A:ptr xmmword, InXmm_B:xmmword
 
 			movaps		xmmword ptr [rparam1],			xmm1
@@ -1528,6 +1494,7 @@ uXm_mm_store_ps proc UX_VECCALL (voidarg) ;OutPreal4_A:ptr xmmword, InXmm_B:xmmw
 			ret
 uXm_mm_store_ps endp
 
+			align 16
 uXm_mm_storeu_ps proc UX_VECCALL (voidarg) ;OutPreal4_A:ptr xmmword, InXmm_B:xmmword
 
 			movups		xmmword ptr [rparam1],			xmm1
@@ -1535,6 +1502,7 @@ uXm_mm_storeu_ps proc UX_VECCALL (voidarg) ;OutPreal4_A:ptr xmmword, InXmm_B:xmm
 			ret
 uXm_mm_storeu_ps endp
 
+			align 16
 uXm_mm_storer_ps proc UX_VECCALL (voidarg) ;OutPreal4_A:ptr xmmword, InXmm_B:xmmword
 
 			movaps 			xmm0,			xmm1
@@ -1544,6 +1512,7 @@ uXm_mm_storer_ps proc UX_VECCALL (voidarg) ;OutPreal4_A:ptr xmmword, InXmm_B:xmm
 			ret
 uXm_mm_storer_ps endp
 
+			align 16
 uXm_mm_storeur_ps proc UX_VECCALL (voidarg) ;OutPreal4_A:ptr xmmword, InXmm_B:xmmword
 
 			movaps 			xmm0,			xmm1
@@ -1553,6 +1522,55 @@ uXm_mm_storeur_ps proc UX_VECCALL (voidarg) ;OutPreal4_A:ptr xmmword, InXmm_B:xm
 			ret
 uXm_mm_storeur_ps endp
 
+			align 16
+uXm_mm_storeh_ps proc UX_VECCALL (voidarg) ;OutPreal8_A:ptr xmmword, InXmm_B:xmmword
+
+			movhps		mmword ptr [rparam1],			xmm1
+
+			ret
+uXm_mm_storeh_ps endp
+
+			align 16
+uXm_mm_storel_ps proc UX_VECCALL (voidarg) ;OutPreal8_A:ptr xmmword, InXmm_B:xmmword
+
+			movlps		mmword ptr [rparam1],			xmm1
+
+			ret
+uXm_mm_storel_ps endp
+
+;******************
+; FP, moves
+;******************
+			align 16
+uXm_mm_move_ss proc UX_VECCALL (voidarg) ;Outxmm_A:xmmword, InXmm_B:xmmword, InXmm_C:xmmword
+			
+			movss 			xmm0,			xmm1
+			movaps			xmm0,			xmm2
+
+			ret
+uXm_mm_move_ss endp
+
+			align 16
+uXm_mm_move_ps proc UX_VECCALL (voidarg) ;OutXmm_A:xmmword, InXmm_B:xmmword
+			
+			movaps 			xmm0,			xmm1
+
+			ret
+uXm_mm_move_ps endp
+
+			align 16
+uXm_mm_mover_ps proc UX_VECCALL (voidarg) ;OutXmm_A:xmmword, InXmm_B:xmmword
+			
+			movaps 			xmm0,			xmm1
+			shufps			xmm0,			xmm0,			uXm_mm_shuffler4(3,2,1,0)
+
+			ret
+uXm_mm_mover_ps endp
+
+;******************
+; Cacheability support
+;******************
+			align 16
 uXm_mm_prefetch_0 proc UX_VECCALL (voidarg) ;InPInt8_A:ptr byte
 
 			prefetchnta			byte ptr [rparam1]
@@ -1560,6 +1578,7 @@ uXm_mm_prefetch_0 proc UX_VECCALL (voidarg) ;InPInt8_A:ptr byte
 			ret
 uXm_mm_prefetch_0 endp
 
+			align 16
 uXm_mm_prefetch_1 proc UX_VECCALL (voidarg) ;InPInt8_A:ptr byte
 
 			prefetcht0			byte ptr [rparam1]
@@ -1567,6 +1586,7 @@ uXm_mm_prefetch_1 proc UX_VECCALL (voidarg) ;InPInt8_A:ptr byte
 			ret
 uXm_mm_prefetch_1 endp
 
+			align 16
 uXm_mm_prefetch_2 proc UX_VECCALL (voidarg) ;InPInt8_A:ptr byte
 
 			prefetcht1			byte ptr [rparam1]
@@ -1574,6 +1594,7 @@ uXm_mm_prefetch_2 proc UX_VECCALL (voidarg) ;InPInt8_A:ptr byte
 			ret
 uXm_mm_prefetch_2 endp
 
+			align 16
 uXm_mm_prefetch_3 proc UX_VECCALL (voidarg) ;InPInt8_A:ptr byte
 
 			prefetcht2			byte ptr [rparam1]
@@ -1581,6 +1602,7 @@ uXm_mm_prefetch_3 proc UX_VECCALL (voidarg) ;InPInt8_A:ptr byte
 			ret
 uXm_mm_prefetch_3 endp
 
+			align 16
 uXm_mm_prefetch proc UX_VECCALL (voidarg) ;InPInt8_A:ptr byte, InInt_BSel:dword
 
 		ifndef __X64__
@@ -1602,9 +1624,9 @@ uXm_mm_prefetch proc UX_VECCALL (voidarg) ;InPInt8_A:ptr byte, InInt_BSel:dword
 			push			rsi
 			endif
 			movzx			rax,	byte ptr [rparam2]
-			lea				rbx,			[prefetchjmptable]
+			lea				rbx,			[mmprefetchjmptable]
 			mov				eax,			[rbx+rax*8]
-			mov				rsi,			prefetchjmptable
+			mov				rsi,			mmprefetchjmptable
 			sub				rbx,			rsi
 			add				rbx,			rax
 			ifdef WINDOWS
@@ -1614,23 +1636,23 @@ uXm_mm_prefetch proc UX_VECCALL (voidarg) ;InPInt8_A:ptr byte, InInt_BSel:dword
 		endif
 			
 		ifndef __X64__			
-			prefetchword		textequ		<dword>
-			prefetchiword		textequ		<dd>
+			mmprefetchword		textequ		<dword>
+			mmprefetchiword		textequ		<dd>
 		else
-			prefetchword		textequ		<qword>
-			prefetchiword		textequ		<dq>
+			mmprefetchword		textequ		<qword>
+			mmprefetchiword		textequ		<dq>
 		endif
 		
-		prefetchjmptable label prefetchword
-			prefetchiword	offset prefetch_0, offset prefetch_1, offset prefetch_2, offset prefetch_3
+		mmprefetchjmptable label mmprefetchword
+			mmprefetchiword	offset mmprefetch_0, offset mmprefetch_1, offset mmprefetch_2, offset mmprefetch_3
 
-			prefetch_0 label prefetchword
+			mmprefetch_0 label mmprefetchword
 				jmp		uXm_mm_prefetch_0
-			prefetch_1 label prefetchword
+			mmprefetch_1 label mmprefetchword
 				jmp		uXm_mm_prefetch_1
-			prefetch_2 label prefetchword
+			mmprefetch_2 label mmprefetchword
 				jmp		uXm_mm_prefetch_2
-			prefetch_3 label prefetchword
+			mmprefetch_3 label mmprefetchword
 				jmp		uXm_mm_prefetch_3
 			
 uXm_mm_prefetch endp
@@ -1652,31 +1674,6 @@ uXm_mm_stream_ps proc UX_VECCALL (dword) ;OutPfloat_A:ptr xmmword, InXmm_B:xmmwo
 
 			ret
 uXm_mm_stream_ps endp
-
-			align 16
-uXm_mm_move_ss proc UX_VECCALL (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-			
-			movss 			xmm0,			xmm1
-
-			ret
-uXm_mm_move_ss endp
-
-			align 16
-uXm_mm_move_ps proc UX_VECCALL (voidarg) ;OutXmm_A:xmmword, InXmm_B:xmmword
-			
-			movaps 			xmm0,			xmm1
-
-			ret
-uXm_mm_move_ps endp
-
-			align 16
-uXm_mm_mover_ps proc UX_VECCALL (voidarg) ;OutXmm_A:xmmword, InXmm_B:xmmword
-			
-			movaps 			xmm0,			xmm1
-			shufps			xmm0,			xmm0,			uXm_mm_shuffler4(3,2,1,0)
-
-			ret
-uXm_mm_mover_ps endp
 
 			align 16
 uXm_mm_sfence proc UX_VECCALL (voidarg)

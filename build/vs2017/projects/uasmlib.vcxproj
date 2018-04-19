@@ -33,13 +33,15 @@
     <UASM Include="..\..\..\src\x86\asm\uXmxgetbv.asm" />
     <UASM Include="..\..\..\src\x86\asm\uXmxsetbv.asm" />
     <UASM Include="..\..\..\src\x86\MMX\asm\uXmmmintrin.asm" />
-    <None Include="..\..\..\src\x86\SSE\asm\uXmemmintrin.asm">
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintmisc.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintrin.asm">
       <FileType>Document</FileType>
-    </None>
+    </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmintrin.asm" />
-    <None Include="..\..\..\src\x86\SSE\asm\uXmemmintshifts.asm">
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintshifts.asm">
       <FileType>Document</FileType>
-    </None>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintshuffle.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmpermutepd.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmpermuteps.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmpshufw.asm" />
@@ -53,10 +55,13 @@
     <ClInclude Include="..\..\..\include\uXmPreprocessor.h" />
     <ClInclude Include="..\..\..\include\uXmTypes.h" />
     <ClInclude Include="..\..\..\include\uXmVers.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmemmintmisc.h" />
     <ClInclude Include="..\..\..\include\x86\uXmemmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmemmintshifts.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmemmintshuffle.h" />
     <ClInclude Include="..\..\..\include\x86\uXmmmintrin.h" />
     <ClInclude Include="..\..\..\include\x86\uXmmmxStructs.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmsseStructs.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmSSEStructs.h" />
     <ClInclude Include="..\..\..\include\x86\uXmx86Cpu.h" />
     <ClInclude Include="..\..\..\include\x86\uXmx86Intrin.h" />
     <ClInclude Include="..\..\..\include\x86\uXmxmmintrin.h" />
@@ -69,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\uasmlib.cpp" />
+    <ClCompile Include="..\..\..\src\x86\SSE\uXmSSEStructs.cpp" />
     <ClCompile Include="..\..\..\src\x86\uXmx86Cpu.cpp" />
     <ClCompile Include="..\..\..\src\x86\uXmx86Intrin.cpp" />
   </ItemGroup>
@@ -175,7 +181,7 @@
       <ModuleDefinitionFile>$(SolutionDir)export\uasmlib-export.def</ModuleDefinitionFile>
     </Link>
     <UASM>
-      <PreprocessorDefinitions>WIN32;WINDOWS;DEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__X32__;WIN32;WINDOWS;DEBUG</PreprocessorDefinitions>
       <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/</IncludePaths>
     </UASM>
     <ResourceCompile>
@@ -237,7 +243,7 @@ copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win64\vc14</Command>
       <ModuleDefinitionFile>$(SolutionDir)export\uasmlib-export.def</ModuleDefinitionFile>
     </Link>
     <UASM>
-      <PreprocessorDefinitions>WIN32;WINDOWS;NDEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__X32__;WIN32;WINDOWS;NDEBUG</PreprocessorDefinitions>
       <UseSafeExceptionHandlers>true</UseSafeExceptionHandlers>
       <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/</IncludePaths>
     </UASM>

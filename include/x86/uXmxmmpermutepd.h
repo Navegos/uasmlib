@@ -12,7 +12,7 @@
 #include "uxmssestructs.h"
 #endif  /* uXm_SSE_STRUCTS_H */
 
-uXm_EXTERNCC_BEGIN
+uXm_EXTERNC_BEGIN
 
 uXm_PACK_PUSH16
 
