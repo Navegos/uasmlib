@@ -8,9 +8,9 @@
 
 uXm_EXTERNC_BEGIN
 
-uXm_PACK_PUSH16
+uXm_PACK_PUSH_POINTER
 
-//extern int uXm_DllMain(void*, unsigned int, void*);
+//extern int DllMain(void*, unsigned int, void*);
 
 uXm_PACK_POP
 

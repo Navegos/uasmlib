@@ -72,11 +72,11 @@
 ; MM128 = yes
 ; HFA   = no
 ; HVA   = no
-    __uXm128fed union 16
+    __uXm128fid union 16
     	f __uXm128f <>
     	ib __uXm128ib <>
     	iw __uXm128iw <>	
     	id __uXm128id <>
     	iq __uXm128iq <>
     	d __uXm128d <>
-    __uXm128fed ends
+    __uXm128fid ends

@@ -13,7 +13,7 @@
 #endif  /* uXm_XMM_INTRIN_H */
 
 #ifndef uXm_SSE_STRUCTS_H
-#include "uxmssestructs.h"
+#include "uxmSSEStructs.h"
 #endif  /* uXm_SSE_STRUCTS_H */
 
 /*******************************************************/

@@ -170,18 +170,6 @@
     <UASM Include="..\..\..\src\x86\asm\uXmcpuid.asm">
       <Filter>Source Files\x86\asm</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmshuffleps.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
-    </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmpshufw.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
-    </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmpermuteps.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
-    </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmintrin.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
-    </UASM>
     <UASM Include="..\..\..\src\x86\MMX\asm\uXmmmintrin.asm">
       <Filter>Source Files\x86\MMX\asm</Filter>
     </UASM>
@@ -204,6 +192,51 @@
       <Filter>Source Files\x86\SSE\asm</Filter>
     </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintshifts.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128shuffleps.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fshuffleps.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fdshuffleps.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fpermuteps.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fdpermuteps.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128permuteps.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128xmmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fdxmmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fxmmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fidpermuteps.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fidshuffleps.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fidxmmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm64xmmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm64pshufw.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm64fpshufw.asm">
       <Filter>Source Files\x86\SSE\asm</Filter>
     </UASM>
   </ItemGroup>

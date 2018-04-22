@@ -1,7 +1,7 @@
 
 EXPORTS
 
-;uXm_DllMain
+;DllMain
 
 _uXmCPUFeatures_Init
 _uXmCPUFeatures_Destroy

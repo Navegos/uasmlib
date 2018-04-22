@@ -21,14 +21,14 @@
 ;******************
 ; Proto
 ;******************
-uXm_intrin_CPUFeatures proto UX_VECCALL (voidarg)
+_uXm_intrin_CPUFeatures proto UX_VECCALL (voidarg)
 
 ;******************
 ; Proc
 ;******************
 
 			align 16
-uXm_intrin_CPUFeatures proc UX_VECCALL (voidarg)
+_uXm_intrin_CPUFeatures proc UX_VECCALL (voidarg)
 			
 	ifndef __X64__
 			xor				dreturn,			dreturn
@@ -50,6 +50,6 @@ uXm_intrin_CPUFeatures proc UX_VECCALL (voidarg)
 	endif
 
 			ret
-uXm_intrin_CPUFeatures endp
+_uXm_intrin_CPUFeatures endp
 
 	end

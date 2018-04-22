@@ -454,6 +454,7 @@ OP_xmm0_xmm1				equ		0c1h
 OP_xmm1_xmm0				equ		0c8h
 OP_xmm1_xmm1				equ		0c9h
 
+
 ; imediates
 OP_Ib_MMX_PSLLW				textequ <0fh,71h>
 OP_Ib_SSE2_PSLLW			textequ <66h,0fh,71h>
@@ -465,7 +466,6 @@ OP_MMX_PSLLW				textequ <0fh,f1h>
 OP_SSE2_PSLLW				textequ <66h,0fh,f1h>
 OP_MMX_PSLLD				textequ <0fh,f2h>
 OP_SSE2_PSLLD				textequ <66h,0fh,f2h>
-
 
 UX_MOP macro args
 	mopex textequ <byte args>

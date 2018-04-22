@@ -2918,14 +2918,16 @@ Deprecated macro
 #   define namespace_std namespace std {
 #   define namespace_std_end }
 
+/*
 namespace_uXmOAMP
-namespace_uXmOAMP_end
-namespace uXm = uXmOAMP;
+namespace_uXmOAMP_end*/
+/*namespace uXm = uXmOAMP;*/
 
 # if !defined(uXm_NO_DIRECTXMATH_SUPPORT)
+/*
 namespace_DirectX
-namespace_DirectX_end
-namespace DX = DirectX;
+namespace_DirectX_end*/
+/*namespace DX = DirectX;*/
 # endif
 
 #endif // uXm_BASEDEFS_H

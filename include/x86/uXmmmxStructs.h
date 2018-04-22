@@ -43,35 +43,35 @@ typedef struct uXmVC_VEC_INTRINTYPE8 __uXm64ib
      *
      * @param InXmmiw Value to copy from.
      */
-	__uXm64ib(const __uXm64iw& InXmmiw);
+	__uXm64ib(const __uXm64iw InXmmiw);
 	
     /**
      * Constructor initialization from type __uXm64id.
      *
      * @param InXmmid Value to copy from.
      */
-	__uXm64ib(const __uXm64id& InXmmid);
+	__uXm64ib(const __uXm64id InXmmid);
 	
     /**
      * Constructor initialization from type __uXm64iq.
      *
      * @param InXmmiq Value to copy from.
      */
-	__uXm64ib(const __uXm64iq& InXmmiq);
+	__uXm64ib(const __uXm64iq InXmmiq);
 	
     /**
      * Constructor initialization from type __uXm64i.
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm64ib(const __uXm64i& InXmmi);
+	__uXm64ib(const __uXm64i InXmmi);
 	
     /**
      * Constructor initialization from type __m64.
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm64ib(const __m64& InXmm);
+	__uXm64ib(const __m64 InXmm);
 	
     /**
      * Constructor initialization from type __int8*.
@@ -113,35 +113,35 @@ typedef struct uXmVC_VEC_INTRINTYPE8 __uXm64ib
      *
      * @param InXmmiw Value to copy from.
      */
-    __uXm64ib& operator=(const __uXm64iw& InXmmiw);
+    __uXm64ib& operator=(const __uXm64iw InXmmiw);
 	
     /**
      * Assignment operator to convert from type __uXm64id. 
      *
      * @param InXmmid Value to copy from.
      */
-    __uXm64ib& operator=(const __uXm64id& InXmmid);
+    __uXm64ib& operator=(const __uXm64id InXmmid);
 	
     /**
      * Assignment operator to convert from type __uXm64iq. 
      *
      * @param InXmmiq Value to copy from.
      */
-    __uXm64ib& operator=(const __uXm64iq& InXmmiq);
+    __uXm64ib& operator=(const __uXm64iq InXmmiq);
 	
     /**
      * Assignment operator to convert from type __uXm64i. 
      *
      * @param InXmmi Value to copy from.
      */
-    __uXm64ib& operator=(const __uXm64i& InXmmi);
+    __uXm64ib& operator=(const __uXm64i InXmmi);
 	
     /**
      * Assignment operator to convert from type __m64. 
      *
      * @param InXmmi Value to copy from.
      */
-    __uXm64ib& operator=(const __m64& InXmm);
+    __uXm64ib& operator=(const __m64 InXmm);
 	
     /**
      * Assignment operator to convert from type __int8*. 
@@ -175,35 +175,35 @@ typedef struct uXmVC_VEC_INTRINTYPE8 __uXm64iw
      *
      * @param InXmmib Value to copy from.
      */
-	__uXm64iw(const __uXm64ib& InXmmib);
+	__uXm64iw(const __uXm64ib InXmmib);
 	
     /**
      * Constructor initialization from type __uXm64id.
      *
      * @param InXmmid Value to copy from.
      */
-	__uXm64iw(const __uXm64id& InXmmid);
+	__uXm64iw(const __uXm64id InXmmid);
 	
     /**
      * Constructor initialization from type __uXm64iq.
      *
      * @param InXmmiq Value to copy from.
      */
-	__uXm64iw(const __uXm64iq& InXmmiq);
+	__uXm64iw(const __uXm64iq InXmmiq);
 	
     /**
      * Constructor initialization from type __uXm64i.
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm64iw(const __uXm64i& InXmmi);
+	__uXm64iw(const __uXm64i InXmmi);
 	
     /**
      * Constructor initialization from type __m64.
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm64iw(const __m64& InXmmi);
+	__uXm64iw(const __m64 InXmmi);
 	
     /**
      * Constructor initialization from type __int16*.
@@ -245,35 +245,35 @@ typedef struct uXmVC_VEC_INTRINTYPE8 __uXm64iw
      *
      * @param InXmmib Value to copy from.
      */
-	__uXm64iw& operator=(const __uXm64ib& InXmmib);
+	__uXm64iw& operator=(const __uXm64ib InXmmib);
 	
     /**
      * Assignment operator to convert from type __uXm64id. 
      *
      * @param InXmmid Value to copy from.
      */
-	__uXm64iw& operator=(const __uXm64id& InXmmid);
+	__uXm64iw& operator=(const __uXm64id InXmmid);
 	
     /**
      * Assignment operator to convert from type __uXm64iq. 
      *
      * @param InXmmiq Value to copy from.
      */
-	__uXm64iw& operator=(const __uXm64iq& InXmmiq);
+	__uXm64iw& operator=(const __uXm64iq InXmmiq);
 	
     /**
      * Assignment operator to convert from type __uXm64i. 
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm64iw& operator=(const __uXm64i& InXmmi);
+	__uXm64iw& operator=(const __uXm64i InXmmi);
 	
     /**
      * Assignment operator to convert from type __m64. 
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm64iw& operator=(const __m64& InXmmi);
+	__uXm64iw& operator=(const __m64 InXmmi);
 	
     /**
      * Assignment operator to convert from type __int16*. 
@@ -307,35 +307,35 @@ typedef struct uXmVC_VEC_INTRINTYPE8 __uXm64id
      *
      * @param InXmmib Value to copy from.
      */
-	__uXm64id(const __uXm64ib& InXmmib);
+	__uXm64id(const __uXm64ib InXmmib);
 	
     /**
      * Constructor initialization from type __uXm64iw.
      *
      * @param InXmmiw Value to copy from.
      */
-	__uXm64id(const __uXm64iw& InXmmiw);
+	__uXm64id(const __uXm64iw InXmmiw);
 	
     /**
      * Constructor initialization from type __uXm64iq.
      *
      * @param InXmmiq Value to copy from.
      */
-	__uXm64id(const __uXm64iq& InXmmiq);
+	__uXm64id(const __uXm64iq InXmmiq);
 	
     /**
      * Constructor initialization from type __uXm64i.
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm64id(const __uXm64i& InXmmi);
+	__uXm64id(const __uXm64i InXmmi);
 	
     /**
      * Constructor initialization from type __m64.
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm64id(const __m64& InXmmi);
+	__uXm64id(const __m64 InXmmi);
 	
     /**
      * Constructor initialization from type __int32*.
@@ -377,35 +377,35 @@ typedef struct uXmVC_VEC_INTRINTYPE8 __uXm64id
      *
      * @param InXmmib Value to copy from.
      */
-	__uXm64id& operator=(const __uXm64ib& InXmmib);
+	__uXm64id& operator=(const __uXm64ib InXmmib);
 	
     /**
      * Assignment operator to convert from type __uXm64iw. 
      *
      * @param InXmmiw Value to copy from.
      */
-	__uXm64id& operator=(const __uXm64iw& InXmmiw);
+	__uXm64id& operator=(const __uXm64iw InXmmiw);
 	
     /**
      * Assignment operator to convert from type __uXm64iq. 
      *
      * @param InXmmiq Value to copy from.
      */
-	__uXm64id& operator=(const __uXm64iq& InXmmiq);
+	__uXm64id& operator=(const __uXm64iq InXmmiq);
 	
     /**
      * Assignment operator to convert from type __uXm64i. 
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm64id& operator=(const __uXm64i& InXmmi);
+	__uXm64id& operator=(const __uXm64i InXmmi);
 	
     /**
      * Assignment operator to convert from type __m64. 
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm64id& operator=(const __m64& InXmmi);
+	__uXm64id& operator=(const __m64 InXmmi);
 	
     /**
      * Assignment operator to convert from type __int32*. 
@@ -439,35 +439,35 @@ typedef struct uXmVC_VEC_INTRINTYPE8 __uXm64iq
      *
      * @param InXmmib Value to copy from.
      */
-	__uXm64iq(const __uXm64ib& InXmmib);
+	__uXm64iq(const __uXm64ib InXmmib);
 	
     /**
      * Constructor initialization from type __uXm64iw.
      *
      * @param InXmmiw Value to copy from.
      */
-	__uXm64iq(const __uXm64iw& InXmmiw);
+	__uXm64iq(const __uXm64iw InXmmiw);
 	
     /**
      * Constructor initialization from type __uXm64id.
      *
      * @param InXmmid Value to copy from.
      */
-	__uXm64iq(const __uXm64id& InXmmid);
+	__uXm64iq(const __uXm64id InXmmid);
 	
     /**
      * Constructor initialization from type __uXm64i.
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm64iq(const __uXm64i& InXmmi);
+	__uXm64iq(const __uXm64i InXmmi);
 	
     /**
      * Constructor initialization from type __m64.
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm64iq(const __m64& InXmmi);
+	__uXm64iq(const __m64 InXmmi);
 	
     /**
      * Constructor initialization from type __int64*.
@@ -509,35 +509,35 @@ typedef struct uXmVC_VEC_INTRINTYPE8 __uXm64iq
      *
      * @param InXmmib Value to copy from.
      */
-	__uXm64iq& operator=(const __uXm64ib& InXmmib);
+	__uXm64iq& operator=(const __uXm64ib InXmmib);
 	
     /**
      * Assignment operator to convert from type __uXm64iw. 
      *
      * @param InXmmiw Value to copy from.
      */
-	__uXm64iq& operator=(const __uXm64iw& InXmmiw);
+	__uXm64iq& operator=(const __uXm64iw InXmmiw);
 	
     /**
      * Assignment operator to convert from type __uXm64id. 
      *
      * @param InXmmid Value to copy from.
      */
-	__uXm64iq& operator=(const __uXm64id& InXmmid);
+	__uXm64iq& operator=(const __uXm64id InXmmid);
 	
     /**
      * Assignment operator to convert from type __uXm64i. 
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm64iq& operator=(const __uXm64i& InXmmi);
+	__uXm64iq& operator=(const __uXm64i InXmmi);
 	
     /**
      * Assignment operator to convert from type __m64. 
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm64iq& operator=(const __m64& InXmmi);
+	__uXm64iq& operator=(const __m64 InXmmi);
 	
     /**
      * Assignment operator to convert from type __int64*. 
@@ -577,35 +577,35 @@ typedef struct uXmVC_VEC_INTRINTYPE8 __uXm64i
      *
      * @param InXmmib Value to copy from.
      */
-	__uXm64i(const __uXm64ib& InXmmib);
+	__uXm64i(const __uXm64ib InXmmib);
 	
     /**
      * Constructor initialization from type __uXm64iw.
      *
      * @param InXmmiw Value to copy from.
      */
-	__uXm64i(const __uXm64iw& InXmmiw);
+	__uXm64i(const __uXm64iw InXmmiw);
 	
     /**
      * Constructor initialization from type __uXm64id.
      *
      * @param InXmmid Value to copy from.
      */
-	__uXm64i(const __uXm64id& InXmmid);
+	__uXm64i(const __uXm64id InXmmid);
 	
     /**
      * Constructor initialization from type __uXm64iq.
      *
      * @param InXmmiq Value to copy from.
      */
-	__uXm64i(const __uXm64iq& InXmmiq);
+	__uXm64i(const __uXm64iq InXmmiq);
 	
     /**
      * Constructor initialization from type __m64.
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm64i(const __m64& InXmmi);
+	__uXm64i(const __m64 InXmmi);
 	
     /**
      * Constructor initialization from type __int8*.
@@ -707,35 +707,35 @@ typedef struct uXmVC_VEC_INTRINTYPE8 __uXm64i
      *
      * @param InXmmib Value to copy from.
      */
-	__uXm64i& operator=(const __uXm64ib& InXmmib);
+	__uXm64i& operator=(const __uXm64ib InXmmib);
 	
     /**
      * Assignment operator to convert from type __uXm64iw. 
      *
      * @param InXmmiw Value to copy from.
      */
-	__uXm64i& operator=(const __uXm64iw& InXmmiw);
+	__uXm64i& operator=(const __uXm64iw InXmmiw);
 	
     /**
      * Assignment operator to convert from type __uXm64id. 
      *
      * @param InXmmid Value to copy from.
      */
-	__uXm64i& operator=(const __uXm64id& InXmmid);
+	__uXm64i& operator=(const __uXm64id InXmmid);
 	
     /**
      * Assignment operator to convert from type __uXm64iq. 
      *
      * @param InXmmiq Value to copy from.
      */
-	__uXm64i& operator=(const __uXm64iq& InXmmiq);
+	__uXm64i& operator=(const __uXm64iq InXmmiq);
 	
     /**
      * Assignment operator to convert from type __m64. 
      *
      * @param InXmmi Value to copy from.
      */
-	__uXm64i& operator=(const __m64& InXmmi);
+	__uXm64i& operator=(const __m64 InXmmi);
 	
     /**
      * Assignment operator to convert from type __int8*. 
@@ -807,14 +807,14 @@ typedef struct uXmVC_VEC_INTRINTYPE8 __uXm64f
      *
      * @param InXmm Value to copy from.
      */
-	__uXm64f(const __uXm64& InXmm);
+	__uXm64f(const __uXm64 InXmm);
 	
     /**
      * Constructor initialization from type __m64.
      *
      * @param InXmm Value to copy from.
      */
-	__uXm64f(const __m64& InXmm);
+	__uXm64f(const __m64 InXmm);
 	
     /**
      * Constructor initialization from type float*.
@@ -837,14 +837,14 @@ typedef struct uXmVC_VEC_INTRINTYPE8 __uXm64f
      *
      * @param InXmm Value to copy from.
      */
-	__uXm64f& operator=(const __uXm64& InXmm);
+	__uXm64f& operator=(const __uXm64 InXmm);
 	
     /**
      * Assignment operator to convert from type __m64. 
      *
      * @param InXmm Value to copy from.
      */
-	__uXm64f& operator=(const __m64& InXmm);
+	__uXm64f& operator=(const __m64 InXmm);
 	
     /**
      * Assignment operator to convert from type float*. 
@@ -878,14 +878,14 @@ typedef struct uXmVC_VEC_INTRINTYPE8 __uXm64
      *
      * @param InXmmf Value to copy from.
      */
-	__uXm64(const __uXm64f& InXmmf);
+	__uXm64(const __uXm64f InXmmf);
 	
     /**
      * Constructor initialization from type __m64.
      *
      * @param InXmm Value to copy from.
      */
-	__uXm64(const __m64& InXmm);
+	__uXm64(const __m64 InXmm);
 	
     /**
      * Constructor initialization from type float*.
@@ -985,14 +985,14 @@ typedef struct uXmVC_VEC_INTRINTYPE8 __uXm64
      *
      * @param InXmmf Value to copy from.
      */
-	__uXm64& operator=(const __uXm64f& InXmmf);
+	__uXm64& operator=(const __uXm64f InXmmf);
 	
     /**
      * Assignment operator to convert from type __m64. 
      *
      * @param InXmm Value to copy from.
      */
-	__uXm64& operator=(const __m64& InXmm);
+	__uXm64& operator=(const __m64 InXmm);
 	
     /**
      * Assignment operator to convert from type float*. 

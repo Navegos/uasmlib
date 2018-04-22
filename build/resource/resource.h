@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ generated include file.
-// Used by Resource.rc
+// Microsoft Visual C++ generated include fileuxmSSEStructs
+// Used by ResourceuxmSSEStructsrc
 
 // Next default values for new objects
 // 

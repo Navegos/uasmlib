@@ -9,49 +9,64 @@ uXm_PACK_PUSH16
 // __uXm128f START
 __uXm128f::__uXm128f(const __uXm128 InXmm)
 {
-	uXm_mm_store_ps(this, InXmm);
+	_uXm_m128f_store_m128_ps(this, InXmm);
 }
 
 __uXm128f::__uXm128f(const __m128 InXmm)
 {
-	uXm_mm_store_ps(this, InXmm);
+	_uXm_m128f_store_cm128_ps(this, InXmm);
 }
 
 __uXm128f::__uXm128f(const float* Infloat)
 {
-	uXm_mm_load_ps(*this, Infloat);
+	_uXm_m128f_storeu_Pfloat_ps(this, Infloat);
 }
 
 __uXm128f::operator __uXm128(void) const
 {
-	return *this;
+	return _uXm_m128_move_m128f_ps(*this);
 }
 
 __uXm128f::operator __m128(void) const
 {
-	return this->m128;
+	return _uXm_cm128_move_m128f_ps(*this);
 }
 
 __uXm128f::operator float*(void) const
 {
-	return const_cast<float*>(this->m128_f);
+	return _uXm_Pfloat_moveu_m128f_ps(*this);
 }
 // __uXm128f END
 
 // __uXm128 START
 __uXm128::__uXm128(const __uXm128f InXmm)
 {
-	uXm_mm_store_ps(this, InXmm);
+	_uXm_m128_store_m128f_ps(this, InXmm);
 }
 
 __uXm128::__uXm128(const __m128 InXmm)
 {
-	uXm_mm_store_ps(this, InXmm);
+	_uXm_m128_store_cm128_ps(this, InXmm);
 }
 
 __uXm128::__uXm128(const float* Infloat)
 {
-	uXm_mm_load_ps(*this, Infloat);
+	_uXm_m128_storeu_Pfloat_ps(this, Infloat);
+}
+
+__uXm128::operator __uXm128f(void) const
+{
+	return _uXm_m128f_move_m128_ps(*this);
+}
+
+__uXm128::operator __m128(void) const
+{
+	return _uXm_cm128_move_m128_ps(*this);
+}
+
+__uXm128::operator float*(void) const
+{
+	return _uXm_Pfloat_moveu_m128_ps(*this);
 }
 // __uXm128 END
 

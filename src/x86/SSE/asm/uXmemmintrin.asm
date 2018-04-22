@@ -28,7 +28,7 @@
 ;******************
 ; Externs
 ;******************
-	extern UX_VECCALL uXm_intrin_CPUFeatures:proc
+	extern UX_VECCALL _uXm_intrin_CPUFeatures:proc
 	
 ;******************
 ; Proto

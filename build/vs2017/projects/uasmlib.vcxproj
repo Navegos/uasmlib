@@ -33,20 +33,31 @@
     <UASM Include="..\..\..\src\x86\asm\uXmxgetbv.asm" />
     <UASM Include="..\..\..\src\x86\asm\uXmxsetbv.asm" />
     <UASM Include="..\..\..\src\x86\MMX\asm\uXmmmintrin.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fdpermuteps.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fdxmmintrin.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fidpermuteps.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fidxmmintrin.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fpermuteps.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fxmmintrin.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128xmmintrin.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm64fpshufw.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm64xmmintrin.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintmisc.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintrin.asm">
       <FileType>Document</FileType>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmintrin.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fdshuffleps.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fidshuffleps.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fshuffleps.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintshifts.asm">
       <FileType>Document</FileType>
     </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintshuffle.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmpermutepd.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmpermuteps.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmpshufw.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128permuteps.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm64pshufw.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmshufflepd.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmshuffleps.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128shuffleps.asm" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\uasmlib.h" />

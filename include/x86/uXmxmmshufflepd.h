@@ -9,7 +9,7 @@
 #if defined(uXm_INTRINSICS_SUPPORT) && defined(uXm_X86_OR_X64_CPU) && !defined(uXm_NO_INTRINSICS_SUPPORT)
 
 #ifndef uXm_SSE_STRUCTS_H
-#include "uxmssestructs.h"
+#include "uxmSSEStructs.h"
 #endif  /* uXm_SSE_STRUCTS_H */
 
 uXm_EXTERNC_BEGIN

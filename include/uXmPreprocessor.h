@@ -1024,27 +1024,29 @@ Platform define
 #define uXm_NO_DIRECTXMATH_SUPPORT 1
 #endif
 
+/*
 #if defined(uXm_MSVC_COMPATIBLE_COMPILER) || defined(uXm_GCC_COMPATIBLE_COMPILER)
 #	include <vector>
 # if defined(_STD) && defined(_VECTOR_)
 // enable std:vector support, as template vector and compiler library powered
 #       define uXm_STDVECTOR_SUPPORT 1
 # endif
-#endif
+#endif*/
 
+/*
 #if (defined(PARALLEL_PPL) && (PARALLEL_PPL >=1)) && defined(uXm_ARCH_SUPPORTS_PPL) && defined(uXm_COMPILER_SUPPORTS_PPL)
 // PPL library
 #include <ppl.h>
 #include <ppltasks.h>
-/* using namespace Concurrency; ide namespace for proper use with the functions in the library*/
-namespace ccr = Concurrency; /* Concurrency namespace short name */
+/ * using namespace Concurrency; ide namespace for proper use with the functions in the library* /
+namespace ccr = Concurrency; / * Concurrency namespace short name * /
 # if defined(_PPL_H)
 // enable Concurrency:parallel_for_each support, as the library for each loops parallelization powered in CPU code
 #       define uXm_PPL_PRL_FOR_EACH_SUPPORT 1
 // enable Concurrency:parallel_for support, as the library for loops parallelization powered in CPU code
 #       define uXm_PPL_PRL_FOR_SUPPORT 1
 # endif
-#endif
+#endif*/
 
 #  if defined(uXm_PPL_PRL_FOR_SUPPORT) && !defined(uXm_NO_PRL)
 #		define uXm_USE_PPL_PRL_FOR 1
