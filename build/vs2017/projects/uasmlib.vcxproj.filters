@@ -46,6 +46,105 @@
     <Filter Include="Source Files\x86\MMX\asm">
       <UniqueIdentifier>{0b09ca7a-3001-46ce-aa96-0db37f20d883}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\x86\SSE\asm\uXm128">
+      <UniqueIdentifier>{64655bc8-21cd-4d19-96e9-940096359047}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\SSE\asm\uXm128d">
+      <UniqueIdentifier>{ca703341-6a24-42d2-b3c5-6428b43deeb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\SSE\asm\uXm128f">
+      <UniqueIdentifier>{82d70d6a-b63f-4c8a-9d82-2ded3b021fb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\SSE\asm\uXm128fd">
+      <UniqueIdentifier>{bf0475c5-175d-4f3a-802a-61afc681f784}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\SSE\asm\uXm128fid">
+      <UniqueIdentifier>{5e9d8ba7-b7f4-4fc2-b154-602f227b9a9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\SSE\asm\uXm128i">
+      <UniqueIdentifier>{a770a511-8984-4a51-b233-3754ab9c0000}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\SSE\asm\uXm128iq">
+      <UniqueIdentifier>{24525191-aa5f-461e-9512-a9ff95f07ea6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\SSE\asm\uXm128id">
+      <UniqueIdentifier>{c06f98b5-e6e1-42d2-a283-b4c1ecacee33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\SSE\asm\uXm128iw">
+      <UniqueIdentifier>{5805ae84-9802-485c-92de-06fef536684c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\SSE\asm\uXm128ib">
+      <UniqueIdentifier>{0c1c246e-9bbe-4df9-baad-434f264603dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\SSE\asm\uXm64">
+      <UniqueIdentifier>{113d0c5c-779f-4bd0-8b81-8d3174d97d0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\SSE\asm\uXm128di">
+      <UniqueIdentifier>{cdd4d3e1-f488-4641-b93f-9180cbdc0198}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\SSE\asm\uXm128fi">
+      <UniqueIdentifier>{88300e56-cc6c-4dc7-9fd6-be49b0993151}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\x86\SSE">
+      <UniqueIdentifier>{44d28b44-6f01-4be4-a012-eb706a8c94b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\x86\SSE\uXm128fi">
+      <UniqueIdentifier>{02a9bde4-2183-4d96-a9d0-fa71186fe9a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\x86\SSE\uXm128">
+      <UniqueIdentifier>{eff7fc41-3e86-4674-963e-315d5b336aac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\x86\SSE\uXm128d">
+      <UniqueIdentifier>{72741799-fe70-4bfd-8052-b33621748d34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\x86\SSE\uXm128di">
+      <UniqueIdentifier>{d604d771-2f78-4910-955a-cb2cb6231eef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\x86\SSE\uXm128f">
+      <UniqueIdentifier>{1a57549c-b6b1-49c4-9e79-60180e989448}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\x86\SSE\uXm128fd">
+      <UniqueIdentifier>{6175b945-ccb9-4b7e-8d53-0a366041b44c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\x86\SSE\uXm128fid">
+      <UniqueIdentifier>{feb3a72c-63e1-49de-b95b-17a53db331a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\x86\SSE\uXm128i">
+      <UniqueIdentifier>{cd0d557d-d0b7-4bbc-ac65-5c21fd840591}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\x86\SSE\uXm128iq">
+      <UniqueIdentifier>{b7f74d4d-ec01-434d-9d6b-210badc53a24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\x86\SSE\uXm128id">
+      <UniqueIdentifier>{06adcc27-6271-43bf-8733-d7f32c9e49d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\x86\SSE\uXm128iw">
+      <UniqueIdentifier>{a9551d7b-d60d-4947-bb4e-e4ddfc02ea5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\x86\MMX">
+      <UniqueIdentifier>{8fccb3eb-7c71-4c19-ac7c-8b408c728a0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\x86\MMX\uXm64">
+      <UniqueIdentifier>{e53f01ff-9491-44b6-9a42-e0c035e32f4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\x86\SSE\uXm64">
+      <UniqueIdentifier>{6689cc56-26c5-4aa2-87d2-1ad39870252a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\SSE\uXm128">
+      <UniqueIdentifier>{4634a5c2-5c2c-41c4-8af3-eda5427a11bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\MMX\asm\uXm64f">
+      <UniqueIdentifier>{86c94a65-92f6-4a68-a236-36a1597c2d4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\MMX\asm\uXm64">
+      <UniqueIdentifier>{a7526031-6998-4b8c-aaab-82b42d249f2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\SSE\uXm128f">
+      <UniqueIdentifier>{7d6be685-38c1-4781-a169-62d6b3418994}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\x86\SSE\uXm128ib">
+      <UniqueIdentifier>{f1f49256-06a3-44c4-a0a2-c270d30102f3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\uXmBaseDefs.h">
@@ -75,44 +174,104 @@
     <ClInclude Include="..\..\..\include\x86\uXmx86Intrin.h">
       <Filter>Header Files\x86</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXmemmintrin.h">
-      <Filter>Header Files\x86</Filter>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128\uXm128xmmintrin.h">
+      <Filter>Header Files\x86\SSE\uXm128</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXmmmintrin.h">
-      <Filter>Header Files\x86</Filter>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXmSSEStructs.h">
+      <Filter>Header Files\x86\SSE</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXmmmxStructs.h">
-      <Filter>Header Files\x86</Filter>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXmSSEIntrin.h">
+      <Filter>Header Files\x86\SSE</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXmxmmintrin.h">
-      <Filter>Header Files\x86</Filter>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128f\uXm128fxmmintrin.h">
+      <Filter>Header Files\x86\SSE\uXm128f</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXmxmmshuffleps.h">
-      <Filter>Header Files\x86</Filter>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128fd\uXm128fdxmmintrin.h">
+      <Filter>Header Files\x86\SSE\uXm128fd</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXmxmmpshufw.h">
-      <Filter>Header Files\x86</Filter>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXmxmmintrin.h">
+      <Filter>Header Files\x86\SSE</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXmxmmpermuteps.h">
-      <Filter>Header Files\x86</Filter>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128\uXm128shuffleps.h">
+      <Filter>Header Files\x86\SSE\uXm128</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXmxmmpermutepd.h">
-      <Filter>Header Files\x86</Filter>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128\uXm128permuteps.h">
+      <Filter>Header Files\x86\SSE\uXm128</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXmxmmshufflepd.h">
-      <Filter>Header Files\x86</Filter>
+    <ClInclude Include="..\..\..\include\x86\MMX\uXmMMXStructs.h">
+      <Filter>Header Files\x86\MMX</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXmemmintshifts.h">
-      <Filter>Header Files\x86</Filter>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128f\uXm128fshuffleps.h">
+      <Filter>Header Files\x86\SSE\uXm128f</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXmemmintmisc.h">
-      <Filter>Header Files\x86</Filter>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128f\uXm128fpermuteps.h">
+      <Filter>Header Files\x86\SSE\uXm128f</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXmemmintshuffle.h">
-      <Filter>Header Files\x86</Filter>
+    <ClInclude Include="..\..\..\include\x86\MMX\uXmmmintrin.h">
+      <Filter>Header Files\x86\MMX</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXmSSEStructs.h">
-      <Filter>Header Files\x86</Filter>
+    <ClInclude Include="..\..\..\include\x86\MMX\uXmMMXIntrin.h">
+      <Filter>Header Files\x86\MMX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\MMX\uXm64\uXm64mmintrin.h">
+      <Filter>Header Files\x86\MMX\uXm64</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm64\uXm64xmmintrin.h">
+      <Filter>Header Files\x86\SSE\uXm64</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm64\uXm64pshufw.h">
+      <Filter>Header Files\x86\SSE\uXm64</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128fi\uXm128fixmmintrin.h">
+      <Filter>Header Files\x86\SSE\uXm128fi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128fi\uXm128fipermuteps.h">
+      <Filter>Header Files\x86\SSE\uXm128fi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128fi\uXm128fishuffleps.h">
+      <Filter>Header Files\x86\SSE\uXm128fi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128fid\uXm128fidxmmintrin.h">
+      <Filter>Header Files\x86\SSE\uXm128fid</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128fid\uXm128fidpermuteps.h">
+      <Filter>Header Files\x86\SSE\uXm128fid</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128fid\uXm128fidshuffleps.h">
+      <Filter>Header Files\x86\SSE\uXm128fid</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128fd\uXm128fdshuffleps.h">
+      <Filter>Header Files\x86\SSE\uXm128fd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128fd\uXm128fdpermuteps.h">
+      <Filter>Header Files\x86\SSE\uXm128fd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128d\uXm128demmintrin.h">
+      <Filter>Header Files\x86\SSE\uXm128d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128d\uXm128dpermutepd.h">
+      <Filter>Header Files\x86\SSE\uXm128d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128d\uXm128dshufflepd.h">
+      <Filter>Header Files\x86\SSE\uXm128d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXmemmintrin.h">
+      <Filter>Header Files\x86\SSE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128\uXm128emmintrin.h">
+      <Filter>Header Files\x86\SSE\uXm128</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128i\uXm128iemmintrin.h">
+      <Filter>Header Files\x86\SSE\uXm128i</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128i\uXm128iemmintmisc.h">
+      <Filter>Header Files\x86\SSE\uXm128i</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128i\uXm128iemmintshifts.h">
+      <Filter>Header Files\x86\SSE\uXm128i</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\SSE\uXm128i\uXm128iemmintshuffle.h">
+      <Filter>Header Files\x86\SSE\uXm128i</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -128,11 +287,14 @@
     <ClCompile Include="..\..\..\src\x86\SSE\uXmSSEStructs.cpp">
       <Filter>Source Files\x86\SSE</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\uXm128\uXm128xmmintrina.cpp">
+      <Filter>Source Files\x86\SSE\uXm128</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\uXm128f\uXm128fxmmintrina.cpp">
+      <Filter>Source Files\x86\SSE\uXm128f</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\src\x86\SSE\asm\xmmtypes.inc">
-      <Filter>Source Files\x86\SSE\asm</Filter>
-    </None>
     <None Include="..\..\..\src\x86\asm\uXmx86asm.inc">
       <Filter>Source Files\x86\asm</Filter>
     </None>
@@ -148,6 +310,9 @@
       <Filter>Source Files\x86\asm</Filter>
     </None>
     <None Include="..\..\..\src\x86\SSE\asm\uXmsseintrin.inc">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </None>
+    <None Include="..\..\..\src\x86\SSE\asm\xmmtypes.inc">
       <Filter>Source Files\x86\SSE\asm</Filter>
     </None>
   </ItemGroup>
@@ -170,74 +335,77 @@
     <UASM Include="..\..\..\src\x86\asm\uXmcpuid.asm">
       <Filter>Source Files\x86\asm</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\MMX\asm\uXmmmintrin.asm">
-      <Filter>Source Files\x86\MMX\asm</Filter>
-    </UASM>
     <UASM Include="..\..\..\src\x86\asm\uXmintrincpu.asm">
       <Filter>Source Files\x86\asm</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmshufflepd.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm64\uXm64pshufw.asm">
+      <Filter>Source Files\x86\SSE\asm\uXm64</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmpermutepd.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm64\uXm64xmmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm\uXm64</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintmisc.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128\uXm128permuteps.asm">
+      <Filter>Source Files\x86\SSE\asm\uXm128</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintshuffle.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128\uXm128shuffleps.asm">
+      <Filter>Source Files\x86\SSE\asm\uXm128</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintrin.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128\uXm128xmmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm\uXm128</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintshifts.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128d\uXm128demmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm\uXm128d</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128shuffleps.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128d\uXm128dpermutepd.asm">
+      <Filter>Source Files\x86\SSE\asm\uXm128d</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fshuffleps.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128d\uXm128dshufflepd.asm">
+      <Filter>Source Files\x86\SSE\asm\uXm128d</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fdshuffleps.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128f\uXm128fpermuteps.asm">
+      <Filter>Source Files\x86\SSE\asm\uXm128f</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fpermuteps.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128f\uXm128fshuffleps.asm">
+      <Filter>Source Files\x86\SSE\asm\uXm128f</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fdpermuteps.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128f\uXm128fxmmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm\uXm128f</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128permuteps.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fd\uXm128fdpermuteps.asm">
+      <Filter>Source Files\x86\SSE\asm\uXm128fd</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128xmmintrin.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fd\uXm128fdshuffleps.asm">
+      <Filter>Source Files\x86\SSE\asm\uXm128fd</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fdxmmintrin.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fd\uXm128fdxmmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm\uXm128fd</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fxmmintrin.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fid\uXm128fidemmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm\uXm128fid</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fidpermuteps.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fid\uXm128fidpermuteps.asm">
+      <Filter>Source Files\x86\SSE\asm\uXm128fid</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fidshuffleps.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fid\uXm128fidshuffleps.asm">
+      <Filter>Source Files\x86\SSE\asm\uXm128fid</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fidxmmintrin.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fid\uXm128fidxmmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm\uXm128fid</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm64xmmintrin.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
+    <UASM Include="..\..\..\src\x86\MMX\asm\uXm64\uXm64mmintrin.asm">
+      <Filter>Source Files\x86\MMX\asm\uXm64</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm64pshufw.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
+    <UASM Include="..\..\..\src\x86\MMX\asm\uXm64\uXm64mmintshifts.asm">
+      <Filter>Source Files\x86\MMX\asm\uXm64</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm64fpshufw.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fi\uXm128fixmmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm\uXm128fi</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fi\uXm128fipermuteps.asm">
+      <Filter>Source Files\x86\SSE\asm\uXm128fi</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fi\uXm128fishuffleps.asm">
+      <Filter>Source Files\x86\SSE\asm\uXm128fi</Filter>
     </UASM>
   </ItemGroup>
   <ItemGroup>

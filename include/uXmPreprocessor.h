@@ -283,7 +283,7 @@ Compiler defines
 #if defined(__CUDA_ARCH__) || defined(__CUDACC__)
 #		define uXm_CUDA_GPU 1
 #elif (defined(_M_IX86) || defined(_WIN32) || defined(__i386__) || defined(i386) || defined(__i386) || defined(_X86_) || defined(__X86__) \
-	|| defined(__I86__) || defined(__INTEL__) || defined(__THW_INTEL__))  && !defined(_WIN64) && ! defined(_M_ARM) && !defined(_ARM) && !defined(__KNC__) && !defined(__MIC__) && !defined(__MIC2__)
+	|| defined(__I86__) || defined(__INTEL__) || defined(__THW_INTEL__))  && !defined(_WIN64) && ! defined(_M_ARM) && !defined(_ARM) && !defined(__KNC__) && !defined(__MIC__)
 #		define uXm_X86 1
 #		define uXm_X86_CPU 1
 #		define uXm_X86_ABI 1
@@ -299,7 +299,7 @@ Compiler defines
 #		define uXm_ARCH_STR "x86"
 #undef uXm_ARCH
 #		define uXm_ARCH 1
-# elif defined(_M_X64) || defined(_M_AMD64) || defined(_WIN64) || defined(__amd64__) || defined(__amd64) || defined(__x86_64) || defined(__x86_64__) || defined(__LP64__) && !defined(__KNC__) && !defined(__MIC__) && !defined(__MIC2__)
+# elif defined(_M_X64) || defined(_M_AMD64) || defined(_WIN64) || defined(__amd64__) || defined(__amd64) || defined(__x86_64) || defined(__x86_64__) || defined(__LP64__) && !defined(__KNC__) && !defined(__MIC__)
 #       define uXm_X64 1
 #       define uXm_X64_CPU 1
 #		define uXm_X64_ABI 1
@@ -330,7 +330,7 @@ Compiler defines
 #		define uXm_ARCH_STR "x64"
 #	endif
 #		define uXm_PLATFORM_X64 1
-#elif  defined(__KNC__) || defined(__MIC__) ||  defined(__MIC2__) || defined(uXm_MIC)
+#elif  defined(__KNC__) || defined(__MIC__) || defined(uXm_MIC)
 #  ifndef uXm_MIC
 #		define uXm_MIC 1 /* Intel MIC or Xeon Phi architecture */
 #  endif
@@ -711,10 +711,10 @@ Platform define
 /*#		define uXm_ARCH*/
 #		define uXm_FAMILY_STR ""
 # endif
-#elif (defined(_MSC_VER) && defined(__INTEL_COMPILER)) && (defined(_WIN32) || defined(_WINDOWS) || defined(uXm_DESKTOP_APP) || (defined(__KNC__) || defined(__MIC__) || defined(__MIC2__)))
-# if defined(__KNC__) || defined(__MIC__) || defined(__MIC2__) || defined(uXm_MIC)
-#		define uXm_LINUX 1
-#		define uXm_LINUX_OS 1
+#elif (defined(_MSC_VER) && defined(__INTEL_COMPILER)) && (defined(_WIN32) || defined(_WINDOWS) || defined(uXm_DESKTOP_APP) || (defined(__KNC__) || defined(__MIC__)))
+# if defined(__KNC__) || defined(__MIC__) || defined(uXm_MIC)
+#		define uXm_UNIX 1
+#		define uXm_UNIX_OS 1
 # else
 #		define uXm_WINDOWS 1
 #		define uXm_WINDOWS_OS 1
@@ -825,7 +825,7 @@ Platform define
 #		define uXm_PPC32_OR_PPC64_ABI 1		 /* PPC 32bits or 64bits cpu */
 #endif
 
-#if (defined(uXm_X64_CPU)) && (defined(__KNC__) || defined(__MIC__) || defined(__MIC2__))
+#if (defined(uXm_X64_CPU)) && (defined(__KNC__) || defined(__MIC__))
 #		define uXm_XEON_PHI_SYSTEM 1
 #elif defined(uXm_PPC) && defined(__bgq__)
 #		define uXm_BLUEGENE_SYSTEM 1
@@ -2945,6 +2945,18 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #	   endif
 #  endif
 #endif
+
+#       define uXm_ISET_AVX512 60
+#       define uXm_ISET_AVX2 52
+#       define uXm_ISET_AVX 50
+#       define uXm_ISET_SSE42 42
+#       define uXm_ISET_SSE41 41
+#       define uXm_ISET_SSE4A 40
+#       define uXm_ISET_SSE3 31
+#       define uXm_ISET_SSE3 30
+#       define uXm_ISET_SSE2 20
+#       define uXm_ISET_SSE 10
+#       define uXm_ISET_MMX 8
 
 // lets search if we can implement this in GPU also!! lets set for higher arch build if available
 #if defined(uXm_X86_OR_X64_CPU)

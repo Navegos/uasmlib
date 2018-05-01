@@ -61,13 +61,13 @@
 #	define EXTERN_C_BEGIN extern "C" {
 # endif
 # ifndef EXTERN_C_END
-#	define EXTERN_C_END }
+#	define EXTERN_C_END };
 # endif
 # ifndef EXTERN_CC_BEGIN
 #	define EXTERN_CC_BEGIN extern "C++" {
 # endif
 # ifndef EXTERN_CC_END
-#	define EXTERN_CC_END }
+#	define EXTERN_CC_END };
 # endif
 #else
 # ifndef EXTERN_C_BEGIN

@@ -2,6 +2,625 @@
 xmm4shuffleps0000_0, xmm4shuffleps0001_1, xmm4shuffleps0002_2, xmm4shuffleps0003_3, xmm4shuffleps0010_4, xmm4shuffleps0011_5, xmm4shuffleps0012_6, xmm4shuffleps0013_7, xmm4shuffleps0020_8, xmm4shuffleps0021_9, xmm4shuffleps0022_10, xmm4shuffleps0023_11, xmm4shuffleps0030_12, xmm4shuffleps0031_13, xmm4shuffleps0032_14, xmm4shuffleps0033_15, xmm4shuffleps0100_16, xmm4shuffleps0101_17, xmm4shuffleps0102_18, xmm4shuffleps0103_19, xmm4shuffleps0110_20, xmm4shuffleps0111_21, xmm4shuffleps0112_22, xmm4shuffleps0113_23, xmm4shuffleps0120_24, xmm4shuffleps0121_25, xmm4shuffleps0122_26, xmm4shuffleps0123_27, xmm4shuffleps0130_28, xmm4shuffleps0131_29, xmm4shuffleps0132_30, xmm4shuffleps0133_31, xmm4shuffleps0200_32, xmm4shuffleps0201_33, xmm4shuffleps0202_34, xmm4shuffleps0203_35, xmm4shuffleps0210_36, xmm4shuffleps0211_37, xmm4shuffleps0212_38, xmm4shuffleps0213_39, xmm4shuffleps0220_40, xmm4shuffleps0221_41, xmm4shuffleps0222_42, xmm4shuffleps0223_43, xmm4shuffleps0230_44, xmm4shuffleps0231_45, xmm4shuffleps0232_46, xmm4shuffleps0233_47, xmm4shuffleps0300_48, xmm4shuffleps0301_49, xmm4shuffleps0302_50, xmm4shuffleps0303_51, xmm4shuffleps0310_52, xmm4shuffleps0311_53, xmm4shuffleps0312_54, xmm4shuffleps0313_55, xmm4shuffleps0320_56, xmm4shuffleps0321_57, xmm4shuffleps0322_58, xmm4shuffleps0323_59, xmm4shuffleps0330_60, xmm4shuffleps0331_61, xmm4shuffleps0332_62, xmm4shuffleps0333_63, xmm4shuffleps1000_64, xmm4shuffleps1001_65, xmm4shuffleps1002_66, xmm4shuffleps1003_67, xmm4shuffleps1010_68, xmm4shuffleps1011_69, xmm4shuffleps1012_70, xmm4shuffleps1013_71, xmm4shuffleps1020_72, xmm4shuffleps1021_73, xmm4shuffleps1022_74, xmm4shuffleps1023_75, xmm4shuffleps1030_76, xmm4shuffleps1031_77, xmm4shuffleps1032_78, xmm4shuffleps1033_79, xmm4shuffleps1100_80, xmm4shuffleps1101_81, xmm4shuffleps1102_82, xmm4shuffleps1103_83, xmm4shuffleps1110_84, xmm4shuffleps1111_85, xmm4shuffleps1112_86, xmm4shuffleps1113_87, xmm4shuffleps1120_88, xmm4shuffleps1121_89, xmm4shuffleps1122_90, xmm4shuffleps1123_91, xmm4shuffleps1130_92, xmm4shuffleps1131_93, xmm4shuffleps1132_94, xmm4shuffleps1133_95, xmm4shuffleps1200_96, xmm4shuffleps1201_97, xmm4shuffleps1202_98, xmm4shuffleps1203_99, xmm4shuffleps1210_100, xmm4shuffleps1211_101, xmm4shuffleps1212_102, xmm4shuffleps1213_103, xmm4shuffleps1220_104, xmm4shuffleps1221_105, xmm4shuffleps1222_106, xmm4shuffleps1223_107, xmm4shuffleps1230_108, xmm4shuffleps1231_109, xmm4shuffleps1232_110, xmm4shuffleps1233_111, xmm4shuffleps1300_112, xmm4shuffleps1301_113, xmm4shuffleps1302_114, xmm4shuffleps1303_115, xmm4shuffleps1310_116, xmm4shuffleps1311_117, xmm4shuffleps1312_118, xmm4shuffleps1313_119, xmm4shuffleps1320_120, xmm4shuffleps1321_121, xmm4shuffleps1322_122, xmm4shuffleps1323_123, xmm4shuffleps1330_124, xmm4shuffleps1331_125, xmm4shuffleps1332_126, xmm4shuffleps1333_127, xmm4shuffleps2000_128, xmm4shuffleps2001_129, xmm4shuffleps2002_130, xmm4shuffleps2003_131, xmm4shuffleps2010_132, xmm4shuffleps2011_133, xmm4shuffleps2012_134, xmm4shuffleps2013_135, xmm4shuffleps2020_136, xmm4shuffleps2021_137, xmm4shuffleps2022_138, xmm4shuffleps2023_139, xmm4shuffleps2030_140, xmm4shuffleps2031_141, xmm4shuffleps2032_142, xmm4shuffleps2033_143, xmm4shuffleps2100_144, xmm4shuffleps2101_145, xmm4shuffleps2102_146, xmm4shuffleps2103_147, xmm4shuffleps2110_148, xmm4shuffleps2111_149, xmm4shuffleps2112_150, xmm4shuffleps2113_151, xmm4shuffleps2120_152, xmm4shuffleps2121_153, xmm4shuffleps2122_154, xmm4shuffleps2123_155, xmm4shuffleps2130_156, xmm4shuffleps2131_157, xmm4shuffleps2132_158, xmm4shuffleps2133_159, xmm4shuffleps2200_160, xmm4shuffleps2201_161, xmm4shuffleps2202_162, xmm4shuffleps2203_163, xmm4shuffleps2210_164, xmm4shuffleps2211_165, xmm4shuffleps2212_166, xmm4shuffleps2213_167, xmm4shuffleps2220_168, xmm4shuffleps2221_169, xmm4shuffleps2222_170, xmm4shuffleps2223_171, xmm4shuffleps2230_172, xmm4shuffleps2231_173, xmm4shuffleps2232_174, xmm4shuffleps2233_175, xmm4shuffleps2300_176, xmm4shuffleps2301_177, xmm4shuffleps2302_178, xmm4shuffleps2303_179, xmm4shuffleps2310_180, xmm4shuffleps2311_181, xmm4shuffleps2312_182, xmm4shuffleps2313_183, xmm4shuffleps2320_184, xmm4shuffleps2321_185, xmm4shuffleps2322_186, xmm4shuffleps2323_187, xmm4shuffleps2330_188, xmm4shuffleps2331_189, xmm4shuffleps2332_190, xmm4shuffleps2333_191, xmm4shuffleps3000_192, xmm4shuffleps3001_193, xmm4shuffleps3002_194, xmm4shuffleps3003_195, xmm4shuffleps3010_196, xmm4shuffleps3011_197, xmm4shuffleps3012_198, xmm4shuffleps3013_199, xmm4shuffleps3020_200, xmm4shuffleps3021_201, xmm4shuffleps3022_202, xmm4shuffleps3023_203, xmm4shuffleps3030_204, xmm4shuffleps3031_205, xmm4shuffleps3032_206, xmm4shuffleps3033_207, xmm4shuffleps3100_208, xmm4shuffleps3101_209, xmm4shuffleps3102_210, xmm4shuffleps3103_211, xmm4shuffleps3110_212, xmm4shuffleps3111_213, xmm4shuffleps3112_214, xmm4shuffleps3113_215, xmm4shuffleps3120_216, xmm4shuffleps3121_217, xmm4shuffleps3122_218, xmm4shuffleps3123_219, xmm4shuffleps3130_220, xmm4shuffleps3131_221, xmm4shuffleps3132_222, xmm4shuffleps3133_223, xmm4shuffleps3200_224, xmm4shuffleps3201_225, xmm4shuffleps3202_226, xmm4shuffleps3203_227, xmm4shuffleps3210_228, xmm4shuffleps3211_229, xmm4shuffleps3212_230, xmm4shuffleps3213_231, xmm4shuffleps3220_232, xmm4shuffleps3221_233, xmm4shuffleps3222_234, xmm4shuffleps3223_235, xmm4shuffleps3230_236, xmm4shuffleps3231_237, xmm4shuffleps3232_238, xmm4shuffleps3233_239, xmm4shuffleps3300_240, xmm4shuffleps3301_241, xmm4shuffleps3302_242, xmm4shuffleps3303_243, xmm4shuffleps3310_244, xmm4shuffleps3311_245, xmm4shuffleps3312_246, xmm4shuffleps3313_247, xmm4shuffleps3320_248, xmm4shuffleps3321_249, xmm4shuffleps3322_250, xmm4shuffleps3323_251, xmm4shuffleps3330_252, xmm4shuffleps3331_253, xmm4shuffleps3332_254, xmm4shuffleps3333_255, 
 
 
+		m128shufpsjmptable riword offset m128shufps_0, offset m128shufps_1, offset m128shufps_2, offset m128shufps_3, offset m128shufps_4, offset m128shufps_5, offset m128shufps_6, offset m128shufps_7, offset m128shufps_8, offset m128shufps_9, offset m128shufps_10, offset m128shufps_11, offset m128shufps_12, offset m128shufps_13, offset m128shufps_14, offset m128shufps_15, offset m128shufps_16, offset m128shufps_17, offset m128shufps_18, offset m128shufps_19, offset m128shufps_20, offset m128shufps_21, offset m128shufps_22, offset m128shufps_23, offset m128shufps_24, offset m128shufps_25, offset m128shufps_26, offset m128shufps_27, offset m128shufps_28, offset m128shufps_29, offset m128shufps_30, offset m128shufps_31, offset m128shufps_32, offset m128shufps_33, offset m128shufps_34, offset m128shufps_35, offset m128shufps_36, offset m128shufps_37, offset m128shufps_38, offset m128shufps_39, offset m128shufps_40, offset m128shufps_41, offset m128shufps_42, offset m128shufps_43, offset m128shufps_44, offset m128shufps_45, offset m128shufps_46, offset m128shufps_47, offset m128shufps_48, offset m128shufps_49, offset m128shufps_50, offset m128shufps_51, offset m128shufps_52, offset m128shufps_53, offset m128shufps_54, offset m128shufps_55, offset m128shufps_56, offset m128shufps_57, offset m128shufps_58, offset m128shufps_59, offset m128shufps_60, offset m128shufps_61, offset m128shufps_62, offset m128shufps_63, offset m128shufps_64, offset m128shufps_65, offset m128shufps_66, offset m128shufps_67, offset m128shufps_68, offset m128shufps_69, offset m128shufps_70, offset m128shufps_71, offset m128shufps_72, offset m128shufps_73, offset m128shufps_74, offset m128shufps_75, offset m128shufps_76, offset m128shufps_77, offset m128shufps_78, offset m128shufps_79, offset m128shufps_80, offset m128shufps_81, offset m128shufps_82, offset m128shufps_83, offset m128shufps_84, offset m128shufps_85, offset m128shufps_86, offset m128shufps_87, offset m128shufps_88, offset m128shufps_89, offset m128shufps_90, offset m128shufps_91, offset m128shufps_92, offset m128shufps_93, offset m128shufps_94, offset m128shufps_95, offset m128shufps_96, offset m128shufps_97, offset m128shufps_98, offset m128shufps_99, offset m128shufps_100, offset m128shufps_101, offset m128shufps_102, offset m128shufps_103, offset m128shufps_104, offset m128shufps_105, offset m128shufps_106, offset m128shufps_107, offset m128shufps_108, offset m128shufps_109, offset m128shufps_110, offset m128shufps_111, offset m128shufps_112, offset m128shufps_113, offset m128shufps_114, offset m128shufps_115, offset m128shufps_116, offset m128shufps_117, offset m128shufps_118, offset m128shufps_119, offset m128shufps_120, offset m128shufps_121, offset m128shufps_122, offset m128shufps_123, offset m128shufps_124, offset m128shufps_125, offset m128shufps_126, offset m128shufps_127, offset m128shufps_128, offset m128shufps_129, offset m128shufps_130, offset m128shufps_131, offset m128shufps_132, offset m128shufps_133, offset m128shufps_134, offset m128shufps_135, offset m128shufps_136, offset m128shufps_137, offset m128shufps_138, offset m128shufps_139, offset m128shufps_140, offset m128shufps_141, offset m128shufps_142, offset m128shufps_143, offset m128shufps_144, offset m128shufps_145, offset m128shufps_146, offset m128shufps_147, offset m128shufps_148, offset m128shufps_149, offset m128shufps_150, offset m128shufps_151, offset m128shufps_152, offset m128shufps_153, offset m128shufps_154, offset m128shufps_155, offset m128shufps_156, offset m128shufps_157, offset m128shufps_158, offset m128shufps_159, offset m128shufps_160, offset m128shufps_161, offset m128shufps_162, offset m128shufps_163, offset m128shufps_164, offset m128shufps_165, offset m128shufps_166, offset m128shufps_167, offset m128shufps_168, offset m128shufps_169, offset m128shufps_170, offset m128shufps_171, offset m128shufps_172, offset m128shufps_173, offset m128shufps_174, offset m128shufps_175, offset m128shufps_176, offset m128shufps_177, offset m128shufps_178, offset m128shufps_179, offset m128shufps_180, offset m128shufps_181, offset m128shufps_182, offset m128shufps_183, offset m128shufps_184, offset m128shufps_185, offset m128shufps_186, offset m128shufps_187, offset m128shufps_188, offset m128shufps_189, offset m128shufps_190, offset m128shufps_191, offset m128shufps_192, offset m128shufps_193, offset m128shufps_194, offset m128shufps_195, offset m128shufps_196, offset m128shufps_197, offset m128shufps_198, offset m128shufps_199, offset m128shufps_200, offset m128shufps_201, offset m128shufps_202, offset m128shufps_203, offset m128shufps_204, offset m128shufps_205, offset m128shufps_206, offset m128shufps_207, offset m128shufps_208, offset m128shufps_209, offset m128shufps_210, offset m128shufps_211, offset m128shufps_212, offset m128shufps_213, offset m128shufps_214, offset m128shufps_215, offset m128shufps_216, offset m128shufps_217, offset m128shufps_218, offset m128shufps_219, offset m128shufps_220, offset m128shufps_221, offset m128shufps_222, offset m128shufps_223, offset m128shufps_224, offset m128shufps_225, offset m128shufps_226, offset m128shufps_227, offset m128shufps_228, offset m128shufps_229, offset m128shufps_230, offset m128shufps_231, offset m128shufps_232, offset m128shufps_233, offset m128shufps_234, offset m128shufps_235, offset m128shufps_236, offset m128shufps_237, offset m128shufps_238, offset m128shufps_239, offset m128shufps_240, offset m128shufps_241, offset m128shufps_242, offset m128shufps_243, offset m128shufps_244, offset m128shufps_245, offset m128shufps_246, offset m128shufps_247, offset m128shufps_248, offset m128shufps_249, offset m128shufps_250, offset m128shufps_251, offset m128shufps_252, offset m128shufps_253, offset m128shufps_254, offset m128shufps_255				
+
+			m128shufps_0 label rword
+				shufps				xmm0,			xmm1,			0
+				ret
+			m128shufps_1 label rword
+				shufps				xmm0,			xmm1,			1
+				ret
+			m128shufps_2 label rword
+				shufps				xmm0,			xmm1,			2
+				ret
+			m128shufps_3 label rword
+				shufps				xmm0,			xmm1,			3
+				ret
+			m128shufps_4 label rword
+				shufps				xmm0,			xmm1,			4
+				ret
+			m128shufps_5 label rword
+				shufps				xmm0,			xmm1,			5
+				ret
+			m128shufps_6 label rword
+				shufps				xmm0,			xmm1,			6
+				ret
+			m128shufps_7 label rword
+				shufps				xmm0,			xmm1,			7
+				ret
+			m128shufps_8 label rword
+				shufps				xmm0,			xmm1,			8
+				ret
+			m128shufps_9 label rword
+				shufps				xmm0,			xmm1,			9
+				ret
+			m128shufps_10 label rword
+				shufps				xmm0,			xmm1,			10
+				ret
+			m128shufps_11 label rword
+				shufps				xmm0,			xmm1,			11
+				ret
+			m128shufps_12 label rword
+				shufps				xmm0,			xmm1,			12
+				ret
+			m128shufps_13 label rword
+				shufps				xmm0,			xmm1,			13
+				ret
+			m128shufps_14 label rword
+				shufps				xmm0,			xmm1,			14
+				ret
+			m128shufps_15 label rword
+				shufps				xmm0,			xmm1,			15
+				ret
+			m128shufps_16 label rword
+				shufps				xmm0,			xmm1,			16
+				ret
+			m128shufps_17 label rword
+				shufps				xmm0,			xmm1,			17
+				ret
+			m128shufps_18 label rword
+				shufps				xmm0,			xmm1,			18
+				ret
+			m128shufps_19 label rword
+				shufps				xmm0,			xmm1,			19
+				ret
+			m128shufps_20 label rword
+				shufps				xmm0,			xmm1,			20
+				ret
+			m128shufps_21 label rword
+				shufps				xmm0,			xmm1,			21
+				ret
+			m128shufps_22 label rword
+				shufps				xmm0,			xmm1,			22
+				ret
+			m128shufps_23 label rword
+				shufps				xmm0,			xmm1,			23
+				ret
+			m128shufps_24 label rword
+				shufps				xmm0,			xmm1,			24
+				ret
+			m128shufps_25 label rword
+				shufps				xmm0,			xmm1,			25
+				ret
+			m128shufps_26 label rword
+				shufps				xmm0,			xmm1,			26
+				ret
+			m128shufps_27 label rword
+				shufps				xmm0,			xmm1,			27
+				ret
+			m128shufps_28 label rword
+				shufps				xmm0,			xmm1,			28
+				ret
+			m128shufps_29 label rword
+				shufps				xmm0,			xmm1,			29
+				ret
+			m128shufps_30 label rword
+				shufps				xmm0,			xmm1,			30
+				ret
+			m128shufps_31 label rword
+				shufps				xmm0,			xmm1,			31
+				ret
+			m128shufps_32 label rword
+				shufps				xmm0,			xmm1,			32
+				ret
+			m128shufps_33 label rword
+				shufps				xmm0,			xmm1,			33
+				ret
+			m128shufps_34 label rword
+				shufps				xmm0,			xmm1,			34
+				ret
+			m128shufps_35 label rword
+				shufps				xmm0,			xmm1,			35
+				ret
+			m128shufps_36 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_37 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_38 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_39 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_40 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_41 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_42 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_43 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_44 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_45 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_46 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_47 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_48 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_49 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_50 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_51 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_52 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_53 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_54 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_55 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_56 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_57 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_58 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_59 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_60 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_61 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_62 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_63 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_64 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_65 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_66 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_67 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_68 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_69 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_70 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_71 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_72 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_73 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_74 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_75 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_76 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_77 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_78 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_79 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_80 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_81 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_82 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_83 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_84 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_85 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_86 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_87 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_88 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_89 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_90 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_91 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_92 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_93 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_94 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_95 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_96 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_97 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_98 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_99 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_100 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_101 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_102 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_103 label rword
+				shufps				xmm0,			xmm1,			
+				ret
+			m128shufps_104 label rword
+				jmp		_uXm_m128_shuffle_1220_ps
+			m128shufps_105 label rword
+				jmp		_uXm_m128_shuffle_1221_ps
+			m128shufps_106 label rword
+				jmp		_uXm_m128_shuffle_1222_ps
+			m128shufps_107 label rword
+				jmp		_uXm_m128_shuffle_1223_ps
+			m128shufps_108 label rword
+				jmp		_uXm_m128_shuffle_1230_ps
+			m128shufps_109 label rword
+				jmp		_uXm_m128_shuffle_1231_ps
+			m128shufps_110 label rword
+				jmp		_uXm_m128_shuffle_1232_ps
+			m128shufps_111 label rword
+				jmp		_uXm_m128_shuffle_1233_ps
+			m128shufps_112 label rword
+				jmp		_uXm_m128_shuffle_1300_ps
+			m128shufps_113 label rword
+				jmp		_uXm_m128_shuffle_1301_ps
+			m128shufps_114 label rword
+				jmp		_uXm_m128_shuffle_1302_ps
+			m128shufps_115 label rword
+				jmp		_uXm_m128_shuffle_1303_ps
+			m128shufps_116 label rword
+				jmp		_uXm_m128_shuffle_1310_ps
+			m128shufps_117 label rword
+				jmp		_uXm_m128_shuffle_1311_ps
+			m128shufps_118 label rword
+				jmp		_uXm_m128_shuffle_1312_ps
+			m128shufps_119 label rword
+				jmp		_uXm_m128_shuffle_1313_ps
+			m128shufps_120 label rword
+				jmp		_uXm_m128_shuffle_1320_ps
+			m128shufps_121 label rword
+				jmp		_uXm_m128_shuffle_1321_ps
+			m128shufps_122 label rword
+				jmp		_uXm_m128_shuffle_1322_ps
+			m128shufps_123 label rword
+				jmp		_uXm_m128_shuffle_1323_ps
+			m128shufps_124 label rword
+				jmp		_uXm_m128_shuffle_1330_ps
+			m128shufps_125 label rword
+				jmp		_uXm_m128_shuffle_1331_ps
+			m128shufps_126 label rword
+				jmp		_uXm_m128_shuffle_1332_ps
+			m128shufps_127 label rword
+				jmp		_uXm_m128_shuffle_1333_ps
+			m128shufps_128 label rword
+				jmp		_uXm_m128_shuffle_2000_ps
+			m128shufps_129 label rword
+				jmp		_uXm_m128_shuffle_2001_ps
+			m128shufps_130 label rword
+				jmp		_uXm_m128_shuffle_2002_ps
+			m128shufps_131 label rword
+				jmp		_uXm_m128_shuffle_2003_ps
+			m128shufps_132 label rword
+				jmp		_uXm_m128_shuffle_2010_ps
+			m128shufps_133 label rword
+				jmp		_uXm_m128_shuffle_2011_ps
+			m128shufps_134 label rword
+				jmp		_uXm_m128_shuffle_2012_ps
+			m128shufps_135 label rword
+				jmp		_uXm_m128_shuffle_2013_ps
+			m128shufps_136 label rword
+				jmp		_uXm_m128_shuffle_2020_ps
+			m128shufps_137 label rword
+				jmp		_uXm_m128_shuffle_2021_ps
+			m128shufps_138 label rword
+				jmp		_uXm_m128_shuffle_2022_ps
+			m128shufps_139 label rword
+				jmp		_uXm_m128_shuffle_2023_ps
+			m128shufps_140 label rword
+				jmp		_uXm_m128_shuffle_2030_ps
+			m128shufps_141 label rword
+				jmp		_uXm_m128_shuffle_2031_ps
+			m128shufps_142 label rword
+				jmp		_uXm_m128_shuffle_2032_ps
+			m128shufps_143 label rword
+				jmp		_uXm_m128_shuffle_2033_ps
+			m128shufps_144 label rword
+				jmp		_uXm_m128_shuffle_2100_ps
+			m128shufps_145 label rword
+				jmp		_uXm_m128_shuffle_2101_ps
+			m128shufps_146 label rword
+				jmp		_uXm_m128_shuffle_2102_ps
+			m128shufps_147 label rword
+				jmp		_uXm_m128_shuffle_2103_ps
+			m128shufps_148 label rword
+				jmp		_uXm_m128_shuffle_2110_ps
+			m128shufps_149 label rword
+				jmp		_uXm_m128_shuffle_2111_ps
+			m128shufps_150 label rword
+				jmp		_uXm_m128_shuffle_2112_ps
+			m128shufps_151 label rword
+				jmp		_uXm_m128_shuffle_2113_ps
+			m128shufps_152 label rword
+				jmp		_uXm_m128_shuffle_2120_ps
+			m128shufps_153 label rword
+				jmp		_uXm_m128_shuffle_2121_ps
+			m128shufps_154 label rword
+				jmp		_uXm_m128_shuffle_2122_ps
+			m128shufps_155 label rword
+				jmp		_uXm_m128_shuffle_2123_ps
+			m128shufps_156 label rword
+				jmp		_uXm_m128_shuffle_2130_ps
+			m128shufps_157 label rword
+				jmp		_uXm_m128_shuffle_2131_ps
+			m128shufps_158 label rword
+				jmp		_uXm_m128_shuffle_2132_ps
+			m128shufps_159 label rword
+				jmp		_uXm_m128_shuffle_2133_ps
+			m128shufps_160 label rword
+				jmp		_uXm_m128_shuffle_2200_ps
+			m128shufps_161 label rword
+				jmp		_uXm_m128_shuffle_2201_ps
+			m128shufps_162 label rword
+				jmp		_uXm_m128_shuffle_2202_ps
+			m128shufps_163 label rword
+				jmp		_uXm_m128_shuffle_2203_ps
+			m128shufps_164 label rword
+				jmp		_uXm_m128_shuffle_2210_ps
+			m128shufps_165 label rword
+				jmp		_uXm_m128_shuffle_2211_ps
+			m128shufps_166 label rword
+				jmp		_uXm_m128_shuffle_2212_ps
+			m128shufps_167 label rword
+				jmp		_uXm_m128_shuffle_2213_ps
+			m128shufps_168 label rword
+				jmp		_uXm_m128_shuffle_2220_ps
+			m128shufps_169 label rword
+				jmp		_uXm_m128_shuffle_2221_ps
+			m128shufps_170 label rword
+				jmp		_uXm_m128_shuffle_2222_ps
+			m128shufps_171 label rword
+				jmp		_uXm_m128_shuffle_2223_ps
+			m128shufps_172 label rword
+				jmp		_uXm_m128_shuffle_2230_ps
+			m128shufps_173 label rword
+				jmp		_uXm_m128_shuffle_2231_ps
+			m128shufps_174 label rword
+				jmp		_uXm_m128_shuffle_2232_ps
+			m128shufps_175 label rword
+				jmp		_uXm_m128_shuffle_2233_ps
+			m128shufps_176 label rword
+				jmp		_uXm_m128_shuffle_2300_ps
+			m128shufps_177 label rword
+				jmp		_uXm_m128_shuffle_2301_ps
+			m128shufps_178 label rword
+				jmp		_uXm_m128_shuffle_2302_ps
+			m128shufps_179 label rword
+				jmp		_uXm_m128_shuffle_2303_ps
+			m128shufps_180 label rword
+				jmp		_uXm_m128_shuffle_2310_ps
+			m128shufps_181 label rword
+				jmp		_uXm_m128_shuffle_2311_ps
+			m128shufps_182 label rword
+				jmp		_uXm_m128_shuffle_2312_ps
+			m128shufps_183 label rword
+				jmp		_uXm_m128_shuffle_2313_ps
+			m128shufps_184 label rword
+				jmp		_uXm_m128_shuffle_2320_ps
+			m128shufps_185 label rword
+				jmp		_uXm_m128_shuffle_2321_ps
+			m128shufps_186 label rword
+				jmp		_uXm_m128_shuffle_2322_ps
+			m128shufps_187 label rword
+				jmp		_uXm_m128_shuffle_2323_ps
+			m128shufps_188 label rword
+				jmp		_uXm_m128_shuffle_2330_ps
+			m128shufps_189 label rword
+				jmp		_uXm_m128_shuffle_2331_ps
+			m128shufps_190 label rword
+				jmp		_uXm_m128_shuffle_2332_ps
+			m128shufps_191 label rword
+				jmp		_uXm_m128_shuffle_2333_ps
+			m128shufps_192 label rword
+				jmp		_uXm_m128_shuffle_3000_ps
+			m128shufps_193 label rword
+				jmp		_uXm_m128_shuffle_3001_ps
+			m128shufps_194 label rword
+				jmp		_uXm_m128_shuffle_3002_ps
+			m128shufps_195 label rword
+				jmp		_uXm_m128_shuffle_3003_ps
+			m128shufps_196 label rword
+				jmp		_uXm_m128_shuffle_3010_ps
+			m128shufps_197 label rword
+				jmp		_uXm_m128_shuffle_3011_ps
+			m128shufps_198 label rword
+				jmp		_uXm_m128_shuffle_3012_ps
+			m128shufps_199 label rword
+				jmp		_uXm_m128_shuffle_3013_ps
+			m128shufps_200 label rword
+				jmp		_uXm_m128_shuffle_3020_ps
+			m128shufps_201 label rword
+				jmp		_uXm_m128_shuffle_3021_ps
+			m128shufps_202 label rword
+				jmp		_uXm_m128_shuffle_3022_ps
+			m128shufps_203 label rword
+				jmp		_uXm_m128_shuffle_3023_ps
+			m128shufps_204 label rword
+				jmp		_uXm_m128_shuffle_3030_ps
+			m128shufps_205 label rword
+				jmp		_uXm_m128_shuffle_3031_ps
+			m128shufps_206 label rword
+				jmp		_uXm_m128_shuffle_3032_ps
+			m128shufps_207 label rword
+				jmp		_uXm_m128_shuffle_3033_ps
+			m128shufps_208 label rword
+				jmp		_uXm_m128_shuffle_3100_ps
+			m128shufps_209 label rword
+				jmp		_uXm_m128_shuffle_3101_ps
+			m128shufps_210 label rword
+				jmp		_uXm_m128_shuffle_3102_ps
+			m128shufps_211 label rword
+				jmp		_uXm_m128_shuffle_3103_ps
+			m128shufps_212 label rword
+				jmp		_uXm_m128_shuffle_3110_ps
+			m128shufps_213 label rword
+				jmp		_uXm_m128_shuffle_3111_ps
+			m128shufps_214 label rword
+				jmp		_uXm_m128_shuffle_3112_ps
+			m128shufps_215 label rword
+				jmp		_uXm_m128_shuffle_3113_ps
+			m128shufps_216 label rword
+				jmp		_uXm_m128_shuffle_3120_ps
+			m128shufps_217 label rword
+				jmp		_uXm_m128_shuffle_3121_ps
+			m128shufps_218 label rword
+				jmp		_uXm_m128_shuffle_3122_ps
+			m128shufps_219 label rword
+				jmp		_uXm_m128_shuffle_3123_ps
+			m128shufps_220 label rword
+				jmp		_uXm_m128_shuffle_3130_ps
+			m128shufps_221 label rword
+				jmp		_uXm_m128_shuffle_3131_ps
+			m128shufps_222 label rword
+				jmp		_uXm_m128_shuffle_3132_ps
+			m128shufps_223 label rword
+				jmp		_uXm_m128_shuffle_3133_ps
+			m128shufps_224 label rword
+				jmp		_uXm_m128_shuffle_3200_ps
+			m128shufps_225 label rword
+				jmp		_uXm_m128_shuffle_3201_ps
+			m128shufps_226 label rword
+				jmp		_uXm_m128_shuffle_3202_ps
+			m128shufps_227 label rword
+				jmp		_uXm_m128_shuffle_3203_ps
+			m128shufps_228 label rword
+				jmp		_uXm_m128_shuffle_3210_ps
+			m128shufps_229 label rword
+				jmp		_uXm_m128_shuffle_3211_ps
+			m128shufps_230 label rword
+				jmp		_uXm_m128_shuffle_3212_ps
+			m128shufps_231 label rword
+				jmp		_uXm_m128_shuffle_3213_ps
+			m128shufps_232 label rword
+				jmp		_uXm_m128_shuffle_3220_ps
+			m128shufps_233 label rword
+				jmp		_uXm_m128_shuffle_3221_ps
+			m128shufps_234 label rword
+				jmp		_uXm_m128_shuffle_3222_ps
+			m128shufps_235 label rword
+				jmp		_uXm_m128_shuffle_3223_ps
+			m128shufps_236 label rword
+				jmp		_uXm_m128_shuffle_3230_ps
+			m128shufps_237 label rword
+				jmp		_uXm_m128_shuffle_3231_ps
+			m128shufps_238 label rword
+				jmp		_uXm_m128_shuffle_3232_ps
+			m128shufps_239 label rword
+				jmp		_uXm_m128_shuffle_3233_ps
+			m128shufps_240 label rword
+				jmp		_uXm_m128_shuffle_3300_ps
+			m128shufps_241 label rword
+				jmp		_uXm_m128_shuffle_3301_ps
+			m128shufps_242 label rword
+				jmp		_uXm_m128_shuffle_3302_ps
+			m128shufps_243 label rword
+				jmp		_uXm_m128_shuffle_3303_ps
+			m128shufps_244 label rword
+				jmp		_uXm_m128_shuffle_3310_ps
+			m128shufps_245 label rword
+				jmp		_uXm_m128_shuffle_3311_ps
+			m128shufps_246 label rword
+				jmp		_uXm_m128_shuffle_3312_ps
+			m128shufps_247 label rword
+				jmp		_uXm_m128_shuffle_3313_ps
+			m128shufps_248 label rword
+				jmp		_uXm_m128_shuffle_3320_ps
+			m128shufps_249 label rword
+				jmp		_uXm_m128_shuffle_3321_ps
+			m128shufps_250 label rword
+				jmp		_uXm_m128_shuffle_3322_ps
+			m128shufps_251 label rword
+				jmp		_uXm_m128_shuffle_3323_ps
+			m128shufps_252 label rword
+				jmp		_uXm_m128_shuffle_3330_ps
+			m128shufps_253 label rword
+				jmp		_uXm_m128_shuffle_3331_ps
+			m128shufps_254 label rword
+				jmp		_uXm_m128_shuffle_3332_ps
+			m128shufps_255 label rword
+				jmp		_uXm_m128_shuffle_3333_ps
+
 
 0,0,0,0
   0, 0

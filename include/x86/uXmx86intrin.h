@@ -240,7 +240,13 @@ uXm_PACK_POP
 
 uXm_EXTERNC_END
 
-#include "uXmemmintrin.h"
+#if defined(uXm_INTRINSET) && (uXm_INTRINSET >= uXm_ISET_MMX) && !defined(uXm_MIC)
+#include "MMX/uXmMMXIntrin.h"
+#endif
+
+#if defined(uXm_INTRINSET) && (uXm_INTRINSET >= uXm_ISET_SSE) && !defined(uXm_MIC)
+#include "SSE/uXmSSEIntrin.h"
+#endif
 
 #endif /*defined(uXm_INTRINSICS_SUPPORT) && defined(uXm_X86_OR_X64_CPU) && !defined(uXm_NO_INTRINSICS_SUPPORT)*/
 

@@ -8,6 +8,12 @@ if @Platform EQ 0
 	ifndef WINDOWS
 		define WINDOWS
 	endif
+	ifdef __KNC__
+		error MIC not available in windows
+	endif
+	ifdef __MIC__
+		error MIC not available in windows
+	endif
 endif
 
 if @Platform EQ 1
@@ -19,6 +25,12 @@ if @Platform EQ 1
 	endif
 	ifndef WINDOWS
 		define WINDOWS
+	endif
+	ifdef __KNC__
+		error MIC not available in windows
+	endif
+	ifdef __MIC__
+		error MIC not available in windows
 	endif
 endif
 
@@ -32,6 +44,12 @@ if @Platform EQ 2
 	ifndef UNIX
 		define UNIX
 	endif
+	ifdef __KNC__
+		error MIC not available in unix 32-bits
+	endif
+	ifdef __MIC__
+		error MIC not available in unix 32-bits
+	endif
 endif
 
 if @Platform EQ 3
@@ -44,6 +62,16 @@ if @Platform EQ 3
 	ifndef UNIX
 		define UNIX
 	endif
+	ifdef __KNC__
+		ifndef uXm_MIC
+		define uXm_MIC
+		endif
+	endif
+	ifdef __MIC__
+		ifndef uXm_MIC
+		define uXm_MIC
+		endif
+	endif
 endif
 
 if @Platform EQ 4
@@ -55,6 +83,12 @@ if @Platform EQ 4
 	endif
 	ifndef UNIX
 		define UNIX
+	endif
+	ifdef __KNC__
+		error MIC not available in mac
+	endif
+	ifdef __MIC__
+		error MIC not available in mac
 	endif
 endif
 
@@ -89,6 +123,9 @@ ifdef WINDOWS
 		rparam17	textequ		<[rsp+136]> ;136
 		rsidx		textequ		<rsi>
 		rdidx		textequ		<rdi>
+		rbptr		textequ		<rbp>
+		rsptr		textequ		<rsp>
+		rbase		textequ		<rbx>
 		;64bits
 		qreturn		textequ		<rax>
 		qparam1		textequ		<rcx> ;8
@@ -191,14 +228,93 @@ ifdef WINDOWS
 			;Preserve EBX
 			;Return EAX:EDX/XMM0:XMM3
 		endif
-		ereturn		textequ		<eax>
+		;32bits
 		rreturn		textequ		<eax>
-		eparam1		textequ		<ecx>
-		eparam2		textequ		<edx>
-		rparam1		textequ		<ecx>
-		rparam2		textequ		<edx>
+		rparam1		textequ		<ecx> ;4
+		rparam2		textequ		<edx> ;8
+		rparam3		textequ		<[esp+12]> ;12
+		rparam4		textequ		<[esp+16]> ;16
+		rparam5		textequ		<[esp+20]> ;20
+		rparam6		textequ		<[esp+24]> ;24
+		rparam7		textequ		<[esp+28]> ;28
+		rparam8		textequ		<[esp+32]> ;32
+		rparam9		textequ		<[esp+36]> ;36
+		rparam10	textequ		<[esp+40]> ;40
+		rparam11	textequ		<[esp+44]> ;44
+		rparam12	textequ		<[esp+48]> ;48
+		rparam13	textequ		<[esp+52]> ;52
+		rparam14	textequ		<[esp+56]> ;56
+		rparam15	textequ		<[esp+60]> ;60
+		rparam16	textequ		<[esp+64]> ;64
+		rparam17	textequ		<[esp+68]> ;68
+		rsidx		textequ		<esi>
+		rdidx		textequ		<edi>
+		rbptr		textequ		<ebp>
+		rsptr		textequ		<esp>
+		rbase		textequ		<ebx>
+		;32bits
+		dreturn		textequ		<eax>
+		dparam1		textequ		<ecx> ;4
+		dparam2		textequ		<edx> ;8
+		dparam3		textequ		<[esp+12]> ;12
+		dparam4		textequ		<[esp+16]> ;16
+		dparam5		textequ		<[esp+20]> ;20
+		dparam6		textequ		<[esp+24]> ;24
+		dparam7		textequ		<[esp+28]> ;28
+		dparam8		textequ		<[esp+32]> ;32
+		dparam9		textequ		<[esp+36]> ;36
+		dparam10	textequ		<[esp+40]> ;40
+		dparam11	textequ		<[esp+44]> ;44
+		dparam12	textequ		<[esp+48]> ;48
+		dparam13	textequ		<[esp+52]> ;52
+		dparam14	textequ		<[esp+56]> ;56
+		dparam15	textequ		<[esp+60]> ;60
+		dparam16	textequ		<[esp+64]> ;64
+		dparam17	textequ		<[esp+68]> ;68
+		dsidx		textequ		<esi>
+		ddidx		textequ		<edi>
+		;16bits
+		wreturn		textequ		<ax>
+		wparam1		textequ		<cx> ;2
+		wparam2		textequ		<dx> ;4
+		wparam3		textequ		<[sp+6]> ;6
+		wparam4		textequ		<[sp+8]> ;8
+		wparam5		textequ		<[sp+10]> ;10
+		wparam6		textequ		<[sp+12]> ;12
+		wparam7		textequ		<[sp+14]> ;14
+		wparam8		textequ		<[sp+16]> ;16
+		wparam9		textequ		<[sp+18]> ;18
+		wparam10	textequ		<[sp+20]> ;20
+		wparam11	textequ		<[sp+22]> ;22
+		wparam12	textequ		<[sp+24]> ;24
+		wparam13	textequ		<[sp+26]> ;26
+		wparam14	textequ		<[sp+28]> ;28
+		wparam15	textequ		<[sp+30]> ;30
+		wparam16	textequ		<[sp+32]> ;32
+		wparam17	textequ		<[sp+34]> ;34
+		wsidx		textequ		<si>
+		wdidx		textequ		<di>
+		;8bits
+		breturn		textequ		<al>
+		bparam1		textequ		<cl> ;1
+		bparam2		textequ		<dl> ;2
+		bparam3		textequ		<[spl+3]> ;3
+		bparam4		textequ		<[spl+4]> ;4
+		bparam5		textequ		<[spl+5]> ;5
+		bparam6		textequ		<[spl+6]> ;6
+		bparam7		textequ		<[spl+7]> ;7
+		bparam8		textequ		<[spl+8]> ;8		
+		bparam9		textequ		<[spl+9]> ;9
+		bparam10	textequ		<[spl+10]> ;10
+		bparam11	textequ		<[spl+11]> ;11
+		bparam12	textequ		<[spl+12]> ;12
+		bparam13	textequ		<[spl+13]> ;13
+		bparam14	textequ		<[spl+14]> ;14
+		bparam15	textequ		<[spl+15]> ;15
+		bparam16	textequ		<[spl+16]> ;16
+		bparam17	textequ		<[spl+17]> ;17
 	endif ;__X64__
-else ;WINDOWS
+else ;UNIX
 	ifdef __X64__
 		ifndef DEFINED_SYSTEMV
 			define DEFINED_SYSTEMV
@@ -238,30 +354,30 @@ else ;WINDOWS
 		rparam1		textequ		<ecx>
 		rparam2		textequ		<edx>
 	endif ;__X64__
-endif ;WINDOWS
+endif ;UNIX
 
 ifdef WINDOWS
 	ifdef __X64__
-			UX_USESRBX			textequ		<USES rbx>
-			UX_USESRBXSIDI		textequ		<USES rbx rsi rdi>
+			UX_USESRBX			textequ		<uses rbx>
+			UX_USESRBXSIDI		textequ		<uses rbx rsi rdi>
 			UX_INSTPTR			textequ		<rcx>
 			;UX_VECMETHOD		textequ		<VECMETHOD>
 			;UX_STATICVECMETHOD	textequ		<STATICVECMETHOD>
 	else
-			UX_USESRBX			textequ		<USES ebx>
-			UX_USESRBXSIDI		textequ		<USES ebx>
+			UX_USESRBX			textequ		<uses ebx>
+			UX_USESRBXSIDI		textequ		<uses ebx>
 			UX_INSTPTR			textequ		<ecx>
 			;UX_VECMETHOD		textequ		<METHOD>
 			;UX_STATICVECMETHOD	textequ		<STATICMETHOD>
 	endif ;__X64__
 else
 	ifdef __X64__
-			UX_USESRBX			textequ		<USES rbx>
-			UX_USESRBXSIDI		textequ		<USES rbx rsi rdi>
+			UX_USESRBX			textequ		<uses rbx>
+			UX_USESRBXSIDI		textequ		<uses rbx rsi rdi>
 			UX_INSTPTR			textequ		<rdi>
 	else
-			UX_USESRBX			textequ		<USES ebx>
-			UX_USESRBXSIDI		textequ		<USES ebx>
+			UX_USESRBX			textequ		<uses ebx>
+			UX_USESRBXSIDI		textequ		<uses ebx>
 			UX_INSTPTR			textequ		<ecx>
 	endif ;__X64__
 			;UX_VECMETHOD		textequ		<METHOD>
@@ -271,12 +387,14 @@ endif ;WINDOWS
 ifdef __X64__
 	ptr_t_size	equ		8
 	reg_t_size	equ		8
-	UX_SIZE_T textequ <qword>
+	size_t		textequ		<qword>
+	isize_t		textequ		<dq>
 	size_t_size	equ		8
 else
 	ptr_t_size	equ		4
 	reg_t_size	equ		4
-	UX_SIZE_T textequ <dword>
+	size_t		textequ		<dword>
+	isize_t		textequ		<dd>
 	size_t_size	equ		4
 endif ;__X64__
 
@@ -479,9 +597,10 @@ include uXmmacros.inc
 	ifndef __X64__
 			.686P
 			.model	flat
+			option	stackbase:esp		; RSP or RBP are supported options for the stackbase.
 	else
 			.X64P
-			option	win64:15			; 11/15 for RSP and 1-7 for RBP.
 			option	stackbase:rsp		; RSP or RBP are supported options for the stackbase.
 	endif
+			option	win64:15			; 11/15 for RSP and 1-7 for RBP.
 			option	frame:auto

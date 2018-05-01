@@ -104,7 +104,7 @@ _CLASS_uXmCPUFEATURES equ 1
 
 ; Constructor
 			align size_t_size	
-UX_VECMETHOD uXmCPUFeatures, Init, <VOIDARG>, <UX_USESRBX>;, infolevel:dword
+UX_VECMETHOD uXmCPUFeatures, Init, <VOIDARG>, uses rbase ;, infolevel:dword
 		
 	ifndef __X64__
 			push				edi
@@ -3061,7 +3061,7 @@ UX_STATICVECMETHOD uXmCPUFeatures, ProcessorName, <ptr>, <>
 UX_ENDMETHOD
 
 			align size_t_size
-UX_STATICVECMETHOD uXmCPUFeatures, DataCacheSize, <UX_SIZE_T>, <>;, level:dword
+UX_STATICVECMETHOD uXmCPUFeatures, DataCacheSize, <size_t>, <>;, level:dword
 
 	ifndef __X64__
 			rreturn		textequ		<eax>
