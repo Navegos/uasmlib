@@ -4,7 +4,9 @@
 #ifndef uXm_SIMD_DETECT_H
 #define uXm_SIMD_DETECT_H
 
+#ifndef uXm_TYPES_H
 #include "uXmTypes.h"
+#endif  /* uXm_TYPES_H */
 
 #if defined(uXm_X86_OR_X64_CPU)
 
@@ -247,189 +249,189 @@ public:
 	62  or above = AVX512BW
 	63  or above = AVX512VL
 	*/
-	static const int uXm_CALLCONV intrinset(void);
+	static const int uXm_callconv intrinset(void);
 
 	uXm_PACK1
 	/* %eax=00H, %ecx */
-	static const unsigned __int8 uXm_CALLCONV is_Intel(void);
-	static const unsigned __int8 uXm_CALLCONV is_AMD(void);
+	static const unsigned __int8 uXm_callconv is_Intel(void);
+	static const unsigned __int8 uXm_callconv is_AMD(void);
 
 	/* %eax=01H, %ecx */
-	static const unsigned __int8 uXm_CALLCONV has_SSE3(void);
-	static const unsigned __int8 uXm_CALLCONV has_PCLMULQDQ(void);
-	static const unsigned __int8 uXm_CALLCONV has_MONITOR(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSSE3(void);
-	static const unsigned __int8 uXm_CALLCONV has_FMA(void);
-	static const unsigned __int8 uXm_CALLCONV has_CMPXCHG16B(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSE41(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSE42(void);
-	static const unsigned __int8 uXm_CALLCONV has_MOVBE(void);
-	static const unsigned __int8 uXm_CALLCONV has_POPCNT(void);
-	static const unsigned __int8 uXm_CALLCONV has_AES(void);
-	static const unsigned __int8 uXm_CALLCONV has_XSAVE(void);
-	static const unsigned __int8 uXm_CALLCONV has_OSXSAVE(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX(void);
-	static const unsigned __int8 uXm_CALLCONV has_F16C(void);
-	static const unsigned __int8 uXm_CALLCONV has_RDRAND(void);
+	static const unsigned __int8 uXm_callconv has_SSE3(void);
+	static const unsigned __int8 uXm_callconv has_PCLMULQDQ(void);
+	static const unsigned __int8 uXm_callconv has_MONITOR(void);
+	static const unsigned __int8 uXm_callconv has_SSSE3(void);
+	static const unsigned __int8 uXm_callconv has_FMA(void);
+	static const unsigned __int8 uXm_callconv has_CMPXCHG16B(void);
+	static const unsigned __int8 uXm_callconv has_SSE41(void);
+	static const unsigned __int8 uXm_callconv has_SSE42(void);
+	static const unsigned __int8 uXm_callconv has_MOVBE(void);
+	static const unsigned __int8 uXm_callconv has_POPCNT(void);
+	static const unsigned __int8 uXm_callconv has_AES(void);
+	static const unsigned __int8 uXm_callconv has_XSAVE(void);
+	static const unsigned __int8 uXm_callconv has_OSXSAVE(void);
+	static const unsigned __int8 uXm_callconv has_AVX(void);
+	static const unsigned __int8 uXm_callconv has_F16C(void);
+	static const unsigned __int8 uXm_callconv has_RDRAND(void);
 
 	/* %eax=01H, %edx */
-	static const unsigned __int8 uXm_CALLCONV has_FPU(void);
-	static const unsigned __int8 uXm_CALLCONV has_TSC(void);
-	static const unsigned __int8 uXm_CALLCONV has_MSR(void);
-	static const unsigned __int8 uXm_CALLCONV has_CMPXCHG8B(void);
-	static const unsigned __int8 uXm_CALLCONV has_SEP(void);
-	static const unsigned __int8 uXm_CALLCONV has_CMOV(void);
-	static const unsigned __int8 uXm_CALLCONV has_CLFSH(void);
-	static const unsigned __int8 uXm_CALLCONV has_MMX(void);
-	static const unsigned __int8 uXm_CALLCONV has_FXSR(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSE(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSE2(void);
+	static const unsigned __int8 uXm_callconv has_FPU(void);
+	static const unsigned __int8 uXm_callconv has_TSC(void);
+	static const unsigned __int8 uXm_callconv has_MSR(void);
+	static const unsigned __int8 uXm_callconv has_CMPXCHG8B(void);
+	static const unsigned __int8 uXm_callconv has_SEP(void);
+	static const unsigned __int8 uXm_callconv has_CMOV(void);
+	static const unsigned __int8 uXm_callconv has_CLFSH(void);
+	static const unsigned __int8 uXm_callconv has_MMX(void);
+	static const unsigned __int8 uXm_callconv has_FXSR(void);
+	static const unsigned __int8 uXm_callconv has_SSE(void);
+	static const unsigned __int8 uXm_callconv has_SSE2(void);
 
 	/* %eax=07H, %ebx */
-	static const unsigned __int8 uXm_CALLCONV has_FSGSBASE(void);
-	static const unsigned __int8 uXm_CALLCONV has_SGX(void);
-	static const unsigned __int8 uXm_CALLCONV has_BMI1(void);
-	static const unsigned __int8 uXm_CALLCONV has_HLE(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX2(void);
-	static const unsigned __int8 uXm_CALLCONV has_SMEP(void);
-	static const unsigned __int8 uXm_CALLCONV has_BMI2(void);
-	static const unsigned __int8 uXm_CALLCONV has_ERMS(void);
-	static const unsigned __int8 uXm_CALLCONV has_INVPCID(void);
-	static const unsigned __int8 uXm_CALLCONV has_RTM(void);
-	static const unsigned __int8 uXm_CALLCONV has_MPX(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512F(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512DQ(void);
-	static const unsigned __int8 uXm_CALLCONV has_RDSEED(void);
-	static const unsigned __int8 uXm_CALLCONV has_ADX(void);
-	static const unsigned __int8 uXm_CALLCONV has_SMAP(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512_IFMA(void);
-	static const unsigned __int8 uXm_CALLCONV has_CLFLUSHOPT(void);
-	static const unsigned __int8 uXm_CALLCONV has_CLWB(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512PF(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512ER(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512CD(void);
-	static const unsigned __int8 uXm_CALLCONV has_SHA(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512BW(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512VL(void);
+	static const unsigned __int8 uXm_callconv has_FSGSBASE(void);
+	static const unsigned __int8 uXm_callconv has_SGX(void);
+	static const unsigned __int8 uXm_callconv has_BMI1(void);
+	static const unsigned __int8 uXm_callconv has_HLE(void);
+	static const unsigned __int8 uXm_callconv has_AVX2(void);
+	static const unsigned __int8 uXm_callconv has_SMEP(void);
+	static const unsigned __int8 uXm_callconv has_BMI2(void);
+	static const unsigned __int8 uXm_callconv has_ERMS(void);
+	static const unsigned __int8 uXm_callconv has_INVPCID(void);
+	static const unsigned __int8 uXm_callconv has_RTM(void);
+	static const unsigned __int8 uXm_callconv has_MPX(void);
+	static const unsigned __int8 uXm_callconv has_AVX512F(void);
+	static const unsigned __int8 uXm_callconv has_AVX512DQ(void);
+	static const unsigned __int8 uXm_callconv has_RDSEED(void);
+	static const unsigned __int8 uXm_callconv has_ADX(void);
+	static const unsigned __int8 uXm_callconv has_SMAP(void);
+	static const unsigned __int8 uXm_callconv has_AVX512_IFMA(void);
+	static const unsigned __int8 uXm_callconv has_CLFLUSHOPT(void);
+	static const unsigned __int8 uXm_callconv has_CLWB(void);
+	static const unsigned __int8 uXm_callconv has_AVX512PF(void);
+	static const unsigned __int8 uXm_callconv has_AVX512ER(void);
+	static const unsigned __int8 uXm_callconv has_AVX512CD(void);
+	static const unsigned __int8 uXm_callconv has_SHA(void);
+	static const unsigned __int8 uXm_callconv has_AVX512BW(void);
+	static const unsigned __int8 uXm_callconv has_AVX512VL(void);
 
 	/* %eax=07H, %ecx */
-	static const unsigned __int8 uXm_CALLCONV has_PREFETCHWT1(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512_VBMI(void);
-	static const unsigned __int8 uXm_CALLCONV has_UMIP(void);
-	static const unsigned __int8 uXm_CALLCONV has_PKU(void);
-	static const unsigned __int8 uXm_CALLCONV has_OSPKE(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512_VBMI2(void);
-	static const unsigned __int8 uXm_CALLCONV has_GFNI(void);
-	static const unsigned __int8 uXm_CALLCONV has_VAES(void);
-	static const unsigned __int8 uXm_CALLCONV has_VPCLMULQDQ(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512_VNNI(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512_BITALG(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512_VPOPCNTDQ(void);
-	static const unsigned __int8 uXm_CALLCONV has_RDPID(void);
+	static const unsigned __int8 uXm_callconv has_PREFETCHWT1(void);
+	static const unsigned __int8 uXm_callconv has_AVX512_VBMI(void);
+	static const unsigned __int8 uXm_callconv has_UMIP(void);
+	static const unsigned __int8 uXm_callconv has_PKU(void);
+	static const unsigned __int8 uXm_callconv has_OSPKE(void);
+	static const unsigned __int8 uXm_callconv has_AVX512_VBMI2(void);
+	static const unsigned __int8 uXm_callconv has_GFNI(void);
+	static const unsigned __int8 uXm_callconv has_VAES(void);
+	static const unsigned __int8 uXm_callconv has_VPCLMULQDQ(void);
+	static const unsigned __int8 uXm_callconv has_AVX512_VNNI(void);
+	static const unsigned __int8 uXm_callconv has_AVX512_BITALG(void);
+	static const unsigned __int8 uXm_callconv has_AVX512_VPOPCNTDQ(void);
+	static const unsigned __int8 uXm_callconv has_RDPID(void);
 
 	/* %eax=07H, %edx */
-	static const unsigned __int8 uXm_CALLCONV has_AVX512_4VNNIW(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512_4FMAPS(void);
+	static const unsigned __int8 uXm_callconv has_AVX512_4VNNIW(void);
+	static const unsigned __int8 uXm_callconv has_AVX512_4FMAPS(void);
 
 	/* %eax=80000001H, %ecx */
-	static const unsigned __int8 uXm_CALLCONV has_LAHF(void);
-	static const unsigned __int8 uXm_CALLCONV has_LZCNT(void);
-	static const unsigned __int8 uXm_CALLCONV has_ABM(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSE4a(void);
-	static const unsigned __int8 uXm_CALLCONV has_PREFETCHW(void);
-	static const unsigned __int8 uXm_CALLCONV has_XOP(void);
-	static const unsigned __int8 uXm_CALLCONV has_LWP(void);
-	static const unsigned __int8 uXm_CALLCONV has_FMA4(void);
-	static const unsigned __int8 uXm_CALLCONV has_TBM(void);
-	static const unsigned __int8 uXm_CALLCONV has_MWAITX(void);
+	static const unsigned __int8 uXm_callconv has_LAHF(void);
+	static const unsigned __int8 uXm_callconv has_LZCNT(void);
+	static const unsigned __int8 uXm_callconv has_ABM(void);
+	static const unsigned __int8 uXm_callconv has_SSE4a(void);
+	static const unsigned __int8 uXm_callconv has_PREFETCHW(void);
+	static const unsigned __int8 uXm_callconv has_XOP(void);
+	static const unsigned __int8 uXm_callconv has_LWP(void);
+	static const unsigned __int8 uXm_callconv has_FMA4(void);
+	static const unsigned __int8 uXm_callconv has_TBM(void);
+	static const unsigned __int8 uXm_callconv has_MWAITX(void);
 
 	/* %eax=80000001H, %edx */
-	static const unsigned __int8 uXm_CALLCONV has_SYSCALL(void);
-	static const unsigned __int8 uXm_CALLCONV has_MMXEXT(void);
-	static const unsigned __int8 uXm_CALLCONV has_RDTSCP(void);
-	static const unsigned __int8 uXm_CALLCONV has_3DNOWEXT(void);
-	static const unsigned __int8 uXm_CALLCONV has_3DNOW(void);
+	static const unsigned __int8 uXm_callconv has_SYSCALL(void);
+	static const unsigned __int8 uXm_callconv has_MMXEXT(void);
+	static const unsigned __int8 uXm_callconv has_RDTSCP(void);
+	static const unsigned __int8 uXm_callconv has_3DNOWEXT(void);
+	static const unsigned __int8 uXm_callconv has_3DNOW(void);
 
 	/* %eax=07H, %ebx, %ecx */
-	static const unsigned __int8 uXm_CALLCONV has_AVX512_GFNI(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512_GFNI_VL(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512_VAES(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512_VAES_VL(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512_VPCLMULQDQ(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512_VPCLMULQDQ_VL(void);
+	static const unsigned __int8 uXm_callconv has_AVX512_GFNI(void);
+	static const unsigned __int8 uXm_callconv has_AVX512_GFNI_VL(void);
+	static const unsigned __int8 uXm_callconv has_AVX512_VAES(void);
+	static const unsigned __int8 uXm_callconv has_AVX512_VAES_VL(void);
+	static const unsigned __int8 uXm_callconv has_AVX512_VPCLMULQDQ(void);
+	static const unsigned __int8 uXm_callconv has_AVX512_VPCLMULQDQ_VL(void);
 
-	static const unsigned __int8 uXm_CALLCONV has_AVX512_IFMA_VL(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512_VBMI_VL(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512_VBMI2_VL(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512_VNNI_VL(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512_BITALG_VL(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512_VPOPCNTDQ_VL(void);
+	static const unsigned __int8 uXm_callconv has_AVX512_IFMA_VL(void);
+	static const unsigned __int8 uXm_callconv has_AVX512_VBMI_VL(void);
+	static const unsigned __int8 uXm_callconv has_AVX512_VBMI2_VL(void);
+	static const unsigned __int8 uXm_callconv has_AVX512_VNNI_VL(void);
+	static const unsigned __int8 uXm_callconv has_AVX512_BITALG_VL(void);
+	static const unsigned __int8 uXm_callconv has_AVX512_VPOPCNTDQ_VL(void);
 
-	static const unsigned __int8 uXm_CALLCONV has_AVX512BW_GFNI(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512BW_GFNI_VL(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512BW_VAES(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512BW_VAES_VL(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512BW_VPCLMULQDQ(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512BW_VPCLMULQDQ_VL(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512BW_VL(void);
+	static const unsigned __int8 uXm_callconv has_AVX512BW_GFNI(void);
+	static const unsigned __int8 uXm_callconv has_AVX512BW_GFNI_VL(void);
+	static const unsigned __int8 uXm_callconv has_AVX512BW_VAES(void);
+	static const unsigned __int8 uXm_callconv has_AVX512BW_VAES_VL(void);
+	static const unsigned __int8 uXm_callconv has_AVX512BW_VPCLMULQDQ(void);
+	static const unsigned __int8 uXm_callconv has_AVX512BW_VPCLMULQDQ_VL(void);
+	static const unsigned __int8 uXm_callconv has_AVX512BW_VL(void);
 
-	static const unsigned __int8 uXm_CALLCONV has_AVX512DQ_GFNI(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512DQ_GFNI_VL(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512DQ_VAES(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512DQ_VAES_VL(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512DQ_VPCLMULQDQ(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512DQ_VPCLMULQDQ_VL(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX512DQ_VL(void);
+	static const unsigned __int8 uXm_callconv has_AVX512DQ_GFNI(void);
+	static const unsigned __int8 uXm_callconv has_AVX512DQ_GFNI_VL(void);
+	static const unsigned __int8 uXm_callconv has_AVX512DQ_VAES(void);
+	static const unsigned __int8 uXm_callconv has_AVX512DQ_VAES_VL(void);
+	static const unsigned __int8 uXm_callconv has_AVX512DQ_VPCLMULQDQ(void);
+	static const unsigned __int8 uXm_callconv has_AVX512DQ_VPCLMULQDQ_VL(void);
+	static const unsigned __int8 uXm_callconv has_AVX512DQ_VL(void);
 
-	static const unsigned __int8 uXm_CALLCONV has_AVX512CD_VL(void);
+	static const unsigned __int8 uXm_callconv has_AVX512CD_VL(void);
 
 	/* %eax=07H, %ecx, %ebx | %eax=01H, %ecx , %edx */
-	static const unsigned __int8 uXm_CALLCONV has_SSE_AES(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSE_GFNI(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSE_PCLMULQDQ(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSE2_AES(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSE2_GFNI(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSE2_PCLMULQDQ(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSE3_AES(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSE3_GFNI(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSE3_PCLMULQDQ(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSSE3_AES(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSSE3_GFNI(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSSE3_PCLMULQDQ(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSE41_AES(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSE41_GFNI(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSE41_PCLMULQDQ(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSE42_AES(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSE42_GFNI(void);
-	static const unsigned __int8 uXm_CALLCONV has_SSE42_PCLMULQDQ(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX_AES(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX_GFNI(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX_PCLMULQDQ(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX_VAES(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX_VPCLMULQDQ(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX2_AES(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX2_GFNI(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX2_PCLMULQDQ(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX2_VAES(void);
-	static const unsigned __int8 uXm_CALLCONV has_AVX2_VPCLMULQDQ(void);
+	static const unsigned __int8 uXm_callconv has_SSE_AES(void);
+	static const unsigned __int8 uXm_callconv has_SSE_GFNI(void);
+	static const unsigned __int8 uXm_callconv has_SSE_PCLMULQDQ(void);
+	static const unsigned __int8 uXm_callconv has_SSE2_AES(void);
+	static const unsigned __int8 uXm_callconv has_SSE2_GFNI(void);
+	static const unsigned __int8 uXm_callconv has_SSE2_PCLMULQDQ(void);
+	static const unsigned __int8 uXm_callconv has_SSE3_AES(void);
+	static const unsigned __int8 uXm_callconv has_SSE3_GFNI(void);
+	static const unsigned __int8 uXm_callconv has_SSE3_PCLMULQDQ(void);
+	static const unsigned __int8 uXm_callconv has_SSSE3_AES(void);
+	static const unsigned __int8 uXm_callconv has_SSSE3_GFNI(void);
+	static const unsigned __int8 uXm_callconv has_SSSE3_PCLMULQDQ(void);
+	static const unsigned __int8 uXm_callconv has_SSE41_AES(void);
+	static const unsigned __int8 uXm_callconv has_SSE41_GFNI(void);
+	static const unsigned __int8 uXm_callconv has_SSE41_PCLMULQDQ(void);
+	static const unsigned __int8 uXm_callconv has_SSE42_AES(void);
+	static const unsigned __int8 uXm_callconv has_SSE42_GFNI(void);
+	static const unsigned __int8 uXm_callconv has_SSE42_PCLMULQDQ(void);
+	static const unsigned __int8 uXm_callconv has_AVX_AES(void);
+	static const unsigned __int8 uXm_callconv has_AVX_GFNI(void);
+	static const unsigned __int8 uXm_callconv has_AVX_PCLMULQDQ(void);
+	static const unsigned __int8 uXm_callconv has_AVX_VAES(void);
+	static const unsigned __int8 uXm_callconv has_AVX_VPCLMULQDQ(void);
+	static const unsigned __int8 uXm_callconv has_AVX2_AES(void);
+	static const unsigned __int8 uXm_callconv has_AVX2_GFNI(void);
+	static const unsigned __int8 uXm_callconv has_AVX2_PCLMULQDQ(void);
+	static const unsigned __int8 uXm_callconv has_AVX2_VAES(void);
+	static const unsigned __int8 uXm_callconv has_AVX2_VPCLMULQDQ(void);
 
-	static const unsigned __int8 uXm_CALLCONV has_enabled_XMM(void);
-	static const unsigned __int8 uXm_CALLCONV has_enabled_YMM(void);
-	static const unsigned __int8 uXm_CALLCONV has_enabled_ZMM(void);
+	static const unsigned __int8 uXm_callconv has_enabled_XMM(void);
+	static const unsigned __int8 uXm_callconv has_enabled_YMM(void);
+	static const unsigned __int8 uXm_callconv has_enabled_ZMM(void);
 
 	/* Check if CPUFeatures is initiated */
-	static const unsigned __int8 uXm_CALLCONV Is_Inited(void);
+	static const unsigned __int8 uXm_callconv Is_Inited(void);
 
 	uXm_PACK_POINTER
-	static void uXm_CALLCONV CpuType(int* vendor, int* family, int* model);
+	static void uXm_callconv CpuType(int* vendor, int* family, int* model);
 
-	static char* uXm_CALLCONV ProcessorName(void);
+	static char* uXm_callconv ProcessorName(void);
 
-	static size_t uXm_CALLCONV DataCacheSize(int level);
+	static size_t uXm_callconv DataCacheSize(int level);
 };
 
 uXm_PACK_SIZET
-typedef uXmCPUFeatures puXmCPUFeatures;
+typedef uXmCPUFeatures* puXmCPUFeatures;
 
 uXm_PACK_POP
 
@@ -853,61 +855,61 @@ private:
 public:
 
 	// detect if CPU Is AMD
-	static int uXm_CALLCONV is_AMD();
+	static int uXm_callconv is_AMD();
 
 	// detect if CPU Is Intel
-	static int uXm_CALLCONV is_Intel();
+	static int uXm_callconv is_Intel();
 
 	// detect if CPU supports the MMX instruction set
-	static int uXm_CALLCONV has_MMX();
+	static int uXm_callconv has_MMX();
 
 	// detect if CPU supports the SSE1 instruction set
-	static int uXm_CALLCONV has_SSE();
+	static int uXm_callconv has_SSE();
 
 	// detect if CPU supports the SSE2 instruction set
-	static int uXm_CALLCONV has_SSE2();
+	static int uXm_callconv has_SSE2();
 
 	// detect if CPU supports the SSE3 instruction set
-	static int uXm_CALLCONV has_SSE3();
+	static int uXm_callconv has_SSE3();
 
 	// detect if CPU supports the SSSE3 instruction set
-	static int uXm_CALLCONV has_SSSE3();
+	static int uXm_callconv has_SSSE3();
 
 	// detect if CPU supports the SSE4.1 instruction set
-	static int uXm_CALLCONV has_SSE41();
+	static int uXm_callconv has_SSE41();
 
 	// detect if CPU supports the SSE4.2 instruction set
-	static int uXm_CALLCONV has_SSE42();
+	static int uXm_callconv has_SSE42();
 
 	// detect if CPU supports the OSXSAVE instruction set
-	static int uXm_CALLCONV has_OSXSAVE();
+	static int uXm_callconv has_OSXSAVE();
 
 	// detect if CPU supports the XGETBV_YMM instruction set
-	static int uXm_CALLCONV has_XGETBV_YMM();
+	static int uXm_callconv has_XGETBV_YMM();
 
 	// detect if CPU supports the AVX instruction set
-	static int uXm_CALLCONV has_AVX();
+	static int uXm_callconv has_AVX();
 
 	// detect if CPU supports the AVX2 instruction set
-	static int uXm_CALLCONV has_AVX2();
+	static int uXm_callconv has_AVX2();
 
 	// detect if CPU supports the F16C instruction set
-	static int uXm_CALLCONV has_F16C();
+	static int uXm_callconv has_F16C();
 
 	// detect if CPU supports the FMA3 instruction set
-	static int uXm_CALLCONV has_FMA3();
+	static int uXm_callconv has_FMA3();
 
 	// detect if CPU supports the FMA4 instruction set
-	static int uXm_CALLCONV has_FMA4();
+	static int uXm_callconv has_FMA4();
 
 	// detect if CPU supports the XOP instruction set
-	static int uXm_CALLCONV has_XOP();
+	static int uXm_callconv has_XOP();
 
 	// detect if CPU supports the XGETBV_YMM instruction set
-	static int uXm_CALLCONV has_XGETBV_ZMM();
+	static int uXm_callconv has_XGETBV_ZMM();
 
 	// detect if CPU supports the AVX-512 instruction set
-	static int uXm_CALLCONV has_AVX512F();
+	static int uXm_callconv has_AVX512F();
 #endif // uXm_X86_OR_X64_CPU
 };*/
 
@@ -939,73 +941,73 @@ public:
 	* /
 	static __int32 available_simd();
 
-	static int uXm_CALLCONV has_SSE3();
-	static int uXm_CALLCONV has_PCLMULQDQ();
-	static int uXm_CALLCONV has_MONITOR();
-	static int uXm_CALLCONV has_SSSE3();
-	static int uXm_CALLCONV has_FMA();
-	static int uXm_CALLCONV has_CMPXCHG16B();
-	static int uXm_CALLCONV has_SSE41();
-	static int uXm_CALLCONV has_SSE42();
-	static int uXm_CALLCONV has_MOVBE();
-	static int uXm_CALLCONV has_POPCNT();
-	static int uXm_CALLCONV has_AES();
-	static int uXm_CALLCONV has_XSAVE();
-	static int uXm_CALLCONV has_OSXSAVE();
-	static int uXm_CALLCONV has_AVX();
-	static int uXm_CALLCONV has_F16C();
-	static int uXm_CALLCONV has_RDRAND();
-	static int uXm_CALLCONV has_FPU();
-	static int uXm_CALLCONV has_MSR();
-	static int uXm_CALLCONV has_CMPXCHG8B();
-	static int uXm_CALLCONV has_SEP();
-	static int uXm_CALLCONV has_CMOV();
-	static int uXm_CALLCONV has_CLFSH();
-	static int uXm_CALLCONV has_MMX();
-	static int uXm_CALLCONV has_FXSR();
-	static int uXm_CALLCONV has_SSE();
-	static int uXm_CALLCONV has_SSE2();
-	static int uXm_CALLCONV has_FSGSBASE();
-	static int uXm_CALLCONV has_BMI1();
-	static int uXm_CALLCONV has_HLE();
-	static int uXm_CALLCONV has_AVX2();
-	static int uXm_CALLCONV has_BMI2();
-	static int uXm_CALLCONV has_ERMS();
-	static int uXm_CALLCONV has_INVPCID();
-	static int uXm_CALLCONV has_RTM();
-	static int uXm_CALLCONV has_AVX512F();
-	static int uXm_CALLCONV has_AVX512DQ();
-	static int uXm_CALLCONV has_RDSEED();
-	static int uXm_CALLCONV has_ADX();
-	static int uXm_CALLCONV has_AVX512IFMA();
-	static int uXm_CALLCONV has_CLFLUSHOPT();
-	static int uXm_CALLCONV has_AVX512PF();
-	static int uXm_CALLCONV has_AVX512ER();
-	static int uXm_CALLCONV has_AVX512CD();
-	static int uXm_CALLCONV has_AVX512BW();
-	static int uXm_CALLCONV has_AVX512VL();
-	static int uXm_CALLCONV has_SHA();
-	static int uXm_CALLCONV has_PREFETCHWT1();
-	static int uXm_CALLCONV has_AVX512VBMI();
-	static int uXm_CALLCONV has_AVX512_VPOPCNTDQ();
-	static int uXm_CALLCONV has_AVX512_4VNNIW();
-	static int uXm_CALLCONV has_AVX512_4FMAPS();
-	static int uXm_CALLCONV has_LAHF();
-	static int uXm_CALLCONV has_LZCNT();
-	static int uXm_CALLCONV has_ABM();
-	static int uXm_CALLCONV has_SSE4a();
-	static int uXm_CALLCONV has_XOP();
-	static int uXm_CALLCONV has_FMA4();
-	static int uXm_CALLCONV has_TBM();
-	static int uXm_CALLCONV has_SYSCALL();
-	static int uXm_CALLCONV has_MMXEXT();
-	static int uXm_CALLCONV has_RDTSCP();
-	static int uXm_CALLCONV has_3DNOWEXT();
-	static int uXm_CALLCONV has_3DNOW();
+	static int uXm_callconv has_SSE3();
+	static int uXm_callconv has_PCLMULQDQ();
+	static int uXm_callconv has_MONITOR();
+	static int uXm_callconv has_SSSE3();
+	static int uXm_callconv has_FMA();
+	static int uXm_callconv has_CMPXCHG16B();
+	static int uXm_callconv has_SSE41();
+	static int uXm_callconv has_SSE42();
+	static int uXm_callconv has_MOVBE();
+	static int uXm_callconv has_POPCNT();
+	static int uXm_callconv has_AES();
+	static int uXm_callconv has_XSAVE();
+	static int uXm_callconv has_OSXSAVE();
+	static int uXm_callconv has_AVX();
+	static int uXm_callconv has_F16C();
+	static int uXm_callconv has_RDRAND();
+	static int uXm_callconv has_FPU();
+	static int uXm_callconv has_MSR();
+	static int uXm_callconv has_CMPXCHG8B();
+	static int uXm_callconv has_SEP();
+	static int uXm_callconv has_CMOV();
+	static int uXm_callconv has_CLFSH();
+	static int uXm_callconv has_MMX();
+	static int uXm_callconv has_FXSR();
+	static int uXm_callconv has_SSE();
+	static int uXm_callconv has_SSE2();
+	static int uXm_callconv has_FSGSBASE();
+	static int uXm_callconv has_BMI1();
+	static int uXm_callconv has_HLE();
+	static int uXm_callconv has_AVX2();
+	static int uXm_callconv has_BMI2();
+	static int uXm_callconv has_ERMS();
+	static int uXm_callconv has_INVPCID();
+	static int uXm_callconv has_RTM();
+	static int uXm_callconv has_AVX512F();
+	static int uXm_callconv has_AVX512DQ();
+	static int uXm_callconv has_RDSEED();
+	static int uXm_callconv has_ADX();
+	static int uXm_callconv has_AVX512IFMA();
+	static int uXm_callconv has_CLFLUSHOPT();
+	static int uXm_callconv has_AVX512PF();
+	static int uXm_callconv has_AVX512ER();
+	static int uXm_callconv has_AVX512CD();
+	static int uXm_callconv has_AVX512BW();
+	static int uXm_callconv has_AVX512VL();
+	static int uXm_callconv has_SHA();
+	static int uXm_callconv has_PREFETCHWT1();
+	static int uXm_callconv has_AVX512VBMI();
+	static int uXm_callconv has_AVX512_VPOPCNTDQ();
+	static int uXm_callconv has_AVX512_4VNNIW();
+	static int uXm_callconv has_AVX512_4FMAPS();
+	static int uXm_callconv has_LAHF();
+	static int uXm_callconv has_LZCNT();
+	static int uXm_callconv has_ABM();
+	static int uXm_callconv has_SSE4a();
+	static int uXm_callconv has_XOP();
+	static int uXm_callconv has_FMA4();
+	static int uXm_callconv has_TBM();
+	static int uXm_callconv has_SYSCALL();
+	static int uXm_callconv has_MMXEXT();
+	static int uXm_callconv has_RDTSCP();
+	static int uXm_callconv has_3DNOWEXT();
+	static int uXm_callconv has_3DNOW();
 
-	static int uXm_CALLCONV has_enabled_XMM();
-	static int uXm_CALLCONV has_enabled_YMM();
-	static int uXm_CALLCONV has_enabled_ZMM();
+	static int uXm_callconv has_enabled_XMM();
+	static int uXm_callconv has_enabled_YMM();
+	static int uXm_callconv has_enabled_ZMM();
 
 
     / * find supported instruction set

@@ -10,10 +10,10 @@
 
 	.code
 			align ptr_t_size
-uXm_cpuidex proto UX_VECCALL
+uXm_cpuidex proto __veccall
 
 			align ptr_t_size
-uXm_cpuidex proc UX_VECCALL
+uXm_cpuidex proc __veccall
 
 		;CPUInfo$ = 8
 		;CPUInfoType$ = 16

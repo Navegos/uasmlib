@@ -3,10 +3,10 @@
 
 	.code
 			align 8
-uXm_xsetbv proto UX_VECCALL
+uXm_xsetbv proto __veccall
 
 			align 8
-uXm_xsetbv proc UX_VECCALL
+uXm_xsetbv proc __veccall
 
 	ifndef __X64__
 			xsetbv

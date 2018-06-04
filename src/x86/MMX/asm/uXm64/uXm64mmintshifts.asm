@@ -85,379 +85,379 @@ ifdef __X32__
 ;******************
 ; Proto
 ;******************
-_uXm_m64_psllwi_0 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllwi_1 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllwi_2 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllwi_3 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllwi_4 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllwi_5 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllwi_6 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllwi_7 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllwi_8 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllwi_9 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllwi_10 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllwi_11 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllwi_12 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllwi_13 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllwi_14 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllwi_15 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllwi proto UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
+_uXm_m64_psllwi_0 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_1 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_2 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_3 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_4 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_5 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_6 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_7 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_8 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_9 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_10 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_11 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_12 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_13 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_14 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_15 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi proto __veccall (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 
-_uXm_m64_pslldi_0 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_1 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_2 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_3 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_4 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_5 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_6 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_7 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_8 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_9 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_10 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_11 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_12 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_13 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_14 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_15 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_16 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_17 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_18 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_19 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_20 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_21 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_22 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_23 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_24 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_25 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_26 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_27 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_28 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_29 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_30 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi_31 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_pslldi proto UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
+_uXm_m64_pslldi_0 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_1 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_2 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_3 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_4 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_5 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_6 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_7 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_8 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_9 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_10 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_11 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_12 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_13 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_14 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_15 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_16 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_17 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_18 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_19 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_20 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_21 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_22 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_23 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_24 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_25 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_26 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_27 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_28 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_29 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_30 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_31 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi proto __veccall (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 
-_uXm_m64_psllqi_0 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_1 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_2 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_3 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_4 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_5 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_6 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_7 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_8 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_9 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_10 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_11 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_12 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_13 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_14 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_15 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_16 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_17 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_18 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_19 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_20 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_21 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_22 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_23 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_24 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_25 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_26 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_27 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_28 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_29 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_30 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_31 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_32 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_33 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_34 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_35 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_36 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_36 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_38 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_39 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_40 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_41 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_42 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_43 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_44 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_45 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_46 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_47 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_48 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_49 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_50 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_51 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_52 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_53 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_54 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_55 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_56 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_57 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_58 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_59 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_60 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_61 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_62 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi_63 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psllqi proto UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
+_uXm_m64_psllqi_0 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_1 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_2 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_3 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_4 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_5 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_6 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_7 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_8 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_9 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_10 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_11 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_12 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_13 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_14 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_15 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_16 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_17 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_18 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_19 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_20 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_21 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_22 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_23 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_24 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_25 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_26 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_27 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_28 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_29 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_30 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_31 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_32 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_33 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_34 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_35 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_36 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_36 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_38 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_39 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_40 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_41 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_42 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_43 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_44 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_45 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_46 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_47 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_48 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_49 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_50 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_51 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_52 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_53 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_54 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_55 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_56 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_57 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_58 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_59 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_60 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_61 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_62 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_63 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi proto __veccall (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 
-_uXm_m64_psrawi_0 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrawi_1 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrawi_2 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrawi_3 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrawi_4 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrawi_5 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrawi_6 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrawi_7 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrawi_8 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrawi_9 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrawi_10 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrawi_11 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrawi_12 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrawi_13 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrawi_14 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrawi_15 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrawi proto UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
+_uXm_m64_psrawi_0 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_1 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_2 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_3 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_4 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_5 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_6 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_7 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_8 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_9 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_10 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_11 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_12 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_13 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_14 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_15 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi proto __veccall (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 
-_uXm_m64_psradi_0 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_1 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_2 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_3 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_4 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_5 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_6 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_7 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_8 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_9 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_10 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_11 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_12 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_13 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_14 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_15 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_16 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_17 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_18 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_19 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_20 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_21 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_22 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_23 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_24 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_25 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_26 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_27 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_28 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_29 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_30 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi_31 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psradi proto UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
+_uXm_m64_psradi_0 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_1 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_2 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_3 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_4 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_5 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_6 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_7 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_8 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_9 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_10 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_11 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_12 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_13 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_14 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_15 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_16 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_17 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_18 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_19 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_20 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_21 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_22 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_23 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_24 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_25 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_26 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_27 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_28 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_29 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_30 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_31 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi proto __veccall (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 
-_uXm_m64_psrlwi_0 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlwi_1 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlwi_2 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlwi_3 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlwi_4 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlwi_5 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlwi_6 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlwi_7 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlwi_8 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlwi_9 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlwi_10 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlwi_11 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlwi_12 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlwi_13 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlwi_14 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlwi_15 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlwi proto UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
+_uXm_m64_psrlwi_0 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_1 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_2 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_3 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_4 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_5 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_6 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_7 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_8 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_9 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_10 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_11 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_12 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_13 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_14 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_15 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi proto __veccall (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 
-_uXm_m64_psrldi_0 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_1 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_2 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_3 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_4 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_5 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_6 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_7 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_8 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_9 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_10 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_11 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_12 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_13 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_14 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_15 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_16 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_17 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_18 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_19 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_20 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_21 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_22 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_23 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_24 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_25 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_26 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_27 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_28 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_29 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_30 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi_31 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrldi proto UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
+_uXm_m64_psrldi_0 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_1 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_2 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_3 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_4 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_5 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_6 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_7 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_8 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_9 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_10 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_11 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_12 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_13 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_14 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_15 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_16 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_17 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_18 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_19 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_20 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_21 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_22 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_23 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_24 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_25 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_26 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_27 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_28 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_29 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_30 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_31 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi proto __veccall (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 
-_uXm_m64_psrlqi_0 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_1 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_2 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_3 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_4 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_5 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_6 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_7 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_8 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_9 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_10 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_11 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_12 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_13 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_14 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_15 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_16 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_17 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_18 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_19 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_20 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_21 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_22 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_23 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_24 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_25 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_26 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_27 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_28 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_29 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_30 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_31 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_32 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_33 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_34 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_35 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_36 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_36 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_38 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_39 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_40 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_41 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_42 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_43 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_44 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_45 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_46 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_47 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_48 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_49 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_50 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_51 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_52 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_53 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_54 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_55 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_56 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_57 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_58 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_59 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_60 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_61 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_62 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi_63 proto UX_VECCALL (mmword) ;Inmm_A:mmword
-_uXm_m64_psrlqi proto UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
+_uXm_m64_psrlqi_0 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_1 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_2 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_3 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_4 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_5 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_6 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_7 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_8 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_9 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_10 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_11 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_12 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_13 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_14 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_15 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_16 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_17 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_18 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_19 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_20 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_21 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_22 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_23 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_24 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_25 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_26 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_27 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_28 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_29 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_30 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_31 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_32 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_33 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_34 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_35 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_36 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_36 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_38 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_39 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_40 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_41 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_42 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_43 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_44 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_45 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_46 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_47 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_48 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_49 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_50 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_51 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_52 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_53 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_54 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_55 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_56 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_57 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_58 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_59 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_60 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_61 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_62 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_63 proto __veccall (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi proto __veccall (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 
 ;******************
 ; Proc
 ;******************
 
-_uXm_m64_psllwi_0 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_0 proc __veccall (mmword) ;Inmm_A:mmword
 			psllw			mm0,			0
 			ret
 _uXm_m64_psllwi_0 endp
 
-_uXm_m64_psllwi_1 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_1 proc __veccall (mmword) ;Inmm_A:mmword
 			psllw			mm0,			1
 			ret
 _uXm_m64_psllwi_1 endp
 
-_uXm_m64_psllwi_2 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_2 proc __veccall (mmword) ;Inmm_A:mmword
 			psllw			mm0,			2
 			ret
 _uXm_m64_psllwi_2 endp
 
-_uXm_m64_psllwi_3 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_3 proc __veccall (mmword) ;Inmm_A:mmword
 			psllw			mm0,			3
 			ret
 _uXm_m64_psllwi_3 endp
 
-_uXm_m64_psllwi_4 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_4 proc __veccall (mmword) ;Inmm_A:mmword
 			psllw			mm0,			4
 			ret
 _uXm_m64_psllwi_4 endp
 
-_uXm_m64_psllwi_5 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_5 proc __veccall (mmword) ;Inmm_A:mmword
 			psllw			mm0,			5
 			ret
 _uXm_m64_psllwi_5 endp
 
-_uXm_m64_psllwi_6 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_6 proc __veccall (mmword) ;Inmm_A:mmword
 			psllw			mm0,			6
 			ret
 _uXm_m64_psllwi_6 endp
 
-_uXm_m64_psllwi_7 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_7 proc __veccall (mmword) ;Inmm_A:mmword
 			psllw			mm0,			7
 			ret
 _uXm_m64_psllwi_7 endp
 
-_uXm_m64_psllwi_8 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_8 proc __veccall (mmword) ;Inmm_A:mmword
 			psllw			mm0,			8
 			ret
 _uXm_m64_psllwi_8 endp
 
-_uXm_m64_psllwi_9 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_9 proc __veccall (mmword) ;Inmm_A:mmword
 			psllw			mm0,			9
 			ret
 _uXm_m64_psllwi_9 endp
 
-_uXm_m64_psllwi_10 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_10 proc __veccall (mmword) ;Inmm_A:mmword
 			psllw			mm0,			10
 			ret
 _uXm_m64_psllwi_10 endp
 
-_uXm_m64_psllwi_11 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_11 proc __veccall (mmword) ;Inmm_A:mmword
 			psllw			mm0,			11
 			ret
 _uXm_m64_psllwi_11 endp
 
-_uXm_m64_psllwi_12 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_12 proc __veccall (mmword) ;Inmm_A:mmword
 			psllw			mm0,			12
 			ret
 _uXm_m64_psllwi_12 endp
 
-_uXm_m64_psllwi_13 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_13 proc __veccall (mmword) ;Inmm_A:mmword
 			psllw			mm0,			13
 			ret
 _uXm_m64_psllwi_13 endp
 
-_uXm_m64_psllwi_14 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_14 proc __veccall (mmword) ;Inmm_A:mmword
 			psllw			mm0,			14
 			ret
 _uXm_m64_psllwi_14 endp
 
-_uXm_m64_psllwi_15 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllwi_15 proc __veccall (mmword) ;Inmm_A:mmword
 			psllw			mm0,			15
 			ret
 _uXm_m64_psllwi_15 endp
 
-_uXm_m64_psllwi proc UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
+_uXm_m64_psllwi proc __veccall (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret
@@ -519,167 +519,167 @@ _uXm_m64_psllwi proc UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 
 _uXm_m64_psllwi endp
 
-_uXm_m64_pslldi_0 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_0 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			0
 			ret
 _uXm_m64_pslldi_0 endp
 
-_uXm_m64_pslldi_1 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_1 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			1
 			ret
 _uXm_m64_pslldi_1 endp
 
-_uXm_m64_pslldi_2 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_2 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			2
 			ret
 _uXm_m64_pslldi_2 endp
 
-_uXm_m64_pslldi_3 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_3 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			3
 			ret
 _uXm_m64_pslldi_3 endp
 
-_uXm_m64_pslldi_4 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_4 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			4
 			ret
 _uXm_m64_pslldi_4 endp
 
-_uXm_m64_pslldi_5 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_5 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			5
 			ret
 _uXm_m64_pslldi_5 endp
 
-_uXm_m64_pslldi_6 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_6 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			6
 			ret
 _uXm_m64_pslldi_6 endp
 
-_uXm_m64_pslldi_7 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_7 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			7
 			ret
 _uXm_m64_pslldi_7 endp
 
-_uXm_m64_pslldi_8 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_8 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			8
 			ret
 _uXm_m64_pslldi_8 endp
 
-_uXm_m64_pslldi_9 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_9 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			9
 			ret
 _uXm_m64_pslldi_9 endp
 
-_uXm_m64_pslldi_10 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_10 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			10
 			ret
 _uXm_m64_pslldi_10 endp
 
-_uXm_m64_pslldi_11 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_11 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			11
 			ret
 _uXm_m64_pslldi_11 endp
 
-_uXm_m64_pslldi_12 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_12 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			12
 			ret
 _uXm_m64_pslldi_12 endp
 
-_uXm_m64_pslldi_13 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_13 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			13
 			ret
 _uXm_m64_pslldi_13 endp
 
-_uXm_m64_pslldi_14 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_14 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			14
 			ret
 _uXm_m64_pslldi_14 endp
 
-_uXm_m64_pslldi_15 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_15 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			15
 			ret
 _uXm_m64_pslldi_15 endp
 
-_uXm_m64_pslldi_16 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_16 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			16
 			ret
 _uXm_m64_pslldi_16 endp
 
-_uXm_m64_pslldi_17 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_17 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			17
 			ret
 _uXm_m64_pslldi_17 endp
 
-_uXm_m64_pslldi_18 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_18 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			18
 			ret
 _uXm_m64_pslldi_18 endp
 
-_uXm_m64_pslldi_19 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_19 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			19
 			ret
 _uXm_m64_pslldi_19 endp
 
-_uXm_m64_pslldi_20 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_20 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			20
 			ret
 _uXm_m64_pslldi_20 endp
 
-_uXm_m64_pslldi_21 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_21 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			21
 			ret
 _uXm_m64_pslldi_21 endp
 
-_uXm_m64_pslldi_22 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_22 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			22
 			ret
 _uXm_m64_pslldi_22 endp
 
-_uXm_m64_pslldi_23 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_23 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			23
 			ret
 _uXm_m64_pslldi_23 endp
 
-_uXm_m64_pslldi_24 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_24 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			24
 			ret
 _uXm_m64_pslldi_24 endp
 
-_uXm_m64_pslldi_25 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_25 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			25
 			ret
 _uXm_m64_pslldi_25 endp
 
-_uXm_m64_pslldi_26 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_26 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			26
 			ret
 _uXm_m64_pslldi_26 endp
 
-_uXm_m64_pslldi_27 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_27 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			27
 			ret
 _uXm_m64_pslldi_27 endp
 
-_uXm_m64_pslldi_28 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_28 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			28
 			ret
 _uXm_m64_pslldi_28 endp
 
-_uXm_m64_pslldi_29 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_29 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			29
 			ret
 _uXm_m64_pslldi_29 endp
 
-_uXm_m64_pslldi_30 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_30 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			30
 			ret
 _uXm_m64_pslldi_30 endp
 
-_uXm_m64_pslldi_31 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_pslldi_31 proc __veccall (mmword) ;Inmm_A:mmword
 			pslld			mm0,			31
 			ret
 _uXm_m64_pslldi_31 endp
 
-_uXm_m64_pslldi proc UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
+_uXm_m64_pslldi proc __veccall (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret
@@ -789,327 +789,327 @@ _uXm_m64_pslldi proc UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 
 _uXm_m64_pslldi endp
 
-_uXm_m64_psllqi_0 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_0 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			0
 			ret
 _uXm_m64_psllqi_0 endp
 
-_uXm_m64_psllqi_1 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_1 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			1
 			ret
 _uXm_m64_psllqi_1 endp
 
-_uXm_m64_psllqi_2 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_2 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			2
 			ret
 _uXm_m64_psllqi_2 endp
 
-_uXm_m64_psllqi_3 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_3 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			3
 			ret
 _uXm_m64_psllqi_3 endp
 
-_uXm_m64_psllqi_4 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_4 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			4
 			ret
 _uXm_m64_psllqi_4 endp
 
-_uXm_m64_psllqi_5 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_5 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			5
 			ret
 _uXm_m64_psllqi_5 endp
 
-_uXm_m64_psllqi_6 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_6 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			6
 			ret
 _uXm_m64_psllqi_6 endp
 
-_uXm_m64_psllqi_7 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_7 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			7
 			ret
 _uXm_m64_psllqi_7 endp
 
-_uXm_m64_psllqi_8 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_8 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			8
 			ret
 _uXm_m64_psllqi_8 endp
 
-_uXm_m64_psllqi_9 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_9 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			9
 			ret
 _uXm_m64_psllqi_9 endp
 
-_uXm_m64_psllqi_10 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_10 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			10
 			ret
 _uXm_m64_psllqi_10 endp
 
-_uXm_m64_psllqi_11 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_11 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			11
 			ret
 _uXm_m64_psllqi_11 endp
 
-_uXm_m64_psllqi_12 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_12 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			12
 			ret
 _uXm_m64_psllqi_12 endp
 
-_uXm_m64_psllqi_13 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_13 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			13
 			ret
 _uXm_m64_psllqi_13 endp
 
-_uXm_m64_psllqi_14 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_14 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			14
 			ret
 _uXm_m64_psllqi_14 endp
 
-_uXm_m64_psllqi_15 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_15 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			15
 			ret
 _uXm_m64_psllqi_15 endp
 
-_uXm_m64_psllqi_16 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_16 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			16
 			ret
 _uXm_m64_psllqi_16 endp
 
-_uXm_m64_psllqi_17 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_17 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			17
 			ret
 _uXm_m64_psllqi_17 endp
 
-_uXm_m64_psllqi_18 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_18 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			18
 			ret
 _uXm_m64_psllqi_18 endp
 
-_uXm_m64_psllqi_19 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_19 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			19
 			ret
 _uXm_m64_psllqi_19 endp
 
-_uXm_m64_psllqi_20 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_20 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			20
 			ret
 _uXm_m64_psllqi_20 endp
 
-_uXm_m64_psllqi_21 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_21 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			21
 			ret
 _uXm_m64_psllqi_21 endp
 
-_uXm_m64_psllqi_22 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_22 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			22
 			ret
 _uXm_m64_psllqi_22 endp
 
-_uXm_m64_psllqi_23 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_23 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			23
 			ret
 _uXm_m64_psllqi_23 endp
 
-_uXm_m64_psllqi_24 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_24 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			24
 			ret
 _uXm_m64_psllqi_24 endp
 
-_uXm_m64_psllqi_25 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_25 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			25
 			ret
 _uXm_m64_psllqi_25 endp
 
-_uXm_m64_psllqi_26 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_26 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			26
 			ret
 _uXm_m64_psllqi_26 endp
 
-_uXm_m64_psllqi_27 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_27 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			27
 			ret
 _uXm_m64_psllqi_27 endp
 
-_uXm_m64_psllqi_28 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_28 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			28
 			ret
 _uXm_m64_psllqi_28 endp
 
-_uXm_m64_psllqi_29 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_29 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			29
 			ret
 _uXm_m64_psllqi_29 endp
 
-_uXm_m64_psllqi_30 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_30 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			30
 			ret
 _uXm_m64_psllqi_30 endp
 
-_uXm_m64_psllqi_31 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_31 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			31
 			ret
 _uXm_m64_psllqi_31 endp
 
-_uXm_m64_psllqi_32 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_32 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			32
 			ret
 _uXm_m64_psllqi_32 endp
 
-_uXm_m64_psllqi_33 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_33 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			33
 			ret
 _uXm_m64_psllqi_33 endp
 
-_uXm_m64_psllqi_34 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_34 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			34
 			ret
 _uXm_m64_psllqi_34 endp
 
-_uXm_m64_psllqi_35 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_35 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			35
 			ret
 _uXm_m64_psllqi_35 endp
 
-_uXm_m64_psllqi_36 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_36 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			36
 			ret
 _uXm_m64_psllqi_36 endp
 
-_uXm_m64_psllqi_37 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_37 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			37
 			ret
 _uXm_m64_psllqi_37 endp
 
-_uXm_m64_psllqi_38 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_38 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			38
 			ret
 _uXm_m64_psllqi_38 endp
 
-_uXm_m64_psllqi_39 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_39 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			39
 			ret
 _uXm_m64_psllqi_39 endp
 
-_uXm_m64_psllqi_40 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_40 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			40
 			ret
 _uXm_m64_psllqi_40 endp
 
-_uXm_m64_psllqi_41 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_41 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			41
 			ret
 _uXm_m64_psllqi_41 endp
 
-_uXm_m64_psllqi_42 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_42 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			42
 			ret
 _uXm_m64_psllqi_42 endp
 
-_uXm_m64_psllqi_43 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_43 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			43
 			ret
 _uXm_m64_psllqi_43 endp
 
-_uXm_m64_psllqi_44 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_44 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			44
 			ret
 _uXm_m64_psllqi_44 endp
 
-_uXm_m64_psllqi_45 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_45 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			45
 			ret
 _uXm_m64_psllqi_45 endp
 
-_uXm_m64_psllqi_46 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_46 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			46
 			ret
 _uXm_m64_psllqi_46 endp
 
-_uXm_m64_psllqi_47 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_47 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			47
 			ret
 _uXm_m64_psllqi_47 endp
 
-_uXm_m64_psllqi_48 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_48 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			48
 			ret
 _uXm_m64_psllqi_48 endp
 
-_uXm_m64_psllqi_49 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_49 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			49
 			ret
 _uXm_m64_psllqi_49 endp
 
-_uXm_m64_psllqi_50 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_50 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			50
 			ret
 _uXm_m64_psllqi_50 endp
 
-_uXm_m64_psllqi_51 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_51 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			51
 			ret
 _uXm_m64_psllqi_51 endp
 
-_uXm_m64_psllqi_52 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_52 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			52
 			ret
 _uXm_m64_psllqi_52 endp
 
-_uXm_m64_psllqi_53 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_53 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			53
 			ret
 _uXm_m64_psllqi_53 endp
 
-_uXm_m64_psllqi_54 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_54 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			54
 			ret
 _uXm_m64_psllqi_54 endp
 
-_uXm_m64_psllqi_55 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_55 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			55
 			ret
 _uXm_m64_psllqi_55 endp
 
-_uXm_m64_psllqi_56 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_56 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			56
 			ret
 _uXm_m64_psllqi_56 endp
 
-_uXm_m64_psllqi_57 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_57 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			57
 			ret
 _uXm_m64_psllqi_57 endp
 
-_uXm_m64_psllqi_58 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_58 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			58
 			ret
 _uXm_m64_psllqi_58 endp
 
-_uXm_m64_psllqi_59 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_59 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			59
 			ret
 _uXm_m64_psllqi_59 endp
 
-_uXm_m64_psllqi_60 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_60 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			60
 			ret
 _uXm_m64_psllqi_60 endp
 
-_uXm_m64_psllqi_61 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_61 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			61
 			ret
 _uXm_m64_psllqi_61 endp
 
-_uXm_m64_psllqi_62 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_62 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			62
 			ret
 _uXm_m64_psllqi_62 endp
 
-_uXm_m64_psllqi_63 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psllqi_63 proc __veccall (mmword) ;Inmm_A:mmword
 			psllq			mm0,			63
 			ret
 _uXm_m64_psllqi_63 endp
 
-_uXm_m64_psllqi proc UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
+_uXm_m64_psllqi proc __veccall (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret
@@ -1315,87 +1315,87 @@ _uXm_m64_psllqi proc UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 
 _uXm_m64_psllqi endp
 
-_uXm_m64_psrawi_0 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_0 proc __veccall (mmword) ;Inmm_A:mmword
 			psraw			mm0,			0
 			ret
 _uXm_m64_psrawi_0 endp
 
-_uXm_m64_psrawi_1 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_1 proc __veccall (mmword) ;Inmm_A:mmword
 			psraw			mm0,			1
 			ret
 _uXm_m64_psrawi_1 endp
 
-_uXm_m64_psrawi_2 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_2 proc __veccall (mmword) ;Inmm_A:mmword
 			psraw			mm0,			2
 			ret
 _uXm_m64_psrawi_2 endp
 
-_uXm_m64_psrawi_3 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_3 proc __veccall (mmword) ;Inmm_A:mmword
 			psraw			mm0,			3
 			ret
 _uXm_m64_psrawi_3 endp
 
-_uXm_m64_psrawi_4 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_4 proc __veccall (mmword) ;Inmm_A:mmword
 			psraw			mm0,			4
 			ret
 _uXm_m64_psrawi_4 endp
 
-_uXm_m64_psrawi_5 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_5 proc __veccall (mmword) ;Inmm_A:mmword
 			psraw			mm0,			5
 			ret
 _uXm_m64_psrawi_5 endp
 
-_uXm_m64_psrawi_6 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_6 proc __veccall (mmword) ;Inmm_A:mmword
 			psraw			mm0,			6
 			ret
 _uXm_m64_psrawi_6 endp
 
-_uXm_m64_psrawi_7 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_7 proc __veccall (mmword) ;Inmm_A:mmword
 			psraw			mm0,			7
 			ret
 _uXm_m64_psrawi_7 endp
 
-_uXm_m64_psrawi_8 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_8 proc __veccall (mmword) ;Inmm_A:mmword
 			psraw			mm0,			8
 			ret
 _uXm_m64_psrawi_8 endp
 
-_uXm_m64_psrawi_9 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_9 proc __veccall (mmword) ;Inmm_A:mmword
 			psraw			mm0,			9
 			ret
 _uXm_m64_psrawi_9 endp
 
-_uXm_m64_psrawi_10 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_10 proc __veccall (mmword) ;Inmm_A:mmword
 			psraw			mm0,			10
 			ret
 _uXm_m64_psrawi_10 endp
 
-_uXm_m64_psrawi_11 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_11 proc __veccall (mmword) ;Inmm_A:mmword
 			psraw			mm0,			11
 			ret
 _uXm_m64_psrawi_11 endp
 
-_uXm_m64_psrawi_12 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_12 proc __veccall (mmword) ;Inmm_A:mmword
 			psraw			mm0,			12
 			ret
 _uXm_m64_psrawi_12 endp
 
-_uXm_m64_psrawi_13 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_13 proc __veccall (mmword) ;Inmm_A:mmword
 			psraw			mm0,			13
 			ret
 _uXm_m64_psrawi_13 endp
 
-_uXm_m64_psrawi_14 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_14 proc __veccall (mmword) ;Inmm_A:mmword
 			psraw			mm0,			14
 			ret
 _uXm_m64_psrawi_14 endp
 
-_uXm_m64_psrawi_15 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrawi_15 proc __veccall (mmword) ;Inmm_A:mmword
 			psraw			mm0,			15
 			ret
 _uXm_m64_psrawi_15 endp
 
-_uXm_m64_psrawi proc UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
+_uXm_m64_psrawi proc __veccall (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 			
 		;.if(rparam2 > 3)
 		;	ret
@@ -1457,167 +1457,167 @@ _uXm_m64_psrawi proc UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 
 _uXm_m64_psrawi endp
 
-_uXm_m64_psradi_0 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_0 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			0
 			ret
 _uXm_m64_psradi_0 endp
 
-_uXm_m64_psradi_1 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_1 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			1
 			ret
 _uXm_m64_psradi_1 endp
 
-_uXm_m64_psradi_2 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_2 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			2
 			ret
 _uXm_m64_psradi_2 endp
 
-_uXm_m64_psradi_3 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_3 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			3
 			ret
 _uXm_m64_psradi_3 endp
 
-_uXm_m64_psradi_4 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_4 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			4
 			ret
 _uXm_m64_psradi_4 endp
 
-_uXm_m64_psradi_5 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_5 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			5
 			ret
 _uXm_m64_psradi_5 endp
 
-_uXm_m64_psradi_6 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_6 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			6
 			ret
 _uXm_m64_psradi_6 endp
 
-_uXm_m64_psradi_7 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_7 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			7
 			ret
 _uXm_m64_psradi_7 endp
 
-_uXm_m64_psradi_8 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_8 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			8
 			ret
 _uXm_m64_psradi_8 endp
 
-_uXm_m64_psradi_9 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_9 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			9
 			ret
 _uXm_m64_psradi_9 endp
 
-_uXm_m64_psradi_10 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_10 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			10
 			ret
 _uXm_m64_psradi_10 endp
 
-_uXm_m64_psradi_11 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_11 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			11
 			ret
 _uXm_m64_psradi_11 endp
 
-_uXm_m64_psradi_12 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_12 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			12
 			ret
 _uXm_m64_psradi_12 endp
 
-_uXm_m64_psradi_13 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_13 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			13
 			ret
 _uXm_m64_psradi_13 endp
 
-_uXm_m64_psradi_14 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_14 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			14
 			ret
 _uXm_m64_psradi_14 endp
 
-_uXm_m64_psradi_15 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_15 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			15
 			ret
 _uXm_m64_psradi_15 endp
 
-_uXm_m64_psradi_16 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_16 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			16
 			ret
 _uXm_m64_psradi_16 endp
 
-_uXm_m64_psradi_17 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_17 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			17
 			ret
 _uXm_m64_psradi_17 endp
 
-_uXm_m64_psradi_18 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_18 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			18
 			ret
 _uXm_m64_psradi_18 endp
 
-_uXm_m64_psradi_19 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_19 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			19
 			ret
 _uXm_m64_psradi_19 endp
 
-_uXm_m64_psradi_20 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_20 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			20
 			ret
 _uXm_m64_psradi_20 endp
 
-_uXm_m64_psradi_21 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_21 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			21
 			ret
 _uXm_m64_psradi_21 endp
 
-_uXm_m64_psradi_22 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_22 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			22
 			ret
 _uXm_m64_psradi_22 endp
 
-_uXm_m64_psradi_23 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_23 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			23
 			ret
 _uXm_m64_psradi_23 endp
 
-_uXm_m64_psradi_24 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_24 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			24
 			ret
 _uXm_m64_psradi_24 endp
 
-_uXm_m64_psradi_25 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_25 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			25
 			ret
 _uXm_m64_psradi_25 endp
 
-_uXm_m64_psradi_26 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_26 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			26
 			ret
 _uXm_m64_psradi_26 endp
 
-_uXm_m64_psradi_27 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_27 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			27
 			ret
 _uXm_m64_psradi_27 endp
 
-_uXm_m64_psradi_28 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_28 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			28
 			ret
 _uXm_m64_psradi_28 endp
 
-_uXm_m64_psradi_29 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_29 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			29
 			ret
 _uXm_m64_psradi_29 endp
 
-_uXm_m64_psradi_30 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_30 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			30
 			ret
 _uXm_m64_psradi_30 endp
 
-_uXm_m64_psradi_31 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psradi_31 proc __veccall (mmword) ;Inmm_A:mmword
 			psrad			mm0,			31
 			ret
 _uXm_m64_psradi_31 endp
 
-_uXm_m64_psradi proc UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
+_uXm_m64_psradi proc __veccall (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret
@@ -1727,87 +1727,87 @@ _uXm_m64_psradi proc UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 
 _uXm_m64_psradi endp
 
-_uXm_m64_psrlwi_0 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_0 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlw			mm0,			0
 			ret
 _uXm_m64_psrlwi_0 endp
 
-_uXm_m64_psrlwi_1 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_1 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlw			mm0,			1
 			ret
 _uXm_m64_psrlwi_1 endp
 
-_uXm_m64_psrlwi_2 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_2 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlw			mm0,			2
 			ret
 _uXm_m64_psrlwi_2 endp
 
-_uXm_m64_psrlwi_3 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_3 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlw			mm0,			3
 			ret
 _uXm_m64_psrlwi_3 endp
 
-_uXm_m64_psrlwi_4 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_4 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlw			mm0,			4
 			ret
 _uXm_m64_psrlwi_4 endp
 
-_uXm_m64_psrlwi_5 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_5 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlw			mm0,			5
 			ret
 _uXm_m64_psrlwi_5 endp
 
-_uXm_m64_psrlwi_6 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_6 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlw			mm0,			6
 			ret
 _uXm_m64_psrlwi_6 endp
 
-_uXm_m64_psrlwi_7 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_7 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlw			mm0,			7
 			ret
 _uXm_m64_psrlwi_7 endp
 
-_uXm_m64_psrlwi_8 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_8 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlw			mm0,			8
 			ret
 _uXm_m64_psrlwi_8 endp
 
-_uXm_m64_psrlwi_9 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_9 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlw			mm0,			9
 			ret
 _uXm_m64_psrlwi_9 endp
 
-_uXm_m64_psrlwi_10 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_10 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlw			mm0,			10
 			ret
 _uXm_m64_psrlwi_10 endp
 
-_uXm_m64_psrlwi_11 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_11 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlw			mm0,			11
 			ret
 _uXm_m64_psrlwi_11 endp
 
-_uXm_m64_psrlwi_12 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_12 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlw			mm0,			12
 			ret
 _uXm_m64_psrlwi_12 endp
 
-_uXm_m64_psrlwi_13 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_13 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlw			mm0,			13
 			ret
 _uXm_m64_psrlwi_13 endp
 
-_uXm_m64_psrlwi_14 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_14 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlw			mm0,			14
 			ret
 _uXm_m64_psrlwi_14 endp
 
-_uXm_m64_psrlwi_15 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlwi_15 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlw			mm0,			15
 			ret
 _uXm_m64_psrlwi_15 endp
 
-_uXm_m64_psrlwi proc UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
+_uXm_m64_psrlwi proc __veccall (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret
@@ -1869,167 +1869,167 @@ _uXm_m64_psrlwi proc UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 
 _uXm_m64_psrlwi endp
 
-_uXm_m64_psrldi_0 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_0 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			0
 			ret
 _uXm_m64_psrldi_0 endp
 
-_uXm_m64_psrldi_1 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_1 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			1
 			ret
 _uXm_m64_psrldi_1 endp
 
-_uXm_m64_psrldi_2 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_2 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			2
 			ret
 _uXm_m64_psrldi_2 endp
 
-_uXm_m64_psrldi_3 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_3 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			3
 			ret
 _uXm_m64_psrldi_3 endp
 
-_uXm_m64_psrldi_4 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_4 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			4
 			ret
 _uXm_m64_psrldi_4 endp
 
-_uXm_m64_psrldi_5 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_5 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			5
 			ret
 _uXm_m64_psrldi_5 endp
 
-_uXm_m64_psrldi_6 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_6 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			6
 			ret
 _uXm_m64_psrldi_6 endp
 
-_uXm_m64_psrldi_7 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_7 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			7
 			ret
 _uXm_m64_psrldi_7 endp
 
-_uXm_m64_psrldi_8 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_8 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			8
 			ret
 _uXm_m64_psrldi_8 endp
 
-_uXm_m64_psrldi_9 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_9 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			9
 			ret
 _uXm_m64_psrldi_9 endp
 
-_uXm_m64_psrldi_10 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_10 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			10
 			ret
 _uXm_m64_psrldi_10 endp
 
-_uXm_m64_psrldi_11 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_11 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			11
 			ret
 _uXm_m64_psrldi_11 endp
 
-_uXm_m64_psrldi_12 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_12 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			12
 			ret
 _uXm_m64_psrldi_12 endp
 
-_uXm_m64_psrldi_13 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_13 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			13
 			ret
 _uXm_m64_psrldi_13 endp
 
-_uXm_m64_psrldi_14 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_14 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			14
 			ret
 _uXm_m64_psrldi_14 endp
 
-_uXm_m64_psrldi_15 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_15 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			15
 			ret
 _uXm_m64_psrldi_15 endp
 
-_uXm_m64_psrldi_16 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_16 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			16
 			ret
 _uXm_m64_psrldi_16 endp
 
-_uXm_m64_psrldi_17 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_17 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			17
 			ret
 _uXm_m64_psrldi_17 endp
 
-_uXm_m64_psrldi_18 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_18 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			18
 			ret
 _uXm_m64_psrldi_18 endp
 
-_uXm_m64_psrldi_19 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_19 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			19
 			ret
 _uXm_m64_psrldi_19 endp
 
-_uXm_m64_psrldi_20 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_20 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			20
 			ret
 _uXm_m64_psrldi_20 endp
 
-_uXm_m64_psrldi_21 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_21 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			21
 			ret
 _uXm_m64_psrldi_21 endp
 
-_uXm_m64_psrldi_22 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_22 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			22
 			ret
 _uXm_m64_psrldi_22 endp
 
-_uXm_m64_psrldi_23 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_23 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			23
 			ret
 _uXm_m64_psrldi_23 endp
 
-_uXm_m64_psrldi_24 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_24 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			24
 			ret
 _uXm_m64_psrldi_24 endp
 
-_uXm_m64_psrldi_25 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_25 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			25
 			ret
 _uXm_m64_psrldi_25 endp
 
-_uXm_m64_psrldi_26 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_26 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			26
 			ret
 _uXm_m64_psrldi_26 endp
 
-_uXm_m64_psrldi_27 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_27 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			27
 			ret
 _uXm_m64_psrldi_27 endp
 
-_uXm_m64_psrldi_28 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_28 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			28
 			ret
 _uXm_m64_psrldi_28 endp
 
-_uXm_m64_psrldi_29 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_29 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			29
 			ret
 _uXm_m64_psrldi_29 endp
 
-_uXm_m64_psrldi_30 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_30 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			30
 			ret
 _uXm_m64_psrldi_30 endp
 
-_uXm_m64_psrldi_31 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrldi_31 proc __veccall (mmword) ;Inmm_A:mmword
 			psrld			mm0,			31
 			ret
 _uXm_m64_psrldi_31 endp
 
-_uXm_m64_psrldi proc UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
+_uXm_m64_psrldi proc __veccall (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret
@@ -2139,327 +2139,327 @@ _uXm_m64_psrldi proc UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 
 _uXm_m64_psrldi endp
 
-_uXm_m64_psrlqi_0 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_0 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			0
 			ret
 _uXm_m64_psrlqi_0 endp
 
-_uXm_m64_psrlqi_1 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_1 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			1
 			ret
 _uXm_m64_psrlqi_1 endp
 
-_uXm_m64_psrlqi_2 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_2 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			2
 			ret
 _uXm_m64_psrlqi_2 endp
 
-_uXm_m64_psrlqi_3 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_3 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			3
 			ret
 _uXm_m64_psrlqi_3 endp
 
-_uXm_m64_psrlqi_4 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_4 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			4
 			ret
 _uXm_m64_psrlqi_4 endp
 
-_uXm_m64_psrlqi_5 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_5 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			5
 			ret
 _uXm_m64_psrlqi_5 endp
 
-_uXm_m64_psrlqi_6 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_6 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			6
 			ret
 _uXm_m64_psrlqi_6 endp
 
-_uXm_m64_psrlqi_7 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_7 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			7
 			ret
 _uXm_m64_psrlqi_7 endp
 
-_uXm_m64_psrlqi_8 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_8 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			8
 			ret
 _uXm_m64_psrlqi_8 endp
 
-_uXm_m64_psrlqi_9 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_9 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			9
 			ret
 _uXm_m64_psrlqi_9 endp
 
-_uXm_m64_psrlqi_10 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_10 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			10
 			ret
 _uXm_m64_psrlqi_10 endp
 
-_uXm_m64_psrlqi_11 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_11 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			11
 			ret
 _uXm_m64_psrlqi_11 endp
 
-_uXm_m64_psrlqi_12 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_12 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			12
 			ret
 _uXm_m64_psrlqi_12 endp
 
-_uXm_m64_psrlqi_13 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_13 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			13
 			ret
 _uXm_m64_psrlqi_13 endp
 
-_uXm_m64_psrlqi_14 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_14 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			14
 			ret
 _uXm_m64_psrlqi_14 endp
 
-_uXm_m64_psrlqi_15 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_15 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			15
 			ret
 _uXm_m64_psrlqi_15 endp
 
-_uXm_m64_psrlqi_16 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_16 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			16
 			ret
 _uXm_m64_psrlqi_16 endp
 
-_uXm_m64_psrlqi_17 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_17 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			17
 			ret
 _uXm_m64_psrlqi_17 endp
 
-_uXm_m64_psrlqi_18 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_18 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			18
 			ret
 _uXm_m64_psrlqi_18 endp
 
-_uXm_m64_psrlqi_19 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_19 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			19
 			ret
 _uXm_m64_psrlqi_19 endp
 
-_uXm_m64_psrlqi_20 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_20 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			20
 			ret
 _uXm_m64_psrlqi_20 endp
 
-_uXm_m64_psrlqi_21 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_21 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			21
 			ret
 _uXm_m64_psrlqi_21 endp
 
-_uXm_m64_psrlqi_22 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_22 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			22
 			ret
 _uXm_m64_psrlqi_22 endp
 
-_uXm_m64_psrlqi_23 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_23 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			23
 			ret
 _uXm_m64_psrlqi_23 endp
 
-_uXm_m64_psrlqi_24 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_24 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			24
 			ret
 _uXm_m64_psrlqi_24 endp
 
-_uXm_m64_psrlqi_25 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_25 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			25
 			ret
 _uXm_m64_psrlqi_25 endp
 
-_uXm_m64_psrlqi_26 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_26 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			26
 			ret
 _uXm_m64_psrlqi_26 endp
 
-_uXm_m64_psrlqi_27 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_27 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			27
 			ret
 _uXm_m64_psrlqi_27 endp
 
-_uXm_m64_psrlqi_28 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_28 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			28
 			ret
 _uXm_m64_psrlqi_28 endp
 
-_uXm_m64_psrlqi_29 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_29 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			29
 			ret
 _uXm_m64_psrlqi_29 endp
 
-_uXm_m64_psrlqi_30 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_30 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			30
 			ret
 _uXm_m64_psrlqi_30 endp
 
-_uXm_m64_psrlqi_31 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_31 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			31
 			ret
 _uXm_m64_psrlqi_31 endp
 
-_uXm_m64_psrlqi_32 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_32 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			32
 			ret
 _uXm_m64_psrlqi_32 endp
 
-_uXm_m64_psrlqi_33 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_33 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			33
 			ret
 _uXm_m64_psrlqi_33 endp
 
-_uXm_m64_psrlqi_34 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_34 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			34
 			ret
 _uXm_m64_psrlqi_34 endp
 
-_uXm_m64_psrlqi_35 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_35 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			35
 			ret
 _uXm_m64_psrlqi_35 endp
 
-_uXm_m64_psrlqi_36 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_36 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			36
 			ret
 _uXm_m64_psrlqi_36 endp
 
-_uXm_m64_psrlqi_37 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_37 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			37
 			ret
 _uXm_m64_psrlqi_37 endp
 
-_uXm_m64_psrlqi_38 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_38 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			38
 			ret
 _uXm_m64_psrlqi_38 endp
 
-_uXm_m64_psrlqi_39 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_39 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			39
 			ret
 _uXm_m64_psrlqi_39 endp
 
-_uXm_m64_psrlqi_40 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_40 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			40
 			ret
 _uXm_m64_psrlqi_40 endp
 
-_uXm_m64_psrlqi_41 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_41 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			41
 			ret
 _uXm_m64_psrlqi_41 endp
 
-_uXm_m64_psrlqi_42 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_42 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			42
 			ret
 _uXm_m64_psrlqi_42 endp
 
-_uXm_m64_psrlqi_43 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_43 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			43
 			ret
 _uXm_m64_psrlqi_43 endp
 
-_uXm_m64_psrlqi_44 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_44 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			44
 			ret
 _uXm_m64_psrlqi_44 endp
 
-_uXm_m64_psrlqi_45 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_45 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			45
 			ret
 _uXm_m64_psrlqi_45 endp
 
-_uXm_m64_psrlqi_46 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_46 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			46
 			ret
 _uXm_m64_psrlqi_46 endp
 
-_uXm_m64_psrlqi_47 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_47 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			47
 			ret
 _uXm_m64_psrlqi_47 endp
 
-_uXm_m64_psrlqi_48 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_48 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			48
 			ret
 _uXm_m64_psrlqi_48 endp
 
-_uXm_m64_psrlqi_49 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_49 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			49
 			ret
 _uXm_m64_psrlqi_49 endp
 
-_uXm_m64_psrlqi_50 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_50 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			50
 			ret
 _uXm_m64_psrlqi_50 endp
 
-_uXm_m64_psrlqi_51 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_51 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			51
 			ret
 _uXm_m64_psrlqi_51 endp
 
-_uXm_m64_psrlqi_52 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_52 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			52
 			ret
 _uXm_m64_psrlqi_52 endp
 
-_uXm_m64_psrlqi_53 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_53 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			53
 			ret
 _uXm_m64_psrlqi_53 endp
 
-_uXm_m64_psrlqi_54 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_54 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			54
 			ret
 _uXm_m64_psrlqi_54 endp
 
-_uXm_m64_psrlqi_55 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_55 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			55
 			ret
 _uXm_m64_psrlqi_55 endp
 
-_uXm_m64_psrlqi_56 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_56 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			56
 			ret
 _uXm_m64_psrlqi_56 endp
 
-_uXm_m64_psrlqi_57 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_57 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			57
 			ret
 _uXm_m64_psrlqi_57 endp
 
-_uXm_m64_psrlqi_58 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_58 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			58
 			ret
 _uXm_m64_psrlqi_58 endp
 
-_uXm_m64_psrlqi_59 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_59 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			59
 			ret
 _uXm_m64_psrlqi_59 endp
 
-_uXm_m64_psrlqi_60 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_60 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			60
 			ret
 _uXm_m64_psrlqi_60 endp
 
-_uXm_m64_psrlqi_61 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_61 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			61
 			ret
 _uXm_m64_psrlqi_61 endp
 
-_uXm_m64_psrlqi_62 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_62 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			62
 			ret
 _uXm_m64_psrlqi_62 endp
 
-_uXm_m64_psrlqi_63 proc UX_VECCALL (mmword) ;Inmm_A:mmword
+_uXm_m64_psrlqi_63 proc __veccall (mmword) ;Inmm_A:mmword
 			psrlq			mm0,			63
 			ret
 _uXm_m64_psrlqi_63 endp
 
-_uXm_m64_psrlqi proc UX_VECCALL (mmword) ;InXmm_A:mmword, Inint_Imm:dword
+_uXm_m64_psrlqi proc __veccall (mmword) ;InXmm_A:mmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret

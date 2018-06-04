@@ -14,21 +14,21 @@
 ;******************
 ; Externs
 ;******************
-	extern UX_VECCALL _uXmCPUFeatures_Is_Inited:proc
-	extern UX_VECCALL _uXmCPUFeatures_Init:proc
-	extern UX_VECCALL _uXmCPUFeatures_has_SSE2:proc
+	extern __veccall _uXmCPUFeatures_Is_Inited:proc
+	extern __veccall _uXmCPUFeatures_Init:proc
+	extern __veccall _uXmCPUFeatures_has_SSE2:proc
 	
 ;******************
 ; Proto
 ;******************
-_uXm_intrin_CPUFeatures proto UX_VECCALL (voidarg)
+_uXm_intrin_CPUFeatures proto __veccall (voidarg)
 
 ;******************
 ; Proc
 ;******************
 
 			align 16
-_uXm_intrin_CPUFeatures proc UX_VECCALL (voidarg)
+_uXm_intrin_CPUFeatures proc __veccall (voidarg)
 			
 	ifndef __X64__
 			xor				dreturn,			dreturn

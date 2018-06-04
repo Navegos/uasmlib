@@ -451,7 +451,7 @@ UX_VECMETHOD macro className:REQ, method:REQ, retType:REQ, usesStr:REQ, args:VAR
 		fnex catstr fnex, <&className&>
 		fnex catstr fnex, <_>
 		fnex catstr fnex, <&method&>
-		fnex catstr fnex, < proto UX_VECCALL >, <(&retType&)>, < thisPtr:psr>, <&className&>
+		fnex catstr fnex, < proto __veccall >, <(&retType&)>, < thisPtr:psr>, <&className&>
 	ifnb <args>
 		fnex catstr fnex, <, >, <&args&>
 	else
@@ -461,7 +461,7 @@ UX_VECMETHOD macro className:REQ, method:REQ, retType:REQ, usesStr:REQ, args:VAR
 		fnex catstr fnex, <&className&>
 		fnex catstr fnex, <_>
 		fnex catstr fnex, <&method&>
-		fnex catstr fnex, <Pto typedef proto UX_VECCALL >, <(&retType&)>, < thisPtr:psr>, <&className&>
+		fnex catstr fnex, <Pto typedef proto __veccall >, <(&retType&)>, < thisPtr:psr>, <&className&>
 	ifnb <args>
 		fnex catstr fnex, <, >, <&args&>
 	else
@@ -471,7 +471,7 @@ UX_VECMETHOD macro className:REQ, method:REQ, retType:REQ, usesStr:REQ, args:VAR
 		fnex catstr fnex, <&className&>
 		fnex catstr fnex, <_>
 		fnex catstr fnex, <&method&>
-		fnex catstr fnex, < proc UX_VECCALL >, <(&retType&)>, < >, <&usesStr&>, < thisPtr:psr>, <&className&>
+		fnex catstr fnex, < proc __veccall >, <(&retType&)>, < >, <&usesStr&>, < thisPtr:psr>, <&className&>
 	ifnb <args>
 		fnex catstr fnex, <, >, <&args&>
 	else
@@ -492,7 +492,7 @@ UX_STATICVECMETHOD macro className:REQ, method:REQ, retType:REQ, usesStr:REQ, ar
 		fnex catstr fnex, <&className&>
 		fnex catstr fnex, <_>
 		fnex catstr fnex, <&method&>
-		fnex catstr fnex, < proto UX_VECCALL >, <(&retType&)>
+		fnex catstr fnex, < proto __veccall >, <(&retType&)>
 	ifnb <args>
 		fnex catstr fnex, < >, <&args&>
 	else
@@ -502,7 +502,7 @@ UX_STATICVECMETHOD macro className:REQ, method:REQ, retType:REQ, usesStr:REQ, ar
 		fnex catstr fnex, <&className&>
 		fnex catstr fnex, <_>
 		fnex catstr fnex, <&method&>
-		fnex catstr fnex, <Pto typedef proto UX_VECCALL >, <(&retType&)>
+		fnex catstr fnex, <Pto typedef proto __veccall >, <(&retType&)>
 	ifnb <args>
 		fnex catstr fnex, < >, <&args&>
 	else
@@ -512,7 +512,7 @@ UX_STATICVECMETHOD macro className:REQ, method:REQ, retType:REQ, usesStr:REQ, ar
 		fnex catstr fnex, <&className&>
 		fnex catstr fnex, <_>
 		fnex catstr fnex, <&method&>
-		fnex catstr fnex, < proc UX_VECCALL >, <(&retType&)>, < >, <&usesStr&>
+		fnex catstr fnex, < proc __veccall >, <(&retType&)>, < >, <&usesStr&>
 	ifnb <args>
 		fnex catstr fnex, < >, <&args&>
 	else

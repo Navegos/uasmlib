@@ -97,7 +97,7 @@ ifdef WINDOWS
 		ifndef DEFINED_VECTORCALL
 			define DEFINED_VECTORCALL
 		endif
-		UX_VECCALL		textequ		<VECTORCALL>
+		__veccall		textequ		<VECTORCALL>
 		;Parameters RCX/XMM0, RDX/XMM1, R8/XMM2, R9/XMM3 + XMM0-XMM5/YMM0-YMM5
 		;Preserve RBX, RBP, RDI, RSI, RSP, R12, R13, R14, R15, XMM6:XMM15
 		;Return EAX:EDX/XMM0:XMM3
@@ -215,7 +215,7 @@ ifdef WINDOWS
 			ifndef DEFINED_VECTORCALL
 				define DEFINED_VECTORCALL
 			endif
-			UX_VECCALL		textequ		<VECTORCALL>
+			__veccall		textequ		<VECTORCALL>
 			;ECX,EDX, XMM0-XMM5/YMM0-YMM5
 			;Preserve EBX, EBP, EDI, ESI, ESP, R12, R13, R14, R15, XMM6:XMM15
 			;Return EAX:EDX/XMM0:XMM3
@@ -223,7 +223,7 @@ ifdef WINDOWS
 			ifndef DEFINED_FASTCALL
 				define DEFINED_FASTCALL
 			endif
-			UX_VECCALL		textequ		<FASTCALL> 
+			__veccall		textequ		<FASTCALL> 
 			;Parameters ECX, EDX
 			;Preserve EBX
 			;Return EAX:EDX/XMM0:XMM3
@@ -319,7 +319,7 @@ else ;UNIX
 		ifndef DEFINED_SYSTEMV
 			define DEFINED_SYSTEMV
 		endif
-		UX_VECCALL		textequ		<SYSTEMV>
+		__veccall		textequ		<SYSTEMV>
 		;Parameters RDI, RSI, RDX, RCX, R8, R9, XMM0–XMM7/YMM0–YMM7
 		;Preserve RBX, RSP, RBP, R12, R13, R14, R15
 		;Return EAX:EDX/XMM0:XMM3
@@ -334,7 +334,7 @@ else ;UNIX
 			ifndef DEFINED_SYSTEMV
 				define DEFINED_SYSTEMV
 			endif
-			UX_VECCALL		textequ		<SYSTEMV>
+			__veccall		textequ		<SYSTEMV>
 			;none?ECX,EDX, XMM0–XMM7/YMM0–YMM7
 			;Preserve EBX, ESI, EDI, EBP, ESP
 			;Return EAX:EDX/XMM0:XMM3
@@ -342,7 +342,7 @@ else ;UNIX
 			ifndef DEFINED_FASTCALL
 				define DEFINED_FASTCALL
 			endif
-			UX_VECCALL		textequ		<FASTCALL>
+			__veccall		textequ		<FASTCALL>
 			;Parameters ECX, EDX
 			;Preserve EBX
 			;Return EAX:EDX/XMM0:XMM3
@@ -388,18 +388,64 @@ ifdef __X64__
 	ptr_t_size	equ		8
 	reg_t_size	equ		8
 	size_t		textequ		<qword>
+	psize_t		textequ		<ptr qword>
+	size_tp		textequ		<qword ptr>
 	isize_t		textequ		<dq>
 	size_t_size	equ		8
+
+	__align_size_t macro
+  		alignment textequ <align 8>
+  	alignment
+	endm
+
 else
 	ptr_t_size	equ		4
 	reg_t_size	equ		4
 	size_t		textequ		<dword>
+	psize_t		textequ		<ptr dword>
+	size_tp		textequ		<dword ptr>
 	isize_t		textequ		<dd>
 	size_t_size	equ		4
+	
+	__align_size_t macro
+  		alignment textequ <align 4>
+  	alignment
+	endm
+
 endif ;__X64__
+
+	__align macro AlignSize
+  		alignment textequ <align AlignSize>
+  	alignment
+	endm
+	
+	__align_field macro FieldAlignSize
+  		field_option_alignment textequ <option fieldalign:FieldAlignSize>
+  	field_option_alignment
+	endm
+	
+	__align_proc macro FieldAlignSize, ProcAlignSize
+  		proc_option_alignment textequ <option procalign:ProcAlignSize>
+	proc_option_alignment
+	endm
+
+	__align_fp_opt macro FieldAlignSize, ProcAlignSize
+  		field_option_alignment textequ <option fieldalign:FieldAlignSize>
+  		proc_option_alignment textequ <option procalign:ProcAlignSize>
+  	field_option_alignment
+	proc_option_alignment
+	endm
 
 false	equ		0h
 true	equ		1h
+
+; dword
+m32_false		equ		00000000h
+m32_true		equ		0ffffffffh
+
+; qword
+m64_false		equ		0000000000000000h
+m64_true		equ		0ffffffffffffffffh
 
 ; /* EFLAGS %eax=00H, %ebx=00H */
 bit_CPUID 					equ		00200000h	; 1 << 21
@@ -556,7 +602,7 @@ intrinset_AVX512DQ			equ		3dh ;61  or above = AVX512DQ
 intrinset_AVX512BW			equ		3eh ;62  or above = AVX512BW
 intrinset_AVX512VL			equ		3fh ;63  or above = AVX512VL
 
-; /* CMPP S/D Opcodes Condition Predicate */
+; /* CMP S/P S/D Opcodes Condition Predicate */
 CMPP_EQ						equ		0h
 CMPP_LT						equ		1h
 CMPP_LE						equ		2h

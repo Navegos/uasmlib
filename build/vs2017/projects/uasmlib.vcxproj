@@ -34,76 +34,44 @@
     <UASM Include="..\..\..\src\x86\asm\uXmxsetbv.asm" />
     <UASM Include="..\..\..\src\x86\MMX\asm\uXm64\uXm64mmintrin.asm" />
     <UASM Include="..\..\..\src\x86\MMX\asm\uXm64\uXm64mmintshifts.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128d\uXm128demmintrin.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128d\uXm128dpermutepd.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128d\uXm128dshufflepd.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fd\uXm128fdpermuteps.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fd\uXm128fdshuffleps.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fd\uXm128fdxmmintrin.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fid\uXm128fidemmintrin.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fid\uXm128fidpermuteps.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fid\uXm128fidshuffleps.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fid\uXm128fidxmmintrin.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fi\uXm128fipermuteps.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fi\uXm128fishuffleps.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128fi\uXm128fixmmintrin.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128f\uXm128fpermuteps.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128f\uXm128fshuffleps.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128f\uXm128fxmmintrin.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128\uXm128permuteps.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128\uXm128shuffleps.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm128\uXm128xmmintrin.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm64\uXm64pshufw.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXm64\uXm64xmmintrin.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintmisc.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintshifts.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintshuffle.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintrin.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmpermutepd.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmshufflepd.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmconstdata.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmintrin.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmpermuteps.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmshuffleps.asm" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\uasmlib.h" />
+    <ClInclude Include="..\..\..\include\uXmAssert.h" />
     <ClInclude Include="..\..\..\include\uXmBaseDefs.h" />
     <ClInclude Include="..\..\..\include\uXmExp.h" />
     <ClInclude Include="..\..\..\include\uXmPreprocessor.h" />
+    <ClInclude Include="..\..\..\include\uXmSalProcess.h" />
     <ClInclude Include="..\..\..\include\uXmTypes.h" />
     <ClInclude Include="..\..\..\include\uXmVers.h" />
-    <ClInclude Include="..\..\..\include\x86\MMX\uXm64\uXm64mmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\MMX\uXmmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\MMX\uXmMMXIntrin.h" />
-    <ClInclude Include="..\..\..\include\x86\MMX\uXmMMXStructs.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128d\uXm128demmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128d\uXm128dpermutepd.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128d\uXm128dshufflepd.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128fd\uXm128fdpermuteps.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128fd\uXm128fdshuffleps.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128fd\uXm128fdxmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128fid\uXm128fidpermuteps.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128fid\uXm128fidshuffleps.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128fid\uXm128fidxmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128fi\uXm128fipermuteps.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128fi\uXm128fishuffleps.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128fi\uXm128fixmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128f\uXm128fxmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128f\uXm128fpermuteps.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128f\uXm128fshuffleps.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128i\uXm128iemmintmisc.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128i\uXm128iemmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128i\uXm128iemmintshifts.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128i\uXm128iemmintshuffle.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128\uXm128emmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128\uXm128permuteps.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128\uXm128shuffleps.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm128\uXm128xmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm64\uXm64pshufw.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXm64\uXm64xmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXmemmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXmSSEIntrin.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXmSSEStructs.h" />
-    <ClInclude Include="..\..\..\include\x86\SSE\uXmxmmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmemmintmisc.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmemmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmemmintshifts.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmemmintshuffle.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmemmpermutepd.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmemmshufflepd.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmmmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmSSEStructs.h" />
     <ClInclude Include="..\..\..\include\x86\uXmx86Cpu.h" />
     <ClInclude Include="..\..\..\include\x86\uXmx86Intrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmxmmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmxmmpermuteps.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmxmmpshufw.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmxmmshuffleps.h" />
     <ClInclude Include="..\..\resource\resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\uasmlib.cpp" />
-    <ClCompile Include="..\..\..\src\x86\SSE\uXm128f\uXm128fxmmintrina.cpp" />
-    <ClCompile Include="..\..\..\src\x86\SSE\uXm128\uXm128xmmintrina.cpp" />
     <ClCompile Include="..\..\..\src\x86\SSE\uXmSSEStructs.cpp" />
     <ClCompile Include="..\..\..\src\x86\uXmx86Cpu.cpp" />
     <ClCompile Include="..\..\..\src\x86\uXmx86Intrin.cpp" />
@@ -113,6 +81,8 @@
     <None Include="..\..\..\src\x86\asm\uXmx86asm.inc" />
     <None Include="..\..\..\src\x86\asm\uXmx86cpu.inc" />
     <None Include="..\..\..\src\x86\SSE\asm\uXmsseintrin.inc" />
+    <None Include="..\..\..\src\x86\SSE\asm\uXmxmmconst.inc" />
+    <None Include="..\..\..\src\x86\SSE\asm\uXmxmmconstdata.inc" />
     <None Include="..\..\..\src\x86\SSE\asm\xmmtypes.inc" />
     <None Include="..\export\uasmlib-export.def" />
   </ItemGroup>
@@ -213,6 +183,7 @@
     <UASM>
       <PreprocessorDefinitions>__X32__;WIN32;WINDOWS;DEBUG</PreprocessorDefinitions>
       <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/</IncludePaths>
+      <OutputFormat>1</OutputFormat>
     </UASM>
     <ResourceCompile>
       <PreprocessorDefinitions>_MANIFEST;WIN32;_WIN32;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;_DEBUG;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -244,6 +215,7 @@ copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win32\vc14</Command>
     <UASM>
       <PreprocessorDefinitions>__X64__;WIN64;WINDOWS;DEBUG</PreprocessorDefinitions>
       <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/</IncludePaths>
+      <OutputFormat>2</OutputFormat>
     </UASM>
     <ResourceCompile>
       <PreprocessorDefinitions>_MANIFEST;__x64__;WIN64;_WIN64;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;_DEBUG;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -276,6 +248,7 @@ copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win64\vc14</Command>
       <PreprocessorDefinitions>__X32__;WIN32;WINDOWS;NDEBUG</PreprocessorDefinitions>
       <UseSafeExceptionHandlers>true</UseSafeExceptionHandlers>
       <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/</IncludePaths>
+      <OutputFormat>1</OutputFormat>
     </UASM>
     <ResourceCompile>
       <PreprocessorDefinitions>_MANIFEST;WIN32;_WIN32;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;NDEBUG;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -305,6 +278,7 @@ copy $(OutDir)$(TargetName).lib $(UASMLIB_PATH)\lib\Win32\vc14</Command>
     <UASM>
       <PreprocessorDefinitions>__X64__;WIN64;WINDOWS;NDEBUG</PreprocessorDefinitions>
       <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/</IncludePaths>
+      <OutputFormat>2</OutputFormat>
     </UASM>
     <ResourceCompile>
       <PreprocessorDefinitions>_MANIFEST;__x64__;WIN64;_WIN64;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;NDEBUG;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>

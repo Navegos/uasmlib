@@ -26,12 +26,12 @@
 
 #define uXm_VERSION_CST uXm_VERSION_MAJOR , uXm_VERSION_MINOR , uXm_BUILD_YYYY, uXm_BUILD_MMDD
 
-#define uXm_VERSION_STR eXStringer(uXm_VERSION_MAJOR) "." eXStringer(uXm_VERSION_MINOR) "." eXStringer(uXm_VERSION_REVISION) "." eXStringer(uXm_VERSION_SUBREVISION)
+#define uXm_VERSION_STR uXm_Stringer(uXm_VERSION_MAJOR) "." uXm_Stringer(uXm_VERSION_MINOR) "." uXm_Stringer(uXm_VERSION_REVISION) "." uXm_Stringer(uXm_VERSION_SUBREVISION)
 
-#define uXm_VERSION_MAJOR_STR       eXStringer(uXm_VERSION_MAJOR)
-#define uXm_VERSION_MINOR_STR       eXStringer(uXm_VERSION_MINOR)
-#define uXm_VERSION_PATCH_STR       eXStringer(uXm_VERSION_REVISION)
-#define uXm_VERSION_BUILD_STR       eXStringer(uXm_VERSION_SUBREVISION)
+#define uXm_VERSION_MAJOR_STR       uXm_Stringer(uXm_VERSION_MAJOR)
+#define uXm_VERSION_MINOR_STR       uXm_Stringer(uXm_VERSION_MINOR)
+#define uXm_VERSION_PATCH_STR       uXm_Stringer(uXm_VERSION_REVISION)
+#define uXm_VERSION_BUILD_STR       uXm_Stringer(uXm_VERSION_SUBREVISION)
 
 #define uXm_FULL_VERSION_STR		uXm_VERSION_MAJOR_STR "." uXm_VERSION_MINOR_STR "." uXm_VERSION_PATCH_STR "." uXm_VERSION_BUILD_STR " (" uXm_RELEASE_NAME ")"
 

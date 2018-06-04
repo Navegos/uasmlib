@@ -11,25 +11,25 @@
 Calling convention  // currently defined for windows only for (MSVC / Intel ICW) & (GCC compatible compiler / Intel ICU), needs researching for other compilers implementation
 */
 #if defined(uXm_MSVC_COMPATIBLE_COMPILER)
-#ifndef uXm_CALLCONV
+#ifndef uXm_callconv
 # if defined(uXm_VCVECTORCALL)
 #	if defined(uXm_VC)
-#		define uXm_CALLCONV __vectorcall
+#		define uXm_callconv __vectorcall
 #	else
 #	if defined(uXm_X86_OR_X64_CPU) && !defined(uXm_MIC)
-#		define uXm_CALLCONV __fastcall
+#		define uXm_callconv __fastcall
 #	else
-#		define uXm_CALLCONV
+#		define uXm_callconv
 #	endif
 #  endif
 /*
 # elif defined(uXm_ICREGCALL)
-#		define uXm_CALLCONV(T) __regcall T*/
+#		define uXm_callconv(T) __regcall T*/
 # else
 #	if defined(uXm_X86_OR_X64_CPU) && !defined(uXm_MIC)
-#		define uXm_CALLCONV __fastcall
+#		define uXm_callconv __fastcall
 #	else
-#		define uXm_CALLCONV
+#		define uXm_callconv
 #	endif
 # endif
 #endif
@@ -65,14 +65,14 @@ Calling convention  // currently defined for windows only for (MSVC / Intel ICW)
 #elif defined(uXm_GCC_COMPATIBLE_COMPILER)
 /*
 # if defined(uXm_ICREGCALL)
-#	define uXm_CALLCONV(T) __attribute__((regcall)) T
+#	define uXm_callconv(T) __attribute__((regcall)) T
 #	define uXm_VECCALL(T) __attribute__((regcall)) T
 #else*/
 #  if defined(uXm_X86_OR_X64_CPU) && !defined(uXm_MIC)
-#	define uXm_CALLCONV __attribute__((sysv_abi))
+#	define uXm_callconv __attribute__((sysv_abi))
 #	define uXm_VECCALL __attribute__((sysv_abi))
 #  else
-#	define uXm_CALLCONV
+#	define uXm_callconv
 #	define uXm_VECCALL
 #  endif
 /*# endif*/
@@ -86,7 +86,7 @@ Calling convention  // currently defined for windows only for (MSVC / Intel ICW)
 #	define uXm_STDCALL
 # endif
 #else
-#   define uXm_CALLCONV
+#   define uXm_callconv
 #   define uXm_VECCALL
 #   define uXm_CDECL
 #   define uXm_STDCALL
@@ -1129,18 +1129,18 @@ Noinline macro
 Constexpr macro
 */
 #if defined(uXm_CONSTEXPR_SUPPORT)
-#	define uXm_CONSTEXPR constexpr
+#	define uXm_constexpr constexpr
 #else
-#	define uXm_CONSTEXPR const
+#	define uXm_constexpr const
 #endif
 
 /**
 Empty function class body macro
 */
-#if defined(uXm_CTOR_DEFAULT_SUPPORT)
-#	define uXm_CTOR_DEFAULT =default;
+#if defined(uXm_DEFAULT_CTOR_SUPPORT)
+#	define uXm_default_ctor =default;
 #else
-#	define uXm_CTOR_DEFAULT {}
+#	define uXm_default_ctor {}
 #endif
 
 /*! restrict macro */
@@ -1663,13 +1663,13 @@ Empty function class body macro
 #	define __uXm_CCGLOBAL_API(T) _EXTERNCC __uXm_INLINE(T)
 
 // static inline
-#	define uXm_CGLOBAL_CALLCONV_API(T) _EXTERNC uXm_S_INLINE(uXm_CALLCONV(T))
+#	define uXm_CGLOBAL_CALLCONV_API(T) _EXTERNC uXm_S_INLINE(uXm_callconv(T))
 // inline only
-#	define __uXm_CGLOBAL_CALLCONV_API(T) _EXTERNC __uXm_INLINE(uXm_CALLCONV(T))
+#	define __uXm_CGLOBAL_CALLCONV_API(T) _EXTERNC __uXm_INLINE(uXm_callconv(T))
 // static inline
-#	define uXm_CCGLOBAL_CALLCONV_API(T) _EXTERNCC uXm_S_INLINE(uXm_CALLCONV(T))
+#	define uXm_CCGLOBAL_CALLCONV_API(T) _EXTERNCC uXm_S_INLINE(uXm_callconv(T))
 // inline only
-#	define __uXm_CCGLOBAL_CALLCONV_API(T) _EXTERNCC __uXm_INLINE(uXm_CALLCONV(T))
+#	define __uXm_CCGLOBAL_CALLCONV_API(T) _EXTERNCC __uXm_INLINE(uXm_callconv(T))
 
 // static inline
 #	define uXm_CGLOBAL_VECCALL_API(T) _EXTERNC uXm_S_INLINE(uXm_VECCALL(T))
@@ -1703,13 +1703,13 @@ Empty function class body macro
 #	define __uXm_CCGLOBAL_API(T) _EXTERNCC __uXm_INLINE(T)
 
 // static inline
-#	define uXm_CGLOBAL_CALLCONV_API(T) _EXTERNC uXm_S_INLINE(uXm_CALLCONV(T))
+#	define uXm_CGLOBAL_CALLCONV_API(T) _EXTERNC uXm_S_INLINE(uXm_callconv(T))
 // inline only
-#	define __uXm_CGLOBAL_CALLCONV_API(T) _EXTERNC __uXm_INLINE(uXm_CALLCONV(T))
+#	define __uXm_CGLOBAL_CALLCONV_API(T) _EXTERNC __uXm_INLINE(uXm_callconv(T))
 // static inline
-#	define uXm_CCGLOBAL_CALLCONV_API(T) _EXTERNCC uXm_S_INLINE(uXm_CALLCONV(T))
+#	define uXm_CCGLOBAL_CALLCONV_API(T) _EXTERNCC uXm_S_INLINE(uXm_callconv(T))
 // inline only
-#	define __uXm_CCGLOBAL_CALLCONV_API(T) _EXTERNCC __uXm_INLINE(uXm_CALLCONV(T))
+#	define __uXm_CCGLOBAL_CALLCONV_API(T) _EXTERNCC __uXm_INLINE(uXm_callconv(T))
 
 // static inline
 #	define uXm_CGLOBAL_VECCALL_API(T) _EXTERNC uXm_S_INLINE(uXm_VECCALL(T))
@@ -1744,13 +1744,13 @@ Empty function class body macro
 #	define __uXm_CCGLOBAL_API(T) _EXTERNCC __uXm_INLINE(T)
 
 // static inline
-#	define uXm_CGLOBAL_CALLCONV_API(T) _EXTERNC uXm_S_INLINE(uXm_CALLCONV(T))
+#	define uXm_CGLOBAL_CALLCONV_API(T) _EXTERNC uXm_S_INLINE(uXm_callconv(T))
 // inline only
-#	define __uXm_CGLOBAL_CALLCONV_API(T) _EXTERNC __uXm_INLINE(uXm_CALLCONV(T))
+#	define __uXm_CGLOBAL_CALLCONV_API(T) _EXTERNC __uXm_INLINE(uXm_callconv(T))
 // static inline
-#	define uXm_CCGLOBAL_CALLCONV_API(T) _EXTERNCC uXm_S_INLINE(uXm_CALLCONV(T))
+#	define uXm_CCGLOBAL_CALLCONV_API(T) _EXTERNCC uXm_S_INLINE(uXm_callconv(T))
 // inline only
-#	define __uXm_CCGLOBAL_CALLCONV_API(T) _EXTERNCC __uXm_INLINE(uXm_CALLCONV(T))
+#	define __uXm_CCGLOBAL_CALLCONV_API(T) _EXTERNCC __uXm_INLINE(uXm_callconv(T))
 
 // static inline
 #	define uXm_CGLOBAL_VECCALL_API(T) _EXTERNC uXm_S_INLINE(uXm_VECCALL(T))
@@ -2804,7 +2804,7 @@ Deprecated macro
 
 #   define uXm_SIZE_OF(Class, Member)			sizeof(((Class*)0)->Member)
 
-//#   define uXm_UNUSED(_P) (void)(_P);
+#   define uXm_UNUSED(_P) (void)(_P);
 
 // An expression that should expand to nothing in non uXm_DEBUG builds.
 // currently use this only for tagging the purpose of containers for memory use tracking.

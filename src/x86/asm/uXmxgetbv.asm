@@ -3,10 +3,10 @@
 
 	.code
 			align 8
-uXm_xgetbv proto UX_VECCALL
+uXm_xgetbv proto __veccall
 
 			align 8
-uXm_xgetbv proc UX_VECCALL
+uXm_xgetbv proc __veccall
 
 	ifndef __X64__
 			;mov				ecx,			esp

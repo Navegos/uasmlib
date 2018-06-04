@@ -8,8 +8,8 @@
 #ifndef _uXm_Stringer
 #       define _uXm_Stringer(x) #x
 #endif
-#ifndef eXStringer
-#       define eXStringer(x)  _uXm_Stringer(x)
+#ifndef uXm_Stringer
+#       define uXm_Stringer(x)  _uXm_Stringer(x)
 #endif
 
 #ifndef _uXm_Con_Stringer
@@ -67,6 +67,9 @@ Compiler defines
 #   elif defined(_MSC_VER) && (_MSC_VER == 1913)
 #		define uXm_VC14_13 1
 #		define uXm_COMPILER "Microsoft Visual C++ 14.13"
+#   elif defined(_MSC_VER) && (_MSC_VER == 1914)
+#		define uXm_VC14_14 1
+#		define uXm_COMPILER "Microsoft Visual C++ 14.14"
 #	else
 #error ERROR: add your vc compiler version
 #	endif
@@ -167,7 +170,7 @@ Compiler defines
 #ifndef uXm_CLANG
 #       define uXm_CLANG 1
 #endif
-#       define uXm_COMPILER "Clang " eXStringer(__clang_major__) "." eXStringer(__clang_minor__)
+#       define uXm_COMPILER "Clang " uXm_Stringer(__clang_major__) "." uXm_Stringer(__clang_minor__)
 # if defined(__clang_major__) && (((__clang_major__ >=3) && (__clang_minor__ >=9)) || (__clang_major__ >=4))
 #       define uXm_COMPILER_INTRIN 60
 # endif
@@ -181,7 +184,7 @@ Compiler defines
 # if  defined(__SNC__)
 #       define uXm_SNC 1
 # endif
-#       define uXm_COMPILER "GNUC " eXStringer(__GNUC__) "." eXStringer(__GNUC_MINOR__)
+#       define uXm_COMPILER "GNUC " uXm_Stringer(__GNUC__) "." uXm_Stringer(__GNUC_MINOR__)
 # if defined(__GNUC__) && (((__GNUC__ >=4) && (__GNUC_MINOR__ >=9)) || (__GNUC__ >=5))
 #       define uXm_COMPILER_INTRIN 60
 # endif
@@ -190,30 +193,30 @@ Compiler defines
 #       define uXm_IBM_COMPILER 1
 #undef uXm_COMPILER_STR
 #       define uXm_COMPILER_STR "ibmc"
-#       define uXm_COMPILER "IBMC " eXStringer(__IBMC__) "." eXStringer(__IBMC_MINOR__)
+#       define uXm_COMPILER "IBMC " uXm_Stringer(__IBMC__) "." uXm_Stringer(__IBMC_MINOR__)
 #elif defined(__PGI) && !defined(__CUDA_ARCH__) && !defined(__CUDACC__)
 #       define uXm_PGI 1
 #       define uXm_PGI_COMPILER 1
 #undef uXm_COMPILER_STR
 #       define uXm_COMPILER_STR "pgi"
-#       define uXm_COMPILER "PGI " eXStringer(__PGI__) "." eXStringer(__PGI_MINOR__)
+#       define uXm_COMPILER "PGI " uXm_Stringer(__PGI__) "." uXm_Stringer(__PGI_MINOR__)
 #elif defined(__APPLE_CC__) && !defined(__CUDA_ARCH__) && !defined(__CUDACC__)
 #       define uXm_APPLECC 1
 #       define uXm_APPLE_COMPILER 1
 #undef uXm_COMPILER_STR
 #       define uXm_COMPILER_STR "applecc"
-#       define uXm_COMPILER "APPLECC " eXStringer(__APPLE_CC__) "." eXStringer(__APPLE_CC_MINOR__)
+#       define uXm_COMPILER "APPLECC " uXm_Stringer(__APPLE_CC__) "." uXm_Stringer(__APPLE_CC_MINOR__)
 #elif defined(__BORLANDC__) || defined(__CODEGEARC__) && !defined(__CUDA_ARCH__) && !defined(__CUDACC__)
 #       define uXm_BORLAND 1
 #undef uXm_COMPILER_STR
 #       define uXm_COMPILER_STR "borland"
-#       define uXm_COMPILER "EMBARCADERO " eXStringer(__BORLANDC__) "." eXStringer(__BORLANDC_MINOR__)
+#       define uXm_COMPILER "EMBARCADERO " uXm_Stringer(__BORLANDC__) "." uXm_Stringer(__BORLANDC_MINOR__)
 #elif defined(__PATHCC__) && !defined(__CUDA_ARCH__) && !defined(__CUDACC__)
 #       define uXm_PATHCC 1
 #       define uXm_PATHCC_COMPILER 1
 #undef uXm_COMPILER_STR
 #       define uXm_COMPILER_STR "pathscale"
-#       define uXm_COMPILER "Pathscale " eXStringer(__PATHCC__) "." eXStringer(__PATHCC_MINOR__)
+#       define uXm_COMPILER "Pathscale " uXm_Stringer(__PATHCC__) "." uXm_Stringer(__PATHCC_MINOR__)
 #elif defined(__ghs__) && !defined(__CUDA_ARCH__) && !defined(__CUDACC__)
 #       define uXm_GHS 1
 #elif defined(__CC_ARM) || defined(__ARMCC__)
@@ -221,7 +224,7 @@ Compiler defines
 #       define uXm_ARM_COMPILER 1
 #undef uXm_COMPILER_STR
 #       define uXm_COMPILER_STR "armcc"
-#       define uXm_COMPILER "ARMCC " eXStringer(__ARMCC__) "." eXStringer(__ARMCC_MINOR__)
+#       define uXm_COMPILER "ARMCC " uXm_Stringer(__ARMCC__) "." uXm_Stringer(__ARMCC_MINOR__)
 #elif defined(__MWERKS__) && !defined(__CUDA_ARCH__) && !defined(__CUDACC__)
 #       define uXm_MWERKS 1
 #elif defined(__CUDA_ARCH__) || defined(__CUDACC__)
@@ -235,7 +238,7 @@ Compiler defines
 #  endif
 #undef uXm_COMPILER_STR
 #       define uXm_COMPILER_STR "cudacc"
-#       define uXm_COMPILER "Nvidia Cuda Compiler " eXStringer(__CUDACC__) "." eXStringer(__CUDACC_MINOR__)
+#       define uXm_COMPILER "Nvidia Cuda Compiler " uXm_Stringer(__CUDACC__) "." uXm_Stringer(__CUDACC_MINOR__)
 #else
 # error ERROR: Unknown compiler
 # error ERROR: Compiler needs to be implemented
@@ -947,7 +950,7 @@ Platform define
 #endif
 
 #if defined(uXm_VC) && (_MSC_VER >= 1800)
-#       define uXm_CTOR_DEFAULT_SUPPORT 1
+#       define uXm_DEFAULT_CTOR_SUPPORT 1
 #endif
 
 #if (defined(uXm_VC) && (_MSC_VER >= 1700) && (defined(uXm_PC_APP) || defined(uXm_DESKTOP_APP))) && !defined(uXm_PHONE_APP) && !defined(__INTEL_COMPILER) && !defined(uXm_CLANG) && !defined(uXm_CUDACC)
@@ -2952,7 +2955,7 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #       define uXm_ISET_SSE42 42
 #       define uXm_ISET_SSE41 41
 #       define uXm_ISET_SSE4A 40
-#       define uXm_ISET_SSE3 31
+#       define uXm_ISET_SSSE3 31
 #       define uXm_ISET_SSE3 30
 #       define uXm_ISET_SSE2 20
 #       define uXm_ISET_SSE 10

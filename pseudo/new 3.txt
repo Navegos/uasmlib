@@ -18,4 +18,3 @@ getbytereg proc UX_VECCALL (byte) ;_Imm8:byte
 getbytereg endp
 _TEXT ends
 
-
