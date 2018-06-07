@@ -35,6 +35,38 @@ Local xmmValue
   EXITM <xmmValue>
 ENDM
 
+_uXm_xmm4_const macro functionName:REQ, vectorType:REQ, V1:REQ
+		fnex textequ <>
+		fnex catstr fnex, <&functionName&>
+		public fnex
+		fnex catstr fnex, < vectorType>,  < { V1, V1, V1, V1 } >
+		
+		fnex
+endm
 
-mm_align_size	equ		8h
-xmm_align_size	equ		10h
+_uXm_xmm4_const4 macro functionName:REQ, vectorType:REQ, V1:REQ, V2:REQ, V3:REQ, V4:REQ
+		fnex textequ <>
+		fnex catstr fnex, <&functionName&>
+		public fnex
+		fnex catstr fnex, < vectorType>, < { V1, V2, V3, V4 } >
+		
+		fnex
+endm
+
+_uXm_xmm2_const macro functionName:REQ, vectorType:REQ, V1:REQ
+		fnex textequ <>
+		fnex catstr fnex, <&functionName&>
+		public fnex
+		fnex catstr fnex, < vectorType>,  < { V1, V1 } >
+		
+		fnex
+endm
+
+_uXm_xmm2_const4 macro functionName:REQ, vectorType:REQ, V1:REQ, V2:REQ
+		fnex textequ <>
+		fnex catstr fnex, <&functionName&>
+		public fnex
+		fnex catstr fnex, < vectorType>, < { V1, V2 } >
+		
+		fnex
+endm

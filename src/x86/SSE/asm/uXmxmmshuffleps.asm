@@ -56,1557 +56,1291 @@ ifndef __MIC__
 									offset _m128shufps_246, offset _m128shufps_247, offset _m128shufps_248, offset _m128shufps_249, offset _m128shufps_250, offset _m128shufps_251, \
 									offset _m128shufps_252, offset _m128shufps_253, offset _m128shufps_254, offset _m128shufps_255				
 		
-	__align_fp_opt xmm_align_size, xmm_align_size
+	__align_xmm_fp_opt
 			
 	.code
 
-;******************
-; Proto
-;******************
-
-_uXm_mm_shuffle_0000_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0001_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0002_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0003_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0010_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0011_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0012_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0013_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0020_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0021_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0022_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0023_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0030_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0031_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0032_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0033_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0100_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0101_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0102_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0103_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0110_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0111_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0112_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0113_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0120_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0121_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0122_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0123_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0130_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0131_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0132_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0133_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0200_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0201_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0202_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0203_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0210_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0211_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0212_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0213_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0220_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0221_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0222_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0223_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0230_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0231_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0232_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0233_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0300_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0301_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0302_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0303_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0310_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0311_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0312_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0313_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0320_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0321_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0322_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0323_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0330_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0331_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0332_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_0333_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1000_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1001_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1002_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1003_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1010_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1011_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1012_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1013_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1020_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1021_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1022_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1023_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1030_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1031_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1032_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1033_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1100_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1101_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1102_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1103_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1110_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1111_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1112_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1113_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1120_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1121_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1122_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1123_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1130_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1131_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1132_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1133_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1200_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1201_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1202_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1203_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1210_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1211_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1212_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1213_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1220_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1221_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1222_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1223_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1230_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1231_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1232_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1233_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1300_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1301_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1302_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1303_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1310_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1311_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1312_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1313_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1320_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1321_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1322_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1323_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1330_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1331_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1332_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_1333_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2000_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2001_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2002_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2003_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2010_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2011_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2012_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2013_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2020_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2021_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2022_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2023_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2030_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2031_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2032_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2033_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2100_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2101_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2102_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword 
-_uXm_mm_shuffle_2103_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2110_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2111_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2112_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2113_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2120_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2121_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2122_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword 
-_uXm_mm_shuffle_2123_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2130_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2131_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2132_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2133_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2200_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2201_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2202_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2203_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2210_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2211_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2212_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2213_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2220_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2221_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2222_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2223_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2230_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2231_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2232_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword 
-_uXm_mm_shuffle_2233_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2300_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2301_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2302_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2303_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2310_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2311_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2312_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2313_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2320_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2321_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2322_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2323_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2330_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2331_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2332_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_2333_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3000_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3001_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3002_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3003_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3010_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3011_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3012_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3013_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3020_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3021_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3022_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3023_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3030_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3031_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3032_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3033_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3100_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3101_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3102_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3103_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3110_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3111_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3112_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3113_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3120_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3121_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3122_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3123_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3130_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3131_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3132_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3133_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3200_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3201_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3202_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3203_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3210_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3211_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3212_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3213_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3220_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3221_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3222_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3223_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3230_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3231_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3232_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3233_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3300_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3301_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3302_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3303_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3310_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3311_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3312_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3313_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3320_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3321_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3322_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3323_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3330_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3331_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3332_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_3333_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_ps proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword, _Imm8:dword
-
-;******************
-; Proc
-;******************
-	
-_uXm_mm_shuffle_0000_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0000_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			0
 			ret
-_uXm_mm_shuffle_0000_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0001_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0001_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			1
 			ret
-_uXm_mm_shuffle_0001_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0002_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0002_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			2
 			ret
-_uXm_mm_shuffle_0002_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0003_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0003_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			3
 			ret
-_uXm_mm_shuffle_0003_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0010_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0010_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			4
 			ret
-_uXm_mm_shuffle_0010_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0011_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0011_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			5
 			ret
-_uXm_mm_shuffle_0011_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0012_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0012_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			6
 			ret
-_uXm_mm_shuffle_0012_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0013_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0013_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			7
 			ret
-_uXm_mm_shuffle_0013_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0020_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0020_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			8
 			ret
-_uXm_mm_shuffle_0020_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0021_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0021_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			9
 			ret
-_uXm_mm_shuffle_0021_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0022_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0022_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			10
 			ret
-_uXm_mm_shuffle_0022_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0023_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0023_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			11
 			ret
-_uXm_mm_shuffle_0023_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0030_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0030_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			12
 			ret
-_uXm_mm_shuffle_0030_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0031_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0031_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			13
 			ret
-_uXm_mm_shuffle_0031_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0032_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0032_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			14
 			ret
-_uXm_mm_shuffle_0032_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0033_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0033_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			15
 			ret
-_uXm_mm_shuffle_0033_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0100_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0100_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			16
 			ret
-_uXm_mm_shuffle_0100_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0101_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0101_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			17
 			ret
-_uXm_mm_shuffle_0101_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0102_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0102_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			18
 			ret
-_uXm_mm_shuffle_0102_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0103_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0103_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			19
 			ret
-_uXm_mm_shuffle_0103_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0110_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0110_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			20
 			ret
-_uXm_mm_shuffle_0110_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0111_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0111_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			21
 			ret
-_uXm_mm_shuffle_0111_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0112_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0112_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			22
 			ret
-_uXm_mm_shuffle_0112_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0113_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0113_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			23
 			ret
-_uXm_mm_shuffle_0113_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0120_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0120_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			24
 			ret
-_uXm_mm_shuffle_0120_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0121_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0121_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			25
 			ret
-_uXm_mm_shuffle_0121_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0122_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0122_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			26
 			ret
-_uXm_mm_shuffle_0122_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0123_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0123_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			27
 			ret
-_uXm_mm_shuffle_0123_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0130_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0130_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			28
 			ret
-_uXm_mm_shuffle_0130_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0131_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0131_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			29
 			ret
-_uXm_mm_shuffle_0131_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0132_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0132_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			30
 			ret
-_uXm_mm_shuffle_0132_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0133_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0133_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			31
 			ret
-_uXm_mm_shuffle_0133_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0200_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0200_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			32
 			ret
-_uXm_mm_shuffle_0200_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0201_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0201_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			33
 			ret
-_uXm_mm_shuffle_0201_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0202_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0202_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			34
 			ret
-_uXm_mm_shuffle_0202_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0203_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0203_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			35
 			ret
-_uXm_mm_shuffle_0203_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0210_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0210_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			36
 			ret
-_uXm_mm_shuffle_0210_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0211_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0211_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			37
 			ret
-_uXm_mm_shuffle_0211_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0212_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0212_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			38
 			ret
-_uXm_mm_shuffle_0212_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0213_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0213_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			39
 			ret
-_uXm_mm_shuffle_0213_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0220_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0220_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			40
 			ret
-_uXm_mm_shuffle_0220_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0221_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0221_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			41
 			ret
-_uXm_mm_shuffle_0221_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0222_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0222_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			42
 			ret
-_uXm_mm_shuffle_0222_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0223_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0223_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			43
 			ret
-_uXm_mm_shuffle_0223_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0230_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0230_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			44
 			ret
-_uXm_mm_shuffle_0230_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0231_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0231_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			45
 			ret
-_uXm_mm_shuffle_0231_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0232_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0232_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			46
 			ret
-_uXm_mm_shuffle_0232_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0233_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0233_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			47
 			ret
-_uXm_mm_shuffle_0233_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0300_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0300_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			48
 			ret
-_uXm_mm_shuffle_0300_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0301_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0301_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			49
 			ret
-_uXm_mm_shuffle_0301_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0302_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0302_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			50
 			ret
-_uXm_mm_shuffle_0302_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0303_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0303_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			51
 			ret
-_uXm_mm_shuffle_0303_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0310_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0310_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			52
 			ret
-_uXm_mm_shuffle_0310_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0311_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0311_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			53
 			ret
-_uXm_mm_shuffle_0311_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0312_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0312_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			54
 			ret
-_uXm_mm_shuffle_0312_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0313_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0313_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			55
 			ret
-_uXm_mm_shuffle_0313_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0320_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0320_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			56
 			ret
-_uXm_mm_shuffle_0320_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0321_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0321_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			57
 			ret
-_uXm_mm_shuffle_0321_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0322_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0322_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			58
 			ret
-_uXm_mm_shuffle_0322_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0323_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0323_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			59
 			ret
-_uXm_mm_shuffle_0323_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0330_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0330_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			60
 			ret
-_uXm_mm_shuffle_0330_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0331_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0331_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			61
 			ret
-_uXm_mm_shuffle_0331_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0332_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0332_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			62
 			ret
-_uXm_mm_shuffle_0332_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_0333_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_0333_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			63
 			ret
-_uXm_mm_shuffle_0333_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1000_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1000_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			64
 			ret
-_uXm_mm_shuffle_1000_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1001_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1001_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			65
 			ret
-_uXm_mm_shuffle_1001_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1002_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1002_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			66
 			ret
-_uXm_mm_shuffle_1002_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1003_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1003_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			67
 			ret
-_uXm_mm_shuffle_1003_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1010_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1010_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			68
 			ret
-_uXm_mm_shuffle_1010_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1011_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1011_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			69
 			ret
-_uXm_mm_shuffle_1011_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1012_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1012_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			70
 			ret
-_uXm_mm_shuffle_1012_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1013_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1013_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			71
 			ret
-_uXm_mm_shuffle_1013_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1020_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1020_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			72
 			ret
-_uXm_mm_shuffle_1020_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1021_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1021_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			73
 			ret
-_uXm_mm_shuffle_1021_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1022_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1022_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			74
 			ret
-_uXm_mm_shuffle_1022_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1023_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1023_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			75
 			ret
-_uXm_mm_shuffle_1023_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1030_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1030_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			76
 			ret
-_uXm_mm_shuffle_1030_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1031_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1031_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			77
 			ret
-_uXm_mm_shuffle_1031_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1032_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1032_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			78
 			ret
-_uXm_mm_shuffle_1032_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1033_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1033_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			79
 			ret
-_uXm_mm_shuffle_1033_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1100_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1100_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			80
 			ret
-_uXm_mm_shuffle_1100_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1101_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1101_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			81
 			ret
-_uXm_mm_shuffle_1101_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1102_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1102_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			82
 			ret
-_uXm_mm_shuffle_1102_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1103_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1103_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			83
 			ret
-_uXm_mm_shuffle_1103_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1110_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1110_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			84
 			ret
-_uXm_mm_shuffle_1110_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1111_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1111_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			85
 			ret
-_uXm_mm_shuffle_1111_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1112_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1112_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			86
 			ret
-_uXm_mm_shuffle_1112_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1113_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1113_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			87
 			ret
-_uXm_mm_shuffle_1113_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1120_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1120_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			88
 			ret
-_uXm_mm_shuffle_1120_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1121_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1121_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			89
 			ret
-_uXm_mm_shuffle_1121_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1122_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1122_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			90
 			ret
-_uXm_mm_shuffle_1122_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1123_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1123_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			91
 			ret
-_uXm_mm_shuffle_1123_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1130_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1130_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			92
 			ret
-_uXm_mm_shuffle_1130_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1131_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1131_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			93
 			ret
-_uXm_mm_shuffle_1131_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1132_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1132_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			94
 			ret
-_uXm_mm_shuffle_1132_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1133_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1133_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			95
 			ret
-_uXm_mm_shuffle_1133_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1200_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1200_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			96
 			ret
-_uXm_mm_shuffle_1200_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1201_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1201_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			97
 			ret
-_uXm_mm_shuffle_1201_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1202_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1202_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			98
 			ret
-_uXm_mm_shuffle_1202_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1203_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1203_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			99
 			ret
-_uXm_mm_shuffle_1203_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1210_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1210_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			100
 			ret
-_uXm_mm_shuffle_1210_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1211_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1211_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			101
 			ret
-_uXm_mm_shuffle_1211_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1212_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1212_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			102
 			ret
-_uXm_mm_shuffle_1212_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1213_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1213_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			103
 			ret
-_uXm_mm_shuffle_1213_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1220_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1220_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			104
 			ret
-_uXm_mm_shuffle_1220_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1221_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1221_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			105
 			ret
-_uXm_mm_shuffle_1221_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1222_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1222_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			106
 			ret
-_uXm_mm_shuffle_1222_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1223_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1223_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			107
 			ret
-_uXm_mm_shuffle_1223_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1230_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1230_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			108
 			ret
-_uXm_mm_shuffle_1230_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1231_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1231_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			109
 			ret
-_uXm_mm_shuffle_1231_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1232_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1232_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			110
 			ret
-_uXm_mm_shuffle_1232_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1233_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1233_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			111
 			ret
-_uXm_mm_shuffle_1233_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1300_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1300_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			112
 			ret
-_uXm_mm_shuffle_1300_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1301_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1301_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			113
 			ret
-_uXm_mm_shuffle_1301_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1302_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1302_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			114
 			ret
-_uXm_mm_shuffle_1302_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1303_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1303_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			115
 			ret
-_uXm_mm_shuffle_1303_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1310_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1310_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			116
 			ret
-_uXm_mm_shuffle_1310_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1311_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1311_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			117
 			ret
-_uXm_mm_shuffle_1311_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1312_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1312_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			118
 			ret
-_uXm_mm_shuffle_1312_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1313_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1313_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			119
 			ret
-_uXm_mm_shuffle_1313_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1320_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1320_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			120
 			ret
-_uXm_mm_shuffle_1320_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1321_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1321_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			121
 			ret
-_uXm_mm_shuffle_1321_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1322_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1322_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			122
 			ret
-_uXm_mm_shuffle_1322_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1323_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1323_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			123
 			ret
-_uXm_mm_shuffle_1323_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1330_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1330_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			124
 			ret
-_uXm_mm_shuffle_1330_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1331_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1331_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			125
 			ret
-_uXm_mm_shuffle_1331_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1332_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1332_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			126
 			ret
-_uXm_mm_shuffle_1332_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_1333_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_1333_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			127
 			ret
-_uXm_mm_shuffle_1333_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2000_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2000_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			128
 			ret
-_uXm_mm_shuffle_2000_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2001_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2001_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			129
 			ret
-_uXm_mm_shuffle_2001_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2002_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2002_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			130
 			ret
-_uXm_mm_shuffle_2002_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2003_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2003_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			131
 			ret
-_uXm_mm_shuffle_2003_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2010_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2010_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			132
 			ret
-_uXm_mm_shuffle_2010_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2011_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2011_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			133
 			ret
-_uXm_mm_shuffle_2011_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2012_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2012_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			134
 			ret
-_uXm_mm_shuffle_2012_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2013_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2013_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			135
 			ret
-_uXm_mm_shuffle_2013_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2020_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2020_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			136
 			ret
-_uXm_mm_shuffle_2020_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2021_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2021_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			137
 			ret
-_uXm_mm_shuffle_2021_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2022_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2022_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			138
 			ret
-_uXm_mm_shuffle_2022_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2023_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2023_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			139
 			ret
-_uXm_mm_shuffle_2023_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2030_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2030_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			140
 			ret
-_uXm_mm_shuffle_2030_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2031_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2031_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			141
 			ret
-_uXm_mm_shuffle_2031_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2032_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2032_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			142
 			ret
-_uXm_mm_shuffle_2032_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2033_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2033_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			143
 			ret
-_uXm_mm_shuffle_2033_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2100_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2100_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			144
 			ret
-_uXm_mm_shuffle_2100_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2101_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2101_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			145
 			ret
-_uXm_mm_shuffle_2101_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2102_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword 
+_uXm_func_start _uXm_mm_shuffle_2102_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword 
 			shufps				xmm0,			xmm1,			146
 			ret
-_uXm_mm_shuffle_2102_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2103_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2103_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			147
 			ret
-_uXm_mm_shuffle_2103_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2110_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2110_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			148
 			ret
-_uXm_mm_shuffle_2110_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2111_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2111_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			149
 			ret
-_uXm_mm_shuffle_2111_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2112_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2112_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			150
 			ret
-_uXm_mm_shuffle_2112_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2113_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2113_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			151
 			ret
-_uXm_mm_shuffle_2113_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2120_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2120_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			152
 			ret
-_uXm_mm_shuffle_2120_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2121_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2121_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			153
 			ret
-_uXm_mm_shuffle_2121_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2122_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword 
+_uXm_func_start _uXm_mm_shuffle_2122_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword 
 			shufps				xmm0,			xmm1,			154
 			ret
-_uXm_mm_shuffle_2122_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2123_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2123_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			155
 			ret
-_uXm_mm_shuffle_2123_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2130_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2130_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			156
 			ret
-_uXm_mm_shuffle_2130_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2131_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2131_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			157
 			ret
-_uXm_mm_shuffle_2131_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2132_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2132_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			158
 			ret
-_uXm_mm_shuffle_2132_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2133_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2133_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			159
 			ret
-_uXm_mm_shuffle_2133_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2200_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2200_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			160
 			ret
-_uXm_mm_shuffle_2200_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2201_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2201_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			161
 			ret
-_uXm_mm_shuffle_2201_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2202_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2202_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			162
 			ret
-_uXm_mm_shuffle_2202_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2203_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2203_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			163
 			ret
-_uXm_mm_shuffle_2203_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2210_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2210_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			164
 			ret
-_uXm_mm_shuffle_2210_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2211_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2211_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			165
 			ret
-_uXm_mm_shuffle_2211_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2212_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2212_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			166
 			ret
-_uXm_mm_shuffle_2212_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2213_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2213_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			167
 			ret
-_uXm_mm_shuffle_2213_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2220_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2220_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			168
 			ret
-_uXm_mm_shuffle_2220_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2221_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2221_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			169
 			ret
-_uXm_mm_shuffle_2221_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2222_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2222_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			170
 			ret
-_uXm_mm_shuffle_2222_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2223_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2223_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			171
 			ret
-_uXm_mm_shuffle_2223_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2230_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2230_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			172
 			ret
-_uXm_mm_shuffle_2230_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2231_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2231_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			173
 			ret
-_uXm_mm_shuffle_2231_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2232_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword 
+_uXm_func_start _uXm_mm_shuffle_2232_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword 
 			shufps				xmm0,			xmm1,			174
 			ret
-_uXm_mm_shuffle_2232_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2233_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2233_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			175
 			ret
-_uXm_mm_shuffle_2233_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2300_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2300_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			176
 			ret
-_uXm_mm_shuffle_2300_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2301_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2301_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			177
 			ret
-_uXm_mm_shuffle_2301_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2302_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2302_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			178
 			ret
-_uXm_mm_shuffle_2302_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2303_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2303_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			179
 			ret
-_uXm_mm_shuffle_2303_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2310_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2310_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			180
 			ret
-_uXm_mm_shuffle_2310_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2311_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2311_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			181
 			ret
-_uXm_mm_shuffle_2311_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2312_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2312_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			182
 			ret
-_uXm_mm_shuffle_2312_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2313_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2313_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			183
 			ret
-_uXm_mm_shuffle_2313_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2320_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2320_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			184
 			ret
-_uXm_mm_shuffle_2320_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2321_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2321_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			185
 			ret
-_uXm_mm_shuffle_2321_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2322_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2322_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			186
 			ret
-_uXm_mm_shuffle_2322_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2323_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2323_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			187
 			ret
-_uXm_mm_shuffle_2323_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2330_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2330_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			188
 			ret
-_uXm_mm_shuffle_2330_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2331_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2331_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			189
 			ret
-_uXm_mm_shuffle_2331_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2332_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2332_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			190
 			ret
-_uXm_mm_shuffle_2332_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_2333_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_2333_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			191
 			ret
-_uXm_mm_shuffle_2333_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3000_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3000_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			192
 			ret
-_uXm_mm_shuffle_3000_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3001_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3001_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			193
 			ret
-_uXm_mm_shuffle_3001_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3002_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3002_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			194
 			ret
-_uXm_mm_shuffle_3002_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3003_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3003_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			195
 			ret
-_uXm_mm_shuffle_3003_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3010_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3010_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			196
 			ret
-_uXm_mm_shuffle_3010_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3011_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3011_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			197
 			ret
-_uXm_mm_shuffle_3011_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3012_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3012_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			198
 			ret
-_uXm_mm_shuffle_3012_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3013_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3013_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			199
 			ret
-_uXm_mm_shuffle_3013_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3020_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3020_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			200
 			ret
-_uXm_mm_shuffle_3020_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3021_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3021_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			201
 			ret
-_uXm_mm_shuffle_3021_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3022_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3022_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			202
 			ret
-_uXm_mm_shuffle_3022_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3023_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3023_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			203
 			ret
-_uXm_mm_shuffle_3023_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3030_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3030_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			204
 			ret
-_uXm_mm_shuffle_3030_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3031_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3031_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			205
 			ret
-_uXm_mm_shuffle_3031_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3032_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3032_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			206
 			ret
-_uXm_mm_shuffle_3032_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3033_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3033_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			207
 			ret
-_uXm_mm_shuffle_3033_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3100_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3100_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			208
 			ret
-_uXm_mm_shuffle_3100_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3101_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3101_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			209
 			ret
-_uXm_mm_shuffle_3101_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3102_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3102_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			210
 			ret
-_uXm_mm_shuffle_3102_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3103_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3103_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			211
 			ret
-_uXm_mm_shuffle_3103_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3110_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3110_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			212
 			ret
-_uXm_mm_shuffle_3110_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3111_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3111_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			213
 			ret
-_uXm_mm_shuffle_3111_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3112_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3112_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			214
 			ret
-_uXm_mm_shuffle_3112_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3113_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3113_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			215
 			ret
-_uXm_mm_shuffle_3113_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3120_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3120_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			216
 			ret
-_uXm_mm_shuffle_3120_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3121_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3121_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			217
 			ret
-_uXm_mm_shuffle_3121_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3122_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3122_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			218
 			ret
-_uXm_mm_shuffle_3122_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3123_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3123_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			219
 			ret
-_uXm_mm_shuffle_3123_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3130_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3130_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			220
 			ret
-_uXm_mm_shuffle_3130_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3131_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3131_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			221
 			ret
-_uXm_mm_shuffle_3131_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3132_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3132_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			222
 			ret
-_uXm_mm_shuffle_3132_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3133_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3133_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			223
 			ret
-_uXm_mm_shuffle_3133_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3200_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3200_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			224
 			ret
-_uXm_mm_shuffle_3200_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3201_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3201_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			225
 			ret
-_uXm_mm_shuffle_3201_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3202_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3202_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			226
 			ret
-_uXm_mm_shuffle_3202_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3203_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3203_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			227
 			ret
-_uXm_mm_shuffle_3203_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3210_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3210_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			228
 			ret
-_uXm_mm_shuffle_3210_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3211_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3211_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			229
 			ret
-_uXm_mm_shuffle_3211_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3212_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3212_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			230
 			ret
-_uXm_mm_shuffle_3212_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3213_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3213_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			231
 			ret
-_uXm_mm_shuffle_3213_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3220_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3220_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			232
 			ret
-_uXm_mm_shuffle_3220_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3221_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3221_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			233
 			ret
-_uXm_mm_shuffle_3221_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3222_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3222_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			234
 			ret
-_uXm_mm_shuffle_3222_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3223_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3223_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			235
 			ret
-_uXm_mm_shuffle_3223_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3230_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3230_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			236
 			ret
-_uXm_mm_shuffle_3230_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3231_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3231_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			237
 			ret
-_uXm_mm_shuffle_3231_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3232_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3232_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			238
 			ret
-_uXm_mm_shuffle_3232_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3233_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3233_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			239
 			ret
-_uXm_mm_shuffle_3233_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3300_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3300_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			240
 			ret
-_uXm_mm_shuffle_3300_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3301_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3301_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			241
 			ret
-_uXm_mm_shuffle_3301_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3302_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3302_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			242
 			ret
-_uXm_mm_shuffle_3302_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3303_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3303_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			243
 			ret
-_uXm_mm_shuffle_3303_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3310_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3310_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			244
 			ret
-_uXm_mm_shuffle_3310_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3311_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3311_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			245
 			ret
-_uXm_mm_shuffle_3311_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3312_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3312_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			246
 			ret
-_uXm_mm_shuffle_3312_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3313_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3313_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			247
 			ret
-_uXm_mm_shuffle_3313_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3320_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3320_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			248
 			ret
-_uXm_mm_shuffle_3320_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3321_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3321_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			249
 			ret
-_uXm_mm_shuffle_3321_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3322_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3322_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			250
 			ret
-_uXm_mm_shuffle_3322_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3323_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3323_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			251
 			ret
-_uXm_mm_shuffle_3323_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3330_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3330_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			252
 			ret
-_uXm_mm_shuffle_3330_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3331_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3331_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			253
 			ret
-_uXm_mm_shuffle_3331_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3332_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3332_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			254
 			ret
-_uXm_mm_shuffle_3332_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_3333_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_3333_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufps				xmm0,			xmm1,			255
 			ret
-_uXm_mm_shuffle_3333_ps endp
+_uXm_func_end
 
-_uXm_mm_shuffle_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword, _Imm8:dword
+_uXm_func_start _uXm_mm_shuffle_ps, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword, _Imm8:dword
 				
 		;.if(rparam3 > 3)
 		;	ret
@@ -2393,7 +2127,7 @@ _uXm_mm_shuffle_ps proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmw
 			ret
 		;.endif
 		
-_uXm_mm_shuffle_ps endp
+_uXm_func_end
 
 endif ;__MIC__
 

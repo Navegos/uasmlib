@@ -152,33 +152,33 @@ uXmXMVecfloat& uXm_callconv uXmXMVecfloat::operator/=(const uXmXMVecfloat InXmm_
 
 uXmXMVecfloat& uXm_callconv uXmXMVecfloat::operator++()
 {
-	m128_xmm = *this + __m128_f32_1;
+	m128_xmm = *this + __m128_1;
 	return *this;
 }
 
 uXmXMVecfloat& uXm_callconv uXmXMVecfloat::operator--()
 {
-	m128_xmm = *this - __m128_f32_1;
+	m128_xmm = *this - __m128_1;
 	return *this;
 }
 
 uXmXMVecfloat uXm_callconv uXmXMVecfloat::operator++(int)
 {
 	uXmXMVecfloat tmpXmmi_a = *this;
-	m128_xmm = *this + __m128_f32_1;
+	m128_xmm = *this + __m128_1;
 	return tmpXmmi_a;
 }
 
 uXmXMVecfloat uXm_callconv uXmXMVecfloat::operator--(int)
 {
 	uXmXMVecfloat tmpXmmi_a = *this;
-	m128_xmm = *this - __m128_f32_1;
+	m128_xmm = *this - __m128_1;
 	return tmpXmmi_a;
 }
 
 uXmXMVecfloat uXm_callconv uXmXMVecfloat::operator-()
 {
-	return _uXm_mm_xor_ps(*this, __m128_f32_neg0);
+	return _uXm_mm_xor_ps(*this, __m128_neg0);
 }
 
 uXmXMVecfloat uXm_callconv uXmXMVecfloat::operator==(const uXmXMVecfloat InXmm_b)

@@ -316,13 +316,8 @@ extern void _uXm_mm_storeh_pd(double* Outpdouble_A, __m128d Inxmm_B);
 extern void _uXm_mm_storel_pd(double* Outpdouble_A, __m128d Inxmm_B);
 
 extern void _uXm_mm_store_mm_pd(__m128d* Outpxmm_A, __m128d Inxmm_B);
-extern void _uXm_mm_store_m128d_pd(__m128d* Outpxmm_A, __m128d Inxmm_B);
 extern void _uXm_mm_store_pdouble_pd(__m128d* Outpxmm_A, const double* Inpdouble_B);
 extern void _uXm_mm_storeu_pdouble_pd(__m128d* Outpxmm_A, const double* Inpdouble_B);
-
-extern void _uXm_m128d_store_mm_pd(__m128d* Outpxmm_A, __m128d Inxmm_B);
-extern void _uXm_m128d_store_pdouble_pd(__m128d* Outpxmm_A, const double* Inpdouble_B);
-extern void _uXm_m128d_storeu_pdouble_pd(__m128d* Outpxmm_A, const double* Inpdouble_B);
 
 /*
  * DP, moves
@@ -347,20 +342,6 @@ extern double* _uXm_ptr_moveu_mm_pd1(__m128d Inxmm_A);
 extern double* _uXm_ptr_moveu_mm_pd(__m128d Inxmm_A);
 extern double* _uXm_ptr_moveur_mm_pd(__m128d Inxmm_A);
 
-extern __m128d _uXm_m128d_move_mm_sd(__m128d Inxmm_A, __m128d Inxmm_B);
-extern __m128d _uXm_m128d_move_mm_pd1(__m128d Inxmm_A);
-extern __m128d _uXm_m128d_move_mm_pd(__m128d Inxmm_A);
-extern __m128d _uXm_m128d_mover_mm_pd(__m128d Inxmm_A);
-
-extern double* _uXm_ptr_move_m128d_sd(__m128d Inxmm_A, __m128d Inxmm_B);
-extern double* _uXm_ptr_move_m128d_pd1(__m128d Inxmm_A);
-extern double* _uXm_ptr_move_m128d_pd(__m128d Inxmm_A);
-extern double* _uXm_ptr_mover_m128d_pd(__m128d Inxmm_A);
-extern double* _uXm_ptr_moveu_m128d_sd(__m128d Inxmm_A, __m128d Inxmm_B);
-extern double* _uXm_ptr_moveu_m128d_pd1(__m128d Inxmm_A);
-extern double* _uXm_ptr_moveu_m128d_pd(__m128d Inxmm_A);
-extern double* _uXm_ptr_moveur_m128d_pd(__m128d Inxmm_A);
-
 /*
 * Integer, arithmetic
 */
@@ -370,7 +351,9 @@ extern __m128i _uXm_mm_add_epi16(__m128i Inxmm_A, __m128i Inxmm_B);
 extern __m128i _uXm_mm_add_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
 
 #if defined(uXm_X86)
+uXm_PACK_PUSH8
 extern __m64 _uXm_mm_add_si64(__m64 Inmm_A, __m64 Inmm_B);
+uXm_PACK_POP
 #endif
 
 extern __m128i _uXm_mm_add_epi64(__m128i Inxmm_A, __m128i Inxmm_B);
@@ -389,7 +372,9 @@ extern __m128i _uXm_mm_mulhi_epi16(__m128i Inxmm_A, __m128i Inxmm_B);
 extern __m128i _uXm_mm_mulhi_epu16(__m128i Inxmm_A, __m128i Inxmm_B);
 extern __m128i _uXm_mm_mullo_epi16(__m128i Inxmm_A, __m128i Inxmm_B);
 #if defined(uXm_X86)
+uXm_PACK_PUSH8
 extern __m64 _uXm_mm_mul_su32(__m64 Inmm_A, __m64 Inmm_B);
+uXm_PACK_POP
 #endif
 extern __m128i _uXm_mm_mul_epu32(__m128i Inxmm_A, __m128i Inxmm_B);
 extern __m128i _uXm_mm_sad_epu8(__m128i Inxmm_A, __m128i Inxmm_B);
@@ -397,7 +382,9 @@ extern __m128i _uXm_mm_sub_epi8(__m128i Inxmm_A, __m128i Inxmm_B);
 extern __m128i _uXm_mm_sub_epi16(__m128i Inxmm_A, __m128i Inxmm_B);
 extern __m128i _uXm_mm_sub_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
 #if defined(uXm_X86)
+uXm_PACK_PUSH8
 extern __m64 _uXm_mm_sub_si64(__m64 Inmm_A, __m64 Inmm_B);
+uXm_PACK_POP
 #endif
 extern __m128i _uXm_mm_sub_epi64(__m128i Inxmm_A, __m128i Inxmm_B);
 extern __m128i _uXm_mm_subs_epi8(__m128i Inxmm_A, __m128i Inxmm_B);
@@ -578,13 +565,8 @@ extern void _uXm_mm_storeh_epi32(__m128i* Outpxmm_A, __m128i Inxmm_D);
 extern void _uXm_mm_storel_epi32(__m128i* Outpxmm_A, __m128i Inxmm_D);
 extern void _uXm_mm_maskmoveu_si128(__m128i Inxmm_D, __m128i Inxmm_N, __int8* Outpint_P);
 
-extern void _uXm_mm_store_m128i(__m128i* Outpxmm_A, __m128i Inxmm_B);
 extern void _uXm_mm_store_psi128(__m128i* Outpxmm_A, const __m128i* Inpxmm_B);
 extern void _uXm_mm_storeu_psi128(__m128i* Outpxmm_A, const __m128i* Inpxmm_B);
-
-extern void _uXm_m128i_store_mm_si128(__m128i* Outpxmm_A, __m128i Inxmm_B);
-extern void _uXm_m128i_store_psi128(__m128i* Outpxmm_A, const __m128i* Inpxmm_B);
-extern void _uXm_m128i_storeu_psi128(__m128i* Outpxmm_A, const __m128i* Inpxmm_B);
 
 /*
 * Integer, moves
@@ -630,29 +612,6 @@ extern __m128i* _uXm_ptr_moveur_mm_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
 extern __m128i* _uXm_ptr_moveu1_mm_epi32(__m128i Inxmm_A);
 extern __m128i* _uXm_ptr_move_mm_si128(__m128i Inxmm_A);
 extern __m128i* _uXm_ptr_moveu_mm_si128(__m128i Inxmm_A);
-
-extern __m128i _uXm_m128i_move_mm_epi64(__m128i Inxmm_A, __m128i Inxmm_B);
-extern __m128i _uXm_m128i_mover_mm_epi64(__m128i Inxmm_A, __m128i Inxmm_B);
-extern __m128i _uXm_m128i_move1_mm_epi64(__m128i Inxmm_A);
-extern __m128i _uXm_m128i_move_mm_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
-extern __m128i _uXm_m128i_mover_mm_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
-extern __m128i _uXm_m128i_move1_mm_epi32(__m128i Inxmm_A);
-extern __m128i _uXm_m128i_move_mm_si128(__m128i Inxmm_A);
-
-extern __m128i* _uXm_ptr_move_m128i_epi64(__m128i Inxmm_A, __m128i Inxmm_B);
-extern __m128i* _uXm_ptr_mover_m128i_epi64(__m128i Inxmm_A, __m128i Inxmm_B);
-extern __m128i* _uXm_ptr_move1_m128i_epi64(__m128i Inxmm_A);
-extern __m128i* _uXm_ptr_moveu_m128i_epi64(__m128i Inxmm_A, __m128i Inxmm_B);
-extern __m128i* _uXm_ptr_moveur_m128i_epi64(__m128i Inxmm_A, __m128i Inxmm_B);
-extern __m128i* _uXm_ptr_moveu1_m128i_epi64(__m128i Inxmm_A);
-extern __m128i* _uXm_ptr_move_m128i_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
-extern __m128i* _uXm_ptr_mover_m128i_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
-extern __m128i* _uXm_ptr_move1_m128i_epi32(__m128i Inxmm_A);
-extern __m128i* _uXm_ptr_moveu_m128i_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
-extern __m128i* _uXm_ptr_moveur_m128i_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
-extern __m128i* _uXm_ptr_moveu1_m128i_epi32(__m128i Inxmm_A);
-extern __m128i* _uXm_ptr_move_m128i_si128(__m128i Inxmm_A);
-extern __m128i* _uXm_ptr_moveu_m128i_si128(__m128i Inxmm_A);
 
 /*
  * Cacheability support

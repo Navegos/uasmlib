@@ -37,11 +37,17 @@
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintmisc.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintshifts.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintshuffle.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintrin.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintrin.asm">
+      <FileType>Document</FileType>
+    </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmpermutepd.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmshufflepd.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmconstdata.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmintrin.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmconstdata.asm">
+      <FileType>Document</FileType>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmintrin.asm">
+      <FileType>Document</FileType>
+    </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmpermuteps.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmshuffleps.asm" />
   </ItemGroup>
@@ -49,7 +55,9 @@
     <ClInclude Include="..\..\..\include\uasmlib.h" />
     <ClInclude Include="..\..\..\include\uXmAssert.h" />
     <ClInclude Include="..\..\..\include\uXmBaseDefs.h" />
+    <ClInclude Include="..\..\..\include\uXmConstants.h" />
     <ClInclude Include="..\..\..\include\uXmExp.h" />
+    <ClInclude Include="..\..\..\include\uXmMisc.h" />
     <ClInclude Include="..\..\..\include\uXmPreprocessor.h" />
     <ClInclude Include="..\..\..\include\uXmSalProcess.h" />
     <ClInclude Include="..\..\..\include\uXmTypes.h" />
@@ -72,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\uasmlib.cpp" />
+    <ClCompile Include="..\..\..\src\uXmMisc.cpp" />
     <ClCompile Include="..\..\..\src\x86\SSE\uXmSSEStructs.cpp" />
     <ClCompile Include="..\..\..\src\x86\uXmx86Cpu.cpp" />
     <ClCompile Include="..\..\..\src\x86\uXmx86Intrin.cpp" />
@@ -80,8 +89,8 @@
     <None Include="..\..\..\.gitignore" />
     <None Include="..\..\..\src\x86\asm\uXmx86asm.inc" />
     <None Include="..\..\..\src\x86\asm\uXmx86cpu.inc" />
+    <None Include="..\..\..\src\x86\asm\uXmConstants.inc" />
     <None Include="..\..\..\src\x86\SSE\asm\uXmsseintrin.inc" />
-    <None Include="..\..\..\src\x86\SSE\asm\uXmxmmconst.inc" />
     <None Include="..\..\..\src\x86\SSE\asm\uXmxmmconstdata.inc" />
     <None Include="..\..\..\src\x86\SSE\asm\xmmtypes.inc" />
     <None Include="..\export\uasmlib-export.def" />

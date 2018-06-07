@@ -98,422 +98,91 @@ ifndef __MIC__
 										offset _m128isrliepi64_55, offset _m128isrliepi64_56, offset _m128isrliepi64_57, offset _m128isrliepi64_58, offset _m128isrliepi64_59, \
 										offset _m128isrliepi64_60, offset _m128isrliepi64_61, offset _m128isrliepi64_62, offset _m128isrliepi64_63
 		
-	__align_fp_opt xmm_align_size, xmm_align_size
+	__align_xmm_fp_opt
 
 	.code
 
-;******************
-; Proto
-;******************
-_uXm_m128i_slli_si128_0 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_si128_1 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_si128_2 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_si128_3 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_si128_4 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_si128_5 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_si128_6 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_si128_7 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_si128_8 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_si128_9 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_si128_10 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_si128_11 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_si128_12 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_si128_13 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_si128_14 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_si128_15 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_si128 proto __veccall (xmmword) ;InXmm_A:xmmword, Inint_Imm:dword
-
-_uXm_m128i_slli_epi16_0 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi16_1 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi16_2 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi16_3 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi16_4 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi16_5 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi16_6 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi16_7 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi16_8 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi16_9 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi16_10 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi16_11 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi16_12 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi16_13 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi16_14 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi16_15 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi16 proto __veccall (xmmword) ;InXmm_A:xmmword, Inint_Imm:dword
-
-_uXm_m128i_slli_epi32_0 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_1 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_2 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_3 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_4 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_5 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_6 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_7 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_8 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_9 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_10 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_11 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_12 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_13 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_14 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_15 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_16 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_17 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_18 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_19 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_20 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_21 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_22 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_23 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_24 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_25 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_26 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_27 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_28 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_29 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_30 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32_31 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi32 proto __veccall (xmmword) ;InXmm_A:xmmword, Inint_Imm:dword
-
-_uXm_m128i_slli_epi64_0 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_1 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_2 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_3 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_4 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_5 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_6 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_7 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_8 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_9 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_10 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_11 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_12 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_13 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_14 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_15 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_16 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_17 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_18 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_19 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_20 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_21 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_22 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_23 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_24 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_25 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_26 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_27 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_28 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_29 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_30 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_31 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_32 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_33 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_34 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_35 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_36 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_36 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_38 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_39 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_40 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_41 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_42 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_43 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_44 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_45 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_46 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_47 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_48 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_49 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_50 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_51 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_52 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_53 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_54 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_55 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_56 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_57 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_58 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_59 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_60 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_61 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_62 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64_63 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_slli_epi64 proto __veccall (xmmword) ;InXmm_A:xmmword, Inint_Imm:dword
-
-_uXm_m128i_srai_epi16_0 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi16_1 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi16_2 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi16_3 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi16_4 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi16_5 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi16_6 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi16_7 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi16_8 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi16_9 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi16_10 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi16_11 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi16_12 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi16_13 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi16_14 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi16_15 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi16 proto __veccall (xmmword) ;InXmm_A:xmmword, Inint_Imm:dword
-
-_uXm_m128i_srai_epi32_0 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_1 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_2 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_3 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_4 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_5 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_6 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_7 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_8 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_9 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_10 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_11 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_12 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_13 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_14 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_15 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_16 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_17 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_18 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_19 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_20 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_21 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_22 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_23 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_24 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_25 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_26 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_27 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_28 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_29 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_30 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32_31 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srai_epi32 proto __veccall (xmmword) ;InXmm_A:xmmword, Inint_Imm:dword
-
-_uXm_m128i_srli_si128_0 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_si128_1 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_si128_2 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_si128_3 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_si128_4 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_si128_5 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_si128_6 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_si128_7 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_si128_8 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_si128_9 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_si128_10 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_si128_11 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_si128_12 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_si128_13 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_si128_14 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_si128_15 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_si128 proto __veccall (xmmword) ;InXmm_A:xmmword, Inint_Imm:dword
-
-_uXm_m128i_srli_epi16_0 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi16_1 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi16_2 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi16_3 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi16_4 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi16_5 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi16_6 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi16_7 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi16_8 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi16_9 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi16_10 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi16_11 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi16_12 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi16_13 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi16_14 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi16_15 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi16 proto __veccall (xmmword) ;InXmm_A:xmmword, Inint_Imm:dword
-
-_uXm_m128i_srli_epi32_0 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_1 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_2 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_3 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_4 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_5 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_6 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_7 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_8 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_9 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_10 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_11 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_12 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_13 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_14 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_15 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_16 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_17 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_18 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_19 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_20 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_21 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_22 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_23 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_24 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_25 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_26 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_27 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_28 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_29 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_30 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32_31 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi32 proto __veccall (xmmword) ;InXmm_A:xmmword, Inint_Imm:dword
-
-_uXm_m128i_srli_epi64_0 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_1 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_2 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_3 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_4 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_5 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_6 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_7 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_8 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_9 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_10 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_11 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_12 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_13 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_14 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_15 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_16 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_17 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_18 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_19 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_20 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_21 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_22 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_23 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_24 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_25 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_26 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_27 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_28 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_29 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_30 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_31 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_32 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_33 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_34 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_35 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_36 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_36 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_38 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_39 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_40 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_41 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_42 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_43 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_44 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_45 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_46 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_47 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_48 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_49 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_50 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_51 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_52 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_53 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_54 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_55 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_56 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_57 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_58 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_59 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_60 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_61 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_62 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64_63 proto __veccall (xmmword) ;Inxmm_A:xmmword
-_uXm_m128i_srli_epi64 proto __veccall (xmmword) ;InXmm_A:xmmword, Inint_Imm:dword
-
-;******************
-; Proc
-;******************
-
-_uXm_m128i_slli_si128_0 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_0, xmmword, < > ;Inxmm_A:xmmword
 			pslldq			xmm0,			0
 			ret
-_uXm_m128i_slli_si128_0 endp
+_uXm_func_end
 
-_uXm_m128i_slli_si128_1 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_1, xmmword, < > ;Inxmm_A:xmmword
 			pslldq			xmm0,			1
 			ret
-_uXm_m128i_slli_si128_1 endp
+_uXm_func_end
 
-_uXm_m128i_slli_si128_2 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_2, xmmword, < > ;Inxmm_A:xmmword
 			pslldq			xmm0,			2
 			ret
-_uXm_m128i_slli_si128_2 endp
+_uXm_func_end
 
-_uXm_m128i_slli_si128_3 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_3, xmmword, < > ;Inxmm_A:xmmword
 			pslldq			xmm0,			3
 			ret
-_uXm_m128i_slli_si128_3 endp
+_uXm_func_end
 
-_uXm_m128i_slli_si128_4 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_4, xmmword, < > ;Inxmm_A:xmmword
 			pslldq			xmm0,			4
 			ret
-_uXm_m128i_slli_si128_4 endp
+_uXm_func_end
 
-_uXm_m128i_slli_si128_5 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_5, xmmword, < > ;Inxmm_A:xmmword
 			pslldq			xmm0,			5
 			ret
-_uXm_m128i_slli_si128_5 endp
+_uXm_func_end
 
-_uXm_m128i_slli_si128_6 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_6, xmmword, < > ;Inxmm_A:xmmword
 			pslldq			xmm0,			6
 			ret
-_uXm_m128i_slli_si128_6 endp
+_uXm_func_end
 
-_uXm_m128i_slli_si128_7 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_7, xmmword, < > ;Inxmm_A:xmmword
 			pslldq			xmm0,			7
 			ret
-_uXm_m128i_slli_si128_7 endp
+_uXm_func_end
 
-_uXm_m128i_slli_si128_8 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_8, xmmword, < > ;Inxmm_A:xmmword
 			pslldq			xmm0,			8
 			ret
-_uXm_m128i_slli_si128_8 endp
+_uXm_func_end
 
-_uXm_m128i_slli_si128_9 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_9, xmmword, < > ;Inxmm_A:xmmword
 			pslldq			xmm0,			9
 			ret
-_uXm_m128i_slli_si128_9 endp
+_uXm_func_end
 
-_uXm_m128i_slli_si128_10 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_10, xmmword, < > ;Inxmm_A:xmmword
 			pslldq			xmm0,			10
 			ret
-_uXm_m128i_slli_si128_10 endp
+_uXm_func_end
 
-_uXm_m128i_slli_si128_11 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_11, xmmword, < > ;Inxmm_A:xmmword
 			pslldq			xmm0,			11
 			ret
-_uXm_m128i_slli_si128_11 endp
+_uXm_func_end
 
-_uXm_m128i_slli_si128_12 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_12, xmmword, < > ;Inxmm_A:xmmword
 			pslldq			xmm0,			12
 			ret
-_uXm_m128i_slli_si128_12 endp
+_uXm_func_end
 
-_uXm_m128i_slli_si128_13 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_13, xmmword, < > ;Inxmm_A:xmmword
 			pslldq			xmm0,			13
 			ret
-_uXm_m128i_slli_si128_13 endp
+_uXm_func_end
 
-_uXm_m128i_slli_si128_14 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_14, xmmword, < > ;Inxmm_A:xmmword
 			pslldq			xmm0,			14
 			ret
-_uXm_m128i_slli_si128_14 endp
+_uXm_func_end
 
-_uXm_m128i_slli_si128_15 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_15, xmmword, < > ;Inxmm_A:xmmword
 			pslldq			xmm0,			15
 			ret
-_uXm_m128i_slli_si128_15 endp
+_uXm_func_end
 
-_uXm_m128i_slli_si128 proc __veccall (xmmword) frame ;InXmm_A:xmmword, Inint_Imm:dword
+_uXm_func_start _uXm_mm_slli_si128, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret
@@ -580,89 +249,89 @@ _uXm_m128i_slli_si128 proc __veccall (xmmword) frame ;InXmm_A:xmmword, Inint_Imm
 			ret
 		;.endif
 
-_uXm_m128i_slli_si128 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi16_0 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_0, xmmword, < > ;Inxmm_A:xmmword
 			psllw			xmm0,			0
 			ret
-_uXm_m128i_slli_epi16_0 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi16_1 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_1, xmmword, < > ;Inxmm_A:xmmword
 			psllw			xmm0,			1
 			ret
-_uXm_m128i_slli_epi16_1 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi16_2 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_2, xmmword, < > ;Inxmm_A:xmmword
 			psllw			xmm0,			2
 			ret
-_uXm_m128i_slli_epi16_2 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi16_3 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_3, xmmword, < > ;Inxmm_A:xmmword
 			psllw			xmm0,			3
 			ret
-_uXm_m128i_slli_epi16_3 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi16_4 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_4, xmmword, < > ;Inxmm_A:xmmword
 			psllw			xmm0,			4
 			ret
-_uXm_m128i_slli_epi16_4 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi16_5 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_5, xmmword, < > ;Inxmm_A:xmmword
 			psllw			xmm0,			5
 			ret
-_uXm_m128i_slli_epi16_5 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi16_6 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_6, xmmword, < > ;Inxmm_A:xmmword
 			psllw			xmm0,			6
 			ret
-_uXm_m128i_slli_epi16_6 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi16_7 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_7, xmmword, < > ;Inxmm_A:xmmword
 			psllw			xmm0,			7
 			ret
-_uXm_m128i_slli_epi16_7 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi16_8 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_8, xmmword, < > ;Inxmm_A:xmmword
 			psllw			xmm0,			8
 			ret
-_uXm_m128i_slli_epi16_8 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi16_9 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_9, xmmword, < > ;Inxmm_A:xmmword
 			psllw			xmm0,			9
 			ret
-_uXm_m128i_slli_epi16_9 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi16_10 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_10, xmmword, < > ;Inxmm_A:xmmword
 			psllw			xmm0,			10
 			ret
-_uXm_m128i_slli_epi16_10 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi16_11 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_11, xmmword, < > ;Inxmm_A:xmmword
 			psllw			xmm0,			11
 			ret
-_uXm_m128i_slli_epi16_11 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi16_12 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_12, xmmword, < > ;Inxmm_A:xmmword
 			psllw			xmm0,			12
 			ret
-_uXm_m128i_slli_epi16_12 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi16_13 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_13, xmmword, < > ;Inxmm_A:xmmword
 			psllw			xmm0,			13
 			ret
-_uXm_m128i_slli_epi16_13 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi16_14 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_14, xmmword, < > ;Inxmm_A:xmmword
 			psllw			xmm0,			14
 			ret
-_uXm_m128i_slli_epi16_14 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi16_15 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_15, xmmword, < > ;Inxmm_A:xmmword
 			psllw			xmm0,			15
 			ret
-_uXm_m128i_slli_epi16_15 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi16 proc __veccall (xmmword) frame ;InXmm_A:xmmword, Inint_Imm:dword
+_uXm_func_start _uXm_mm_slli_epi16, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret
@@ -729,169 +398,169 @@ _uXm_m128i_slli_epi16 proc __veccall (xmmword) frame ;InXmm_A:xmmword, Inint_Imm
 			ret
 		;.endif
 
-_uXm_m128i_slli_epi16 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_0 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_0, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			0
 			ret
-_uXm_m128i_slli_epi32_0 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_1 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_1, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			1
 			ret
-_uXm_m128i_slli_epi32_1 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_2 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_2, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			2
 			ret
-_uXm_m128i_slli_epi32_2 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_3 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_3, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			3
 			ret
-_uXm_m128i_slli_epi32_3 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_4 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_4, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			4
 			ret
-_uXm_m128i_slli_epi32_4 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_5 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_5, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			5
 			ret
-_uXm_m128i_slli_epi32_5 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_6 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_6, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			6
 			ret
-_uXm_m128i_slli_epi32_6 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_7 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_7, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			7
 			ret
-_uXm_m128i_slli_epi32_7 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_8 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_8, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			8
 			ret
-_uXm_m128i_slli_epi32_8 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_9 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_9, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			9
 			ret
-_uXm_m128i_slli_epi32_9 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_10 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_10, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			10
 			ret
-_uXm_m128i_slli_epi32_10 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_11 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_11, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			11
 			ret
-_uXm_m128i_slli_epi32_11 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_12 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_12, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			12
 			ret
-_uXm_m128i_slli_epi32_12 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_13 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_13, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			13
 			ret
-_uXm_m128i_slli_epi32_13 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_14 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_14, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			14
 			ret
-_uXm_m128i_slli_epi32_14 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_15 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_15, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			15
 			ret
-_uXm_m128i_slli_epi32_15 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_16 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_16, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			16
 			ret
-_uXm_m128i_slli_epi32_16 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_17 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_17, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			17
 			ret
-_uXm_m128i_slli_epi32_17 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_18 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_18, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			18
 			ret
-_uXm_m128i_slli_epi32_18 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_19 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_19, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			19
 			ret
-_uXm_m128i_slli_epi32_19 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_20 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_20, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			20
 			ret
-_uXm_m128i_slli_epi32_20 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_21 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_21, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			21
 			ret
-_uXm_m128i_slli_epi32_21 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_22 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_22, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			22
 			ret
-_uXm_m128i_slli_epi32_22 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_23 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_23, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			23
 			ret
-_uXm_m128i_slli_epi32_23 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_24 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_24, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			24
 			ret
-_uXm_m128i_slli_epi32_24 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_25 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_25, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			25
 			ret
-_uXm_m128i_slli_epi32_25 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_26 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_26, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			26
 			ret
-_uXm_m128i_slli_epi32_26 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_27 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_27, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			27
 			ret
-_uXm_m128i_slli_epi32_27 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_28 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_28, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			28
 			ret
-_uXm_m128i_slli_epi32_28 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_29 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_29, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			29
 			ret
-_uXm_m128i_slli_epi32_29 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_30 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_30, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			30
 			ret
-_uXm_m128i_slli_epi32_30 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32_31 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_31, xmmword, < > ;Inxmm_A:xmmword
 			pslld			xmm0,			31
 			ret
-_uXm_m128i_slli_epi32_31 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi32 proc __veccall (xmmword) frame ;InXmm_A:xmmword, Inint_Imm:dword
+_uXm_func_start _uXm_mm_slli_epi32, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret
@@ -1006,329 +675,329 @@ _uXm_m128i_slli_epi32 proc __veccall (xmmword) frame ;InXmm_A:xmmword, Inint_Imm
 			ret
 		;.endif
 
-_uXm_m128i_slli_epi32 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_0 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_0, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			0
 			ret
-_uXm_m128i_slli_epi64_0 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_1 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_1, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			1
 			ret
-_uXm_m128i_slli_epi64_1 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_2 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_2, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			2
 			ret
-_uXm_m128i_slli_epi64_2 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_3 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_3, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			3
 			ret
-_uXm_m128i_slli_epi64_3 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_4 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_4, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			4
 			ret
-_uXm_m128i_slli_epi64_4 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_5 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_5, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			5
 			ret
-_uXm_m128i_slli_epi64_5 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_6 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_6, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			6
 			ret
-_uXm_m128i_slli_epi64_6 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_7 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_7, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			7
 			ret
-_uXm_m128i_slli_epi64_7 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_8 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_8, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			8
 			ret
-_uXm_m128i_slli_epi64_8 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_9 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_9, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			9
 			ret
-_uXm_m128i_slli_epi64_9 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_10 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_10, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			10
 			ret
-_uXm_m128i_slli_epi64_10 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_11 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_11, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			11
 			ret
-_uXm_m128i_slli_epi64_11 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_12 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_12, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			12
 			ret
-_uXm_m128i_slli_epi64_12 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_13 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_13, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			13
 			ret
-_uXm_m128i_slli_epi64_13 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_14 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_14, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			14
 			ret
-_uXm_m128i_slli_epi64_14 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_15 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_15, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			15
 			ret
-_uXm_m128i_slli_epi64_15 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_16 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_16, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			16
 			ret
-_uXm_m128i_slli_epi64_16 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_17 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_17, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			17
 			ret
-_uXm_m128i_slli_epi64_17 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_18 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_18, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			18
 			ret
-_uXm_m128i_slli_epi64_18 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_19 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_19, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			19
 			ret
-_uXm_m128i_slli_epi64_19 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_20 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_20, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			20
 			ret
-_uXm_m128i_slli_epi64_20 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_21 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_21, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			21
 			ret
-_uXm_m128i_slli_epi64_21 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_22 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_22, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			22
 			ret
-_uXm_m128i_slli_epi64_22 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_23 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_23, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			23
 			ret
-_uXm_m128i_slli_epi64_23 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_24 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_24, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			24
 			ret
-_uXm_m128i_slli_epi64_24 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_25 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_25, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			25
 			ret
-_uXm_m128i_slli_epi64_25 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_26 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_26, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			26
 			ret
-_uXm_m128i_slli_epi64_26 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_27 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_27, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			27
 			ret
-_uXm_m128i_slli_epi64_27 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_28 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_28, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			28
 			ret
-_uXm_m128i_slli_epi64_28 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_29 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_29, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			29
 			ret
-_uXm_m128i_slli_epi64_29 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_30 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_30, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			30
 			ret
-_uXm_m128i_slli_epi64_30 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_31 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_31, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			31
 			ret
-_uXm_m128i_slli_epi64_31 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_32 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_32, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			32
 			ret
-_uXm_m128i_slli_epi64_32 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_33 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_33, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			33
 			ret
-_uXm_m128i_slli_epi64_33 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_34 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_34, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			34
 			ret
-_uXm_m128i_slli_epi64_34 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_35 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_35, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			35
 			ret
-_uXm_m128i_slli_epi64_35 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_36 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_36, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			36
 			ret
-_uXm_m128i_slli_epi64_36 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_37 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_37, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			37
 			ret
-_uXm_m128i_slli_epi64_37 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_38 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_38, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			38
 			ret
-_uXm_m128i_slli_epi64_38 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_39 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_39, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			39
 			ret
-_uXm_m128i_slli_epi64_39 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_40 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_40, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			40
 			ret
-_uXm_m128i_slli_epi64_40 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_41 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_41, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			41
 			ret
-_uXm_m128i_slli_epi64_41 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_42 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_42, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			42
 			ret
-_uXm_m128i_slli_epi64_42 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_43 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_43, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			43
 			ret
-_uXm_m128i_slli_epi64_43 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_44 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_44, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			44
 			ret
-_uXm_m128i_slli_epi64_44 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_45 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_45, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			45
 			ret
-_uXm_m128i_slli_epi64_45 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_46 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_46, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			46
 			ret
-_uXm_m128i_slli_epi64_46 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_47 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_47, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			47
 			ret
-_uXm_m128i_slli_epi64_47 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_48 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_48, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			48
 			ret
-_uXm_m128i_slli_epi64_48 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_49 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_49, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			49
 			ret
-_uXm_m128i_slli_epi64_49 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_50 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_50, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			50
 			ret
-_uXm_m128i_slli_epi64_50 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_51 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_51, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			51
 			ret
-_uXm_m128i_slli_epi64_51 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_52 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_52, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			52
 			ret
-_uXm_m128i_slli_epi64_52 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_53 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_53, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			53
 			ret
-_uXm_m128i_slli_epi64_53 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_54 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_54, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			54
 			ret
-_uXm_m128i_slli_epi64_54 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_55 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_55, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			55
 			ret
-_uXm_m128i_slli_epi64_55 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_56 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_56, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			56
 			ret
-_uXm_m128i_slli_epi64_56 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_57 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_57, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			57
 			ret
-_uXm_m128i_slli_epi64_57 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_58 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_58, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			58
 			ret
-_uXm_m128i_slli_epi64_58 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_59 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_59, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			59
 			ret
-_uXm_m128i_slli_epi64_59 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_60 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_60, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			60
 			ret
-_uXm_m128i_slli_epi64_60 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_61 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_61, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			61
 			ret
-_uXm_m128i_slli_epi64_61 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_62 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_62, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			62
 			ret
-_uXm_m128i_slli_epi64_62 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64_63 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_63, xmmword, < > ;Inxmm_A:xmmword
 			psllq			xmm0,			63
 			ret
-_uXm_m128i_slli_epi64_63 endp
+_uXm_func_end
 
-_uXm_m128i_slli_epi64 proc __veccall (xmmword) frame ;InXmm_A:xmmword, Inint_Imm:dword
+_uXm_func_start _uXm_mm_slli_epi64, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret
@@ -1539,89 +1208,89 @@ _uXm_m128i_slli_epi64 proc __veccall (xmmword) frame ;InXmm_A:xmmword, Inint_Imm
 			ret
 		;.endif
 
-_uXm_m128i_slli_epi64 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi16_0 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_0, xmmword, < > ;Inxmm_A:xmmword
 			psraw			xmm0,			0
 			ret
-_uXm_m128i_srai_epi16_0 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi16_1 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_1, xmmword, < > ;Inxmm_A:xmmword
 			psraw			xmm0,			1
 			ret
-_uXm_m128i_srai_epi16_1 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi16_2 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_2, xmmword, < > ;Inxmm_A:xmmword
 			psraw			xmm0,			2
 			ret
-_uXm_m128i_srai_epi16_2 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi16_3 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_3, xmmword, < > ;Inxmm_A:xmmword
 			psraw			xmm0,			3
 			ret
-_uXm_m128i_srai_epi16_3 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi16_4 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_4, xmmword, < > ;Inxmm_A:xmmword
 			psraw			xmm0,			4
 			ret
-_uXm_m128i_srai_epi16_4 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi16_5 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_5, xmmword, < > ;Inxmm_A:xmmword
 			psraw			xmm0,			5
 			ret
-_uXm_m128i_srai_epi16_5 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi16_6 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_6, xmmword, < > ;Inxmm_A:xmmword
 			psraw			xmm0,			6
 			ret
-_uXm_m128i_srai_epi16_6 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi16_7 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_7, xmmword, < > ;Inxmm_A:xmmword
 			psraw			xmm0,			7
 			ret
-_uXm_m128i_srai_epi16_7 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi16_8 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_8, xmmword, < > ;Inxmm_A:xmmword
 			psraw			xmm0,			8
 			ret
-_uXm_m128i_srai_epi16_8 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi16_9 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_9, xmmword, < > ;Inxmm_A:xmmword
 			psraw			xmm0,			9
 			ret
-_uXm_m128i_srai_epi16_9 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi16_10 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_10, xmmword, < > ;Inxmm_A:xmmword
 			psraw			xmm0,			10
 			ret
-_uXm_m128i_srai_epi16_10 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi16_11 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_11, xmmword, < > ;Inxmm_A:xmmword
 			psraw			xmm0,			11
 			ret
-_uXm_m128i_srai_epi16_11 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi16_12 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_12, xmmword, < > ;Inxmm_A:xmmword
 			psraw			xmm0,			12
 			ret
-_uXm_m128i_srai_epi16_12 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi16_13 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_13, xmmword, < > ;Inxmm_A:xmmword
 			psraw			xmm0,			13
 			ret
-_uXm_m128i_srai_epi16_13 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi16_14 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_14, xmmword, < > ;Inxmm_A:xmmword
 			psraw			xmm0,			14
 			ret
-_uXm_m128i_srai_epi16_14 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi16_15 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_15, xmmword, < > ;Inxmm_A:xmmword
 			psraw			xmm0,			15
 			ret
-_uXm_m128i_srai_epi16_15 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi16 proc __veccall (xmmword) frame ;InXmm_A:xmmword, Inint_Imm:dword
+_uXm_func_start _uXm_mm_srai_epi16, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dword
 			
 		;.if(rparam2 > 3)
 		;	ret
@@ -1688,169 +1357,169 @@ _uXm_m128i_srai_epi16 proc __veccall (xmmword) frame ;InXmm_A:xmmword, Inint_Imm
 			ret
 		;.endif
 
-_uXm_m128i_srai_epi16 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_0 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_0, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			0
 			ret
-_uXm_m128i_srai_epi32_0 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_1 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_1, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			1
 			ret
-_uXm_m128i_srai_epi32_1 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_2 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_2, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			2
 			ret
-_uXm_m128i_srai_epi32_2 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_3 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_3, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			3
 			ret
-_uXm_m128i_srai_epi32_3 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_4 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_4, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			4
 			ret
-_uXm_m128i_srai_epi32_4 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_5 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_5, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			5
 			ret
-_uXm_m128i_srai_epi32_5 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_6 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_6, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			6
 			ret
-_uXm_m128i_srai_epi32_6 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_7 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_7, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			7
 			ret
-_uXm_m128i_srai_epi32_7 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_8 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_8, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			8
 			ret
-_uXm_m128i_srai_epi32_8 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_9 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_9, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			9
 			ret
-_uXm_m128i_srai_epi32_9 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_10 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_10, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			10
 			ret
-_uXm_m128i_srai_epi32_10 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_11 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_11, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			11
 			ret
-_uXm_m128i_srai_epi32_11 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_12 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_12, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			12
 			ret
-_uXm_m128i_srai_epi32_12 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_13 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_13, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			13
 			ret
-_uXm_m128i_srai_epi32_13 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_14 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_14, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			14
 			ret
-_uXm_m128i_srai_epi32_14 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_15 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_15, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			15
 			ret
-_uXm_m128i_srai_epi32_15 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_16 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_16, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			16
 			ret
-_uXm_m128i_srai_epi32_16 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_17 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_17, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			17
 			ret
-_uXm_m128i_srai_epi32_17 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_18 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_18, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			18
 			ret
-_uXm_m128i_srai_epi32_18 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_19 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_19, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			19
 			ret
-_uXm_m128i_srai_epi32_19 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_20 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_20, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			20
 			ret
-_uXm_m128i_srai_epi32_20 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_21 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_21, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			21
 			ret
-_uXm_m128i_srai_epi32_21 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_22 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_22, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			22
 			ret
-_uXm_m128i_srai_epi32_22 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_23 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_23, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			23
 			ret
-_uXm_m128i_srai_epi32_23 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_24 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_24, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			24
 			ret
-_uXm_m128i_srai_epi32_24 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_25 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_25, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			25
 			ret
-_uXm_m128i_srai_epi32_25 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_26 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_26, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			26
 			ret
-_uXm_m128i_srai_epi32_26 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_27 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_27, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			27
 			ret
-_uXm_m128i_srai_epi32_27 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_28 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_28, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			28
 			ret
-_uXm_m128i_srai_epi32_28 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_29 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_29, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			29
 			ret
-_uXm_m128i_srai_epi32_29 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_30 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_30, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			30
 			ret
-_uXm_m128i_srai_epi32_30 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32_31 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_31, xmmword, < > ;Inxmm_A:xmmword
 			psrad			xmm0,			31
 			ret
-_uXm_m128i_srai_epi32_31 endp
+_uXm_func_end
 
-_uXm_m128i_srai_epi32 proc __veccall (xmmword) frame ;InXmm_A:xmmword, Inint_Imm:dword
+_uXm_func_start _uXm_mm_srai_epi32, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret
@@ -1965,89 +1634,89 @@ _uXm_m128i_srai_epi32 proc __veccall (xmmword) frame ;InXmm_A:xmmword, Inint_Imm
 			ret
 		;.endif
 
-_uXm_m128i_srai_epi32 endp
+_uXm_func_end
 
-_uXm_m128i_srli_si128_0 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_0, xmmword, < > ;Inxmm_A:xmmword
 			psrldq			xmm0,			0
 			ret
-_uXm_m128i_srli_si128_0 endp
+_uXm_func_end
 
-_uXm_m128i_srli_si128_1 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_1, xmmword, < > ;Inxmm_A:xmmword
 			psrldq			xmm0,			1
 			ret
-_uXm_m128i_srli_si128_1 endp
+_uXm_func_end
 
-_uXm_m128i_srli_si128_2 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_2, xmmword, < > ;Inxmm_A:xmmword
 			psrldq			xmm0,			2
 			ret
-_uXm_m128i_srli_si128_2 endp
+_uXm_func_end
 
-_uXm_m128i_srli_si128_3 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_3, xmmword, < > ;Inxmm_A:xmmword
 			psrldq			xmm0,			3
 			ret
-_uXm_m128i_srli_si128_3 endp
+_uXm_func_end
 
-_uXm_m128i_srli_si128_4 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_4, xmmword, < > ;Inxmm_A:xmmword
 			psrldq			xmm0,			4
 			ret
-_uXm_m128i_srli_si128_4 endp
+_uXm_func_end
 
-_uXm_m128i_srli_si128_5 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_5, xmmword, < > ;Inxmm_A:xmmword
 			psrldq			xmm0,			5
 			ret
-_uXm_m128i_srli_si128_5 endp
+_uXm_func_end
 
-_uXm_m128i_srli_si128_6 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_6, xmmword, < > ;Inxmm_A:xmmword
 			psrldq			xmm0,			6
 			ret
-_uXm_m128i_srli_si128_6 endp
+_uXm_func_end
 
-_uXm_m128i_srli_si128_7 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_7, xmmword, < > ;Inxmm_A:xmmword
 			psrldq			xmm0,			7
 			ret
-_uXm_m128i_srli_si128_7 endp
+_uXm_func_end
 
-_uXm_m128i_srli_si128_8 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_8, xmmword, < > ;Inxmm_A:xmmword
 			psrldq			xmm0,			8
 			ret
-_uXm_m128i_srli_si128_8 endp
+_uXm_func_end
 
-_uXm_m128i_srli_si128_9 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_9, xmmword, < > ;Inxmm_A:xmmword
 			psrldq			xmm0,			9
 			ret
-_uXm_m128i_srli_si128_9 endp
+_uXm_func_end
 
-_uXm_m128i_srli_si128_10 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_10, xmmword, < > ;Inxmm_A:xmmword
 			psrldq			xmm0,			10
 			ret
-_uXm_m128i_srli_si128_10 endp
+_uXm_func_end
 
-_uXm_m128i_srli_si128_11 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_11, xmmword, < > ;Inxmm_A:xmmword
 			psrldq			xmm0,			11
 			ret
-_uXm_m128i_srli_si128_11 endp
+_uXm_func_end
 
-_uXm_m128i_srli_si128_12 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_12, xmmword, < > ;Inxmm_A:xmmword
 			psrldq			xmm0,			12
 			ret
-_uXm_m128i_srli_si128_12 endp
+_uXm_func_end
 
-_uXm_m128i_srli_si128_13 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_13, xmmword, < > ;Inxmm_A:xmmword
 			psrldq			xmm0,			13
 			ret
-_uXm_m128i_srli_si128_13 endp
+_uXm_func_end
 
-_uXm_m128i_srli_si128_14 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_14, xmmword, < > ;Inxmm_A:xmmword
 			psrldq			xmm0,			14
 			ret
-_uXm_m128i_srli_si128_14 endp
+_uXm_func_end
 
-_uXm_m128i_srli_si128_15 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_15, xmmword, < > ;Inxmm_A:xmmword
 			psrldq			xmm0,			15
 			ret
-_uXm_m128i_srli_si128_15 endp
+_uXm_func_end
 
-_uXm_m128i_srli_si128 proc __veccall (xmmword) frame ;InXmm_A:xmmword, Inint_Imm:dword
+_uXm_func_start _uXm_mm_srli_si128, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dword
 				
 		;.if(rparam2 > 3)
 		;	ret
@@ -2114,89 +1783,89 @@ _uXm_m128i_srli_si128 proc __veccall (xmmword) frame ;InXmm_A:xmmword, Inint_Imm
 			ret
 		;.endif
 
-_uXm_m128i_srli_si128 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi16_0 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_0, xmmword, < > ;Inxmm_A:xmmword
 			psrlw			xmm0,			0
 			ret
-_uXm_m128i_srli_epi16_0 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi16_1 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_1, xmmword, < > ;Inxmm_A:xmmword
 			psrlw			xmm0,			1
 			ret
-_uXm_m128i_srli_epi16_1 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi16_2 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_2, xmmword, < > ;Inxmm_A:xmmword
 			psrlw			xmm0,			2
 			ret
-_uXm_m128i_srli_epi16_2 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi16_3 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_3, xmmword, < > ;Inxmm_A:xmmword
 			psrlw			xmm0,			3
 			ret
-_uXm_m128i_srli_epi16_3 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi16_4 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_4, xmmword, < > ;Inxmm_A:xmmword
 			psrlw			xmm0,			4
 			ret
-_uXm_m128i_srli_epi16_4 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi16_5 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_5, xmmword, < > ;Inxmm_A:xmmword
 			psrlw			xmm0,			5
 			ret
-_uXm_m128i_srli_epi16_5 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi16_6 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_6, xmmword, < > ;Inxmm_A:xmmword
 			psrlw			xmm0,			6
 			ret
-_uXm_m128i_srli_epi16_6 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi16_7 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_7, xmmword, < > ;Inxmm_A:xmmword
 			psrlw			xmm0,			7
 			ret
-_uXm_m128i_srli_epi16_7 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi16_8 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_8, xmmword, < > ;Inxmm_A:xmmword
 			psrlw			xmm0,			8
 			ret
-_uXm_m128i_srli_epi16_8 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi16_9 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_9, xmmword, < > ;Inxmm_A:xmmword
 			psrlw			xmm0,			9
 			ret
-_uXm_m128i_srli_epi16_9 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi16_10 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_10, xmmword, < > ;Inxmm_A:xmmword
 			psrlw			xmm0,			10
 			ret
-_uXm_m128i_srli_epi16_10 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi16_11 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_11, xmmword, < > ;Inxmm_A:xmmword
 			psrlw			xmm0,			11
 			ret
-_uXm_m128i_srli_epi16_11 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi16_12 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_12, xmmword, < > ;Inxmm_A:xmmword
 			psrlw			xmm0,			12
 			ret
-_uXm_m128i_srli_epi16_12 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi16_13 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_13, xmmword, < > ;Inxmm_A:xmmword
 			psrlw			xmm0,			13
 			ret
-_uXm_m128i_srli_epi16_13 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi16_14 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_14, xmmword, < > ;Inxmm_A:xmmword
 			psrlw			xmm0,			14
 			ret
-_uXm_m128i_srli_epi16_14 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi16_15 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_15, xmmword, < > ;Inxmm_A:xmmword
 			psrlw			xmm0,			15
 			ret
-_uXm_m128i_srli_epi16_15 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi16 proc __veccall (xmmword) frame ;InXmm_A:xmmword, Inint_Imm:dword
+_uXm_func_start _uXm_mm_srli_epi16, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret
@@ -2263,169 +1932,169 @@ _uXm_m128i_srli_epi16 proc __veccall (xmmword) frame ;InXmm_A:xmmword, Inint_Imm
 			ret
 		;.endif
 
-_uXm_m128i_srli_epi16 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_0 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_0, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			0
 			ret
-_uXm_m128i_srli_epi32_0 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_1 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_1, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			1
 			ret
-_uXm_m128i_srli_epi32_1 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_2 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_2, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			2
 			ret
-_uXm_m128i_srli_epi32_2 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_3 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_3, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			3
 			ret
-_uXm_m128i_srli_epi32_3 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_4 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_4, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			4
 			ret
-_uXm_m128i_srli_epi32_4 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_5 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_5, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			5
 			ret
-_uXm_m128i_srli_epi32_5 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_6 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_6, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			6
 			ret
-_uXm_m128i_srli_epi32_6 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_7 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_7, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			7
 			ret
-_uXm_m128i_srli_epi32_7 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_8 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_8, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			8
 			ret
-_uXm_m128i_srli_epi32_8 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_9 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_9, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			9
 			ret
-_uXm_m128i_srli_epi32_9 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_10 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_10, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			10
 			ret
-_uXm_m128i_srli_epi32_10 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_11 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_11, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			11
 			ret
-_uXm_m128i_srli_epi32_11 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_12 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_12, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			12
 			ret
-_uXm_m128i_srli_epi32_12 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_13 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_13, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			13
 			ret
-_uXm_m128i_srli_epi32_13 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_14 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_14, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			14
 			ret
-_uXm_m128i_srli_epi32_14 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_15 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_15, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			15
 			ret
-_uXm_m128i_srli_epi32_15 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_16 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_16, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			16
 			ret
-_uXm_m128i_srli_epi32_16 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_17 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_17, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			17
 			ret
-_uXm_m128i_srli_epi32_17 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_18 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_18, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			18
 			ret
-_uXm_m128i_srli_epi32_18 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_19 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_19, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			19
 			ret
-_uXm_m128i_srli_epi32_19 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_20 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_20, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			20
 			ret
-_uXm_m128i_srli_epi32_20 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_21 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_21, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			21
 			ret
-_uXm_m128i_srli_epi32_21 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_22 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_22, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			22
 			ret
-_uXm_m128i_srli_epi32_22 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_23 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_23, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			23
 			ret
-_uXm_m128i_srli_epi32_23 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_24 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_24, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			24
 			ret
-_uXm_m128i_srli_epi32_24 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_25 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_25, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			25
 			ret
-_uXm_m128i_srli_epi32_25 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_26 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_26, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			26
 			ret
-_uXm_m128i_srli_epi32_26 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_27 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_27, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			27
 			ret
-_uXm_m128i_srli_epi32_27 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_28 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_28, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			28
 			ret
-_uXm_m128i_srli_epi32_28 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_29 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_29, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			29
 			ret
-_uXm_m128i_srli_epi32_29 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_30 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_30, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			30
 			ret
-_uXm_m128i_srli_epi32_30 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32_31 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_31, xmmword, < > ;Inxmm_A:xmmword
 			psrld			xmm0,			31
 			ret
-_uXm_m128i_srli_epi32_31 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi32 proc __veccall (xmmword) frame ;InXmm_A:xmmword, Inint_Imm:dword
+_uXm_func_start _uXm_mm_srli_epi32, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret
@@ -2540,329 +2209,329 @@ _uXm_m128i_srli_epi32 proc __veccall (xmmword) frame ;InXmm_A:xmmword, Inint_Imm
 			ret
 		;.endif
 
-_uXm_m128i_srli_epi32 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_0 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_0, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			0
 			ret
-_uXm_m128i_srli_epi64_0 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_1 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_1, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			1
 			ret
-_uXm_m128i_srli_epi64_1 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_2 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_2, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			2
 			ret
-_uXm_m128i_srli_epi64_2 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_3 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_3, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			3
 			ret
-_uXm_m128i_srli_epi64_3 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_4 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_4, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			4
 			ret
-_uXm_m128i_srli_epi64_4 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_5 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_5, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			5
 			ret
-_uXm_m128i_srli_epi64_5 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_6 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_6, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			6
 			ret
-_uXm_m128i_srli_epi64_6 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_7 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_7, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			7
 			ret
-_uXm_m128i_srli_epi64_7 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_8 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_8, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			8
 			ret
-_uXm_m128i_srli_epi64_8 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_9 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_9, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			9
 			ret
-_uXm_m128i_srli_epi64_9 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_10 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_10, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			10
 			ret
-_uXm_m128i_srli_epi64_10 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_11 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_11, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			11
 			ret
-_uXm_m128i_srli_epi64_11 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_12 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_12, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			12
 			ret
-_uXm_m128i_srli_epi64_12 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_13 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_13, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			13
 			ret
-_uXm_m128i_srli_epi64_13 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_14 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_14, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			14
 			ret
-_uXm_m128i_srli_epi64_14 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_15 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_15, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			15
 			ret
-_uXm_m128i_srli_epi64_15 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_16 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_16, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			16
 			ret
-_uXm_m128i_srli_epi64_16 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_17 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_17, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			17
 			ret
-_uXm_m128i_srli_epi64_17 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_18 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_18, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			18
 			ret
-_uXm_m128i_srli_epi64_18 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_19 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_19, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			19
 			ret
-_uXm_m128i_srli_epi64_19 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_20 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_20, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			20
 			ret
-_uXm_m128i_srli_epi64_20 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_21 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_21, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			21
 			ret
-_uXm_m128i_srli_epi64_21 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_22 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_22, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			22
 			ret
-_uXm_m128i_srli_epi64_22 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_23 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_23, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			23
 			ret
-_uXm_m128i_srli_epi64_23 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_24 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_24, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			24
 			ret
-_uXm_m128i_srli_epi64_24 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_25 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_25, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			25
 			ret
-_uXm_m128i_srli_epi64_25 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_26 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_26, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			26
 			ret
-_uXm_m128i_srli_epi64_26 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_27 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_27, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			27
 			ret
-_uXm_m128i_srli_epi64_27 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_28 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_28, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			28
 			ret
-_uXm_m128i_srli_epi64_28 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_29 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_29, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			29
 			ret
-_uXm_m128i_srli_epi64_29 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_30 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_30, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			30
 			ret
-_uXm_m128i_srli_epi64_30 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_31 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_31, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			31
 			ret
-_uXm_m128i_srli_epi64_31 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_32 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_32, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			32
 			ret
-_uXm_m128i_srli_epi64_32 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_33 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_33, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			33
 			ret
-_uXm_m128i_srli_epi64_33 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_34 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_34, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			34
 			ret
-_uXm_m128i_srli_epi64_34 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_35 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_35, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			35
 			ret
-_uXm_m128i_srli_epi64_35 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_36 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_36, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			36
 			ret
-_uXm_m128i_srli_epi64_36 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_37 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_37, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			37
 			ret
-_uXm_m128i_srli_epi64_37 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_38 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_38, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			38
 			ret
-_uXm_m128i_srli_epi64_38 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_39 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_39, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			39
 			ret
-_uXm_m128i_srli_epi64_39 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_40 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_40, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			40
 			ret
-_uXm_m128i_srli_epi64_40 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_41 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_41, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			41
 			ret
-_uXm_m128i_srli_epi64_41 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_42 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_42, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			42
 			ret
-_uXm_m128i_srli_epi64_42 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_43 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_43, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			43
 			ret
-_uXm_m128i_srli_epi64_43 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_44 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_44, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			44
 			ret
-_uXm_m128i_srli_epi64_44 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_45 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_45, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			45
 			ret
-_uXm_m128i_srli_epi64_45 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_46 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_46, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			46
 			ret
-_uXm_m128i_srli_epi64_46 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_47 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_47, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			47
 			ret
-_uXm_m128i_srli_epi64_47 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_48 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_48, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			48
 			ret
-_uXm_m128i_srli_epi64_48 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_49 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_49, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			49
 			ret
-_uXm_m128i_srli_epi64_49 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_50 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_50, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			50
 			ret
-_uXm_m128i_srli_epi64_50 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_51 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_51, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			51
 			ret
-_uXm_m128i_srli_epi64_51 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_52 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_52, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			52
 			ret
-_uXm_m128i_srli_epi64_52 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_53 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_53, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			53
 			ret
-_uXm_m128i_srli_epi64_53 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_54 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_54, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			54
 			ret
-_uXm_m128i_srli_epi64_54 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_55 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_55, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			55
 			ret
-_uXm_m128i_srli_epi64_55 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_56 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_56, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			56
 			ret
-_uXm_m128i_srli_epi64_56 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_57 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_57, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			57
 			ret
-_uXm_m128i_srli_epi64_57 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_58 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_58, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			58
 			ret
-_uXm_m128i_srli_epi64_58 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_59 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_59, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			59
 			ret
-_uXm_m128i_srli_epi64_59 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_60 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_60, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			60
 			ret
-_uXm_m128i_srli_epi64_60 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_61 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_61, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			61
 			ret
-_uXm_m128i_srli_epi64_61 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_62 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_62, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			62
 			ret
-_uXm_m128i_srli_epi64_62 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64_63 proc __veccall (xmmword) frame ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_63, xmmword, < > ;Inxmm_A:xmmword
 			psrlq			xmm0,			63
 			ret
-_uXm_m128i_srli_epi64_63 endp
+_uXm_func_end
 
-_uXm_m128i_srli_epi64 proc __veccall (xmmword) frame ;InXmm_A:xmmword, Inint_Imm:dword
+_uXm_func_start _uXm_mm_srli_epi64, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret
@@ -3073,7 +2742,7 @@ _uXm_m128i_srli_epi64 proc __veccall (xmmword) frame ;InXmm_A:xmmword, Inint_Imm
 			ret
 		;.endif
 
-_uXm_m128i_srli_epi64 endp
+_uXm_func_end
 
 endif ;__MIC__
 

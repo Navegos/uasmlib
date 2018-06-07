@@ -14,44 +14,31 @@ ifndef __MIC__
 		__align_size_t
 		_m128dshufpdjmptable isize_t offset _m128dshufpd_0, offset _m128dshufpd_1, offset _m128dshufpd_2, offset _m128dshufpd_3				
 		
-	__align_fp_opt xmm_align_size, xmm_align_size
+	__align_xmm_fp_opt
 	
 	.code
 
-;******************
-; Proto
-;******************
-_uXm_mm_shuffle_00_pd proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_01_pd proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_10_pd proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_11_pd proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword
-_uXm_mm_shuffle_pd proto __veccall (xmmword) ;InXmm_A:xmmword, InXmm_B:xmmword, _Imm8:dword
-
-;******************
-; Proc
-;******************
-
-_uXm_mm_shuffle_00_pd proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_00_pd, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufpd				xmm0,			xmm1,			0
 			ret
-_uXm_mm_shuffle_00_pd endp
+_uXm_func_end
 
-_uXm_mm_shuffle_01_pd proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_01_pd, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufpd				xmm0,			xmm1,			1
 			ret
-_uXm_mm_shuffle_01_pd endp
+_uXm_func_end
 
-_uXm_mm_shuffle_10_pd proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_10_pd, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufpd				xmm0,			xmm1,			2
 			ret
-_uXm_mm_shuffle_10_pd endp
+_uXm_func_end
 
-_uXm_mm_shuffle_11_pd proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_11_pd, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufpd				xmm0,			xmm1,			3
 			ret
-_uXm_mm_shuffle_11_pd endp
+_uXm_func_end
 
-_uXm_mm_shuffle_pd proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmword, _Imm8:dword
+_uXm_func_start _uXm_mm_shuffle_pd, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword, _Imm8:dword
 			
 		;.if(rparam3 > 3)
 		;	ret
@@ -82,7 +69,7 @@ _uXm_mm_shuffle_pd proc __veccall (xmmword) frame ;InXmm_A:xmmword, InXmm_B:xmmw
 			ret
 		;.endif
 
-_uXm_mm_shuffle_pd endp
+_uXm_func_end
 
 endif ;__MIC__
 

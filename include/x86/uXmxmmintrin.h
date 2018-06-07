@@ -192,11 +192,11 @@ uXm_PACK_PUSH16
 extern const __m128 __m128_false;
 extern const __m128 __m128_true;
 
-extern const __m128 __m128_f32_0;
-extern const __m128 __m128_f32_1;
+extern const __m128 __m128_0;
+extern const __m128 __m128_1;
 
-extern const __m128 __m128_f32_neg0;
-extern const __m128 __m128_f32_neg1;
+extern const __m128 __m128_neg0;
+extern const __m128 __m128_neg1;
 
 /*
  * FP, arithmetic
@@ -393,13 +393,8 @@ extern void _uXm_mm_storeh_ps(float* Outpfloat_A, __m128 Inxmm_B);
 extern void _uXm_mm_storel_ps(float* Outpfloat_A, __m128 Inxmm_B);
 
 extern void _uXm_mm_store_mm_ps(__m128* Outpxmm_A, __m128 Inxmm_B);
-extern void _uXm_mm_store_m128_ps(__m128* Outpxmm_A, __m128 Inxmm_B);
 extern void _uXm_mm_store_pfloat_ps(__m128* Outpxmm_A, const float* Inpfloat_B);
 extern void _uXm_mm_storeu_pfloat_ps(__m128* Outpxmm_A, const float* Inpfloat_B);
-
-extern void _uXm_m128_store_mm_ps(__m128* Outpxmm_A, __m128 Inxmm_B);
-extern void _uXm_m128_store_pfloat_ps(__m128* Outpxmm_A, const float* Inpfloat_B);
-extern void _uXm_m128_storeu_pfloat_ps(__m128* Outpxmm_A, const float* Inpfloat_B);
 
 /*
  * FP, moves
@@ -410,11 +405,6 @@ extern __m128 _uXm_mm_move_ps1(__m128 Inxmm_A);
 extern __m128 _uXm_mm_move_ps(__m128 Inxmm_A);
 extern __m128 _uXm_mm_mover_ps(__m128 Inxmm_A);
 
-extern __m128 _uXm_mm_move_m128_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_move_m128_ps1(__m128 Inxmm_A);
-extern __m128 _uXm_mm_move_m128_ps(__m128 Inxmm_A);
-extern __m128 _uXm_mm_mover_m128_ps(__m128 Inxmm_A);
-
 extern float* _uXm_ptr_move_mm_ss(__m128 Inxmm_A, __m128 Inxmm_B);
 extern float* _uXm_ptr_move_mm_ps1(__m128 Inxmm_A);
 extern float* _uXm_ptr_move_mm_ps(__m128 Inxmm_A);
@@ -423,20 +413,6 @@ extern float* _uXm_ptr_moveu_mm_ss(__m128 Inxmm_A, __m128 Inxmm_B);
 extern float* _uXm_ptr_moveu_mm_ps1(__m128 Inxmm_A);
 extern float* _uXm_ptr_moveu_mm_ps(__m128 Inxmm_A);
 extern float* _uXm_ptr_moveur_mm_ps(__m128 Inxmm_A);
-
-extern __m128 _uXm_m128_move_mm_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_m128_move_mm_ps1(__m128 Inxmm_A);
-extern __m128 _uXm_m128_move_mm_ps(__m128 Inxmm_A);
-extern __m128 _uXm_m128_mover_mm_ps(__m128 Inxmm_A);
-
-extern float* _uXm_ptr_move_m128_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern float* _uXm_ptr_move_m128_ps1(__m128 Inxmm_A);
-extern float* _uXm_ptr_move_m128_ps(__m128 Inxmm_A);
-extern float* _uXm_ptr_mover_m128_ps(__m128 Inxmm_A);
-extern float* _uXm_ptr_moveu_m128_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern float* _uXm_ptr_moveu_m128_ps1(__m128 Inxmm_A);
-extern float* _uXm_ptr_moveu_m128_ps(__m128 Inxmm_A);
-extern float* _uXm_ptr_moveur_m128_ps(__m128 Inxmm_A);
 
 /*
  * Cacheability support
@@ -512,12 +488,8 @@ uXm_EXTERNC_END
 #define _uXm_mm_store1_ps		_uXm_mm_store_ps1
 #define _uXm_mm_storeu1_ps		_uXm_mm_storeu_ps1
 #define _uXm_mm_move1_ps		_uXm_mm_move_ps1
-#define _uXm_mm_move1_m128_ps	_uXm_mm_move_m128_ps1
-#define _uXm_ptr_move1_mm_ps		_uXm_ptr_move_mm_ps1
+#define _uXm_ptr_move1_mm_ps	_uXm_ptr_move_mm_ps1
 #define _uXm_ptr_moveu1_mm_ps	_uXm_ptr_moveu_mm_ps1
-#define _uXm_m128_move1_mm_ps		_uXm_m128_move_mm_ps1
-#define _uXm_ptr_move1_m128_ps	_uXm_ptr_move_m128_ps1
-#define _uXm_ptr_moveu1_m128_ps	_uXm_ptr_moveu_m128_ps1
 
 #ifdef uXm_X86
 

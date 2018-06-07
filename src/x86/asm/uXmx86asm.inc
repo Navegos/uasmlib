@@ -393,10 +393,10 @@ ifdef __X64__
 	isize_t		textequ		<dq>
 	size_t_size	equ		8
 
-	__align_size_t macro
-  		alignment textequ <align 8>
-  	alignment
-	endm
+__align_size_t macro
+  		size_talignment textequ <align 8>
+  	size_talignment
+endm
 
 else
 	ptr_t_size	equ		4
@@ -407,34 +407,149 @@ else
 	isize_t		textequ		<dd>
 	size_t_size	equ		4
 	
-	__align_size_t macro
-  		alignment textequ <align 4>
-  	alignment
-	endm
+__align_size_t macro
+  		size_talignment textequ <align 4>
+  	size_talignment
+endm
 
 endif ;__X64__
 
-	__align macro AlignSize
-  		alignment textequ <align AlignSize>
-  	alignment
-	endm
-	
-	__align_field macro FieldAlignSize
-  		field_option_alignment textequ <option fieldalign:FieldAlignSize>
-  	field_option_alignment
-	endm
-	
-	__align_proc macro FieldAlignSize, ProcAlignSize
-  		proc_option_alignment textequ <option procalign:ProcAlignSize>
-	proc_option_alignment
-	endm
+mm_size		equ		8h
+xmm_size	equ		10h
+ymm_size	equ		20h
+zmm_size	equ		40h
 
-	__align_fp_opt macro FieldAlignSize, ProcAlignSize
-  		field_option_alignment textequ <option fieldalign:FieldAlignSize>
-  		proc_option_alignment textequ <option procalign:ProcAlignSize>
+__align macro AlignSize
+  		__alignment textequ <align AlignSize>
+  	__alignment
+endm
+	
+__align_mm macro
+  		__mmalignment textequ <align mm_size>
+  	__mmalignment
+endm
+
+__align_xmm macro
+  		__xmmalignment textequ <align xmm_size>
+  	__xmmalignment
+endm
+	
+__align_ymm macro
+  		__ymmalignment textequ <align ymm_size>
+  	__ymmalignment
+endm
+	
+__align_zmm macro
+  		__zmmalignment textequ <align zmm_size>
+  	__zmmalignment
+endm
+
+__align_field macro AlignSize
+  		field_option_alignment textequ <option fieldalign:AlignSize>
+  	field_option_alignment
+endm
+	
+__align_mm_field macro
+  		mm_field_option_alignment textequ <option fieldalign:mm_size>
+  	mm_field_option_alignment
+endm
+
+__align_xmm_field macro
+  		xmm_field_option_alignment textequ <option fieldalign:xmm_size>
+  	xmm_field_option_alignment
+endm
+	
+__align_ymm_field macro
+  		ymm_field_option_alignment textequ <option fieldalign:ymm_size>
+  	ymm_field_option_alignment
+endm
+	
+__align_zmm_field macro
+  		zmm_field_option_alignment textequ <option fieldalign:zmm_size>
+  	zmm_field_option_alignment
+endm
+
+__align_proc macro AlignSize
+  		proc_option_alignment textequ <option procalign:AlignSize>
+	proc_option_alignment
+endm
+	
+__align_mm_proc macro
+  		mm_proc_option_alignment textequ <option procalign:mm_size>
+	mm_proc_option_alignment
+endm
+
+__align_xmm_proc macro
+  		xmm_proc_option_alignment textequ <option procalign:xmm_size>
+	xmm_proc_option_alignment
+endm
+	
+__align_ymm_proc macro
+  		ymm_proc_option_alignment textequ <option procalign:ymm_size>
+	ymm_proc_option_alignment
+endm
+	
+__align_zmm_proc macro
+  		zmm_proc_option_alignment textequ <option procalign:zmm_size>
+	zmm_proc_option_alignment
+endm
+
+__align_fp_opt macro AlignSize
+  		field_option_alignment textequ <option fieldalign:AlignSize>
+  		proc_option_alignment textequ <option procalign:AlignSize>
   	field_option_alignment
 	proc_option_alignment
-	endm
+endm
+	
+__align_mm_fp_opt macro
+  		mm_field_option_alignment textequ <option fieldalign:mm_size>
+  		mm_proc_option_alignment textequ <option procalign:mm_size>
+  	mm_field_option_alignment
+	mm_proc_option_alignment
+endm
+
+__align_xmm_fp_opt macro
+  		xmm_field_option_alignment textequ <option fieldalign:xmm_size>
+  		xmm_proc_option_alignment textequ <option procalign:xmm_size>
+  	xmm_field_option_alignment
+	xmm_proc_option_alignment
+endm
+	
+__align_ymm_fp_opt macro
+  		ymm_field_option_alignment textequ <option fieldalign:ymm_size>
+  		ymm_proc_option_alignment textequ <option procalign:ymm_size>
+  	ymm_field_option_alignment
+	ymm_proc_option_alignment
+endm
+	
+__align_zmm_fp_opt macro
+  		zmm_field_option_alignment textequ <option fieldalign:zmm_size>
+  		zmm_proc_option_alignment textequ <option procalign:zmm_size>
+  	zmm_field_option_alignment
+	zmm_proc_option_alignment
+endm
+
+_uXm_func_start macro functionName:REQ, retType:REQ, usesStr:REQ
+		curfunctionName textequ <functionName>
+
+		fnexproto textequ <>
+		fnexproto catstr fnexproto, <&functionName&>
+		fnexproto catstr fnexproto, < proto __veccall >, <(&retType&)>
+		fnexproto
+
+		fnexproc textequ <>
+		fnexproc catstr fnexproc, <&functionName&>
+		fnexproc catstr fnexproc, < proc __veccall >, <(&retType&)>, < >, <frame>, < >, <&usesStr&>
+
+		fnexproc
+endm
+
+_uXm_func_end macro
+		fnex textequ <>
+		fnex catstr fnex, curfunctionName
+		fnex catstr fnex, < endp>
+		fnex
+endm
 
 false	equ		0h
 true	equ		1h
