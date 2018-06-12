@@ -44,36 +44,36 @@ Calling convention  // currently defined for windows only for (MSVC / Intel ICW)
 #endif
 # if defined(uXm_VCVECTORCALL)
 #	if defined(uXm_VC)
-#		define uXm_VECCALL __vectorcall
+#		define uXm_veccall __vectorcall
 #	else
 #	if defined(uXm_X86_OR_X64_CPU) && !defined(uXm_MIC)
-#		define uXm_VECCALL __fastcall
+#		define uXm_veccall __fastcall
 #	else
-#		define uXm_VECCALL
+#		define uXm_veccall
 #	endif
 #  endif
 /*
 # elif defined(uXm_ICREGCALL)
-#		define uXm_VECCALL(T) __regcall T*/
+#		define uXm_veccall(T) __regcall T*/
 # else
 #	if defined(uXm_X86_OR_X64_CPU) && !defined(uXm_MIC)
-#		define uXm_VECCALL __fastcall
+#		define uXm_veccall __fastcall
 #	else
-#		define uXm_VECCALL
+#		define uXm_veccall
 #	endif
 # endif
 #elif defined(uXm_GCC_COMPATIBLE_COMPILER)
 /*
 # if defined(uXm_ICREGCALL)
 #	define uXm_callconv(T) __attribute__((regcall)) T
-#	define uXm_VECCALL(T) __attribute__((regcall)) T
+#	define uXm_veccall(T) __attribute__((regcall)) T
 #else*/
 #  if defined(uXm_X86_OR_X64_CPU) && !defined(uXm_MIC)
 #	define uXm_callconv __attribute__((sysv_abi))
-#	define uXm_VECCALL __attribute__((sysv_abi))
+#	define uXm_veccall __attribute__((sysv_abi))
 #  else
 #	define uXm_callconv
-#	define uXm_VECCALL
+#	define uXm_veccall
 #  endif
 /*# endif*/
 #	if defined(uXm_X86_OR_X64_CPU) && !defined(uXm_MIC)
@@ -87,7 +87,7 @@ Calling convention  // currently defined for windows only for (MSVC / Intel ICW)
 # endif
 #else
 #   define uXm_callconv
-#   define uXm_VECCALL
+#   define uXm_veccall
 #   define uXm_CDECL
 #   define uXm_STDCALL
 #   define uXm_FASTCALL
@@ -285,34 +285,34 @@ uXm_PRAGMA(inline_depth(255))
 #		define __uXm_FINLINEART(T) __forceinline T
 
 // inline on in release build for static inline with veccall
-#		define __uXm_S_INLINE_VECCALL(T) static __inline uXm_VECCALL(T)
+#		define __uXm_S_INLINE_VECCALL(T) static __inline uXm_veccall(T)
 // inline on in release build for static inline with veccall
-#		define _uXm_S_INLINE_VECCALL(T) static __inline uXm_VECCALL(T)
+#		define _uXm_S_INLINE_VECCALL(T) static __inline uXm_veccall(T)
 
 // inline on in release build for static inline with veccall
-#		define __uXm_S_INLINEART_VECCALL(T) static __inline uXm_VECCALL(T)
+#		define __uXm_S_INLINEART_VECCALL(T) static __inline uXm_veccall(T)
 // inline on in release build for static inline with veccall
-#		define _uXm_S_INLINEART_VECCALL(T) static __inline uXm_VECCALL(T)
+#		define _uXm_S_INLINEART_VECCALL(T) static __inline uXm_veccall(T)
 
 // forceinline on in release build for static forceinline with veccall
-#		define __uXm_S_FINLINE_VECCALL(T) static __forceinline uXm_VECCALL(T)
+#		define __uXm_S_FINLINE_VECCALL(T) static __forceinline uXm_veccall(T)
 // forceinline on in release build for static forceinline with veccall
-#		define __uXm_S_FINLINEART_VECCALL(T) static __forceinline uXm_VECCALL(T)
+#		define __uXm_S_FINLINEART_VECCALL(T) static __forceinline uXm_veccall(T)
 
 // inline on in release build for inline only with veccall
-#		define __uXm_INLINE_VECCALL(T) __inline uXm_VECCALL(T)
+#		define __uXm_INLINE_VECCALL(T) __inline uXm_veccall(T)
 // inline on in release build for inline only with veccall
-#		define _uXm_INLINE_VECCALL(T) __inline uXm_VECCALL(T)
+#		define _uXm_INLINE_VECCALL(T) __inline uXm_veccall(T)
 
 // inline on in release build for inline only with veccall
-#		define __uXm_INLINEART_VECCALL(T) __inline uXm_VECCALL(T)
+#		define __uXm_INLINEART_VECCALL(T) __inline uXm_veccall(T)
 // inline on in release build for inline only with veccall
-#		define _uXm_INLINEART_VECCALL(T) __inline uXm_VECCALL(T)
+#		define _uXm_INLINEART_VECCALL(T) __inline uXm_veccall(T)
 
 // forceinline on in release build for forceinline only with veccall
-#		define __uXm_FINLINE_VECCALL(T) __forceinline uXm_VECCALL(T)
+#		define __uXm_FINLINE_VECCALL(T) __forceinline uXm_veccall(T)
 // forceinline on in release build for forceinline only with veccall
-#		define __uXm_FINLINEART_VECCALL(T) __forceinline uXm_VECCALL(T)
+#		define __uXm_FINLINEART_VECCALL(T) __forceinline uXm_veccall(T)
 #	  else
 // inline of in debug build for static inline
 #		define __uXm_S_INLINE(T) static T
@@ -345,34 +345,34 @@ uXm_PRAGMA(inline_depth(255))
 #		define __uXm_FINLINEART(T) T
 
 // inline of in debug build for static inline with veccall
-#		define __uXm_S_INLINE_VECCALL(T) static uXm_VECCALL(T)
+#		define __uXm_S_INLINE_VECCALL(T) static uXm_veccall(T)
 // inline of in debug build for static inline with veccall
-#		define _uXm_S_INLINE_VECCALL(T) static uXm_VECCALL(T)
+#		define _uXm_S_INLINE_VECCALL(T) static uXm_veccall(T)
 
 // inline of in debug build for static inline with veccall
-#		define __uXm_S_INLINEART_VECCALL(T) static uXm_VECCALL(T)
+#		define __uXm_S_INLINEART_VECCALL(T) static uXm_veccall(T)
 // inline of in debug build for static inline with veccall
-#		define _uXm_S_INLINEART_VECCALL(T) static uXm_VECCALL(T)
+#		define _uXm_S_INLINEART_VECCALL(T) static uXm_veccall(T)
 
 // forceinline of in debug build for static forceinline with veccall
-#		define __uXm_S_FINLINE_VECCALL(T) static uXm_VECCALL(T)
+#		define __uXm_S_FINLINE_VECCALL(T) static uXm_veccall(T)
 // forceinline of in debug build for static forceinline with veccall
-#		define __uXm_S_FINLINEART_VECCALL(T) static uXm_VECCALL(T)
+#		define __uXm_S_FINLINEART_VECCALL(T) static uXm_veccall(T)
 
 // inline of in debug build for inline only with veccall
-#		define __uXm_INLINE_VECCALL(T) uXm_VECCALL(T)
+#		define __uXm_INLINE_VECCALL(T) uXm_veccall(T)
 // inline of in debug build for inline only with veccall
-#		define _uXm_INLINE_VECCALL(T) uXm_VECCALL(T)
+#		define _uXm_INLINE_VECCALL(T) uXm_veccall(T)
 
 // inline of in debug build for inline only with veccall
-#		define __uXm_INLINEART_VECCALL(T) uXm_VECCALL(T)
+#		define __uXm_INLINEART_VECCALL(T) uXm_veccall(T)
 // inline of in debug build for inline only with veccall
-#		define _uXm_INLINEART_VECCALL(T) uXm_VECCALL(T)
+#		define _uXm_INLINEART_VECCALL(T) uXm_veccall(T)
 
 // forceinline of in debug build for forceinline only with veccall
-#		define __uXm_FINLINE_VECCALL(T) uXm_VECCALL(T)
+#		define __uXm_FINLINE_VECCALL(T) uXm_veccall(T)
 // forceinline of in debug build for forceinline only with veccall
-#		define __uXm_FINLINEART_VECCALL(T) uXm_VECCALL(T)
+#		define __uXm_FINLINEART_VECCALL(T) uXm_veccall(T)
 #	  endif // uXm_DEBUG
 
 // inline hallways on for static inline
@@ -396,24 +396,24 @@ uXm_PRAGMA(inline_depth(255))
 #		define uXm_FINLINEART(T) __forceinline T
 
 // inline hallways on for static inline with veccall
-#		define uXm_S_INLINE_VECCALL(T) static __inline uXm_VECCALL(T)
+#		define uXm_S_INLINE_VECCALL(T) static __inline uXm_veccall(T)
 // inline hallways on for static inline with veccall
-#		define uXm_S_INLINEART_VECCALL(T) static __inline uXm_VECCALL(T)
+#		define uXm_S_INLINEART_VECCALL(T) static __inline uXm_veccall(T)
 
 // forceinline hallways on for static forceinline with veccall
-#		define uXm_S_FINLINE_VECCALL(T) static __forceinline uXm_VECCALL(T)
+#		define uXm_S_FINLINE_VECCALL(T) static __forceinline uXm_veccall(T)
 // forceinline hallways on for static forceinline with veccall
-#		define uXm_S_FINLINEART_VECCALL(T) static __forceinline uXm_VECCALL(T)
+#		define uXm_S_FINLINEART_VECCALL(T) static __forceinline uXm_veccall(T)
 
 // inline hallways on for inline only with veccall
-#		define uXm_INLINE_VECCALL(T) __inline uXm_VECCALL(T)
+#		define uXm_INLINE_VECCALL(T) __inline uXm_veccall(T)
 // inline hallways on for inline only with veccall
-#		define uXm_INLINEART_VECCALL(T) __inline uXm_VECCALL(T)
+#		define uXm_INLINEART_VECCALL(T) __inline uXm_veccall(T)
 
 // forceinline hallways on for forceinline only with veccall
-#		define uXm_FINLINE_VECCALL(T) __forceinline uXm_VECCALL(T)
+#		define uXm_FINLINE_VECCALL(T) __forceinline uXm_veccall(T)
 // forceinline hallways on for forceinline only with veccall
-#		define uXm_FINLINEART_VECCALL(T) __forceinline uXm_VECCALL(T)
+#		define uXm_FINLINEART_VECCALL(T) __forceinline uXm_veccall(T)
 #	endif // uXm_INLINE
 #elif defined(uXm_GCC_COMPATIBLE_COMPILER) || defined(uXm_IBMC)
 #  if defined(uXm_GNUC) && !defined(uXm_CLANG)
@@ -451,34 +451,34 @@ uXm_PRAGMA(inline_depth(255))
 #		define __uXm_FINLINEART(T) inline T __attribute__((__gnu_inline__, __always_inline__, __artificial__))
 
 // inline on in release build for static inline with veccall
-#		define __uXm_S_INLINE_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((__gnu_inline__, __always_inline__))
+#		define __uXm_S_INLINE_VECCALL(T) static inline uXm_veccall(T) __attribute__((__gnu_inline__, __always_inline__))
 // inline on in release build for static inline with veccall
-#		define _uXm_S_INLINE_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((__gnu_inline__, __always_inline__))
+#		define _uXm_S_INLINE_VECCALL(T) static inline uXm_veccall(T) __attribute__((__gnu_inline__, __always_inline__))
 
 // inline on in release build for static inline artificial with veccall
-#		define __uXm_S_INLINEART_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((__gnu_inline__, __always_inline__, __artificial__))
+#		define __uXm_S_INLINEART_VECCALL(T) static inline uXm_veccall(T) __attribute__((__gnu_inline__, __always_inline__, __artificial__))
 // inline on in release build for static inline artificial with veccall
-#		define _uXm_S_INLINEART_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((__gnu_inline__, __always_inline__, __artificial__))
+#		define _uXm_S_INLINEART_VECCALL(T) static inline uXm_veccall(T) __attribute__((__gnu_inline__, __always_inline__, __artificial__))
 
 // forceinline on in release build for static forceinline with veccall
-#		define __uXm_S_FINLINE_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((__gnu_inline__, __always_inline__))
+#		define __uXm_S_FINLINE_VECCALL(T) static inline uXm_veccall(T) __attribute__((__gnu_inline__, __always_inline__))
 // forceinline on in release build for static forceinline artificial with veccall
-#		define __uXm_S_FINLINEART_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((__gnu_inline__, __always_inline__, __artificial__))
+#		define __uXm_S_FINLINEART_VECCALL(T) static inline uXm_veccall(T) __attribute__((__gnu_inline__, __always_inline__, __artificial__))
 
 // inline on in release build for inline only with veccall
-#		define __uXm_INLINE_VECCALL(T) inline uXm_VECCALL(T) __attribute__((__gnu_inline__, __always_inline__))
+#		define __uXm_INLINE_VECCALL(T) inline uXm_veccall(T) __attribute__((__gnu_inline__, __always_inline__))
 // inline on in release build for inline only with veccall
-#		define _uXm_INLINE_VECCALL(T) inline uXm_VECCALL(T) __attribute__((__gnu_inline__, __always_inline__))
+#		define _uXm_INLINE_VECCALL(T) inline uXm_veccall(T) __attribute__((__gnu_inline__, __always_inline__))
 
 // inline on in release build for static inline artificial with veccall
-#		define __uXm_INLINEART_VECCALL(T) inline uXm_VECCALL(T) __attribute__((__gnu_inline__, __always_inline__, __artificial__))
+#		define __uXm_INLINEART_VECCALL(T) inline uXm_veccall(T) __attribute__((__gnu_inline__, __always_inline__, __artificial__))
 // inline on in release build for static inline artificial with veccall
-#		define _uXm_INLINEART_VECCALL(T) inline uXm_VECCALL(T) __attribute__((__gnu_inline__, __always_inline__, __artificial__))
+#		define _uXm_INLINEART_VECCALL(T) inline uXm_veccall(T) __attribute__((__gnu_inline__, __always_inline__, __artificial__))
 
 // forceinline on in release build for forceinline only with veccall
-#		define __uXm_FINLINE_VECCALL(T) inline uXm_VECCALL(T) __attribute__((__gnu_inline__, __always_inline__))
+#		define __uXm_FINLINE_VECCALL(T) inline uXm_veccall(T) __attribute__((__gnu_inline__, __always_inline__))
 // forceinline on in release build for forceinline artificial only with veccall
-#		define __uXm_FINLINEART_VECCALL(T) inline uXm_VECCALL(T) __attribute__((__gnu_inline__, __always_inline__, __artificial__))
+#		define __uXm_FINLINEART_VECCALL(T) inline uXm_veccall(T) __attribute__((__gnu_inline__, __always_inline__, __artificial__))
 #	  else
 // inline of in debug build for static inline
 #		define __uXm_S_INLINE(T) static T
@@ -511,34 +511,34 @@ uXm_PRAGMA(inline_depth(255))
 #		define __uXm_FINLINEART(T) T
 
 // inline of in debug build for static inline with veccall
-#		define __uXm_S_INLINE_VECCALL(T) static uXm_VECCALL(T)
+#		define __uXm_S_INLINE_VECCALL(T) static uXm_veccall(T)
 // inline of in debug build for static inline with veccall
-#		define _uXm_S_INLINE_VECCALL(T) static uXm_VECCALL(T)
+#		define _uXm_S_INLINE_VECCALL(T) static uXm_veccall(T)
 
 // inline of in debug build for static inline artificial with veccall
-#		define __uXm_S_INLINEART_VECCALL(T) static uXm_VECCALL(T)
+#		define __uXm_S_INLINEART_VECCALL(T) static uXm_veccall(T)
 // inline of in debug build for static inline artificial with veccall
-#		define _uXm_S_INLINEART_VECCALL(T) static uXm_VECCALL(T)
+#		define _uXm_S_INLINEART_VECCALL(T) static uXm_veccall(T)
 
 // forceinline of in debug build for static forceinline with veccall
-#		define __uXm_S_FINLINE_VECCALL(T) static uXm_VECCALL(T)
+#		define __uXm_S_FINLINE_VECCALL(T) static uXm_veccall(T)
 // forceinline of in debug build for static forceinline artificial with veccall
-#		define __uXm_S_FINLINEART_VECCALL(T) static uXm_VECCALL(T)
+#		define __uXm_S_FINLINEART_VECCALL(T) static uXm_veccall(T)
 
 // inline of in debug build for inline only with veccall
-#		define __uXm_INLINE_VECCALL(T) uXm_VECCALL(T)
+#		define __uXm_INLINE_VECCALL(T) uXm_veccall(T)
 // inline of in debug build for inline only with veccall
-#		define _uXm_INLINE_VECCALL(T) uXm_VECCALL(T)
+#		define _uXm_INLINE_VECCALL(T) uXm_veccall(T)
 
 // inline of in debug build for inline only artificial with veccall
-#		define __uXm_INLINEART_VECCALL(T) uXm_VECCALL(T)
+#		define __uXm_INLINEART_VECCALL(T) uXm_veccall(T)
 // inline of in debug build for inline only artificial with veccall
-#		define _uXm_INLINEART_VECCALL(T) uXm_VECCALL(T)
+#		define _uXm_INLINEART_VECCALL(T) uXm_veccall(T)
 
 // forceinline of in debug build for forceinline only with veccall
-#		define __uXm_FINLINE_VECCALL(T) uXm_VECCALL(T)
+#		define __uXm_FINLINE_VECCALL(T) uXm_veccall(T)
 // forceinline of in debug build for forceinline only artificial with veccall
-#		define __uXm_FINLINEART_VECCALL(T) uXm_VECCALL(T)
+#		define __uXm_FINLINEART_VECCALL(T) uXm_veccall(T)
 #	  endif // uXm_DEBUG
 
 // inline hallways on for static inline
@@ -562,24 +562,24 @@ uXm_PRAGMA(inline_depth(255))
 #		define uXm_FINLINEART(T) inline T __attribute__((__gnu_inline__, __always_inline__, __artificial__))
 
 // inline hallways on for static inline with veccall
-#		define uXm_S_INLINE_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((__gnu_inline__, __always_inline__))
+#		define uXm_S_INLINE_VECCALL(T) static inline uXm_veccall(T) __attribute__((__gnu_inline__, __always_inline__))
 // inline hallways on for static inline artificial with veccall
-#		define uXm_S_INLINEART_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((__gnu_inline__, __always_inline__, __artificial__))
+#		define uXm_S_INLINEART_VECCALL(T) static inline uXm_veccall(T) __attribute__((__gnu_inline__, __always_inline__, __artificial__))
 
 // forceinline hallways on for static forceinline with veccall
-#		define uXm_S_FINLINE_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((__gnu_inline__, __always_inline__))
+#		define uXm_S_FINLINE_VECCALL(T) static inline uXm_veccall(T) __attribute__((__gnu_inline__, __always_inline__))
 // forceinline hallways on for static forceinline artificial with veccall
-#		define uXm_S_FINLINEART_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((__gnu_inline__, __always_inline__, __artificial__))
+#		define uXm_S_FINLINEART_VECCALL(T) static inline uXm_veccall(T) __attribute__((__gnu_inline__, __always_inline__, __artificial__))
 
 // inline hallways on for inline only with veccall
-#		define uXm_INLINE_VECCALL(T) inline uXm_VECCALL(T) __attribute__((__gnu_inline__, __always_inline__))
+#		define uXm_INLINE_VECCALL(T) inline uXm_veccall(T) __attribute__((__gnu_inline__, __always_inline__))
 // inline hallways on for inline only artificial with veccall
-#		define uXm_INLINEART_VECCALL(T) inline uXm_VECCALL(T) __attribute__((__gnu_inline__, __always_inline__, __artificial__))
+#		define uXm_INLINEART_VECCALL(T) inline uXm_veccall(T) __attribute__((__gnu_inline__, __always_inline__, __artificial__))
 
 // forceinline hallways on for forceinline only with veccall
-#		define uXm_FINLINE_VECCALL(T) inline uXm_VECCALL(T) __attribute__((__gnu_inline__, __always_inline__))
+#		define uXm_FINLINE_VECCALL(T) inline uXm_veccall(T) __attribute__((__gnu_inline__, __always_inline__))
 // forceinline hallways on for forceinline only artificial with veccall
-#		define uXm_FINLINEART_VECCALL(T) inline uXm_VECCALL(T) __attribute__((__gnu_inline__, __always_inline__, __artificial__))
+#		define uXm_FINLINEART_VECCALL(T) inline uXm_veccall(T) __attribute__((__gnu_inline__, __always_inline__, __artificial__))
 #	endif // uXm_INLINE
 #  elif defined(uXm_CLANG)
 uXm_PRAGMA(inline_depth(255))
@@ -616,34 +616,34 @@ uXm_PRAGMA(inline_depth(255))
 #		define __uXm_FINLINEART(T) inline T __attribute__((__always_inline__, __nodebug__))
 
 // inline on in release build for static inline with veccall
-#		define __uXm_S_INLINE_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((__always_inline__, __nodebug__))
+#		define __uXm_S_INLINE_VECCALL(T) static inline uXm_veccall(T) __attribute__((__always_inline__, __nodebug__))
 // inline on in release build for static inline with veccall
-#		define _uXm_S_INLINE_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((__always_inline__, __nodebug__))
+#		define _uXm_S_INLINE_VECCALL(T) static inline uXm_veccall(T) __attribute__((__always_inline__, __nodebug__))
 
 // inline on in release build for static inline artificial with veccall
-#		define __uXm_S_INLINEART_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((__always_inline__, __nodebug__))
+#		define __uXm_S_INLINEART_VECCALL(T) static inline uXm_veccall(T) __attribute__((__always_inline__, __nodebug__))
 // inline on in release build for static inline artificial with veccall
-#		define _uXm_S_INLINEART_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((__always_inline__, __nodebug__))
+#		define _uXm_S_INLINEART_VECCALL(T) static inline uXm_veccall(T) __attribute__((__always_inline__, __nodebug__))
 
 // forceinline on in release build for static forceinline with veccall
-#		define __uXm_S_FINLINE_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((__always_inline__, __nodebug__))
+#		define __uXm_S_FINLINE_VECCALL(T) static inline uXm_veccall(T) __attribute__((__always_inline__, __nodebug__))
 // forceinline on in release build for static forceinline artificial with veccall
-#		define __uXm_S_FINLINEART_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((__always_inline__, __nodebug__))
+#		define __uXm_S_FINLINEART_VECCALL(T) static inline uXm_veccall(T) __attribute__((__always_inline__, __nodebug__))
 
 // inline on in release build for inline only with veccall
-#		define __uXm_INLINE_VECCALL(T) inline uXm_VECCALL(T) __attribute__((__always_inline__, __nodebug__))
+#		define __uXm_INLINE_VECCALL(T) inline uXm_veccall(T) __attribute__((__always_inline__, __nodebug__))
 // inline on in release build for inline only with veccall
-#		define _uXm_INLINE_VECCALL(T) inline uXm_VECCALL(T) __attribute__((__always_inline__, __nodebug__))
+#		define _uXm_INLINE_VECCALL(T) inline uXm_veccall(T) __attribute__((__always_inline__, __nodebug__))
 
 // inline on in release build for static inline artificial with veccall
-#		define __uXm_INLINEART_VECCALL(T) inline uXm_VECCALL(T) __attribute__((__always_inline__, __nodebug__))
+#		define __uXm_INLINEART_VECCALL(T) inline uXm_veccall(T) __attribute__((__always_inline__, __nodebug__))
 // inline on in release build for static inline artificial with veccall
-#		define _uXm_INLINEART_VECCALL(T) inline uXm_VECCALL(T) __attribute__((__always_inline__, __nodebug__))
+#		define _uXm_INLINEART_VECCALL(T) inline uXm_veccall(T) __attribute__((__always_inline__, __nodebug__))
 
 // forceinline on in release build for forceinline only with veccall
-#		define __uXm_FINLINE_VECCALL(T) inline uXm_VECCALL(T) __attribute__((__always_inline__, __nodebug__))
+#		define __uXm_FINLINE_VECCALL(T) inline uXm_veccall(T) __attribute__((__always_inline__, __nodebug__))
 // forceinline on in release build for forceinline artificial only with veccall
-#		define __uXm_FINLINEART_VECCALL(T) inline uXm_VECCALL(T) __attribute__((__always_inline__, __nodebug__))
+#		define __uXm_FINLINEART_VECCALL(T) inline uXm_veccall(T) __attribute__((__always_inline__, __nodebug__))
 #	  else
 // inline of in debug build for static inline
 #		define __uXm_S_INLINE(T) static T
@@ -676,34 +676,34 @@ uXm_PRAGMA(inline_depth(255))
 #		define __uXm_FINLINEART(T) T
 
 // inline of in debug build for static inline with veccall
-#		define __uXm_S_INLINE_VECCALL(T) static uXm_VECCALL(T)
+#		define __uXm_S_INLINE_VECCALL(T) static uXm_veccall(T)
 // inline of in debug build for static inline with veccall
-#		define _uXm_S_INLINE_VECCALL(T) static uXm_VECCALL(T)
+#		define _uXm_S_INLINE_VECCALL(T) static uXm_veccall(T)
 
 // inline of in debug build for static inline artificial with veccall
-#		define __uXm_S_INLINEART_VECCALL(T) static uXm_VECCALL(T)
+#		define __uXm_S_INLINEART_VECCALL(T) static uXm_veccall(T)
 // inline of in debug build for static inline artificial with veccall
-#		define _uXm_S_INLINEART_VECCALL(T) static uXm_VECCALL(T)
+#		define _uXm_S_INLINEART_VECCALL(T) static uXm_veccall(T)
 
 // forceinline of in debug build for static forceinline with veccall
-#		define __uXm_S_FINLINE_VECCALL(T) static uXm_VECCALL(T)
+#		define __uXm_S_FINLINE_VECCALL(T) static uXm_veccall(T)
 // forceinline of in debug build for static forceinline artificial with veccall
-#		define __uXm_S_FINLINEART_VECCALL(T) static uXm_VECCALL(T)
+#		define __uXm_S_FINLINEART_VECCALL(T) static uXm_veccall(T)
 
 // inline of in debug build for inline only with veccall
-#		define __uXm_INLINE_VECCALL(T) uXm_VECCALL(T)
+#		define __uXm_INLINE_VECCALL(T) uXm_veccall(T)
 // inline of in debug build for inline only with veccall
-#		define _uXm_INLINE_VECCALL(T) uXm_VECCALL(T)
+#		define _uXm_INLINE_VECCALL(T) uXm_veccall(T)
 
 // inline of in debug build for inline only artificial with veccall
-#		define __uXm_INLINEART_VECCALL(T) uXm_VECCALL(T)
+#		define __uXm_INLINEART_VECCALL(T) uXm_veccall(T)
 // inline of in debug build for inline only artificial with veccall
-#		define _uXm_INLINEART_VECCALL(T) uXm_VECCALL(T)
+#		define _uXm_INLINEART_VECCALL(T) uXm_veccall(T)
 
 // forceinline of in debug build for forceinline only with veccall
-#		define __uXm_FINLINE_VECCALL(T) uXm_VECCALL(T)
+#		define __uXm_FINLINE_VECCALL(T) uXm_veccall(T)
 // forceinline of in debug build for forceinline only artificial with veccall
-#		define __uXm_FINLINEART_VECCALL(T) uXm_VECCALL(T)
+#		define __uXm_FINLINEART_VECCALL(T) uXm_veccall(T)
 #	  endif // uXm_DEBUG
 
 // inline hallways on for static inline
@@ -727,24 +727,24 @@ uXm_PRAGMA(inline_depth(255))
 #		define uXm_FINLINEART(T) inline T __attribute__((__always_inline__, __nodebug__))
 
 // inline hallways on for static inline with veccall
-#		define uXm_S_INLINE_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((__always_inline__, __nodebug__))
+#		define uXm_S_INLINE_VECCALL(T) static inline uXm_veccall(T) __attribute__((__always_inline__, __nodebug__))
 // inline hallways on for static inline artificial with veccall
-#		define uXm_S_INLINEART_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((__always_inline__, __nodebug__))
+#		define uXm_S_INLINEART_VECCALL(T) static inline uXm_veccall(T) __attribute__((__always_inline__, __nodebug__))
 
 // forceinline hallways on for static forceinline with veccall
-#		define uXm_S_FINLINE_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((__always_inline__, __nodebug__))
+#		define uXm_S_FINLINE_VECCALL(T) static inline uXm_veccall(T) __attribute__((__always_inline__, __nodebug__))
 // forceinline hallways on for static forceinline artificial with veccall
-#		define uXm_S_FINLINEART_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((__always_inline__, __nodebug__))
+#		define uXm_S_FINLINEART_VECCALL(T) static inline uXm_veccall(T) __attribute__((__always_inline__, __nodebug__))
 
 // inline hallways on for inline only with veccall
-#		define uXm_INLINE_VECCALL(T) inline uXm_VECCALL(T) __attribute__((__always_inline__, __nodebug__))
+#		define uXm_INLINE_VECCALL(T) inline uXm_veccall(T) __attribute__((__always_inline__, __nodebug__))
 // inline hallways on for inline only artificial with veccall
-#		define uXm_INLINEART_VECCALL(T) inline uXm_VECCALL(T) __attribute__((__always_inline__, __nodebug__))
+#		define uXm_INLINEART_VECCALL(T) inline uXm_veccall(T) __attribute__((__always_inline__, __nodebug__))
 
 // forceinline hallways on for forceinline only with veccall
-#		define uXm_FINLINE_VECCALL(T) inline uXm_VECCALL(T) __attribute__((__always_inline__, __nodebug__))
+#		define uXm_FINLINE_VECCALL(T) inline uXm_veccall(T) __attribute__((__always_inline__, __nodebug__))
 // forceinline hallways on for forceinline only artificial with veccall
-#		define uXm_FINLINEART_VECCALL(T) inline uXm_VECCALL(T) __attribute__((__always_inline__, __nodebug__))
+#		define uXm_FINLINEART_VECCALL(T) inline uXm_veccall(T) __attribute__((__always_inline__, __nodebug__))
 #	endif // uXm_INLINE
 #  else
 uXm_PRAGMA(inline_depth(255))
@@ -781,34 +781,34 @@ uXm_PRAGMA(inline_depth(255))
 #		define __uXm_FINLINEART(T) inline T __attribute__((always_inline))
 
 // inline on in release build for static inline with veccall
-#		define __uXm_S_INLINE_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((always_inline))
+#		define __uXm_S_INLINE_VECCALL(T) static inline uXm_veccall(T) __attribute__((always_inline))
 // inline on in release build for static inline with veccall
-#		define _uXm_S_INLINE_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((always_inline))
+#		define _uXm_S_INLINE_VECCALL(T) static inline uXm_veccall(T) __attribute__((always_inline))
 
 // inline on in release build for static inline artificial with veccall
-#		define __uXm_S_INLINEART_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((always_inline))
+#		define __uXm_S_INLINEART_VECCALL(T) static inline uXm_veccall(T) __attribute__((always_inline))
 // inline on in release build for static inline artificial with veccall
-#		define _uXm_S_INLINEART_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((always_inline))
+#		define _uXm_S_INLINEART_VECCALL(T) static inline uXm_veccall(T) __attribute__((always_inline))
 
 // forceinline on in release build for static forceinline with veccall
-#		define __uXm_S_FINLINE_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((always_inline))
+#		define __uXm_S_FINLINE_VECCALL(T) static inline uXm_veccall(T) __attribute__((always_inline))
 // forceinline on in release build for static forceinline artificial with veccall
-#		define __uXm_S_FINLINEART_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((always_inline))
+#		define __uXm_S_FINLINEART_VECCALL(T) static inline uXm_veccall(T) __attribute__((always_inline))
 
 // inline on in release build for inline only with veccall
-#		define __uXm_INLINE_VECCALL(T) inline uXm_VECCALL(T) __attribute__((always_inline))
+#		define __uXm_INLINE_VECCALL(T) inline uXm_veccall(T) __attribute__((always_inline))
 // inline on in release build for inline only with veccall
-#		define _uXm_INLINE_VECCALL(T) inline uXm_VECCALL(T) __attribute__((always_inline))
+#		define _uXm_INLINE_VECCALL(T) inline uXm_veccall(T) __attribute__((always_inline))
 
 // inline on in release build for static inline artificial with veccall
-#		define __uXm_INLINEART_VECCALL(T) inline uXm_VECCALL(T) __attribute__((always_inline))
+#		define __uXm_INLINEART_VECCALL(T) inline uXm_veccall(T) __attribute__((always_inline))
 // inline on in release build for static inline artificial with veccall
-#		define _uXm_INLINEART_VECCALL(T) inline uXm_VECCALL(T) __attribute__((always_inline))
+#		define _uXm_INLINEART_VECCALL(T) inline uXm_veccall(T) __attribute__((always_inline))
 
 // forceinline on in release build for forceinline only with veccall
-#		define __uXm_FINLINE_VECCALL(T) inline uXm_VECCALL(T) __attribute__((always_inline))
+#		define __uXm_FINLINE_VECCALL(T) inline uXm_veccall(T) __attribute__((always_inline))
 // forceinline on in release build for forceinline artificial only with veccall
-#		define __uXm_FINLINEART_VECCALL(T) inline uXm_VECCALL(T) __attribute__((always_inline))
+#		define __uXm_FINLINEART_VECCALL(T) inline uXm_veccall(T) __attribute__((always_inline))
 #	  else
 // inline of in debug build for static inline
 #		define __uXm_S_INLINE(T) static T
@@ -841,34 +841,34 @@ uXm_PRAGMA(inline_depth(255))
 #		define __uXm_FINLINEART(T) T
 
 // inline of in debug build for static inline with veccall
-#		define __uXm_S_INLINE_VECCALL(T) static uXm_VECCALL(T)
+#		define __uXm_S_INLINE_VECCALL(T) static uXm_veccall(T)
 // inline of in debug build for static inline with veccall
-#		define _uXm_S_INLINE_VECCALL(T) static uXm_VECCALL(T)
+#		define _uXm_S_INLINE_VECCALL(T) static uXm_veccall(T)
 
 // inline of in debug build for static inline artificial with veccall
-#		define __uXm_S_INLINEART_VECCALL(T) static uXm_VECCALL(T)
+#		define __uXm_S_INLINEART_VECCALL(T) static uXm_veccall(T)
 // inline of in debug build for static inline artificial with veccall
-#		define _uXm_S_INLINEART_VECCALL(T) static uXm_VECCALL(T)
+#		define _uXm_S_INLINEART_VECCALL(T) static uXm_veccall(T)
 
 // forceinline of in debug build for static forceinline with veccall
-#		define __uXm_S_FINLINE_VECCALL(T) static uXm_VECCALL(T)
+#		define __uXm_S_FINLINE_VECCALL(T) static uXm_veccall(T)
 // forceinline of in debug build for static forceinline artificial with veccall
-#		define __uXm_S_FINLINEART_VECCALL(T) static uXm_VECCALL(T)
+#		define __uXm_S_FINLINEART_VECCALL(T) static uXm_veccall(T)
 
 // inline of in debug build for inline only with veccall
-#		define __uXm_INLINE_VECCALL(T) uXm_VECCALL(T)
+#		define __uXm_INLINE_VECCALL(T) uXm_veccall(T)
 // inline of in debug build for inline only with veccall
-#		define _uXm_INLINE_VECCALL(T) uXm_VECCALL(T)
+#		define _uXm_INLINE_VECCALL(T) uXm_veccall(T)
 
 // inline of in debug build for inline only artificial with veccall
-#		define __uXm_INLINEART_VECCALL(T) uXm_VECCALL(T)
+#		define __uXm_INLINEART_VECCALL(T) uXm_veccall(T)
 // inline of in debug build for inline only artificial with veccall
-#		define _uXm_INLINEART_VECCALL(T) uXm_VECCALL(T)
+#		define _uXm_INLINEART_VECCALL(T) uXm_veccall(T)
 
 // forceinline of in debug build for forceinline only with veccall
-#		define __uXm_FINLINE_VECCALL(T) uXm_VECCALL(T)
+#		define __uXm_FINLINE_VECCALL(T) uXm_veccall(T)
 // forceinline of in debug build for forceinline only artificial with veccall
-#		define __uXm_FINLINEART_VECCALL(T) uXm_VECCALL(T)
+#		define __uXm_FINLINEART_VECCALL(T) uXm_veccall(T)
 #	  endif // uXm_DEBUG
 
 // inline hallways on for static inline
@@ -892,24 +892,24 @@ uXm_PRAGMA(inline_depth(255))
 #		define uXm_FINLINEART(T) inline T __attribute__((always_inline))
 
 // inline hallways on for static inline with veccall
-#		define uXm_S_INLINE_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((always_inline))
+#		define uXm_S_INLINE_VECCALL(T) static inline uXm_veccall(T) __attribute__((always_inline))
 // inline hallways on for static inline artificial with veccall
-#		define uXm_S_INLINEART_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((always_inline))
+#		define uXm_S_INLINEART_VECCALL(T) static inline uXm_veccall(T) __attribute__((always_inline))
 
 // forceinline hallways on for static forceinline with veccall
-#		define uXm_S_FINLINE_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((always_inline))
+#		define uXm_S_FINLINE_VECCALL(T) static inline uXm_veccall(T) __attribute__((always_inline))
 // forceinline hallways on for static forceinline artificial with veccall
-#		define uXm_S_FINLINEART_VECCALL(T) static inline uXm_VECCALL(T) __attribute__((always_inline))
+#		define uXm_S_FINLINEART_VECCALL(T) static inline uXm_veccall(T) __attribute__((always_inline))
 
 // inline hallways on for inline only with veccall
-#		define uXm_INLINE_VECCALL(T) inline uXm_VECCALL(T) __attribute__((always_inline))
+#		define uXm_INLINE_VECCALL(T) inline uXm_veccall(T) __attribute__((always_inline))
 // inline hallways on for inline only artificial with veccall
-#		define uXm_INLINEART_VECCALL(T) inline uXm_VECCALL(T) __attribute__((always_inline))
+#		define uXm_INLINEART_VECCALL(T) inline uXm_veccall(T) __attribute__((always_inline))
 
 // forceinline hallways on for forceinline only with veccall
-#		define uXm_FINLINE_VECCALL(T) inline uXm_VECCALL(T) __attribute__((always_inline))
+#		define uXm_FINLINE_VECCALL(T) inline uXm_veccall(T) __attribute__((always_inline))
 // forceinline hallways on for forceinline only artificial with veccall
-#		define uXm_FINLINEART_VECCALL(T) inline uXm_VECCALL(T) __attribute__((always_inline))
+#		define uXm_FINLINEART_VECCALL(T) inline uXm_veccall(T) __attribute__((always_inline))
 #	endif // uXm_INLINE
 #  endif // uXm_GNUC
 #else
@@ -947,34 +947,34 @@ uXm_PRAGMA(inline_depth(255))
 #		define __uXm_FINLINEART(T) inline T
 
 // inline on in release build for static inline with veccall
-#		define __uXm_S_INLINE_VECCALL(T) static inline uXm_VECCALL(T)
+#		define __uXm_S_INLINE_VECCALL(T) static inline uXm_veccall(T)
 // inline on in release build for static inline with veccall
-#		define _uXm_S_INLINE_VECCALL(T) static inline uXm_VECCALL(T)
+#		define _uXm_S_INLINE_VECCALL(T) static inline uXm_veccall(T)
 
 // inline on in release build for static inline artificial with veccall
-#		define __uXm_S_INLINEART_VECCALL(T) static inline uXm_VECCALL(T)
+#		define __uXm_S_INLINEART_VECCALL(T) static inline uXm_veccall(T)
 // inline on in release build for static inline artificial with veccall
-#		define _uXm_S_INLINEART_VECCALL(T) static inline uXm_VECCALL(T)
+#		define _uXm_S_INLINEART_VECCALL(T) static inline uXm_veccall(T)
 
 // forceinline on in release build for static forceinline with veccall
-#		define __uXm_S_FINLINE_VECCALL(T) static inline uXm_VECCALL(T)
+#		define __uXm_S_FINLINE_VECCALL(T) static inline uXm_veccall(T)
 // forceinline on in release build for static forceinline artificial with veccall
-#		define __uXm_S_FINLINEART_VECCALL(T) static inline uXm_VECCALL(T)
+#		define __uXm_S_FINLINEART_VECCALL(T) static inline uXm_veccall(T)
 
 // inline on in release build for inline only with veccall
-#		define __uXm_INLINE_VECCALL(T) inline uXm_VECCALL(T)
+#		define __uXm_INLINE_VECCALL(T) inline uXm_veccall(T)
 // inline on in release build for inline only with veccall
-#		define _uXm_INLINE_VECCALL(T) inline uXm_VECCALL(T)
+#		define _uXm_INLINE_VECCALL(T) inline uXm_veccall(T)
 
 // inline on in release build for static inline artificial with veccall
-#		define __uXm_INLINEART_VECCALL(T) inline uXm_VECCALL(T)
+#		define __uXm_INLINEART_VECCALL(T) inline uXm_veccall(T)
 // inline on in release build for static inline artificial with veccall
-#		define _uXm_INLINEART_VECCALL(T) inline uXm_VECCALL(T)
+#		define _uXm_INLINEART_VECCALL(T) inline uXm_veccall(T)
 
 // forceinline on in release build for forceinline only with veccall
-#		define __uXm_FINLINE_VECCALL(T) inline uXm_VECCALL(T)
+#		define __uXm_FINLINE_VECCALL(T) inline uXm_veccall(T)
 // forceinline on in release build for forceinline artificial only with veccall
-#		define __uXm_FINLINEART_VECCALL(T) inline uXm_VECCALL(T)
+#		define __uXm_FINLINEART_VECCALL(T) inline uXm_veccall(T)
 #	  else
 // inline of in debug build for static inline
 #		define __uXm_S_INLINE(T) static T
@@ -1007,34 +1007,34 @@ uXm_PRAGMA(inline_depth(255))
 #		define __uXm_FINLINEART(T) T
 
 // inline of in debug build for static inline with veccall
-#		define __uXm_S_INLINE_VECCALL(T) static uXm_VECCALL(T)
+#		define __uXm_S_INLINE_VECCALL(T) static uXm_veccall(T)
 // inline of in debug build for static inline with veccall
-#		define _uXm_S_INLINE_VECCALL(T) static uXm_VECCALL(T)
+#		define _uXm_S_INLINE_VECCALL(T) static uXm_veccall(T)
 
 // inline of in debug build for static inline artificial with veccall
-#		define __uXm_S_INLINEART_VECCALL(T) static uXm_VECCALL(T)
+#		define __uXm_S_INLINEART_VECCALL(T) static uXm_veccall(T)
 // inline of in debug build for static inline artificial with veccall
-#		define _uXm_S_INLINEART_VECCALL(T) static uXm_VECCALL(T)
+#		define _uXm_S_INLINEART_VECCALL(T) static uXm_veccall(T)
 
 // forceinline of in debug build for static forceinline with veccall
-#		define __uXm_S_FINLINE_VECCALL(T) static uXm_VECCALL(T)
+#		define __uXm_S_FINLINE_VECCALL(T) static uXm_veccall(T)
 // forceinline of in debug build for static forceinline artificial with veccall
-#		define __uXm_S_FINLINEART_VECCALL(T) static uXm_VECCALL(T)
+#		define __uXm_S_FINLINEART_VECCALL(T) static uXm_veccall(T)
 
 // inline of in debug build for inline only with veccall
-#		define __uXm_INLINE_VECCALL(T) uXm_VECCALL(T)
+#		define __uXm_INLINE_VECCALL(T) uXm_veccall(T)
 // inline of in debug build for inline only with veccall
-#		define _uXm_INLINE_VECCALL(T) uXm_VECCALL(T)
+#		define _uXm_INLINE_VECCALL(T) uXm_veccall(T)
 
 // inline of in debug build for inline only artificial with veccall
-#		define __uXm_INLINEART_VECCALL(T) uXm_VECCALL(T)
+#		define __uXm_INLINEART_VECCALL(T) uXm_veccall(T)
 // inline of in debug build for inline only artificial with veccall
-#		define _uXm_INLINEART_VECCALL(T) uXm_VECCALL(T)
+#		define _uXm_INLINEART_VECCALL(T) uXm_veccall(T)
 
 // forceinline of in debug build for forceinline only with veccall
-#		define __uXm_FINLINE_VECCALL(T) uXm_VECCALL(T)
+#		define __uXm_FINLINE_VECCALL(T) uXm_veccall(T)
 // forceinline of in debug build for forceinline only artificial with veccall
-#		define __uXm_FINLINEART_VECCALL(T) uXm_VECCALL(T)
+#		define __uXm_FINLINEART_VECCALL(T) uXm_veccall(T)
 #	  endif // uXm_DEBUG
 
 // inline hallways on for static inline
@@ -1058,24 +1058,24 @@ uXm_PRAGMA(inline_depth(255))
 #		define uXm_FINLINEART(T) inline T
 
 // inline hallways on for static inline with veccall
-#		define uXm_S_INLINE_VECCALL(T) static inline uXm_VECCALL(T)
+#		define uXm_S_INLINE_VECCALL(T) static inline uXm_veccall(T)
 // inline hallways on for static inline artificial with veccall
-#		define uXm_S_INLINEART_VECCALL(T) static inline uXm_VECCALL(T)
+#		define uXm_S_INLINEART_VECCALL(T) static inline uXm_veccall(T)
 
 // forceinline hallways on for static forceinline with veccall
-#		define uXm_S_FINLINE_VECCALL(T) static inline uXm_VECCALL(T)
+#		define uXm_S_FINLINE_VECCALL(T) static inline uXm_veccall(T)
 // forceinline hallways on for static forceinline artificial with veccall
-#		define uXm_S_FINLINEART_VECCALL(T) static inline uXm_VECCALL(T)
+#		define uXm_S_FINLINEART_VECCALL(T) static inline uXm_veccall(T)
 
 // inline hallways on for inline only with veccall
-#		define uXm_INLINE_VECCALL(T) inline uXm_VECCALL(T)
+#		define uXm_INLINE_VECCALL(T) inline uXm_veccall(T)
 // inline hallways on for inline only artificial with veccall
-#		define uXm_INLINEART_VECCALL(T) inline uXm_VECCALL(T)
+#		define uXm_INLINEART_VECCALL(T) inline uXm_veccall(T)
 
 // forceinline hallways on for forceinline only with veccall
-#		define uXm_FINLINE_VECCALL(T) inline uXm_VECCALL(T)
+#		define uXm_FINLINE_VECCALL(T) inline uXm_veccall(T)
 // forceinline hallways on for forceinline only artificial with veccall
-#		define uXm_FINLINEART_VECCALL(T) inline uXm_VECCALL(T)
+#		define uXm_FINLINEART_VECCALL(T) inline uXm_veccall(T)
 #	endif // uXm_INLINE
 # endif
 
@@ -1672,13 +1672,13 @@ Empty function class body macro
 #	define __uXm_CCGLOBAL_CALLCONV_API(T) _EXTERNCC __uXm_INLINE(uXm_callconv(T))
 
 // static inline
-#	define uXm_CGLOBAL_VECCALL_API(T) _EXTERNC uXm_S_INLINE(uXm_VECCALL(T))
+#	define uXm_CGLOBAL_VECCALL_API(T) _EXTERNC uXm_S_INLINE(uXm_veccall(T))
 // inline only
-#	define __uXm_CGLOBAL_VECCALL_API(T) _EXTERNC __uXm_INLINE(uXm_VECCALL(T))
+#	define __uXm_CGLOBAL_VECCALL_API(T) _EXTERNC __uXm_INLINE(uXm_veccall(T))
 // static inline
-#	define uXm_CCGLOBAL_VECCALL_API(T) _EXTERNCC uXm_S_INLINE(uXm_VECCALL(T))
+#	define uXm_CCGLOBAL_VECCALL_API(T) _EXTERNCC uXm_S_INLINE(uXm_veccall(T))
 // inline only
-#	define __uXm_CCGLOBAL_VECCALL_API(T) _EXTERNCC __uXm_INLINE(uXm_VECCALL(T))
+#	define __uXm_CCGLOBAL_VECCALL_API(T) _EXTERNCC __uXm_INLINE(uXm_veccall(T))
 # endif
 # elif defined(uXm_LIB_STATIC)
 # ifndef uXm_GLOBAL_CONST
@@ -1712,13 +1712,13 @@ Empty function class body macro
 #	define __uXm_CCGLOBAL_CALLCONV_API(T) _EXTERNCC __uXm_INLINE(uXm_callconv(T))
 
 // static inline
-#	define uXm_CGLOBAL_VECCALL_API(T) _EXTERNC uXm_S_INLINE(uXm_VECCALL(T))
+#	define uXm_CGLOBAL_VECCALL_API(T) _EXTERNC uXm_S_INLINE(uXm_veccall(T))
 // inline only
-#	define __uXm_CGLOBAL_VECCALL_API(T) _EXTERNC __uXm_INLINE(uXm_VECCALL(T))
+#	define __uXm_CGLOBAL_VECCALL_API(T) _EXTERNC __uXm_INLINE(uXm_veccall(T))
 // static inline
-#	define uXm_CCGLOBAL_VECCALL_API(T) _EXTERNCC uXm_S_INLINE(uXm_VECCALL(T))
+#	define uXm_CCGLOBAL_VECCALL_API(T) _EXTERNCC uXm_S_INLINE(uXm_veccall(T))
 // inline only
-#	define __uXm_CCGLOBAL_VECCALL_API(T) _EXTERNCC __uXm_INLINE(uXm_VECCALL(T))
+#	define __uXm_CCGLOBAL_VECCALL_API(T) _EXTERNCC __uXm_INLINE(uXm_veccall(T))
 # endif
 # endif
 #else
@@ -1753,13 +1753,13 @@ Empty function class body macro
 #	define __uXm_CCGLOBAL_CALLCONV_API(T) _EXTERNCC __uXm_INLINE(uXm_callconv(T))
 
 // static inline
-#	define uXm_CGLOBAL_VECCALL_API(T) _EXTERNC uXm_S_INLINE(uXm_VECCALL(T))
+#	define uXm_CGLOBAL_VECCALL_API(T) _EXTERNC uXm_S_INLINE(uXm_veccall(T))
 // inline only
-#	define __uXm_CGLOBAL_VECCALL_API(T) _EXTERNC __uXm_INLINE(uXm_VECCALL(T))
+#	define __uXm_CGLOBAL_VECCALL_API(T) _EXTERNC __uXm_INLINE(uXm_veccall(T))
 // static inline
-#	define uXm_CCGLOBAL_VECCALL_API(T) _EXTERNCC uXm_S_INLINE(uXm_VECCALL(T))
+#	define uXm_CCGLOBAL_VECCALL_API(T) _EXTERNCC uXm_S_INLINE(uXm_veccall(T))
 // inline only
-#	define __uXm_CCGLOBAL_VECCALL_API(T) _EXTERNCC __uXm_INLINE(uXm_VECCALL(T))
+#	define __uXm_CCGLOBAL_VECCALL_API(T) _EXTERNCC __uXm_INLINE(uXm_veccall(T))
 # endif
 #endif
 

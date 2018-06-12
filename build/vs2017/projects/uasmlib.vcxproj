@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\export\uasmlib-export_X32.def" />
     <UASM Include="..\..\..\src\x86\asm\uXmcpuid.asm">
       <FileType>Document</FileType>
     </UASM>
@@ -32,8 +33,12 @@
     <UASM Include="..\..\..\src\x86\asm\uXmx86cpua.asm" />
     <UASM Include="..\..\..\src\x86\asm\uXmxgetbv.asm" />
     <UASM Include="..\..\..\src\x86\asm\uXmxsetbv.asm" />
-    <UASM Include="..\..\..\src\x86\MMX\asm\uXm64\uXm64mmintrin.asm" />
-    <UASM Include="..\..\..\src\x86\MMX\asm\uXm64\uXm64mmintshifts.asm" />
+    <UASM Include="..\..\..\src\x86\MMX\asm\uXm64\uXmmmintrin.asm">
+      <FileType>Document</FileType>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\MMX\asm\uXm64\uXmmmintshifts.asm">
+      <FileType>Document</FileType>
+    </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintmisc.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintshifts.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintshuffle.asm" />
@@ -42,6 +47,18 @@
     </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmpermutepd.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmshufflepd.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmpmmintrin.asm">
+      <FileType>Document</FileType>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmsmmintrin.asm">
+      <FileType>Document</FileType>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmsmmmisc.asm">
+      <FileType>Document</FileType>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmtmmintrin.asm">
+      <FileType>Document</FileType>
+    </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmconstdata.asm">
       <FileType>Document</FileType>
     </UASM>
@@ -69,7 +86,11 @@
     <ClInclude Include="..\..\..\include\x86\uXmemmpermutepd.h" />
     <ClInclude Include="..\..\..\include\x86\uXmemmshufflepd.h" />
     <ClInclude Include="..\..\..\include\x86\uXmmmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmpmmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmsmmmisc.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmsmmintrin.h" />
     <ClInclude Include="..\..\..\include\x86\uXmSSEStructs.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmtmmintrin.h" />
     <ClInclude Include="..\..\..\include\x86\uXmx86Cpu.h" />
     <ClInclude Include="..\..\..\include\x86\uXmx86Intrin.h" />
     <ClInclude Include="..\..\..\include\x86\uXmxmmintrin.h" />
@@ -93,7 +114,7 @@
     <None Include="..\..\..\src\x86\SSE\asm\uXmsseintrin.inc" />
     <None Include="..\..\..\src\x86\SSE\asm\uXmxmmconstdata.inc" />
     <None Include="..\..\..\src\x86\SSE\asm\xmmtypes.inc" />
-    <None Include="..\export\uasmlib-export.def" />
+    <None Include="..\export\uasmlib-export_X64.def" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\resource\Resource.rc" />
@@ -177,7 +198,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_WIN32;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_MMX=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__X32___;WIN32;_WIN32;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_MMX=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <OmitFramePointers />
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <AdditionalIncludeDirectories>../../../include;../../../include/x86;</AdditionalIncludeDirectories>
@@ -187,12 +208,16 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile>$(SolutionDir)export\uasmlib-export.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>$(SolutionDir)export\uasmlib-export_X32.def</ModuleDefinitionFile>
     </Link>
     <UASM>
-      <PreprocessorDefinitions>__X32__;WIN32;WINDOWS;DEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__X32__;WIN32;WINDOWS;EXTERNC_VECCALL;DEBUG</PreprocessorDefinitions>
       <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/</IncludePaths>
       <OutputFormat>1</OutputFormat>
+      <STDCALLSymbolDecoration>0</STDCALLSymbolDecoration>
+      <CNamesDecoratedPrefix>true</CNamesDecoratedPrefix>
+      <SetFastCallType>1</SetFastCallType>
+      <CallingConvention>2</CallingConvention>
     </UASM>
     <ResourceCompile>
       <PreprocessorDefinitions>_MANIFEST;WIN32;_WIN32;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;_DEBUG;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -219,12 +244,16 @@ copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win32\vc14</Command>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile>$(SolutionDir)export\uasmlib-export.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>$(SolutionDir)export\uasmlib-export_X64.def</ModuleDefinitionFile>
     </Link>
     <UASM>
-      <PreprocessorDefinitions>__X64__;WIN64;WINDOWS;DEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__X64__;WIN64;WINDOWS;EXTERNC_VECCALL;DEBUG</PreprocessorDefinitions>
       <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/</IncludePaths>
       <OutputFormat>2</OutputFormat>
+      <STDCALLSymbolDecoration>0</STDCALLSymbolDecoration>
+      <CNamesDecoratedPrefix>true</CNamesDecoratedPrefix>
+      <SetFastCallType>1</SetFastCallType>
+      <CallingConvention>2</CallingConvention>
     </UASM>
     <ResourceCompile>
       <PreprocessorDefinitions>_MANIFEST;__x64__;WIN64;_WIN64;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;_DEBUG;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -241,7 +270,7 @@ copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win64\vc14</Command>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WIN32;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_MMX=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__X32___;WIN32;_WIN32;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_MMX=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DebugInformationFormat>None</DebugInformationFormat>
       <OmitFramePointers />
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -251,13 +280,17 @@ copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win64\vc14</Command>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <ModuleDefinitionFile>$(SolutionDir)export\uasmlib-export.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>$(SolutionDir)export\uasmlib-export_X32.def</ModuleDefinitionFile>
     </Link>
     <UASM>
-      <PreprocessorDefinitions>__X32__;WIN32;WINDOWS;NDEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__X32__;WIN32;WINDOWS;EXTERNC_VECCALL;NDEBUG</PreprocessorDefinitions>
       <UseSafeExceptionHandlers>true</UseSafeExceptionHandlers>
       <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/</IncludePaths>
       <OutputFormat>1</OutputFormat>
+      <STDCALLSymbolDecoration>0</STDCALLSymbolDecoration>
+      <CNamesDecoratedPrefix>true</CNamesDecoratedPrefix>
+      <SetFastCallType>1</SetFastCallType>
+      <CallingConvention>2</CallingConvention>
     </UASM>
     <ResourceCompile>
       <PreprocessorDefinitions>_MANIFEST;WIN32;_WIN32;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;NDEBUG;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -282,12 +315,16 @@ copy $(OutDir)$(TargetName).lib $(UASMLIB_PATH)\lib\Win32\vc14</Command>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <ModuleDefinitionFile>$(SolutionDir)export\uasmlib-export.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>$(SolutionDir)export\uasmlib-export_X64.def</ModuleDefinitionFile>
     </Link>
     <UASM>
-      <PreprocessorDefinitions>__X64__;WIN64;WINDOWS;NDEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__X64__;WIN64;WINDOWS;EXTERNC_VECCALL;NDEBUG</PreprocessorDefinitions>
       <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/</IncludePaths>
       <OutputFormat>2</OutputFormat>
+      <STDCALLSymbolDecoration>0</STDCALLSymbolDecoration>
+      <CNamesDecoratedPrefix>true</CNamesDecoratedPrefix>
+      <SetFastCallType>1</SetFastCallType>
+      <CallingConvention>2</CallingConvention>
     </UASM>
     <ResourceCompile>
       <PreprocessorDefinitions>_MANIFEST;__x64__;WIN64;_WIN64;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;NDEBUG;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>

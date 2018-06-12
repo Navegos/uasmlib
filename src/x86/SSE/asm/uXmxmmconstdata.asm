@@ -11,7 +11,8 @@ ifndef __MIC__
 	include uXmConstants.inc
 	
 	__align_xmm_fp_opt
-		
+	__veccall_opt
+
 	.const
 	
 	;;f32 mask;;
@@ -142,8 +143,34 @@ ifndef __MIC__
 	_uXm_xmm4_const __m128i_f32_fixmaxI32,		__m128i, uXm_f32_fixmaxI32_msk
 	_uXm_xmm4_const __m128i_f32_fixmaxU32,		__m128i, uXm_f32_fixmaxU32_msk
 
+
 	;;f64 mask;;
 	
+
+	;;int64 mask;;
+
+	_uXm_xmm2_const __m128i_i64_true,			__m128q, uXm_i64_true_msk
+	_uXm_xmm2_const __m128i_i64_false,			__m128q, uXm_i64_false_msk
+
+	
+	;;int32 mask;;
+
+	_uXm_xmm4_const __m128i_i32_true,			__m128i, uXm_i32_true_msk
+	_uXm_xmm4_const __m128i_i32_false,			__m128i, uXm_i32_false_msk
+	
+
+	;;int16 mask;;
+
+	_uXm_xmm8_const __m128i_i16_true,			__m128w, uXm_i16_true_msk
+	_uXm_xmm8_const __m128i_i16_false,			__m128w, uXm_i16_false_msk
+
+	
+	;;int8 mask;;
+
+	_uXm_xmm16_const __m128i_i8_true,			__m128b, uXm_i8_true_msk
+	_uXm_xmm16_const __m128i_i8_false,			__m128b, uXm_i8_false_msk
+
+
 	;;float;;
 	
 	_uXm_xmm4_const __m128_true,				__m128f, uXm_f32_true_msk

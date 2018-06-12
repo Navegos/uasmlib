@@ -21,13 +21,13 @@ uXm_EXTERNC_BEGIN
 uXm_PACK_PUSH16
 
 /*
-* DP, misc
-*/
+ * DP, misc
+ */
 
-extern __m128d _uXm_mm_permute_00_pd(__m128d Inxmm_A);
-extern __m128d _uXm_mm_permute_01_pd(__m128d Inxmm_A);
-extern __m128d _uXm_mm_permute_10_pd(__m128d Inxmm_A);
-extern __m128d _uXm_mm_permute_11_pd(__m128d Inxmm_A);
+	extern __m128d uXm_callconv _uXm_mm_permute_00_pd(__m128d Inxmm_A);
+	extern __m128d uXm_callconv _uXm_mm_permute_01_pd(__m128d Inxmm_A);
+	extern __m128d uXm_callconv _uXm_mm_permute_10_pd(__m128d Inxmm_A);
+	extern __m128d uXm_callconv _uXm_mm_permute_11_pd(__m128d Inxmm_A);
 
 uXm_PACK_POP
 

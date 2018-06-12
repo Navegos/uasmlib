@@ -21,26 +21,26 @@ uXm_EXTERNC_BEGIN
 uXm_PACK_PUSH16
 
 /*
-* Integer, misc
-*/
+ * Integer, misc
+ */
 
-extern int _uXm_mm_extract_epi16_0(__m128i InXmm_A);
-extern int _uXm_mm_extract_epi16_1(__m128i InXmm_A);
-extern int _uXm_mm_extract_epi16_2(__m128i InXmm_A);
-extern int _uXm_mm_extract_epi16_3(__m128i InXmm_A);
-extern int _uXm_mm_extract_epi16_4(__m128i InXmm_A);
-extern int _uXm_mm_extract_epi16_5(__m128i InXmm_A);
-extern int _uXm_mm_extract_epi16_6(__m128i InXmm_A);
-extern int _uXm_mm_extract_epi16_7(__m128i InXmm_A);
+extern int uXm_callconv _uXm_mm_extract_epi16_0(__m128i InXmm_A);
+extern int uXm_callconv _uXm_mm_extract_epi16_1(__m128i InXmm_A);
+extern int uXm_callconv _uXm_mm_extract_epi16_2(__m128i InXmm_A);
+extern int uXm_callconv _uXm_mm_extract_epi16_3(__m128i InXmm_A);
+extern int uXm_callconv _uXm_mm_extract_epi16_4(__m128i InXmm_A);
+extern int uXm_callconv _uXm_mm_extract_epi16_5(__m128i InXmm_A);
+extern int uXm_callconv _uXm_mm_extract_epi16_6(__m128i InXmm_A);
+extern int uXm_callconv _uXm_mm_extract_epi16_7(__m128i InXmm_A);
 
-extern __m128i _uXm_mm_insert_epi16_0(__m128i InXmm_A, int Inint_B);
-extern __m128i _uXm_mm_insert_epi16_1(__m128i InXmm_A, int Inint_B);
-extern __m128i _uXm_mm_insert_epi16_2(__m128i InXmm_A, int Inint_B);
-extern __m128i _uXm_mm_insert_epi16_3(__m128i InXmm_A, int Inint_B);
-extern __m128i _uXm_mm_insert_epi16_4(__m128i InXmm_A, int Inint_B);
-extern __m128i _uXm_mm_insert_epi16_5(__m128i InXmm_A, int Inint_B);
-extern __m128i _uXm_mm_insert_epi16_6(__m128i InXmm_A, int Inint_B);
-extern __m128i _uXm_mm_insert_epi16_7(__m128i InXmm_A, int Inint_B);
+extern __m128i uXm_callconv _uXm_mm_insert_epi16_0(__m128i InXmm_A, int Inint_B);
+extern __m128i uXm_callconv _uXm_mm_insert_epi16_1(__m128i InXmm_A, int Inint_B);
+extern __m128i uXm_callconv _uXm_mm_insert_epi16_2(__m128i InXmm_A, int Inint_B);
+extern __m128i uXm_callconv _uXm_mm_insert_epi16_3(__m128i InXmm_A, int Inint_B);
+extern __m128i uXm_callconv _uXm_mm_insert_epi16_4(__m128i InXmm_A, int Inint_B);
+extern __m128i uXm_callconv _uXm_mm_insert_epi16_5(__m128i InXmm_A, int Inint_B);
+extern __m128i uXm_callconv _uXm_mm_insert_epi16_6(__m128i InXmm_A, int Inint_B);
+extern __m128i uXm_callconv _uXm_mm_insert_epi16_7(__m128i InXmm_A, int Inint_B);
 
 uXm_PACK_POP
 

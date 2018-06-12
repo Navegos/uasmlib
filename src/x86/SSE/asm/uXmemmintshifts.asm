@@ -99,90 +99,91 @@ ifndef __MIC__
 										offset _m128isrliepi64_60, offset _m128isrliepi64_61, offset _m128isrliepi64_62, offset _m128isrliepi64_63
 		
 	__align_xmm_fp_opt
+	__veccall_opt
 
 	.code
 
-_uXm_func_start _uXm_mm_slli_si128_0, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_0, xmmword, < >, xmm_size ;Inxmm_A:xmmword
 			pslldq			xmm0,			0
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_si128_1, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_1, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslldq			xmm0,			1
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_si128_2, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_2, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslldq			xmm0,			2
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_si128_3, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_3, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslldq			xmm0,			3
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_si128_4, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_4, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslldq			xmm0,			4
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_si128_5, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_5, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslldq			xmm0,			5
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_si128_6, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_6, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslldq			xmm0,			6
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_si128_7, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_7, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslldq			xmm0,			7
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_si128_8, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_8, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslldq			xmm0,			8
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_si128_9, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_9, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslldq			xmm0,			9
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_si128_10, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_10, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslldq			xmm0,			10
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_si128_11, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_11, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslldq			xmm0,			11
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_si128_12, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_12, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslldq			xmm0,			12
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_si128_13, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_13, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslldq			xmm0,			13
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_si128_14, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_14, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslldq			xmm0,			14
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_si128_15, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_si128_15, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslldq			xmm0,			15
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_si128, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dword
+_uXm_func_start _uXm_mm_slli_si128, xmmwor, < >, xmm_size + reg_size ;Inxmm_A:xmmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret
@@ -251,87 +252,87 @@ _uXm_func_start _uXm_mm_slli_si128, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dwo
 
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi16_0, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_0, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllw			xmm0,			0
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi16_1, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_1, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllw			xmm0,			1
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi16_2, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_2, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllw			xmm0,			2
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi16_3, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_3, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllw			xmm0,			3
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi16_4, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_4, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllw			xmm0,			4
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi16_5, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_5, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllw			xmm0,			5
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi16_6, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_6, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllw			xmm0,			6
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi16_7, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_7, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllw			xmm0,			7
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi16_8, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_8, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllw			xmm0,			8
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi16_9, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_9, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllw			xmm0,			9
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi16_10, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_10, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllw			xmm0,			10
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi16_11, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_11, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllw			xmm0,			11
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi16_12, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_12, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllw			xmm0,			12
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi16_13, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_13, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllw			xmm0,			13
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi16_14, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_14, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllw			xmm0,			14
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi16_15, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi16_15, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllw			xmm0,			15
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi16, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dword
+_uXm_func_start _uXm_mm_slli_epi16, xmmwor, < >, xmm_size + reg_size ;Inxmm_A:xmmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret
@@ -400,167 +401,167 @@ _uXm_func_start _uXm_mm_slli_epi16, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dwo
 
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_0, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_0, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			0
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_1, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_1, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			1
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_2, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_2, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			2
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_3, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_3, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			3
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_4, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_4, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			4
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_5, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_5, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			5
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_6, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_6, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			6
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_7, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_7, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			7
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_8, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_8, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			8
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_9, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_9, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			9
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_10, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_10, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			10
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_11, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_11, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			11
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_12, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_12, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			12
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_13, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_13, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			13
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_14, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_14, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			14
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_15, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_15, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			15
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_16, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_16, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			16
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_17, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_17, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			17
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_18, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_18, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			18
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_19, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_19, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			19
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_20, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_20, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			20
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_21, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_21, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			21
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_22, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_22, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			22
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_23, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_23, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			23
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_24, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_24, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			24
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_25, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_25, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			25
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_26, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_26, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			26
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_27, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_27, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			27
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_28, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_28, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			28
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_29, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_29, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			29
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_30, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_30, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			30
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32_31, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi32_31, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			pslld			xmm0,			31
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi32, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dword
+_uXm_func_start _uXm_mm_slli_epi32, xmmwor, < >, xmm_size + reg_size ;Inxmm_A:xmmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret
@@ -677,327 +678,327 @@ _uXm_func_start _uXm_mm_slli_epi32, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dwo
 
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_0, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_0, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			0
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_1, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_1, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			1
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_2, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_2, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			2
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_3, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_3, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			3
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_4, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_4, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			4
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_5, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_5, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			5
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_6, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_6, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			6
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_7, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_7, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			7
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_8, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_8, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			8
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_9, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_9, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			9
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_10, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_10, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			10
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_11, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_11, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			11
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_12, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_12, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			12
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_13, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_13, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			13
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_14, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_14, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			14
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_15, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_15, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			15
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_16, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_16, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			16
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_17, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_17, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			17
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_18, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_18, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			18
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_19, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_19, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			19
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_20, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_20, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			20
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_21, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_21, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			21
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_22, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_22, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			22
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_23, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_23, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			23
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_24, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_24, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			24
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_25, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_25, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			25
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_26, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_26, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			26
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_27, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_27, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			27
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_28, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_28, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			28
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_29, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_29, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			29
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_30, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_30, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			30
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_31, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_31, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			31
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_32, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_32, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			32
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_33, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_33, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			33
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_34, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_34, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			34
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_35, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_35, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			35
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_36, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_36, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			36
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_37, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_37, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			37
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_38, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_38, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			38
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_39, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_39, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			39
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_40, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_40, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			40
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_41, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_41, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			41
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_42, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_42, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			42
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_43, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_43, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			43
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_44, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_44, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			44
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_45, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_45, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			45
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_46, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_46, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			46
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_47, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_47, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			47
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_48, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_48, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			48
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_49, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_49, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			49
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_50, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_50, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			50
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_51, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_51, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			51
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_52, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_52, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			52
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_53, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_53, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			53
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_54, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_54, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			54
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_55, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_55, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			55
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_56, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_56, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			56
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_57, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_57, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			57
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_58, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_58, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			58
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_59, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_59, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			59
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_60, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_60, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			60
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_61, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_61, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			61
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_62, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_62, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			62
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64_63, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_slli_epi64_63, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psllq			xmm0,			63
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_slli_epi64, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dword
+_uXm_func_start _uXm_mm_slli_epi64, xmmwor, < >, xmm_size + reg_size ;Inxmm_A:xmmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret
@@ -1210,87 +1211,87 @@ _uXm_func_start _uXm_mm_slli_epi64, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dwo
 
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi16_0, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_0, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psraw			xmm0,			0
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi16_1, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_1, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psraw			xmm0,			1
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi16_2, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_2, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psraw			xmm0,			2
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi16_3, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_3, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psraw			xmm0,			3
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi16_4, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_4, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psraw			xmm0,			4
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi16_5, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_5, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psraw			xmm0,			5
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi16_6, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_6, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psraw			xmm0,			6
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi16_7, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_7, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psraw			xmm0,			7
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi16_8, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_8, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psraw			xmm0,			8
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi16_9, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_9, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psraw			xmm0,			9
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi16_10, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_10, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psraw			xmm0,			10
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi16_11, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_11, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psraw			xmm0,			11
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi16_12, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_12, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psraw			xmm0,			12
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi16_13, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_13, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psraw			xmm0,			13
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi16_14, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_14, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psraw			xmm0,			14
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi16_15, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi16_15, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psraw			xmm0,			15
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi16, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dword
+_uXm_func_start _uXm_mm_srai_epi16, xmmwor, < >, xmm_size + reg_size ;Inxmm_A:xmmword, Inint_Imm:dword
 			
 		;.if(rparam2 > 3)
 		;	ret
@@ -1359,167 +1360,167 @@ _uXm_func_start _uXm_mm_srai_epi16, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dwo
 
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_0, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_0, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			0
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_1, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_1, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			1
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_2, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_2, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			2
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_3, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_3, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			3
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_4, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_4, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			4
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_5, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_5, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			5
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_6, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_6, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			6
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_7, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_7, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			7
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_8, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_8, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			8
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_9, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_9, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			9
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_10, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_10, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			10
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_11, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_11, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			11
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_12, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_12, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			12
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_13, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_13, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			13
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_14, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_14, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			14
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_15, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_15, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			15
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_16, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_16, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			16
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_17, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_17, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			17
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_18, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_18, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			18
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_19, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_19, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			19
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_20, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_20, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			20
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_21, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_21, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			21
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_22, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_22, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			22
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_23, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_23, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			23
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_24, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_24, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			24
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_25, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_25, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			25
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_26, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_26, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			26
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_27, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_27, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			27
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_28, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_28, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			28
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_29, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_29, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			29
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_30, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_30, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			30
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32_31, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srai_epi32_31, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrad			xmm0,			31
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srai_epi32, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dword
+_uXm_func_start _uXm_mm_srai_epi32, xmmwor, < >, xmm_size + reg_size ;Inxmm_A:xmmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret
@@ -1636,87 +1637,87 @@ _uXm_func_start _uXm_mm_srai_epi32, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dwo
 
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_si128_0, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_0, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrldq			xmm0,			0
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_si128_1, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_1, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrldq			xmm0,			1
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_si128_2, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_2, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrldq			xmm0,			2
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_si128_3, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_3, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrldq			xmm0,			3
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_si128_4, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_4, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrldq			xmm0,			4
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_si128_5, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_5, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrldq			xmm0,			5
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_si128_6, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_6, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrldq			xmm0,			6
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_si128_7, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_7, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrldq			xmm0,			7
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_si128_8, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_8, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrldq			xmm0,			8
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_si128_9, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_9, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrldq			xmm0,			9
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_si128_10, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_10, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrldq			xmm0,			10
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_si128_11, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_11, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrldq			xmm0,			11
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_si128_12, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_12, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrldq			xmm0,			12
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_si128_13, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_13, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrldq			xmm0,			13
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_si128_14, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_14, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrldq			xmm0,			14
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_si128_15, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_si128_15, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrldq			xmm0,			15
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_si128, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dword
+_uXm_func_start _uXm_mm_srli_si128, xmmwor, < >, xmm_size + reg_size ;Inxmm_A:xmmword, Inint_Imm:dword
 				
 		;.if(rparam2 > 3)
 		;	ret
@@ -1785,87 +1786,87 @@ _uXm_func_start _uXm_mm_srli_si128, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dwo
 
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi16_0, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_0, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlw			xmm0,			0
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi16_1, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_1, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlw			xmm0,			1
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi16_2, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_2, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlw			xmm0,			2
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi16_3, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_3, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlw			xmm0,			3
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi16_4, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_4, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlw			xmm0,			4
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi16_5, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_5, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlw			xmm0,			5
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi16_6, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_6, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlw			xmm0,			6
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi16_7, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_7, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlw			xmm0,			7
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi16_8, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_8, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlw			xmm0,			8
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi16_9, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_9, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlw			xmm0,			9
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi16_10, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_10, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlw			xmm0,			10
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi16_11, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_11, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlw			xmm0,			11
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi16_12, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_12, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlw			xmm0,			12
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi16_13, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_13, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlw			xmm0,			13
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi16_14, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_14, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlw			xmm0,			14
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi16_15, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi16_15, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlw			xmm0,			15
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi16, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dword
+_uXm_func_start _uXm_mm_srli_epi16, xmmwor, < >, xmm_size + reg_size ;Inxmm_A:xmmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret
@@ -1934,167 +1935,167 @@ _uXm_func_start _uXm_mm_srli_epi16, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dwo
 
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_0, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_0, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			0
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_1, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_1, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			1
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_2, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_2, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			2
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_3, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_3, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			3
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_4, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_4, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			4
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_5, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_5, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			5
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_6, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_6, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			6
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_7, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_7, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			7
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_8, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_8, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			8
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_9, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_9, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			9
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_10, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_10, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			10
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_11, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_11, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			11
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_12, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_12, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			12
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_13, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_13, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			13
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_14, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_14, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			14
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_15, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_15, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			15
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_16, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_16, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			16
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_17, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_17, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			17
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_18, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_18, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			18
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_19, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_19, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			19
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_20, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_20, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			20
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_21, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_21, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			21
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_22, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_22, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			22
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_23, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_23, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			23
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_24, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_24, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			24
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_25, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_25, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			25
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_26, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_26, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			26
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_27, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_27, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			27
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_28, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_28, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			28
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_29, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_29, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			29
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_30, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_30, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			30
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32_31, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi32_31, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrld			xmm0,			31
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi32, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dword
+_uXm_func_start _uXm_mm_srli_epi32, xmmwor, < >, xmm_size + reg_size ;Inxmm_A:xmmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret
@@ -2211,327 +2212,327 @@ _uXm_func_start _uXm_mm_srli_epi32, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dwo
 
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_0, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_0, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			0
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_1, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_1, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			1
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_2, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_2, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			2
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_3, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_3, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			3
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_4, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_4, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			4
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_5, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_5, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			5
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_6, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_6, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			6
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_7, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_7, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			7
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_8, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_8, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			8
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_9, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_9, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			9
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_10, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_10, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			10
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_11, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_11, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			11
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_12, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_12, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			12
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_13, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_13, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			13
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_14, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_14, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			14
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_15, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_15, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			15
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_16, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_16, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			16
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_17, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_17, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			17
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_18, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_18, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			18
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_19, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_19, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			19
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_20, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_20, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			20
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_21, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_21, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			21
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_22, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_22, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			22
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_23, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_23, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			23
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_24, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_24, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			24
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_25, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_25, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			25
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_26, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_26, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			26
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_27, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_27, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			27
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_28, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_28, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			28
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_29, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_29, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			29
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_30, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_30, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			30
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_31, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_31, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			31
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_32, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_32, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			32
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_33, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_33, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			33
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_34, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_34, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			34
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_35, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_35, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			35
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_36, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_36, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			36
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_37, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_37, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			37
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_38, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_38, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			38
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_39, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_39, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			39
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_40, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_40, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			40
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_41, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_41, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			41
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_42, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_42, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			42
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_43, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_43, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			43
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_44, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_44, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			44
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_45, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_45, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			45
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_46, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_46, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			46
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_47, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_47, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			47
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_48, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_48, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			48
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_49, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_49, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			49
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_50, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_50, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			50
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_51, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_51, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			51
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_52, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_52, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			52
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_53, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_53, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			53
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_54, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_54, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			54
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_55, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_55, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			55
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_56, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_56, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			56
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_57, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_57, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			57
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_58, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_58, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			58
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_59, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_59, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			59
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_60, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_60, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			60
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_61, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_61, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			61
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_62, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_62, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			62
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64_63, xmmword, < > ;Inxmm_A:xmmword
+_uXm_func_start _uXm_mm_srli_epi64_63, xmmwor, < >, xmm_size ;Inxmm_A:xmmword
 			psrlq			xmm0,			63
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_srli_epi64, xmmword, < > ;InXmm_A:xmmword, Inint_Imm:dword
+_uXm_func_start _uXm_mm_srli_epi64, xmmwor, < >, xmm_size + reg_size ;Inxmm_A:xmmword, Inint_Imm:dword
 					
 		;.if(rparam2 > 3)
 		;	ret

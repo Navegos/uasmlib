@@ -385,13 +385,13 @@ else
 endif ;WINDOWS
 
 ifdef __X64__
-	ptr_t_size	equ		8
-	reg_t_size	equ		8
-	size_t		textequ		<qword>
-	psize_t		textequ		<ptr qword>
-	size_tp		textequ		<qword ptr>
-	isize_t		textequ		<dq>
-	size_t_size	equ		8
+	ptr_t_size			equ		8
+	reg_t_size			equ		8
+	size_t				textequ		<qword>
+	psize_t				textequ		<ptr qword>
+	size_tp				textequ		<qword ptr>
+	isize_t				textequ		<dq>
+	size_t_size			equ		8
 
 __align_size_t macro
   		size_talignment textequ <align 8>
@@ -399,13 +399,13 @@ __align_size_t macro
 endm
 
 else
-	ptr_t_size	equ		4
-	reg_t_size	equ		4
-	size_t		textequ		<dword>
-	psize_t		textequ		<ptr dword>
-	size_tp		textequ		<dword ptr>
-	isize_t		textequ		<dd>
-	size_t_size	equ		4
+	ptr_t_size			equ		4
+	reg_t_size			equ		4
+	size_t				textequ		<dword>
+	psize_t				textequ		<ptr dword>
+	size_tp				textequ		<dword ptr>
+	isize_t				textequ		<dd>
+	size_t_size			equ		4
 	
 __align_size_t macro
   		size_talignment textequ <align 4>
@@ -414,10 +414,38 @@ endm
 
 endif ;__X64__
 
-mm_size		equ		8h
-xmm_size	equ		10h
-ymm_size	equ		20h
-zmm_size	equ		40h
+byte_size		equ		1
+char_size		equ		1
+int8_size		equ		1
+word_size		equ		2
+int16_size		equ		2
+dword_size		equ		4
+int_size		equ		4
+int32_size		equ		4
+qword_size		equ		8
+int64_size		equ		8
+
+real4_size		equ		4
+float_size		equ		4
+real8_size		equ		8
+double_size		equ		8
+
+ifdef __X64__
+ptr_size		equ		8
+reg_size		equ		8
+else
+ptr_size		equ		4
+reg_size		equ		4
+endif ;__X64__
+
+mm_size			equ		8
+xmm_size		equ		16
+ymm_size		equ		32
+zmm_size		equ		64
+
+_uXm_StrValue macro V0
+    exitm %((V0) or (0))
+endm
 
 __align macro AlignSize
   		__alignment textequ <align AlignSize>
@@ -529,26 +557,56 @@ __align_zmm_fp_opt macro
 	zmm_proc_option_alignment
 endm
 
-_uXm_func_start macro functionName:REQ, retType:REQ, usesStr:REQ
+ifdef DEFINED_VECTORCALL	
+	__veccall_opt	textequ <option language:vectorcall>
+endif
+ifdef DEFINED_SYSTEMV
+	__veccall_opt	textequ <option language:systemv>
+endif	
+
+;; function proc macro start
+;; name, return type, uses, parameter's size
+_uXm_func_start macro functionName:REQ, retType:REQ, usesStr:REQ, parameterSize:REQ
+	ifdef WINDOWS
 		curfunctionName textequ <functionName>
+	  ifdef EXTERNC_VECCALL
+		curfunctionName catstr curfunctionName, <@@>, _uXm_StrValue(parameterSize)
+	  endif
+		_curfunctionName_ textequ <curfunctionName>
+	else
+		_curfunctionName_ textequ <functionName>
+	endif
 
 		fnexproto textequ <>
 		fnexproto catstr fnexproto, <&functionName&>
+	ifdef WINDOWS
+	  ifdef EXTERNC_VECCALL
+		fnexproto catstr fnexproto, <@@>, _uXm_StrValue(parameterSize)
+	  endif
+	else
+	endif
 		fnexproto catstr fnexproto, < proto __veccall >, <(&retType&)>
 		fnexproto
 
 		fnexproc textequ <>
 		fnexproc catstr fnexproc, <&functionName&>
+	ifdef WINDOWS
+	  ifdef EXTERNC_VECCALL
+		fnexproc catstr fnexproc, <@@>, _uXm_StrValue(parameterSize)
+	  endif
+	else
+	endif
 		fnexproc catstr fnexproc, < proc __veccall >, <(&retType&)>, < >, <frame>, < >, <&usesStr&>
 
 		fnexproc
 endm
 
+;; function proc macro end
 _uXm_func_end macro
-		fnex textequ <>
-		fnex catstr fnex, curfunctionName
-		fnex catstr fnex, < endp>
-		fnex
+		fnexfuncend textequ <>
+		fnexfuncend catstr fnexfuncend, _curfunctionName_
+		fnexfuncend catstr fnexfuncend, < endp>
+		fnexfuncend
 endm
 
 false	equ		0h

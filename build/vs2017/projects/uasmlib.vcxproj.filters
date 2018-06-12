@@ -46,12 +46,6 @@
     <Filter Include="Source Files\x86\MMX\asm">
       <UniqueIdentifier>{0b09ca7a-3001-46ce-aa96-0db37f20d883}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\x86\MMX\asm\uXm64f">
-      <UniqueIdentifier>{86c94a65-92f6-4a68-a236-36a1597c2d4f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\x86\MMX\asm\uXm64">
-      <UniqueIdentifier>{a7526031-6998-4b8c-aaab-82b42d249f2a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\uXmBaseDefs.h">
@@ -129,6 +123,18 @@
     <ClInclude Include="..\..\..\include\uXmMisc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXmpmmintrin.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXmtmmintrin.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXmsmmintrin.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXmsmmmisc.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\uasmlib.cpp">
@@ -151,9 +157,6 @@
     <None Include="..\..\..\src\x86\asm\uXmx86asm.inc">
       <Filter>Source Files\x86\asm</Filter>
     </None>
-    <None Include="..\export\uasmlib-export.def">
-      <Filter>Def Files</Filter>
-    </None>
     <None Include="..\..\..\.gitignore" />
     <None Include="..\..\..\src\x86\asm\uXmmacros.inc">
       <Filter>Source Files\x86\asm</Filter>
@@ -173,6 +176,12 @@
     </None>
     <None Include="..\..\..\src\x86\asm\uXmConstants.inc">
       <Filter>Source Files\x86\asm</Filter>
+    </None>
+    <None Include="..\export\uasmlib-export_X64.def">
+      <Filter>Def Files</Filter>
+    </None>
+    <None Include="..\export\uasmlib-export_X32.def">
+      <Filter>Def Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -196,12 +205,6 @@
     </UASM>
     <UASM Include="..\..\..\src\x86\asm\uXmintrincpu.asm">
       <Filter>Source Files\x86\asm</Filter>
-    </UASM>
-    <UASM Include="..\..\..\src\x86\MMX\asm\uXm64\uXm64mmintrin.asm">
-      <Filter>Source Files\x86\MMX\asm\uXm64</Filter>
-    </UASM>
-    <UASM Include="..\..\..\src\x86\MMX\asm\uXm64\uXm64mmintshifts.asm">
-      <Filter>Source Files\x86\MMX\asm\uXm64</Filter>
     </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmpermutepd.asm">
       <Filter>Source Files\x86\SSE\asm</Filter>
@@ -231,6 +234,24 @@
       <Filter>Source Files\x86\SSE\asm</Filter>
     </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\MMX\asm\uXm64\uXmmmintrin.asm">
+      <Filter>Source Files\x86\MMX\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\MMX\asm\uXm64\uXmmmintshifts.asm">
+      <Filter>Source Files\x86\MMX\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmpmmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmtmmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmsmmmisc.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmsmmintrin.asm">
       <Filter>Source Files\x86\SSE\asm</Filter>
     </UASM>
   </ItemGroup>

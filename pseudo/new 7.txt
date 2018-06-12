@@ -1,14 +1,49 @@
 
 
+_uXm_func_start macro functionName:REQ, retType:REQ, usesStr:REQ, parameterSize:REQ
+	ifdef WINDOWS
+		curfunctionName textequ <functionName>
+	  ifdef EXTERNC_VECCALL
+		curfunctionName catstr curfunctionName, <@@>, <&parameterSize&>
+	  endif
+		_curfunctionName_ textequ <curfunctionName>
+	else
+		_curfunctionName_ textequ <functionName>
+	endif
+
+		fnexproto textequ <>
+		fnexproto catstr fnexproto, <&functionName&>
+	ifdef WINDOWS
+	  ifdef EXTERNC_VECCALL
+		fnexproto catstr fnexproto, <@@>, <&parameterSize&>
+	  endif
+	else
+	endif
+		fnexproto catstr fnexproto, < proto __veccall >, <(&retType&)>
+		fnexproto
+
+		fnexproc textequ <>
+		fnexproc catstr fnexproc, <&functionName&>
+	ifdef WINDOWS
+	  ifdef EXTERNC_VECCALL
+		fnexproc catstr fnexproc, <@@>, <&parameterSize&>
+	  endif
+	else
+	endif
+		fnexproc catstr fnexproc, < proc __veccall >, <(&retType&)>, < >, <frame>, < >, <&usesStr&>
+
+		fnexproc
+endm
+
 
 
 
 
 		__align_size_t
-		_m128icvtelts128epi64jmptable isize_t offset _m128icvtelts128epi64_0, offset _m128icvtelts128epi64_1
+		_m128ddcvtelts128epi64jmptable isize_t offset _m128ddcvtelts128epi64_0, offset _m128ddcvtelts128epi64_1
 		
 
-_uXm_mm_cvteltsi128_epi16 proc __veccall (dword) frame ;Inxmm_A:xmmword, _Imm8:dword
+_uXm_mm_cvteltsi128_epi16 proc __veccall (dword) frame ;Inmm_A:mmword, _Imm8:dword
 
 		;.if(rparam2 > 3)
 		;	ret
@@ -17,26 +52,26 @@ _uXm_mm_cvteltsi128_epi16 proc __veccall (dword) frame ;Inxmm_A:xmmword, _Imm8:d
 		ifndef __X64__
 			movzx			eax,	byte ptr [rparam2]
 			;mov				rbx,	dword ptr [rbx+rparam2*4]
-			jmp		dword ptr [_m128icvtelts128epi64jmptable+eax*4]
+			jmp		dword ptr [_m128ddcvtelts128epi64jmptable+eax*4]
 		else
 			;movzx			rax,	byte ptr [rparam2]
-			lea				rbx,	qword ptr [_m128icvtelts128epi64jmptable]
+			lea				rbx,	qword ptr [_m128ddcvtelts128epi64jmptable]
 			mov				rbx,	qword ptr [rbx+rparam2*8]
 			jmp				rbx
 		endif
 		
-		_m128icvtelts128epi64_0 label size_t			
-			pxor			xmm1,			xmm1
-			punpckldq		xmm0,			xmm1
-			punpcklqdq		xmm0,			xmm1
-			movd			dreturn,			xmm0
+		_m128ddcvtelts128epi64_0 label size_t			
+			pxor			mm1,			mm1
+			punpckldq		mm0,			mm1
+			punpcklqdq		mm0,			mm1
+			movd			dreturn,			mm0
 			ret
-		_m128icvtelts128epi64_1 label size_t
-			pxor			xmm1,			xmm1
-			pshufd			xmm0,			xmm0,			_uXm_mm_shuffler4(2,3,2,3)
-			punpckldq		xmm0,			xmm1
-			punpcklqdq		xmm0,			xmm1
-			movd			dreturn,			xmm0
+		_m128ddcvtelts128epi64_1 label size_t
+			pxor			mm1,			mm1
+			pshufd			mm0,			mm0,			_uXm_mm_shuffler4(2,3,2,3)
+			punpckldq		mm0,			mm1
+			punpcklqdq		mm0,			mm1
+			movd			dreturn,			mm0
 			ret
 		;.endif
 

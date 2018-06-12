@@ -15,30 +15,31 @@ ifndef __MIC__
 		_m128dpermpdjmptable isize_t offset _m128dpermpd_0, offset _m128dpermpd_1, offset _m128dpermpd_2, offset _m128dpermpd_3				
 		
 	__align_xmm_fp_opt
-	
+	__veccall_opt
+
 	.code
 	
-_uXm_func_start _uXm_mm_permute_00_pd, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_permute_00_pd, xmmword, < >, xmm_size ;InXmm_A:xmmword
 			shufpd				xmm0,			xmm0,			0
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_permute_01_pd, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_permute_01_pd, xmmword, < >, xmm_size ;InXmm_A:xmmword
 			shufpd				xmm0,			xmm0,			1
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_permute_10_pd, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_permute_10_pd, xmmword, < >, xmm_size ;InXmm_A:xmmword
 			shufpd				xmm0,			xmm0,			2
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_permute_11_pd, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_permute_11_pd, xmmword, < >, xmm_size ;InXmm_A:xmmword
 			shufpd				xmm0,			xmm0,			3
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_permute_pd, xmmword, < > ;InXmm_A:xmmword, _Imm8:dword
+_uXm_func_start _uXm_mm_permute_pd, xmmword, < >, xmm_size + reg_size ;InXmm_A:xmmword, _Imm8:dword
 			
 		;.if(rparam2 > 3)
 		;	ret

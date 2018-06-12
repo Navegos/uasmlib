@@ -431,8 +431,7 @@ public:
 };
 
 uXm_PACK_SIZET
-typedef uXmCPUFeatures* puXmCPUFeatures;
-
+	typedef uXmCPUFeatures* puXmCPUFeatures;
 uXm_PACK_POP
 
 /* Assembly externals *!!!DONT TOUCH!!!* */
@@ -441,8 +440,8 @@ uXm_PACK_PUSH_SIZET
 
 /* Initiate the CPUFeatures
  * Parameter int initiate the output info: 0 basic info, 1 extra info*/
-extern void _uXmCPUFeatures_Init(int);
-extern void _uXmCPUFeatures_Destroy(void);
+	extern void _uXmCPUFeatures_Init(int);
+	extern void _uXmCPUFeatures_Destroy(void);
 
 uXm_PACK_POP
 
@@ -470,181 +469,181 @@ uXm_PACK_PUSH4
 ;62  or above = AVX512BW
 ;63  or above = AVX512VL
 ;*/
-extern int _uXmCPUFeatures_intrinset(void);
+	extern int _uXmCPUFeatures_intrinset(void);
 
 uXm_PACK_POP
 
 uXm_PACK_PUSH1
 
 /* %eax=00H, %ecx */
-extern unsigned __int8 _uXmCPUFeatures_is_Intel(void);
-extern unsigned __int8 _uXmCPUFeatures_is_AMD(void);
+	extern unsigned __int8 _uXmCPUFeatures_is_Intel(void);
+	extern unsigned __int8 _uXmCPUFeatures_is_AMD(void);
 
 /* %eax=01H, %ecx */
-extern unsigned __int8 _uXmCPUFeatures_has_SSE3(void);
-extern unsigned __int8 _uXmCPUFeatures_has_PCLMULQDQ(void);
-extern unsigned __int8 _uXmCPUFeatures_has_MONITOR(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSSE3(void);
-extern unsigned __int8 _uXmCPUFeatures_has_FMA(void);
-extern unsigned __int8 _uXmCPUFeatures_has_CMPXCHG16B(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSE41(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSE42(void);
-extern unsigned __int8 _uXmCPUFeatures_has_MOVBE(void);
-extern unsigned __int8 _uXmCPUFeatures_has_POPCNT(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AES(void);
-extern unsigned __int8 _uXmCPUFeatures_has_XSAVE(void);
-extern unsigned __int8 _uXmCPUFeatures_has_OSXSAVE(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX(void);
-extern unsigned __int8 _uXmCPUFeatures_has_F16C(void);
-extern unsigned __int8 _uXmCPUFeatures_has_RDRAND(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSE3(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_PCLMULQDQ(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_MONITOR(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSSE3(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_FMA(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_CMPXCHG16B(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSE41(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSE42(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_MOVBE(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_POPCNT(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AES(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_XSAVE(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_OSXSAVE(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_F16C(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_RDRAND(void);
 
 /* %eax=01H, %edx */
-extern unsigned __int8 _uXmCPUFeatures_has_FPU(void);
-extern unsigned __int8 _uXmCPUFeatures_has_TSC(void);
-extern unsigned __int8 _uXmCPUFeatures_has_MSR(void);
-extern unsigned __int8 _uXmCPUFeatures_has_CMPXCHG8B(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SEP(void);
-extern unsigned __int8 _uXmCPUFeatures_has_CMOV(void);
-extern unsigned __int8 _uXmCPUFeatures_has_CLFSH(void);
-extern unsigned __int8 _uXmCPUFeatures_has_MMX(void);
-extern unsigned __int8 _uXmCPUFeatures_has_FXSR(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSE(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSE2(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_FPU(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_TSC(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_MSR(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_CMPXCHG8B(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SEP(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_CMOV(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_CLFSH(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_MMX(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_FXSR(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSE(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSE2(void);
 
 /* %eax=07H, %ebx */
-extern unsigned __int8 _uXmCPUFeatures_has_FSGSBASE(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SGX(void);
-extern unsigned __int8 _uXmCPUFeatures_has_BMI1(void);
-extern unsigned __int8 _uXmCPUFeatures_has_HLE(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX2(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SMEP(void);
-extern unsigned __int8 _uXmCPUFeatures_has_BMI2(void);
-extern unsigned __int8 _uXmCPUFeatures_has_ERMS(void);
-extern unsigned __int8 _uXmCPUFeatures_has_INVPCID(void);
-extern unsigned __int8 _uXmCPUFeatures_has_RTM(void);
-extern unsigned __int8 _uXmCPUFeatures_has_MPX(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512F(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ(void);
-extern unsigned __int8 _uXmCPUFeatures_has_RDSEED(void);
-extern unsigned __int8 _uXmCPUFeatures_has_ADX(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SMAP(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512_IFMA(void);
-extern unsigned __int8 _uXmCPUFeatures_has_CLFLUSHOPT(void);
-extern unsigned __int8 _uXmCPUFeatures_has_CLWB(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512PF(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512ER(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512CD(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SHA(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512VL(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_FSGSBASE(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SGX(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_BMI1(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_HLE(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX2(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SMEP(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_BMI2(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_ERMS(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_INVPCID(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_RTM(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_MPX(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512F(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_RDSEED(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_ADX(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SMAP(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512_IFMA(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_CLFLUSHOPT(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_CLWB(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512PF(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512ER(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512CD(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SHA(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512VL(void);
 
 /* %eax=07H, %ecx */
-extern unsigned __int8 _uXmCPUFeatures_has_PREFETCHWT1(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VBMI(void);
-extern unsigned __int8 _uXmCPUFeatures_has_UMIP(void);
-extern unsigned __int8 _uXmCPUFeatures_has_PKU(void);
-extern unsigned __int8 _uXmCPUFeatures_has_OSPKE(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VBMI2(void);
-extern unsigned __int8 _uXmCPUFeatures_has_GFNI(void);
-extern unsigned __int8 _uXmCPUFeatures_has_VAES(void);
-extern unsigned __int8 _uXmCPUFeatures_has_VPCLMULQDQ(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VNNI(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512_BITALG(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VPOPCNTDQ(void);
-extern unsigned __int8 _uXmCPUFeatures_has_RDPID(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_PREFETCHWT1(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VBMI(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_UMIP(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_PKU(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_OSPKE(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VBMI2(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_GFNI(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_VAES(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_VPCLMULQDQ(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VNNI(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512_BITALG(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VPOPCNTDQ(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_RDPID(void);
 
 /* %eax=07H, %edx */
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512_4VNNIW(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512_4FMAPS(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512_4VNNIW(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512_4FMAPS(void);
 
 /* %eax=80000001H, %ecx */
-extern unsigned __int8 _uXmCPUFeatures_has_LAHF(void);
-extern unsigned __int8 _uXmCPUFeatures_has_LZCNT(void);
-extern unsigned __int8 _uXmCPUFeatures_has_ABM(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSE4a(void);
-extern unsigned __int8 _uXmCPUFeatures_has_PREFETCHW(void);
-extern unsigned __int8 _uXmCPUFeatures_has_XOP(void);
-extern unsigned __int8 _uXmCPUFeatures_has_LWP(void);
-extern unsigned __int8 _uXmCPUFeatures_has_FMA4(void);
-extern unsigned __int8 _uXmCPUFeatures_has_TBM(void);
-extern unsigned __int8 _uXmCPUFeatures_has_MWAITX(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_LAHF(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_LZCNT(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_ABM(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSE4a(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_PREFETCHW(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_XOP(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_LWP(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_FMA4(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_TBM(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_MWAITX(void);
 
 /* %eax=80000001H, %edx */
-extern unsigned __int8 _uXmCPUFeatures_has_SYSCALL(void);
-extern unsigned __int8 _uXmCPUFeatures_has_MMXEXT(void);
-extern unsigned __int8 _uXmCPUFeatures_has_RDTSCP(void);
-extern unsigned __int8 _uXmCPUFeatures_has_3DNOWEXT(void);
-extern unsigned __int8 _uXmCPUFeatures_has_3DNOW(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SYSCALL(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_MMXEXT(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_RDTSCP(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_3DNOWEXT(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_3DNOW(void);
 
 /* %eax=07H, %ebx, %ecx */
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512_GFNI(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512_GFNI_VL(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VAES(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VAES_VL(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VPCLMULQDQ(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VPCLMULQDQ_VL(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512_GFNI(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512_GFNI_VL(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VAES(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VAES_VL(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VPCLMULQDQ(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VPCLMULQDQ_VL(void);
 
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512_IFMA_VL(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VBMI_VL(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VBMI2_VL(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VNNI_VL(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512_BITALG_VL(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VPOPCNTDQ_VL(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512_IFMA_VL(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VBMI_VL(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VBMI2_VL(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VNNI_VL(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512_BITALG_VL(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512_VPOPCNTDQ_VL(void);
 
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW_GFNI(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW_GFNI_VL(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW_VAES(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW_VAES_VL(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW_VPCLMULQDQ(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW_VPCLMULQDQ_VL(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW_VL(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW_GFNI(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW_GFNI_VL(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW_VAES(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW_VAES_VL(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW_VPCLMULQDQ(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW_VPCLMULQDQ_VL(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512BW_VL(void);
 
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ_GFNI(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ_GFNI_VL(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ_VAES(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ_VAES_VL(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ_VPCLMULQDQ(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ_VPCLMULQDQ_VL(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ_VL(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ_GFNI(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ_GFNI_VL(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ_VAES(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ_VAES_VL(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ_VPCLMULQDQ(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ_VPCLMULQDQ_VL(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512DQ_VL(void);
 
-extern unsigned __int8 _uXmCPUFeatures_has_AVX512CD_VL(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX512CD_VL(void);
 
 /* %eax=07H, %ecx, %ebx | %eax=01H, %ecx , %edx */
-extern unsigned __int8 _uXmCPUFeatures_has_SSE_AES(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSE_GFNI(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSE_PCLMULQDQ(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSE2_AES(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSE2_GFNI(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSE2_PCLMULQDQ(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSE3_AES(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSE3_GFNI(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSE3_PCLMULQDQ(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSSE3_AES(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSSE3_GFNI(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSSE3_PCLMULQDQ(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSE41_AES(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSE41_GFNI(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSE41_PCLMULQDQ(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSE42_AES(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSE42_GFNI(void);
-extern unsigned __int8 _uXmCPUFeatures_has_SSE42_PCLMULQDQ(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX_AES(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX_GFNI(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX_PCLMULQDQ(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX_VAES(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX_VPCLMULQDQ(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX2_AES(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX2_GFNI(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX2_PCLMULQDQ(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX2_VAES(void);
-extern unsigned __int8 _uXmCPUFeatures_has_AVX2_VPCLMULQDQ(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSE_AES(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSE_GFNI(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSE_PCLMULQDQ(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSE2_AES(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSE2_GFNI(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSE2_PCLMULQDQ(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSE3_AES(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSE3_GFNI(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSE3_PCLMULQDQ(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSSE3_AES(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSSE3_GFNI(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSSE3_PCLMULQDQ(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSE41_AES(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSE41_GFNI(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSE41_PCLMULQDQ(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSE42_AES(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSE42_GFNI(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_SSE42_PCLMULQDQ(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX_AES(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX_GFNI(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX_PCLMULQDQ(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX_VAES(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX_VPCLMULQDQ(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX2_AES(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX2_GFNI(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX2_PCLMULQDQ(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX2_VAES(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_AVX2_VPCLMULQDQ(void);
 
-extern unsigned __int8 _uXmCPUFeatures_has_enabled_XMM(void);
-extern unsigned __int8 _uXmCPUFeatures_has_enabled_YMM(void);
-extern unsigned __int8 _uXmCPUFeatures_has_enabled_ZMM(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_enabled_XMM(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_enabled_YMM(void);
+	extern unsigned __int8 _uXmCPUFeatures_has_enabled_ZMM(void);
 
 /* Check if CPUFeatures is initiated */
-extern unsigned __int8 _uXmCPUFeatures_Is_Inited(void);
+	extern unsigned __int8 _uXmCPUFeatures_Is_Inited(void);
 
 uXm_PACK_POP
 

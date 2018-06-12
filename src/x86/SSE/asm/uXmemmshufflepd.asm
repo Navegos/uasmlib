@@ -15,30 +15,31 @@ ifndef __MIC__
 		_m128dshufpdjmptable isize_t offset _m128dshufpd_0, offset _m128dshufpd_1, offset _m128dshufpd_2, offset _m128dshufpd_3				
 		
 	__align_xmm_fp_opt
-	
+	__veccall_opt
+
 	.code
 
-_uXm_func_start _uXm_mm_shuffle_00_pd, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_00_pd, xmmword, < >, 2 * xmm_size ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufpd				xmm0,			xmm1,			0
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_shuffle_01_pd, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_01_pd, xmmword, < >, 2 * xmm_size ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufpd				xmm0,			xmm1,			1
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_shuffle_10_pd, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_10_pd, xmmword, < >, 2 * xmm_size ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufpd				xmm0,			xmm1,			2
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_shuffle_11_pd, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword
+_uXm_func_start _uXm_mm_shuffle_11_pd, xmmword, < >, 2 * xmm_size ;InXmm_A:xmmword, InXmm_B:xmmword
 			shufpd				xmm0,			xmm1,			3
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_shuffle_pd, xmmword, < > ;InXmm_A:xmmword, InXmm_B:xmmword, _Imm8:dword
+_uXm_func_start _uXm_mm_shuffle_pd, xmmword, < >, 2 * xmm_size + reg_size ;InXmm_A:xmmword, InXmm_B:xmmword, _Imm8:dword
 			
 		;.if(rparam3 > 3)
 		;	ret

@@ -16,3 +16,23 @@ ff000000ff000000ff000000ff000000
 2 = 8   9   10   11
 3 = 12  13  14   15
 
+_uXm_mm_testc_si128_0 proc near
+ptest   xmm0, [rbp+var_s40]
+mov     eax, 1
+mov     ecx, 0
+cmovb   ecx, eax
+mov     eax, ecx
+
+_uXm_mm_testz_si128_0 proc near
+ptest   xmm0, [rbp+var_s40]
+mov     eax, 1
+mov     ecx, 0
+cmovz   ecx, eax
+mov     eax, ecx
+
+_uXm_mm_testnzc_si128_0 proc near
+ptest   xmm0, [rbp+var_s40]
+mov     eax, 1
+mov     ecx, 0
+cmova   ecx, eax
+mov     eax, ecx

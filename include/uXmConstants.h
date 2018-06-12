@@ -970,7 +970,7 @@
 /* double precision constants */
 #if defined(uXm_USE_DOUBLE_PRECISION)
 
-#if defined(uXm_DOUBLE_MASKS_AS_I64)
+#if defined(uXm_DOUBLE_MASK_I64)
 
 # ifdef uXm_VC
 

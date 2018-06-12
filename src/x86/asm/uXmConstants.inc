@@ -215,6 +215,29 @@ uXm_f64_true_msk			equ 0xffffffffffffffff
 uXm_f64_false_msk			equ 0x0000000000000000
 
 
+;;int64 mask;;
+
+uXm_i64_true_msk			equ 0xffffffffffffffff
+uXm_i64_false_msk			equ 0x0000000000000000
+
+
+;;int32 mask;;
+
+uXm_i32_true_msk			equ 0xffffffff
+uXm_i32_false_msk			equ 0x00000000
+
+
+;;int16 mask;;
+
+uXm_i16_true_msk			equ 0xffff
+uXm_i16_false_msk			equ 0x0000
+
+;;int8 mask;;
+
+uXm_i8_true_msk				equ 0xff
+uXm_i8_false_msk			equ 0x00
+
+
 ;;float;;
 
 uXm_f32_0					equ 0.0

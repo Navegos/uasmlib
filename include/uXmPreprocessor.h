@@ -3292,11 +3292,11 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #endif
 
 #if ((defined(uXm_GPU_VERS_SET) && (uXm_GPU_VERS_SET >= 130)) || (defined(uXm_INTRINSET) && (uXm_INTRINSET >= 20))) && defined(uXm_USE_DOUBLE_PRECISION)
-#		define uXm_SUPPORTS_DOUBLE_MASKS_AS_I64 1
+#		define uXm_SUPPORTS_DOUBLE_MASK_I64 1
 #endif
 
-#if defined(uXm_SUPPORTS_DOUBLE_MASKS_AS_I64) && defined(uXm_USE_INT64)
-#		define uXm_DOUBLE_MASKS_AS_I64 1
+#if defined(uXm_SUPPORTS_DOUBLE_MASK_I64) && defined(uXm_USE_INT64)
+#		define uXm_DOUBLE_MASK_I64 1
 #endif
 
 // SSE Vector registers types are enable by default and disabled if building for AVX

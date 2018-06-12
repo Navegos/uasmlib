@@ -189,143 +189,143 @@ uXm_PACK_PUSH16
  * Data, Constants
  */
 
-extern const __m128 __m128_false;
-extern const __m128 __m128_true;
+	extern const __m128 __m128_false;
+	extern const __m128 __m128_true;
 
-extern const __m128 __m128_0;
-extern const __m128 __m128_1;
+	extern const __m128 __m128_0;
+	extern const __m128 __m128_1;
 
-extern const __m128 __m128_neg0;
-extern const __m128 __m128_neg1;
+	extern const __m128 __m128_neg0;
+	extern const __m128 __m128_neg1;
 
 /*
  * FP, arithmetic
  */
 
-extern __m128 _uXm_mm_add_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_add_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_sub_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_sub_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_mul_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_mul_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_div_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_div_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_sqrt_ss(__m128 Inxmm_A);
-extern __m128 _uXm_mm_sqrt_ps(__m128 Inxmm_A);
-extern __m128 _uXm_mm_rcp_ss(__m128 Inxmm_A);
-extern __m128 _uXm_mm_rcp_ps(__m128 Inxmm_A);
-extern __m128 _uXm_mm_rsqrt_ss(__m128 Inxmm_A);
-extern __m128 _uXm_mm_rsqrt_ps(__m128 Inxmm_A);
-extern __m128 _uXm_mm_min_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_min_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_max_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_max_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_add_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_add_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_sub_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_sub_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_mul_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_mul_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_div_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_div_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_sqrt_ss(__m128 Inxmm_A);
+	extern __m128 uXm_callconv _uXm_mm_sqrt_ps(__m128 Inxmm_A);
+	extern __m128 uXm_callconv _uXm_mm_rcp_ss(__m128 Inxmm_A);
+	extern __m128 uXm_callconv _uXm_mm_rcp_ps(__m128 Inxmm_A);
+	extern __m128 uXm_callconv _uXm_mm_rsqrt_ss(__m128 Inxmm_A);
+	extern __m128 uXm_callconv _uXm_mm_rsqrt_ps(__m128 Inxmm_A);
+	extern __m128 uXm_callconv _uXm_mm_min_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_min_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_max_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_max_ps(__m128 Inxmm_A, __m128 Inxmm_B);
 
 /*
  * FP, logical
  */
 
-extern __m128 _uXm_mm_and_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_andnot_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_or_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_xor_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_not_ps(__m128 Inxmm_A);
+	extern __m128 uXm_callconv _uXm_mm_and_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_andnot_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_or_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_xor_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_not_ps(__m128 Inxmm_A);
 
 /*
  * FP, comparison
  */
 
-extern __m128 _uXm_mm_cmpeq_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmpeq_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmplt_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmplt_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmple_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmple_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmpgt_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmpgt_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmpge_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmpge_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmpneq_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmpneq_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmpnlt_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmpnlt_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmpnle_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmpnle_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmpngt_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmpngt_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmpnge_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmpnge_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmpord_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmpord_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmpunord_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_cmpunord_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmpeq_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmpeq_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmplt_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmplt_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmple_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmple_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmpgt_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmpgt_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmpge_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmpge_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmpneq_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmpneq_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmpnlt_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmpnlt_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmpnle_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmpnle_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmpngt_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmpngt_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmpnge_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmpnge_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmpord_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmpord_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmpunord_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_cmpunord_ps(__m128 Inxmm_A, __m128 Inxmm_B);
 
 /*
  * FP, comparison return int
  */
 
-extern unsigned int _uXm_mm_comieq_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern unsigned int _uXm_mm_comilt_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern unsigned int _uXm_mm_comile_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern unsigned int _uXm_mm_comigt_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern unsigned int _uXm_mm_comige_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern unsigned int _uXm_mm_comineq_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern unsigned int _uXm_mm_ucomieq_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern unsigned int _uXm_mm_ucomilt_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern unsigned int _uXm_mm_ucomile_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern unsigned int _uXm_mm_ucomigt_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern unsigned int _uXm_mm_ucomige_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern unsigned int _uXm_mm_ucomineq_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern unsigned int uXm_callconv _uXm_mm_comieq_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern unsigned int uXm_callconv _uXm_mm_comilt_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern unsigned int uXm_callconv _uXm_mm_comile_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern unsigned int uXm_callconv _uXm_mm_comigt_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern unsigned int uXm_callconv _uXm_mm_comige_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern unsigned int uXm_callconv _uXm_mm_comineq_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern unsigned int uXm_callconv _uXm_mm_ucomieq_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern unsigned int uXm_callconv _uXm_mm_ucomilt_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern unsigned int uXm_callconv _uXm_mm_ucomile_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern unsigned int uXm_callconv _uXm_mm_ucomigt_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern unsigned int uXm_callconv _uXm_mm_ucomige_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern unsigned int uXm_callconv _uXm_mm_ucomineq_ss(__m128 Inxmm_A, __m128 Inxmm_B);
 
 /*
  * FP, conversions
  */
 
-extern int _uXm_mm_cvt_ss2si(__m128 Inxmm_A);
-extern int _uXm_mm_cvtt_ss2si(__m128 Inxmm_A);
-extern __m128 _uXm_mm_cvt_si2ss(__m128 Inxmm_A, int InInt_B);
+	extern int uXm_callconv _uXm_mm_cvt_ss2si(__m128 Inxmm_A);
+	extern int uXm_callconv _uXm_mm_cvtt_ss2si(__m128 Inxmm_A);
+	extern __m128 uXm_callconv _uXm_mm_cvt_si2ss(__m128 Inxmm_A, int InInt_B);
 
-extern float _uXm_mm_cvtss_f32(__m128 Inxmm_A);
-extern float _uXm_mm_cvt0s_f32(__m128 Inxmm_A);
-extern float _uXm_mm_cvt1s_f32(__m128 Inxmm_A);
-extern float _uXm_mm_cvt2s_f32(__m128 Inxmm_A);
-extern float _uXm_mm_cvt3s_f32(__m128 Inxmm_A);
-extern float _uXm_mm_cvtelts_f32(__m128 Inxmm_A, unsigned int InInt_BSel);
+	extern float uXm_callconv _uXm_mm_cvtss_f32(__m128 Inxmm_A);
+	extern float uXm_callconv _uXm_mm_cvt0s_f32(__m128 Inxmm_A);
+	extern float uXm_callconv _uXm_mm_cvt1s_f32(__m128 Inxmm_A);
+	extern float uXm_callconv _uXm_mm_cvt2s_f32(__m128 Inxmm_A);
+	extern float uXm_callconv _uXm_mm_cvt3s_f32(__m128 Inxmm_A);
+	extern float uXm_callconv _uXm_mm_cvtelts_f32(__m128 Inxmm_A, unsigned int InInt_BSel);
 
 #ifdef uXm_X86
 /*
  * Support for MMX extension intrinsics
  */
-extern __m64 _uXm_mm_cvt_ps2pi(__m128 Inxmm_A);
-extern __m64 _uXm_mm_cvtt_ps2pi(__m128 Inxmm_A);
-extern __m128 _uXm_mm_cvt_pi2ps(__m128 Inxmm_A, __m64 Inmm_B);
+	extern __m64 uXm_callconv _uXm_mm_cvt_ps2pi(__m128 Inxmm_A);
+	extern __m64 uXm_callconv _uXm_mm_cvtt_ps2pi(__m128 Inxmm_A);
+	extern __m128 uXm_callconv _uXm_mm_cvt_pi2ps(__m128 Inxmm_A, __m64 Inmm_B);
 #endif /* uXm_X86 */
 
 #ifdef uXm_X64
 /*
  * Support for 64-bit intrinsics
  */
-extern __int64 _uXm_mm_cvtss_si64(__m128 Inxmm_A);
-extern __int64 _uXm_mm_cvttss_si64(__m128 Inxmm_A);
-extern __m128  _uXm_mm_cvtsi64_ss(__m128 Inxmm_A, __int64 InInt_B);
+	extern __int64 uXm_callconv _uXm_mm_cvtss_si64(__m128 Inxmm_A);
+	extern __int64 uXm_callconv _uXm_mm_cvttss_si64(__m128 Inxmm_A);
+	extern __m128 uXm_callconv _uXm_mm_cvtsi64_ss(__m128 Inxmm_A, __int64 InInt_B);
 #endif /* uXm_X64 */
 
 /*
  * FP, misc
  */
 
-extern __m128 _uXm_mm_shuffle_ps(__m128 Inxmm_A, __m128 Inxmm_B, unsigned int _Imm8);
-extern __m128 _uXm_mm_permute_ps(__m128 Inxmm_A, unsigned int _Imm8);
-extern void _uXm_mm_transpose4_ps(__m128 Inxmm_Row0, __m128 Inxmm_Row1, __m128 Inxmm_Row2, __m128 Inxmm_Row3);
-extern __m128 _uXm_mm_unpackhi_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_unpacklo_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_movehl_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_movelh_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_loadh_pi(__m128 Inxmm_A, const __m64* Inpmm_B);
-extern __m128 _uXm_mm_loadl_pi(__m128 Inxmm_A, const __m64* Inpmm_B);
-extern void _uXm_mm_storeh_pi(__m64* Outpmm_A, __m128 Inxmm_B);
-extern void _uXm_mm_storel_pi(__m64* Outpmm_A, __m128 Inxmm_B);
-extern int _uXm_mm_movemask_ps(__m128 Inxmm_A);
+	extern __m128 uXm_callconv _uXm_mm_shuffle_ps(__m128 Inxmm_A, __m128 Inxmm_B, unsigned int _Imm8);
+	extern __m128 uXm_callconv _uXm_mm_permute_ps(__m128 Inxmm_A, unsigned int _Imm8);
+	extern void uXm_callconv _uXm_mm_transpose4_ps(__m128 Inxmm_Row0, __m128 Inxmm_Row1, __m128 Inxmm_Row2, __m128 Inxmm_Row3);
+	extern __m128 uXm_callconv _uXm_mm_unpackhi_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_unpacklo_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_movehl_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_movelh_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_loadh_pi(__m128 Inxmm_A, const __m64* Inpmm_B);
+	extern __m128 uXm_callconv _uXm_mm_loadl_pi(__m128 Inxmm_A, const __m64* Inpmm_B);
+	extern void uXm_callconv _uXm_mm_storeh_pi(__m64* Outpmm_A, __m128 Inxmm_B);
+	extern void uXm_callconv _uXm_mm_storel_pi(__m64* Outpmm_A, __m128 Inxmm_B);
+	extern int uXm_callconv _uXm_mm_movemask_ps(__m128 Inxmm_A);
 
 #ifdef uXm_X86
 /*
@@ -333,20 +333,20 @@ extern int _uXm_mm_movemask_ps(__m128 Inxmm_A);
 */
 uXm_PACK_PUSH8
 
-extern int _uXm_mm_pextrw(__m64 Inmm_A, int _Imm8);
-extern __m64 _uXm_mm_pinsrw(__m64 Inmm_A, int InInt_B, int _Imm8);
-extern __m64 _uXm_mm_pmaxsw(__m64 Inmm_A, __m64 Inmm_B);
-extern __m64 _uXm_mm_pmaxub(__m64 Inmm_A, __m64 Inmm_B);
-extern __m64 _uXm_mm_pminsw(__m64 Inmm_A, __m64 Inmm_B);
-extern __m64 _uXm_mm_pminub(__m64 Inmm_A, __m64 Inmm_B);
-extern int _uXm_mm_pmovmskb(__m64 Inmm_A);
-extern __m64 _uXm_mm_pmulhuw(__m64 Inmm_A, __m64 Inmm_B);
+	extern int uXm_callconv _uXm_mm_pextrw(__m64 Inmm_A, int _Imm8);
+	extern __m64 uXm_callconv _uXm_mm_pinsrw(__m64 Inmm_A, int InInt_B, int _Imm8);
+	extern __m64 uXm_callconv _uXm_mm_pmaxsw(__m64 Inmm_A, __m64 Inmm_B);
+	extern __m64 uXm_callconv _uXm_mm_pmaxub(__m64 Inmm_A, __m64 Inmm_B);
+	extern __m64 uXm_callconv _uXm_mm_pminsw(__m64 Inmm_A, __m64 Inmm_B);
+	extern __m64 uXm_callconv _uXm_mm_pminub(__m64 Inmm_A, __m64 Inmm_B);
+	extern int uXm_callconv _uXm_mm_pmovmskb(__m64 Inmm_A);
+	extern __m64 uXm_callconv _uXm_mm_pmulhuw(__m64 Inmm_A, __m64 Inmm_B);
 
-extern __m64 _uXm_mm_pshufw(__m64 Inmm_A, int _Imm8);
-extern void _uXm_mm_maskmovq(__m64 Inmm_A, __m64 Inmm_B, __int8*  OutpInt8_C);
-extern __m64 _uXm_mm_pavgb(__m64 Inmm_A, __m64 Inmm_B);
-extern __m64 _uXm_mm_pavgw(__m64 Inmm_A, __m64 Inmm_B);
-extern __m64 _uXm_mm_psadbw(__m64 Inmm_A, __m64 Inmm_B);
+	extern __m64 uXm_callconv _uXm_mm_pshufw(__m64 Inmm_A, int _Imm8);
+	extern void uXm_callconv _uXm_mm_maskmovq(__m64 Inmm_A, __m64 Inmm_B, __int8*  OutpInt8_C);
+	extern __m64 uXm_callconv _uXm_mm_pavgb(__m64 Inmm_A, __m64 Inmm_B);
+	extern __m64 uXm_callconv _uXm_mm_pavgw(__m64 Inmm_A, __m64 Inmm_B);
+	extern __m64 uXm_callconv _uXm_mm_psadbw(__m64 Inmm_A, __m64 Inmm_B);
 
 uXm_PACK_POP
 #endif /* uXm_X86 */
@@ -359,69 +359,70 @@ uXm_PACK_POP
  * FP, sets
  */
 
-extern __m128 _uXm_mm_set_ss(float Infloat_A);
-extern __m128 _uXm_mm_set_ps1(float Infloat_A);
-extern __m128 _uXm_mm_set_ps(float Infloat_3, float Infloat_2, float Infloat_1, float Infloat_0);
-extern __m128 _uXm_mm_setr_ps(float Infloat_0, float Infloat_1, float Infloat_2, float Infloat_3);
-extern __m128 _uXm_mm_setzero_ps(void);
+	extern __m128 uXm_callconv _uXm_mm_set_ss(float Infloat_A);
+	extern __m128 uXm_callconv _uXm_mm_set_ps1(float Infloat_A);
+	extern __m128 uXm_callconv _uXm_mm_set_ps(float Infloat_3, float Infloat_2, float Infloat_1, float Infloat_0);
+	extern __m128 uXm_callconv _uXm_mm_setr_ps(float Infloat_0, float Infloat_1, float Infloat_2, float Infloat_3);
+	extern __m128 uXm_callconv _uXm_mm_setzero_ps(void);
 
 /*
  * FP, loads
  */
 
-extern __m128 _uXm_mm_load_ss(const float* Inpfloat_A);
-extern __m128 _uXm_mm_load_ps1(const float* Inpfloat_A);
-extern __m128 _uXm_mm_load_ps(const float* Inpfloat_A);
-extern __m128 _uXm_mm_loadr_ps(const float* Inpfloat_A);
-extern __m128 _uXm_mm_loadu_ps(const float* Inpfloat_A);
-extern __m128 _uXm_mm_loadur_ps(const float* Inpfloat_A);
-extern __m128 _uXm_mm_loadh_ps(const float* Inpfloat_A);
-extern __m128 _uXm_mm_loadl_ps(const float* Inpfloat_A);
+	extern __m128 uXm_callconv _uXm_mm_load_ss(const float* Inpfloat_A);
+	extern __m128 uXm_callconv _uXm_mm_load_ps1(const float* Inpfloat_A);
+	extern __m128 uXm_callconv _uXm_mm_load_ps(const float* Inpfloat_A);
+	extern __m128 uXm_callconv _uXm_mm_loadr_ps(const float* Inpfloat_A);
+	extern __m128 uXm_callconv _uXm_mm_loadu_ps(const float* Inpfloat_A);
+	extern __m128 uXm_callconv _uXm_mm_loadur_ps(const float* Inpfloat_A);
+	extern __m128 uXm_callconv _uXm_mm_loadh_ps(const float* Inpfloat_A);
+	extern __m128 uXm_callconv _uXm_mm_loadl_ps(const float* Inpfloat_A);
 
 /*
  * FP, stores
  */
 
-extern void _uXm_mm_store_ss(float* Outpfloat_A, __m128 Inxmm_B);
-extern void _uXm_mm_store_ps1(float* Outpfloat_A, __m128 Inxmm_B);
-extern void _uXm_mm_storeu_ps1(float* Outpfloat_A, __m128 Inxmm_B);
-extern void _uXm_mm_store_ps(float* Outpfloat_A, __m128 Inxmm_B);
-extern void _uXm_mm_storeu_ps(float* Outpfloat_A, __m128 Inxmm_B);
-extern void _uXm_mm_storer_ps(float* Outpfloat_A, __m128 Inxmm_B);
-extern void _uXm_mm_storeur_ps(float* Outpfloat_A, __m128 Inxmm_B);
-extern void _uXm_mm_storeh_ps(float* Outpfloat_A, __m128 Inxmm_B);
-extern void _uXm_mm_storel_ps(float* Outpfloat_A, __m128 Inxmm_B);
+	extern void uXm_callconv _uXm_mm_store_ss(float* Outpfloat_A, __m128 Inxmm_B);
+	extern void uXm_callconv _uXm_mm_store_ps1(float* Outpfloat_A, __m128 Inxmm_B);
+	extern void uXm_callconv _uXm_mm_storeu_ps1(float* Outpfloat_A, __m128 Inxmm_B);
+	extern void uXm_callconv _uXm_mm_store_ps(float* Outpfloat_A, __m128 Inxmm_B);
+	extern void uXm_callconv _uXm_mm_storeu_ps(float* Outpfloat_A, __m128 Inxmm_B);
+	extern void uXm_callconv _uXm_mm_storer_ps(float* Outpfloat_A, __m128 Inxmm_B);
+	extern void uXm_callconv _uXm_mm_storeur_ps(float* Outpfloat_A, __m128 Inxmm_B);
+	extern void uXm_callconv _uXm_mm_storeh_ps(float* Outpfloat_A, __m128 Inxmm_B);
+	extern void uXm_callconv _uXm_mm_storel_ps(float* Outpfloat_A, __m128 Inxmm_B);
 
-extern void _uXm_mm_store_mm_ps(__m128* Outpxmm_A, __m128 Inxmm_B);
-extern void _uXm_mm_store_pfloat_ps(__m128* Outpxmm_A, const float* Inpfloat_B);
-extern void _uXm_mm_storeu_pfloat_ps(__m128* Outpxmm_A, const float* Inpfloat_B);
+	extern void uXm_callconv _uXm_mm_store_mm_ps(__m128* Outpxmm_A, __m128 Inxmm_B);
+	extern void uXm_callconv _uXm_mm_store_pfloat_ps(__m128* Outpxmm_A, const float* Inpfloat_B);
+	extern void uXm_callconv _uXm_mm_storeu_pfloat_ps(__m128* Outpxmm_A, const float* Inpfloat_B);
 
 /*
  * FP, moves
  */
 
-extern __m128 _uXm_mm_move_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern __m128 _uXm_mm_move_ps1(__m128 Inxmm_A);
-extern __m128 _uXm_mm_move_ps(__m128 Inxmm_A);
-extern __m128 _uXm_mm_mover_ps(__m128 Inxmm_A);
+	extern __m128 uXm_callconv _uXm_mm_move_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern __m128 uXm_callconv _uXm_mm_move_ps1(__m128 Inxmm_A);
+	extern __m128 uXm_callconv _uXm_mm_move_ps(__m128 Inxmm_A);
+	extern __m128 uXm_callconv _uXm_mm_mover_ps(__m128 Inxmm_A);
 
-extern float* _uXm_ptr_move_mm_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern float* _uXm_ptr_move_mm_ps1(__m128 Inxmm_A);
-extern float* _uXm_ptr_move_mm_ps(__m128 Inxmm_A);
-extern float* _uXm_ptr_mover_mm_ps(__m128 Inxmm_A);
-extern float* _uXm_ptr_moveu_mm_ss(__m128 Inxmm_A, __m128 Inxmm_B);
-extern float* _uXm_ptr_moveu_mm_ps1(__m128 Inxmm_A);
-extern float* _uXm_ptr_moveu_mm_ps(__m128 Inxmm_A);
-extern float* _uXm_ptr_moveur_mm_ps(__m128 Inxmm_A);
+	extern float* uXm_callconv _uXm_ptr_move_mm_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern float* uXm_callconv _uXm_ptr_move_mm_ps1(__m128 Inxmm_A);
+	extern float* uXm_callconv _uXm_ptr_move_mm_ps(__m128 Inxmm_A);
+	extern float* uXm_callconv _uXm_ptr_mover_mm_ps(__m128 Inxmm_A);
+	extern float* uXm_callconv _uXm_ptr_moveu_mm_ss(__m128 Inxmm_A, __m128 Inxmm_B);
+	extern float* uXm_callconv _uXm_ptr_moveu_mm_ps1(__m128 Inxmm_A);
+	extern float* uXm_callconv _uXm_ptr_moveu_mm_ps(__m128 Inxmm_A);
+	extern float* uXm_callconv _uXm_ptr_moveur_mm_ps(__m128 Inxmm_A);
 
 /*
  * Cacheability support
  */
-extern void _uXm_mm_prefetch_0(const __int8* InpInt8_A);
-extern void _uXm_mm_prefetch_1(const __int8* InpInt8_A);
-extern void _uXm_mm_prefetch_2(const __int8* InpInt8_A);
-extern void _uXm_mm_prefetch_3(const __int8* InpInt8_A);
-extern void _uXm_mm_prefetch(const __int8* InpInt8_A, int InInt_BSel);
+
+	extern void uXm_callconv _uXm_mm_prefetch_0(const __int8* InpInt8_A);
+	extern void uXm_callconv _uXm_mm_prefetch_1(const __int8* InpInt8_A);
+	extern void uXm_callconv _uXm_mm_prefetch_2(const __int8* InpInt8_A);
+	extern void uXm_callconv _uXm_mm_prefetch_3(const __int8* InpInt8_A);
+	extern void uXm_callconv _uXm_mm_prefetch(const __int8* InpInt8_A, int InInt_BSel);
 
 #ifdef uXm_X86
 /*
@@ -429,21 +430,26 @@ extern void _uXm_mm_prefetch(const __int8* InpInt8_A, int InInt_BSel);
 */
 uXm_PACK_PUSH8
 
-extern void _uXm_mm_stream_pi(__m64* Outpmm_A, __m64 Inmm_B);
+	extern void uXm_callconv _uXm_mm_stream_pi(__m64* Outpmm_A, __m64 Inmm_B);
 
 uXm_PACK_POP
 #endif /* uXm_X86 */
 
-extern void _uXm_mm_stream_ps(float* Outpfloat_A, __m128 Inxmm_B);
+	extern void uXm_callconv _uXm_mm_stream_ps(float* Outpfloat_A, __m128 Inxmm_B);
 
-extern void _uXm_mm_sfence(void);
-extern unsigned int _uXm_mm_getcsr(void);
-extern void _uXm_mm_setcsr(unsigned int InInt_A);
+	extern void uXm_callconv _uXm_mm_sfence(void);
+	extern unsigned int uXm_callconv _uXm_mm_getcsr(void);
+	extern void uXm_callconv _uXm_mm_setcsr(unsigned int InInt_A);
 
 #ifdef __ICL
-extern void* __cdecl _uXm_mm_malloc(size_t _Siz, size_t _Al);
-extern void __cdecl _uXm_mm_free(void *_P);
+	//extern void* __cdecl _uXm_mm_malloc(size_t _Siz, size_t _Al);
+	//extern void __cdecl _uXm_mm_free(void *_P);
 #endif  /* __ICL */
+
+/*
+ * Undefined
+ */
+/*	extern __m128 uXm_callconv _uXm_mm_undefined_ps(void);*/
 
 uXm_PACK_POP
 
@@ -505,7 +511,7 @@ uXm_PACK_PUSH16
 /*  OUT : none                                           */
 /*  RETURN : __m128 : (float)_A                           */
 /*********************************************************/
-extern __m128 _uXm_mm_cvtpi16_ps(__m64 _A);
+	extern __m128 uXm_callconv _uXm_mm_cvtpi16_ps(__m64 _A);
 
 
 /***********************************************************/
@@ -516,7 +522,7 @@ extern __m128 _uXm_mm_cvtpi16_ps(__m64 _A);
 /*  OUT : none                                             */
 /*  RETURN : __m128 : (float)_A                             */
 /***********************************************************/
-extern __m128 _uXm_mm_cvtpu16_ps(__m64 _A);
+	extern __m128 uXm_callconv _uXm_mm_cvtpu16_ps(__m64 _A);
 
 
 /******************************************************/
@@ -527,7 +533,7 @@ extern __m128 _uXm_mm_cvtpu16_ps(__m64 _A);
 /*  OUT : none                                        */
 /*  RETURN : __m64 : (short)a                         */
 /******************************************************/
-extern __m64 _uXm_mm_cvtps_pi16(__m128 _A);
+	extern __m64 uXm_callconv _uXm_mm_cvtps_pi16(__m128 _A);
 
 
 /******************************************************/
@@ -538,7 +544,7 @@ extern __m64 _uXm_mm_cvtps_pi16(__m128 _A);
 /*  OUT : none                                        */
 /*  RETURN : __m128 : (float)_A                        */
 /******************************************************/
-extern __m128 _uXm_mm_cvtpi8_ps(__m64 _A);
+	extern __m128 uXm_callconv _uXm_mm_cvtpi8_ps(__m64 _A);
 
 
 /******************************************************/
@@ -550,7 +556,7 @@ extern __m128 _uXm_mm_cvtpi8_ps(__m64 _A);
 /*  OUT : none                                        */
 /*  RETURN : __m128 : (float)_A                        */
 /******************************************************/
-extern __m128 _uXm_mm_cvtpu8_ps(__m64 _A);
+	extern __m128 uXm_callconv _uXm_mm_cvtpu8_ps(__m64 _A);
 
 
 /******************************************************/
@@ -561,7 +567,7 @@ extern __m128 _uXm_mm_cvtpu8_ps(__m64 _A);
 /*  OUT : none                                        */
 /*  RETURN : __m64 : (__int8)_A                          */
 /******************************************************/
-extern __m64 _uXm_mm_cvtps_pi8(__m128 _A);
+	extern __m64 uXm_callconv _uXm_mm_cvtps_pi8(__m128 _A);
 
 
 /******************************************************/
@@ -573,7 +579,7 @@ extern __m64 _uXm_mm_cvtps_pi8(__m128 _A);
 /*  OUT : none                                        */
 /*  RETURN : __m128 : (float)_A,(float)_B               */
 /******************************************************/
-extern __m128 _uXm_mm_cvtpi32x2_ps(__m64 _A, __m64 _B);
+	extern __m128 uXm_callconv _uXm_mm_cvtpi32x2_ps(__m64 _A, __m64 _B);
 
 uXm_PACK_POP
 

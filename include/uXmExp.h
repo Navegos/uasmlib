@@ -173,7 +173,7 @@ EXTERN_CC_END
 # error ("!!!Your uXmOAPMath lib type static or dll aren't defined")
 #endif
 
-#if defined(uXm_LINUX_OS)
+#if defined(uXm_LINUX) || defined(uXm_UNIX)
 # if defined(uXm_LIB_STATIC)
 #		define uXm_VISIBILITY_HIDDEN __attribute__((visibility ("hidden")))
 #		define uXm_PRIVATE_SYMBOL __attribute__((visibility ("internal")))
@@ -187,7 +187,7 @@ EXTERN_CC_END
 #		define uXm_EXPORT_SYMBOL  __attribute__((visibility ("default")))
 #		define uXm_IMPORT_SYMBOL  __attribute__((visibility ("default")))
 # endif
-#elif defined(uXm_MACOSX_OS)
+#elif defined(uXm_MACOSX)
 # if defined(uXm_LIB_STATIC)
 #		define uXm_VISIBILITY_HIDDEN __attribute__((visibility ("hidden")))
 #		define uXm_PRIVATE_SYMBOL __attribute__((visibility ("hidden")))
@@ -201,7 +201,7 @@ EXTERN_CC_END
 #		define uXm_EXPORT_SYMBOL  __attribute__((visibility ("default")))
 #		define uXm_IMPORT_SYMBOL  __attribute__((visibility ("default")))
 # endif
-#elif defined(uXm_WINDOWS_OS)
+#elif defined(uXm_WINDOWS)
 # if defined(uXm_LIB_STATIC)
 #		define uXm_VISIBILITY_HIDDEN /*empty*/
 #		define uXm_PRIVATE_SYMBOL
