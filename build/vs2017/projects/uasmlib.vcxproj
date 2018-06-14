@@ -47,13 +47,16 @@
     </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmpermutepd.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmshufflepd.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmnmmintrin.asm">
+      <FileType>Document</FileType>
+    </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmpmmintrin.asm">
       <FileType>Document</FileType>
     </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmsmmintrin.asm">
       <FileType>Document</FileType>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmsmmmisc.asm">
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmsmmblend.asm">
       <FileType>Document</FileType>
     </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmtmmintrin.asm">
@@ -85,11 +88,15 @@
     <ClInclude Include="..\..\..\include\x86\uXmemmintshuffle.h" />
     <ClInclude Include="..\..\..\include\x86\uXmemmpermutepd.h" />
     <ClInclude Include="..\..\..\include\x86\uXmemmshufflepd.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmimmintrin.h" />
     <ClInclude Include="..\..\..\include\x86\uXmmmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmnmmintrin.h" />
     <ClInclude Include="..\..\..\include\x86\uXmpmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmsmmmisc.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmnmmcmpestr.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmsmmblend.h" />
     <ClInclude Include="..\..\..\include\x86\uXmsmmintrin.h" />
     <ClInclude Include="..\..\..\include\x86\uXmSSEStructs.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmtmmalignr.h" />
     <ClInclude Include="..\..\..\include\x86\uXmtmmintrin.h" />
     <ClInclude Include="..\..\..\include\x86\uXmx86Cpu.h" />
     <ClInclude Include="..\..\..\include\x86\uXmx86Intrin.h" />

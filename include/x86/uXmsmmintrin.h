@@ -59,6 +59,100 @@
 /*******************************************************/
 #define _uXm_MM_DP_PD_IM(VA,VB,IMM) _uXm_mm_dp_pd_##IMM##(VA,VB)
 
+/*******************************************************/
+/* MACRO for use _uXm_mm_insert_ps_*().					*/
+/* result                                              */
+/* const __m128 temp = _uXm_MM_INSERT_PS_IM(Inxmm_A, Inxmm_B, 217); */
+/*******************************************************/
+#define _uXm_MM_INSERT_PS_IM(VA,VB,IMM) _uXm_mm_insert_ps_##IMM##(VA,VB)
+
+/*******************************************************/
+/* MACRO for use _uXm_mm_extract_ps_*().					*/
+/* result                                              */
+/* const int temp = _uXm_MM_EXTRACT_PS_IM(Inxmm_A, 3); */
+/*******************************************************/
+#define _uXm_MM_EXTRACT_PS_IM(VA,IMM) _uXm_mm_extract_ps_##IMM##(VA)
+
+/*******************************************************/
+/* MACRO for use _uXm_mm_insert_epi8_*().					*/
+/* result                                              */
+/* const __m128i temp = _uXm_MM_INSERT_EPI8_IM(Inxmm_A, Inxmm_B, 15); */
+/*******************************************************/
+#define _uXm_MM_INSERT_EPI8_IM(VA,INTB,IMM) _uXm_mm_insert_epi8_##IMM##(VA,INTB)
+
+/*******************************************************/
+/* MACRO for use _uXm_mm_insert_epi32_*().					*/
+/* result                                              */
+/* const __m128i temp = _uXm_MM_INSERT_EPI32_IM(Inxmm_A, Inxmm_B, 3); */
+/*******************************************************/
+#define _uXm_MM_INSERT_EPI32_IM(VA,INTB,IMM) _uXm_mm_insert_epi32_##IMM##(VA,INTB)
+
+#if defined(uXm_X64)
+/*******************************************************/
+/* MACRO for use _uXm_mm_insert_epi64_*().					*/
+/* result                                              */
+/* const __m128i temp = _uXm_MM_INSERT_EPI64_IM(Inxmm_A, Inxmm_B, 1); */
+/*******************************************************/
+#define _uXm_MM_INSERT_EPI64_IM(VA,INTB,IMM) _uXm_mm_insert_epi64_##IMM##(VA,INTB)
+#endif //uXm_X64
+
+/*******************************************************/
+/* MACRO for use _uXm_mm_extract_epi8_*().					*/
+/* result                                              */
+/* const int temp = _uXm_MM_EXTRACT_EPI8_IM(Inxmm_A, 15); */
+/*******************************************************/
+#define _uXm_MM_EXTRACT_EPI8_IM(VA,IMM) _uXm_mm_extract_epi8_##IMM##(VA)
+
+/*******************************************************/
+/* MACRO for use _uXm_mm_extract_epi32_*().					*/
+/* result                                              */
+/* const int temp = _uXm_MM_EXTRACT_EPI32_IM(Inxmm_A, 3); */
+/*******************************************************/
+#define _uXm_MM_EXTRACT_EPI32_IM(VA,IMM) _uXm_mm_extract_epi32_##IMM##(VA)
+
+#if defined(uXm_X64)
+/*******************************************************/
+/* MACRO for use _uXm_mm_extract_epi64_*().					*/
+/* result                                              */
+/* const __int64 temp = _uXm_MM_EXTRACT_EPI64_IM(Inxmm_A, 1); */
+/*******************************************************/
+#define _uXm_MM_EXTRACT_EPI64_IM(VA,IMM) _uXm_mm_extract_epi64_##IMM##(VA)
+#endif //uXm_X64
+
+/*******************************************************/
+/* MACRO for use _uXm_mm_round_pd_*().					*/
+/* result                                              */
+/* const __m128d temp = _uXm_MM_ROUND_PD_IM(Inxmm_A, 12); */
+/*******************************************************/
+#define _uXm_MM_ROUND_PD_IM(VA,IMM) _uXm_mm_round_pd_##IMM##(VA)
+
+/*******************************************************/
+/* MACRO for use _uXm_mm_round_sd_*().					*/
+/* result                                              */
+/* const __m128d temp = _uXm_MM_ROUND_SD_IM(Inxmm_A, 12); */
+/*******************************************************/
+#define _uXm_MM_ROUND_SD_IM(VA,IMM) _uXm_mm_round_sd_##IMM##(VA)
+
+/*******************************************************/
+/* MACRO for use _uXm_mm_round_ps_*().					*/
+/* result                                              */
+/* const __m128d temp = _uXm_MM_ROUND_PS_IM(Inxmm_A, 12); */
+/*******************************************************/
+#define _uXm_MM_ROUND_PS_IM(VA,IMM) _uXm_mm_round_ps_##IMM##(VA)
+
+/*******************************************************/
+/* MACRO for use _uXm_mm_round_ss_*().					*/
+/* result                                              */
+/* const __m128d temp = _uXm_MM_ROUND_SS_IM(Inxmm_A, 12); */
+/*******************************************************/
+#define _uXm_MM_ROUND_SS_IM(VA,IMM) _uXm_mm_round_ss_##IMM##(VA)
+
+/*******************************************************/
+/* MACRO for use _uXm_mm_mpsadbw_epu8_*().					*/
+/* result                                              */
+/* const __m128I temp = _uXm_MM_MPSADBW_EPU8_IM(Inxmm_A, Inxmm_B, 217); */
+/*******************************************************/
+#define _uXm_MM_MPSADBW_EPU8_IM(VA,VB,IMM) _uXm_mm_mpsadbw_epu8_##IMM##(VA,VB)
 
 /*
  * Rounding mode macros
@@ -84,6 +178,7 @@
  * MACRO functions for ceil/floor intrinsics
  */
 
+/*
 #define _uXm_mm_ceil_pd(val)       _uXm_mm_round_pd((val), _uXm_MM_FROUND_CEIL)
 #define _uXm_mm_ceil_sd(dst, val)  _uXm_mm_round_sd((dst),(val), _uXm_MM_FROUND_CEIL)
 
@@ -94,7 +189,7 @@
 #define _uXm_mm_ceil_ss(dst, val)  _uXm_mm_round_ss((dst),(val), _uXm_MM_FROUND_CEIL)
 
 #define _uXm_mm_floor_ps(val)      _uXm_mm_round_ps((val), _uXm_MM_FROUND_FLOOR)
-#define _uXm_mm_floor_ss(dst, val) _uXm_mm_round_ss((dst),(val), _uXm_MM_FROUND_FLOOR)
+#define _uXm_mm_floor_ss(dst, val) _uXm_mm_round_ss((dst),(val), _uXm_MM_FROUND_FLOOR)*/
 
 #define _uXm_mm_test_all_zeros(mask, val)      _uXm_mm_testz_si128((mask),(val))
 
@@ -114,26 +209,26 @@ uXm_PACK_PUSH16
 	// Integer blend instructions - select data from 2 sources
 	// using constant or variable mask
 
-	extern __m128i uXm_callconv _uXm_mm_blend_epi16(__m128i Inxmm_A, __m128i Inxmm_B, const int mask);
+	extern __m128i uXm_callconv _uXm_mm_blend_epi16(__m128i Inxmm_A, __m128i Inxmm_B, int mask);
 	extern __m128i uXm_callconv _uXm_mm_blendv_epi8(__m128i Inxmm_A, __m128i Inxmm_B, __m128i mask);
 
 	// Float single precision blend instructions - select data
 	// from 2 sources using constant/variable mask
 
-	extern __m128 uXm_callconv _uXm_mm_blend_ps(__m128 Inxmm_A, __m128 Inxmm_B, const int mask);
+	extern __m128 uXm_callconv _uXm_mm_blend_ps(__m128 Inxmm_A, __m128 Inxmm_B, int mask);
 	extern __m128 uXm_callconv _uXm_mm_blendv_ps(__m128 Inxmm_A, __m128 Inxmm_B, __m128 mask);
 
 	// Float double precision blend instructions - select data
 	// from 2 sources using constant/variable mask
 
-	extern __m128d uXm_callconv _uXm_mm_blend_pd(__m128d Inxmm_A, __m128d Inxmm_B, const int mask);
+	extern __m128d uXm_callconv _uXm_mm_blend_pd(__m128d Inxmm_A, __m128d Inxmm_B, int mask);
 	extern __m128d uXm_callconv _uXm_mm_blendv_pd(__m128d Inxmm_A, __m128d Inxmm_B, __m128d mask);
 
 	// Dot product instructions with mask-defined summing and zeroing
 	// of result's parts
 
-	extern __m128 uXm_callconv _uXm_mm_dp_ps(__m128 Inxmm_A, __m128 Inxmm_B, const int mask);
-	extern __m128d uXm_callconv _uXm_mm_dp_pd(__m128d Inxmm_A, __m128d Inxmm_B, const int mask);
+	extern __m128 uXm_callconv _uXm_mm_dp_ps(__m128 Inxmm_A, __m128 Inxmm_B, int mask);
+	extern __m128d uXm_callconv _uXm_mm_dp_pd(__m128d Inxmm_A, __m128d Inxmm_B, int mask);
 
 	// Packed integer 64-bit comparison, zeroing or filling with ones
 	// corresponding parts of result
@@ -185,7 +280,7 @@ uXm_PACK_PUSH16
 	// the bits [5-4] define dst index, and bits [3-0] define zeroing
 	// mask for dst
 
-	extern __m128 uXm_callconv _uXm_mm_insert_ps(__m128 dst, __m128 src, const int index);
+	extern __m128 uXm_callconv _uXm_mm_insert_ps(__m128 dst, __m128 src, int index);
 
 	// Helper macro to create index-parameter value for _uXm_mm_insert_ps
 
@@ -195,7 +290,7 @@ uXm_PACK_PUSH16
 	// Extract binary representation of single precision float from
 	// packed single precision array element selected by index
 
-	extern int uXm_callconv _uXm_mm_extract_ps(__m128 src, const int index);
+	extern int uXm_callconv _uXm_mm_extract_ps(__m128 src, int index);
 
 	// Extract single precision float from packed single precision
 	// array element selected by index into dest
@@ -213,21 +308,22 @@ uXm_PACK_PUSH16
 	// Insert integer into packed integer array element
 	// selected by index
 
-	extern __m128i uXm_callconv _uXm_mm_insert_epi8(__m128i dst, int src, const int index);
-	extern __m128i uXm_callconv _uXm_mm_insert_epi32(__m128i dst, int src, const int index);
+	extern __m128i uXm_callconv _uXm_mm_insert_epi8(__m128i dst, int src, int index);
+	extern __m128i uXm_callconv _uXm_mm_insert_epi32(__m128i dst, int src, int index);
 
-#if defined(_M_X64)
-	extern __m128i uXm_callconv _uXm_mm_insert_epi64(__m128i dst, __int64 src, const int index);
-#endif  /* defined(_M_X64) */
+#if defined(uXm_X64)
+	extern __m128i uXm_callconv _uXm_mm_insert_epi64(__m128i dst, __int64 src, int index);
+#endif  /* defined(uXm_X64) */
+
 	// Extract integer from packed integer array element
 	// selected by index
 
-	extern int uXm_callconv _uXm_mm_extract_epi8(__m128i src, const int index);
-	extern int uXm_callconv _uXm_mm_extract_epi32(__m128i src, const int index);
+	extern int uXm_callconv _uXm_mm_extract_epi8(__m128i src, int index);
+	extern int uXm_callconv _uXm_mm_extract_epi32(__m128i src, int index);
 
-#if defined(_M_X64)
-	extern __int64 uXm_callconv _uXm_mm_extract_epi64(__m128i src, const int index);
-#endif  /* defined(_M_X64) */
+#if defined(uXm_X64)
+	extern __int64 uXm_callconv _uXm_mm_extract_epi64(__m128i src, int index);
+#endif  /* defined(uXm_X64) */
 
 	// Horizontal packed word minimum and its index in
 	// result[15:0] and result[18:16] respectively
@@ -243,6 +339,20 @@ uXm_PACK_PUSH16
 
 	extern __m128 uXm_callconv _uXm_mm_round_ps(__m128  val, int iRoundMode);
 	extern __m128 uXm_callconv _uXm_mm_round_ss(__m128 dst, __m128  val, int iRoundMode);
+
+	/*
+	* functions for ceil/floor intrinsics
+	*/
+
+	extern __m128d uXm_callconv _uXm_mm_floor_pd(__m128d Inxmm_A);
+	extern __m128d uXm_callconv _uXm_mm_ceil_pd(__m128d Inxmm_A);
+	extern __m128d uXm_callconv _uXm_mm_floor_sd(__m128d Inxmm_A);
+	extern __m128d uXm_callconv _uXm_mm_ceil_sd(__m128d Inxmm_A);
+
+	extern __m128 uXm_callconv _uXm_mm_floor_ps(__m128 Inxmm_A);
+	extern __m128 uXm_callconv _uXm_mm_ceil_ps(__m128 Inxmm_A);
+	extern __m128 uXm_callconv _uXm_mm_floor_ss(__m128 Inxmm_A);
+	extern __m128 uXm_callconv _uXm_mm_ceil_ss(__m128 Inxmm_A);
 
 	// Packed integer sign-extension
 
@@ -272,20 +382,20 @@ uXm_PACK_PUSH16
 	// integers in operands. Starting offsets within operands are
 	// determined by mask
 
-	extern __m128i uXm_callconv _uXm_mm_mpsadbw_epu8(__m128i s1, __m128i s2, const int mask);
+	extern __m128i uXm_callconv _uXm_mm_mpsadbw_epu8(__m128i s1, __m128i s2, int mask);
 
 	/*
 	 * Load double quadword using non-temporal aligned hint
 	 */
 
 	extern __m128i uXm_callconv _uXm_mm_stream_load_si128(const __m128i* Inpxmm_A);
-
+	
 uXm_PACK_POP
 
 uXm_EXTERNC_END
 
-#ifndef uXm_SMM_MISC_H
-#include "uXmsmmmisc.h"
+#ifndef uXm_SMM_BLEND_H
+#include "uXmsmmblend.h"
 #endif
 
 #endif // uXm_SSE41

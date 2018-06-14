@@ -127,7 +127,7 @@ _uXm_func_start _uXm_mm_hsubs_pi16, mmword, < >, 2 * mm_size ;Inmm_A:mmword, Inm
 
 			ret
 _uXm_func_end
-endif
+endif ;__X32__	
 
 ;************************************
 ; Multiply unsigned bytes by signed bytes and
@@ -146,7 +146,7 @@ _uXm_func_start _uXm_mm_maddubs_pi16, mmword, < >, 2 * mm_size ;Inmm_A:mmword, I
 
 			ret
 _uXm_func_end
-endif
+endif ;__X32__	
 
 _uXm_func_start _uXm_mm_mulhrs_epi16, xmmword, < >, 2 * xmm_size ;InXmm_A:xmmword, InXmm_B:xmmword
 
@@ -162,7 +162,7 @@ _uXm_func_start _uXm_mm_mulhrs_pi16, mmword, < >, 2 * mm_size ;Inmm_A:mmword, In
 
 			ret
 _uXm_func_end
-endif
+endif ;__X32__	
 
 ;************************************
 ; Packed shuffle bytes
@@ -181,7 +181,7 @@ _uXm_func_start _uXm_mm_shuffle_pi8, mmword, < >, 2 * mm_size ;Inmm_A:mmword, In
 
 			ret
 _uXm_func_end
-endif
+endif ;__X32__	
 
 ;************************************
 ; Packed byte, word, double word sign
@@ -228,7 +228,7 @@ _uXm_func_start _uXm_mm_sign_pi32, mmword, < >, 2 * mm_size ;Inmm_A:mmword, Inmm
 
 			ret
 _uXm_func_end
-endif
+endif ;__X32__	
 
 ;************************************
 ; Packed align and shift right by n*8 bits
@@ -398,7 +398,7 @@ _uXm_func_start _uXm_mm_alignr_epi8_32, xmmword, < >, 2 * xmm_size ;InXmm_A:xmmw
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_alignr_epi8, xmmword, < >, 2 * xmm_size + reg_size ;InXmm_A:xmmword, InXmm_B:xmmword, Inint_C:dword
+_uXm_func_start _uXm_mm_alignr_epi8, xmmword, < >, 2 * xmm_size + reg_size ;InXmm_A:xmmword, InXmm_B:xmmword, Inint_Count:dword
 		
 		.if(rparam3 > 32)
 			pxor			xmm0,			xmm0
@@ -406,13 +406,13 @@ _uXm_func_start _uXm_mm_alignr_epi8, xmmword, < >, 2 * xmm_size + reg_size ;InXm
 		.endif
 
 		ifndef __X64__
-			movzx			eax,	byte ptr [rparam2]
-			;mov				rbx,	dword ptr [rbx+rparam2*4]
+			movzx			eax,	byte ptr [rparam3]
+			;mov				rbx,	dword ptr [rbx+rparam3*4]
 			jmp		dword ptr [_m128ialignrepi8jmptable+eax*4]
 		else
-			;movzx			rax,	byte ptr [rparam2]
+			;movzx			rax,	byte ptr [rparam3]
 			lea				rbx,	qword ptr [_m128ialignrepi8jmptable]
-			mov				rbx,	qword ptr [rbx+rparam2*8]
+			mov				rbx,	qword ptr [rbx+rparam3*8]
 			jmp				rbx
 		endif
 		
@@ -604,7 +604,7 @@ _uXm_func_start _uXm_mm_alignr_pi8_16, mmword, < >, 2 * mm_size ;Inmm_A:mmword, 
 			ret
 _uXm_func_end
 
-_uXm_func_start _uXm_mm_alignr_pi8, mmword, < >, 2 * mm_size + reg_size ;Inmm_A:mmword, Inmm_B:mmword, Inint_C:dword
+_uXm_func_start _uXm_mm_alignr_pi8, mmword, < >, 2 * mm_size + reg_size ;Inmm_A:mmword, Inmm_B:mmword, Inint_Count:dword
 		
 		.if(rparam3 > 16)
 			pxor			mm0,			mm0
@@ -612,13 +612,13 @@ _uXm_func_start _uXm_mm_alignr_pi8, mmword, < >, 2 * mm_size + reg_size ;Inmm_A:
 		.endif
 
 		ifndef __X64__
-			movzx			eax,	byte ptr [rparam2]
-			;mov				rbx,	dword ptr [rbx+rparam2*4]
+			movzx			eax,	byte ptr [rparam3]
+			;mov				rbx,	dword ptr [rbx+rparam3*4]
 			jmp		dword ptr [_m128ialignrpi8jmptable+eax*4]
 		else
-			;movzx			rax,	byte ptr [rparam2]
+			;movzx			rax,	byte ptr [rparam3]
 			lea				rbx,	qword ptr [_m128ialignrpi8jmptable]
-			mov				rbx,	qword ptr [rbx+rparam2*8]
+			mov				rbx,	qword ptr [rbx+rparam3*8]
 			jmp				rbx
 		endif
 		
@@ -722,7 +722,7 @@ _uXm_func_start _uXm_mm_abs_pi32, mmword, < >, mm_size ;Inmm_A:mmword
 
 			ret
 _uXm_func_end
-endif
+endif ;__X32__	
 
 endif ;__MIC__
 

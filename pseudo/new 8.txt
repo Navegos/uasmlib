@@ -1,4 +1,15 @@
 
+			
+
+
+				
+						
+						
+
+
+
+
+
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 0,  0,  0,  0,  0,  0,  0,  0
 0,      0,      0,      0
@@ -20,14 +31,14 @@ _uXm_mm_testc_si128_0 proc near
 ptest   xmm0, [rbp+var_s40]
 mov     eax, 1
 mov     ecx, 0
-cmovb   ecx, eax
+cmova   ecx, eax
 mov     eax, ecx
 
 _uXm_mm_testz_si128_0 proc near
 ptest   xmm0, [rbp+var_s40]
 mov     eax, 1
 mov     ecx, 0
-cmovz   ecx, eax
+cmova   ecx, eax
 mov     eax, ecx
 
 _uXm_mm_testnzc_si128_0 proc near

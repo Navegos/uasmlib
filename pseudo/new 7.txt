@@ -1,5 +1,70 @@
 
 
+
+
+
+
+		extern __m128i uXm_callconv _uXm_mm_round_ss_0(__m128i Inxmm_A);
+		extern __m128i uXm_callconv _uXm_mm_round_ss_1(__m128i Inxmm_A);
+		extern __m128i uXm_callconv _uXm_mm_round_ss_2(__m128i Inxmm_A);
+		extern __m128i uXm_callconv _uXm_mm_round_ss_3(__m128i Inxmm_A);
+		extern __m128i uXm_callconv _uXm_mm_round_ss_4(__m128i Inxmm_A);
+		extern __m128i uXm_callconv _uXm_mm_round_ss_5(__m128i Inxmm_A);
+		extern __m128i uXm_callconv _uXm_mm_round_ss_6(__m128i Inxmm_A);
+		extern __m128i uXm_callconv _uXm_mm_round_ss_7(__m128i Inxmm_A);
+		extern __m128i uXm_callconv _uXm_mm_round_ss_8(__m128i Inxmm_A);
+		extern __m128i uXm_callconv _uXm_mm_round_ss_9(__m128i Inxmm_A);
+		extern __m128i uXm_callconv _uXm_mm_round_ss_10(__m128i Inxmm_A);
+		extern __m128i uXm_callconv _uXm_mm_round_ss_11(__m128i Inxmm_A);
+		extern __m128i uXm_callconv _uXm_mm_round_ss_12(__m128i Inxmm_A);
+
+
+
+
+
+
+
+
+	/*
+	* Support for half-float conversions to/from normal float.
+	* Immediate argument is used for special MXCSR overrides.
+	*/
+		extern float uXm_callconv _uXm_cvtsh_ss(unsigned short Inint_A);
+		extern unsigned short uXm_callconv _uXm_cvtss_sh(float Infloat_A, int iRoundMode);
+
+		extern __m128 uXm_callconv _uXm_mm_cvtph_ps(__m128i Inxmm_A);
+		extern __m128i uXm_callconv _uXm_mm_cvtps_ph(__m128 Inxmm_A, int iRoundMode);
+
+
+
+
+AVX 2
+;******************
+; Support for half-float conversions
+;******************
+_uXm_func_start _uXm_mm_cvtph_ps, xmmword, < >, xmm_size ;InXmm_A:xmmword
+	
+			vcvtph2ps			xmm0,			xmm0
+
+			ret
+_uXm_func_end
+
+_uXm_func_start _uXm_mm_cvtps_ph, xmmword, < >, xmm_size ;InXmm_A:xmmword, Inint_RoundMode:dword
+	
+			vcvtps2ph			xmm0,			xmm0,			0
+
+			ret
+_uXm_func_end
+
+
+
+
+
+
+
+
+
+
 _uXm_func_start macro functionName:REQ, retType:REQ, usesStr:REQ, parameterSize:REQ
 	ifdef WINDOWS
 		curfunctionName textequ <functionName>
@@ -43,7 +108,7 @@ endm
 		_m128ddcvtelts128epi64jmptable isize_t offset _m128ddcvtelts128epi64_0, offset _m128ddcvtelts128epi64_1
 		
 
-_uXm_mm_cvteltsi128_epi16 proc __veccall (dword) frame ;Inmm_A:mmword, _Imm8:dword
+_uXm_mm_cvteltsi128_epi16 proc __veccall (dword) frame ;Inmm_A:mmword
 
 		;.if(rparam2 > 3)
 		;	ret
@@ -68,7 +133,7 @@ _uXm_mm_cvteltsi128_epi16 proc __veccall (dword) frame ;Inmm_A:mmword, _Imm8:dwo
 			ret
 		_m128ddcvtelts128epi64_1 label size_t
 			pxor			mm1,			mm1
-			pshufd			mm0,			mm0,			_uXm_mm_shuffler4(2,3,2,3)
+			sshufd			mm0,			mm0,			_uXm_mm_shuffler4(2,3,2,3)
 			punpckldq		mm0,			mm1
 			punpcklqdq		mm0,			mm1
 			movd			dreturn,			mm0

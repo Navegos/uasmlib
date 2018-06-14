@@ -248,13 +248,30 @@ uXm_EXTERNC_END
 #endif
 
 #if defined(uXm_INTRINSET) && (uXm_INTRINSET >= uXm_ISET_SSE) && !defined(uXm_MIC)
-#include "uxmSSEStructs.h"
 #include "uXmxmmintrin.h"
 #endif
 
 #if defined(uXm_INTRINSET) && (uXm_INTRINSET >= uXm_ISET_SSE2) && !defined(uXm_MIC)
 #include "uXmemmintrin.h"
 #endif
+
+#if defined(uXm_INTRINSET) && (uXm_INTRINSET >= uXm_ISET_SSE3) && !defined(uXm_MIC)
+#include "uXmpmmintrin.h"
+#endif
+
+#if defined(uXm_INTRINSET) && (uXm_INTRINSET >= uXm_ISET_SSSE3) && !defined(uXm_MIC)
+#include "uXmtmmintrin.h"
+#endif
+
+#if defined(uXm_INTRINSET) && (uXm_INTRINSET >= uXm_ISET_SSE41) && !defined(uXm_MIC)
+#include "uXmsmmintrin.h"
+#endif
+
+#if defined(uXm_INTRINSET) && (uXm_INTRINSET >= uXm_ISET_SSE42) && !defined(uXm_MIC)
+#include "uXmnmmintrin.h"
+#endif
+
+#include "uxmSSEStructs.h"
 
 #endif /*defined(uXm_INTRINSICS_SUPPORT) && defined(uXm_X86_OR_X64_CPU) && !defined(uXm_NO_INTRINSICS_SUPPORT)*/
 

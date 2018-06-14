@@ -132,8 +132,20 @@
     <ClInclude Include="..\..\..\include\x86\uXmsmmintrin.h">
       <Filter>Header Files\x86</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXmsmmmisc.h">
+    <ClInclude Include="..\..\..\include\x86\uXmsmmblend.h">
       <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXmnmmintrin.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXmnmmcmpestr.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXmtmmalignr.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXmimmintrin.h">
+      <Filter>Source Files\x86\SSE\asm</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -248,10 +260,13 @@
     <UASM Include="..\..\..\src\x86\SSE\asm\uXmtmmintrin.asm">
       <Filter>Source Files\x86\SSE\asm</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmsmmmisc.asm">
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmsmmintrin.asm">
       <Filter>Source Files\x86\SSE\asm</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmsmmintrin.asm">
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmsmmblend.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXmnmmintrin.asm">
       <Filter>Source Files\x86\SSE\asm</Filter>
     </UASM>
   </ItemGroup>

@@ -2593,6 +2593,9 @@ _uXm_func_start _uXm_mm_castsi128_pd, xmmword, < >, xmm_size ;InXmm_A:xmmword
 			ret
 _uXm_func_end
 
+;******************
+; Undefined
+;******************
 ;_uXm_func_start _uXm_mm_undefined_pd, xmmword, < >, xmm_size ;InXmm_A:xmmword
 	
 ;			undefined			xmm0,			xmm0

@@ -1,8 +1,8 @@
 
 #pragma once
 
-#ifndef uXm_EMM_INTRIN_H
-#define uXm_EMM_INTRIN_H
+#ifndef uXm_IMM_INTRIN_H
+#define uXm_IMM_INTRIN_H
 
 #ifndef uXm_TYPES_H
 #include "uXmTypes.h"
@@ -10,7 +10,7 @@
 
 #if defined(uXm_INTRINSICS_SUPPORT) && defined(uXm_X86_OR_X64_CPU) && !defined(uXm_NO_INTRINSICS_SUPPORT) && !defined(uXm_MIC)
 
-#ifdef uXm_SSE2
+#ifdef uXm_AVX
 
 #ifndef uXm_XMM_INTRIN_H
 #include "uxmxmmintrin.h"
@@ -661,4 +661,4 @@ uXm_EXTERNC_END
 
 #endif /*defined(uXm_INTRINSICS_SUPPORT) && defined(uXm_X86_OR_X64_CPU) && !defined(uXm_NO_INTRINSICS_SUPPORT)*/
 
-#endif // uXm_EMM_INTRIN_H
+#endif // uXm_IMM_INTRIN_H
