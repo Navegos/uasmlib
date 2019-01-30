@@ -4,21 +4,21 @@
 #ifndef UASM_LIB_H
 #define UASM_LIB_H
 
-#include "uXmTypes.h"
+#include "uXTypes.h"
 
-uXm_EXTERNC_BEGIN
+uX_EXTERNC_BEGIN
 
-uXm_PACK_PUSH_POINTER
+uX_PACK_PUSH_POINTER
 
 //extern int DllMain(void*, unsigned int, void*);
 
-uXm_PACK_POP
+uX_PACK_POP
 
-uXm_EXTERNC_END
+uX_EXTERNC_END
 
-#ifdef uXm_X86_OR_X64_CPU
-#include "x86/uXmx86Cpu.h"
-#include "x86/uXmx86Intrin.h"
+#ifdef uX_X86_OR_X64_CPU
+#include "x86/uXx86Cpu.h"
+#include "x86/uXx86Intrin.h"
 #endif
 
 #endif // UASM_LIB_H

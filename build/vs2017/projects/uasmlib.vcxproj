@@ -19,107 +19,122 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\src\x86\AVX256\asm\uXavx256intrin.inc" />
+    <None Include="..\..\..\src\x86\AVX256\asm\uXymmconstdata.inc" />
     <None Include="..\export\uasmlib-export_X32.def" />
-    <UASM Include="..\..\..\src\x86\asm\uXmcpuid.asm">
+    <UASM Include="..\..\..\src\x86\asm\uXcpuid.asm">
       <FileType>Document</FileType>
     </UASM>
-    <UASM Include="..\..\..\src\x86\asm\uXmcpuidex.asm" />
-    <UASM Include="..\..\..\src\x86\asm\uXmdll.asm" />
+    <UASM Include="..\..\..\src\x86\asm\uXcpuidex.asm" />
+    <UASM Include="..\..\..\src\x86\asm\uXdll.asm" />
     <None Include="..\..\..\README.md" />
-    <None Include="..\..\..\src\x86\asm\uXmmacros.inc">
+    <None Include="..\..\..\src\x86\asm\uXmacros.inc">
       <FileType>Document</FileType>
     </None>
-    <UASM Include="..\..\..\src\x86\asm\uXmintrincpu.asm" />
-    <UASM Include="..\..\..\src\x86\asm\uXmx86cpua.asm" />
-    <UASM Include="..\..\..\src\x86\asm\uXmxgetbv.asm" />
-    <UASM Include="..\..\..\src\x86\asm\uXmxsetbv.asm" />
-    <UASM Include="..\..\..\src\x86\MMX\asm\uXm64\uXmmmintrin.asm">
+    <UASM Include="..\..\..\src\x86\asm\uXintrincpu.asm" />
+    <UASM Include="..\..\..\src\x86\asm\uXx86cpua.asm" />
+    <UASM Include="..\..\..\src\x86\asm\uXxgetbv.asm" />
+    <UASM Include="..\..\..\src\x86\asm\uXxsetbv.asm" />
+    <ClCompile Include="..\..\..\src\x86\AVX256\asm\uXymmconstdata.asm" />
+    <ClCompile Include="..\..\..\src\x86\AVX256\asm\uXimmintrin.asm" />
+    <ClCompile Include="..\..\..\src\x86\AVX256\asm\uXimmblend.asm" />
+    <ClCompile Include="..\..\..\src\x86\AVX256\asm\uXimmlegacy.asm" />
+    <UASM Include="..\..\..\src\x86\MMX\asm\uXm64\uXmmintrin.asm">
       <FileType>Document</FileType>
     </UASM>
-    <UASM Include="..\..\..\src\x86\MMX\asm\uXm64\uXmmmintshifts.asm">
+    <UASM Include="..\..\..\src\x86\MMX\asm\uXm64\uXmmintshifts.asm">
       <FileType>Document</FileType>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintmisc.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintshifts.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintshuffle.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmintrin.asm">
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXemmintmisc.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXemmintshifts.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXemmintshuffle.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXemmintrin.asm">
       <FileType>Document</FileType>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmpermutepd.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmemmshufflepd.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmnmmintrin.asm">
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXemmpermutepd.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXemmshufflepd.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXnmmintrin.asm">
       <FileType>Document</FileType>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmpmmintrin.asm">
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXpmmintrin.asm">
       <FileType>Document</FileType>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmsmmintrin.asm">
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXsmmintrin.asm">
       <FileType>Document</FileType>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmsmmblend.asm">
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXsmmblend.asm">
       <FileType>Document</FileType>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmtmmintrin.asm">
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXtmmintrin.asm">
       <FileType>Document</FileType>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmconstdata.asm">
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXwmmintrin.asm">
       <FileType>Document</FileType>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmintrin.asm">
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmconstdata.asm">
       <FileType>Document</FileType>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmpermuteps.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXmxmmshuffleps.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmintrin.asm">
+      <FileType>Document</FileType>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmpermuteps.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmshuffleps.asm" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\uasmlib.h" />
-    <ClInclude Include="..\..\..\include\uXmAssert.h" />
-    <ClInclude Include="..\..\..\include\uXmBaseDefs.h" />
-    <ClInclude Include="..\..\..\include\uXmConstants.h" />
-    <ClInclude Include="..\..\..\include\uXmExp.h" />
-    <ClInclude Include="..\..\..\include\uXmMisc.h" />
-    <ClInclude Include="..\..\..\include\uXmPreprocessor.h" />
-    <ClInclude Include="..\..\..\include\uXmSalProcess.h" />
-    <ClInclude Include="..\..\..\include\uXmTypes.h" />
-    <ClInclude Include="..\..\..\include\uXmVers.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmemmintmisc.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmemmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmemmintshifts.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmemmintshuffle.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmemmpermutepd.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmemmshufflepd.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmimmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmnmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmpmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmnmmcmpestr.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmsmmblend.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmsmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmSSEStructs.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmtmmalignr.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmtmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmx86Cpu.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmx86Intrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmxmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmxmmpermuteps.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmxmmpshufw.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmxmmshuffleps.h" />
+    <ClInclude Include="..\..\..\include\uXAssert.h" />
+    <ClInclude Include="..\..\..\include\uXBaseDefs.h" />
+    <ClInclude Include="..\..\..\include\uXConstants.h" />
+    <ClInclude Include="..\..\..\include\uXExp.h" />
+    <ClInclude Include="..\..\..\include\uXMisc.h" />
+    <ClInclude Include="..\..\..\include\uXPreprocessor.h" />
+    <ClInclude Include="..\..\..\include\uXSalProcess.h" />
+    <ClInclude Include="..\..\..\include\uXTypes.h" />
+    <ClInclude Include="..\..\..\include\uXVers.h" />
+    <ClInclude Include="..\..\..\include\x86\uXAVX256Structs.h" />
+    <ClInclude Include="..\..\..\include\x86\uXemmintmisc.h" />
+    <ClInclude Include="..\..\..\include\x86\uXemmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXemmintshifts.h" />
+    <ClInclude Include="..\..\..\include\x86\uXemmintshuffle.h" />
+    <ClInclude Include="..\..\..\include\x86\uXemmpermutepd.h" />
+    <ClInclude Include="..\..\..\include\x86\uXemmshufflepd.h" />
+    <ClInclude Include="..\..\..\include\x86\uXimmblend.h" />
+    <ClInclude Include="..\..\..\include\x86\uXimmcmp.h" />
+    <ClInclude Include="..\..\..\include\x86\uXimmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXMMXStructs.h" />
+    <ClInclude Include="..\..\..\include\x86\uXnmmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXpmmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXnmmcmpestr.h" />
+    <ClInclude Include="..\..\..\include\x86\uXsmmblend.h" />
+    <ClInclude Include="..\..\..\include\x86\uXsmmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXSSEStructs.h" />
+    <ClInclude Include="..\..\..\include\x86\uXtmmalignr.h" />
+    <ClInclude Include="..\..\..\include\x86\uXtmmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXwmmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXx86Cpu.h" />
+    <ClInclude Include="..\..\..\include\x86\uXx86Intrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXxmmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXxmmpermuteps.h" />
+    <ClInclude Include="..\..\..\include\x86\uXxmmpshufw.h" />
+    <ClInclude Include="..\..\..\include\x86\uXxmmshuffleps.h" />
     <ClInclude Include="..\..\resource\resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\uasmlib.cpp" />
-    <ClCompile Include="..\..\..\src\uXmMisc.cpp" />
-    <ClCompile Include="..\..\..\src\x86\SSE\uXmSSEStructs.cpp" />
-    <ClCompile Include="..\..\..\src\x86\uXmx86Cpu.cpp" />
-    <ClCompile Include="..\..\..\src\x86\uXmx86Intrin.cpp" />
+    <ClCompile Include="..\..\..\src\uXMisc.cpp" />
+    <None Include="..\..\..\src\x86\SSE\uXAVX256Structs.cpp" />
+    <ClCompile Include="..\..\..\src\x86\SSE\uXSSEStructs.cpp" />
+    <ClCompile Include="..\..\..\src\x86\uXx86Cpu.cpp" />
+    <ClCompile Include="..\..\..\src\x86\uXx86Intrin.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\.gitignore" />
-    <None Include="..\..\..\src\x86\asm\uXmx86asm.inc" />
-    <None Include="..\..\..\src\x86\asm\uXmx86cpu.inc" />
-    <None Include="..\..\..\src\x86\asm\uXmConstants.inc" />
-    <None Include="..\..\..\src\x86\SSE\asm\uXmsseintrin.inc" />
-    <None Include="..\..\..\src\x86\SSE\asm\uXmxmmconstdata.inc" />
+    <None Include="..\..\..\src\x86\asm\uXx86asm.inc" />
+    <None Include="..\..\..\src\x86\asm\uXx86cpu.inc" />
+    <None Include="..\..\..\src\x86\asm\uXConstants.inc" />
+    <None Include="..\..\..\src\x86\SSE\asm\uXsseintrin.inc" />
+    <None Include="..\..\..\src\x86\SSE\asm\uXxmmconstdata.inc" />
     <None Include="..\..\..\src\x86\SSE\asm\xmmtypes.inc" />
     <None Include="..\export\uasmlib-export_X64.def" />
   </ItemGroup>
@@ -219,7 +234,7 @@
     </Link>
     <UASM>
       <PreprocessorDefinitions>__X32__;WIN32;WINDOWS;EXTERNC_VECCALL;DEBUG</PreprocessorDefinitions>
-      <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/</IncludePaths>
+      <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/;../../../src/x86/AVX256/asm/;../../../src/x86/AVX512/asm/</IncludePaths>
       <OutputFormat>1</OutputFormat>
       <STDCALLSymbolDecoration>0</STDCALLSymbolDecoration>
       <CNamesDecoratedPrefix>true</CNamesDecoratedPrefix>
@@ -255,7 +270,7 @@ copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win32\vc14</Command>
     </Link>
     <UASM>
       <PreprocessorDefinitions>__X64__;WIN64;WINDOWS;EXTERNC_VECCALL;DEBUG</PreprocessorDefinitions>
-      <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/</IncludePaths>
+      <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/;../../../src/x86/AVX256/asm/;../../../src/x86/AVX512/asm/</IncludePaths>
       <OutputFormat>2</OutputFormat>
       <STDCALLSymbolDecoration>0</STDCALLSymbolDecoration>
       <CNamesDecoratedPrefix>true</CNamesDecoratedPrefix>
@@ -292,7 +307,7 @@ copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win64\vc14</Command>
     <UASM>
       <PreprocessorDefinitions>__X32__;WIN32;WINDOWS;EXTERNC_VECCALL;NDEBUG</PreprocessorDefinitions>
       <UseSafeExceptionHandlers>true</UseSafeExceptionHandlers>
-      <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/</IncludePaths>
+      <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/;../../../src/x86/AVX256/asm/;../../../src/x86/AVX512/asm/</IncludePaths>
       <OutputFormat>1</OutputFormat>
       <STDCALLSymbolDecoration>0</STDCALLSymbolDecoration>
       <CNamesDecoratedPrefix>true</CNamesDecoratedPrefix>
@@ -326,7 +341,7 @@ copy $(OutDir)$(TargetName).lib $(UASMLIB_PATH)\lib\Win32\vc14</Command>
     </Link>
     <UASM>
       <PreprocessorDefinitions>__X64__;WIN64;WINDOWS;EXTERNC_VECCALL;NDEBUG</PreprocessorDefinitions>
-      <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/</IncludePaths>
+      <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/;../../../src/x86/AVX256/asm/;../../../src/x86/AVX512/asm/</IncludePaths>
       <OutputFormat>2</OutputFormat>
       <STDCALLSymbolDecoration>0</STDCALLSymbolDecoration>
       <CNamesDecoratedPrefix>true</CNamesDecoratedPrefix>

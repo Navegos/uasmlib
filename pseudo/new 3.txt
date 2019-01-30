@@ -1,10 +1,13 @@
 
+
+
+
 .for(:sil=255:sil>bparam3:sil--)
 	.continue .if!(sil!=bparam3)
 .endf
 
 
-_TEXT segment
+_tEXt segment
 			align 1
 getbytereg proto UX_VECCALL (byte) ;_Imm8:byte
 
@@ -16,5 +19,5 @@ getbytereg proc UX_VECCALL (byte) ;_Imm8:byte
 		.endf
 			ret
 getbytereg endp
-_TEXT ends
+_tEXt ends
 
