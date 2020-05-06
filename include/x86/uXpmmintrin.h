@@ -33,33 +33,32 @@
             (_uX_mm_getcsr() & _MM_DENORMALS_ZERO_MASK)
 
 uX_EXTERNC_BEGIN
-
-uX_PACK_PUSH16
+uX_PACK_PUSH_XMM
 
 /*
  * New Single precision vector instructions.
  */
 
-	extern __m128 uX_callconv _uX_mm_addsub_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-	extern __m128 uX_callconv _uX_mm_hadd_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-	extern __m128 uX_callconv _uX_mm_hsub_ps(__m128 Inxmm_A, __m128 Inxmm_B);
-	extern __m128 uX_callconv _uX_mm_movehdup_ps(__m128 Inxmm_A);
-	extern __m128 uX_callconv _uX_mm_moveldup_ps(__m128 Inxmm_A);
+    extern __m128 uX_callconv _uX_mm_addsub_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+    extern __m128 uX_callconv _uX_mm_hadd_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+    extern __m128 uX_callconv _uX_mm_hsub_ps(__m128 Inxmm_A, __m128 Inxmm_B);
+    extern __m128 uX_callconv _uX_mm_movehdup_ps(__m128 Inxmm_A);
+    extern __m128 uX_callconv _uX_mm_moveldup_ps(__m128 Inxmm_A);
 
 /*
  * New double precision vector instructions.
  */
 
-	extern __m128d uX_callconv _uX_mm_addsub_pd(__m128d Inxmm_A, __m128d Inxmm_B);
-	extern __m128d uX_callconv _uX_mm_hadd_pd(__m128d Inxmm_A, __m128d Inxmm_B);
-	extern __m128d uX_callconv _uX_mm_hsub_pd(__m128d Inxmm_A, __m128d Inxmm_B);
-	extern __m128d uX_callconv _uX_mm_loaddup_pd(const double* InPdouble_B);
-	extern __m128d uX_callconv _uX_mm_movedup_pd(__m128d Inxmm_A);
+    extern __m128d uX_callconv _uX_mm_addsub_pd(__m128d Inxmm_A, __m128d Inxmm_B);
+    extern __m128d uX_callconv _uX_mm_hadd_pd(__m128d Inxmm_A, __m128d Inxmm_B);
+    extern __m128d uX_callconv _uX_mm_hsub_pd(__m128d Inxmm_A, __m128d Inxmm_B);
+    extern __m128d uX_callconv _uX_mm_loaddup_pd(const double* InPdouble_B);
+    extern __m128d uX_callconv _uX_mm_movedup_pd(__m128d Inxmm_A);
 
 /*
  * New unaligned integer vector load instruction.
  */
-	extern __m128i uX_callconv _uX_mm_lddqu_si128(const __m128i* InPxmm_A);
+    extern __m128i uX_callconv _uX_mm_lddqu_si128(const __m128i* InPxmm_A);
 
 /*
  * Miscellaneous new instructions.
@@ -67,15 +66,14 @@ uX_PACK_PUSH16
 /*
  * For _uX_mm_monitor p goes in eax, extensions goes in ecx, hints goes in edx.
  */
-	extern void uX_callconv _uX_mm_monitor(const void* InPvoid_A, unsigned Ext_B, unsigned Hints_C);
+    extern void uX_callconv _uX_mm_monitor(const void* InPvoid_A, unsigned Ext_B, unsigned Hints_C);
 
 /*
  * For _uX_mm_mwait, extensions goes in ecx, hints goes in eax.
  */
-	extern void uX_callconv _uX_mm_mwait(unsigned Ext_A, unsigned Hints_C);
+    extern void uX_callconv _uX_mm_mwait(unsigned Ext_A, unsigned Hints_C);
 
 uX_PACK_POP
-
 uX_EXTERNC_END
 
 #endif // uX_SSE3

@@ -22,7 +22,7 @@
 /**
 Compiler defines
 */
-#if (defined(_MSC_VER) || defined(uX_VC)) && (!defined(__INTEL_COMPILER) && !defined(__clang__) && !defined(uX_ICW) && !defined(uX_ICU) && !defined(__CUDA_ARCH__) && !defined(__CUDACC__))
+#if defined(_MSC_VER) && (!defined(__INTEL_COMPILER) && !defined(__clang__) && !defined(uX_ICW) && !defined(uX_ICU) && !defined(__CUDA_ARCH__) && !defined(__CUDACC__))
 #ifndef uX_VC
 #       define uX_VC 1  /* MSVC Compiler */
 #endif
@@ -32,47 +32,71 @@ Compiler defines
 #undef uX_COMPILER_STR
 #       define uX_COMPILER_STR "vc"
 #   if defined(_MSC_VER) && (_MSC_VER == 1200)
-#		define uX_VC6 1
-#		define uX_COMPILER "Microsoft Visual C++ 6"
+#       define uX_VC6 1
+#       define uX_COMPILER "Microsoft Visual C++ 6"
 #   elif defined(_MSC_VER) && (_MSC_VER == 1300)
-#		define uX_VC7 1
-#		define uX_COMPILER "Microsoft Visual C++ 7"
+#       define uX_VC7 1
+#       define uX_COMPILER "Microsoft Visual C++ 7"
 #   elif defined(_MSC_VER) && (_MSC_VER == 1400)
 #       define uX_VC8 1
-#		define uX_COMPILER "Microsoft Visual C++ 8"
+#       define uX_COMPILER "Microsoft Visual C++ 8"
 #   elif defined(_MSC_VER) && (_MSC_VER == 1500)
 #       define uX_VC9 1
-#		define uX_COMPILER "Microsoft Visual C++ 9"
+#       define uX_COMPILER "Microsoft Visual C++ 9"
 #   elif defined(_MSC_VER) && (_MSC_VER == 1600)
-#		define uX_VC10 1
-#		define uX_COMPILER "Microsoft Visual C++ 10"
+#       define uX_VC10 1
+#       define uX_COMPILER "Microsoft Visual C++ 10"
 #   elif defined(_MSC_VER) && (_MSC_VER == 1700)
-#		define uX_VC11 1
-#		define uX_COMPILER "Microsoft Visual C++ 11"
+#       define uX_VC11 1
+#       define uX_COMPILER "Microsoft Visual C++ 11"
 #   elif defined(_MSC_VER) && (_MSC_VER == 1800)
-#		define uX_VC12 1
-#		define uX_COMPILER "Microsoft Visual C++ 12"
+#       define uX_VC12 1
+#       define uX_COMPILER "Microsoft Visual C++ 12"
 #   elif defined(_MSC_VER) && (_MSC_VER == 1900)
-#		define uX_VC14 1
-#		define uX_COMPILER "Microsoft Visual C++ 14"
+#       define uX_VC14 1
+#       define uX_COMPILER "Microsoft Visual C++ 14"
 #   elif defined(_MSC_VER) && (_MSC_VER == 1910)
-#		define uX_VC14_1 1
-#		define uX_COMPILER "Microsoft Visual C++ 14.1"
+#       define uX_VC14_1 1
+#       define uX_COMPILER "Microsoft Visual C++ 15.0"
 #   elif defined(_MSC_VER) && (_MSC_VER == 1911)
-#		define uX_VC14_11 1
-#		define uX_COMPILER "Microsoft Visual C++ 14.11"
+#       define uX_VC14_11 1
+#       define uX_COMPILER "Microsoft Visual C++ 15.3"
 #   elif defined(_MSC_VER) && (_MSC_VER == 1912)
-#		define uX_VC14_12 1
-#		define uX_COMPILER "Microsoft Visual C++ 14.12"
+#       define uX_VC14_12 1
+#       define uX_COMPILER "Microsoft Visual C++ 15.5"
 #   elif defined(_MSC_VER) && (_MSC_VER == 1913)
-#		define uX_VC14_13 1
-#		define uX_COMPILER "Microsoft Visual C++ 14.13"
+#       define uX_VC14_13 1
+#       define uX_COMPILER "Microsoft Visual C++ 15.6"
 #   elif defined(_MSC_VER) && (_MSC_VER == 1914)
-#		define uX_VC14_14 1
-#		define uX_COMPILER "Microsoft Visual C++ 14.14"
-#	else
+#       define uX_VC14_14 1
+#       define uX_COMPILER "Microsoft Visual C++ 15.7"
+#   elif defined(_MSC_VER) && (_MSC_VER == 1915)
+#       define uX_VC14_15 1
+#       define uX_COMPILER "Microsoft Visual C++ 15.8"
+#   elif defined(_MSC_VER) && (_MSC_VER == 1916)
+#       define uX_VC14_16 1
+#       define uX_COMPILER "Microsoft Visual C++ 15.9"
+#   elif defined(_MSC_VER) && (_MSC_VER == 1920)
+#       define uX_VC14_2 1
+#       define uX_COMPILER "Microsoft Visual C++ 16.0"
+#   elif defined(_MSC_VER) && (_MSC_VER == 1921)
+#       define uX_VC14_21 1
+#       define uX_COMPILER "Microsoft Visual C++ 16.1.2"
+#   elif defined(_MSC_VER) && (_MSC_VER == 1922)
+#       define uX_VC14_22 1
+#       define uX_COMPILER "Microsoft Visual C++ 16.2.0"
+#   elif defined(_MSC_VER) && (_MSC_VER == 1923)
+#       define uX_VC14_23 1
+#       define uX_COMPILER "Microsoft Visual C++ 16.2.3"
+#   elif defined(_MSC_VER) && (_MSC_VER == 1924)
+#       define uX_VC14_24 1
+#       define uX_COMPILER "Microsoft Visual C++ 16.2.4"
+#   elif defined(_MSC_VER) && (_MSC_VER == 1925)
+#       define uX_VC14_25 1
+#       define uX_COMPILER "Microsoft Visual C++ 16.2.5"
+#   else
 #error ERROR: add your vc compiler version
-#	endif
+#   endif
 #   if defined(_MSC_VER) && ((_MSC_VER >= 1600) && (_MSC_VER < 1800))
 #     ifdef uX_COMPILER_INTRIN
 #       undef uX_COMPILER_INTRIN
@@ -91,7 +115,7 @@ Compiler defines
 #     endif
 #       define uX_COMPILER_INTRIN 60
 #   endif
-#elif (defined(__INTEL_COMPILER) || defined(uX_ICW) || defined(uX_ICU)) && !defined(__CUDA_ARCH__) && !defined(__CUDACC__)
+#elif defined(__INTEL_COMPILER) && !defined(__CUDA_ARCH__) && !defined(__CUDACC__)
 # if defined(_MSC_VER)
 #  ifndef uX_ICW
 #       define uX_ICW 1 /* Intel compiler for Windows */
@@ -106,12 +130,12 @@ Compiler defines
 #       define uX_COMPILER_STR "icu"
 # endif
 #  ifndef uX_ICC
-#       define uX_ICC 1 /* Intel compiler */
+#       define uX_ICC 1 /* Intel compiler for Windows/Unix/Linux/Mac OSX */
 #  endif
 #  ifndef uX_INTEL_COMPILER
 #       define uX_INTEL_COMPILER 1 /* Intel compiler */
 #  endif
-#if defined(__INTEL_COMPILER) && (__INTEL_COMPILER == 1010()
+#if defined(__INTEL_COMPILER) && (__INTEL_COMPILER == 1010)
 #       define uX_ICC101 1
 #       define uX_COMPILER "Intel C++ Compiler 10.1"
 #elif defined(__INTEL_COMPILER) && (__INTEL_COMPILER == 1100)
@@ -147,13 +171,29 @@ Compiler defines
 #       define uX_ICC1501 1
 #       define uX_COMPILER "Intel C++ Compiler 15.0.1"
 #       define uX_COMPILER_INTRIN 60
+#elif defined(__INTEL_COMPILER) && (__INTEL_COMPILER == 1600)
+#       define uX_ICC1600 1
+#       define uX_COMPILER "Intel C++ Compiler 16.0.0"
+#       define uX_COMPILER_INTRIN 60
+#elif defined(__INTEL_COMPILER) && (__INTEL_COMPILER == 1700)
+#       define uX_ICC1700 1
+#       define uX_COMPILER "Intel C++ Compiler 17.0.0"
+#       define uX_COMPILER_INTRIN 60
+#elif defined(__INTEL_COMPILER) && (__INTEL_COMPILER == 1800)
+#       define uX_ICC1800 1
+#       define uX_COMPILER "Intel C++ Compiler 18.0.0"
+#       define uX_COMPILER_INTRIN 60
+#elif defined(__INTEL_COMPILER) && (__INTEL_COMPILER == 1900)
+#       define uX_ICC1900 1
+#       define uX_COMPILER "Intel C++ Compiler 19.0.0"
+#       define uX_COMPILER_INTRIN 60
 #elif defined(__INTEL_COMPILER) && (__INTEL_COMPILER == 9999)
 #       define uX_ICC9999 1
 #       define uX_COMPILER "Intel C++ Compiler mainline"
 #else
 #error ERROR: Unknown version or add your Intel compiler version
 #endif
-#elif defined(__clang__) || defined(uX_CLANG) && !defined(__CUDA_ARCH__) && !defined(__CUDACC__)
+#elif defined(__clang__) && !defined(__CUDA_ARCH__) && !defined(__CUDACC__)
 # if defined(_MSC_VER)
 #  ifndef uX_CLANGW
 #       define uX_CLANGW 1 /* Clang compiler for Windows */
@@ -179,6 +219,11 @@ Compiler defines
 #       define uX_GNUC 1
 # endif
 # if  defined(__GCC__)
+#   if defined(_MSC_VER)
+#       define uX_GCCW 1
+#   else
+#       define uX_GCCU 1
+#   endif
 #       define uX_GCC 1
 # endif
 # if  defined(__SNC__)
@@ -244,7 +289,7 @@ Compiler defines
 # error ERROR: Compiler needs to be implemented
 #endif
 
-#if defined(uX_VC) || defined(uX_ICW) /*|| defined(uX_CLANGW) incompatible types definitions*/
+#if defined(uX_VC) || defined(uX_CLANGW) || defined(uX_ICW) || defined(uX_GCCW) /*|| defined(uX_CLANGW) incompatible types definitions*/
 #       define uX_MSVC_COMPATIBLE_COMPILER 1
 #endif
 
@@ -253,12 +298,12 @@ Compiler defines
 #endif
 
 #if defined(uX_MSVC_COMPATIBLE_COMPILER)
-#		define uX_MSVC_TYPE_ALIGNMENT 1
-#		define uX_COMPILER_SUPPORTS_TBB 1
-#		define uX_COMPILER_SUPPORTS_PPL 1
+#       define uX_MSVC_TYPE_ALIGNMENT 1
+#       define uX_COMPILER_SUPPORTS_TBB 1
+#       define uX_COMPILER_SUPPORTS_PPL 1
 #elif defined(uX_GCC_COMPATIBLE_COMPILER) || defined(uX_IBMC) || defined(uX_APPLECC)
-#		define uX_GNUC_TYPE_ALIGNMENT 1
-#		define uX_COMPILER_SUPPORTS_TBB 1
+#       define uX_GNUC_TYPE_ALIGNMENT 1
+#       define uX_COMPILER_SUPPORTS_TBB 1
 #endif
 
 #if defined(__pic__) || defined(__PIC__)
@@ -268,378 +313,379 @@ Compiler defines
 ////////////////////////////////////////////////////////////////////////////
 // Arch type :
 //
-//			1 32-bits x86
-//			2 64-bits x86_64
-//			3 Xbox 360
-//			4 ps3
-//			5 wiiu
-//			6 ppc
-//			7 ppc64
-//			8 arm32bits
-//			9 arm64bits
+//          1 32-bits x86
+//          2 64-bits x86_64
+//          3 Xbox 360
+//          4 ps3
+//          5 wiiu
+//          6 ppc
+//          7 ppc64
+//          8 arm32bits
+//          9 arm64bits
 #       define uX_ARCH 0
 
-#		define uX_ENDIAN_LITTLE 0
-#		define uX_ENDIAN_BIG	0
+#       define uX_ENDIAN_LITTLE 0
+#       define uX_ENDIAN_BIG    0
 
 /* CUDA targets must be detected first as nvcc also predefined gcc macros for CPU architecture */
 #if defined(__CUDA_ARCH__) || defined(__CUDACC__)
-#		define uX_CUDA_GPU 1
+#       define uX_CUDA_GPU 1
 #elif (defined(_M_IX86) || defined(_WIN32) || defined(__i386__) || defined(i386) || defined(__i386) || defined(_X86_) || defined(__X86__) \
-	|| defined(__I86__) || defined(__INTEL__) || defined(__THW_INTEL__))  && !defined(_WIN64) && ! defined(_M_ARM) && !defined(_ARM) && !defined(__KNC__) && !defined(__MIC__)
-#		define uX_X86 1
-#		define uX_X86_CPU 1
-#		define uX_X86_ABI 1
-#		define uX_ARCH_X86 1
-#		define uX_PLATFORM_X86 1
+    || defined(__I86__) || defined(__INTEL__) || defined(__THW_INTEL__))  && !defined(_WIN64) && ! defined(_M_ARM) && !defined(_ARM) && !defined(__KNC__) && !defined(__MIC__)
+#       define uX_X86 1
+#       define uX_X86_CPU 1
+#       define uX_X86_ABI 1
+#       define uX_ARCH_X86 1
+#       define uX_PLATFORM_X86 1
 #undef uX_ENDIAN_LITTLE
-#		define uX_ENDIAN_LITTLE 1
-#		define uX_POINTER_SIZE 4
-#		define uX_SIZE_T_SIZE 4
-#		define uX_INTRINSICS 1
-#		define uX_ARCH_SUPPORTS_INT64 1
-#		define uX_NUM_SIMD_REGISTERS 8
-#		define uX_ARCH_STR "x86"
+#       define uX_ENDIAN_LITTLE 1
+#       define uX_PTR_SIZE 4
+#       define uX_SIZE_T_SIZE 4
+#       define uX_INTRINSICS 1
+#       define uX_ARCH_SUPPORTS_INT64 1
+#       define uX_NUM_SIMD_REGISTERS 8
+#       define uX_ARCH_STR "x86"
 #undef uX_ARCH
-#		define uX_ARCH 1
-# elif defined(_M_X64) || defined(_M_AMD64) || defined(_WIN64) || defined(__amd64__) || defined(__amd64) || defined(__x86_64) || defined(__x86_64__) || defined(__LP64__) && !defined(__KNC__) && !defined(__MIC__)
+#       define uX_ARCH 1
+# elif defined(_M_X64) || defined(_M_AMD64) || defined(_WIN64) || defined(__amd64__) || defined(__amd64) || defined(__x86_64) || defined(__x86_64__) || defined(_LP64) || defined(__LP64__) && !defined(__KNC__) && !defined(__MIC__)
 #       define uX_X64 1
 #       define uX_X64_CPU 1
-#		define uX_X64_ABI 1
-#		define uX_ARCH_X64 1
+#       define uX_X64_ABI 1
+#       define uX_ARCH_X64 1
 #undef uX_ENDIAN_LITTLE
-#		define uX_ENDIAN_LITTLE 1
-#		define uX_POINTER_SIZE 8
-#		define uX_SIZE_T_SIZE 8
-#		define uX_INTRINSICS 1
-#		define uX_ARCH_SUPPORTS_DOUBLE 1
-#		define uX_ARCH_SUPPORTS_INT64 1
-#		define uX_NUM_SIMD_REGISTERS 16
+#       define uX_ENDIAN_LITTLE 1
+#       define uX_PTR_SIZE 8
+#       define uX_SIZE_T_SIZE 8
+#       define uX_INTRINSICS 1
+#       define uX_ARCH_SUPPORTS_DOUBLE 1
+#       define uX_ARCH_SUPPORTS_INT64 1
+#       define uX_NUM_SIMD_REGISTERS 16
 #undef uX_ARCH
-#		define uX_ARCH 2
-#	if defined(__ORBIS__)
-#		define uX_PS4 1
-#		define uX_ARCH_PS4 1
-#		define uX_PLATFORM_PS4 1
-#		define uX_PLATFORM_IS_CONSOLE 1
-#		define uX_ARCH_STR "PS4"
-#	elif defined(_XBOX_ONE)
-#		define uX_XBOXONE 1
-#		define uX_ARCH_XBOXONE 1
-#		define uX_PLATFORM_XBOXONE 1
-#		define uX_PLATFORM_IS_CONSOLE 1
-#		define uX_ARCH_STR "XBOXOne"
-#	else
-#		define uX_ARCH_STR "x64"
-#	endif
-#		define uX_PLATFORM_X64 1
-#elif  defined(__KNC__) || defined(__MIC__) || defined(uX_MIC)
+#       define uX_ARCH 2
+#   if defined(__ORBIS__)
+#       define uX_PS4 1
+#       define uX_ARCH_PS4 1
+#       define uX_PLATFORM_PS4 1
+#       define uX_PLATFORM_IS_CONSOLE 1
+#       define uX_ARCH_STR "PS4"
+#   elif defined(_XBOX_ONE)
+#       define uX_XBOXONE 1
+#       define uX_ARCH_XBOXONE 1
+#       define uX_PLATFORM_XBOXONE 1
+#       define uX_PLATFORM_IS_CONSOLE 1
+#       define uX_ARCH_STR "XBOXOne"
+#   else
+#       define uX_ARCH_STR "x64"
+#   endif
+#       define uX_PLATFORM_X64 1
+#elif  defined(__KNC__) || defined(__MIC__)
 #  ifndef uX_MIC
-#		define uX_MIC 1 /* Intel MIC or Xeon Phi architecture */
+#       define uX_MIC 1 /* Intel MIC or Xeon Phi architecture */
 #  endif
-#		define uX_MIC_ARCH 1 /* Intel MIC or Xeon Phi architecture */
-#		define uX_PLATFORM_MIC 1
+#       define uX_MIC_ARCH 1 /* Intel MIC or Xeon Phi architecture */
+#       define uX_PLATFORM_MIC 1
+#       define uX_PLATFORM_IS_CPU_ACCELARATOR 1
 # if defined(_M_IX86) /*|| defined(_WIN32)*/ || defined(__i386__) || defined(i386) || defined(__i386) || defined(_X86_) || defined(__X86__) || defined(__I86__)
 # error ERROR: Unavailable for Intel Intel® Xeon Phi™ builds.
 # error ERROR: Solutions/projects targeting the Intel® Xeon Phi™ coprocessor are limited to using the x64 Debug | Release configuration.
 # error ERROR: Please change your build enviroment to X64 builds.
 /*
-#		define uX_X86 1
-#		define uX_X86_ABI 1
-#		define uX_ARCH_X86 1
-#		define uX_PLATFORM_X86 1
+#       define uX_X86 1
+#       define uX_X86_ABI 1
+#       define uX_ARCH_X86 1
+#       define uX_PLATFORM_X86 1
 #undef uX_ENDIAN_LITTLE
-#		define uX_ENDIAN_LITTLE 1
-#		define uX_POINTER_SIZE 4
-#		define uX_SIZE_T_SIZE 4
-#		define uX_INTRINSICS 1
-#		define uX_NUM_SIMD_REGISTERS 16
-#		define uX_ARCH_STR "x86"
+#       define uX_ENDIAN_LITTLE 1
+#       define uX_PTR_SIZE 4
+#       define uX_SIZE_T_SIZE 4
+#       define uX_INTRINSICS 1
+#       define uX_NUM_SIMD_REGISTERS 16
+#       define uX_ARCH_STR "x86"
 #undef uX_ARCH
-#		define uX_ARCH 1*/
+#       define uX_ARCH 1*/
 # elif defined(_M_X64) || defined(_M_AMD64) || defined(_WIN64) || defined(__amd64__) || defined(__amd64) || defined(__x86_64) || defined(__x86_64__) || defined(__LP64__)
 #       define uX_X64 1
 #       define uX_X64_CPU 1
-#		define uX_X64_ABI 1
-#		define uX_ARCH_X64 1
+#       define uX_X64_ABI 1
+#       define uX_ARCH_X64 1
 #undef uX_ENDIAN_LITTLE
-#		define uX_ENDIAN_LITTLE 1
-#		define uX_POINTER_SIZE 8
-#		define uX_SIZE_T_SIZE 8
-#		define uX_INTRINSICS 1
-#		define uX_ARCH_SUPPORTS_DOUBLE 1
-#		define uX_ARCH_SUPPORTS_INT64 1
-#		define uX_NUM_SIMD_REGISTERS 32
-#		define uX_ARCH_STR "x64"
-#		define uX_PLATFORM_X64 1
+#       define uX_ENDIAN_LITTLE 1
+#       define uX_PTR_SIZE 8
+#       define uX_SIZE_T_SIZE 8
+#       define uX_INTRINSICS 1
+#       define uX_ARCH_SUPPORTS_DOUBLE 1
+#       define uX_ARCH_SUPPORTS_INT64 1
+#       define uX_NUM_SIMD_REGISTERS 32
+#       define uX_ARCH_STR "x64"
+#       define uX_PLATFORM_X64 1
 #undef uX_ARCH
-#		define uX_ARCH 2
+#       define uX_ARCH 2
 # endif
 #elif defined(_M_IA64) || defined(__itanium__) || defined(__ia64) || defined(__ia64__) || defined(_IA64) || defined(__IA64__)
-#		define uX_IA64 1
-#		define uX_ARCH_IA64 1
-#		define uX_IA64_ABI 1
+#       define uX_IA64 1
+#       define uX_ARCH_IA64 1
+#       define uX_IA64_ABI 1
 #elif defined(_M_PPC) || defined(_M_PPCBE) || defined(_PPC_) || defined(__ppc__) || defined(__POWERPC__) || defined(GEKKO) || defined(EPPC) || defined(__PPCGEKKO__) || defined(__powerpc) || defined(__powerpc__)
-#		define uX_PPC 1
-#		define uX_PPC32 1
-#		define uX_PPC_ABI 1
-#		define uX_PPC32_ABI 1
-#		define uX_ARCH_PPC 1
-#		define uX_ARCH_PPC32 1
-#		define uX_PLATFORM_PPC 1
-#		define uX_PLATFORM_PPC32 1
+#       define uX_PPC 1
+#       define uX_PPC32 1
+#       define uX_PPC_ABI 1
+#       define uX_PPC32_ABI 1
+#       define uX_ARCH_PPC 1
+#       define uX_ARCH_PPC32 1
+#       define uX_PLATFORM_PPC 1
+#       define uX_PLATFORM_PPC32 1
 #if defined(__VEC__) || defined(__ALTIVEC__)
-#		define uX_ALTIVEC 1
-#		define uX_VMX 1
+#       define uX_ALTIVEC 1
+#       define uX_VMX 1
 #endif
-#		define uX_INTRINSICS 1
+#       define uX_INTRINSICS 1
 #undef uX_ENDIAN_BIG
-#		define uX_ENDIAN_BIG	1
-#		define uX_POINTER_SIZE 4
-#		define uX_SIZE_T_SIZE 4
-#		define uX_ARCH_SUPPORTS_DOUBLE 1
-#		define uX_ARCH_SUPPORTS_INT64 1
-#		define uX_NUM_SIMD_REGISTERS 8
+#       define uX_ENDIAN_BIG    1
+#       define uX_PTR_SIZE 4
+#       define uX_SIZE_T_SIZE 4
+#       define uX_ARCH_SUPPORTS_DOUBLE 1
+#       define uX_ARCH_SUPPORTS_INT64 1
+#       define uX_NUM_SIMD_REGISTERS 8
 #undef uX_ARCH
-#		define uX_ARCH 6
-#  if defined(uX_VC) && defined(_M_PPCBE)
-#		define uX_XBOX360 1
-#		define uX_VMX
-#		define uX_VMX128X360 1
-#		define uX_ARCH_X360 1
+#       define uX_ARCH 6
+#  if defined(uX_MSVC_COMPATIBLE_COMPILER) && defined(_M_PPCBE)
+#       define uX_XBOX360 1
+#       define uX_VMX
+#       define uX_VMX128X360 1
+#       define uX_ARCH_X360 1
 #       define uX_PLATFORM_XBOX360 1
-#		define uX_PLATFORM_IS_CONSOLE 1
-#		define uX_ARCH_STR "X360"
+#       define uX_PLATFORM_IS_CONSOLE 1
+#       define uX_ARCH_STR "X360"
 #undef uX_ARCH
-#		define uX_ARCH 3
+#       define uX_ARCH 3
 #  elif defined(CAFE) || defined(uX_GHS)
-#	include <cafe.h>
-#	include <ppc_ghs.h> // allow use of intrinsics throughout code
-#		define uX_WIIU 1
-#		define uX_ARCH_WIIU 1
-#		define uX_PLATFORM_WIIU 1
-#		define uX_ENABLE_PAIRED_SINGLE_OPTS 1
-#		define uX_VECTOR_PARTS_MUST_BE_VALID 1
-#		define uX_PLATFORM_IS_CONSOLE 1
-#		define uX_ARCH_STR "WIIU"
+#   include <cafe.h>
+#   include <ppc_ghs.h> // allow use of intrinsics throughout code
+#       define uX_WIIU 1
+#       define uX_ARCH_WIIU 1
+#       define uX_PLATFORM_WIIU 1
+#       define uX_ENABLE_PAIRED_SINGLE_OPTS 1
+#       define uX_VECTOR_PARTS_MUST_BE_VALID 1
+#       define uX_PLATFORM_IS_CONSOLE 1
+#       define uX_ARCH_STR "WIIU"
 #undef uX_ARCH
-#		define uX_ARCH  5
+#       define uX_ARCH  5
 #  elif defined(GEKKO) || defined(__PPCGEKKO__) //Also have custom added uX_REVOLUTION compiler switch
-#		define uX_GEKKO 1
-#		define uX_ARCH_GEKKO 1
-#		define uX_PLATFORM_GEKKO 1
-#	if defined(RVL_OS)
-#		define uX_ENABLE_PAIRED_SINGLE_OPTS 1
-#		define uX_ARCH_RVL 1
-#		define uX_PLATFORM_RVL 1
-#	endif
-#		define uX_PLATFORM_IS_CONSOLE 1
+#       define uX_GEKKO 1
+#       define uX_ARCH_GEKKO 1
+#       define uX_PLATFORM_GEKKO 1
+#   if defined(RVL_OS)
+#       define uX_ENABLE_PAIRED_SINGLE_OPTS 1
+#       define uX_ARCH_RVL 1
+#       define uX_PLATFORM_RVL 1
+#   endif
+#       define uX_PLATFORM_IS_CONSOLE 1
 #  endif
 #elif defined(__ppc64__) || defined(__PPC64__) || defined(_ARCH_PPC64) || defined(__powerpc64__)
 #       define uX_PPC 1
-#		define uX_PPC64 1
-#		define uX_PPC_ABI 1
-#		define uX_PPC64_ABI 1
-#		define uX_ARCH_PPC 1
-#		define uX_ARCH_PPC64 1
-#		define uX_PLATFORM_PPC 1
-#		define uX_PLATFORM_PPC64 1
+#       define uX_PPC64 1
+#       define uX_PPC_ABI 1
+#       define uX_PPC64_ABI 1
+#       define uX_ARCH_PPC 1
+#       define uX_ARCH_PPC64 1
+#       define uX_PLATFORM_PPC 1
+#       define uX_PLATFORM_PPC64 1
 #if defined(__VEC__) || defined(__ALTIVEC__)
-#		define uX_ALTIVEC 1
-#		define uX_VMX 1
+#       define uX_ALTIVEC 1
+#       define uX_VMX 1
 #endif
-#		define uX_INTRINSICS 1
+#       define uX_INTRINSICS 1
 #undef uX_ENDIAN_BIG
-#		define uX_ENDIAN_BIG	1
-#		define uX_POINTER_SIZE 4
-#		define uX_SIZE_T_SIZE 4
-#		define uX_ARCH_SUPPORTS_DOUBLE 1
-#		define uX_ARCH_SUPPORTS_INT64 1
-#		define uX_NUM_SIMD_REGISTERS 8
+#       define uX_ENDIAN_BIG    1
+#       define uX_PTR_SIZE 4
+#       define uX_SIZE_T_SIZE 4
+#       define uX_ARCH_SUPPORTS_DOUBLE 1
+#       define uX_ARCH_SUPPORTS_INT64 1
+#       define uX_NUM_SIMD_REGISTERS 8
 #undef uX_ARCH
-#		define uX_ARCH 7
+#       define uX_ARCH 7
 #elif defined(__sparc__) || defined(__sparc)
-#		define uX_SPARC 1
-#		define uX_ARCH_SPARC 1
-#		define uX_SPARC_ABI 1
+#       define uX_SPARC 1
+#       define uX_ARCH_SPARC 1
+#       define uX_SPARC_ABI 1
 #elif defined(_M_MRX000) || defined(_MIPS_) || defined(_MIPS64) || defined(__mips__) || defined(__mips) || defined(__MIPS__)
-#		define uX_MIPS 1
-#		define uX_ARCH_MIPS 1
+#       define uX_MIPS 1
+#       define uX_ARCH_MIPS 1
 #  if defined(__mips) && (__mips == 64)
-#		define uX_MIPS64_ABI 1
+#       define uX_MIPS64_ABI 1
 #  else
-#		define uX_MIPS32_ABI 1
+#       define uX_MIPS32_ABI 1
 #  endif
 #elif defined(__PPU__) && defined(__CELLOS_LV2__)
-#		define uX_PS3 1
-#		define uX_PS3_PPU 1
-#		define uX_PPU 1
-#		define uX_ARCH_PS3 1
-#		define uX_ARCH_PS3_PPU 1
-#		define uX_PLATFORM_PS3 1
-#		define uX_VMX 1
-#		define uX_VMX128PS3 1
-#		define uX_INTRINSICS 1
+#       define uX_PS3 1
+#       define uX_PS3_PPU 1
+#       define uX_PPU 1
+#       define uX_ARCH_PS3 1
+#       define uX_ARCH_PS3_PPU 1
+#       define uX_PLATFORM_PS3 1
+#       define uX_VMX 1
+#       define uX_VMX128PS3 1
+#       define uX_INTRINSICS 1
 #undef uX_ENDIAN_BIG
-#		define uX_ENDIAN_BIG	1
-#		define uX_POINTER_SIZE 4
-#		define uX_SIZE_T_SIZE 4
-#		define uX_ARCH_SUPPORTS_DOUBLE 1
-#		define uX_ARCH_SUPPORTS_INT64
-#		define uX_NUM_SIMD_REGISTERS 32
-#		define uX_PLATFORM_IS_CONSOLE 1
-#		define uX_ARCH_STR "PS3"
+#       define uX_ENDIAN_BIG    1
+#       define uX_PTR_SIZE 4
+#       define uX_SIZE_T_SIZE 4
+#       define uX_ARCH_SUPPORTS_DOUBLE 1
+#       define uX_ARCH_SUPPORTS_INT64
+#       define uX_NUM_SIMD_REGISTERS 32
+#       define uX_PLATFORM_IS_CONSOLE 1
+#       define uX_ARCH_STR "PS3"
 #undef uX_ARCH
-#		define uX_ARCH 4
+#       define uX_ARCH 4
 #elif defined(__SPU__) && defined(__CELLOS_LV2__)
-#		define uX_PS3 1
-#		define uX_PS3_SPU 1
-#		define uX_SPU 1
-#		define uX_ARCH_PS3 1
-#		define uX_ARCH_PS3_SPU 1
-#		define uX_PLATFORM_PS3 1
-#		define uX_SPU128PS3 1
-#		define uX_INTRINSICS 1
+#       define uX_PS3 1
+#       define uX_PS3_SPU 1
+#       define uX_SPU 1
+#       define uX_ARCH_PS3 1
+#       define uX_ARCH_PS3_SPU 1
+#       define uX_PLATFORM_PS3 1
+#       define uX_SPU128PS3 1
+#       define uX_INTRINSICS 1
 #undef uX_ENDIAN_BIG
-#		define uX_ENDIAN_BIG	1
-#		define uX_POINTER_SIZE 4
-#		define uX_SIZE_T_SIZE 4
-#		define uX_ARCH_SUPPORTS_INT64 1
-#		define uX_NUM_SIMD_REGISTERS 128
-#		define uX_PLATFORM_IS_CONSOLE 1
-#		define uX_ARCH_STR "PS3"
+#       define uX_ENDIAN_BIG    1
+#       define uX_PTR_SIZE 4
+#       define uX_SIZE_T_SIZE 4
+#       define uX_ARCH_SUPPORTS_INT64 1
+#       define uX_NUM_SIMD_REGISTERS 128
+#       define uX_PLATFORM_IS_CONSOLE 1
+#       define uX_ARCH_STR "PS3"
 #undef uX_ARCH
-#		define uX_ARCH 4
+#       define uX_ARCH 4
 #elif defined(_M_ARM) || defined(_M_ARMT) || defined(__arm__) || defined(arm) || defined(__aarch64__) ||  defined(__thumb__) || defined(__arm) || defined(_ARM)
-#		define uX_ARM 1
-#		define uX_ARM_ABI 1
-#		define uX_ARCH_ARM 1
+#       define uX_ARM 1
+#       define uX_ARM_ABI 1
+#       define uX_ARCH_ARM 1
 //////////////////////////////////////////////////////////////////////////
 // uX_ARM_ARCH_PROF :
-//						1-A
-//						2-R
-//						3-M
+//                      1-A
+//                      2-R
+//                      3-M
 #  if defined(__ARM_ARCH_9A__) || defined(__ARM_ARCH_9__) || defined(__ARM_ARCH_9R__) || defined (__ARM_ARCH_9M__) || defined(__ARM_ARCH_9S__) || ( defined(_M_ARM) && (_M_ARM >= 9) ) || (defined(__ARM_ARCH) && (__ARM_ARCH >= 9) )
 #       define uX_ARCH_ARM_V9 1
 #       define uX_ARCH_ARM_VSET 9
 #   if defined(__ARM_ARCH_9A__) || (defined(__ARM_ARCH_PROFILE) && (__ARM_ARCH_PROFILE == A))
-#		define uX_ARM_ARCH_PROF_A 1
-#		define uX_ARM_ARCH_PROF 1
+#       define uX_ARM_ARCH_PROF_A 1
+#       define uX_ARM_ARCH_PROF 1
 #  endif
 #   if defined(__ARM_ARCH_9R__) || (defined(__ARM_ARCH_PROFILE) && (__ARM_ARCH_PROFILE == R))
-#		define uX_ARM_ARCH_PROF_R 1
-#		define uX_ARM_ARCH_PROF 2
+#       define uX_ARM_ARCH_PROF_R 1
+#       define uX_ARM_ARCH_PROF 2
 #  endif
 #   if defined(__ARM_ARCH_9M__) || (defined(__ARM_ARCH_PROFILE) && (__ARM_ARCH_PROFILE == M))
-#		define uX_ARM_ARCH_PROF_M 1
-#		define uX_ARM_ARCH_PROF 3
+#       define uX_ARM_ARCH_PROF_M 1
+#       define uX_ARM_ARCH_PROF 3
 #  endif
 #  elif defined(__ARM_ARCH_8A__) || defined(__ARM_ARCH_8__) || defined(__ARM_ARCH_8R__) || defined (__ARM_ARCH_8M__) || defined(__ARM_ARCH_8S__) || ( defined(_M_ARM) && (_M_ARM >= 8) ) || (defined(__ARM_ARCH) && (__ARM_ARCH >= 8) )
 #       define uX_ARCH_ARM_V8 1
 #       define uX_ARCH_ARM_VSET 8
 #   if defined(__ARM_ARCH_8A__) || (defined(__ARM_ARCH_PROFILE) && (__ARM_ARCH_PROFILE == A))
-#		define uX_ARM_ARCH_PROF_A 1
-#		define uX_ARM_ARCH_PROF 1
+#       define uX_ARM_ARCH_PROF_A 1
+#       define uX_ARM_ARCH_PROF 1
 #  endif
 #   if defined(__ARM_ARCH_8R__) || (defined(__ARM_ARCH_PROFILE) && (__ARM_ARCH_PROFILE == R))
-#		define uX_ARM_ARCH_PROF_R 1
-#		define uX_ARM_ARCH_PROF 2
+#       define uX_ARM_ARCH_PROF_R 1
+#       define uX_ARM_ARCH_PROF 2
 #  endif
 #   if defined(__ARM_ARCH_8M__) || (defined(__ARM_ARCH_PROFILE) && (__ARM_ARCH_PROFILE == M))
-#		define uX_ARM_ARCH_PROF_M 1
-#		define uX_ARM_ARCH_PROF 3
+#       define uX_ARM_ARCH_PROF_M 1
+#       define uX_ARM_ARCH_PROF 3
 #  endif
 #  elif defined(__ARM_ARCH_7A__) || defined(__ARM_ARCH_7__) || defined(__ARM_ARCH_7R__) || defined (__ARM_ARCH_7M__) || defined(__ARM_ARCH_7S__) || ( defined(_M_ARM) && (_M_ARM >= 7) ) || (defined(__ARM_ARCH) && (__ARM_ARCH >= 7) )
 #       define uX_ARCH_ARM_V7 1
 #       define uX_ARCH_ARM_VSET 7
 #   if defined(__ARM_ARCH_7A__) || defined(_M_ARM) || (defined(__ARM_ARCH_PROFILE) && (__ARM_ARCH_PROFILE == A))
-#		define uX_ARM_ARCH_PROF_A 1
-#		define uX_ARM_ARCH_PROF 1
+#       define uX_ARM_ARCH_PROF_A 1
+#       define uX_ARM_ARCH_PROF 1
 #  endif
 #   if defined(__ARM_ARCH_7R__) || (defined(__ARM_ARCH_PROFILE) && (__ARM_ARCH_PROFILE == R))
-#		define uX_ARM_ARCH_PROF_R 1
-#		define uX_ARM_ARCH_PROF 2
+#       define uX_ARM_ARCH_PROF_R 1
+#       define uX_ARM_ARCH_PROF 2
 #  endif
 #   if defined(__ARM_ARCH_7M__) || (defined(__ARM_ARCH_PROFILE) && (__ARM_ARCH_PROFILE == M))
-#		define uX_ARM_ARCH_PROF_M 1
-#		define uX_ARM_ARCH_PROF 3
+#       define uX_ARM_ARCH_PROF_M 1
+#       define uX_ARM_ARCH_PROF 3
 #  endif
 #  elif defined(__ARM_ARCH_6__) || defined(__ARM_ARCH_6J__) || defined(__ARM_ARCH_6K__) || defined(__ARM_ARCH_6Z__) || defined(__ARM_ARCH_6ZK__) || defined(__ARM_ARCH_6T2__) || defined(NN_PROCESSOR_ARM) || defined(NN_PROCESSOR_ARM_V6) || ( defined(_M_ARM) && (_M_ARM < 7) ) || (defined(__ARM_ARCH) && (__ARM_ARCH >= 6) )
 #       define uX_ARCH_ARM_V6 1
 #       define uX_ARCH_ARM_VSET 6
 #  else
-#		error ERROR: Unexpected ARM arch
+#       error ERROR: Unexpected ARM arch
 #  endif
 #  if defined(_M_ARM_FP)
 #  endif
 #  if defined(__ARMEB__)
 #undef uX_ENDIAN_BIG
-#	   define uX_ENDIAN_BIG	1
+#      define uX_ENDIAN_BIG 1
 #  else
 #undef uX_ENDIAN_LITTLE
-#	   define uX_ENDIAN_LITTLE 1
+#      define uX_ENDIAN_LITTLE 1
 #  endif
 #  if (defined(uX_ARCH_ARM_VSET) && (uX_ARCH_ARM_VSET >= 8)) && defined(__aarch64__) && defined(uX_ARM_ARCH_PROF_A)
-#		define uX_ARCH_A64 1
-#		define uX_A64 1
-#		define uX_A64_CPU 1
+#       define uX_ARCH_A64 1
+#       define uX_A64 1
+#       define uX_A64_CPU 1
 #undef uX_ARCH
-#		define uX_ARCH 9
-#		define uX_PLATFORM_A64 1
-#		define uX_ARM_ABI64 1
-#		define uX_POINTER_SIZE 8
-#		define uX_SIZE_T_SIZE 8
-#		define uX_ARCH_SUPPORTS_DOUBLE 1
-#		define uX_ARCH_SUPPORTS_INT64 1
-#		define uX_NUM_SIMD_REGISTERS 16
-#		define uX_ARCH_STR "Arm64"
+#       define uX_ARCH 9
+#       define uX_PLATFORM_A64 1
+#       define uX_ARM_ABI64 1
+#       define uX_PTR_SIZE 8
+#       define uX_SIZE_T_SIZE 8
+#       define uX_ARCH_SUPPORTS_DOUBLE 1
+#       define uX_ARCH_SUPPORTS_INT64 1
+#       define uX_NUM_SIMD_REGISTERS 16
+#       define uX_ARCH_STR "Arm64"
 #undef uX_ENDIAN_LITTLE
-#	   define uX_ENDIAN_LITTLE 1
+#      define uX_ENDIAN_LITTLE 1
 #  elif defined(__arm__) || (defined(_M_ARM) && (_M_ARM >= 7)) && defined(uX_ARM_ARCH_PROF_A)
-#		define uX_ARCH_A32 1
-#		define uX_A32 1
-#		define uX_A32_CPU 1
+#       define uX_ARCH_A32 1
+#       define uX_A32 1
+#       define uX_A32_CPU 1
 #undef uX_ARCH
-#		define uX_ARCH 8
-#		define uX_PLATFORM_A32 1
-#		define uX_ARM_ABI32 1
-#		define uX_POINTER_SIZE 4
-#		define uX_SIZE_T_SIZE 4
-#		define uX_ARCH_SUPPORTS_INT64 1
-#		define uX_NUM_SIMD_REGISTERS 8
-#		define uX_ARCH_STR "Arm32"
+#       define uX_ARCH 8
+#       define uX_PLATFORM_A32 1
+#       define uX_ARM_ABI32 1
+#       define uX_PTR_SIZE 4
+#       define uX_SIZE_T_SIZE 4
+#       define uX_ARCH_SUPPORTS_INT64 1
+#       define uX_NUM_SIMD_REGISTERS 8
+#       define uX_ARCH_STR "Arm32"
 #   if defined(__ARMEB__)
 #undef uX_ENDIAN_BIG
-#	   define uX_ENDIAN_BIG	1
+#      define uX_ENDIAN_BIG 1
 #   else
 #undef uX_ENDIAN_LITTLE
-#	   define uX_ENDIAN_LITTLE 1
+#      define uX_ENDIAN_LITTLE 1
 #   endif
 #  else
-#		error ERROR: Unexpected ARM platform arch or not implemented yet
+#       error ERROR: Unexpected ARM platform arch or not implemented yet
 #  endif
 
 #  if defined(uX_SNC)
-#		define uX_PSP2 1
-#		define uX_ARCH_PSP2 1
-#		define uX_PLATFORM_PSP2 1
-#		define uX_PSVITA 1
-#		define uX_ARCH_PSVITA 1
+#       define uX_PSP2 1
+#       define uX_ARCH_PSP2 1
+#       define uX_PLATFORM_PSP2 1
+#       define uX_PSVITA 1
+#       define uX_ARCH_PSVITA 1
 #       define uX_PLATFORM_PSVITA 1
-#		define uX_PLATFORM_IS_CONSOLE 1
+#       define uX_PLATFORM_IS_CONSOLE 1
 #undef uX_ARCH_STR
-#		define uX_ARCH_STR "PSVITA"
+#       define uX_ARCH_STR "PSVITA"
 #  endif
-#		define uX_INTRINSICS 1
+#       define uX_INTRINSICS 1
 #elif defined(__OPENCL_VERSION__)
-#		define uX_OPENCL_DEVICE 1
+#       define uX_OPENCL_DEVICE 1
 #  if defined(__CPU__)
-#		define uX_OPENCL_CPU 1
+#       define uX_OPENCL_CPU 1
 #  elif defined(__GPU__)
-#		define uX_OPENCL_GPU 1
+#       define uX_OPENCL_GPU 1
 #  endif
 #else
-#		error ERROR: Unknown platform
+#       error ERROR: Unknown platform
 #endif
 
 #if defined(_WINDOWS) || defined(_WIN32) || defined(_WIN64) || defined(_M_ARM) || defined(_XBOX_ONE) || defined(_M_PPC)
@@ -680,164 +726,192 @@ Compiler defines
 Platform define
 */
 
-#if defined(uX_VC) && (defined(uX_PC_APP) || defined(uX_ARM_PC_APP) || defined(uX_DESKTOP_APP) || defined(_WIN32) || defined(_WINDOWS) \
-	|| defined(_WIN32_WCE) || defined(WIN32_PLATFORM_HPC2000) || defined(WIN32_PLATFORM_HPCPRO) || defined(WIN32_PLATFORM_PSPC) || defined(WIN32_PLATFORM_WFSP)) && !defined(__INTEL_COMPILER)
+#if (defined(uX_MSVC_COMPATIBLE_COMPILER) && (defined(_WIN32) || defined(_WIN64) || defined(_WINDOWS) || defined(_WIN32_WCE) || defined(WIN32_PLATFORM_HPC2000) \
+        || defined(WIN32_PLATFORM_HPCPRO) || defined(WIN32_PLATFORM_PSPC) || defined(WIN32_PLATFORM_WFSP))) && !defined(__KNC__) && !defined(__MIC__) && !defined(uX_MIC)
 #  if defined(_WIN32_WCE) || defined(WIN32_PLATFORM_HPC2000) || defined(WIN32_PLATFORM_HPCPRO) || defined(WIN32_PLATFORM_PSPC) || defined(WIN32_PLATFORM_WFSP)
-#		define uX_WINDOWSCE 1
-#		define uX_WINDOWSCE_OS 1
+#       define uX_WINDOWSCE 1
+#       define uX_WINDOWSCE_OS 1
 #  else
-#		define uX_WINDOWS 1
-#		define uX_WINDOWS_OS 1
+#       define uX_WINDOWS 1
+#       define uX_WINDOWS_OS 1
 #  endif
-# if defined(WINAPI_FAMILY) && ((WINAPI_FAMILY==WINAPI_FAMILY_APP) || (WINAPI_FAMILY==WINAPI_FAMILY_PHONE_APP))
-#		define uX_PLATFORM_WINRT 1
+# if defined(WINAPI_FAMILY) && ((WINAPI_FAMILY==WINAPI_FAMILY_PC_APP) || (WINAPI_FAMILY==WINAPI_FAMILY_PHONE_APP)) && !defined(uX_CLANG) && !defined(uX_ICC) && !defined(uX_GCC)
+#       define uX_PLATFORM_WINRT 1
 #   if (defined(WINAPI_FAMILY) && (WINAPI_FAMILY == WINAPI_FAMILY_PC_APP))
-#	  if defined(uX_ARM)
-#		define uX_ARM_PC_APP
-/*#		define uX_ARCH_STR "Arm"*/
-#		define uX_FAMILY_STR "Store"
-/*#		define uX_ARCH "Arm"*/
-#	  else
-#		define uX_PC_APP 1
-#		define uX_FAMILY_STR "Store"
-#	  endif
-#	endif
+#     if defined(uX_ARM)
+#       define uX_ARM_PC_APP
+/*#     define uX_ARCH_STR "Arm"*/
+#       define uX_FAMILY_STR "Store"
+/*#     define uX_ARCH "Arm"*/
+#     else
+#       define uX_PC_APP 1
+#       define uX_FAMILY_STR "Store"
+#     endif
+#   endif
 #   if (defined(WINAPI_FAMILY) && (WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP))
-#		define uX_WINDOWS_PHONE 1
-#		define uX_PHONE_APP 1
+#       define uX_WINDOWS_PHONE 1
+#       define uX_PHONE_APP 1
 #       define uX_PLATFORM_WIN_PHONE 1
-#		define uX_FAMILY_STR "Windows Phone"
-#		define uX_PLATFORM_IS_CONSOLE 1
-#	endif
+#       define uX_FAMILY_STR "Windows Phone"
+#       define uX_PLATFORM_IS_CONSOLE 1
+#   endif
+#       define uX_WINDOWS_FAMILY 1
+# elif defined(WINAPI_FAMILY) && (WINAPI_FAMILY == WINAPI_FAMILY_SYSTEM)
+#       define uX_SYSTEM_APP 1
+/*#     define uX_ARCH*/
+#       define uX_FAMILY_STR ""
+#       define uX_WINDOWS_FAMILY 1
+# elif defined(WINAPI_FAMILY) && (WINAPI_FAMILY == WINAPI_FAMILY_SERVER)
+#       define uX_SERVER_APP 1
+/*#     define uX_ARCH*/
+#       define uX_FAMILY_STR ""
+#       define uX_WINDOWS_FAMILY 1
 # elif defined(WINAPI_FAMILY) && (WINAPI_FAMILY == WINAPI_FAMILY_DESKTOP_APP)
-#		define uX_DESKTOP_APP 1
-/*#		define uX_ARCH*/
-#		define uX_FAMILY_STR ""
+#       define uX_DESKTOP_APP 1
+/*#     define uX_ARCH*/
+#       define uX_FAMILY_STR ""
+#       define uX_WINDOWS_FAMILY 1
 # endif
-#elif (defined(_MSC_VER) && defined(__INTEL_COMPILER)) && (defined(_WIN32) || defined(_WINDOWS) || defined(uX_DESKTOP_APP) || (defined(__KNC__) || defined(__MIC__)))
+#elif (defined(_MSC_VER) && (defined(__INTEL_COMPILER) || defined(__clang__) || defined(__GCC__))) && (defined(_WIN32) || defined(_WIN64) || defined(_WINDOWS)) || (defined(__KNC__) || defined(__MIC__))) && !defined(uX_XBOXONE)
 # if defined(__KNC__) || defined(__MIC__) || defined(uX_MIC)
-#		define uX_UNIX 1
-#		define uX_UNIX_OS 1
+#       define uX_UNIX 1
+#       define uX_UNIX_OS 1
 # else
-#		define uX_WINDOWS 1
-#		define uX_WINDOWS_OS 1
+#       define uX_WINDOWS 1
+#       define uX_WINDOWS_OS 1
 # endif
 #elif defined(__APPLE_CC__)
 #   include <TargetConditionals.h> // Specific to the current SDK, in usr\include
-#   	define uX_APPLE 1
-#   	define uX_UNIX 1
-#	if defined( uX_ARCH_X86 )
+#       define uX_APPLE 1
+#       define uX_UNIX 1
+#       define uX_UNIX_FAMILY 1
+#   if defined( uX_ARCH_X86 )
 #     if defined(TARGET_IPHONE_SIMULATOR) && TARGET_IPHONE_SIMULATOR
-#			define uX_IOS 1
-#			define uX_ARCH_IOS 1
-#			define uX_PLATFORM_IOS 1
-#			define uX_PLATFORM_IS_CONSOLE 1
+#           define uX_IOS 1
+#           define uX_ARCH_IOS 1
+#           define uX_PLATFORM_IOS 1
+#           define uX_PLATFORM_IS_CONSOLE 1
 #           define uX_APPLE_IOS 1
 #           define uX_APPLE_IOS_SIM 1
 #undef uX_ARCH_STR
-#			define uX_ARCH_STR "IOSim"
-/*#			define uX_ARCH "IOSim"*/
+#           define uX_ARCH_STR "IOSim"
+/*#         define uX_ARCH "IOSim"*/
+#           define uX_APPLE_FAMILY 1
 #     else
-#			define uX_MAC386 1
-#			define uX_ARCH_MAC386 1
-#			define uX_PLATFORM_MAC386 1
-#		    define uX_APPLE_MAC386 1
+#           define uX_MAC386 1
+#           define uX_ARCH_MAC386 1
+#           define uX_PLATFORM_MAC386 1
+#           define uX_APPLE_MAC386 1
 #undef uX_ARCH_STR
-#			define uX_ARCH_STR "Mac386"
-/*#			define uX_ARCH "Mac386"*/
+#           define uX_ARCH_STR "Mac386"
+/*#         define uX_ARCH "Mac386"*/
+#           define uX_APPLE_FAMILY 1
 #     endif
 #   elif (defined(__APPLE__) && defined(__MACH__)) || defined(TARGET_OS_MAC)
-#			define uX_MACOSX 1
-#			define uX_MACOSX_OS 1
-#			define uX_ARCH_MACOSX 1
-#			define uX_PLATFORM_MACOSX 1
-#			define uX_APPLE_MACOSX 1
+#           define uX_OSX 1
+#           define uX_OSX_OS 1
+#           define uX_ARCH_OSX 1
+#           define uX_PLATFORM_OSX 1
+#           define uX_APPLE_OSX 1
+#           define uX_MACOSX 1
+#           define uX_MACOSX_OS 1
+#           define uX_ARCH_MACOSX 1
+#           define uX_PLATFORM_MACOSX 1
+#           define uX_APPLE_MACOSX 1
 #undef uX_ARCH_STR
-#			define uX_ARCH_STR "MACOSX"
-/*#			define uX_ARCH "OSX"*/
-#	elif defined(uX_PPC)
-#			define uX_MACPPC 1
-#			define uX_ARCH_MACPPC 1
-#			define uX_PLATFORM_MACPPC 1
-#			define uX_APPLE_MACPPC 1
+#           define uX_ARCH_STR "MACOSX"
+/*#         define uX_ARCH "OSX"*/
+#           define uX_APPLE_FAMILY 1
+#   elif defined(uX_PPC)
+#           define uX_ARCH_PPC 1
+#           define uX_PLATFORM_PPC 1
+#           define uX_APPLE_PPC 1
+#           define uX_MACPPC 1
+#           define uX_ARCH_MACPPC 1
+#           define uX_PLATFORM_MACPPC 1
+#           define uX_APPLE_MACPPC 1
 #undef uX_ARCH_STR
-#			define uX_ARCH_STR "Macppc"
-/*#			define uX_ARCH "Macppc"*/
+#           define uX_ARCH_STR "Macppc"
+/*#         define uX_ARCH "Macppc"*/
+#           define uX_APPLE_FAMILY 1
 #   elif defined(uX_ARM) // iPhone /iPod Touch/ iPad
-#			define uX_IOS 1
-#			define uX_ARCH_IOS 1
-#			define uX_PLATFORM_IOS 1
-#			define uX_APPLE_IOS 1
-#			define uX_PLATFORM_IS_CONSOLE 1
+#           define uX_IOS 1
+#           define uX_ARCH_IOS 1
+#           define uX_PLATFORM_IOS 1
+#           define uX_APPLE_IOS 1
+#           define uX_PLATFORM_IS_CONSOLE 1
 #undef uX_ARCH_STR
-#			define uX_ARCH_STR "IOS"
-/*#			define uX_ARCH "IOS"*/
-#	endif
+#           define uX_ARCH_STR "IOS"
+/*#         define uX_ARCH "IOS"*/
+#           define uX_APPLE_FAMILY 1
+#   endif
 #elif (defined(__INTEL_COMPILER) && defined(__GNUC__)) || (defined(__GNUC__) || defined(__GCC__)) && (defined(__unix__) || defined(__linux__) || defined(__linux) \
-	|| defined(linux) || defined(__CYGWIN__) || defined(ANDROID_NDK) || defined(ANDROID) || defined(NDK) || defined(__ANDROID_API__) || defined(__ANDROID__))
-#	if defined(ANDROID_NDK) || defined(ANDROID) || defined(NDK) || defined(__ANDROID_API__) || defined(__ANDROID__)
-#		define uX_ANDROID 1
-#		define uX_ANDROID_OS 1
-#		define uX_ANDROID_LINUX_OS 1
-#		define uX_ARCH_ANDROID 1
-#		define uX_PLATFORM_ANDROID 1
-#		define uX_PLATFORM_IS_CONSOLE 1
-#   	define uX_UNIX 1
+    || defined(linux) || defined(__CYGWIN__) || defined(ANDROID_NDK) || defined(ANDROID) || defined(NDK) || defined(__ANDROID_API__) || defined(__ANDROID__))
+#   if defined(ANDROID_NDK) || defined(ANDROID) || defined(NDK) || defined(__ANDROID_API__) || defined(__ANDROID__)
+#       define uX_ANDROID 1
+#       define uX_ANDROID_OS 1
+#       define uX_ANDROID_LINUX_OS 1
+#       define uX_ARCH_ANDROID 1
+#       define uX_PLATFORM_ANDROID 1
+#       define uX_PLATFORM_IS_CONSOLE 1
+#       define uX_UNIX 1
+#       define uX_UNIX_FAMILY 1
 #  elif defined(__linux__) || defined(__linux) || defined(linux) || defined(unix) || defined(__unix__) || defined(__unix) || defined(__bg__)
-#	 if defined(__linux__) || defined(__linux) || defined(linux)
-#   	define uX_LINUX 1
-#   	define uX_LINUX_OS
+#    if defined(__linux__) || defined(__linux) || defined(linux)
+#       define uX_LINUX 1
+#       define uX_LINUX_OS
 #    elif defined(__gnu_linux__)
-#   	define uX_LINUX 1
-#		define uX_GNU_LINUX_OS
-#	 elif defined(__bg__)
-#   	define uX_LINUX 1
-#		define uX_CNK_LINUX_OS
+#       define uX_LINUX 1
+#       define uX_GNU_LINUX_OS
+#    elif defined(__bg__)
+#       define uX_LINUX 1
+#       define uX_CNK_LINUX_OS
 #    elif defined(unix) || defined(__unix__) || defined(__unix)
-#   	define uX_UNIX 1
-#   	define uX_UNIX_OS 1
+#       define uX_UNIX 1
+#       define uX_UNIX_OS 1
+#       define uX_UNIX_FAMILY 1
 #    endif
 #    if defined(__native_client__) || defined(__nacl__) || defined(NACL)
-#		define uX_NACL 1
-#		define uX_PLATFORM_NACL 1
-#		undef uX_POINTER_SIZE
-#		define uX_POINTER_SIZE 4 // always 4 in NaCl
-#		undef uX_SIZE_T_SIZE
-#		define uX_SIZE_T_SIZE 4 // always 4 in NaCl
+#       define uX_NACL 1
+#       define uX_PLATFORM_NACL 1
+#       undef uX_PTR_SIZE
+#       define uX_PTR_SIZE 4 // always 4 in NaCl
+#       undef uX_SIZE_T_SIZE
+#       define uX_SIZE_T_SIZE 4 // always 4 in NaCl
 #    endif
 #  elif defined(__CYGWIN__)
-#   	define uX_CYGWIN 1
-#   	define uX_LINUX 1
-#   	define uX_UNIX 1
+#       define uX_CYGWIN 1
+#       define uX_LINUX 1
+#       define uX_UNIX 1
 #  endif
 #elif defined(__CTR__) || defined(NN_PLATFORM_CTR)
-#		define uX_CTR 1
-#		define uX_ARCH_ANDROID 1
-#		define uX_PLATFORM_CTR 1
-#		define uX_PLATFORM_IS_CONSOLE 1
+#       define uX_CTR 1
+#       define uX_ARCH_ANDROID 1
+#       define uX_PLATFORM_CTR 1
+#       define uX_PLATFORM_IS_CONSOLE 1
 #endif
 
 #if (defined(uX_X86_CPU) || defined(uX_X64_CPU))
-#		define uX_X86_OR_X64_CPU 1			 /* x86 or x64 cpu*/
-#		define uX_X86_OR_X64_ABI 1			 /* x86 or x64 cpu*/
+#       define uX_X86_OR_X64_CPU 1           /* x86 or x64 cpu*/
+#       define uX_X86_OR_X64_ABI 1           /* x86 or x64 cpu*/
 #elif (defined(uX_A32) || defined(uX_A64))
-#		define uX_A32_OR_A64_CPU 1			 /* ARM 32bits or 64bits cpu */
-#		define uX_A32_OR_A64_ABI 1			 /* ARM 32bits or 64bits cpu */
+#       define uX_A32_OR_A64_CPU 1           /* ARM 32bits or 64bits cpu */
+#       define uX_A32_OR_A64_ABI 1           /* ARM 32bits or 64bits cpu */
 #elif (defined(uX_PPC32) || defined(uX_PPC64))
-#		define uX_PPC32_OR_PPC64_CPU 1		 /* PPC 32bits or 64bits cpu */
-#		define uX_PPC32_OR_PPC64_ABI 1		 /* PPC 32bits or 64bits cpu */
+#       define uX_PPC32_OR_PPC64_CPU 1       /* PPC 32bits or 64bits cpu */
+#       define uX_PPC32_OR_PPC64_ABI 1       /* PPC 32bits or 64bits cpu */
 #endif
 
 #if (defined(uX_X64_CPU)) && (defined(__KNC__) || defined(__MIC__))
-#		define uX_XEON_PHI_SYSTEM 1
+#       define uX_XEON_PHI_SYSTEM 1
 #elif defined(uX_PPC) && defined(__bgq__)
-#		define uX_BLUEGENE_SYSTEM 1
-#		define uX_BLUEGENE_Q_SYSTEM 1
+#       define uX_BLUEGENE_SYSTEM 1
+#       define uX_BLUEGENE_Q_SYSTEM 1
 #elif defined(uX_PPC) && defined(__bgp__)
-#		define uX_BLUEGENE_SYSTEM 1
-#		define uX_BLUEGENE_P_SYSTEM 1
+#       define uX_BLUEGENE_SYSTEM 1
+#       define uX_BLUEGENE_P_SYSTEM 1
 #elif defined(uX_PPC) && defined(__bg__)
-#		define uX_BLUEGENE_SYSTEM 1
+#       define uX_BLUEGENE_SYSTEM 1
 #endif
 
 #if defined(uX_X86_OR_X64_CPU)
@@ -846,7 +920,7 @@ Platform define
 # elif defined(uX_A32_OR_A64_CPU)
 #       define uX_ARCH_SUPPORTS_TBB 1
 #       define uX_ARCH_SUPPORTS_PPL 1
-#	elif defined(uX_XEON_PHI_SYSTEM)
+#   elif defined(uX_XEON_PHI_SYSTEM)
 #       define uX_ARCH_SUPPORTS_TBB 1
 #endif
 
@@ -945,12 +1019,16 @@ Platform define
 // Disable Intrinsics in all platforms
 // #       define uX_NO_INTRINSICS 1
 
-#if defined(uX_VC) && (_MSC_FULL_VER >= 190023506)
+#if (defined(uX_VC) && (_MSC_FULL_VER >= 190023506) || (defined(__clang__) && (__clang_major__ >= 5)) || (defined(__GNUC__) && (__GNUC__ >= 7)))
+#ifdef __cplusplus
 #       define uX_CONSTEXPR_SUPPORT 1
 #endif
+#endif
 
-#if defined(uX_VC) && (_MSC_VER >= 1800)
+#if (defined(uX_VC) && (_MSC_VER >= 1800) || (defined(__clang__) && (__clang_major__ >= 5)) || (defined(__GNUC__) && (__GNUC__ >= 7)))
+#ifdef __cplusplus
 #       define uX_DEFAULT_CTOR_SUPPORT 1
+#endif
 #endif
 
 #if (defined(uX_VC) && (_MSC_VER >= 1700) && (defined(uX_PC_APP) || defined(uX_DESKTOP_APP))) && !defined(uX_PHONE_APP) && !defined(__INTEL_COMPILER) && !defined(uX_CLANG) && !defined(uX_CUDACC)
@@ -968,11 +1046,11 @@ Platform define
 #endif
 
 #if defined(__INTEL_COMPILER) && (__INTEL_COMPILER >= 1500)
-#		define uX_INTELCC_GFX 1
-#		define uX_INTEL_GFX_GPU 1
+#       define uX_INTELCC_GFX 1
+#       define uX_INTEL_GFX_GPU 1
 # else
-#		define uX_NO_INTELCC_GFX 1
-#		define uX_NO_INTEL_GFX_GPU 1
+#       define uX_NO_INTELCC_GFX 1
+#       define uX_NO_INTEL_GFX_GPU 1
 #endif
 
 // Disable CUDA Computing
@@ -1014,7 +1092,7 @@ Platform define
 /*
 #undef uX_INTRINSICS
 #  ifndef uX_NO_INTRINSICS
-#		define uX_NO_INTRINSICS
+#       define uX_NO_INTRINSICS
 #  endif*/
 #endif
 
@@ -1029,7 +1107,7 @@ Platform define
 
 /*
 #if defined(uX_MSVC_COMPATIBLE_COMPILER) || defined(uX_GCC_COMPATIBLE_COMPILER)
-#	include <vector>
+#   include <vector>
 # if defined(_STD) && defined(_VECTOR_)
 // enable std:vector support, as template vector and compiler library powered
 #       define uX_STDVECTOR_SUPPORT 1
@@ -1052,52 +1130,52 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #endif*/
 
 #  if defined(uX_PPL_PRL_FOR_SUPPORT) && !defined(uX_NO_PRL)
-#		define uX_USE_PPL_PRL_FOR 1
+#       define uX_USE_PPL_PRL_FOR 1
 #  endif
 
 #  if defined(uX_PPL_PRL_FOR_EACH_SUPPORT) && !defined(uX_NO_PRL)
-#		define uX_USE_PPL_PRL_FOR_EACH 1
+#       define uX_USE_PPL_PRL_FOR_EACH 1
 #  endif
 
 # if defined(uX_NO_PRL)
-#		define uX_MATH_NO_PRL 1
-#		define uX_PRL_MATH_NO_PRL 1
-#		define uX_AMP_MATH_NO_PRL 1
+#       define uX_MATH_NO_PRL 1
+#       define uX_PRL_MATH_NO_PRL 1
+#       define uX_AMP_MATH_NO_PRL 1
 
-#		define uX_FLOATS_NO_PRL 1
+#       define uX_FLOATS_NO_PRL 1
 
-#		define uX_NO_TBB_PRL_FOR 1
-#		define uX_NO_TBB_PRL_FOR_EACH 1
-#		define uX_NO_PPL_PRL_FOR 1
-#		define uX_NO_PPL_PRL_FOR_EACH 1
+#       define uX_NO_TBB_PRL_FOR 1
+#       define uX_NO_TBB_PRL_FOR_EACH 1
+#       define uX_NO_PPL_PRL_FOR 1
+#       define uX_NO_PPL_PRL_FOR_EACH 1
 # else
 
-// #		define uX_MATH_NO_PRL 1
-// #		define uX_PRL_MATH_NO_PRL 1
-// #		define uX_AMP_MATH_NO_PRL 1
+// #        define uX_MATH_NO_PRL 1
+// #        define uX_PRL_MATH_NO_PRL 1
+// #        define uX_AMP_MATH_NO_PRL 1
 
-// #		define uX_FLOATS_NO_PRL 1
+// #        define uX_FLOATS_NO_PRL 1
 
-// #		define uX_NO_TBB_PRL_FOR 1
-// #		define uX_NO_TBB_PRL_FOR_EACH 1
-// #		define uX_NO_PPL_PRL_FOR 1
-// #		define uX_NO_PPL_PRL_FOR_EACH 1
+// #        define uX_NO_TBB_PRL_FOR 1
+// #        define uX_NO_TBB_PRL_FOR_EACH 1
+// #        define uX_NO_PPL_PRL_FOR 1
+// #        define uX_NO_PPL_PRL_FOR_EACH 1
 # endif
 
 # if defined(uX_FLOATS_NO_PRL)
-#		define uX_DFLOATS_NO_PRL 1
-#		define uX_HFLOATS_NO_PRL 1
+#       define uX_DFLOATS_NO_PRL 1
+#       define uX_HFLOATS_NO_PRL 1
 # else
-// #		define uX_DFLOATS_NO_PRL 1
-// #		define uX_HFLOATS_NO_PRL 1
+// #        define uX_DFLOATS_NO_PRL 1
+// #        define uX_HFLOATS_NO_PRL 1
 # endif
 
 # if defined(uX_PRL_MATH_NO_PRL)
-#		define uX_DPRL_MATH_NO_PRL 1
-#		define uX_HPRL_MATH_NO_PRL 1
+#       define uX_DPRL_MATH_NO_PRL 1
+#       define uX_HPRL_MATH_NO_PRL 1
 # else
-// #		define uX_DPRL_MATH_NO_PRL 1
-// #		define uX_HPRL_MATH_NO_PRL 1
+// #        define uX_DPRL_MATH_NO_PRL 1
+// #        define uX_HPRL_MATH_NO_PRL 1
 # endif
 
 
@@ -1129,38 +1207,40 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #error ERROR: Implemented AMP computing not supported in target compiler
 #endif
 
-#if (defined(uX_MSVC_COMPATIBLE_COMPILER) || defined(uX_GCC_COMPATIBLE_COMPILER) || defined(__INTEL_COMPILER)) && defined(uX_X86_OR_X64_CPU) && !defined(uX_ARM) && (!_MANAGED) && (!_M_CEE) && (!defined(_M_IX86_FP) || (_M_IX86_FP > 1)) && \
-	(defined(INTRIN_VERSION) && (INTRIN_VERSION >= 20)) && !defined(uX_CLANG) && !defined(uX_CUDACC) && !defined(uX_NO_INTRINSICS)
-#  if (((_MSC_FULL_VER >= 170065501) && (_MSC_VER < 1800)) || ((_MSC_FULL_VER >= 180020418) && (_MSC_VER >= 1800))) && !defined(__INTEL_COMPILER) && !defined(uX_ICW) && !defined(uX_ICU)
-#		define uX_VCVECTORCALL 1
-#undef uX_ICREGCALL
-#undef uX_ICVECTORCALL
-#  elif ((defined(__INTEL_COMPILER) && (__INTEL_COMPILER >= 1400)) && (defined(uX_ICU) || defined(uX_ICW)))
-#		define uX_ICREGCALL 1		/* Intel regcall !Available for Windows/Unix/Linux/OSX*/
-#   if (defined(__INTEL_COMPILER) && (__INTEL_COMPILER >= 1500)) && !defined(uX_ICU)
-#		define uX_ICVECTORCALL 1	/* Intel vectorcall !Available for Windows compatibility only*/
-#	else
-#undef uX_ICVECTORCALL
-#	endif
-#undef uX_VCVECTORCALL
+#if defined(uX_MSVC_COMPATIBLE_COMPILER) && defined(uX_X86_OR_X64_CPU) && !defined(uX_ARM) && !defined(_MANAGED) && !defined(_M_CEE) && (!defined(_M_IX86_FP) || (_M_IX86_FP > 1)) \
+        && (defined(INTRIN_VERSION) && (INTRIN_VERSION >= 20)) && !defined(uX_CUDACC) && !defined(uX_ICU) && !defined(uX_MIC) && !defined(uX_NO_INTRINSICS)
+#  if (((_MSC_FULL_VER >= 170065501) && (_MSC_VER < 1800)) || ((_MSC_FULL_VER >= 180020418) && (_MSC_VER >= 1800))) || (!defined(__INTEL_COMPILER) || (defined(__INTEL_COMPILER) && (__INTEL_COMPILER >= 1500))) \
+    || (!defined(__clang__) || defined(__clang_major__) && (((__clang_major__ >=3) && (__clang_minor__ >=7)) || (__clang_major__ >=4)))
+#       define uX_VECTORCALL_SUPPORT 1
+#  else
+#  undef uX_VECTORCALL_SUPPORT
 #  endif
 #else
-#undef uX_VCVECTORCALL
-#undef uX_ICREGCALL
-#undef uX_ICVECTORCALL
+#undef uX_VECTORCALL_SUPPORT
+#endif
+
+#if (defined(uX_MSVC_COMPATIBLE_COMPILER) || defined(uX_GCC_COMPATIBLE_COMPILER)) && defined(uX_X86_OR_X64_CPU) && !defined(uX_ARM) && !defined(_MANAGED) && !defined(_M_CEE) && (!defined(_M_IX86_FP) || (_M_IX86_FP > 1)) \
+        && (defined(INTRIN_VERSION) && (INTRIN_VERSION >= 20))  && !defined(uX_CUDACC) && !defined(uX_NO_INTRINSICS)
+#  if (defined(__INTEL_COMPILER) && (__INTEL_COMPILER >= 1400)) || (defined(__clang__) && defined(__clang_major__) && (__clang_major__ >=4))
+#       define uX_REGCALL_SUPPORT 1     /* Intel regcall !Available for Windows/Unix/Linux/OSX*/
+#  else
+#  undef uX_REGCALL_SUPPORT
+#  endif
+#else
+#undef uX_REGCALL_SUPPORT
 #endif
 
 #if defined(uX_X86_OR_X64_CPU)
 #   ifndef uX_SUPPORTS_MISALIGNED_MEMORY_ACCESS
-#		define uX_SUPPORTS_MISALIGNED_MEMORY_ACCESS 1
+#       define uX_SUPPORTS_MISALIGNED_MEMORY_ACCESS 1
 #   endif
 # if defined(uX_ARCH_SUPPORTS_DOUBLE)
 #   ifndef uX_SUPPORTS_DOUBLE_PRECISION_FPU
-#		define uX_SUPPORTS_DOUBLE_PRECISION_FPU 1
+#       define uX_SUPPORTS_DOUBLE_PRECISION_FPU 1
 #   endif
 # endif
 #   ifndef uX_SUPPORTS_SINGLE_PRECISION_FPU
-#		define uX_SUPPORTS_SINGLE_PRECISION_FPU 1
+#       define uX_SUPPORTS_SINGLE_PRECISION_FPU 1
 #   endif
 #endif
 
@@ -1225,90 +1305,90 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #endif
 
 # if defined(uX_X86_OR_X64_CPU)
-#   if defined(uX_VC)
+#   if defined(uX_MSVC_COMPATIBLE_COMPILER)
 #      if (defined(_MSC_VER) && (_MSC_VER <= 1300))
 #       if defined(uX_INTRINSICS)
 # error ERROR: Implemented Intrinsics not supported in target compiler
 #       endif
 #     endif
 #     if (defined(_MSC_VER) && (_MSC_VER >= 1310))
-#	      if   !defined(uX_NO_MMX)
-#			define uX_SUPPORTS_MMX 1
-#			define uX_SUPPORTS_MMXPLUS 1
-#	      endif
-#		  if !defined(__INTEL_COMPILER) && !defined(uX_NO_3DNOW)
-#			define uX_SUPPORTS_3DNOW 1
-#			define uX_SUPPORTS_3DNOWPLUS 1
+#         if   !defined(uX_NO_MMX)
+#           define uX_SUPPORTS_MMX 1
+#           define uX_SUPPORTS_MMXPLUS 1
 #         endif
-#		  if !defined(uX_NO_SSE)
-#			define uX_SUPPORTS_SSE 1
+#         if !defined(__INTEL_COMPILER) && !defined(uX_NO_3DNOW)
+#           define uX_SUPPORTS_3DNOW 1
+#           define uX_SUPPORTS_3DNOWPLUS 1
 #         endif
-#		  if !defined(uX_NO_SSE)
-#			define uX_SUPPORTS_SSE2 1
+#         if !defined(uX_NO_SSE)
+#           define uX_SUPPORTS_SSE 1
+#         endif
+#         if !defined(uX_NO_SSE)
+#           define uX_SUPPORTS_SSE2 1
 #         endif
 #     endif
 #     if (defined(_MSC_VER) && (_MSC_VER >= 1400)) && !defined(uX_NO_SSE)
-#			define uX_SUPPORTS_SSE3 1
+#           define uX_SUPPORTS_SSE3 1
 #     endif
 #     if (defined(_MSC_VER) && (_MSC_VER >= 1500))
-#	   if !defined(uX_NO_SSE)
-#			define uX_SUPPORTS_SSSE3 1
+#      if !defined(uX_NO_SSE)
+#           define uX_SUPPORTS_SSSE3 1
 #      endif
 #       if !defined(__INTEL_COMPILER) && !defined(uX_NO_SSE)
-#			define uX_SUPPORTS_SSE4A 1
+#           define uX_SUPPORTS_SSE4A 1
 #      endif
 #       endif
-#	   if !defined(uX_NO_SSE)
-#			define uX_SUPPORTS_SSE41 1
-#			define uX_SUPPORTS_SSE42 1
+#      if !defined(uX_NO_SSE)
+#           define uX_SUPPORTS_SSE41 1
+#           define uX_SUPPORTS_SSE42 1
 #      endif
-#	   if (defined(uX_SSE_INTRIN) || defined(uX_AVX256_INTRIN) || defined(uX_AVX512_INTRIN))
-#			define uX_SUPPORTS_LZCNT 1
-#			define uX_SUPPORTS_POPCNT 1
+#      if (defined(uX_SSE_INTRIN) || defined(uX_AVX256_INTRIN) || defined(uX_AVX512_INTRIN))
+#           define uX_SUPPORTS_LZCNT 1
+#           define uX_SUPPORTS_POPCNT 1
 #     endif
 #     if (defined(_MSC_VER) && (_MSC_VER >= 1600)) && defined(uX_AVX256_INTRIN) && !defined(uX_NO_AVX256)
-#			define uX_SUPPORTS_AVX 1
+#           define uX_SUPPORTS_AVX 1
 #     endif
 #     if (defined(_MSC_VER) && (_MSC_FULL_VER >= 160040219)) && !defined(uX_NO_AMD_INTRIN) && (defined(uX_SSE_INTRIN) || defined(uX_AVX256_INTRIN))
 #       if !defined(__INTEL_COMPILER)
-#			define uX_SUPPORTS_FMA4 1
-#			define uX_SUPPORTS_XOP 1
+#           define uX_SUPPORTS_FMA4 1
+#           define uX_SUPPORTS_XOP 1
 #       endif
 #     endif
 #     if (defined(_MSC_VER) && (_MSC_VER >= 1700))
-#	   if (defined(uX_SSE_INTRIN) || defined(uX_AVX256_INTRIN) || defined(uX_AVX512_INTRIN))
-#			define uX_SUPPORTS_FMA3 1
-#			define uX_SUPPORTS_F16C 1
+#      if (defined(uX_SSE_INTRIN) || defined(uX_AVX256_INTRIN) || defined(uX_AVX512_INTRIN))
+#           define uX_SUPPORTS_FMA3 1
+#           define uX_SUPPORTS_F16C 1
 #      endif
-#		  if defined(uX_AVX256_INTRIN) && !defined(uX_NO_AVX256)
-#			define uX_SUPPORTS_AVX2 1
+#         if defined(uX_AVX256_INTRIN) && !defined(uX_NO_AVX256)
+#           define uX_SUPPORTS_AVX2 1
 #         endif
-#	   if (defined(uX_SSE_INTRIN) || defined(uX_AVX256_INTRIN) || defined(uX_AVX512_INTRIN))
-#			define uX_SUPPORTS_HLE 1
-#			define uX_SUPPORTS_RTM 1
+#      if (defined(uX_SSE_INTRIN) || defined(uX_AVX256_INTRIN) || defined(uX_AVX512_INTRIN))
+#           define uX_SUPPORTS_HLE 1
+#           define uX_SUPPORTS_RTM 1
 #       if !defined(__INTEL_COMPILER)
-#			define uX_SUPPORTS_TBM 1
+#           define uX_SUPPORTS_TBM 1
 #       endif
-#			define uX_SUPPORTS_BMI 1
-#			define uX_SUPPORTS_BMI2 1
+#           define uX_SUPPORTS_BMI 1
+#           define uX_SUPPORTS_BMI2 1
 #      endif
 #     endif
 #   if (defined(_MSC_VER) && (_MSC_VER >= 1911))
 #     if defined(uX_AVX512_INTRIN) && !defined(uX_NO_AVX512)
 #       ifndef uX_SUPPORTS_AVX512
-#		    define uX_SUPPORTS_AVX512 1
+#           define uX_SUPPORTS_AVX512 1
 #       endif
 #     endif
 #   endif
 #  endif
 # elif defined(uX_A32_OR_A64_CPU)
 #     if (defined(_MSC_VER) && (_MSC_VER >= 1700))
-#	    if (defined(uX_ARCH_ARM_VSET) && (uX_ARCH_ARM_VSET >= 7)) && defined(uX_ARM_NEON_INTRIN) && !defined(uX_NO_ARM_NEON) // some things for arm I cant figure out in msvc compiler yet
-#			define uX_SUPPORTS_ARM_NEON 1 							/* minimal Arch32 for 32-bits Advanced SIMD floating-point vector instructions are available. */
-#	    endif
-#	    if defined(uX_ARCH_ARM_VSET) && (uX_ARCH_ARM_VSET >= 8) && defined(uX_ARCH_A64)
-#			define uX_SUPPORTS_ARM_NEON_DFP 1							/* minimal Arch64 for 64-bits Advanced SIMD double precision floating-point vector instructions are available. */
-#	    endif
+#       if (defined(uX_ARCH_ARM_VSET) && (uX_ARCH_ARM_VSET >= 7)) && defined(uX_ARM_NEON_INTRIN) && !defined(uX_NO_ARM_NEON) // some things for arm I cant figure out in msvc compiler yet
+#           define uX_SUPPORTS_ARM_NEON 1                           /* minimal Arch32 for 32-bits Advanced SIMD floating-point vector instructions are available. */
+#       endif
+#       if defined(uX_ARCH_ARM_VSET) && (uX_ARCH_ARM_VSET >= 8) && defined(uX_ARCH_A64)
+#           define uX_SUPPORTS_ARM_NEON_DFP 1                           /* minimal Arch64 for 64-bits Advanced SIMD double precision floating-point vector instructions are available. */
+#       endif
 #     endif
 #     if (defined(_MSC_VER) && (_MSC_VER >= 1800))
 #     endif
@@ -1318,27 +1398,27 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 
 #  if defined(uX_INTEL_COMPILER)
 #   if defined(__SSE4_2__) && (defined(uX_SSE_INTRIN) || defined(uX_AVX256_INTRIN) || defined(uX_AVX512_INTRIN))
-#	 ifndef uX_SUPPORTS_POPCNT
-#		define uX_SUPPORTS_POPCNT 1
+#    ifndef uX_SUPPORTS_POPCNT
+#       define uX_SUPPORTS_POPCNT 1
 #   endif
 #  endif
 #  if defined(__AVX2__) && (defined(uX_SSE_INTRIN) || defined(uX_AVX256_INTRIN) || defined(uX_AVX512_INTRIN))
-#	ifndef uX_SUPPORTS_LZCNT
-#		define uX_SUPPORTS_LZCNT 1
+#   ifndef uX_SUPPORTS_LZCNT
+#       define uX_SUPPORTS_LZCNT 1
 #    endif
-#	ifndef uX_SUPPORTS_FMA3
-#		define uX_SUPPORTS_FMA3 1
+#   ifndef uX_SUPPORTS_FMA3
+#       define uX_SUPPORTS_FMA3 1
 #    endif
-#	ifndef uX_SUPPORTS_BMI
-#		define uX_SUPPORTS_BMI 1
+#   ifndef uX_SUPPORTS_BMI
+#       define uX_SUPPORTS_BMI 1
 #    endif
-#	ifndef uX_SUPPORTS_BMI2
-#		define uX_SUPPORTS_BMI2 1
+#   ifndef uX_SUPPORTS_BMI2
+#       define uX_SUPPORTS_BMI2 1
 #    endif
 #  endif
 #  if  (defined(__AVX512__) || defined(__AVX512F__)) && defined(uX_AVX512_INTRIN) && !defined(uX_NO_AVX512)
 #    ifndef uX_SUPPORTS_AVX512
-#		define uX_SUPPORTS_AVX512 1
+#       define uX_SUPPORTS_AVX512 1
 #    endif
 #  endif
 # endif
@@ -1346,124 +1426,124 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #    if defined(uX_GCC_COMPATIBLE_COMPILER)
 #      if defined(__MMX__) && !defined(uX_NO_MMX)
 #        ifndef uX_SUPPORTS_MMX
-#			define uX_SUPPORTS_MMX 1
+#           define uX_SUPPORTS_MMX 1
 #        endif
 #      endif
 #      if defined(__3dNOW__) && !defined(__INTEL_COMPILER) && !defined(uX_NO_3DNOW)
 #        ifndef uX_SUPPORTS_3DNOW
-#			define uX_SUPPORTS_3DNOW 1
+#           define uX_SUPPORTS_3DNOW 1
 #         endif
 #   endif
 #   if defined(__3dNOW_A__) && !defined(__INTEL_COMPILER) && !defined(uX_NO_3DNOW)
 #     ifndef uX_SUPPORTS_3DNOWPLUS
-#			define uX_SUPPORTS_3DNOWPLUS 1
+#           define uX_SUPPORTS_3DNOWPLUS 1
 #     endif
 #   endif
 #   if defined(__SSE__)
 #     if !defined(uX_SUPPORTS_MMXPLUS) && !defined(uX_NO_MMX)
-#			define uX_SUPPORTS_MMXPLUS 1
+#           define uX_SUPPORTS_MMXPLUS 1
 #     endif
-#	 if !defined(uX_NO_SSE)
+#    if !defined(uX_NO_SSE)
 #     ifndef uX_SUPPORTS_SSE
-#			define uX_SUPPORTS_SSE 1
+#           define uX_SUPPORTS_SSE 1
 #     endif
 #    endif
 #   endif
 #   if defined(__SSE2__) && !defined(uX_NO_SSE)
 #     ifndef uX_SUPPORTS_SSE2
-#			define uX_SUPPORTS_SSE2 1
+#           define uX_SUPPORTS_SSE2 1
 #     endif
 #   endif
 #   if defined(__SSE3__) && !defined(uX_NO_SSE)
 #     ifndef uX_SUPPORTS_SSE3
-#			define uX_SUPPORTS_SSE3 1
+#           define uX_SUPPORTS_SSE3 1
 #     endif
 #   endif
 #   if defined(__SSSE3__) && !defined(uX_NO_SSE)
 #     ifndef uX_SUPPORTS_SSSE3
-#			define uX_SUPPORTS_SSSE3 1
+#           define uX_SUPPORTS_SSSE3 1
 #     endif
 #   endif
 #   if defined(__SSE4A__) && !defined(__INTEL_COMPILER) && !defined(uX_NO_SSE)
 #     ifndef uX_SUPPORTS_SSE4A
-#			define uX_SUPPORTS_SSE4A 1
+#           define uX_SUPPORTS_SSE4A 1
 #     endif
 #   endif
 #   if defined(__SSE4_1__) && !defined(uX_NO_SSE)
 #     ifndef uX_SUPPORTS_SSE41
-#			define uX_SUPPORTS_SSE41 1
+#           define uX_SUPPORTS_SSE41 1
 #     endif
 #   endif
 #   if defined(__SSE4_2__) && !defined(uX_NO_SSE)
 #     ifndef uX_SUPPORTS_SSE42
-#			define uX_SUPPORTS_SSE42 1
+#           define uX_SUPPORTS_SSE42 1
 #     endif
 #   endif
 #   if defined(__AVX__) && !defined(uX_NO_AVX256)
 #     ifndef uX_SUPPORTS_AVX
-#			define uX_SUPPORTS_AVX 1
+#           define uX_SUPPORTS_AVX 1
 #     endif
 #   endif
 #   if defined(__AVX2__) && !defined(uX_NO_AVX256)
 #     ifndef uX_SUPPORTS_AVX2
-#			define uX_SUPPORTS_AVX2 1
+#           define uX_SUPPORTS_AVX2 1
 #     endif
 #   endif
 #   if defined(__F16C__) && (defined(uX_SSE_INTRIN) || defined(uX_AVX256_INTRIN) || defined(uX_AVX512_INTRIN))
 #     ifndef uX_SUPPORTS_F16C
-#			define uX_SUPPORTS_F16C 1
+#           define uX_SUPPORTS_F16C 1
 #     endif
 #   endif
 #   if defined(__FMA4__) && !defined(__INTEL_COMPILER) && (defined(uX_SSE_INTRIN) || defined(uX_AVX256_INTRIN) || defined(uX_AVX512_INTRIN)) && !defined(uX_NO_AMD_INTRIN)
 #     ifndef uX_SUPPORTS_FMA4
-#			define uX_SUPPORTS_FMA4 1
+#           define uX_SUPPORTS_FMA4 1
 #     endif
 #   endif
 #   if defined(__FMA__) && (defined(uX_SSE_INTRIN) || defined(uX_AVX256_INTRIN) || defined(uX_AVX512_INTRIN))
 #     ifndef uX_SUPPORTS_FMA3
-#			define uX_SUPPORTS_FMA3 1
+#           define uX_SUPPORTS_FMA3 1
 #     endif
 #   endif
 #   if defined(__XOP__) && !defined(__INTEL_COMPILER) && (defined(uX_SSE_INTRIN) || defined(uX_AVX256_INTRIN)) && !defined(uX_NO_AMD_INTRIN)
 #     ifndef uX_SUPPORTS_XOP
-#			define uX_SUPPORTS_XOP 1
+#           define uX_SUPPORTS_XOP 1
 #     endif
 #   endif
 #  if (defined(uX_SSE_INTRIN) || defined(uX_AVX256_INTRIN) || defined(uX_AVX512_INTRIN))
 #   if defined(__ABM__)
 #     ifndef uX_SUPPORTS_LZCNT
-#			define uX_SUPPORTS_LZCNT 1
+#           define uX_SUPPORTS_LZCNT 1
 #     endif
 #   endif
 #   if defined(__POPCNT__)
 #     ifndef uX_SUPPORTS_POPCNT
-#			define uX_SUPPORTS_POPCNT 1
+#           define uX_SUPPORTS_POPCNT 1
 #     endif
 #   endif
 #   if defined(__BMI__)
 #     ifndef uX_SUPPORTS_BMI
-#			define uX_SUPPORTS_BMI 1
+#           define uX_SUPPORTS_BMI 1
 #     endif
 #   endif
 #   if defined(__BMI2__)
 #     ifndef uX_SUPPORTS_BMI2
-#			define uX_SUPPORTS_BMI2 1
+#           define uX_SUPPORTS_BMI2 1
 #     endif
 #   endif
 #   if defined(__TBM__) && !defined(__INTEL_COMPILER) && !defined(uX_NO_AMD_INTRIN)
 #     ifndef uX_SUPPORTS_TBM
-#			define uX_SUPPORTS_TBM 1
+#           define uX_SUPPORTS_TBM 1
 #     endif
 #   endif
 #   if defined(__KNC__)
 #     ifndef uX_SUPPORTS_KNC
-#			define uX_SUPPORTS_KNC 1
+#           define uX_SUPPORTS_KNC 1
 #     endif
 #   endif
 #  endif
 #   if (defined(__AVX512__) || defined(__AVX512F__)) && defined(uX_AVX512_INTRIN)  && !defined(uX_NO_AVX512)
 #     ifndef uX_SUPPORTS_AVX512
-#			define uX_SUPPORTS_AVX512 1
+#           define uX_SUPPORTS_AVX512 1
 #     endif
 #   endif
 # endif
@@ -1472,113 +1552,113 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #   if defined(uX_GCC_COMPATIBLE_COMPILER)
 #     if defined(__ARM_ARCH_9A__) || defined(uX_ARCH_ARM_V9)
 #       ifndef uX_SUPPORTS_ARM_V8
-#			define uX_SUPPORTS_ARM_V8 1
+#           define uX_SUPPORTS_ARM_V8 1
 #       endif
 #     endif
 #     if defined(__ARM_ARCH_8A__) || defined(uX_ARCH_ARM_V8)
 #       ifndef uX_SUPPORTS_ARM_V8
-#			define uX_SUPPORTS_ARM_V8 1
+#           define uX_SUPPORTS_ARM_V8 1
 #       endif
 #     endif
 #   if defined(__ARM_ARCH_7A__) || defined(uX_ARCH_ARM_V7)
 #     ifndef uX_SUPPORTS_ARM_V7
-#			define uX_SUPPORTS_ARM_V7 1
+#           define uX_SUPPORTS_ARM_V7 1
 #     endif
 #   endif
 #   if defined(__ARM_ARCH_6ZK__) || defined(__ARM_ARCH_6K__) || defined(uX_ARCH_ARM_V6)/* || defined(uX_SUPPORTS_ARM_V7)*/
 #     ifndef uX_SUPPORTS_ARM_V6K
-#			define uX_SUPPORTS_ARM_V6K 1
+#           define uX_SUPPORTS_ARM_V6K 1
 #     endif
 #   endif
 #   if defined(__ARM_ARCH_6J__) || defined(__ARM_ARCH_6Z__) || defined(__ARM_ARCH_6__) || defined(uX_SUPPORTS_ARM_V6K) || defined(uX_ARCH_ARM_V6)
 #     ifndef uX_SUPPORTS_ARM_V6
-#			define uX_SUPPORTS_ARM_V6 1
+#           define uX_SUPPORTS_ARM_V6 1
 #     endif
 #   endif
 #   if defined(__ARM_ARCH_5E__) || defined(__ARM_ARCH_5TE__) || defined(__ARM_FEATURE_DSP)/* || defined(uX_SUPPORTS_ARM_V6)*/
 #     ifndef uX_SUPPORTS_ARM_V5E
-#			define uX_SUPPORTS_ARM_V5E 1
+#           define uX_SUPPORTS_ARM_V5E 1
 #     endif
 #   endif
 #   if defined(__ARM_ARCH_5__) || defined(__ARM_ARCH_5T__) || defined(uX_SUPPORTS_ARM_V5E)
 #     ifndef uX_SUPPORTS_ARM_V5
-#			define uX_SUPPORTS_ARM_V5 1
+#           define uX_SUPPORTS_ARM_V5 1
 #     endif
 #   endif
 #   if defined(__ARM_ARCH_4__) || defined(__ARM_ARCH_4T__)/* || defined(uX_SUPPORTS_ARM_V5)*/
 #     ifndef uX_SUPPORTS_ARM_V4
-#			define uX_SUPPORTS_ARM_V4 1
+#           define uX_SUPPORTS_ARM_V4 1
 #     endif
 #   endif
 #   if defined(__ARM_FEATURE_UNALIGNED) || defined(uX_SUPPORTS_ARM_V6) || defined(uX_ARCH_ARM_V7) || defined(uX_ARCH_ARM_V8) || defined(uX_ARCH_ARM_V9)
 #     ifndef uX_SUPPORTS_MISALIGNED_MEMORY_ACCESS
-#			define uX_SUPPORTS_MISALIGNED_MEMORY_ACCESS 1
+#           define uX_SUPPORTS_MISALIGNED_MEMORY_ACCESS 1
 #     endif
 #   endif
 #   if defined(__XSCALE__)
 #     ifndef uX_SUPPORTS_ARM_XSCALE
-#			define uX_SUPPORTS_ARM_XSCALE 1
+#           define uX_SUPPORTS_ARM_XSCALE 1
 #     endif
 #   endif
 #   if defined(__IWMMXT__) || defined(__ARM_WMMX)
 #     ifndef uX_SUPPORTS_ARM_WMMX
-#			define uX_SUPPORTS_ARM_WMMX 1
+#           define uX_SUPPORTS_ARM_WMMX 1
 #     endif
 #   if defined(__IWMMXT2__) || (defined(__ARM_WMMX) && (__ARM_WMMX >= 2))
 #     ifndef uX_SUPPORTS_ARM_WMMX2
-#			define uX_SUPPORTS_ARM_WMMX2 1
+#           define uX_SUPPORTS_ARM_WMMX2 1
 #     endif
 #   endif
 #   endif
-#	if (defined(__ARM_NEON__)
-#	  ifndef uX_SUPPORTS_ARM_NEON
-#			define uX_SUPPORTS_ARM_NEON 1 						/* minimal Arch32 for 32-bits Advanced SIMD floating-point vector instructions are available. */
-#	  endif
-#	endif
-#	if defined(__ARM_NEON_FP)
-#	  ifndef uX_SUPPORTS_ARM_NEON_FP
-#			define uX_SUPPORTS_ARM_NEON_DFP 1					/* minimal Arch64 for 64-bits Advanced SIMD double precision floating-point vector instructions are available. */
-#	  endif
-#	endif
+#   if (defined(__ARM_NEON__)
+#     ifndef uX_SUPPORTS_ARM_NEON
+#           define uX_SUPPORTS_ARM_NEON 1                       /* minimal Arch32 for 32-bits Advanced SIMD floating-point vector instructions are available. */
+#     endif
+#   endif
+#   if defined(__ARM_NEON_FP)
+#     ifndef uX_SUPPORTS_ARM_NEON_FP
+#           define uX_SUPPORTS_ARM_NEON_DFP 1                   /* minimal Arch64 for 64-bits Advanced SIMD double precision floating-point vector instructions are available. */
+#     endif
+#   endif
 #   if defined(__VFP_FP__) || defined(__ARM_FP)
 #     ifndef uX_SUPPORTS_ARM_VFP
-#			define uX_SUPPORTS_ARM_VFP 1
+#           define uX_SUPPORTS_ARM_VFP 1
 #     endif
 #     if defined(uX_ARCH_SUPPORTS_DOUBLE)
 #       ifndef uX_SUPPORTS_DOUBLE_PRECISION_FPU
-#			define uX_SUPPORTS_DOUBLE_PRECISION_FPU 1
+#           define uX_SUPPORTS_DOUBLE_PRECISION_FPU 1
 #       endif
 #     endif
 #     ifndef uX_SUPPORTS_SINGLE_PRECISION_FPU
-#			define uX_SUPPORTS_SINGLE_PRECISION_FPU 1
+#           define uX_SUPPORTS_SINGLE_PRECISION_FPU 1
 #     endif
 #     if defined(uX_SUPPORTS_ARM_V7)
 #       ifndef uX_SUPPORTS_ARM_VFP2
-#			define uX_SUPPORTS_ARM_VFP2 1
+#           define uX_SUPPORTS_ARM_VFP2 1
 #       endif
 #       ifndef uX_SUPPORTS_ARM_VFP3
-#			define uX_SUPPORTS_ARM_VFP3 1
+#           define uX_SUPPORTS_ARM_VFP3 1
 #       endif
 #       if defined(__ARM_FP) && ((__ARM_FP & 0x2) == 0x2)
 #         ifndef uX_SUPPORTS_ARM_VFP3HP
-#			define uX_SUPPORTS_ARM_VFP3HP 1
+#           define uX_SUPPORTS_ARM_VFP3HP 1
 #         endif
 #       endif
 #       if defined(uX_SUPPORTS_ARM_NEON)
 #         ifndef uX_SUPPORTS_ARM_VFP3_D32
-#			define uX_SUPPORTS_ARM_VFP3_D32 1
+#           define uX_SUPPORTS_ARM_VFP3_D32 1
 #         endif
 #       endif
 #       if defined(__ARM_FEATURE_FMA) || (defined(__FP_FAST_FMA) && defined(__FP_FAST_FMAF))
 #         ifndef uX_SUPPORTS_ARM_VFP4
-#			define uX_SUPPORTS_ARM_VFP4 1
+#           define uX_SUPPORTS_ARM_VFP4 1
 #         endif
 #       endif
 #     endif
 #   endif
 #   if defined(__ARM_ARCH_EXT_IDIV__)
 #     ifndef uX_SUPPORTS_ARM_DIV
-#			define uX_SUPPORTS_ARM_DIV 1
+#           define uX_SUPPORTS_ARM_DIV 1
 #     endif
 #   endif
 #  endif
@@ -1587,49 +1667,49 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #   if defined(uX_GCC_COMPATIBLE_COMPILER)
 #     if defined(__mips_isa_rev) && (__mips_isa_rev >= 2)
 #       ifndef uX_SUPPORTS_MIPS_R2
-#			define uX_SUPPORTS_MIPS_R2 1
+#           define uX_SUPPORTS_MIPS_R2 1
 #       endif
 #     endif
 #     if defined(__mips_dsp)
 #       ifndef uX_SUPPORTS_MIPS_DSP
-#			define uX_SUPPORTS_MIPS_DSP 1
+#           define uX_SUPPORTS_MIPS_DSP 1
 #     endif
 #     if defined(__mips_dsp_rev) && (__mips_dsp_rev >= 2)
 #       ifndef uX_SUPPORTS_MIPS_DSP2
-#			define uX_SUPPORTS_MIPS_DSP2 1
+#           define uX_SUPPORTS_MIPS_DSP2 1
 #       endif
 #     endif
 #   endif
 #   if defined(__mips_paired_single_float)
 #     ifndef uX_SUPPORTS_MIPS_PAIREDSINGLE
-#			define uX_SUPPORTS_MIPS_PAIREDSINGLE 1
+#           define uX_SUPPORTS_MIPS_PAIREDSINGLE 1
 #     endif
 #   endif
 #   if defined(__mips3d)
 #     ifndef uX_SUPPORTS_MIPS_3D
-#			define uX_SUPPORTS_MIPS_3D 1
+#           define uX_SUPPORTS_MIPS_3D 1
 #     endif
 #   endif
 #    if defined(__mips_hard_float)
 #     if !defined(uX_ARCH_SUPPORTS_DOUBLE)
-#			define uX_ARCH_SUPPORTS_DOUBLE 1
+#           define uX_ARCH_SUPPORTS_DOUBLE 1
 #     endif
 #     ifndef uX_SUPPORTS_DOUBLE_PRECISION_FPU
-#			define uX_SUPPORTS_DOUBLE_PRECISION_FPU 1
+#           define uX_SUPPORTS_DOUBLE_PRECISION_FPU 1
 #     endif
 #     ifndef uX_SUPPORTS_SINGLE_PRECISION_FPU
-#			define uX_SUPPORTS_SINGLE_PRECISION_FPU 1
+#           define uX_SUPPORTS_SINGLE_PRECISION_FPU 1
 #     endif
 #    endif
 #   endif
 #   if defined(uX_ANDROID_LINUX_OS)
 #     if defined(uX_ARCH_SUPPORTS_DOUBLE)
 #       ifndef uX_SUPPORTS_DOUBLE_PRECISION_FPU
-#			define uX_SUPPORTS_DOUBLE_PRECISION_FPU 1
+#           define uX_SUPPORTS_DOUBLE_PRECISION_FPU 1
 #       endif
 #     endif
 #     ifndef uX_SUPPORTS_SINGLE_PRECISION_FPU
-#			define uX_SUPPORTS_SINGLE_PRECISION_FPU 1
+#           define uX_SUPPORTS_SINGLE_PRECISION_FPU 1
 #     endif
 #   endif
 
@@ -1637,107 +1717,107 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #  if defined(uX_GCC_COMPATIBLE_COMPILER)
 #   if defined(__VSX__)
 #     ifndef uX_SUPPORTS_PPC_VSX
-#			define uX_SUPPORTS_PPC_VSX 1
+#           define uX_SUPPORTS_PPC_VSX 1
 #     endif
 #   endif
 #  endif
 #  if defined(uX_IBMC) || (uX_GCC_COMPATIBLE_COMPILER)
 #    if defined(_ARCH_PPCGR) || defined(_ARCH_PPC64GR) || defined(_ARCH_PPC64GRSQ)
 #      ifndef uX_SUPPORTS_PPC_GFXOPT
-#			define uX_SUPPORTS_PPC_GFXOPT 1
+#           define uX_SUPPORTS_PPC_GFXOPT 1
 #      endif
 #    endif
 #    if defined(_ARCH_PPCSQ) || defined(_ARCH_PPC64GRSQ)
 #      ifndef uX_SUPPORTS_PPC_GPOPT
-#			define uX_SUPPORTS_PPC_GPOPT 1
+#           define uX_SUPPORTS_PPC_GPOPT 1
 #      endif
 #    endif
 #    if defined(__VEC__) || defined(__ALTIVEC__)
 #      ifndef uX_SUPPORTS_PPC_VMX
-#			define uX_SUPPORTS_PPC_VMX 1
+#           define uX_SUPPORTS_PPC_VMX 1
 #      endif
 #    endif
 #  endif
 #  if defined(uX_BLUEGENE_Q_SYSTEM)
 #    ifndef uX_SUPPORTS_PPC_QPX
-#			define uX_SUPPORTS_PPC_QPX 1
+#           define uX_SUPPORTS_PPC_QPX 1
 #    endif
 #  endif
 
 # elif defined(uX_CUDA_GPU)
 #   ifndef uX_SUPPORTS_SINGLE_PRECISION_FPU
-#			define uX_SUPPORTS_SINGLE_PRECISION_FPU 1
+#           define uX_SUPPORTS_SINGLE_PRECISION_FPU 1
 #   endif
 #   if __CUDA_ARCH__ >= 130
 #     ifndef uX_SUPPORTS_DOUBLE_PRECISION_FPU
-#			define uX_SUPPORTS_DOUBLE_PRECISION_FPU 1
+#           define uX_SUPPORTS_DOUBLE_PRECISION_FPU 1
 #     endif
 #   endif
 
 # elif defined(uX_OPENCL_DEVICE)
 #   ifndef uX_SUPPORTS_SINGLE_PRECISION_FPU
-#			define uX_SUPPORTS_SINGLE_PRECISION_FPU 1
+#           define uX_SUPPORTS_SINGLE_PRECISION_FPU 1
 #   endif
 #   if defined(cl_khr_fp64) || defined(cl_amd_fp64))
 #     ifndef uX_SUPPORTS_DOUBLE_PRECISION_FPU
-#			define uX_SUPPORTS_DOUBLE_PRECISION_FPU 1
+#           define uX_SUPPORTS_DOUBLE_PRECISION_FPU 1
 #     endif
 #   endif
 # endif
 
 #if defined(uX_SUPPORTS_FMA3) || defined(uX_SUPPORTS_FMA4)
 #  ifndef uX_SUPPORTS_DOUBLE_PRECISION_FMA
-#		define uX_SUPPORTS_DOUBLE_PRECISION_FMA 1
+#       define uX_SUPPORTS_DOUBLE_PRECISION_FMA 1
 #  endif
 #  ifndef uX_SUPPORTS_SINGLE_PRECISION_FMA
-#		define uX_SUPPORTS_SINGLE_PRECISION_FMA 1
+#       define uX_SUPPORTS_SINGLE_PRECISION_FMA 1
 #  endif
 
 #elif defined(uX_SUPPORTS_KNC) && defined(uX_ICC)
 #  ifndef uX_SUPPORTS_DOUBLE_PRECISION_FMA
-#		define uX_SUPPORTS_DOUBLE_PRECISION_FMA 1
+#       define uX_SUPPORTS_DOUBLE_PRECISION_FMA 1
 #  endif
 #  ifndef uX_SUPPORTS_SINGLE_PRECISION_FMA
-#		define uX_SUPPORTS_SINGLE_PRECISION_FMA 1
+#       define uX_SUPPORTS_SINGLE_PRECISION_FMA 1
 #  endif
 
 #elif defined(uX_IA64)
 #  ifndef uX_SUPPORTS_DOUBLE_PRECISION_FMA
-#		define uX_SUPPORTS_DOUBLE_PRECISION_FMA 1
+#       define uX_SUPPORTS_DOUBLE_PRECISION_FMA 1
 #  endif
 #  ifndef uX_SUPPORTS_SINGLE_PRECISION_FMA
-#		define uX_SUPPORTS_SINGLE_PRECISION_FMA 1
+#       define uX_SUPPORTS_SINGLE_PRECISION_FMA 1
 #  endif
 
 #elif defined(uX_GCC_COMPATIBLE_COMPILER)
 #  if defined(__FP_FAST_FMA)
 #    ifndef uX_SUPPORTS_DOUBLE_PRECISION_FMA
-#		define uX_SUPPORTS_DOUBLE_PRECISION_FMA 1
+#       define uX_SUPPORTS_DOUBLE_PRECISION_FMA 1
 #    endif
 #  endif
 #  if defined(__FP_FAST_FMAF)
 #    ifndef uX_SUPPORTS_SINGLE_PRECISION_FMA
-#		define uX_SUPPORTS_SINGLE_PRECISION_FMA 1
+#       define uX_SUPPORTS_SINGLE_PRECISION_FMA 1
 #    endif
 #  endif
 
 #elif defined(uX_CUDA_GPU) && (__CUDA_ARCH__ >= 200)
 #  ifndef uX_SUPPORTS_DOUBLE_PRECISION_FMA
-#		define uX_SUPPORTS_DOUBLE_PRECISION_FMA 1
+#       define uX_SUPPORTS_DOUBLE_PRECISION_FMA 1
 #  endif
 #  ifndef uX_SUPPORTS_SINGLE_PRECISION_FMA
-#		define uX_SUPPORTS_SINGLE_PRECISION_FMA 1
+#       define uX_SUPPORTS_SINGLE_PRECISION_FMA 1
 #  endif
 
 #elif defined(uX_OPENCL_DEVICE)
 #  if defined(FP_FAST_FMA)
 #    ifndef uX_SUPPORTS_DOUBLE_PRECISION_FMA
-#		define uX_SUPPORTS_DOUBLE_PRECISION_FMA 1
+#       define uX_SUPPORTS_DOUBLE_PRECISION_FMA 1
 #    endif
 #  endif
 #  if defined(FP_FAST_FMAF)
 #    ifndef uX_SUPPORTS_SINGLE_PRECISION_FMA
-#		define uX_SUPPORTS_SINGLE_PRECISION_FMA 1
+#       define uX_SUPPORTS_SINGLE_PRECISION_FMA 1
 #    endif
 #  endif
 #endif
@@ -1745,76 +1825,76 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #if defined(uX_WINDOWS_OS)
 #undef uX_ENDIAN_BIG
 #undef uX_ENDIAN_LITTLE
-#		define uX_ENDIAN_LITTLE 1
+#       define uX_ENDIAN_LITTLE 1
 #endif
 #if defined(uX_GCC_COMPATIBLE_COMPILER) && defined(__LITTLE_ENDIAN__)
 #undef uX_ENDIAN_BIG
 #undef uX_ENDIAN_LITTLE
-#		define uX_ENDIAN_LITTLE 1
+#       define uX_ENDIAN_LITTLE 1
 #endif
 #if defined(uX_GCC_COMPATIBLE_COMPILER) && defined(__BIG_ENDIAN__)
 #undef uX_ENDIAN_LITTLE
 #undef uX_ENDIAN_BIG
-#		define uX_ENDIAN_BIG 1
+#       define uX_ENDIAN_BIG 1
 #endif
 #if defined(uX_GCC_COMPATIBLE_COMPILER) && defined(__ORDER_LITTLE_ENDIAN__) || (defined(__BYTE_ORDER__) && (__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__))
 #undef uX_ENDIAN_BIG
 #undef uX_ENDIAN_LITTLE
-#		define uX_ENDIAN_LITTLE 1
+#       define uX_ENDIAN_LITTLE 1
 #endif
 #if defined(uX_GCC_COMPATIBLE_COMPILER) && defined(__ORDER_BIG_ENDIAN__) || (defined(__BYTE_ORDER__) && (__BYTE_ORDER__ == __ORDER_BIG_ENDIAN__))
 #undef uX_ENDIAN_LITTLE
 #undef uX_ENDIAN_BIG
-#		define uX_ENDIAN_BIG 1
+#       define uX_ENDIAN_BIG 1
 #endif
 #if defined(_BIG_ENDIAN) || defined(__BIG_ENDIAN__)
 #undef uX_ENDIAN_LITTLE
 #undef uX_ENDIAN_BIG
-#		define uX_ENDIAN_BIG 1
+#       define uX_ENDIAN_BIG 1
 #elif defined(uX_X86_OR_X64_CPU)
 #undef uX_ENDIAN_BIG
 #undef uX_ENDIAN_LITTLE
-#		define uX_ENDIAN_LITTLE 1
+#       define uX_ENDIAN_LITTLE 1
 #endif
 #if (defined(uX_ARCH_ARM) || defined(uX_ARCH_MIPS)) && defined(__ANDROID__)
 #   if defined(__ARMEB__)
 #undef uX_ENDIAN_LITTLE
 #undef uX_ENDIAN_BIG
-#	   define uX_ENDIAN_BIG	1
+#      define uX_ENDIAN_BIG 1
 #   else
 #undef uX_ENDIAN_BIG
 #undef uX_ENDIAN_LITTLE
-#	   define uX_ENDIAN_LITTLE 1
+#      define uX_ENDIAN_LITTLE 1
 #   endif
 #endif
 #if defined(uX_CUDA_GPU)
 #undef uX_ENDIAN_BIG
 #undef uX_ENDIAN_LITTLE
-#		define uX_ENDIAN_LITTLE 1
+#       define uX_ENDIAN_LITTLE 1
 #endif
 
 #if defined(uX_X64_ABI)
 #if defined(uX_WINDOWS_OS)
-#		define uX_MICROSOFT_X64_ABI 1
+#       define uX_MICROSOFT_X64_ABI 1
 #elif defined(__KNC__)
-#		define uX_K1OM_X64_ABI 1
+#       define uX_K1OM_X64_ABI 1
 #else
-#		define uX_SYSTEMV_X64_ABI 1
+#       define uX_SYSTEMV_X64_ABI 1
 #endif
 #elif defined(uX_ARM_ABI)
 #if defined(__ARM_EABI__)
-#		define uX_EABI_ARM_ABI 1
+#       define uX_EABI_ARM_ABI 1
 #if defined(__ARM_PCS_VFP)
-#		define uX_HARDEABI_ARM_ABI 1
+#       define uX_HARDEABI_ARM_ABI 1
 #else
-#		define uX_SOFTEABI_ARM_ABI 1
+#       define uX_SOFTEABI_ARM_ABI 1
 #endif
 #endif
 #elif defined(uX_MIPS32_ABI)
 #if defined(_ABIO32)
-#		define uX_O32_MIPS_ABI 1
+#       define uX_O32_MIPS_ABI 1
 #if defined(__mips_hard_float)
-#		define uX_HARDO32_MIPS_ABI 1
+#       define uX_HARDO32_MIPS_ABI 1
 #endif
 #endif
 #endif
@@ -1840,72 +1920,72 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #if defined(uX_INTRINSICS) && !defined(uX_NO_INTRINSICS)
 # if (defined(uX_X86_OR_X64_CPU) && (INTRIN_VERSION >= 10)) && (defined(uX_SUPPORTS_SSE) ||defined(uX_SUPPORTS_AVX) || defined(uX_SUPPORTS_AVX2) || defined(uX_SUPPORTS_AVX512))
 #  if((defined(INTRIN_VERSION) && (INTRIN_VERSION >= 60)) && (uX_AVX512_INTRIN >=1)) && defined(uX_SUPPORTS_AVX512)
-#		define uX_AVX512_INTRINSICS 1
-#		define uX_AVX512_FMA_SUPPORT 1
+#       define uX_AVX512_INTRINSICS 1
+#       define uX_AVX512_FMA_SUPPORT 1
 #  endif
 # if ((defined(INTRIN_VERSION) && (INTRIN_VERSION >= 50)) && (uX_AVX256_INTRIN >=1)) && (defined(uX_SUPPORTS_AVX) || defined(uX_SUPPORTS_AVX2)) && !defined(uX_MIC)
-#		define uX_AVX256_INTRINSICS 1
-#	if ((defined(INTRIN_VERSION) && (INTRIN_VERSION >= 52)) && (uX_AVX256_INTRIN >=1)) && defined(uX_SUPPORTS_AVX2)
-#		define uX_AVX256_V2_INTRINSICS 1
-#	 if defined(uX_SUPPORTS_FMA3) || defined(uX_SUPPORTS_FMA4)
-#		define uX_AVX256_FMA_SUPPORT 1
-#	 endif
-#	endif
+#       define uX_AVX256_INTRINSICS 1
+#   if ((defined(INTRIN_VERSION) && (INTRIN_VERSION >= 52)) && (uX_AVX256_INTRIN >=1)) && defined(uX_SUPPORTS_AVX2)
+#       define uX_AVX256_V2_INTRINSICS 1
+#    if defined(uX_SUPPORTS_FMA3) || defined(uX_SUPPORTS_FMA4)
+#       define uX_AVX256_FMA_SUPPORT 1
+#    endif
+#   endif
 #  endif
 # if ((defined(INTRIN_VERSION) && (INTRIN_VERSION >= 10)) && (uX_SSE_INTRIN >=1)) && (defined(uX_SUPPORTS_SSE) || defined(uX_SUPPORTS_SSE2) || defined(uX_SUPPORTS_SSE3) \
-	|| defined(uX_SUPPORTS_SSSE3) || defined(uX_SUPPORTS_SSE41) || defined(uX_SUPPORTS_SSE42) || defined(uX_SUPPORTS_SSE4A)) && !defined(uX_MIC)
-#		define uX_SSE_INTRINSICS 1
+    || defined(uX_SUPPORTS_SSSE3) || defined(uX_SUPPORTS_SSE41) || defined(uX_SUPPORTS_SSE42) || defined(uX_SUPPORTS_SSE4A)) && !defined(uX_MIC)
+#       define uX_SSE_INTRINSICS 1
 # endif
 # if defined(uX_X86_CPU) && (defined(uX_MMX_INTRIN) || defined(uX_3DNOW_INTRIN)) && (defined(uX_INTEL_INTRIN) || defined(uX_AMD_INTRIN)) && (defined(uX_SUPPORTS_3DNOW) \
     || defined(uX_SUPPORTS_3DNOWPLUS) || defined(uX_SUPPORTS_MMX) || defined(uX_SUPPORTS_MMXPLUS)) && !defined(uX_MIC)
 #  if defined(uX_INTEL_INTRIN) && !defined(uX_3DNOW_INTRIN) && defined(uX_MMX_INTRIN) && (defined(uX_SUPPORTS_MMX) || defined(uX_SUPPORTS_MMXPLUS))
-#		define uX_MMX_INTRINSICS 1
+#       define uX_MMX_INTRINSICS 1
 #  endif
 #  if defined(uX_AMD_INTRIN) && !defined(uX_INTEL_INTRIN) && defined(uX_3DNOW_INTRIN) && (defined(uX_SUPPORTS_3DNOW) || defined(uX_SUPPORTS_3DNOWPLUS))
-#		define uX_3DNOW_INTRINSICS 1
+#       define uX_3DNOW_INTRINSICS 1
 #  endif
 #  if defined(uX_INTEL_INTRIN) && defined(uX_AMD_INTRIN) && defined(uX_MMX_INTRIN) && defined(uX_3DNOW_INTRIN) && \
-	(((defined(uX_SUPPORTS_3DNOW) || defined(uX_SUPPORTS_3DNOWPLUS)) && (defined(uX_SUPPORTS_MMX) || defined(uX_SUPPORTS_MMXPLUS))))
-#		define uX_MMX_INTRINSICS 1
-#		define uX_3DNOW_INTRINSICS 1
+    (((defined(uX_SUPPORTS_3DNOW) || defined(uX_SUPPORTS_3DNOWPLUS)) && (defined(uX_SUPPORTS_MMX) || defined(uX_SUPPORTS_MMXPLUS))))
+#       define uX_MMX_INTRINSICS 1
+#       define uX_3DNOW_INTRINSICS 1
 #  endif
 # endif
 # elif defined(uX_XBOXONE)
 // XBOXONE
 
 #error ERROR: not implemented!! check how to implement intrinsics for XBOXONE, in XBOXONE sdk intrinsics headers or manuals
-#		define uX_XBOXONE_INTRINSICS 1
+#       define uX_XBOXONE_INTRINSICS 1
 # elif defined(uX_XBOX360)
 // XBOX_360
 #error ERROR: not implemented!! check how to implement intrinsics for xbox360, in xbox360 sdk intrinsics headers or manuals
-#		define uX_VMX128_INTRINSICS 1
-#		define uX_XBOX360_INTRINSICS 1
+#       define uX_VMX128_INTRINSICS 1
+#       define uX_XBOX360_INTRINSICS 1
 # elif defined(uX_PS3)
 // PS3
 #error ERROR: not implemented!! check how to implement intrinsics for PS3, in PS3 sdk intrinsics headers or manuals
 #if defined(uX_SPU128PS3)
-#		define uX_SPU128PS3_INTRINSICS 1
+#       define uX_SPU128PS3_INTRINSICS 1
 #endif
 #if defined(uX_VMX128PS3)
-#		define uX_VMX128_INTRINSICS 1
-#		define uX_VMX128_PS3_INTRINSICS 1
+#       define uX_VMX128_INTRINSICS 1
+#       define uX_VMX128_PS3_INTRINSICS 1
 #endif
 # elif defined(uX_PS4)
 // PS4
 #error ERROR: not implemented!! check how to implement intrinsics for PS4, in PS4 sdk intrinsics headers or manuals
-#		define uX_PS4_INTRINSICS 1
+#       define uX_PS4_INTRINSICS 1
 # elif defined(uX_ARM)
 // probably this can be all the same
 #   if defined(uX_ARM_INTRIN)
 // Simple ARM no NEON support
-#		define uX_ARM_INTRINSICS 1
+#       define uX_ARM_INTRINSICS 1
 #    if defined(uX_ARM_NEON_INTRIN) && defined(uX_SUPPORTS_ARM_NEON) && (!defined(uX_PSP2) && !defined(uX_PSVITA))
 // ARM with NEON support
-#		define uX_ARM_NEON_INTRINSICS 1
+#       define uX_ARM_NEON_INTRINSICS 1
 #    elif (defined(uX_PSP2) || defined(uX_PSVITA))
 // PSP2 PSVITA
 #error ERROR: not implemented!! check how to implement intrinsics for PSP2 and PSVITA, in sdk PSVITA intrinsics headers or manuals
-#		define uX_PSVITA_INTRINSICS 1
+#       define uX_PSVITA_INTRINSICS 1
 #    elif defined(uX_ARM_NEON_INTRIN) && !defined(uX_SUPPORTS_ARM_NEON)
 # error ERROR: Target ARM arch does not support ARM_NEON_INTRIN or you have defined-it by error
 #    endif
@@ -1928,10 +2008,10 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 
 // find if multi intrinsics are defined to be build
 # if((defined(uX_MMX_INTRINSICS) || defined(uX_3DNOW_INTRINSICS)) && (!defined(uX_SSE_INTRINSICS) && !defined(uX_AVX256_INTRINSICS) && !defined(uX_AVX512_INTRINSICS))) || \
-	(defined(uX_SSE_INTRINSICS) && (!defined(uX_AVX256_INTRINSICS) && !defined(uX_AVX512_INTRINSICS) && !defined(uX_MMX_INTRINSICS) && !defined(uX_3DNOW_INTRINSICS))) || \
-	(defined(uX_AVX256_INTRINSICS) && (!defined(uX_SSE_INTRINSICS) && !defined(uX_AVX512_INTRINSICS) && !defined(uX_MMX_INTRINSICS) && !defined(uX_3DNOW_INTRINSICS))) || \
-	(defined(uX_AVX512_INTRINSICS) && (!defined(uX_SSE_INTRINSICS) && !defined(uX_AVX256_INTRINSICS) && !defined(uX_MMX_INTRINSICS) && !defined(uX_3DNOW_INTRINSICS))) || \
-	defined(uX_VMX128_INTRINSICS) || defined(uX_ARM_NEON_INTRINSICS)
+    (defined(uX_SSE_INTRINSICS) && (!defined(uX_AVX256_INTRINSICS) && !defined(uX_AVX512_INTRINSICS) && !defined(uX_MMX_INTRINSICS) && !defined(uX_3DNOW_INTRINSICS))) || \
+    (defined(uX_AVX256_INTRINSICS) && (!defined(uX_SSE_INTRINSICS) && !defined(uX_AVX512_INTRINSICS) && !defined(uX_MMX_INTRINSICS) && !defined(uX_3DNOW_INTRINSICS))) || \
+    (defined(uX_AVX512_INTRINSICS) && (!defined(uX_SSE_INTRINSICS) && !defined(uX_AVX256_INTRINSICS) && !defined(uX_MMX_INTRINSICS) && !defined(uX_3DNOW_INTRINSICS))) || \
+    defined(uX_VMX128_INTRINSICS) || defined(uX_ARM_NEON_INTRINSICS)
 #       define uX_MULINTRIN 1 /* Only one intrinsics type is defined */
 # elif !defined(uX_NO_INTRINSICS_SUPPORT)
 #       define uX_MULINTRIN 2 /* More than one intrinsics type is defined*/
@@ -1962,9 +2042,9 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 
 #if defined(uX_AVX512_INTRINSICS) || defined(uX_AVX256_INTRINSICS) || defined(uX_SSE_INTRINSICS) || defined(uX_MMX_INTRINSICS) || defined(uX_3DNOW_INTRINSICS)
 #  if defined(uX_MMX_INTRINSICS) || defined(uX_3DNOW_INTRINSICS) || (defined(uX_X86_CPU) && defined(uX_SSE_INTRINSICS))
-#       define uX_X86_INTRINTYPE 1	/* x86 only intrinsics group */
+#       define uX_X86_INTRINTYPE 1  /* x86 only intrinsics group */
 # elif defined(uX_X64_CPU)
-#       define uX_X64_INTRINTYPE 1	/* x86_x64 intrinsics group */
+#       define uX_X64_INTRINTYPE 1  /* x86_x64 intrinsics group */
 #  endif
 #endif
 
@@ -1977,958 +2057,958 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #if defined(uX_X86_OR_X64_CPU) && defined(uX_INTRINSICS_SUPPORT)
 # if (defined(uX_INTEL_INTRIN) && !defined(uX_AMD_INTRIN)) && (defined(uX_AVX512_INTRINSICS) || defined(uX_AVX256_INTRINSICS) || defined(uX_AVX256_V2_INTRINSICS) || defined(uX_SSE_INTRINSICS) || defined(uX_MMX_INTRINSICS))
 #  if (defined(INTRIN_VERSION) && ( INTRIN_VERSION >= 60)) && defined(uX_AVX512_INTRINSICS) && defined(uX_SUPPORTS_AVX512)
-#       define uX_AVX512 1								/* AVX-512 and MIC */
-#       define uX_FMA_512 1							/* AVX-512 and MIC FMA */
-#	 if defined(uX_AVX256_V2_INTRINSICS) && !defined(uX_MIC)
-#	   if  defined(uX_SUPPORTS_AVX2)
-#       define uX_AVX2 1								/* AVX-2 */
-#	   endif
-#	 endif
-#	 if defined(uX_AVX256_INTRINSICS) && !defined(uX_MIC)
-#	   if defined(uX_SUPPORTS_AVX)
-#       define uX_AVX 1								/* AVX  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_FMA3)
-#       define uX_FMA3 1								/* FMA3 */
-#	   endif
-#	 endif
-#	   if  defined(uX_SUPPORTS_F16C)
-#       define uX_F16C 1								/* F16C */
-#	   endif
-#	 if defined(uX_SSE_INTRINSICS) && !defined(uX_MIC)
-#	   if  defined(uX_SUPPORTS_SSE42)
-#       define uX_SSE42 1								/* SSE4.2  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE41)
-#       define uX_SSE41 1								/* SSE4.1  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSSE3)
-#       define uX_SSSE3 1								/* SSEE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2  */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE  */
-#	   endif
-#	 endif
-#	 if defined(uX_MMX_INTRINSICS) && !defined(uX_MIC)
-#	   if defined(uX_SUPPORTS_MMX)
-#       define uX_MMX 1								/* MMX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_MMXPLUS)
+#       define uX_AVX512 1                              /* AVX-512 and MIC */
+#       define uX_FMA_512 1                         /* AVX-512 and MIC FMA */
+#    if defined(uX_AVX256_V2_INTRINSICS) && !defined(uX_MIC)
+#      if  defined(uX_SUPPORTS_AVX2)
+#       define uX_AVX2 1                                /* AVX-2 */
+#      endif
+#    endif
+#    if defined(uX_AVX256_INTRINSICS) && !defined(uX_MIC)
+#      if defined(uX_SUPPORTS_AVX)
+#       define uX_AVX 1                             /* AVX  */
+#      endif
+#      if  defined(uX_SUPPORTS_FMA3)
+#       define uX_FMA3 1                                /* FMA3 */
+#      endif
+#    endif
+#      if  defined(uX_SUPPORTS_F16C)
+#       define uX_F16C 1                                /* F16C */
+#      endif
+#    if defined(uX_SSE_INTRINSICS) && !defined(uX_MIC)
+#      if  defined(uX_SUPPORTS_SSE42)
+#       define uX_SSE42 1                               /* SSE4.2  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE41)
+#       define uX_SSE41 1                               /* SSE4.1  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSSE3)
+#       define uX_SSSE3 1                               /* SSEE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE3)
+#       define uX_SSE3 1                                /* SSE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2  */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE  */
+#      endif
+#    endif
+#    if defined(uX_MMX_INTRINSICS) && !defined(uX_MIC)
+#      if defined(uX_SUPPORTS_MMX)
+#       define uX_MMX 1                             /* MMX  */
+#      endif
+#      if defined(uX_SUPPORTS_MMXPLUS)
 #       define uX_MMXPLUS 1
-#	   endif
-#	 endif
-#       define uX_INTRINSET 60							/* AVX-512 and or MIC  */
+#      endif
+#    endif
+#       define uX_INTRINSET 60                          /* AVX-512 and or MIC  */
 #  elif (defined(INTRIN_VERSION) && ( INTRIN_VERSION >= 52)) && defined(uX_AVX256_V2_INTRINSICS) && defined(uX_SUPPORTS_AVX2) && !defined(uX_MIC)
-#       define uX_AVX2 1								/* AVX-2 */
-#	   if  defined(uX_SUPPORTS_FMA3)
-#       define uX_FMA3 1								/* FMA3 */
-#	   endif
-#	   if  defined(uX_SUPPORTS_F16C)
-#       define uX_F16C 1								/* F16C */
-#	   endif
-#	   if defined(uX_SUPPORTS_AVX)
-#       define uX_AVX 1								/* AVX  */
-#	   endif
-#	 if defined(uX_SSE_INTRINSICS)
-#	   if  defined(uX_SUPPORTS_SSE42)
-#       define uX_SSE42 1								/* SSE4.2  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE41)
-#       define uX_SSE41 1								/* SSE4.1  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSSE3)
-#       define uX_SSSE3 1								/* SSEE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2  */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE  */
-#	  endif
-#	 endif
-#	 if defined(uX_MMX_INTRINSICS)
-#	   if defined(uX_SUPPORTS_MMX)
-#       define uX_MMX 1								/* MMX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_MMXPLUS)
+#       define uX_AVX2 1                                /* AVX-2 */
+#      if  defined(uX_SUPPORTS_FMA3)
+#       define uX_FMA3 1                                /* FMA3 */
+#      endif
+#      if  defined(uX_SUPPORTS_F16C)
+#       define uX_F16C 1                                /* F16C */
+#      endif
+#      if defined(uX_SUPPORTS_AVX)
+#       define uX_AVX 1                             /* AVX  */
+#      endif
+#    if defined(uX_SSE_INTRINSICS)
+#      if  defined(uX_SUPPORTS_SSE42)
+#       define uX_SSE42 1                               /* SSE4.2  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE41)
+#       define uX_SSE41 1                               /* SSE4.1  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSSE3)
+#       define uX_SSSE3 1                               /* SSEE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE3)
+#       define uX_SSE3 1                                /* SSE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2  */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE  */
+#     endif
+#    endif
+#    if defined(uX_MMX_INTRINSICS)
+#      if defined(uX_SUPPORTS_MMX)
+#       define uX_MMX 1                             /* MMX  */
+#      endif
+#      if defined(uX_SUPPORTS_MMXPLUS)
 #       define uX_MMXPLUS 1
-#	   endif
-#	 endif
-#       define uX_INTRINSET 52										/* AVX-2 FMA3 */
+#      endif
+#    endif
+#       define uX_INTRINSET 52                                      /* AVX-2 FMA3 */
 #  elif (defined(INTRIN_VERSION) && ( INTRIN_VERSION >= 50)) && defined(uX_AVX256_INTRINSICS) && defined(uX_SUPPORTS_AVX) && !defined(uX_MIC)
-#       define uX_AVX 1								/* AVX  */
-#	   if  defined(uX_SUPPORTS_FMA3)
-#       define uX_FMA3 1								/* FMA3 */
-#	   endif
-#	   if  defined(uX_SUPPORTS_F16C)
-#       define uX_F16C 1								/* F16C */
-#	   endif
-#	 if defined(uX_SSE_INTRINSICS)
-#	   if  defined(uX_SUPPORTS_SSE42)
-#       define uX_SSE42 1								/* SSE4.2  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE41)
-#       define uX_SSE41 1								/* SSE4.1  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSSE3)
-#       define uX_SSSE3 1								/* SSEE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE  */
-#	   endif
-#	 endif
-#	 if defined(uX_MMX_INTRINSICS)
-#	   if defined(uX_SUPPORTS_MMX)
-#       define uX_MMX 1								/* MMX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_MMXPLUS)
+#       define uX_AVX 1                             /* AVX  */
+#      if  defined(uX_SUPPORTS_FMA3)
+#       define uX_FMA3 1                                /* FMA3 */
+#      endif
+#      if  defined(uX_SUPPORTS_F16C)
+#       define uX_F16C 1                                /* F16C */
+#      endif
+#    if defined(uX_SSE_INTRINSICS)
+#      if  defined(uX_SUPPORTS_SSE42)
+#       define uX_SSE42 1                               /* SSE4.2  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE41)
+#       define uX_SSE41 1                               /* SSE4.1  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSSE3)
+#       define uX_SSSE3 1                               /* SSEE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE3)
+#       define uX_SSE3 1                                /* SSE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE  */
+#      endif
+#    endif
+#    if defined(uX_MMX_INTRINSICS)
+#      if defined(uX_SUPPORTS_MMX)
+#       define uX_MMX 1                             /* MMX  */
+#      endif
+#      if defined(uX_SUPPORTS_MMXPLUS)
 #       define uX_MMXPLUS 1
-#	   endif
-#	 endif
-#       define uX_INTRINSET 50							/* AVX  */
+#      endif
+#    endif
+#       define uX_INTRINSET 50                          /* AVX  */
 #  elif (defined(INTRIN_VERSION) && ( INTRIN_VERSION >= 42)) && defined(uX_SSE_INTRINSICS)  && defined(uX_SUPPORTS_SSE42) && !defined(uX_MIC)
-#       define uX_SSE42 1								/* SSE4.2  */
-#	   if  defined(uX_SUPPORTS_SSE41)
-#       define uX_SSE41 1								/* SSE4.1  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSSE3)
-#       define uX_SSSE3 1								/* SSEE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2  */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE  */
-#	   endif
-#	 if defined(uX_MMX_INTRINSICS)
-#	   if defined(uX_SUPPORTS_MMX)
-#       define uX_MMX 1								/* MMX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_MMXPLUS)
+#       define uX_SSE42 1                               /* SSE4.2  */
+#      if  defined(uX_SUPPORTS_SSE41)
+#       define uX_SSE41 1                               /* SSE4.1  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSSE3)
+#       define uX_SSSE3 1                               /* SSEE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE3)
+#       define uX_SSE3 1                                /* SSE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2  */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE  */
+#      endif
+#    if defined(uX_MMX_INTRINSICS)
+#      if defined(uX_SUPPORTS_MMX)
+#       define uX_MMX 1                             /* MMX  */
+#      endif
+#      if defined(uX_SUPPORTS_MMXPLUS)
 #       define uX_MMXPLUS 1
-#	   endif
-#	 endif
-#       define uX_INTRINSET 42							/* SSE4.2  */
+#      endif
+#    endif
+#       define uX_INTRINSET 42                          /* SSE4.2  */
 #  elif (defined(INTRIN_VERSION) && ( INTRIN_VERSION >= 41)) && defined(uX_SSE_INTRINSICS) && defined(uX_SUPPORTS_SSE41) && !defined(uX_MIC)
-#       define uX_SSE41 1								/* SSE4.1  */
-#	   if  defined(uX_SUPPORTS_SSSE3)
-#       define uX_SSSE3 1								/* SSEE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2  */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE  */
-#	   endif
-#	 if defined(uX_MMX_INTRINSICS)
-#	   if defined(uX_SUPPORTS_MMX)
-#       define uX_MMX 1								/* MMX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_MMXPLUS)
+#       define uX_SSE41 1                               /* SSE4.1  */
+#      if  defined(uX_SUPPORTS_SSSE3)
+#       define uX_SSSE3 1                               /* SSEE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE3)
+#       define uX_SSE3 1                                /* SSE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2  */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE  */
+#      endif
+#    if defined(uX_MMX_INTRINSICS)
+#      if defined(uX_SUPPORTS_MMX)
+#       define uX_MMX 1                             /* MMX  */
+#      endif
+#      if defined(uX_SUPPORTS_MMXPLUS)
 #       define uX_MMXPLUS 1
-#	   endif
-#	 endif
-#       define uX_INTRINSET 41							/* SSE4.1  */
+#      endif
+#    endif
+#       define uX_INTRINSET 41                          /* SSE4.1  */
 #  elif (defined(INTRIN_VERSION) && ( INTRIN_VERSION >= 31)) && defined(uX_SSE_INTRINSICS) && defined(uX_SUPPORTS_SSSE3) && !defined(uX_MIC)
-#       define uX_SSSE3 1								/* SSEE3  */
-#	   if  defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2  */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE  */
-#	   endif
-#	 if defined(uX_MMX_INTRINSICS)
-#	   if defined(uX_SUPPORTS_MMX)
-#       define uX_MMX 1								/* MMX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_MMXPLUS)
+#       define uX_SSSE3 1                               /* SSEE3  */
+#      if  defined(uX_SUPPORTS_SSE3)
+#       define uX_SSE3 1                                /* SSE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2  */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE  */
+#      endif
+#    if defined(uX_MMX_INTRINSICS)
+#      if defined(uX_SUPPORTS_MMX)
+#       define uX_MMX 1                             /* MMX  */
+#      endif
+#      if defined(uX_SUPPORTS_MMXPLUS)
 #       define uX_MMXPLUS 1
-#	   endif
-#	 endif
-#       define uX_INTRINSET 31							/* SSEE3  */
+#      endif
+#    endif
+#       define uX_INTRINSET 31                          /* SSEE3  */
 #  elif (defined(INTRIN_VERSION) && ( INTRIN_VERSION >= 30)) && defined(uX_SSE_INTRINSICS) && defined(uX_SUPPORTS_SSE3) && !defined(uX_MIC)
-#       define uX_SSE3 1								/* SSE3  */
-#	   if  defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2  */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE  */
-#	   endif
-#	 if defined(uX_MMX_INTRINSICS)
-#	   if defined(uX_SUPPORTS_MMX)
-#       define uX_MMX 1								/* MMX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_MMXPLUS)
+#       define uX_SSE3 1                                /* SSE3  */
+#      if  defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2  */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE  */
+#      endif
+#    if defined(uX_MMX_INTRINSICS)
+#      if defined(uX_SUPPORTS_MMX)
+#       define uX_MMX 1                             /* MMX  */
+#      endif
+#      if defined(uX_SUPPORTS_MMXPLUS)
 #       define uX_MMXPLUS 1
-#	   endif
-#	 endif
-#       define uX_INTRINSET 30										/* SSE3  */
+#      endif
+#    endif
+#       define uX_INTRINSET 30                                      /* SSE3  */
 #  elif (defined(INTRIN_VERSION) && ( INTRIN_VERSION >= 20)) && defined(uX_SSE_INTRINSICS) && defined(uX_SUPPORTS_SSE2) && !defined(uX_MIC)
-#       define uX_SSE2 1								/* SSE2  */
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE  */
-#	   endif
-#	 if defined(uX_MMX_INTRINSICS)
-#	   if defined(uX_SUPPORTS_MMX)
-#       define uX_MMX 1								/* MMX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_MMXPLUS)
+#       define uX_SSE2 1                                /* SSE2  */
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE  */
+#      endif
+#    if defined(uX_MMX_INTRINSICS)
+#      if defined(uX_SUPPORTS_MMX)
+#       define uX_MMX 1                             /* MMX  */
+#      endif
+#      if defined(uX_SUPPORTS_MMXPLUS)
 #       define uX_MMXPLUS 1
-#	   endif
-#	 endif
-#       define uX_INTRINSET 20										/* SSE2  */
+#      endif
+#    endif
+#       define uX_INTRINSET 20                                      /* SSE2  */
 #  elif (defined(INTRIN_VERSION) && (INTRIN_VERSION >= 10)) && defined(uX_SSE_INTRINSICS) && defined(uX_SUPPORTS_SSE) && !defined(uX_MIC)
-#       define uX_SSE 1								/* SSE  */
-#	 if defined(uX_MMX_INTRINSICS)
-#	   if defined(uX_SUPPORTS_MMX)
-#       define uX_MMX 1								/* MMX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_MMXPLUS)
+#       define uX_SSE 1                             /* SSE  */
+#    if defined(uX_MMX_INTRINSICS)
+#      if defined(uX_SUPPORTS_MMX)
+#       define uX_MMX 1                             /* MMX  */
+#      endif
+#      if defined(uX_SUPPORTS_MMXPLUS)
 #       define uX_MMXPLUS 1
-#	   endif
-#	 endif
-#       define uX_INTRINSET 10							/* SSE  */
+#      endif
+#    endif
+#       define uX_INTRINSET 10                          /* SSE  */
 #  elif (defined(INTRIN_VERSION) && (INTRIN_VERSION >= 1)) && defined(uX_MMX_INTRINSICS) && (defined(uX_SUPPORTS_MMX) || defined(uX_SUPPORTS_MMXPLUS)) && \
-	 !defined(uX_MIC)
-#       define uX_MMX 1								/* MMX  */ /* TODO... I need to research this MMX type Intrinsics, first look can be high for Linux*/
-#	   if defined(uX_SUPPORTS_MMXPLUS)
+     !defined(uX_MIC)
+#       define uX_MMX 1                             /* MMX  */ /* TODO... I need to research this MMX type Intrinsics, first look can be high for Linux*/
+#      if defined(uX_SUPPORTS_MMXPLUS)
 #       define uX_MMXPLUS 1
-#	   endif
-#       define uX_INTRINSET 8							/* MMX  */
+#      endif
+#       define uX_INTRINSET 8                           /* MMX  */
 #  endif
 # elif (defined(uX_AMD_INTRIN) && !defined(uX_INTEL_INTRIN)) && (defined(uX_AVX512_INTRINSICS) || defined(uX_AVX256_INTRINSICS) || defined(uX_SSE_INTRINSICS) || defined(uX_MMX_INTRINSICS)) && \
-	 !defined(uX_MIC)
+     !defined(uX_MIC)
 #  if (defined(INTRIN_VERSION) && ( INTRIN_VERSION >= 60)) && defined(uX_AVX512_INTRINSICS) && defined(uX_SUPPORTS_AVX512)
-#       define uX_AVX512 1								/* AVX-512 and MIC */
-#       define uX_FMA_512 1							/* AVX-512 and MIC FMA */
-#       define uX_AVX512VL 1							/* AVX-512 VL */
-#       define uX_AVX512ER 1							/* AVX-512 ER */
-#       define uX_AVX512DQ 1							/* AVX-512 DQ */
-#	 if defined(uX_AVX256_V2_INTRINSICS)
-#	   if  defined(uX_SUPPORTS_AVX2)
-#       define uX_AVX2 1								/* AVX-2 */
-#	   endif
-#	 endif
-#	 if defined(uX_AVX256_INTRINSICS)
-#	   if defined(uX_SUPPORTS_AVX)
-#       define uX_AVX 1								/* AVX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_FMA4)
-#       define uX_FMA4 1								/* FMA3 */
-#	   endif
-#	   if  defined(uX_SUPPORTS_FMA3)
-#       define uX_FMA3 1								/* FMA3 */
-#	   endif
-#	   if defined(uX_SUPPORTS_XOP)
-#       define uX_XOP 1								/* XOP */
-#	   endif
-#	   if  defined(uX_SUPPORTS_F16C)
-#       define uX_F16C 1								/* F16C */
-#	   endif
-#	 endif
-#	 if defined(uX_SSE_INTRINSICS)
-#	   if  defined(uX_SUPPORTS_SSE42)
-#       define uX_SSE42 1								/* SSE4.2  */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE4A)
-#       define uX_SSE4A 1								/* SSE4A */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE41)
-#       define uX_SSE41 1								/* SSE4.1  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSSE3)
-#       define uX_SSSE3 1								/* SSEE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2  */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE  */
-#	   endif
-#	 endif
-#	 if defined(uX_3DNOW_INTRINSICS)
-#	   if defined(uX_SUPPORTS_3DNOW)
-#       define uX_3DNOW 1								/* 3DNOW  */
-#	   endif
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
-#       define uX_3DNOWPLUS 1							/* 3DNOWPLUS */
-#	   endif
-#	 endif
-#       define uX_INTRINSET 60										/* AVX-512 and MIC  */
+#       define uX_AVX512 1                              /* AVX-512 and MIC */
+#       define uX_FMA_512 1                         /* AVX-512 and MIC FMA */
+#       define uX_AVX512VL 1                            /* AVX-512 VL */
+#       define uX_AVX512ER 1                            /* AVX-512 ER */
+#       define uX_AVX512DQ 1                            /* AVX-512 DQ */
+#    if defined(uX_AVX256_V2_INTRINSICS)
+#      if  defined(uX_SUPPORTS_AVX2)
+#       define uX_AVX2 1                                /* AVX-2 */
+#      endif
+#    endif
+#    if defined(uX_AVX256_INTRINSICS)
+#      if defined(uX_SUPPORTS_AVX)
+#       define uX_AVX 1                             /* AVX  */
+#      endif
+#      if defined(uX_SUPPORTS_FMA4)
+#       define uX_FMA4 1                                /* FMA3 */
+#      endif
+#      if  defined(uX_SUPPORTS_FMA3)
+#       define uX_FMA3 1                                /* FMA3 */
+#      endif
+#      if defined(uX_SUPPORTS_XOP)
+#       define uX_XOP 1                             /* XOP */
+#      endif
+#      if  defined(uX_SUPPORTS_F16C)
+#       define uX_F16C 1                                /* F16C */
+#      endif
+#    endif
+#    if defined(uX_SSE_INTRINSICS)
+#      if  defined(uX_SUPPORTS_SSE42)
+#       define uX_SSE42 1                               /* SSE4.2  */
+#      endif
+#      if defined(uX_SUPPORTS_SSE4A)
+#       define uX_SSE4A 1                               /* SSE4A */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE41)
+#       define uX_SSE41 1                               /* SSE4.1  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSSE3)
+#       define uX_SSSE3 1                               /* SSEE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE3)
+#       define uX_SSE3 1                                /* SSE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2  */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE  */
+#      endif
+#    endif
+#    if defined(uX_3DNOW_INTRINSICS)
+#      if defined(uX_SUPPORTS_3DNOW)
+#       define uX_3DNOW 1                               /* 3DNOW  */
+#      endif
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_3DNOWPLUS 1                           /* 3DNOWPLUS */
+#      endif
+#    endif
+#       define uX_INTRINSET 60                                      /* AVX-512 and MIC  */
 #  elif (defined(INTRIN_VERSION) && ( INTRIN_VERSION >= 52)) && defined(uX_AVX256_V2_INTRINSICS) && defined(uX_SUPPORTS_AVX2)
-#       define uX_AVX2 1								/* AVX-2 FMA FMA4 */
-#	   if defined(uX_SUPPORTS_FMA4)
-#       define uX_FMA4 1								/* FMA4 */
-#	   endif
-#	   if defined(uX_SUPPORTS_FMA3)
-#       define uX_FMA3 1								/* FMA3 */
-#	   endif
-#	   if defined(uX_SUPPORTS_AVX)
-#       define uX_AVX 1								/* AVX */
-#	   endif
-#	   if defined(uX_SUPPORTS_XOP)
-#       define uX_XOP 1								/* XOP */
-#	   endif
-#	   if  defined(uX_SUPPORTS_F16C)
-#       define uX_F16C 1								/* F16C */
-#	   endif
-#	 if defined(uX_SSE_INTRINSICS)
-#	   if defined(uX_SUPPORTS_SSE42)
-#       define uX_SSE42 1								/* SSE4.2 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE4A)
-#       define uX_SSE4A 1								/* SSE4A */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE41)
-#       define uX_SSE41 1								/* SSE4.1 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSSE3)
-#       define uX_SSSE3 1								/* SSEE3 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE */
-#	   endif
-#	 endif
-#	 if defined(uX_3DNOW_INTRINSICS)
-#	   if defined(uX_SUPPORTS_3DNOW)
-#       define uX_3DNOW 1								/* 3DNOW */
-#	   endif
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_AVX2 1                                /* AVX-2 FMA FMA4 */
+#      if defined(uX_SUPPORTS_FMA4)
+#       define uX_FMA4 1                                /* FMA4 */
+#      endif
+#      if defined(uX_SUPPORTS_FMA3)
+#       define uX_FMA3 1                                /* FMA3 */
+#      endif
+#      if defined(uX_SUPPORTS_AVX)
+#       define uX_AVX 1                             /* AVX */
+#      endif
+#      if defined(uX_SUPPORTS_XOP)
+#       define uX_XOP 1                             /* XOP */
+#      endif
+#      if  defined(uX_SUPPORTS_F16C)
+#       define uX_F16C 1                                /* F16C */
+#      endif
+#    if defined(uX_SSE_INTRINSICS)
+#      if defined(uX_SUPPORTS_SSE42)
+#       define uX_SSE42 1                               /* SSE4.2 */
+#      endif
+#      if defined(uX_SUPPORTS_SSE4A)
+#       define uX_SSE4A 1                               /* SSE4A */
+#      endif
+#      if defined(uX_SUPPORTS_SSE41)
+#       define uX_SSE41 1                               /* SSE4.1 */
+#      endif
+#      if defined(uX_SUPPORTS_SSSE3)
+#       define uX_SSSE3 1                               /* SSEE3 */
+#      endif
+#      if defined(uX_SUPPORTS_SSE3)
+#       define uX_SSE3 1                                /* SSE3 */
+#      endif
+#      if defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2 */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE */
+#      endif
+#    endif
+#    if defined(uX_3DNOW_INTRINSICS)
+#      if defined(uX_SUPPORTS_3DNOW)
+#       define uX_3DNOW 1                               /* 3DNOW */
+#      endif
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
 #       define uX_3DNOWPLUS 1
-#	   endif
-#	 endif
-#       define uX_INTRINSET 52										/* AVX-2 FMA FMA4 */
+#      endif
+#    endif
+#       define uX_INTRINSET 52                                      /* AVX-2 FMA FMA4 */
 #  elif (defined(INTRIN_VERSION) && ( INTRIN_VERSION >= 50)) && defined(uX_AVX256_INTRINSICS) && defined(uX_SUPPORTS_AVX)
-#       define uX_AVX 1								/* AVX  */
-#	   if defined(uX_SUPPORTS_FMA4)
-#       define uX_FMA4 1								/* FMA4 */
-#	   endif
-#	   if defined(uX_SUPPORTS_FMA3)
-#       define uX_FMA3 1								/* FMA3 */
-#	   endif
-#	   if defined(uX_SUPPORTS_XOP)
-#       define uX_XOP 1								/* XOP */
-#	   endif
-#	   if  defined(uX_SUPPORTS_F16C)
-#       define uX_F16C 1								/* F16C */
-#	   endif
-#	 if defined(uX_SSE_INTRINSICS)
-#	   if defined(uX_SUPPORTS_SSE42)
-#       define uX_SSE42 1								/* SSE4.2 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE4A)
-#       define uX_SSE4A 1								/* SSE4A */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE41)
-#       define uX_SSE41 1								/* SSE4.1 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSSE3)
-#       define uX_SSSE3 1								/* SSEE3 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE */
-#	   endif
-#	 endif
-#	 if defined(uX_3DNOW_INTRINSICS)
-#	   if defined(uX_SUPPORTS_3DNOW)
-#       define uX_3DNOW 1								/* 3DNOW */
-#	   endif
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_AVX 1                             /* AVX  */
+#      if defined(uX_SUPPORTS_FMA4)
+#       define uX_FMA4 1                                /* FMA4 */
+#      endif
+#      if defined(uX_SUPPORTS_FMA3)
+#       define uX_FMA3 1                                /* FMA3 */
+#      endif
+#      if defined(uX_SUPPORTS_XOP)
+#       define uX_XOP 1                             /* XOP */
+#      endif
+#      if  defined(uX_SUPPORTS_F16C)
+#       define uX_F16C 1                                /* F16C */
+#      endif
+#    if defined(uX_SSE_INTRINSICS)
+#      if defined(uX_SUPPORTS_SSE42)
+#       define uX_SSE42 1                               /* SSE4.2 */
+#      endif
+#      if defined(uX_SUPPORTS_SSE4A)
+#       define uX_SSE4A 1                               /* SSE4A */
+#      endif
+#      if defined(uX_SUPPORTS_SSE41)
+#       define uX_SSE41 1                               /* SSE4.1 */
+#      endif
+#      if defined(uX_SUPPORTS_SSSE3)
+#       define uX_SSSE3 1                               /* SSEE3 */
+#      endif
+#      if defined(uX_SUPPORTS_SSE3)
+#       define uX_SSE3 1                                /* SSE3 */
+#      endif
+#      if defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2 */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE */
+#      endif
+#    endif
+#    if defined(uX_3DNOW_INTRINSICS)
+#      if defined(uX_SUPPORTS_3DNOW)
+#       define uX_3DNOW 1                               /* 3DNOW */
+#      endif
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
 #       define uX_3DNOWPLUS 1
-#	   endif
-#	 endif
-#       define uX_INTRINSET 50										/* AVX  */
+#      endif
+#    endif
+#       define uX_INTRINSET 50                                      /* AVX  */
 #  elif (defined(INTRIN_VERSION) && ( INTRIN_VERSION >= 42)) && defined(uX_SSE_INTRINSICS) && defined(uX_SUPPORTS_SSE42)
-#       define uX_SSE42 1								/* SSE4.2  */
-#	   if defined(uX_SUPPORTS_SSE4A)
-#       define uX_SSE4A 1								/* SSE4A */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE41)
-#       define uX_SSE41 1								/* SSE4.1 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSSE3)
-#       define uX_SSSE3 1								/* SSEE3 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE */
-#	   endif
-#	 if defined(uX_3DNOW_INTRINSICS)
-#	   if defined(uX_SUPPORTS_3DNOW)
-#       define uX_3DNOW 1								/* 3DNOW */
-#	   endif
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_SSE42 1                               /* SSE4.2  */
+#      if defined(uX_SUPPORTS_SSE4A)
+#       define uX_SSE4A 1                               /* SSE4A */
+#      endif
+#      if defined(uX_SUPPORTS_SSE41)
+#       define uX_SSE41 1                               /* SSE4.1 */
+#      endif
+#      if defined(uX_SUPPORTS_SSSE3)
+#       define uX_SSSE3 1                               /* SSEE3 */
+#      endif
+#      if defined(uX_SUPPORTS_SSE3)
+#       define uX_SSE3 1                                /* SSE3 */
+#      endif
+#      if defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2 */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE */
+#      endif
+#    if defined(uX_3DNOW_INTRINSICS)
+#      if defined(uX_SUPPORTS_3DNOW)
+#       define uX_3DNOW 1                               /* 3DNOW */
+#      endif
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
 #       define uX_3DNOWPLUS 1
-#	   endif
-#	 endif
-#       define uX_INTRINSET 42										/* SSE4.2  */
+#      endif
+#    endif
+#       define uX_INTRINSET 42                                      /* SSE4.2  */
 #  elif (defined(INTRIN_VERSION) && ( INTRIN_VERSION >= 41)) && defined(uX_SSE_INTRINSICS) && defined(uX_SUPPORTS_SSE41)
-#       define uX_SSE41 1								/* SSE4.1  */
-#	   if defined(uX_SUPPORTS_SSE4A)
-#       define uX_SSE4A 1								/* SSE4A */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSSE3)
-#       define uX_SSSE3 1								/* SSEE3 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE */
-#	   endif
-#	 if defined(uX_3DNOW_INTRINSICS)
-#	   if defined(uX_SUPPORTS_3DNOW)
-#       define uX_3DNOW 1								/* 3DNOW */
-#	   endif
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_SSE41 1                               /* SSE4.1  */
+#      if defined(uX_SUPPORTS_SSE4A)
+#       define uX_SSE4A 1                               /* SSE4A */
+#      endif
+#      if defined(uX_SUPPORTS_SSSE3)
+#       define uX_SSSE3 1                               /* SSEE3 */
+#      endif
+#      if defined(uX_SUPPORTS_SSE3)
+#       define uX_SSE3 1                                /* SSE3 */
+#      endif
+#      if defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2 */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE */
+#      endif
+#    if defined(uX_3DNOW_INTRINSICS)
+#      if defined(uX_SUPPORTS_3DNOW)
+#       define uX_3DNOW 1                               /* 3DNOW */
+#      endif
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
 #       define uX_3DNOWPLUS 1
-#	   endif
-#	 endif
-#       define uX_INTRINSET 41										/* SSE4.1  */
+#      endif
+#    endif
+#       define uX_INTRINSET 41                                      /* SSE4.1  */
 #  elif (defined(INTRIN_VERSION) && ( INTRIN_VERSION >= 40)) && defined(uX_SSE_INTRINSICS) && defined(uX_SUPPORTS_SSE4A)
-#       define uX_SSE4A 1								/* SSE4A  */
-#	   if defined(uX_SUPPORTS_SSE41)
-#       define uX_SSE41 1								/* SSE4.1 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSSE3)
-#       define uX_SSSE3 1								/* SSEE3 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE */
-#	   endif
-#	 if defined(uX_3DNOW_INTRINSICS)
-#	   if defined(uX_SUPPORTS_3DNOW)
-#       define uX_3DNOW 1								/* 3DNOW */
-#	   endif
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_SSE4A 1                               /* SSE4A  */
+#      if defined(uX_SUPPORTS_SSE41)
+#       define uX_SSE41 1                               /* SSE4.1 */
+#      endif
+#      if defined(uX_SUPPORTS_SSSE3)
+#       define uX_SSSE3 1                               /* SSEE3 */
+#      endif
+#      if defined(uX_SUPPORTS_SSE3)
+#       define uX_SSE3 1                                /* SSE3 */
+#      endif
+#      if defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2 */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE */
+#      endif
+#    if defined(uX_3DNOW_INTRINSICS)
+#      if defined(uX_SUPPORTS_3DNOW)
+#       define uX_3DNOW 1                               /* 3DNOW */
+#      endif
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
 #       define uX_3DNOWPLUS 1
-#	   endif
-#	 endif
-#       define uX_INTRINSET 40										/* SSE4A  */
+#      endif
+#    endif
+#       define uX_INTRINSET 40                                      /* SSE4A  */
 #  elif (defined(INTRIN_VERSION) && ( INTRIN_VERSION >= 31)) && defined(uX_SSE_INTRINSICS) && defined(uX_SUPPORTS_SSSE3)
-#       define uX_SSSE3 1								/* SSEE3  */
-#	   if defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE */
-#	   endif
-#	 if defined(uX_3DNOW_INTRINSICS)
-#	   if defined(uX_SUPPORTS_3DNOW)
-#       define uX_3DNOW 1								/* 3DNOW */
-#	   endif
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_SSSE3 1                               /* SSEE3  */
+#      if defined(uX_SUPPORTS_SSE3)
+#       define uX_SSE3 1                                /* SSE3 */
+#      endif
+#      if defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2 */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE */
+#      endif
+#    if defined(uX_3DNOW_INTRINSICS)
+#      if defined(uX_SUPPORTS_3DNOW)
+#       define uX_3DNOW 1                               /* 3DNOW */
+#      endif
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
 #       define uX_3DNOWPLUS 1
-#	   endif
-#	 endif
-#       define uX_INTRINSET 31										/* SSEE3  */
+#      endif
+#    endif
+#       define uX_INTRINSET 31                                      /* SSEE3  */
 #  elif (defined(INTRIN_VERSION) && ( INTRIN_VERSION >= 30)) && defined(uX_SSE_INTRINSICS) && defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3  */
-#	   if defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2 */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE */
-#	   endif
-#	 if defined(uX_3DNOW_INTRINSICS)
-#	   if defined(uX_SUPPORTS_3DNOW)
-#       define uX_3DNOW 1								/* 3DNOW */
-#	   endif
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_SSE3 1                                /* SSE3  */
+#      if defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2 */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE */
+#      endif
+#    if defined(uX_3DNOW_INTRINSICS)
+#      if defined(uX_SUPPORTS_3DNOW)
+#       define uX_3DNOW 1                               /* 3DNOW */
+#      endif
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
 #       define uX_3DNOWPLUS 1
-#	   endif
-#	 endif
-#       define uX_INTRINSET 30										/* SSE3  */
+#      endif
+#    endif
+#       define uX_INTRINSET 30                                      /* SSE3  */
 #  elif (defined(INTRIN_VERSION) && ( INTRIN_VERSION >= 20)) && defined(uX_SSE_INTRINSICS) && defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2  */
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE */
-#	   endif
-#	 if defined(uX_3DNOW_INTRINSICS)
-#	   if defined(uX_SUPPORTS_3DNOW)
-#       define uX_3DNOW 1								/* 3DNOW */
-#	   endif
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_SSE2 1                                /* SSE2  */
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE */
+#      endif
+#    if defined(uX_3DNOW_INTRINSICS)
+#      if defined(uX_SUPPORTS_3DNOW)
+#       define uX_3DNOW 1                               /* 3DNOW */
+#      endif
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
 #       define uX_3DNOWPLUS 1
-#	   endif
-#	 endif
-#       define uX_INTRINSET 20										/* SSE2  */
+#      endif
+#    endif
+#       define uX_INTRINSET 20                                      /* SSE2  */
 #  elif (defined(INTRIN_VERSION) && (INTRIN_VERSION >= 10)) && defined(uX_SSE_INTRINSICS) && defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE 1								/* SSE  */
-#	 if defined(uX_3DNOW_INTRINSICS)
-#	   if defined(uX_SUPPORTS_3DNOW)
-#       define uX_3DNOW 1								/* 3DNOW */
-#	   endif
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_SSE 1                             /* SSE  */
+#    if defined(uX_3DNOW_INTRINSICS)
+#      if defined(uX_SUPPORTS_3DNOW)
+#       define uX_3DNOW 1                               /* 3DNOW */
+#      endif
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
 #       define uX_3DNOWPLUS 1
-#	   endif
-#	 endif
-#       define uX_INTRINSET 10										/* SSE  */
+#      endif
+#    endif
+#       define uX_INTRINSET 10                                      /* SSE  */
 #  elif (defined(INTRIN_VERSION) && (INTRIN_VERSION >= 1)) && defined(uX_3DNOW_INTRINSICS) && (defined(uX_SUPPORTS_3DNOW) || defined(uX_SUPPORTS_3DNOWPLUS))
-#       define uX_3DNOW 1								/* 3DNOW */
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_3DNOW 1                               /* 3DNOW */
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
 #       define uX_3DNOWPLUS 1
-#	   endif
-#       define uX_INTRINSET 8										/* uX_3DNOW  */
+#      endif
+#       define uX_INTRINSET 8                                       /* uX_3DNOW  */
 #  endif
 # elif defined(uX_AMD_INTRIN) && defined(uX_INTEL_INTRIN) && (defined(uX_AVX512_INTRINSICS) || defined(uX_AVX256_INTRINSICS) || defined(uX_SSE_INTRINSICS) || defined(uX_MMX_INTRINSICS)) && \
-	 !defined(uX_MIC)
+     !defined(uX_MIC)
 #  if (defined(INTRIN_VERSION) && (INTRIN_VERSION >= 60)) && defined(uX_AVX512_INTRINSICS) && defined(uX_SUPPORTS_AVX512)
-#       define uX_AVX512 1								/* AVX-512 and MIC */
-#       define uX_FMA_512 1							/* AVX-512 and MIC FMA */
-#       define uX_AVX512VL 1							/* AVX-512 VL */
-#       define uX_AVX512ER 1							/* AVX-512 ER */
-#       define uX_AVX512DQ 1							/* AVX-512 DQ */
-#	 if defined(uX_AVX256_V2_INTRINSICS)
-#	   if  defined(uX_SUPPORTS_AVX2)
-#       define uX_AVX2 1								/* AVX-2 */
-#	   endif
-#	 endif
-#	 if defined(uX_AVX256_INTRINSICS)
-#	   if defined(uX_SUPPORTS_AVX)
-#       define uX_AVX 1								/* AVX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_FMA4)
-#       define uX_FMA4 1								/* FMA3 */
-#	   endif
-#	   if  defined(uX_SUPPORTS_FMA3)
-#       define uX_FMA3 1								/* FMA3 */
-#	   endif
-#	   if defined(uX_SUPPORTS_XOP)
-#       define uX_XOP 1								/* XOP */
-#	   endif
-#	   if  defined(uX_SUPPORTS_F16C)
-#       define uX_F16C 1								/* F16C */
-#	   endif
-#	 endif
-#	 if defined(uX_SSE_INTRINSICS)
-#	   if  defined(uX_SUPPORTS_SSE42)
-#       define uX_SSE42 1								/* SSE4.2  */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE4A)
-#       define uX_SSE4A 1								/* SSE4A */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE41)
-#       define uX_SSE41 1								/* SSE4.1  */
+#       define uX_AVX512 1                              /* AVX-512 and MIC */
+#       define uX_FMA_512 1                         /* AVX-512 and MIC FMA */
+#       define uX_AVX512VL 1                            /* AVX-512 VL */
+#       define uX_AVX512ER 1                            /* AVX-512 ER */
+#       define uX_AVX512DQ 1                            /* AVX-512 DQ */
+#    if defined(uX_AVX256_V2_INTRINSICS)
+#      if  defined(uX_SUPPORTS_AVX2)
+#       define uX_AVX2 1                                /* AVX-2 */
+#      endif
+#    endif
+#    if defined(uX_AVX256_INTRINSICS)
+#      if defined(uX_SUPPORTS_AVX)
+#       define uX_AVX 1                             /* AVX  */
+#      endif
+#      if defined(uX_SUPPORTS_FMA4)
+#       define uX_FMA4 1                                /* FMA3 */
+#      endif
+#      if  defined(uX_SUPPORTS_FMA3)
+#       define uX_FMA3 1                                /* FMA3 */
+#      endif
+#      if defined(uX_SUPPORTS_XOP)
+#       define uX_XOP 1                             /* XOP */
+#      endif
+#      if  defined(uX_SUPPORTS_F16C)
+#       define uX_F16C 1                                /* F16C */
+#      endif
+#    endif
+#    if defined(uX_SSE_INTRINSICS)
+#      if  defined(uX_SUPPORTS_SSE42)
+#       define uX_SSE42 1                               /* SSE4.2  */
+#      endif
+#      if defined(uX_SUPPORTS_SSE4A)
+#       define uX_SSE4A 1                               /* SSE4A */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE41)
+#       define uX_SSE41 1                               /* SSE4.1  */
 #       define SSE_41 41
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSSE3)
-#       define uX_SSSE3 1								/* SSEE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2  */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE  */
-#	   endif
-#	 endif
-#	 if defined(uX_MMX_INTRINSICS)
-#	   if defined(uX_SUPPORTS_MMX)
-#       define uX_MMX 1								/* MMX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_MMXPLUS)
+#      endif
+#      if  defined(uX_SUPPORTS_SSSE3)
+#       define uX_SSSE3 1                               /* SSEE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE3)
+#       define uX_SSE3 1                                /* SSE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2  */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE  */
+#      endif
+#    endif
+#    if defined(uX_MMX_INTRINSICS)
+#      if defined(uX_SUPPORTS_MMX)
+#       define uX_MMX 1                             /* MMX  */
+#      endif
+#      if defined(uX_SUPPORTS_MMXPLUS)
 #       define uX_MMXPLUS 1
-#	   endif
-#	 endif
-#	 if defined(uX_3DNOW_INTRINSICS)
-#	   if defined(uX_SUPPORTS_3DNOW)
-#       define uX_3DNOW 1								/* 3DNOW  */
-#	   endif
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
-#       define uX_3DNOWPLUS 1							/* 3DNOWPLUS */
-#	   endif
-#	 endif
-#       define uX_INTRINSET 60										/* AVX-512 and or MIC  */
+#      endif
+#    endif
+#    if defined(uX_3DNOW_INTRINSICS)
+#      if defined(uX_SUPPORTS_3DNOW)
+#       define uX_3DNOW 1                               /* 3DNOW  */
+#      endif
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_3DNOWPLUS 1                           /* 3DNOWPLUS */
+#      endif
+#    endif
+#       define uX_INTRINSET 60                                      /* AVX-512 and or MIC  */
 #  elif (defined(INTRIN_VERSION) && (INTRIN_VERSION >= 52)) && defined(uX_AVX256_V2_INTRINSICS) && defined(uX_SUPPORTS_AVX2)
-#       define uX_AVX2 1								/* AVX-2 */
-#	   if defined(uX_SUPPORTS_FMA4)
-#       define uX_FMA4 1								/* FMA3 */
-#	   endif
-#	   if  defined(uX_SUPPORTS_FMA3)
-#       define uX_FMA3 1								/* FMA3 */
-#	   endif
-#	   if defined(uX_SUPPORTS_AVX)
-#       define uX_AVX 1								/* AVX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_XOP)
-#       define uX_XOP 1								/* XOP */
-#	   endif
-#	   if  defined(uX_SUPPORTS_F16C)
-#       define uX_F16C 1								/* F16C */
-#	   endif
-#	 if defined(uX_SSE_INTRINSICS)
-#	   if  defined(uX_SUPPORTS_SSE42)
-#       define uX_SSE42 1								/* SSE4.2  */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE4A)
-#       define uX_SSE4A 1								/* SSE4A */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE41)
-#       define uX_SSE41 1								/* SSE4.1  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSSE3)
-#       define uX_SSSE3 1								/* SSEE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2  */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE  */
-#	   endif
-#	 endif
-#	 if defined(uX_MMX_INTRINSICS)
-#	   if defined(uX_SUPPORTS_MMX)
-#       define uX_MMX 1								/* MMX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_MMXPLUS)
+#       define uX_AVX2 1                                /* AVX-2 */
+#      if defined(uX_SUPPORTS_FMA4)
+#       define uX_FMA4 1                                /* FMA3 */
+#      endif
+#      if  defined(uX_SUPPORTS_FMA3)
+#       define uX_FMA3 1                                /* FMA3 */
+#      endif
+#      if defined(uX_SUPPORTS_AVX)
+#       define uX_AVX 1                             /* AVX  */
+#      endif
+#      if defined(uX_SUPPORTS_XOP)
+#       define uX_XOP 1                             /* XOP */
+#      endif
+#      if  defined(uX_SUPPORTS_F16C)
+#       define uX_F16C 1                                /* F16C */
+#      endif
+#    if defined(uX_SSE_INTRINSICS)
+#      if  defined(uX_SUPPORTS_SSE42)
+#       define uX_SSE42 1                               /* SSE4.2  */
+#      endif
+#      if defined(uX_SUPPORTS_SSE4A)
+#       define uX_SSE4A 1                               /* SSE4A */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE41)
+#       define uX_SSE41 1                               /* SSE4.1  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSSE3)
+#       define uX_SSSE3 1                               /* SSEE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE3)
+#       define uX_SSE3 1                                /* SSE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2  */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE  */
+#      endif
+#    endif
+#    if defined(uX_MMX_INTRINSICS)
+#      if defined(uX_SUPPORTS_MMX)
+#       define uX_MMX 1                             /* MMX  */
+#      endif
+#      if defined(uX_SUPPORTS_MMXPLUS)
 #       define uX_MMXPLUS 1
-#	   endif
-#	 endif
-#	 if defined(uX_3DNOW_INTRINSICS)
-#	   if defined(uX_SUPPORTS_3DNOW)
-#       define uX_3DNOW 1								/* 3DNOW  */
-#	   endif
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
-#       define uX_3DNOWPLUS 1							/* 3DNOWPLUS */
-#	   endif
-#	 endif
-#       define uX_INTRINSET 52										/* AVX-2 FMA FMA4 */
+#      endif
+#    endif
+#    if defined(uX_3DNOW_INTRINSICS)
+#      if defined(uX_SUPPORTS_3DNOW)
+#       define uX_3DNOW 1                               /* 3DNOW  */
+#      endif
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_3DNOWPLUS 1                           /* 3DNOWPLUS */
+#      endif
+#    endif
+#       define uX_INTRINSET 52                                      /* AVX-2 FMA FMA4 */
 #  elif (defined(INTRIN_VERSION) && (INTRIN_VERSION >= 50)) && defined(uX_AVX256_INTRINSICS) && defined(uX_SUPPORTS_AVX)
-#       define uX_AVX 1								/* AVX  */
-#	   if defined(uX_SUPPORTS_FMA4)
-#       define uX_FMA4 1								/* FMA3 */
-#	   endif
-#	   if  defined(uX_SUPPORTS_FMA3)
-#       define uX_FMA3 1								/* FMA3 */
-#	   endif
-#	   if defined(uX_SUPPORTS_XOP)
-#       define uX_XOP 1								/* XOP  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_F16C)
-#       define uX_F16C 1								/* F16C */
-#	   endif
-#	 if defined(uX_SSE_INTRINSICS)
-#	   if  defined(uX_SUPPORTS_SSE42)
-#       define uX_SSE42 1								/* SSE4.2  */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE4A)
-#       define uX_SSE4A 1								/* SSE4A */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE41)
-#       define uX_SSE41 1								/* SSE4.1  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSSE3)
-#       define uX_SSSE3 1								/* SSEE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2  */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE  */
-#	   endif
-#	 endif
-#	 if defined(uX_MMX_INTRINSICS)
-#	   if defined(uX_SUPPORTS_MMX)
-#       define uX_MMX 1								/* MMX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_MMXPLUS)
+#       define uX_AVX 1                             /* AVX  */
+#      if defined(uX_SUPPORTS_FMA4)
+#       define uX_FMA4 1                                /* FMA3 */
+#      endif
+#      if  defined(uX_SUPPORTS_FMA3)
+#       define uX_FMA3 1                                /* FMA3 */
+#      endif
+#      if defined(uX_SUPPORTS_XOP)
+#       define uX_XOP 1                             /* XOP  */
+#      endif
+#      if  defined(uX_SUPPORTS_F16C)
+#       define uX_F16C 1                                /* F16C */
+#      endif
+#    if defined(uX_SSE_INTRINSICS)
+#      if  defined(uX_SUPPORTS_SSE42)
+#       define uX_SSE42 1                               /* SSE4.2  */
+#      endif
+#      if defined(uX_SUPPORTS_SSE4A)
+#       define uX_SSE4A 1                               /* SSE4A */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE41)
+#       define uX_SSE41 1                               /* SSE4.1  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSSE3)
+#       define uX_SSSE3 1                               /* SSEE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE3)
+#       define uX_SSE3 1                                /* SSE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2  */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE  */
+#      endif
+#    endif
+#    if defined(uX_MMX_INTRINSICS)
+#      if defined(uX_SUPPORTS_MMX)
+#       define uX_MMX 1                             /* MMX  */
+#      endif
+#      if defined(uX_SUPPORTS_MMXPLUS)
 #       define uX_MMXPLUS 1
-#	   endif
-#	 endif
-#	 if defined(uX_3DNOW_INTRINSICS)
-#	   if defined(uX_SUPPORTS_3DNOW)
-#       define uX_3DNOW 1								/* 3DNOW  */
-#	   endif
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
-#       define uX_3DNOWPLUS 1							/* 3DNOWPLUS */
-#	   endif
-#	 endif
-#       define uX_INTRINSET 50										/* AVX  */
+#      endif
+#    endif
+#    if defined(uX_3DNOW_INTRINSICS)
+#      if defined(uX_SUPPORTS_3DNOW)
+#       define uX_3DNOW 1                               /* 3DNOW  */
+#      endif
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_3DNOWPLUS 1                           /* 3DNOWPLUS */
+#      endif
+#    endif
+#       define uX_INTRINSET 50                                      /* AVX  */
 #  elif (defined(INTRIN_VERSION) && (INTRIN_VERSION >= 42)) && defined(uX_SSE_INTRINSICS) && defined(uX_SUPPORTS_SSE42)
-#	   if  defined(uX_SUPPORTS_SSE42)
-#       define uX_SSE42 1								/* SSE4.2  */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE4A)
-#       define uX_SSE4A 1								/* SSE4A */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE41)
-#       define uX_SSE41 1								/* SSE4.1  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSSE3)
-#       define uX_SSSE3 1								/* SSEE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2  */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE  */
-#	   endif
-#	 if defined(uX_MMX_INTRINSICS)
-#	   if defined(uX_SUPPORTS_MMX)
-#       define uX_MMX 1								/* MMX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_MMXPLUS)
+#      if  defined(uX_SUPPORTS_SSE42)
+#       define uX_SSE42 1                               /* SSE4.2  */
+#      endif
+#      if defined(uX_SUPPORTS_SSE4A)
+#       define uX_SSE4A 1                               /* SSE4A */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE41)
+#       define uX_SSE41 1                               /* SSE4.1  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSSE3)
+#       define uX_SSSE3 1                               /* SSEE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE3)
+#       define uX_SSE3 1                                /* SSE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2  */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE  */
+#      endif
+#    if defined(uX_MMX_INTRINSICS)
+#      if defined(uX_SUPPORTS_MMX)
+#       define uX_MMX 1                             /* MMX  */
+#      endif
+#      if defined(uX_SUPPORTS_MMXPLUS)
 #       define uX_MMXPLUS 1
-#	   endif
-#	 endif
-#	 if defined(uX_3DNOW_INTRINSICS)
-#	   if defined(uX_SUPPORTS_3DNOW)
-#       define uX_3DNOW 1								/* 3DNOW  */
-#	   endif
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
-#       define uX_3DNOWPLUS 1							/* 3DNOWPLUS */
-#	   endif
-#	 endif
-#       define uX_INTRINSET 42										/* SSE4.2  */
+#      endif
+#    endif
+#    if defined(uX_3DNOW_INTRINSICS)
+#      if defined(uX_SUPPORTS_3DNOW)
+#       define uX_3DNOW 1                               /* 3DNOW  */
+#      endif
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_3DNOWPLUS 1                           /* 3DNOWPLUS */
+#      endif
+#    endif
+#       define uX_INTRINSET 42                                      /* SSE4.2  */
 #  elif (defined(INTRIN_VERSION) && (INTRIN_VERSION >= 41)) && defined(uX_SSE_INTRINSICS) && defined(uX_SUPPORTS_SSE41)
-#       define uX_SSE41 1								/* SSE4.1  */
-#	   if defined(uX_SUPPORTS_SSE4A)
-#       define uX_SSE4A 1								/* SSE4A */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSSE3)
-#       define uX_SSSE3 1								/* SSEE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2  */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE  */
-#	   endif
-#	 if defined(uX_MMX_INTRINSICS)
-#	   if defined(uX_SUPPORTS_MMX)
-#       define uX_MMX 1								/* MMX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_MMXPLUS)
+#       define uX_SSE41 1                               /* SSE4.1  */
+#      if defined(uX_SUPPORTS_SSE4A)
+#       define uX_SSE4A 1                               /* SSE4A */
+#      endif
+#      if  defined(uX_SUPPORTS_SSSE3)
+#       define uX_SSSE3 1                               /* SSEE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE3)
+#       define uX_SSE3 1                                /* SSE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2  */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE  */
+#      endif
+#    if defined(uX_MMX_INTRINSICS)
+#      if defined(uX_SUPPORTS_MMX)
+#       define uX_MMX 1                             /* MMX  */
+#      endif
+#      if defined(uX_SUPPORTS_MMXPLUS)
 #       define uX_MMXPLUS 1
-#	   endif
-#	 endif
-#	 if defined(uX_3DNOW_INTRINSICS)
-#	   if defined(uX_SUPPORTS_3DNOW)
-#       define uX_3DNOW 1								/* 3DNOW  */
-#	   endif
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
-#       define uX_3DNOWPLUS 1							/* 3DNOWPLUS */
-#	   endif
-#	 endif
-#       define uX_INTRINSET 41										/* SSE4.1  */
+#      endif
+#    endif
+#    if defined(uX_3DNOW_INTRINSICS)
+#      if defined(uX_SUPPORTS_3DNOW)
+#       define uX_3DNOW 1                               /* 3DNOW  */
+#      endif
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_3DNOWPLUS 1                           /* 3DNOWPLUS */
+#      endif
+#    endif
+#       define uX_INTRINSET 41                                      /* SSE4.1  */
 #  elif (defined(INTRIN_VERSION) && (INTRIN_VERSION >= 40)) && defined(uX_SSE_INTRINSICS) && defined(uX_SUPPORTS_SSE4A)
-#       define uX_SSE4A 1								/* SSE4A */
-#	   if  defined(uX_SUPPORTS_SSE41)
-#       define uX_SSE41 1								/* SSE4.1  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSSE3)
-#       define uX_SSSE3 1								/* SSEE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2  */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE  */
-#	   endif
-#	 if defined(uX_MMX_INTRINSICS)
-#	   if defined(uX_SUPPORTS_MMX)
-#       define uX_MMX 1								/* MMX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_MMXPLUS)
+#       define uX_SSE4A 1                               /* SSE4A */
+#      if  defined(uX_SUPPORTS_SSE41)
+#       define uX_SSE41 1                               /* SSE4.1  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSSE3)
+#       define uX_SSSE3 1                               /* SSEE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE3)
+#       define uX_SSE3 1                                /* SSE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2  */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE  */
+#      endif
+#    if defined(uX_MMX_INTRINSICS)
+#      if defined(uX_SUPPORTS_MMX)
+#       define uX_MMX 1                             /* MMX  */
+#      endif
+#      if defined(uX_SUPPORTS_MMXPLUS)
 #       define uX_MMXPLUS 1
-#	   endif
-#	 endif
-#	 if defined(uX_3DNOW_INTRINSICS)
-#	   if defined(uX_SUPPORTS_3DNOW)
-#       define uX_3DNOW 1								/* 3DNOW  */
-#	   endif
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
-#       define uX_3DNOWPLUS 1							/* 3DNOWPLUS */
-#	   endif
-#	 endif
-#       define uX_INTRINSET 40										/* SSE4A  */
+#      endif
+#    endif
+#    if defined(uX_3DNOW_INTRINSICS)
+#      if defined(uX_SUPPORTS_3DNOW)
+#       define uX_3DNOW 1                               /* 3DNOW  */
+#      endif
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_3DNOWPLUS 1                           /* 3DNOWPLUS */
+#      endif
+#    endif
+#       define uX_INTRINSET 40                                      /* SSE4A  */
 #  elif (defined(INTRIN_VERSION) && (INTRIN_VERSION >= 31)) && defined(uX_SSE_INTRINSICS) && defined(uX_SUPPORTS_SSSE3)
-#       define uX_SSSE3 1								/* SSEE3  */
-#	   if  defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3  */
-#	   endif
-#	   if  defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2  */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE  */
-#	   endif
-#	 if defined(uX_MMX_INTRINSICS)
-#	   if defined(uX_SUPPORTS_MMX)
-#       define uX_MMX 1								/* MMX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_MMXPLUS)
+#       define uX_SSSE3 1                               /* SSEE3  */
+#      if  defined(uX_SUPPORTS_SSE3)
+#       define uX_SSE3 1                                /* SSE3  */
+#      endif
+#      if  defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2  */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE  */
+#      endif
+#    if defined(uX_MMX_INTRINSICS)
+#      if defined(uX_SUPPORTS_MMX)
+#       define uX_MMX 1                             /* MMX  */
+#      endif
+#      if defined(uX_SUPPORTS_MMXPLUS)
 #       define uX_MMXPLUS 1
-#	   endif
-#	 endif
-#	 if defined(uX_3DNOW_INTRINSICS)
-#	   if defined(uX_SUPPORTS_3DNOW)
-#       define uX_3DNOW 1								/* 3DNOW  */
-#	   endif
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
-#       define uX_3DNOWPLUS 1							/* 3DNOWPLUS */
-#	   endif
-#	 endif
-#       define uX_INTRINSET 31										/* SSEE3  */
+#      endif
+#    endif
+#    if defined(uX_3DNOW_INTRINSICS)
+#      if defined(uX_SUPPORTS_3DNOW)
+#       define uX_3DNOW 1                               /* 3DNOW  */
+#      endif
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_3DNOWPLUS 1                           /* 3DNOWPLUS */
+#      endif
+#    endif
+#       define uX_INTRINSET 31                                      /* SSEE3  */
 #  elif (defined(INTRIN_VERSION) && (INTRIN_VERSION >= 30)) && defined(uX_SSE_INTRINSICS) && defined(uX_SUPPORTS_SSE3)
-#       define uX_SSE3 1								/* SSE3  */
-#	   if  defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2  */
-#	   endif
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE  */
-#	   endif
-#	 if defined(uX_MMX_INTRINSICS)
-#	   if defined(uX_SUPPORTS_MMX)
-#       define uX_MMX 1								/* MMX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_MMXPLUS)
+#       define uX_SSE3 1                                /* SSE3  */
+#      if  defined(uX_SUPPORTS_SSE2)
+#       define uX_SSE2 1                                /* SSE2  */
+#      endif
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE  */
+#      endif
+#    if defined(uX_MMX_INTRINSICS)
+#      if defined(uX_SUPPORTS_MMX)
+#       define uX_MMX 1                             /* MMX  */
+#      endif
+#      if defined(uX_SUPPORTS_MMXPLUS)
 #       define uX_MMXPLUS 1
-#	   endif
-#	 endif
-#	 if defined(uX_3DNOW_INTRINSICS)
-#	   if defined(uX_SUPPORTS_3DNOW)
-#       define uX_3DNOW 1								/* 3DNOW  */
-#	   endif
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
-#       define uX_3DNOWPLUS 1							/* 3DNOWPLUS */
-#	   endif
-#	 endif
-#       define uX_INTRINSET 30										/* SSE3  */
+#      endif
+#    endif
+#    if defined(uX_3DNOW_INTRINSICS)
+#      if defined(uX_SUPPORTS_3DNOW)
+#       define uX_3DNOW 1                               /* 3DNOW  */
+#      endif
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_3DNOWPLUS 1                           /* 3DNOWPLUS */
+#      endif
+#    endif
+#       define uX_INTRINSET 30                                      /* SSE3  */
 #  elif (defined(INTRIN_VERSION) && (INTRIN_VERSION >= 20)) && defined(uX_SSE_INTRINSICS) && defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE2 1								/* SSE2  */
-#	   if defined(uX_SUPPORTS_SSE)
-#       define uX_SSE 1								/* SSE  */
-#	   endif
-#	 if defined(uX_MMX_INTRINSICS)
-#	   if defined(uX_SUPPORTS_MMX)
-#       define uX_MMX 1								/* MMX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_MMXPLUS)
+#       define uX_SSE2 1                                /* SSE2  */
+#      if defined(uX_SUPPORTS_SSE)
+#       define uX_SSE 1                             /* SSE  */
+#      endif
+#    if defined(uX_MMX_INTRINSICS)
+#      if defined(uX_SUPPORTS_MMX)
+#       define uX_MMX 1                             /* MMX  */
+#      endif
+#      if defined(uX_SUPPORTS_MMXPLUS)
 #       define uX_MMXPLUS 1
-#	   endif
-#	 endif
-#	 if defined(uX_3DNOW_INTRINSICS)
-#	   if defined(uX_SUPPORTS_3DNOW)
-#       define uX_3DNOW 1								/* 3DNOW  */
-#	   endif
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
-#       define uX_3DNOWPLUS 1							/* 3DNOWPLUS */
-#	   endif
-#	 endif
-#       define uX_INTRINSET 20										/* SSE2  */
+#      endif
+#    endif
+#    if defined(uX_3DNOW_INTRINSICS)
+#      if defined(uX_SUPPORTS_3DNOW)
+#       define uX_3DNOW 1                               /* 3DNOW  */
+#      endif
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_3DNOWPLUS 1                           /* 3DNOWPLUS */
+#      endif
+#    endif
+#       define uX_INTRINSET 20                                      /* SSE2  */
 #  elif (defined(INTRIN_VERSION) && (INTRIN_VERSION >= 10)) && defined(uX_SSE_INTRINSICS) && defined(uX_SUPPORTS_SSE2)
-#       define uX_SSE 1								/* SSE  */
-#	 if defined(uX_MMX_INTRINSICS)
-#	   if defined(uX_SUPPORTS_MMX)
-#       define uX_MMX 1								/* MMX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_MMXPLUS)
-#       define uX_MMXPLUS 1							/* MMXPLUS  */
-#	   endif
-#	 endif
-#	 if defined(uX_3DNOW_INTRINSICS)
-#	   if defined(uX_SUPPORTS_3DNOW)
-#       define uX_3DNOW 1								/* 3DNOW  */
-#	   endif
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
-#       define uX_3DNOWPLUS 1							/* 3DNOWPLUS */
-#	   endif
-#	 endif
-#       define uX_INTRINSET 10										/* SSE  */
+#       define uX_SSE 1                             /* SSE  */
+#    if defined(uX_MMX_INTRINSICS)
+#      if defined(uX_SUPPORTS_MMX)
+#       define uX_MMX 1                             /* MMX  */
+#      endif
+#      if defined(uX_SUPPORTS_MMXPLUS)
+#       define uX_MMXPLUS 1                         /* MMXPLUS  */
+#      endif
+#    endif
+#    if defined(uX_3DNOW_INTRINSICS)
+#      if defined(uX_SUPPORTS_3DNOW)
+#       define uX_3DNOW 1                               /* 3DNOW  */
+#      endif
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_3DNOWPLUS 1                           /* 3DNOWPLUS */
+#      endif
+#    endif
+#       define uX_INTRINSET 10                                      /* SSE  */
 #  elif (defined(INTRIN_VERSION) && (INTRIN_VERSION >= 1)) || (defined(uX_MMX_INTRINSICS) && (defined(uX_SUPPORTS_MMX) || defined(uX_SUPPORTS_MMXPLUS))) || \
-	(defined(uX_3DNOW_INTRINSICS) && (defined(uX_SUPPORTS_3DNOW) || defined(uX_SUPPORTS_3DNOWPLUS)))
-#	 if defined(uX_MMX_INTRINSICS)
-#	   if defined(uX_SUPPORTS_MMX)
-#       define uX_MMX 1								/* MMX  */
-#	   endif
-#	   if defined(uX_SUPPORTS_MMXPLUS)
+    (defined(uX_3DNOW_INTRINSICS) && (defined(uX_SUPPORTS_3DNOW) || defined(uX_SUPPORTS_3DNOWPLUS)))
+#    if defined(uX_MMX_INTRINSICS)
+#      if defined(uX_SUPPORTS_MMX)
+#       define uX_MMX 1                             /* MMX  */
+#      endif
+#      if defined(uX_SUPPORTS_MMXPLUS)
 #       define uX_MMXPLUS 1
-#	   endif
-#	 endif
-#	 if defined(uX_3DNOW_INTRINSICS)
-#	   if defined(uX_SUPPORTS_3DNOW)
-#       define uX_3DNOW 1								/* 3DNOW  */
-#	   endif
-#	   if defined(uX_SUPPORTS_3DNOWPLUS)
-#       define uX_3DNOWPLUS 1							/* 3DNOWPLUS */
-#	   endif
-#	 endif
-#       define uX_INTRINSET 8										/* MMX & 3DNOW  */
+#      endif
+#    endif
+#    if defined(uX_3DNOW_INTRINSICS)
+#      if defined(uX_SUPPORTS_3DNOW)
+#       define uX_3DNOW 1                               /* 3DNOW  */
+#      endif
+#      if defined(uX_SUPPORTS_3DNOWPLUS)
+#       define uX_3DNOWPLUS 1                           /* 3DNOWPLUS */
+#      endif
+#    endif
+#       define uX_INTRINSET 8                                       /* MMX & 3DNOW  */
 #  endif
 # else
 #error intrinsics specs not defined
@@ -2938,14 +3018,14 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 /* not implemented yet  */
 #  elif defined(uX_ARM_NEON_INTRIN) && defined(uX_ARM_NEON_INTRINSICS) && defined(uX_SUPPORTS_ARM_NEON)
 /* not implemented yet  */
-#	  ifndef uX_ARM_NEON
-#		define uX_ARM_NEON 1								/* ARM NEON */
-#	  endif
+#     ifndef uX_ARM_NEON
+#       define uX_ARM_NEON 1                                /* ARM NEON */
+#     endif
 #      if defined(uX_A64_CPU)
-#		define uX_INTRINSET 20								/* ARM NEON  */ /* with double floating point precision support*/
+#       define uX_INTRINSET 20                              /* ARM NEON  */ /* with double floating point precision support*/
 #      else
-#		define uX_INTRINSET 10								/* ARM NEON  */ /* with single floating point precision support*/
-#	   endif
+#       define uX_INTRINSET 10                              /* ARM NEON  */ /* with single floating point precision support*/
+#      endif
 #  endif
 #endif
 
@@ -2965,26 +3045,26 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #if defined(uX_X86_OR_X64_CPU)
 #  if defined(uX_AVX512)
 #       define uX_SETCONSTBITS 512
-#		define uX_STRUCTSALIGNSET 64
-#		define uX_ALIGNSET 64
+#       define uX_STRUCTSALIGNSET 64
+#       define uX_ALIGNSET 64
 #  elif defined(uX_AVX) || defined(uX_AVX2)
 #       define uX_SETCONSTBITS 256
-#		define uX_STRUCTSALIGNSET 32
-#		define uX_ALIGNSET 32
+#       define uX_STRUCTSALIGNSET 32
+#       define uX_ALIGNSET 32
 #  elif defined(uX_SSE) || defined(uX_SSE2)
 #       define uX_SETCONSTBITS 128
-#		define uX_STRUCTSALIGNSET 16
-#		define uX_ALIGNSET 16
+#       define uX_STRUCTSALIGNSET 16
+#       define uX_ALIGNSET 16
 #  elif defined(uX_MMX) || defined(uX_3DNOW)
 #       define uX_SETCONSTBITS 64
-#		define uX_STRUCTSALIGNSET 8
-#		define uX_ALIGNSET 8
+#       define uX_STRUCTSALIGNSET 8
+#       define uX_ALIGNSET 8
 #  endif
 #elif defined(uX_A32_OR_A64_CPU)
 # if  defined(uX_ARM_NEON)
 #       define uX_SETCONSTBITS 128
-#		define uX_STRUCTSALIGNSET 8
-#		define uX_ALIGNSET 8
+#       define uX_STRUCTSALIGNSET 8
+#       define uX_ALIGNSET 8
 # elif 
 # endif
 #endif
@@ -2992,33 +3072,33 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #if defined(uX_X86_OR_X64_CPU)
 #  if defined(uX_AVX512)
 #       define uX_AVX512_SETCONSTBITS 512
-#		define uX_AVX512_STRUCTSALIGNSET 64
-#		define uX_AVX512_ALIGNSET 64
+#       define uX_AVX512_STRUCTSALIGNSET 64
+#       define uX_AVX512_ALIGNSET 64
 #  endif
 #  if defined(uX_AVX) || defined(uX_AVX2)
 #       define uX_AVX_SETCONSTBITS 256
-#		define uX_AVX_STRUCTSALIGNSET 32
-#		define uX_AVX_ALIGNSET 32
+#       define uX_AVX_STRUCTSALIGNSET 32
+#       define uX_AVX_ALIGNSET 32
 #  endif
 #  if defined(uX_SSE) || defined(uX_SSE2)
 #       define uX_SSE_SETCONSTBITS 128
-#		define uX_SSE_STRUCTSALIGNSET 16
-#		define uX_SSE_ALIGNSET 16
+#       define uX_SSE_STRUCTSALIGNSET 16
+#       define uX_SSE_ALIGNSET 16
 #  endif
 #  if defined(uX_MMX) || defined(uX_3DNOW)
 #       define uX_MMX_SETCONSTBITS 64
-#		define uX_MMX_STRUCTSALIGNSET 8
-#		define uX_MMX_ALIGNSET 8
+#       define uX_MMX_STRUCTSALIGNSET 8
+#       define uX_MMX_ALIGNSET 8
 #  endif
 #elif defined(uX_A32_OR_A64_CPU)
 # if  defined(uX_ARM_NEON)
 #       define uX_ARM_NEON_SETCONSTBITS 128
-#		define uX_ARM_NEON_STRUCTSALIGNSET 8
-#		define uX_ARM_NEON_ALIGNSET 8
+#       define uX_ARM_NEON_STRUCTSALIGNSET 8
+#       define uX_ARM_NEON_ALIGNSET 8
 #  else
 #       define uX_ARM_SETCONSTBITS 128
-#		define uX_ARM_STRUCTSALIGNSET 8
-#		define uX_ARM_ALIGNSET 8
+#       define uX_ARM_STRUCTSALIGNSET 8
+#       define uX_ARM_ALIGNSET 8
 # endif
 #endif
 
@@ -3078,12 +3158,18 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 // enable precise precision on all platforms, this will enable concurrency::precise_math also if AMP suppport is enabled for the platform
 # if defined(_M_FP_PRECISE)
 #       define uX_USE_PRECISE 1
+#elif defined(__GNUC__) || defined(__clang__) || defined(__INTEL_COMPILER)
+#       define uX_USE_PRECISE 1
 # endif
 
 // enable strict precision on all platforms, this will enable concurrency::precise_math also if AMP suppport is enabled for the platform
 # if defined(_M_FP_STRICT)
 #       define uX_USE_STRICT 1
 # endif
+
+#if !defined(uX_USE_FAST) && !defined(uX_USE_STRICT) && !defined(uX_USE_PRECISE)
+#       define uX_USE_PRECISE 1
+#endif
 
 // check if the preprocessor have this enabled at same time
 # if (defined(uX_USE_FAST) && (uX_USE_FAST >= 1)) && ((defined(uX_USE_PRECISE) && (uX_USE_PRECISE >= 1)) || (defined(uX_USE_STRICT) && (uX_USE_STRICT >= 1))) || \
@@ -3142,7 +3228,7 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #       undef uX_CUDA_SUPPORT
 #       undef uX_USE_CUDA
 #elif defined(uX_ARCH_SUPPORTS_DOUBLE) && (defined(uX_USE_PRECISE) || defined(uX_USE_STRICT))
-#       define uX_DOUBLE_SUPPORT 1		/* with double support you have float support enabled also, just the REALs change to double precision*/
+#       define uX_DOUBLE_SUPPORT 1      /* with double support you have float support enabled also, just the REALs change to double precision*/
 #       define uX_DOUBLE_PRECISION 1
 # ifdef uX_USE_PRECISE
 #       define uX_PRECISE_SUPPORT 1
@@ -3158,7 +3244,7 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #       define uX_CUDA_USE_PRECISE_PRECISION 1
 # endif
 #       define uX_NO_STRICT_SUPPORT 1
-#       define uX_NO_STRICT_PRECISION 1	/* lets secure STRICT macros aren't enable by mistake */
+#       define uX_NO_STRICT_PRECISION 1 /* lets secure STRICT macros aren't enable by mistake */
 # endif
 # ifdef uX_USE_STRICT
 #       define uX_STRICT_SUPPORT 1
@@ -3174,7 +3260,7 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #       define uX_CUDA_USE_STRICT_PRECISION 1
 # endif
 #       define uX_NO_PRECISE_SUPPORT 1
-#       define uX_NO_PRECISE_PRECISION 1	/* lets secure precise macros aren't enable by mistake */
+#       define uX_NO_PRECISE_PRECISION 1    /* lets secure precise macros aren't enable by mistake */
 # endif
 #       define uX_USE_F64 1
 #       define uX_REAL_USE_F64 1
@@ -3190,8 +3276,8 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 # endif
 #       define uX_NO_FAST_SUPPORT 1
 #       define uX_NO_FAST_PRECISION 1
-//#       define uX_NO_FLOAT_SUPPORT 1		/* float are hallways available */
-//#       define uX_NO_SINGLE_PRECISION 1		/* float are hallways available */
+//#       define uX_NO_FLOAT_SUPPORT 1      /* float are hallways available */
+//#       define uX_NO_SINGLE_PRECISION 1       /* float are hallways available */
 #elif defined(uX_NO_ARCH_SUPPORTS_DOUBLE) && (defined(uX_USE_PRECISE) || defined(uX_USE_STRICT))
 #       define uX_FLOAT_SUPPORT 1
 #       define uX_SINGLE_PRECISION 1
@@ -3240,9 +3326,9 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #       define uX_CUDA_USE_SINGLE_PRECISION 1
 # endif
 #       define uX_NO_FAST_SUPPORT 1
-#       define uX_NO_FAST_PRECISION 1		/* lets secure fast macros aren't enable by mistake */
+#       define uX_NO_FAST_PRECISION 1       /* lets secure fast macros aren't enable by mistake */
 #       define uX_NO_DOUBLE_SUPPORT 1
-#       define uX_NO_DOUBLE_PRECISION 1		/* lets secure double macros aren't enable by mistake */
+#       define uX_NO_DOUBLE_PRECISION 1     /* lets secure double macros aren't enable by mistake */
 #elif defined(uX_USE_FAST)
 #       define uX_FAST_SUPPORT 1
 #       define uX_FAST_PRECISION 1
@@ -3265,11 +3351,11 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #       define uX_CUDA_USE_SINGLE_PRECISION 1
 # endif
 #       define uX_NO_DOUBLE_SUPPORT 1
-#       define uX_NO_DOUBLE_PRECISION 1		/* lets secure double macros aren't enable by mistake */
+#       define uX_NO_DOUBLE_PRECISION 1     /* lets secure double macros aren't enable by mistake */
 #       define uX_NO_PRECISE_SUPPORT 1
-#       define uX_NO_PRECISE_PRECISION 1	/* lets secure precise macros aren't enable by mistake */
+#       define uX_NO_PRECISE_PRECISION 1    /* lets secure precise macros aren't enable by mistake */
 #       define uX_NO_STRICT_SUPPORT 1
-#       define uX_NO_STRICT_PRECISION 1	/* lets secure STRICT macros aren't enable by mistake */
+#       define uX_NO_STRICT_PRECISION 1 /* lets secure STRICT macros aren't enable by mistake */
 #elif defined(uX_ARCH_SUPPORTS_DOUBLE) && defined(uX_USE_FAST)
 #error ERROR: fast precision support cannot be used with double precision floating-point for conformance with ISO C and C++ standard
 #else
@@ -3285,18 +3371,18 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 
 #if !defined(uX_GPU_VERS_SET)
 #  if defined(uX_CUDA_GPU) && (__CUDA_ARCH__ >= 200)
-#		define uX_GPU_VERS_SET 200
+#       define uX_GPU_VERS_SET 200
 #  elif defined(uX_CUDA_GPU) && (__CUDA_ARCH__ >= 130)
-#		define uX_GPU_VERS_SET 130
+#       define uX_GPU_VERS_SET 130
 #  endif
 #endif
 
 #if ((defined(uX_GPU_VERS_SET) && (uX_GPU_VERS_SET >= 130)) || (defined(uX_INTRINSET) && (uX_INTRINSET >= 20))) && defined(uX_USE_DOUBLE_PRECISION)
-#		define uX_SUPPORTS_DOUBLE_MASK_I64 1
+#       define uX_SUPPORTS_DOUBLE_MASKS_AS_I64 1
 #endif
 
-#if defined(uX_SUPPORTS_DOUBLE_MASK_I64) && defined(uX_USE_INT64)
-#		define uX_DOUBLE_MASK_I64 1
+#if defined(uX_SUPPORTS_DOUBLE_MASKS_AS_I64) && defined(uX_USE_INT64)
+#       define uX_DOUBLE_MASKS_AS_I64 1
 #endif
 
 // SSE Vector registers types are enable by default and disabled if building for AVX
@@ -3312,7 +3398,7 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #       define uX_REALVEC_AVX_REGISTERS 1
 #       define uX_STDVEC_AVX_REGISTERS 1
 #elif defined(uX_SSE_INTRINSICS)
-#		define uX_SSE_VECTOR_REGISTERS 1
+#       define uX_SSE_VECTOR_REGISTERS 1
 #       define uX_REALVEC_SSE_REGISTERS 1
 #       define uX_STDVEC_SSE_REGISTERS 1
 #elif defined(uX_ARM_NEON_INTRINSICS)
@@ -3358,6 +3444,17 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 // make sure uX_DEBUG is defined in all _DEBUG configurations as well
 #if (defined(NDEBUG) || defined(_NDEBUG)) && !defined(_DEBUG) && !defined(DEBUG)
 #       define uX_NDEBUG 1
+#endif
+
+/**
+Assert macro
+*/
+#ifndef uX_ENABLE_ASSERTS
+# if defined(uX_DEBUG) && !defined(uX_CUDACC)
+#   define uX_ENABLE_ASSERTS 1
+# else
+#   define uX_ENABLE_ASSERTS 0
+# endif
 #endif
 
 // enable output debug in intrinsics vectors

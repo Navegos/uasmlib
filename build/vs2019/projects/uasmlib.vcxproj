@@ -28,13 +28,10 @@
     <UASM Include="..\..\..\src\x86\asm\uXcpuidex.asm" />
     <UASM Include="..\..\..\src\x86\asm\uXdll.asm" />
     <None Include="..\..\..\README.md" />
-    <None Include="..\..\..\src\x86\asm\uXmacros.inc">
-      <FileType>Document</FileType>
-    </None>
-    <UASM Include="..\..\..\src\x86\asm\uXintrincpu.asm" />
-    <UASM Include="..\..\..\src\x86\asm\uXx86cpua.asm" />
+    <UASM Include="..\..\..\src\x86\asm\uXcpua.asm" />
     <UASM Include="..\..\..\src\x86\asm\uXxgetbv.asm" />
     <UASM Include="..\..\..\src\x86\asm\uXxsetbv.asm" />
+    <ClCompile Include="..\..\..\src\uXAssert.cpp" />
     <ClCompile Include="..\..\..\src\x86\AVX256\asm\uXymmconstdata.asm" />
     <ClCompile Include="..\..\..\src\x86\AVX256\asm\uXimmintrin.asm" />
     <ClCompile Include="..\..\..\src\x86\AVX256\asm\uXimmblend.asm" />
@@ -71,6 +68,7 @@
     <UASM Include="..\..\..\src\x86\SSE\asm\uXwmmintrin.asm">
       <FileType>Document</FileType>
     </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXemmarithmethic.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmconstdata.asm">
       <FileType>Document</FileType>
     </UASM>
@@ -78,6 +76,7 @@
       <FileType>Document</FileType>
     </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmpermuteps.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmpshufw.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmshuffleps.asm" />
   </ItemGroup>
   <ItemGroup>
@@ -91,7 +90,9 @@
     <ClInclude Include="..\..\..\include\uXSalProcess.h" />
     <ClInclude Include="..\..\..\include\uXTypes.h" />
     <ClInclude Include="..\..\..\include\uXVers.h" />
-    <ClInclude Include="..\..\..\include\x86\uXAVX256Structs.h" />
+    <ClInclude Include="..\..\..\include\x86\uXemmarithmetic.h" />
+    <ClInclude Include="..\..\..\include\x86\uXymmStructs.h" />
+    <ClInclude Include="..\..\..\include\x86\uXemmdata.h" />
     <ClInclude Include="..\..\..\include\x86\uXemmintmisc.h" />
     <ClInclude Include="..\..\..\include\x86\uXemmintrin.h" />
     <ClInclude Include="..\..\..\include\x86\uXemmintshifts.h" />
@@ -102,18 +103,21 @@
     <ClInclude Include="..\..\..\include\x86\uXimmcmp.h" />
     <ClInclude Include="..\..\..\include\x86\uXimmintrin.h" />
     <ClInclude Include="..\..\..\include\x86\uXmmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXmmintshifts.h" />
     <ClInclude Include="..\..\..\include\x86\uXMMXStructs.h" />
     <ClInclude Include="..\..\..\include\x86\uXnmmintrin.h" />
     <ClInclude Include="..\..\..\include\x86\uXpmmintrin.h" />
     <ClInclude Include="..\..\..\include\x86\uXnmmcmpestr.h" />
     <ClInclude Include="..\..\..\include\x86\uXsmmblend.h" />
     <ClInclude Include="..\..\..\include\x86\uXsmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXSSEStructs.h" />
+    <ClInclude Include="..\..\..\include\x86\uXxmmStructs.h" />
     <ClInclude Include="..\..\..\include\x86\uXtmmalignr.h" />
     <ClInclude Include="..\..\..\include\x86\uXtmmintrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXwmmaeskeyassist.h" />
     <ClInclude Include="..\..\..\include\x86\uXwmmintrin.h" />
     <ClInclude Include="..\..\..\include\x86\uXx86Cpu.h" />
     <ClInclude Include="..\..\..\include\x86\uXx86Intrin.h" />
+    <ClInclude Include="..\..\..\include\x86\uXxmmdata.h" />
     <ClInclude Include="..\..\..\include\x86\uXxmmintrin.h" />
     <ClInclude Include="..\..\..\include\x86\uXxmmpermuteps.h" />
     <ClInclude Include="..\..\..\include\x86\uXxmmpshufw.h" />
@@ -124,18 +128,14 @@
     <ClCompile Include="..\..\..\src\uasmlib.cpp" />
     <ClCompile Include="..\..\..\src\uXMisc.cpp" />
     <None Include="..\..\..\src\x86\SSE\uXAVX256Structs.cpp" />
-    <ClCompile Include="..\..\..\src\x86\SSE\uXSSEStructs.cpp" />
+    <ClCompile Include="..\..\..\src\x86\SSE\uXxmmStructs.cpp" />
     <ClCompile Include="..\..\..\src\x86\uXx86Cpu.cpp" />
     <ClCompile Include="..\..\..\src\x86\uXx86Intrin.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\.gitignore" />
-    <None Include="..\..\..\src\x86\asm\uXx86asm.inc" />
-    <None Include="..\..\..\src\x86\asm\uXx86cpu.inc" />
-    <None Include="..\..\..\src\x86\asm\uXConstants.inc" />
-    <None Include="..\..\..\src\x86\SSE\asm\uXsseintrin.inc" />
+    <None Include="..\..\..\src\x86\asm\uXasm.inc" />
     <None Include="..\..\..\src\x86\SSE\asm\uXxmmconstdata.inc" />
-    <None Include="..\..\..\src\x86\SSE\asm\xmmtypes.inc" />
     <None Include="..\export\uasmlib-export_X64.def" />
   </ItemGroup>
   <ItemGroup>
@@ -143,34 +143,34 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{69871AEF-A293-4F8C-A870-9A800286E031}</ProjectGuid>
+    <ProjectGuid>{978B5680-3A03-4C76-A233-37615DBE61F5}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>uasmlib</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -233,13 +233,12 @@
       <ModuleDefinitionFile>$(SolutionDir)export\uasmlib-export_X32.def</ModuleDefinitionFile>
     </Link>
     <UASM>
-      <PreprocessorDefinitions>__X32__;WIN32;WINDOWS;EXTERNC_VECCALL;DEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>EXTERNC_VECCALL;DEBUG;_DEBUG</PreprocessorDefinitions>
       <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/;../../../src/x86/AVX256/asm/;../../../src/x86/AVX512/asm/</IncludePaths>
       <OutputFormat>1</OutputFormat>
-      <STDCALLSymbolDecoration>0</STDCALLSymbolDecoration>
+      <UseSafeExceptionHandlers>true</UseSafeExceptionHandlers>
       <CNamesDecoratedPrefix>true</CNamesDecoratedPrefix>
-      <SetFastCallType>1</SetFastCallType>
-      <CallingConvention>2</CallingConvention>
+      <SetCaseMap>2</SetCaseMap>
     </UASM>
     <ResourceCompile>
       <PreprocessorDefinitions>_MANIFEST;WIN32;_WIN32;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;_DEBUG;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -269,13 +268,11 @@ copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win32\vc14</Command>
       <ModuleDefinitionFile>$(SolutionDir)export\uasmlib-export_X64.def</ModuleDefinitionFile>
     </Link>
     <UASM>
-      <PreprocessorDefinitions>__X64__;WIN64;WINDOWS;EXTERNC_VECCALL;DEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>EXTERNC_VECCALL;DEBUG;_DEBUG</PreprocessorDefinitions>
       <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/;../../../src/x86/AVX256/asm/;../../../src/x86/AVX512/asm/</IncludePaths>
       <OutputFormat>2</OutputFormat>
-      <STDCALLSymbolDecoration>0</STDCALLSymbolDecoration>
-      <CNamesDecoratedPrefix>true</CNamesDecoratedPrefix>
-      <SetFastCallType>1</SetFastCallType>
-      <CallingConvention>2</CallingConvention>
+      <SetCaseMap>2</SetCaseMap>
+      <FASTCALLSymbolDecoration>0</FASTCALLSymbolDecoration>
     </UASM>
     <ResourceCompile>
       <PreprocessorDefinitions>_MANIFEST;__x64__;WIN64;_WIN64;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;_DEBUG;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -309,10 +306,8 @@ copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win64\vc14</Command>
       <UseSafeExceptionHandlers>true</UseSafeExceptionHandlers>
       <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/;../../../src/x86/AVX256/asm/;../../../src/x86/AVX512/asm/</IncludePaths>
       <OutputFormat>1</OutputFormat>
-      <STDCALLSymbolDecoration>0</STDCALLSymbolDecoration>
       <CNamesDecoratedPrefix>true</CNamesDecoratedPrefix>
-      <SetFastCallType>1</SetFastCallType>
-      <CallingConvention>2</CallingConvention>
+      <SetCaseMap>2</SetCaseMap>
     </UASM>
     <ResourceCompile>
       <PreprocessorDefinitions>_MANIFEST;WIN32;_WIN32;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;NDEBUG;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -343,10 +338,8 @@ copy $(OutDir)$(TargetName).lib $(UASMLIB_PATH)\lib\Win32\vc14</Command>
       <PreprocessorDefinitions>__X64__;WIN64;WINDOWS;EXTERNC_VECCALL;NDEBUG</PreprocessorDefinitions>
       <IncludePaths>../../../src/x86/asm/;../../../src/x86/SSE/asm/;../../../src/x86/AVX256/asm/;../../../src/x86/AVX512/asm/</IncludePaths>
       <OutputFormat>2</OutputFormat>
-      <STDCALLSymbolDecoration>0</STDCALLSymbolDecoration>
-      <CNamesDecoratedPrefix>true</CNamesDecoratedPrefix>
-      <SetFastCallType>1</SetFastCallType>
-      <CallingConvention>2</CallingConvention>
+      <SetCaseMap>2</SetCaseMap>
+      <FASTCALLSymbolDecoration>0</FASTCALLSymbolDecoration>
     </UASM>
     <ResourceCompile>
       <PreprocessorDefinitions>_MANIFEST;__x64__;WIN64;_WIN64;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;NDEBUG;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>

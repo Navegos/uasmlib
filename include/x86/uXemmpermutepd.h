@@ -17,21 +17,20 @@
 #endif
 
 uX_EXTERNC_BEGIN
-
-uX_PACK_PUSH16
+uX_PACK_PUSH_XMM
 
 /*
  * DP, misc
  */
 
-	extern __m128d uX_callconv _uX_mm_permute_00_pd(__m128d Inxmm_A);
-	extern __m128d uX_callconv _uX_mm_permute_01_pd(__m128d Inxmm_A);
-	extern __m128d uX_callconv _uX_mm_permute_10_pd(__m128d Inxmm_A);
-	extern __m128d uX_callconv _uX_mm_permute_11_pd(__m128d Inxmm_A);
+    extern __m128d uX_callconv _uX_mm_permute_00_pd(__m128d Inxmm_A);
+    extern __m128d uX_callconv _uX_mm_permute_01_pd(__m128d Inxmm_A);
+    extern __m128d uX_callconv _uX_mm_permute_10_pd(__m128d Inxmm_A);
+    extern __m128d uX_callconv _uX_mm_permute_11_pd(__m128d Inxmm_A);
 
 uX_PACK_POP
-
 uX_EXTERNC_END
+
 #endif // uX_SSE2
 
 #endif /*defined(uX_INTRINSICS_SUPPORT) && defined(uX_X86_OR_X64_CPU) && !defined(uX_NO_INTRINSICS_SUPPORT)*/

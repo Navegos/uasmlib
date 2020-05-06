@@ -19,7 +19,6 @@
 #endif  /* _MMINTRIN_H_INCLUDED */
 
 uX_EXTERNC_BEGIN
-
 uX_PACK_PUSH8
 
 struct __uX64;
@@ -41,8 +40,8 @@ typedef struct uXVC_VEC_INTRINTYPE8 __uX64
 
 #if defined(uX_MMX) && defined(uX_X86)
 
-	__uX64(void)uX_default_ctor;
-	~__uX64(void)uX_default_ctor;
+	__uX64(void)uX_default;
+	~__uX64(void)uX_default;
 	
     /**
      * Constructor initialization from type __m64.
@@ -202,7 +201,6 @@ typedef struct uXVC_VEC_INTRINTYPE8 __uX64
 }uXGC_VEC_INTRINTYPE8 __uX64;
 
 uX_PACK_POP
-
 uX_EXTERNC_END
 
 #endif // uX_SSE

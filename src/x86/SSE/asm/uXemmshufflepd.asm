@@ -1,81 +1,79 @@
 
-	include uXx86asm.inc
-
 ifndef __MIC__
 
-	.xmm
-	option arch:sse
-	option evex:0
-	
-	include uXsseintrin.inc
-	
-	.data?
+    include uXx86asm.inc
 
-	.data
+    .xmm
+    option arch:sse
+    option evex:0
 
-	.const
-	
-		alignsize_t
-		_m128dshufpdjmptable isize_t offset _m128dshufpd_0, offset _m128dshufpd_1, offset _m128dshufpd_2, offset _m128dshufpd_3				
-		
-	alignxmmfieldproc
-	callconvopt
-	
-	.code
+    .data?
 
-funcstart _uX_mm_shuffle_00_pd, callconv, xmmword, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-			shufpd				xmm0,			xmm1,			0
-			ret
-funcend
+    .data
 
-funcstart _uX_mm_shuffle_01_pd, callconv, xmmword, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-			shufpd				xmm0,			xmm1,			1
-			ret
-funcend
+    .const
 
-funcstart _uX_mm_shuffle_10_pd, callconv, xmmword, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-			shufpd				xmm0,			xmm1,			2
-			ret
-funcend
+        alignsize_t
+        _m128dshufpdjmptable isize_t offset _m128dshufpd_0, offset _m128dshufpd_1, offset _m128dshufpd_2, offset _m128dshufpd_3
 
-funcstart _uX_mm_shuffle_11_pd, callconv, xmmword, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-			shufpd				xmm0,			xmm1,			3
-			ret
-funcend
+    .code
 
-funcstart _uX_mm_shuffle_pd, callconv, xmmword, < >, Inxmm_A:xmmword, Inxmm_B:xmmword, Inint_Imm:dword
-			
-		;.if(rparam2 > 3)
-		;	ret
-		;.else
+    callconvopt 
+    alignxmmfieldproc
 
-		ifndef __X64__
-			movzx			eax,	byte ptr [rparam2]
-			;mov				rbx,	dword ptr [rbx+rparam2*4]
-			jmp		dword ptr [_m128dshufpdjmptable+eax*size_t_size]
-		else
-			;movzx			rax,	byte ptr [rparam2]
-			lea				rbx,	qword ptr [_m128dshufpdjmptable]
-			mov				rbx,	qword ptr [rbx+rparam2*size_t_size]
-			jmp				rbx
-		endif
-		
-		_m128dshufpd_0 label size_t
-			shufpd				xmm0,			xmm1,			0
-			ret
-		_m128dshufpd_1 label size_t
-			shufpd				xmm0,			xmm1,			1
-			ret
-		_m128dshufpd_2 label size_t
-			shufpd				xmm0,			xmm1,			2
-			ret
-		_m128dshufpd_3 label size_t
-			shufpd				xmm0,			xmm1,			3
-			ret
-		;.endif
+procstart _uX_mm_shuffle_00_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
+        shufpd          xmm0,           xmm1,           0
+        ret
+procend
 
-funcend
+procstart _uX_mm_shuffle_01_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
+        shufpd          xmm0,           xmm1,           1
+        ret
+procend
+
+procstart _uX_mm_shuffle_10_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
+        shufpd          xmm0,           xmm1,           2
+        ret
+procend
+
+procstart _uX_mm_shuffle_11_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
+        shufpd          xmm0,           xmm1,           3
+        ret
+procend
+
+procstart _uX_mm_shuffle_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword, Inint_Imm:dword
+        push         rbase
+        .if((rparam2 < 0) || (rparam2 > 3))
+        jmp         _m128dshufpd_end
+        .endif
+
+        ifdef __X32__
+        movzx       rbase,    byte ptr [rparam2]
+        jmp     dword ptr [_m128dshufpdjmptable+rbase*size_t_size]
+        else
+        lea         rbase,    qword ptr [_m128dshufpdjmptable]
+        mov         rbase,    qword ptr [rbase+rparam2*size_t_size]
+        jmp         rbx
+        endif
+
+        _m128dshufpd_0 label size_t
+        shufpd          xmm0,           xmm1,           0
+        jmp         _m128dshufpd_end
+        _m128dshufpd_1 label size_t
+        shufpd          xmm0,           xmm1,           1
+        jmp         _m128dshufpd_end
+        _m128dshufpd_2 label size_t
+        shufpd          xmm0,           xmm1,           2
+        jmp         _m128dshufpd_end
+        _m128dshufpd_3 label size_t
+        shufpd          xmm0,           xmm1,           3
+        ;jmp         _m128dshufpd_end
+
+        _m128dshufpd_end:
+        pop         rbase
+        ret
+procend
 
 endif ;__MIC__
 
-	end
+    end

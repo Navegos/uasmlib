@@ -8,7 +8,7 @@
 
 uX_EXTERNC_BEGIN
 
-uX_PACK_PUSH_POINTER
+uX_PACK_PUSH_PTR
 
 //extern int DllMain(void*, unsigned int, void*);
 

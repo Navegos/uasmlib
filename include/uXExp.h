@@ -24,7 +24,7 @@
 #endif
 
 
-#ifndef _WINDOWS_
+#if defined(_WINDOWS) && !defined(_WINDOWS_)
 # pragma warning( push )
 #if __INTEL_COMPILER
 # pragma warning( disable: 271 310 )
@@ -58,29 +58,29 @@
 
 #ifdef __cplusplus
 # ifndef EXTERN_C_BEGIN
-#	define EXTERN_C_BEGIN extern "C" {
+#   define EXTERN_C_BEGIN extern "C" {
 # endif
 # ifndef EXTERN_C_END
-#	define EXTERN_C_END };
+#   define EXTERN_C_END };
 # endif
 # ifndef EXTERN_CC_BEGIN
-#	define EXTERN_CC_BEGIN extern "C++" {
+#   define EXTERN_CC_BEGIN extern "C++" {
 # endif
 # ifndef EXTERN_CC_END
-#	define EXTERN_CC_END };
+#   define EXTERN_CC_END };
 # endif
 #else
 # ifndef EXTERN_C_BEGIN
-#	define EXTERN_C_BEGIN
+#   define EXTERN_C_BEGIN
 # endif
 # ifndef EXTERN_C_END
-#	define EXTERN_C_END
+#   define EXTERN_C_END
 # endif
 # ifndef EXTERN_CC_BEGIN
-#	define EXTERN_CC_BEGIN
+#   define EXTERN_CC_BEGIN
 # endif
 # ifndef EXTERN_CC_END
-#	define EXTERN_CC_END
+#   define EXTERN_CC_END
 # endif
 #endif
 
@@ -98,34 +98,34 @@ EXTERN_CC_END
 
 #ifdef __cplusplus
 # ifndef _EXTERNC
-#	define _EXTERNC extern "C"
+#   define _EXTERNC extern "C"
 # endif
 # ifndef _EXTERNCC
-#	define _EXTERNCC extern "C++"
+#   define _EXTERNCC extern "C++"
 # endif
 # ifndef _EXTERN
-#	define _EXTERN extern
+#   define _EXTERN extern
 # endif
 #else
 # ifndef _EXTERNC
-#	define _EXTERNC
+#   define _EXTERNC
 # endif
 # ifndef _EXTERNCC
-#	define _EXTERNCC
+#   define _EXTERNCC
 # endif
 # ifndef _EXTERN
-#	define _EXTERN extern
+#   define _EXTERN extern
 # endif
 #endif
 
-#define uX_EXTERNC	_EXTERNC
+#define uX_EXTERNC  _EXTERNC
 #define uX_EXTERNCC _EXTERNCC
-#define uX_EXTERN	_EXTERN
+#define uX_EXTERN   _EXTERN
 
-#define uX_EXTERNC_BEGIN	EXTERN_C_BEGIN
-#define uX_EXTERNC_END		EXTERN_C_END
-#define uX_EXTERNCC_BEGIN	EXTERN_CC_BEGIN
-#define uX_EXTERNCC_END		EXTERN_CC_END
+#define uX_EXTERNC_BEGIN    EXTERN_C_BEGIN
+#define uX_EXTERNC_END      EXTERN_C_END
+#define uX_EXTERNCC_BEGIN   EXTERN_CC_BEGIN
+#define uX_EXTERNCC_END     EXTERN_CC_END
 
 #if defined(EXPORTS) || defined(_EXPORTS) || defined(LIB_EXPORTS)
 #ifndef uX_LIB_IMPORTS
@@ -141,6 +141,10 @@ EXTERN_CC_END
 #endif
 #endif
 
+#ifdef __GNUC__
+#define _LIB
+#define LIB_STATIC
+#endif
 #if (defined(LIB_STATIC) || defined(uX_LIB_STATIC)) && defined(_LIB) && !(defined(_DLL) && defined(_USRDLL) && defined(_WINDLL) && defined(LIB_DYNAMIC) && defined( uX_LIB_DLL))
 #ifndef uX_LIB_DLL
 #ifndef uX_LIB_STATIC
@@ -150,7 +154,7 @@ EXTERN_CC_END
 #endif
 
 #ifdef uX_LIB_STATIC
-#define uX_LINK_TYPE "s"
+#define uX_LINK_TYPE ""
 #define uX_LINK_PREFIX "_"
 #define uX_LINK_TYPE_STR "static"
 #define uX_LIB_TYPE ".lib"
@@ -173,56 +177,56 @@ EXTERN_CC_END
 # error ("!!!Your uXOAPMath lib type static or dll aren't defined")
 #endif
 
-#if defined(uX_LINUX) || defined(uX_UNIX)
+#if defined(uX_LINUX_OS)
 # if defined(uX_LIB_STATIC)
-#		define uX_VISIBILITY_HIDDEN __attribute__((visibility ("hidden")))
-#		define uX_PRIVATE_SYMBOL __attribute__((visibility ("internal")))
-#		define uX_LOCAL_SYMBOL   __attribute__((visibility ("hidden")))
-#		define uX_EXPORT_SYMBOL  __attribute__((visibility ("hidden")))
-#		define uX_IMPORT_SYMBOL  __attribute__((visibility ("hidden")))
+#       define uX_VISIBILITY_HIDDEN __attribute__((visibility ("hidden")))
+#       define uX_PRIVATE_SYMBOL __attribute__((visibility ("internal")))
+#       define uX_LOCAL_SYMBOL   __attribute__((visibility ("hidden")))
+#       define uX_EXPORT_SYMBOL  __attribute__((visibility ("hidden")))
+#       define uX_IMPORT_SYMBOL  __attribute__((visibility ("hidden")))
 # else
-#		define uX_VISIBILITY_HIDDEN __attribute__((visibility ("hidden")))
-#		define uX_PRIVATE_SYMBOL __attribute__((visibility ("internal")))
-#		define uX_LOCAL_SYMBOL   __attribute__((visibility ("hidden")))
-#		define uX_EXPORT_SYMBOL  __attribute__((visibility ("default")))
-#		define uX_IMPORT_SYMBOL  __attribute__((visibility ("default")))
+#       define uX_VISIBILITY_HIDDEN __attribute__((visibility ("hidden")))
+#       define uX_PRIVATE_SYMBOL __attribute__((visibility ("internal")))
+#       define uX_LOCAL_SYMBOL   __attribute__((visibility ("hidden")))
+#       define uX_EXPORT_SYMBOL  __attribute__((visibility ("default")))
+#       define uX_IMPORT_SYMBOL  __attribute__((visibility ("default")))
 # endif
-#elif defined(uX_MACOSX)
+#elif defined(uX_MACOSX_OS)
 # if defined(uX_LIB_STATIC)
-#		define uX_VISIBILITY_HIDDEN __attribute__((visibility ("hidden")))
-#		define uX_PRIVATE_SYMBOL __attribute__((visibility ("hidden")))
-#		define uX_LOCAL_SYMBOL   __attribute__((visibility ("hidden")))
-#		define uX_EXPORT_SYMBOL  __attribute__((visibility ("hidden")))
-#		define uX_IMPORT_SYMBOL  __attribute__((visibility ("hidden")))
+#       define uX_VISIBILITY_HIDDEN __attribute__((visibility ("hidden")))
+#       define uX_PRIVATE_SYMBOL __attribute__((visibility ("hidden")))
+#       define uX_LOCAL_SYMBOL   __attribute__((visibility ("hidden")))
+#       define uX_EXPORT_SYMBOL  __attribute__((visibility ("hidden")))
+#       define uX_IMPORT_SYMBOL  __attribute__((visibility ("hidden")))
 # else
-#		define uX_VISIBILITY_HIDDEN __attribute__((visibility ("hidden")))
-#		define uX_PRIVATE_SYMBOL __attribute__((visibility ("hidden")))
-#		define uX_LOCAL_SYMBOL   __attribute__((visibility ("hidden")))
-#		define uX_EXPORT_SYMBOL  __attribute__((visibility ("default")))
-#		define uX_IMPORT_SYMBOL  __attribute__((visibility ("default")))
+#       define uX_VISIBILITY_HIDDEN __attribute__((visibility ("hidden")))
+#       define uX_PRIVATE_SYMBOL __attribute__((visibility ("hidden")))
+#       define uX_LOCAL_SYMBOL   __attribute__((visibility ("hidden")))
+#       define uX_EXPORT_SYMBOL  __attribute__((visibility ("default")))
+#       define uX_IMPORT_SYMBOL  __attribute__((visibility ("default")))
 # endif
-#elif defined(uX_WINDOWS)
+#elif defined(uX_WINDOWS_OS)
 # if defined(uX_LIB_STATIC)
-#		define uX_VISIBILITY_HIDDEN /*empty*/
-#		define uX_PRIVATE_SYMBOL
-#		define uX_LOCAL_SYMBOL
-#		define uX_EXPORT_SYMBOL
-#		define uX_IMPORT_SYMBOL
+#       define uX_VISIBILITY_HIDDEN /*empty*/
+#       define uX_PRIVATE_SYMBOL
+#       define uX_LOCAL_SYMBOL
+#       define uX_EXPORT_SYMBOL
+#       define uX_IMPORT_SYMBOL
 #else
-#		define uX_VISIBILITY_HIDDEN /*empty*/
-#		define uX_PRIVATE_SYMBOL
-#		define uX_LOCAL_SYMBOL
-#		define uX_EXPORT_SYMBOL __declspec(dllexport)
-#		define uX_IMPORT_SYMBOL __declspec(dllimport)
+#       define uX_VISIBILITY_HIDDEN /*empty*/
+#       define uX_PRIVATE_SYMBOL
+#       define uX_LOCAL_SYMBOL
+#       define uX_EXPORT_SYMBOL __declspec(dllexport)
+#       define uX_IMPORT_SYMBOL __declspec(dllimport)
 #endif
 #else
 #error "Unsupported output format"
 #endif
 
 #if defined(uX_LIB_EXPORTS)
-#		define uX_PUBLIC_SYMBOL uX_EXPORT_SYMBOL
+#       define uX_PUBLIC_SYMBOL uX_EXPORT_SYMBOL
 #elif defined (uX_LIB_IMPORTS)
-#		define uX_PUBLIC_SYMBOL uX_IMPORT_SYMBOL
+#       define uX_PUBLIC_SYMBOL uX_IMPORT_SYMBOL
 #else
 #error "Visibility symbols are not defined"
 #endif
@@ -241,12 +245,12 @@ EXTERN_CC_END
 #      else
 #        define uX_EXAPI
 #      endif
-#	 else  // uX_LIB_LIB
+#    else  // uX_LIB_LIB
 #      define uX_EXAPI
 #    endif
 #  else  // uX_LIB_LIB
 #      if defined(uX_LIB_EXPORTS)
-#			define uX_EXAPI uX_EXPORT_SYMBOL
+#           define uX_EXAPI uX_EXPORT_SYMBOL
 #      elif defined (uX_LIB_IMPORTS)
 #        define uX_EXAPI uX_IMPORT_SYMBOL
 #      else // uX_LIB_STATIC  _LIB
@@ -256,7 +260,7 @@ EXTERN_CC_END
 
 /*
 #else
-#	define uX_EXAPI
+#   define uX_EXAPI
 #endif // _WINDOWS*/
 
 
@@ -269,7 +273,7 @@ EXTERN_CC_END
 #   define uX_LIB_NAME_STR uX_COMPILER_STR "uasmlib" uX_LINK_TYPE_STR uX_FAMILY_STR uX_ARCH_STR uX_BUILD_PREFIX uX_BUILD_TYPE
 
 #ifdef uX_LIB_IMPORTS
-#	pragma comment( lib, uX_LIB_NAME ".lib")
+#   pragma comment( lib, uX_LIB_NAME ".lib")
 #endif
 
 #endif /*uX_EXPORTS_H*/

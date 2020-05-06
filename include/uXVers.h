@@ -6,16 +6,16 @@
 
 #include "uXPreprocessor.h"
 
-#define uX_VERSION_DATE "2018.1.25"
+#define uX_VERSION_DATE "2019.09.25"
 
-#define uX_VERSION_BUILD 2018125
+#define uX_VERSION_BUILD 20190925
 
-#define uX_BUILD_DATE  "2018-1-25 13:00:00 UTC"
-#define uX_BUILD_YYYY 2018
-#define uX_BUILD_MMDD 125
+#define uX_BUILD_DATE  "2019-09-25 13:00:00 UTC"
+#define uX_BUILD_YYYY 2019
+#define uX_BUILD_MMDD 0925
 
 //#define uX_VERSION_STR "0.2." uX_VERSION_DATE
-#define uX_VERSION_HEX	0x14FF84D
+#define uX_VERSION_HEX  0xD1FD8CD
 #define uX_VERSION_MAJOR 0
 #define uX_VERSION_MINOR 2
 #define uX_VERSION_REVISION uX_BUILD_YYYY
@@ -33,7 +33,7 @@
 #define uX_VERSION_PATCH_STR       uX_Stringer(uX_VERSION_REVISION)
 #define uX_VERSION_BUILD_STR       uX_Stringer(uX_VERSION_SUBREVISION)
 
-#define uX_FULL_VERSION_STR		uX_VERSION_MAJOR_STR "." uX_VERSION_MINOR_STR "." uX_VERSION_PATCH_STR "." uX_VERSION_BUILD_STR " (" uX_RELEASE_NAME ")"
+#define uX_FULL_VERSION_STR     uX_VERSION_MAJOR_STR "." uX_VERSION_MINOR_STR "." uX_VERSION_PATCH_STR "." uX_VERSION_BUILD_STR " (" uX_RELEASE_NAME ")"
 
 
 // The constant uX_VERSION_ALT is used when creating certain uXOAMP module objects
@@ -51,8 +51,8 @@
 #else
 #define uX_LIBRARY   uX_LINK_TYPE_STR " runtime library "
 #endif
-#define uX_COPYRIGHT "Copyright (C) eXOAMP (R) 2018. All rights reserved. The uasm Optimized assembly Library."
-#define uX_COMPANY "(C) eXOAMP (R) 2017. The uasm Optimized assembly Library."
+#define uX_COPYRIGHT "Copyright (C) eXOAMP (R) 2019. All rights reserved. The uasm Optimized assembly Library."
+#define uX_COMPANY "(C) eXOAMP (R) 2019. The uasm Optimized assembly Library."
 
 #define uX_VERSION_MAGIC_STR   "\x00@(#) "
 #define uX_VERSION_MAGIC_LEN   6                // Length of uX_VERSION_MAGIC_STR.

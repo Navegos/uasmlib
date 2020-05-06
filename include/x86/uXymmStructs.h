@@ -30,14 +30,14 @@ typedef struct uXVC_ALIGN16 uXYMVecfloat
 		__m256				m256_ymm;
 	};
 
-	uXYMVecfloat(void)uX_default_ctor;
-	~uXYMVecfloat(void)uX_default_ctor;
+	uXYMVecfloat(void)uX_default;
+	~uXYMVecfloat(void)uX_default;
 
-	uXYMVecfloat(const uXYMVecfloat&)uX_default_ctor;
-	uXYMVecfloat& uX_callconv operator=(const uXYMVecfloat&)uX_default_ctor;
+	uXYMVecfloat(const uXYMVecfloat&)uX_default;
+	uXYMVecfloat& uX_callconv operator=(const uXYMVecfloat&)uX_default;
 
-	uXYMVecfloat(uXYMVecfloat&&)uX_default_ctor;
-	uXYMVecfloat& uX_callconv operator=(uXYMVecfloat&&)uX_default_ctor;
+	uXYMVecfloat(uXYMVecfloat&&)uX_default;
+	uXYMVecfloat& uX_callconv operator=(uXYMVecfloat&&)uX_default;
 
 	/**
      * Constructor initialization from type __m256.
@@ -127,14 +127,14 @@ typedef struct uXVC_ALIGN16 uXYMVecint8
 		__m256i				m256_ymmi;
 	};
 
-	uXYMVecint8(void)uX_default_ctor;
-	~uXYMVecint8(void)uX_default_ctor;
+	uXYMVecint8(void)uX_default;
+	~uXYMVecint8(void)uX_default;
 
-	uXYMVecint8(const uXYMVecint8&)uX_default_ctor;
-	uXYMVecint8& uX_callconv operator=(const uXYMVecint8&)uX_default_ctor;
+	uXYMVecint8(const uXYMVecint8&)uX_default;
+	uXYMVecint8& uX_callconv operator=(const uXYMVecint8&)uX_default;
 
-	uXYMVecint8(uXYMVecint8&&)uX_default_ctor;
-	uXYMVecint8& uX_callconv operator=(uXYMVecint8&&)uX_default_ctor;
+	uXYMVecint8(uXYMVecint8&&)uX_default;
+	uXYMVecint8& uX_callconv operator=(uXYMVecint8&&)uX_default;
 
 	/**
      * Constructor initialization from type __m256i.
@@ -184,14 +184,14 @@ typedef struct uXVC_ALIGN16 uXYMVecuint8
 		__m256i				m256_ymmi;
 	};
 
-	uXYMVecuint8(void)uX_default_ctor;
-	~uXYMVecuint8(void)uX_default_ctor;
+	uXYMVecuint8(void)uX_default;
+	~uXYMVecuint8(void)uX_default;
 
-	uXYMVecuint8(const uXYMVecuint8&)uX_default_ctor;
-	uXYMVecuint8& uX_callconv operator=(const uXYMVecuint8&)uX_default_ctor;
+	uXYMVecuint8(const uXYMVecuint8&)uX_default;
+	uXYMVecuint8& uX_callconv operator=(const uXYMVecuint8&)uX_default;
 
-	uXYMVecuint8(uXYMVecuint8&&)uX_default_ctor;
-	uXYMVecuint8& uX_callconv operator=(uXYMVecuint8&&)uX_default_ctor;
+	uXYMVecuint8(uXYMVecuint8&&)uX_default;
+	uXYMVecuint8& uX_callconv operator=(uXYMVecuint8&&)uX_default;
 
 	/**
      * Constructor initialization from type __m256i.
@@ -241,14 +241,14 @@ typedef struct uXVC_ALIGN16 uXYMVecint16
 		__m256i				m256_ymmi;
 	};
 
-	uXYMVecint16(void)uX_default_ctor;
-	~uXYMVecint16(void)uX_default_ctor;
+	uXYMVecint16(void)uX_default;
+	~uXYMVecint16(void)uX_default;
 
-	uXYMVecint16(const uXYMVecint16&)uX_default_ctor;
-	uXYMVecint16& uX_callconv operator=(const uXYMVecint16&)uX_default_ctor;
+	uXYMVecint16(const uXYMVecint16&)uX_default;
+	uXYMVecint16& uX_callconv operator=(const uXYMVecint16&)uX_default;
 
-	uXYMVecint16(uXYMVecint16&&)uX_default_ctor;
-	uXYMVecint16& uX_callconv operator=(uXYMVecint16&&)uX_default_ctor;
+	uXYMVecint16(uXYMVecint16&&)uX_default;
+	uXYMVecint16& uX_callconv operator=(uXYMVecint16&&)uX_default;
 
 	/**
      * Constructor initialization from type __m256i.
@@ -298,14 +298,14 @@ typedef struct uXVC_ALIGN16 uXYMVecuint16
 		__m256i				m256_ymmi;
 	};
 
-	uXYMVecuint16(void)uX_default_ctor;
-	~uXYMVecuint16(void)uX_default_ctor;
+	uXYMVecuint16(void)uX_default;
+	~uXYMVecuint16(void)uX_default;
 
-	uXYMVecuint16(const uXYMVecuint16&)uX_default_ctor;
-	uXYMVecuint16& uX_callconv operator=(const uXYMVecuint16&)uX_default_ctor;
+	uXYMVecuint16(const uXYMVecuint16&)uX_default;
+	uXYMVecuint16& uX_callconv operator=(const uXYMVecuint16&)uX_default;
 
-	uXYMVecuint16(uXYMVecuint16&&)uX_default_ctor;
-	uXYMVecuint16& uX_callconv operator=(uXYMVecuint16&&)uX_default_ctor;
+	uXYMVecuint16(uXYMVecuint16&&)uX_default;
+	uXYMVecuint16& uX_callconv operator=(uXYMVecuint16&&)uX_default;
 
 	/**
      * Constructor initialization from type __m256i.
@@ -355,14 +355,14 @@ typedef struct uXVC_ALIGN16 uXYMVecint32
 		__m256i				m256_ymmi;
 	};
 
-	uXYMVecint32(void)uX_default_ctor;
-	~uXYMVecint32(void)uX_default_ctor;
+	uXYMVecint32(void)uX_default;
+	~uXYMVecint32(void)uX_default;
 
-	uXYMVecint32(const uXYMVecint32&)uX_default_ctor;
-	uXYMVecint32& uX_callconv operator=(const uXYMVecint32&)uX_default_ctor;
+	uXYMVecint32(const uXYMVecint32&)uX_default;
+	uXYMVecint32& uX_callconv operator=(const uXYMVecint32&)uX_default;
 
-	uXYMVecint32(uXYMVecint32&&)uX_default_ctor;
-	uXYMVecint32& uX_callconv operator=(uXYMVecint32&&)uX_default_ctor;
+	uXYMVecint32(uXYMVecint32&&)uX_default;
+	uXYMVecint32& uX_callconv operator=(uXYMVecint32&&)uX_default;
 
 	/**
      * Constructor initialization from type __m256i.
@@ -412,14 +412,14 @@ typedef struct uXVC_ALIGN16 uXYMVecuint32
 		__m256i				m256_ymmi;
 	};
 
-	uXYMVecuint32(void)uX_default_ctor;
-	~uXYMVecuint32(void)uX_default_ctor;
+	uXYMVecuint32(void)uX_default;
+	~uXYMVecuint32(void)uX_default;
 
-	uXYMVecuint32(const uXYMVecuint32&)uX_default_ctor;
-	uXYMVecuint32& uX_callconv operator=(const uXYMVecuint32&)uX_default_ctor;
+	uXYMVecuint32(const uXYMVecuint32&)uX_default;
+	uXYMVecuint32& uX_callconv operator=(const uXYMVecuint32&)uX_default;
 
-	uXYMVecuint32(uXYMVecuint32&&)uX_default_ctor;
-	uXYMVecuint32& uX_callconv operator=(uXYMVecuint32&&)uX_default_ctor;
+	uXYMVecuint32(uXYMVecuint32&&)uX_default;
+	uXYMVecuint32& uX_callconv operator=(uXYMVecuint32&&)uX_default;
 
 	/**
      * Constructor initialization from type __m256i.
@@ -469,14 +469,14 @@ typedef struct uXVC_ALIGN16 uXYMVecint64
 		__m256i				m256_ymmi;
 	};
 
-	uXYMVecint64(void)uX_default_ctor;
-	~uXYMVecint64(void)uX_default_ctor;
+	uXYMVecint64(void)uX_default;
+	~uXYMVecint64(void)uX_default;
 
-	uXYMVecint64(const uXYMVecint64&)uX_default_ctor;
-	uXYMVecint64& uX_callconv operator=(const uXYMVecint64&)uX_default_ctor;
+	uXYMVecint64(const uXYMVecint64&)uX_default;
+	uXYMVecint64& uX_callconv operator=(const uXYMVecint64&)uX_default;
 
-	uXYMVecint64(uXYMVecint64&&)uX_default_ctor;
-	uXYMVecint64& uX_callconv operator=(uXYMVecint64&&)uX_default_ctor;
+	uXYMVecint64(uXYMVecint64&&)uX_default;
+	uXYMVecint64& uX_callconv operator=(uXYMVecint64&&)uX_default;
 
 	/**
      * Constructor initialization from type __m256i.
@@ -526,14 +526,14 @@ typedef struct uXVC_ALIGN16 uXYMVecuint64
 		__m256i				m256_ymmi;
 	};
 
-	uXYMVecuint64(void)uX_default_ctor;
-	~uXYMVecuint64(void)uX_default_ctor;
+	uXYMVecuint64(void)uX_default;
+	~uXYMVecuint64(void)uX_default;
 
-	uXYMVecuint64(const uXYMVecuint64&)uX_default_ctor;
-	uXYMVecuint64& uX_callconv operator=(const uXYMVecuint64&)uX_default_ctor;
+	uXYMVecuint64(const uXYMVecuint64&)uX_default;
+	uXYMVecuint64& uX_callconv operator=(const uXYMVecuint64&)uX_default;
 
-	uXYMVecuint64(uXYMVecuint64&&)uX_default_ctor;
-	uXYMVecuint64& uX_callconv operator=(uXYMVecuint64&&)uX_default_ctor;
+	uXYMVecuint64(uXYMVecuint64&&)uX_default;
+	uXYMVecuint64& uX_callconv operator=(uXYMVecuint64&&)uX_default;
 
 	/**
      * Constructor initialization from type __m256i.
@@ -583,14 +583,14 @@ typedef struct uXVC_ALIGN16 uXYMVecdouble
 		__m256d				m256_ymmd;
 	};
 
-	uXYMVecdouble(void)uX_default_ctor;
-	~uXYMVecdouble(void)uX_default_ctor;
+	uXYMVecdouble(void)uX_default;
+	~uXYMVecdouble(void)uX_default;
 
-	uXYMVecdouble(const uXYMVecdouble&)uX_default_ctor;
-	uXYMVecdouble& uX_callconv operator=(const uXYMVecdouble&)uX_default_ctor;
+	uXYMVecdouble(const uXYMVecdouble&)uX_default;
+	uXYMVecdouble& uX_callconv operator=(const uXYMVecdouble&)uX_default;
 
-	uXYMVecdouble(uXYMVecdouble&&)uX_default_ctor;
-	uXYMVecdouble& uX_callconv operator=(uXYMVecdouble&&)uX_default_ctor;
+	uXYMVecdouble(uXYMVecdouble&&)uX_default;
+	uXYMVecdouble& uX_callconv operator=(uXYMVecdouble&&)uX_default;
 
 	/**
      * Constructor initialization from type __m256d.
@@ -642,14 +642,14 @@ typedef struct uXVC_ALIGN16 uXYMVecfloat1
 		__m256				m256_ymm;
 	};
 
-	uXYMVecfloat1(void)uX_default_ctor;
-	~uXYMVecfloat1(void)uX_default_ctor;
+	uXYMVecfloat1(void)uX_default;
+	~uXYMVecfloat1(void)uX_default;
 
-	uXYMVecfloat1(const uXYMVecfloat1&)uX_default_ctor;
-	uXYMVecfloat1& uX_callconv operator=(const uXYMVecfloat1&)uX_default_ctor;
+	uXYMVecfloat1(const uXYMVecfloat1&)uX_default;
+	uXYMVecfloat1& uX_callconv operator=(const uXYMVecfloat1&)uX_default;
 
-	uXYMVecfloat1(uXYMVecfloat1&&)uX_default_ctor;
-	uXYMVecfloat1& uX_callconv operator=(uXYMVecfloat1&&)uX_default_ctor;
+	uXYMVecfloat1(uXYMVecfloat1&&)uX_default;
+	uXYMVecfloat1& uX_callconv operator=(uXYMVecfloat1&&)uX_default;
 
 	/**
      * Constructor initialization from type __m256.
@@ -699,14 +699,14 @@ typedef struct uXVC_ALIGN16 uXYMVecfloat2
 		__m256				m256_ymm;
 	};
 
-	uXYMVecfloat2(void)uX_default_ctor;
-	~uXYMVecfloat2(void)uX_default_ctor;
+	uXYMVecfloat2(void)uX_default;
+	~uXYMVecfloat2(void)uX_default;
 
-	uXYMVecfloat2(const uXYMVecfloat2&)uX_default_ctor;
-	uXYMVecfloat2& uX_callconv operator=(const uXYMVecfloat2&)uX_default_ctor;
+	uXYMVecfloat2(const uXYMVecfloat2&)uX_default;
+	uXYMVecfloat2& uX_callconv operator=(const uXYMVecfloat2&)uX_default;
 
-	uXYMVecfloat2(uXYMVecfloat2&&)uX_default_ctor;
-	uXYMVecfloat2& uX_callconv operator=(uXYMVecfloat2&&)uX_default_ctor;
+	uXYMVecfloat2(uXYMVecfloat2&&)uX_default;
+	uXYMVecfloat2& uX_callconv operator=(uXYMVecfloat2&&)uX_default;
 
 	/**
      * Constructor initialization from type __m256.
@@ -766,14 +766,14 @@ typedef struct uXVC_ALIGN16 uXYMVecfloat3
 		__m256				m256_ymm;
 	};
 
-	uXYMVecfloat3(void)uX_default_ctor;
-	~uXYMVecfloat3(void)uX_default_ctor;
+	uXYMVecfloat3(void)uX_default;
+	~uXYMVecfloat3(void)uX_default;
 
-	uXYMVecfloat3(const uXYMVecfloat3&)uX_default_ctor;
-	uXYMVecfloat3& uX_callconv operator=(const uXYMVecfloat3&)uX_default_ctor;
+	uXYMVecfloat3(const uXYMVecfloat3&)uX_default;
+	uXYMVecfloat3& uX_callconv operator=(const uXYMVecfloat3&)uX_default;
 
-	uXYMVecfloat3(uXYMVecfloat3&&)uX_default_ctor;
-	uXYMVecfloat3& uX_callconv operator=(uXYMVecfloat3&&)uX_default_ctor;
+	uXYMVecfloat3(uXYMVecfloat3&&)uX_default;
+	uXYMVecfloat3& uX_callconv operator=(uXYMVecfloat3&&)uX_default;
 
 	/**
      * Constructor initialization from type __m256.
@@ -834,14 +834,14 @@ typedef struct uXVC_ALIGN16 uXYMVecfloat4
 		__m256				m256_ymm;
 	};
 
-	uXYMVecfloat4(void)uX_default_ctor;
-	~uXYMVecfloat4(void)uX_default_ctor;
+	uXYMVecfloat4(void)uX_default;
+	~uXYMVecfloat4(void)uX_default;
 
-	uXYMVecfloat4(const uXYMVecfloat4&)uX_default_ctor;
-	uXYMVecfloat4& uX_callconv operator=(const uXYMVecfloat4&)uX_default_ctor;
+	uXYMVecfloat4(const uXYMVecfloat4&)uX_default;
+	uXYMVecfloat4& uX_callconv operator=(const uXYMVecfloat4&)uX_default;
 
-	uXYMVecfloat4(uXYMVecfloat4&&)uX_default_ctor;
-	uXYMVecfloat4& uX_callconv operator=(uXYMVecfloat4&&)uX_default_ctor;
+	uXYMVecfloat4(uXYMVecfloat4&&)uX_default;
+	uXYMVecfloat4& uX_callconv operator=(uXYMVecfloat4&&)uX_default;
 
 	/**
      * Constructor initialization from type __m256.
@@ -905,14 +905,14 @@ typedef struct uXVC_ALIGN16 uXYMVecdouble1
 		__m256d				m256_ymmd;
 	};
 
-	uXYMVecdouble1(void)uX_default_ctor;
-	~uXYMVecdouble1(void)uX_default_ctor;
+	uXYMVecdouble1(void)uX_default;
+	~uXYMVecdouble1(void)uX_default;
 
-	uXYMVecdouble1(const uXYMVecdouble1&)uX_default_ctor;
-	uXYMVecdouble1& uX_callconv operator=(const uXYMVecdouble1&)uX_default_ctor;
+	uXYMVecdouble1(const uXYMVecdouble1&)uX_default;
+	uXYMVecdouble1& uX_callconv operator=(const uXYMVecdouble1&)uX_default;
 
-	uXYMVecdouble1(uXYMVecdouble1&&)uX_default_ctor;
-	uXYMVecdouble1& uX_callconv operator=(uXYMVecdouble1&&)uX_default_ctor;
+	uXYMVecdouble1(uXYMVecdouble1&&)uX_default;
+	uXYMVecdouble1& uX_callconv operator=(uXYMVecdouble1&&)uX_default;
 
 	/**
      * Constructor initialization from type __m256d.
@@ -962,14 +962,14 @@ typedef struct uXVC_ALIGN16 uXYMVecdouble2
 		__m256d				m256_ymmd;
 	};
 
-	uXYMVecdouble2(void)uX_default_ctor;
-	~uXYMVecdouble2(void)uX_default_ctor;
+	uXYMVecdouble2(void)uX_default;
+	~uXYMVecdouble2(void)uX_default;
 
-	uXYMVecdouble2(const uXYMVecdouble2&)uX_default_ctor;
-	uXYMVecdouble2& uX_callconv operator=(const uXYMVecdouble2&)uX_default_ctor;
+	uXYMVecdouble2(const uXYMVecdouble2&)uX_default;
+	uXYMVecdouble2& uX_callconv operator=(const uXYMVecdouble2&)uX_default;
 
-	uXYMVecdouble2(uXYMVecdouble2&&)uX_default_ctor;
-	uXYMVecdouble2& uX_callconv operator=(uXYMVecdouble2&&)uX_default_ctor;
+	uXYMVecdouble2(uXYMVecdouble2&&)uX_default;
+	uXYMVecdouble2& uX_callconv operator=(uXYMVecdouble2&&)uX_default;
 
 	/**
      * Constructor initialization from type __m256d.
@@ -1029,14 +1029,14 @@ typedef struct uXVC_ALIGN16 uXYMVecdouble3
 		__m256d				m256_ymmd;
 	};
 
-	uXYMVecdouble3(void)uX_default_ctor;
-	~uXYMVecdouble3(void)uX_default_ctor;
+	uXYMVecdouble3(void)uX_default;
+	~uXYMVecdouble3(void)uX_default;
 
-	uXYMVecdouble3(const uXYMVecdouble3&)uX_default_ctor;
-	uXYMVecdouble3& uX_callconv operator=(const uXYMVecdouble3&)uX_default_ctor;
+	uXYMVecdouble3(const uXYMVecdouble3&)uX_default;
+	uXYMVecdouble3& uX_callconv operator=(const uXYMVecdouble3&)uX_default;
 
-	uXYMVecdouble3(uXYMVecdouble3&&)uX_default_ctor;
-	uXYMVecdouble3& uX_callconv operator=(uXYMVecdouble3&&)uX_default_ctor;
+	uXYMVecdouble3(uXYMVecdouble3&&)uX_default;
+	uXYMVecdouble3& uX_callconv operator=(uXYMVecdouble3&&)uX_default;
 	
 	/**
      * Constructor initialization from 2 type __m256d.
@@ -1097,14 +1097,14 @@ typedef struct uXVC_ALIGN16 uXYMVecdouble4
 		__m256d				m256_ymmd;
 	};
 
-	uXYMVecdouble4(void)uX_default_ctor;
-	~uXYMVecdouble4(void)uX_default_ctor;
+	uXYMVecdouble4(void)uX_default;
+	~uXYMVecdouble4(void)uX_default;
 
-	uXYMVecdouble4(const uXYMVecdouble4&)uX_default_ctor;
-	uXYMVecdouble4& uX_callconv operator=(const uXYMVecdouble4&)uX_default_ctor;
+	uXYMVecdouble4(const uXYMVecdouble4&)uX_default;
+	uXYMVecdouble4& uX_callconv operator=(const uXYMVecdouble4&)uX_default;
 
-	uXYMVecdouble4(uXYMVecdouble4&&)uX_default_ctor;
-	uXYMVecdouble4& uX_callconv operator=(uXYMVecdouble4&&)uX_default_ctor;
+	uXYMVecdouble4(uXYMVecdouble4&&)uX_default;
+	uXYMVecdouble4& uX_callconv operator=(uXYMVecdouble4&&)uX_default;
 
 	/**
      * Constructor initialization from 2 type __m256d.
@@ -1175,14 +1175,14 @@ typedef struct uXVC_ALIGN16 uXYMVecfloat3x3
 		__m256				m256_ymm_r[2];
 	};
 
-	uXYMVecfloat3x3(void)uX_default_ctor;
-	~uXYMVecfloat3x3(void)uX_default_ctor;
+	uXYMVecfloat3x3(void)uX_default;
+	~uXYMVecfloat3x3(void)uX_default;
 
-	uXYMVecfloat3x3(const uXYMVecfloat3x3&)uX_default_ctor;
-	uXYMVecfloat3x3& uX_callconv operator=(const uXYMVecfloat3x3&)uX_default_ctor;
+	uXYMVecfloat3x3(const uXYMVecfloat3x3&)uX_default;
+	uXYMVecfloat3x3& uX_callconv operator=(const uXYMVecfloat3x3&)uX_default;
 
-	uXYMVecfloat3x3(uXYMVecfloat3x3&&)uX_default_ctor;
-	uXYMVecfloat3x3& uX_callconv operator=(uXYMVecfloat3x3&&)uX_default_ctor;
+	uXYMVecfloat3x3(uXYMVecfloat3x3&&)uX_default;
+	uXYMVecfloat3x3& uX_callconv operator=(uXYMVecfloat3x3&&)uX_default;
 
     /**
      * Constructor initialization from 3 type __m256.
@@ -1271,14 +1271,14 @@ typedef struct uXVC_ALIGN16 uXYMVecfloat4x3
 		__m256				m256_ymm_r[2];
 	};
 
-	uXYMVecfloat4x3(void)uX_default_ctor;
-	~uXYMVecfloat4x3(void)uX_default_ctor;
+	uXYMVecfloat4x3(void)uX_default;
+	~uXYMVecfloat4x3(void)uX_default;
 
-	uXYMVecfloat4x3(const uXYMVecfloat4x3&)uX_default_ctor;
-	uXYMVecfloat4x3& uX_callconv operator=(const uXYMVecfloat4x3&)uX_default_ctor;
+	uXYMVecfloat4x3(const uXYMVecfloat4x3&)uX_default;
+	uXYMVecfloat4x3& uX_callconv operator=(const uXYMVecfloat4x3&)uX_default;
 
-	uXYMVecfloat4x3(uXYMVecfloat4x3&&)uX_default_ctor;
-	uXYMVecfloat4x3& uX_callconv operator=(uXYMVecfloat4x3&&)uX_default_ctor;
+	uXYMVecfloat4x3(uXYMVecfloat4x3&&)uX_default;
+	uXYMVecfloat4x3& uX_callconv operator=(uXYMVecfloat4x3&&)uX_default;
 
     /**
      * Constructor initialization from 4 type __m256.
@@ -1371,14 +1371,14 @@ typedef struct uXVC_ALIGN16 uXYMVecfloat4x4
 		__m256				m256_ymm_r[2];
 	};
 
-	uXYMVecfloat4x4(void)uX_default_ctor;
-	~uXYMVecfloat4x4(void)uX_default_ctor;
+	uXYMVecfloat4x4(void)uX_default;
+	~uXYMVecfloat4x4(void)uX_default;
 
-	uXYMVecfloat4x4(const uXYMVecfloat4x4&)uX_default_ctor;
-	uXYMVecfloat4x4& uX_callconv operator=(const uXYMVecfloat4x4&)uX_default_ctor;
+	uXYMVecfloat4x4(const uXYMVecfloat4x4&)uX_default;
+	uXYMVecfloat4x4& uX_callconv operator=(const uXYMVecfloat4x4&)uX_default;
 
-	uXYMVecfloat4x4(uXYMVecfloat4x4&&)uX_default_ctor;
-	uXYMVecfloat4x4& uX_callconv operator=(uXYMVecfloat4x4&&)uX_default_ctor;
+	uXYMVecfloat4x4(uXYMVecfloat4x4&&)uX_default;
+	uXYMVecfloat4x4& uX_callconv operator=(uXYMVecfloat4x4&&)uX_default;
 
     /**
      * Constructor initialization from 4 type __m256.
@@ -1476,14 +1476,14 @@ typedef struct uXVC_ALIGN16 uXYMVecdouble3x3
 		__m256d				m256_ymmd_r[3];
 	};
 
-	uXYMVecdouble3x3(void)uX_default_ctor;
-	~uXYMVecdouble3x3(void)uX_default_ctor;
+	uXYMVecdouble3x3(void)uX_default;
+	~uXYMVecdouble3x3(void)uX_default;
 
-	uXYMVecdouble3x3(const uXYMVecdouble3x3&)uX_default_ctor;
-	uXYMVecdouble3x3& uX_callconv operator=(const uXYMVecdouble3x3&)uX_default_ctor;
+	uXYMVecdouble3x3(const uXYMVecdouble3x3&)uX_default;
+	uXYMVecdouble3x3& uX_callconv operator=(const uXYMVecdouble3x3&)uX_default;
 
-	uXYMVecdouble3x3(uXYMVecdouble3x3&&)uX_default_ctor;
-	uXYMVecdouble3x3& uX_callconv operator=(uXYMVecdouble3x3&&)uX_default_ctor;
+	uXYMVecdouble3x3(uXYMVecdouble3x3&&)uX_default;
+	uXYMVecdouble3x3& uX_callconv operator=(uXYMVecdouble3x3&&)uX_default;
 
     /**
      * Constructor initialization from 3 type __m256d.
@@ -1576,14 +1576,14 @@ typedef struct uXVC_ALIGN16 uXYMVecdouble4x3
 		__m256d				m256_ymmd_r[3];
 	};
 
-	uXYMVecdouble4x3(void)uX_default_ctor;
-	~uXYMVecdouble4x3(void)uX_default_ctor;
+	uXYMVecdouble4x3(void)uX_default;
+	~uXYMVecdouble4x3(void)uX_default;
 
-	uXYMVecdouble4x3(const uXYMVecdouble4x3&)uX_default_ctor;
-	uXYMVecdouble4x3& uX_callconv operator=(const uXYMVecdouble4x3&)uX_default_ctor;
+	uXYMVecdouble4x3(const uXYMVecdouble4x3&)uX_default;
+	uXYMVecdouble4x3& uX_callconv operator=(const uXYMVecdouble4x3&)uX_default;
 
-	uXYMVecdouble4x3(uXYMVecdouble4x3&&)uX_default_ctor;
-	uXYMVecdouble4x3& uX_callconv operator=(uXYMVecdouble4x3&&)uX_default_ctor;
+	uXYMVecdouble4x3(uXYMVecdouble4x3&&)uX_default;
+	uXYMVecdouble4x3& uX_callconv operator=(uXYMVecdouble4x3&&)uX_default;
 
     /**
      * Constructor initialization from 8 type __m256d.
@@ -1683,14 +1683,14 @@ typedef struct uXVC_ALIGN16 uXYMVecdouble4x4
 		__m256d				m256_ymmd_r[4];
 	};
 
-	uXYMVecdouble4x4(void)uX_default_ctor;
-	~uXYMVecdouble4x4(void)uX_default_ctor;
+	uXYMVecdouble4x4(void)uX_default;
+	~uXYMVecdouble4x4(void)uX_default;
 
-	uXYMVecdouble4x4(const uXYMVecdouble4x4&)uX_default_ctor;
-	uXYMVecdouble4x4& uX_callconv operator=(const uXYMVecdouble4x4&)uX_default_ctor;
+	uXYMVecdouble4x4(const uXYMVecdouble4x4&)uX_default;
+	uXYMVecdouble4x4& uX_callconv operator=(const uXYMVecdouble4x4&)uX_default;
 
-	uXYMVecdouble4x4(uXYMVecdouble4x4&&)uX_default_ctor;
-	uXYMVecdouble4x4& uX_callconv operator=(uXYMVecdouble4x4&&)uX_default_ctor;
+	uXYMVecdouble4x4(uXYMVecdouble4x4&&)uX_default;
+	uXYMVecdouble4x4& uX_callconv operator=(uXYMVecdouble4x4&&)uX_default;
 
     /**
      * Constructor initialization from 4 type __m256d.

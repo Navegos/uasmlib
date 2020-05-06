@@ -84,9 +84,6 @@
     <ClInclude Include="..\..\..\include\uXVers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXAVX256Structs.h">
-      <Filter>Header Files\x86</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\x86\uXemmintmisc.h">
       <Filter>Header Files\x86</Filter>
     </ClInclude>
@@ -126,9 +123,6 @@
     <ClInclude Include="..\..\..\include\x86\uXsmmintrin.h">
       <Filter>Header Files\x86</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXSSEStructs.h">
-      <Filter>Header Files\x86</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\x86\uXtmmalignr.h">
       <Filter>Header Files\x86</Filter>
     </ClInclude>
@@ -165,22 +159,34 @@
     <ClInclude Include="..\..\..\include\x86\uXimmcmp.h">
       <Filter>Header Files\x86</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXemmdata.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXxmmdata.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXwmmaeskeyassist.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXmmintshifts.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXxmmStructs.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXymmStructs.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXemmarithmetic.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\uasmlib.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\x86\uXx86Cpu.cpp">
-      <Filter>Source Files\x86</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\x86\uXx86Intrin.cpp">
-      <Filter>Source Files\x86</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\uXMisc.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\x86\SSE\uXSSEStructs.cpp">
-      <Filter>Source Files\x86\SSE</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\x86\AVX256\asm\uXymmconstdata.asm">
       <Filter>Source Files\x86\AVX256\asm</Filter>
@@ -194,21 +200,27 @@
     <ClCompile Include="..\..\..\src\x86\AVX256\asm\uXimmlegacy.asm">
       <Filter>Source Files\x86\AVX256\asm</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\uXx86Cpu.cpp">
+      <Filter>Source Files\x86</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\uXAssert.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\uXx86Intrin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\uXxmmStructs.cpp">
+      <Filter>Source Files\x86\SSE</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\.gitignore" />
     <None Include="..\..\..\README.md" />
-    <None Include="..\..\..\src\x86\SSE\asm\xmmtypes.inc">
-      <Filter>Source Files\x86\SSE\asm</Filter>
-    </None>
     <None Include="..\export\uasmlib-export_X64.def">
       <Filter>Def Files</Filter>
     </None>
     <None Include="..\export\uasmlib-export_X32.def">
       <Filter>Def Files</Filter>
-    </None>
-    <None Include="..\..\..\src\x86\SSE\asm\uXsseintrin.inc">
-      <Filter>Source Files\x86\SSE\asm</Filter>
     </None>
     <None Include="..\..\..\src\x86\SSE\asm\uXxmmconstdata.inc">
       <Filter>Source Files\x86\SSE\asm</Filter>
@@ -219,20 +231,11 @@
     <None Include="..\..\..\src\x86\AVX256\asm\uXymmconstdata.inc">
       <Filter>Source Files\x86\AVX256\asm</Filter>
     </None>
-    <None Include="..\..\..\src\x86\asm\uXConstants.inc">
-      <Filter>Source Files\x86\asm</Filter>
-    </None>
-    <None Include="..\..\..\src\x86\asm\uXmacros.inc">
-      <Filter>Source Files\x86\asm</Filter>
-    </None>
-    <None Include="..\..\..\src\x86\asm\uXx86asm.inc">
-      <Filter>Source Files\x86\asm</Filter>
-    </None>
-    <None Include="..\..\..\src\x86\asm\uXx86cpu.inc">
-      <Filter>Source Files\x86\asm</Filter>
-    </None>
     <None Include="..\..\..\src\x86\SSE\uXAVX256Structs.cpp">
       <Filter>Source Files\x86\AVX256</Filter>
+    </None>
+    <None Include="..\..\..\src\x86\asm\uXasm.inc">
+      <Filter>Source Files\x86\asm</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -299,16 +302,19 @@
     <UASM Include="..\..\..\src\x86\asm\uXdll.asm">
       <Filter>Source Files\x86\asm</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\asm\uXintrincpu.asm">
-      <Filter>Source Files\x86\asm</Filter>
-    </UASM>
-    <UASM Include="..\..\..\src\x86\asm\uXx86cpua.asm">
-      <Filter>Source Files\x86\asm</Filter>
-    </UASM>
     <UASM Include="..\..\..\src\x86\asm\uXxgetbv.asm">
       <Filter>Source Files\x86\asm</Filter>
     </UASM>
     <UASM Include="..\..\..\src\x86\asm\uXxsetbv.asm">
+      <Filter>Source Files\x86\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmpshufw.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXemmarithmethic.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\asm\uXcpua.asm">
       <Filter>Source Files\x86\asm</Filter>
     </UASM>
   </ItemGroup>

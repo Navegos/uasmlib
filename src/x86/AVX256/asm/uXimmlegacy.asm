@@ -80,7 +80,7 @@ uXveccallopt
 ;******************
 ; FP, comparison
 ;******************
-uXfuncstart _uX_mm_cmp_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmp_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 	
 		;.if(rparam3 > 3)
 		;	ret
@@ -195,169 +195,169 @@ uXfuncstart _uX_mm_cmp_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(I
 			ret
 		;.endif
 		
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpeqoq_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpeqoq_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			0
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpltos_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpltos_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			1
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpleos_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpleos_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			2
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpunordq_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpunordq_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			3
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnequq_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnequq_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			4
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnltus_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnltus_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			5
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnleus_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnleus_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			6
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpordq_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpordq_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			7
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpequq_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpequq_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			8
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpngeus_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpngeus_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			9
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpngtus_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpngtus_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			10
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpfalseoq_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpfalseoq_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			11
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpneqoq_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpneqoq_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			12
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpgeos_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpgeos_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			13
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpgtos_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpgtos_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			14
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmptrueuq_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmptrueuq_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			15
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpeqos_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpeqos_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			16
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpltoq_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpltoq_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			17
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpleoq_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpleoq_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			18
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpunords_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpunords_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			19
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnequs_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnequs_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			20
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnltuq_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnltuq_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			21
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnleuq_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnleuq_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			22
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpords_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpords_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			23
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpequs_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpequs_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			24
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpngeuq_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpngeuq_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			25
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpngtuq_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpngtuq_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			26
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpfalseos_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpfalseos_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			27
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpneqos_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpneqos_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			28
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpgeoq_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpgeoq_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			29
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpgtoq_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpgtoq_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			30
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmptrueus_ps, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmptrueus_ps, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpps				xmm0,			xmm0,			xmm1,			31
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmp_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmp_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 	
 		;.if(rparam3 > 3)
 		;	ret
@@ -472,172 +472,172 @@ uXfuncstart _uX_mm_cmp_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(I
 			ret
 		;.endif
 		
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpeqoq_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpeqoq_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			0
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpltos_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpltos_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			1
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpleos_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpleos_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			2
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpunordq_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpunordq_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			3
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnequq_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnequq_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			4
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnltus_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnltus_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			5
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnleus_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnleus_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			6
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpordq_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpordq_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			7
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpequq_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpequq_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			8
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpngeus_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpngeus_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			9
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpngtus_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpngtus_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			10
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpfalseoq_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpfalseoq_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			11
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpneqoq_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpneqoq_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			12
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpgeos_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpgeos_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			13
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpgtos_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpgtos_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			14
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmptrueuq_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmptrueuq_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			15
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpeqos_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpeqos_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			16
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpltoq_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpltoq_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			17
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpleoq_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpleoq_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			18
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpunords_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpunords_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			19
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnequs_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnequs_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			20
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnltuq_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnltuq_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			21
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnleuq_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnleuq_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			22
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpords_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpords_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			23
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpequs_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpequs_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			24
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpngeuq_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpngeuq_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			25
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpngtuq_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpngtuq_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			26
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpfalseos_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpfalseos_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			27
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpneqos_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpneqos_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			28
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpgeoq_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpgeoq_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			29
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpgtoq_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpgtoq_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			30
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmptrueus_ss, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmptrueus_ss, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpss				xmm0,			xmm0,			xmm1,			31
 			ret
-uXfuncend
+uXprocend
 
 ;******************
 ; FP, comparison return int
 ;******************
-uXfuncstart _uX_mm_comi_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_comi_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 	
 		;.if(rparam3 > 3)
 		;	ret
@@ -816,236 +816,236 @@ uXfuncstart _uX_mm_comi_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(In
 			ret
 		;.endif
 		
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comieqoq_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comieqoq_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			0
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comiltos_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comiltos_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			1
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comileos_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comileos_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			2
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comiunordq_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comiunordq_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			3
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cominequq_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_cominequq_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			4
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cominltus_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_cominltus_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			5
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cominleus_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_cominleus_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			6
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comiordq_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comiordq_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			7
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comiequq_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comiequq_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			8
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comingeus_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comingeus_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			9
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comingtus_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comingtus_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			10
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comifalseoq_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comifalseoq_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			11
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comineqoq_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comineqoq_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			12
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comigeos_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comigeos_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			13
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comigtos_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comigtos_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			14
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comitrueuq_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comitrueuq_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			15
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comieqos_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comieqos_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			16
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comiltoq_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comiltoq_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			17
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comileoq_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comileoq_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			18
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comiunords_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comiunords_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			19
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cominequs_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_cominequs_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			20
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cominltuq_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_cominltuq_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			21
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cominleuq_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_cominleuq_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			22
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comiords_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comiords_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			23
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comiequs_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comiequs_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			24
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comingeuq_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comingeuq_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			25
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comingtuq_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comingtuq_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			26
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comifalseos_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comifalseos_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			27
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comineqos_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comineqos_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			28
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comigeoq_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comigeoq_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			29
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comigtoq_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comigtoq_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			30
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comitrueus_ss, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comitrueus_ss, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpss				xmm0,			xmm0,			xmm1,			31
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 	
 ;******************
 ; DP, comparison
 ;******************
-uXfuncstart _uX_mm_cmp_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmp_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 	
 		;.if(rparam3 > 3)
 		;	ret
@@ -1160,169 +1160,169 @@ uXfuncstart _uX_mm_cmp_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(I
 			ret
 		;.endif
 		
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpeqoq_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpeqoq_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			0
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpltos_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpltos_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			1
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpleos_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpleos_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			2
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpunordq_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpunordq_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			3
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnequq_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnequq_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			4
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnltus_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnltus_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			5
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnleus_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnleus_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			6
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpordq_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpordq_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			7
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpequq_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpequq_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			8
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpngeus_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpngeus_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			9
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpngtus_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpngtus_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			10
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpfalseoq_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpfalseoq_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			11
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpneqoq_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpneqoq_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			12
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpgeos_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpgeos_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			13
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpgtos_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpgtos_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			14
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmptrueuq_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmptrueuq_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			15
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpeqos_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpeqos_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			16
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpltoq_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpltoq_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			17
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpleoq_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpleoq_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			18
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpunords_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpunords_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			19
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnequs_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnequs_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			20
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnltuq_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnltuq_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			21
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnleuq_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnleuq_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			22
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpords_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpords_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			23
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpequs_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpequs_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			24
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpngeuq_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpngeuq_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			25
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpngtuq_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpngtuq_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			26
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpfalseos_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpfalseos_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			27
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpneqos_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpneqos_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			28
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpgeoq_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpgeoq_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			29
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpgtoq_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpgtoq_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			30
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmptrueus_pd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmptrueus_pd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmppd				xmm0,			xmm0,			xmm1,			31
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmp_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmp_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 	
 		;.if(rparam3 > 3)
 		;	ret
@@ -1437,172 +1437,172 @@ uXfuncstart _uX_mm_cmp_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(I
 			ret
 		;.endif
 		
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpeqoq_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpeqoq_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			0
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpltos_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpltos_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			1
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpleos_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpleos_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			2
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpunordq_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpunordq_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			3
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnequq_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnequq_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			4
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnltus_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnltus_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			5
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnleus_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnleus_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			6
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpordq_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpordq_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			7
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpequq_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpequq_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			8
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpngeus_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpngeus_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			9
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpngtus_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpngtus_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			10
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpfalseoq_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpfalseoq_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			11
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpneqoq_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpneqoq_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			12
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpgeos_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpgeos_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			13
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpgtos_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpgtos_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			14
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmptrueuq_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmptrueuq_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			15
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpeqos_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpeqos_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			16
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpltoq_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpltoq_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			17
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpleoq_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpleoq_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			18
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpunords_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpunords_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			19
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnequs_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnequs_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			20
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnltuq_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnltuq_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			21
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpnleuq_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpnleuq_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			22
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpords_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpords_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			23
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpequs_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpequs_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			24
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpngeuq_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpngeuq_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			25
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpngtuq_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpngtuq_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			26
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpfalseos_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpfalseos_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			27
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpneqos_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpneqos_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			28
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpgeoq_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpgeoq_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			29
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmpgtoq_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmpgtoq_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			30
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cmptrueus_sd, xmmword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_cmptrueus_sd, xmmword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 			vcmpsd				xmm0,			xmm0,			xmm1,			31
 			ret
-uXfuncend
+uXprocend
 
 ;******************
 ; DP, comparison return int
 ;******************
-uXfuncstart _uX_mm_comi_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
+uXprocstart _uX_mm_comi_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B), _Imm8:dword
 	
 		;.if(rparam3 > 3)
 		;	ret
@@ -1781,231 +1781,231 @@ uXfuncstart _uX_mm_comi_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(In
 			ret
 		;.endif
 		
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comieqoq_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comieqoq_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			0
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comiltos_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comiltos_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			1
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comileos_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comileos_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			2
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comiunordq_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comiunordq_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			3
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cominequq_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_cominequq_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			4
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cominltus_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_cominltus_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			5
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cominleus_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_cominleus_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			6
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comiordq_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comiordq_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			7
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comiequq_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comiequq_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			8
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comingeus_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comingeus_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			9
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comingtus_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comingtus_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			10
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comifalseoq_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comifalseoq_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			11
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comineqoq_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comineqoq_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			12
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comigeos_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comigeos_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			13
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comigtos_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comigtos_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			14
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comitrueuq_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comitrueuq_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			15
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comieqos_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comieqos_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			16
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comiltoq_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comiltoq_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			17
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comileoq_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comileoq_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			18
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comiunords_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comiunords_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			19
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cominequs_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_cominequs_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			20
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cominltuq_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_cominltuq_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			21
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_cominleuq_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_cominleuq_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			22
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comiords_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comiords_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			23
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comiequs_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comiequs_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			24
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comingeuq_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comingeuq_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			25
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comingtuq_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comingtuq_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			26
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comifalseos_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comifalseos_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			27
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comineqos_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comineqos_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			28
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comigeoq_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comigeoq_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			29
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comigtoq_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comigtoq_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			30
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm_comitrueus_sd, dword, < >, xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
+uXprocstart _uX_mm_comitrueus_sd, dword, < >, < >,  xmmwordparam1(Inxmm_A), xmmwordparam2(Inxmm_B)
 			vcmpsd				xmm0,			xmm0,			xmm1,			31
 			movd				eax,			xmm0
 			and					eax,			true
 			ret
-uXfuncend
+uXprocend
 	
 endif ;__MIC__
 

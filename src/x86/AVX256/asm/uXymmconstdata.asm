@@ -7,8 +7,7 @@ ifndef __MIC__
 	option arch:sse
 	option evex:0
 
-	include uXavx256intrin.inc	
-	include uXConstants.inc
+	include uXavx256intrin.inc
 	
 	uXalignymmFPopt
 	uXveccallopt

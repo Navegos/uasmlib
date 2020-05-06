@@ -19,46 +19,27 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
-    OPTION CASEMAP:NONE
-    include macrolib.inc
-    
-ifndef __MIC__
+uXstrvalue macro V0
+    exitm %((V0) or (0))
+endm
 
-    include uXasm.inc
+;include uXmacros.inc
 
-    .data?
-
-    .data
-
-    .const
-
-    .code
-
-    callconvopt
-    alignfieldproc qword_size
-
-procstart _uX_xgetbv, callconv, qword, < >, < >, EXCR:dword
-
-    ifdef __x32__
-        ifdef __unix__
-            mov             ecx,            [dp0()+4]
-        endif
-            xgetbv
-            ;db             0FH,            01H,            0D0H         ; XGETBV
+ifdef __x32__
+    .686p
+    .model flat
+    option frame:auto
+    option stackbase:ebp        ; RSP or RBP are supported options for the stackbase.
+endif
+ifdef __x64__
+    .x64p
+    ifdef __windows__
+    option win64:15             ; 11-15 for RSP and 1-7 for RBP.
+    option frame:auto
+    option stackbase:rsp        ; RSP or RBP are supported options for the stackbase.
+    else
+    option win64:7              ; 11-15 for RSP and 1-7 for RBP.
+    option frame:auto
+    option stackbase:rbp        ; RSP or RBP are supported options for the stackbase.
     endif
-    ifdef __x64__
-        ifdef __unix__
-            mov             ecx,            dp0()
-        endif
-            xgetbv
-            shl             rdx,            32                  ; 00000020H
-            or              rax,            rdx
-    endif ;__X64__
-            ret
-procend
-
-
-endif ;__MIC__
-
-
-    end
+endif

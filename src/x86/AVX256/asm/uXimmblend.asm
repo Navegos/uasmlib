@@ -173,1287 +173,1287 @@ uXveccallopt
 ; FP, arithmetic
 ;******************
 
-uXfuncstart _uX_mm256_dp_ps_0, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_0, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			0
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_1, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_1, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			1
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_2, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_2, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			2
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_3, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_3, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			3
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_4, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_4, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			4
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_5, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_5, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			5
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_6, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_6, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			6
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_7, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_7, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			7
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_8, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_8, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			8
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_9, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_9, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			9
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_10, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_10, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			10
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_11, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_11, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			11
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_12, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_12, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			12
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_13, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_13, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			13
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_14, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_14, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			14
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_15, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_15, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			15
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_16, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_16, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			16
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_17, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_17, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			17
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_18, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_18, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			18
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_19, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_19, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			19
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_20, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_20, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			20
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_21, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_21, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			21
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_22, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_22, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			22
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_23, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_23, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			23
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_24, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_24, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			24
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_25, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_25, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			25
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_26, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_26, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			26
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_27, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_27, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			27
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_28, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_28, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			28
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_29, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_29, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			29
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_30, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_30, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			30
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_31, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_31, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			31
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_32, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_32, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			32
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_33, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_33, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			33
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_34, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_34, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			34
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_35, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_35, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			35
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_36, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_36, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			36
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_37, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_37, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			37
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_38, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_38, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			38
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_39, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_39, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			39
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_40, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_40, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			40
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_41, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_41, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			41
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_42, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_42, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			42
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_43, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_43, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			43
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_44, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_44, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			44
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_45, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_45, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			45
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_46, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_46, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			46
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_47, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_47, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			47
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_48, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_48, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			48
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_49, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_49, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			49
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_50, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_50, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			50
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_51, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_51, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			51
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_52, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_52, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			52
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_53, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_53, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			53
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_54, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_54, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			54
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_55, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_55, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			55
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_56, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_56, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			56
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_57, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_57, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			57
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_58, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_58, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			58
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_59, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_59, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			59
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_60, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_60, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			60
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_61, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_61, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			61
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_62, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_62, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			62
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_63, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_63, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			63
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_64, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_64, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			64
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_65, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_65, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			65
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_66, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_66, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			66
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_67, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_67, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			67
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_68, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_68, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			68
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_69, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_69, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			69
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_70, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_70, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			70
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_71, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_71, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			71
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_72, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_72, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			72
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_73, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_73, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			73
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_74, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_74, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			74
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_75, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_75, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			75
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_76, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_76, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			76
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_77, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_77, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			77
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_78, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_78, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			78
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_79, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_79, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			79
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_80, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_80, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			80
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_81, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_81, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			81
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_82, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_82, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			82
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_83, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_83, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			83
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_84, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_84, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			84
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_85, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_85, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			85
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_86, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_86, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			86
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_87, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_87, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			87
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_88, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_88, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			88
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_89, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_89, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			89
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_90, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_90, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			90
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_91, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_91, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			91
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_92, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_92, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			92
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_93, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_93, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			93
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_94, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_94, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			94
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_95, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_95, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			95
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_96, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_96, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			96
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_97, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_97, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			97
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_98, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_98, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			98
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_99, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_99, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			99
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_100, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_100, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			100
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_101, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_101, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			101
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_102, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_102, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			102
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_103, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_103, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			103
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_104, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_104, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			104
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_105, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_105, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			105
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_106, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_106, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			106
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_107, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_107, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			107
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_108, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_108, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			108
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_109, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_109, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			109
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_110, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_110, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			110
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_111, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_111, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			111
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_112, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_112, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			112
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_113, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_113, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			113
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_114, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_114, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			114
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_115, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_115, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			115
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_116, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_116, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			116
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_117, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_117, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			117
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_118, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_118, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			118
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_119, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_119, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			119
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_120, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_120, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			120
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_121, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_121, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			121
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_122, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_122, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			122
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_123, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_123, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			123
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_124, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_124, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			124
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_125, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_125, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			125
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_126, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_126, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			126
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_127, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_127, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			127
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_128, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_128, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			128
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_129, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_129, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			129
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_130, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_130, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			130
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_131, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_131, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			131
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_132, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_132, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			132
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_133, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_133, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			133
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_134, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_134, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			134
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_135, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_135, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			135
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_136, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_136, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			136
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_137, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_137, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			137
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_138, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_138, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			138
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_139, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_139, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			139
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_140, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_140, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			140
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_141, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_141, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			141
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_142, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_142, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			142
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_143, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_143, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			143
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_144, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_144, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			144
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_145, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_145, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			145
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_146, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B) 
+uXprocstart _uX_mm256_dp_ps_146, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B) 
 			vdpps				ymm0,			ymm0,			ymm1,			146
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_147, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_147, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			147
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_148, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_148, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			148
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_149, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_149, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			149
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_150, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_150, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			150
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_151, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_151, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			151
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_152, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_152, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			152
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_153, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_153, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			153
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_154, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B) 
+uXprocstart _uX_mm256_dp_ps_154, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B) 
 			vdpps				ymm0,			ymm0,			ymm1,			154
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_155, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_155, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			155
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_156, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_156, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			156
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_157, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_157, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			157
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_158, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_158, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			158
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_159, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_159, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			159
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_160, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_160, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			160
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_161, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_161, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			161
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_162, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_162, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			162
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_163, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_163, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			163
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_164, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_164, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			164
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_165, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_165, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			165
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_166, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_166, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			166
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_167, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_167, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			167
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_168, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_168, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			168
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_169, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_169, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			169
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_170, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_170, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			170
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_171, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_171, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			171
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_172, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_172, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			172
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_173, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_173, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			173
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_174, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B) 
+uXprocstart _uX_mm256_dp_ps_174, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B) 
 			vdpps				ymm0,			ymm0,			ymm1,			174
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_175, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_175, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			175
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_176, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_176, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			176
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_177, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_177, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			177
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_178, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_178, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			178
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_179, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_179, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			179
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_180, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_180, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			180
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_181, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_181, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			181
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_182, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_182, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			182
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_183, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_183, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			183
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_184, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_184, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			184
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_185, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_185, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			185
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_186, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_186, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			186
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_187, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_187, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			187
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_188, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_188, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			188
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_189, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_189, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			189
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_190, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_190, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			190
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_191, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_191, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			191
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_192, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_192, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			192
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_193, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_193, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			193
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_194, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_194, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			194
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_195, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_195, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			195
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_196, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_196, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			196
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_197, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_197, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			197
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_198, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_198, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			198
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_199, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_199, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			199
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_200, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_200, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			200
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_201, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_201, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			201
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_202, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_202, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			202
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_203, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_203, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			203
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_204, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_204, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			204
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_205, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_205, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			205
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_206, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_206, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			206
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_207, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_207, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			207
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_208, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_208, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			208
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_209, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_209, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			209
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_210, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_210, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			210
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_211, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_211, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			211
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_212, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_212, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			212
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_213, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_213, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			213
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_214, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_214, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			214
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_215, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_215, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			215
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_216, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_216, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			216
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_217, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_217, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			217
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_218, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_218, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			218
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_219, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_219, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			219
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_220, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_220, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			220
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_221, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_221, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			221
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_222, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_222, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			222
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_223, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_223, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			223
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_224, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_224, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			224
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_225, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_225, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			225
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_226, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_226, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			226
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_227, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_227, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			227
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_228, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_228, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			228
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_229, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_229, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			229
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_230, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_230, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			230
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_231, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_231, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			231
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_232, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_232, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			232
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_233, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_233, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			233
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_234, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_234, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			234
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_235, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_235, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			235
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_236, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_236, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			236
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_237, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_237, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			237
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_238, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_238, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			238
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_239, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_239, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			239
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_240, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_240, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			240
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_241, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_241, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			241
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_242, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_242, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			242
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_243, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_243, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			243
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_244, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_244, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			244
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_245, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_245, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			245
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_246, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_246, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			246
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_247, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_247, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			247
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_248, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_248, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			248
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_249, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_249, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			249
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_250, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_250, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			250
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_251, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_251, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			251
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_252, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_252, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			252
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_253, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_253, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			253
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_254, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_254, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			254
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps_255, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_ps_255, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdpps				ymm0,			ymm0,			ymm1,			255
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_dp_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 	
 		;.if(rparam3 > 3)
 		;	ret
@@ -2240,74 +2240,74 @@ uXfuncstart _uX_mm256_dp_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2
 			ret
 		;.endif
 		
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ps_0, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_ps_0, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundps 			ymm0, 			ymm0,			0
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ps_1, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_ps_1, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundps 			ymm0, 			ymm0,			1
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ps_2, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_ps_2, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundps 			ymm0, 			ymm0,			2
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ps_3, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_ps_3, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundps 			ymm0, 			ymm0,			3
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ps_4, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_ps_4, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundps 			ymm0, 			ymm0,			4
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ps_5, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_ps_5, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundps 			ymm0, 			ymm0,			5
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ps_6, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_ps_6, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundps 			ymm0, 			ymm0,			6
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ps_7, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_ps_7, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundps 			ymm0, 			ymm0,			7
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ps_8, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_ps_8, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundps 			ymm0, 			ymm0,			8
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ps_9, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_ps_9, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundps 			ymm0, 			ymm0,			9
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ps_10, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_ps_10, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundps 			ymm0, 			ymm0,			10
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ps_11, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_ps_11, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundps 			ymm0, 			ymm0,			11
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ps_12, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_ps_12, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundps 			ymm0, 			ymm0,			12
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ps, ymmword, < >, ymmwordparam1(Inymm_A), Inint_RoundMode:dword
+uXprocstart _uX_mm256_round_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), Inint_RoundMode:dword
 
 		;.if(rparam2 > 3)
 		;	ret
@@ -2365,74 +2365,74 @@ uXfuncstart _uX_mm256_round_ps, ymmword, < >, ymmwordparam1(Inymm_A), Inint_Roun
 			ret
 		;.endif
 
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ss_0, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_ss_0, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundss 			ymm0, 			ymm1,			0
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ss_1, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_ss_1, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundss 			ymm0, 			ymm1,			1
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ss_2, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_ss_2, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundss 			ymm0, 			ymm1,			2
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ss_3, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_ss_3, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundss 			ymm0, 			ymm1,			3
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ss_4, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_ss_4, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundss 			ymm0, 			ymm1,			4
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ss_5, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_ss_5, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundss 			ymm0, 			ymm1,			5
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ss_6, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_ss_6, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundss 			ymm0, 			ymm1,			6
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ss_7, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_ss_7, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundss 			ymm0, 			ymm1,			7
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ss_8, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_ss_8, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundss 			ymm0, 			ymm1,			8
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ss_9, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_ss_9, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundss 			ymm0, 			ymm1,			9
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ss_10, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_ss_10, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundss 			ymm0, 			ymm1,			10
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ss_11, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_ss_11, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundss 			ymm0, 			ymm1,			11
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ss_12, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_ss_12, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundss 			ymm0, 			ymm1,			12
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_ss, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam1(Inymm_B), Inint_RoundMode:dword
+uXprocstart _uX_mm256_round_ss, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam1(Inymm_B), Inint_RoundMode:dword
 
 		;.if(rparam3 > 3)
 		;	ret
@@ -2490,1313 +2490,1313 @@ uXfuncstart _uX_mm256_round_ss, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordpar
 			ret
 		;.endif
 
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_floor_ps, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_floor_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundps 			ymm0, 			ymm0,			1
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_ceil_ps, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_ceil_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundps 			ymm0, 			ymm0,			2
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_floor_ss, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_floor_ss, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundss 			ymm0, 			ymm1,			1
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_ceil_ss, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_ceil_ss, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundss 			ymm0, 			ymm1,			2
 			ret
-uXfuncend
+uXprocend
 
 ;******************
 ; DP, arithmetic
 ;******************
 
-uXfuncstart _uX_mm256_dp_pd_0, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_0, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			0
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_1, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_1, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			1
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_2, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_2, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			2
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_3, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_3, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			3
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_4, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_4, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			4
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_5, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_5, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			5
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_6, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_6, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			6
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_7, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_7, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			7
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_8, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_8, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			8
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_9, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_9, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			9
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_10, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_10, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			10
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_11, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_11, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			11
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_12, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_12, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			12
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_13, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_13, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			13
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_14, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_14, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			14
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_15, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_15, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			15
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_16, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_16, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			16
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_17, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_17, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			17
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_18, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_18, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			18
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_19, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_19, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			19
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_20, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_20, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			20
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_21, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_21, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			21
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_22, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_22, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			22
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_23, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_23, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			23
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_24, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_24, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			24
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_25, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_25, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			25
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_26, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_26, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			26
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_27, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_27, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			27
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_28, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_28, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			28
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_29, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_29, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			29
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_30, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_30, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			30
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_31, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_31, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			31
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_32, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_32, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			32
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_33, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_33, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			33
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_34, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_34, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			34
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_35, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_35, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			35
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_36, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_36, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			36
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_37, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_37, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			37
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_38, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_38, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			38
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_39, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_39, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			39
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_40, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_40, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			40
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_41, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_41, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			41
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_42, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_42, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			42
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_43, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_43, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			43
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_44, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_44, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			44
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_45, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_45, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			45
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_46, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_46, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			46
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_47, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_47, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			47
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_48, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_48, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			48
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_49, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_49, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			49
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_50, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_50, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			50
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_51, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_51, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			51
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_52, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_52, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			52
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_53, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_53, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			53
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_54, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_54, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			54
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_55, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_55, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			55
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_56, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_56, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			56
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_57, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_57, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			57
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_58, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_58, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			58
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_59, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_59, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			59
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_60, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_60, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			60
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_61, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_61, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			61
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_62, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_62, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			62
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_63, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_63, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			63
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_64, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_64, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			64
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_65, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_65, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			65
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_66, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_66, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			66
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_67, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_67, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			67
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_68, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_68, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			68
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_69, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_69, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			69
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_70, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_70, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			70
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_71, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_71, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			71
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_72, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_72, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			72
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_73, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_73, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			73
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_74, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_74, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			74
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_75, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_75, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			75
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_76, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_76, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			76
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_77, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_77, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			77
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_78, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_78, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			78
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_79, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_79, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			79
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_80, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_80, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			80
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_81, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_81, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			81
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_82, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_82, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			82
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_83, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_83, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			83
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_84, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_84, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			84
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_85, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_85, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			85
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_86, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_86, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			86
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_87, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_87, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			87
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_88, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_88, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			88
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_89, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_89, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			89
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_90, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_90, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			90
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_91, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_91, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			91
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_92, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_92, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			92
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_93, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_93, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			93
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_94, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_94, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			94
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_95, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_95, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			95
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_96, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_96, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			96
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_97, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_97, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			97
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_98, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_98, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			98
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_99, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_99, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			99
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_100, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_100, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			100
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_101, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_101, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			101
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_102, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_102, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			102
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_103, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_103, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			103
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_104, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_104, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			104
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_105, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_105, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			105
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_106, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_106, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			106
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_107, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_107, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			107
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_108, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_108, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			108
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_109, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_109, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			109
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_110, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_110, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			110
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_111, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_111, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			111
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_112, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_112, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			112
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_113, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_113, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			113
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_114, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_114, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			114
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_115, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_115, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			115
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_116, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_116, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			116
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_117, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_117, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			117
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_118, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_118, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			118
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_119, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_119, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			119
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_120, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_120, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			120
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_121, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_121, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			121
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_122, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_122, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			122
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_123, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_123, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			123
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_124, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_124, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			124
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_125, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_125, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			125
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_126, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_126, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			126
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_127, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_127, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			127
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_128, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_128, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			128
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_129, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_129, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			129
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_130, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_130, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			130
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_131, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_131, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			131
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_132, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_132, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			132
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_133, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_133, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			133
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_134, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_134, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			134
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_135, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_135, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			135
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_136, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_136, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			136
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_137, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_137, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			137
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_138, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_138, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			138
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_139, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_139, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			139
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_140, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_140, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			140
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_141, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_141, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			141
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_142, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_142, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			142
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_143, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_143, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			143
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_144, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_144, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			144
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_145, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_145, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			145
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_146, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B) 
+uXprocstart _uX_mm256_dp_pd_146, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B) 
 			vdppd				ymm0,			ymm0,			ymm1,			146
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_147, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_147, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			147
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_148, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_148, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			148
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_149, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_149, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			149
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_150, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_150, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			150
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_151, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_151, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			151
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_152, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_152, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			152
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_153, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_153, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			153
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_154, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B) 
+uXprocstart _uX_mm256_dp_pd_154, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B) 
 			vdppd				ymm0,			ymm0,			ymm1,			154
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_155, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_155, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			155
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_156, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_156, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			156
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_157, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_157, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			157
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_158, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_158, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			158
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_159, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_159, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			159
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_160, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_160, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			160
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_161, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_161, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			161
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_162, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_162, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			162
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_163, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_163, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			163
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_164, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_164, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			164
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_165, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_165, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			165
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_166, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_166, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			166
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_167, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_167, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			167
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_168, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_168, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			168
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_169, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_169, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			169
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_170, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_170, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			170
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_171, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_171, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			171
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_172, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_172, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			172
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_173, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_173, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			173
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_174, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B) 
+uXprocstart _uX_mm256_dp_pd_174, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B) 
 			vdppd				ymm0,			ymm0,			ymm1,			174
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_175, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_175, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			175
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_176, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_176, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			176
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_177, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_177, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			177
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_178, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_178, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			178
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_179, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_179, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			179
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_180, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_180, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			180
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_181, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_181, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			181
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_182, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_182, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			182
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_183, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_183, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			183
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_184, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_184, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			184
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_185, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_185, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			185
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_186, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_186, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			186
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_187, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_187, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			187
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_188, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_188, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			188
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_189, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_189, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			189
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_190, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_190, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			190
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_191, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_191, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			191
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_192, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_192, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			192
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_193, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_193, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			193
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_194, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_194, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			194
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_195, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_195, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			195
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_196, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_196, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			196
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_197, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_197, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			197
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_198, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_198, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			198
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_199, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_199, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			199
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_200, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_200, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			200
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_201, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_201, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			201
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_202, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_202, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			202
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_203, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_203, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			203
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_204, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_204, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			204
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_205, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_205, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			205
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_206, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_206, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			206
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_207, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_207, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			207
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_208, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_208, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			208
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_209, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_209, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			209
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_210, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_210, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			210
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_211, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_211, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			211
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_212, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_212, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			212
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_213, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_213, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			213
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_214, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_214, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			214
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_215, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_215, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			215
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_216, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_216, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			216
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_217, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_217, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			217
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_218, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_218, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			218
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_219, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_219, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			219
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_220, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_220, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			220
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_221, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_221, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			221
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_222, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_222, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			222
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_223, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_223, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			223
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_224, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_224, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			224
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_225, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_225, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			225
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_226, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_226, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			226
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_227, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_227, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			227
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_228, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_228, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			228
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_229, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_229, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			229
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_230, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_230, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			230
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_231, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_231, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			231
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_232, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_232, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			232
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_233, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_233, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			233
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_234, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_234, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			234
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_235, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_235, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			235
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_236, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_236, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			236
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_237, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_237, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			237
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_238, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_238, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			238
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_239, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_239, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			239
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_240, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_240, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			240
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_241, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_241, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			241
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_242, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_242, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			242
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_243, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_243, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			243
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_244, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_244, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			244
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_245, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_245, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			245
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_246, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_246, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			246
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_247, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_247, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			247
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_248, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_248, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			248
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_249, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_249, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			249
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_250, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_250, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			250
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_251, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_251, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			251
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_252, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_252, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			252
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_253, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_253, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			253
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_254, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_254, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			254
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd_255, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_dp_pd_255, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vdppd				ymm0,			ymm0,			ymm1,			255
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_dp_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_dp_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 	
 		;.if(rparam3 > 3)
 		;	ret
@@ -4583,74 +4583,74 @@ uXfuncstart _uX_mm256_dp_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2
 			ret
 		;.endif
 		
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_pd_0, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_pd_0, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundpd 			ymm0, 			ymm0,			0
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_pd_1, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_pd_1, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundpd 			ymm0, 			ymm0,			1
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_pd_2, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_pd_2, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundpd 			ymm0, 			ymm0,			2
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_pd_3, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_pd_3, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundpd 			ymm0, 			ymm0,			3
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_pd_4, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_pd_4, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundpd 			ymm0, 			ymm0,			4
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_pd_5, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_pd_5, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundpd 			ymm0, 			ymm0,			5
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_pd_6, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_pd_6, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundpd 			ymm0, 			ymm0,			6
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_pd_7, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_pd_7, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundpd 			ymm0, 			ymm0,			7
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_pd_8, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_pd_8, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundpd 			ymm0, 			ymm0,			8
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_pd_9, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_pd_9, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundpd 			ymm0, 			ymm0,			9
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_pd_10, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_pd_10, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundpd 			ymm0, 			ymm0,			10
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_pd_11, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_pd_11, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundpd 			ymm0, 			ymm0,			11
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_pd_12, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_round_pd_12, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundpd 			ymm0, 			ymm0,			12
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_pd, ymmword, < >, ymmwordparam1(Inymm_A), Inint_RoundMode:dword
+uXprocstart _uX_mm256_round_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), Inint_RoundMode:dword
 
 		;.if(rparam2 > 3)
 		;	ret
@@ -4708,74 +4708,74 @@ uXfuncstart _uX_mm256_round_pd, ymmword, < >, ymmwordparam1(Inymm_A), Inint_Roun
 			ret
 		;.endif
 
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_sd_0, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_sd_0, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundsd 			ymm0, 			ymm1,			0
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_sd_1, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_sd_1, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundsd 			ymm0, 			ymm1,			1
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_sd_2, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_sd_2, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundsd 			ymm0, 			ymm1,			2
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_sd_3, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_sd_3, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundsd 			ymm0, 			ymm1,			3
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_sd_4, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_sd_4, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundsd 			ymm0, 			ymm1,			4
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_sd_5, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_sd_5, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundsd 			ymm0, 			ymm1,			5
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_sd_6, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_sd_6, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundsd 			ymm0, 			ymm1,			6
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_sd_7, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_sd_7, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundsd 			ymm0, 			ymm1,			7
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_sd_8, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_sd_8, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundsd 			ymm0, 			ymm1,			8
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_sd_9, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_sd_9, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundsd 			ymm0, 			ymm1,			9
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_sd_10, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_sd_10, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundsd 			ymm0, 			ymm1,			10
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_sd_11, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_sd_11, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundsd 			ymm0, 			ymm1,			11
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_sd_12, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_round_sd_12, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundsd 			ymm0, 			ymm1,			12
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_round_sd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam1(Inymm_B), Inint_RoundMode:dword
+uXprocstart _uX_mm256_round_sd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam1(Inymm_B), Inint_RoundMode:dword
 
 		;.if(rparam3 > 3)
 		;	ret
@@ -4833,32 +4833,32 @@ uXfuncstart _uX_mm256_round_sd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordpar
 			ret
 		;.endif
 
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_floor_pd, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_floor_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundpd 			ymm0, 			ymm0,			1
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_ceil_pd, ymmword, < >, ymmwordparam1(Inymm_A)
+uXprocstart _uX_mm256_ceil_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A)
 			vroundpd 			ymm0, 			ymm0,			2
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_floor_sd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_floor_sd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundsd 			ymm0, 			ymm1,			1
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_ceil_sd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
+uXprocstart _uX_mm256_ceil_sd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B)
 			vroundsd 			ymm0, 			ymm1,			2
 			ret
-uXfuncend
+uXprocend
 
 ;******************
 ; FP, comparison
 ;******************
-uXfuncstart _uX_mm256_cmp_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmp_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 	
 		;.if(rparam3 > 3)
 		;	ret
@@ -4973,172 +4973,172 @@ uXfuncstart _uX_mm256_cmp_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam
 			ret
 		;.endif
 		
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpeqoq_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpeqoq_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			0
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpltos_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpltos_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			1
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpleos_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpleos_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			2
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpunordq_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpunordq_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			3
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpnequq_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpnequq_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			4
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpnltus_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpnltus_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			5
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpnleus_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpnleus_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			6
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpordq_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpordq_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			7
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpequq_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpequq_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			8
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpngeus_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpngeus_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			9
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpngtus_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpngtus_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			10
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpfalseoq_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpfalseoq_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			11
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpneqoq_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpneqoq_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			12
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpgeos_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpgeos_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			13
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpgtos_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpgtos_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			14
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmptrueuq_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmptrueuq_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			15
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpeqos_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpeqos_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			16
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpltoq_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpltoq_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			17
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpleoq_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpleoq_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			18
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpunords_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpunords_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			19
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpnequs_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpnequs_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			20
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpnltuq_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpnltuq_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			21
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpnleuq_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpnleuq_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			22
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpords_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpords_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			23
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpequs_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpequs_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			24
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpngeuq_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpngeuq_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			25
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpngtuq_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpngtuq_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			26
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpfalseos_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpfalseos_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			27
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpneqos_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpneqos_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			28
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpgeoq_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpgeoq_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			29
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpgtoq_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpgtoq_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			30
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmptrueus_ps, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmptrueus_ps, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmpps				ymm0,			ymm0,			ymm1,			31
 			ret
-uXfuncend
+uXprocend
 
 ;******************
 ; DP, comparison
 ;******************
-uXfuncstart _uX_mm256_cmp_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmp_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 	
 		;.if(rparam3 > 3)
 		;	ret
@@ -5253,167 +5253,167 @@ uXfuncstart _uX_mm256_cmp_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam
 			ret
 		;.endif
 		
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpeqoq_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpeqoq_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			0
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpltos_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpltos_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			1
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpleos_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpleos_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			2
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpunordq_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpunordq_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			3
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpnequq_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpnequq_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			4
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpnltus_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpnltus_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			5
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpnleus_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpnleus_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			6
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpordq_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpordq_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			7
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpequq_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpequq_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			8
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpngeus_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpngeus_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			9
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpngtus_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpngtus_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			10
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpfalseoq_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpfalseoq_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			11
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpneqoq_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpneqoq_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			12
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpgeos_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpgeos_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			13
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpgtos_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpgtos_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			14
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmptrueuq_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmptrueuq_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			15
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpeqos_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpeqos_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			16
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpltoq_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpltoq_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			17
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpleoq_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpleoq_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			18
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpunords_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpunords_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			19
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpnequs_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpnequs_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			20
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpnltuq_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpnltuq_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			21
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpnleuq_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpnleuq_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			22
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpords_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpords_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			23
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpequs_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpequs_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			24
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpngeuq_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpngeuq_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			25
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpngtuq_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpngtuq_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			26
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpfalseos_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpfalseos_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			27
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpneqos_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpneqos_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			28
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpgeoq_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpgeoq_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			29
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmpgtoq_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmpgtoq_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			30
 			ret
-uXfuncend
+uXprocend
 
-uXfuncstart _uX_mm256_cmptrueus_pd, ymmword, < >, ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
+uXprocstart _uX_mm256_cmptrueus_pd, ymmword, < >, < >,  ymmwordparam1(Inymm_A), ymmwordparam2(Inymm_B), _Imm8:dword
 			vcmppd				ymm0,			ymm0,			ymm1,			31
 			ret
-uXfuncend
+uXprocend
 
 endif ;__MIC__
 

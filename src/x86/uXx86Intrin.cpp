@@ -1,771 +1,775 @@
-#include "uXx86Intrin.h"
+
 #include "uXx86Cpu.h"
+#include "uXx86Intrin.h"
 
-#include "uXTypes.h"
-
+namespace_uX
+namespace_CPU
 uX_EXTERNC_BEGIN
 
-static const uXCPUFeatures CPU_Rep0(0);
+uX_PACK_PUSH_SIZE_T
 
-uX_PACK_PUSH4
+static const _internal::CPUFeatures CPU_Rep0(0);
 
-const int uX_callconv uX_intrinset(void)
+uX_PACK_4
+
+const int uX_callconv intrinset(void)
 {
-	return CPU_Rep0.intrinset();
+    return CPU_Rep0.intrinset();
 }
 
 /* %eax=00H, %ecx */
-const unsigned __int8 uX_callconv uX_is_Intel(void)
+const unsigned int uX_callconv is_Intel(void)
 {
-	return CPU_Rep0.is_Intel();
+    return CPU_Rep0.is_Intel();
 }
 
-const unsigned __int8 uX_callconv uX_is_AMD(void)
+const unsigned int uX_callconv is_AMD(void)
 {
-	return CPU_Rep0.is_AMD();
+    return CPU_Rep0.is_AMD();
 }
 
 /* %eax=01H, %ecx */
-const unsigned __int8 uX_callconv uX_has_SSE3(void)
+const unsigned int uX_callconv has_SSE3(void)
 {
-	return CPU_Rep0.has_SSE3();
+    return CPU_Rep0.has_SSE3();
 }
 
-const unsigned __int8 uX_callconv uX_has_PCLMULQDQ(void)
+const unsigned int uX_callconv has_PCLMULQDQ(void)
 {
-	return CPU_Rep0.has_PCLMULQDQ();
+    return CPU_Rep0.has_PCLMULQDQ();
 }
 
-const unsigned __int8 uX_callconv uX_has_MONITOR(void)
+const unsigned int uX_callconv has_MONITOR(void)
 {
-	return CPU_Rep0.has_MONITOR();
+    return CPU_Rep0.has_MONITOR();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSSE3(void)
+const unsigned int uX_callconv has_SSSE3(void)
 {
-	return CPU_Rep0.has_SSSE3();
+    return CPU_Rep0.has_SSSE3();
 }
 
-const unsigned __int8 uX_callconv uX_has_FMA(void)
+const unsigned int uX_callconv has_FMA(void)
 {
-	return CPU_Rep0.has_FMA();
+    return CPU_Rep0.has_FMA();
 }
 
-const unsigned __int8 uX_callconv uX_has_CMPXCHG16B(void)
+const unsigned int uX_callconv has_CMPXCHG16B(void)
 {
-	return CPU_Rep0.has_CMPXCHG16B();
+    return CPU_Rep0.has_CMPXCHG16B();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSE41(void)
+const unsigned int uX_callconv has_SSE41(void)
 {
-	return CPU_Rep0.has_SSE41();
+    return CPU_Rep0.has_SSE41();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSE42(void)
+const unsigned int uX_callconv has_SSE42(void)
 {
-	return CPU_Rep0.has_SSE42();
+    return CPU_Rep0.has_SSE42();
 }
 
-const unsigned __int8 uX_callconv uX_has_MOVBE(void)
+const unsigned int uX_callconv has_MOVBE(void)
 {
-	return CPU_Rep0.has_MOVBE();
+    return CPU_Rep0.has_MOVBE();
 }
 
-const unsigned __int8 uX_callconv uX_has_POPCNT(void)
+const unsigned int uX_callconv has_POPCNT(void)
 {
-	return CPU_Rep0.has_POPCNT();
+    return CPU_Rep0.has_POPCNT();
 }
 
-const unsigned __int8 uX_callconv uX_has_AES(void)
+const unsigned int uX_callconv has_AES(void)
 {
-	return CPU_Rep0.has_AES();
+    return CPU_Rep0.has_AES();
 }
 
-const unsigned __int8 uX_callconv uX_has_XSAVE(void)
+const unsigned int uX_callconv has_XSAVE(void)
 {
-	return CPU_Rep0.has_XSAVE();
+    return CPU_Rep0.has_XSAVE();
 }
 
-const unsigned __int8 uX_callconv uX_has_OSXSAVE(void)
+const unsigned int uX_callconv has_OSXSAVE(void)
 {
-	return CPU_Rep0.has_OSXSAVE();
+    return CPU_Rep0.has_OSXSAVE();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX(void)
+const unsigned int uX_callconv has_AVX(void)
 {
-	return CPU_Rep0.has_AVX();
+    return CPU_Rep0.has_AVX();
 }
 
-const unsigned __int8 uX_callconv uX_has_F16C(void)
+const unsigned int uX_callconv has_F16C(void)
 {
-	return CPU_Rep0.has_F16C();
+    return CPU_Rep0.has_F16C();
 }
 
-const unsigned __int8 uX_callconv uX_has_RDRAND(void)
+const unsigned int uX_callconv has_RDRAND(void)
 {
-	return CPU_Rep0.has_RDRAND();
+    return CPU_Rep0.has_RDRAND();
 }
 
 /* %eax=01H, %edx */
-const unsigned __int8 uX_callconv uX_has_FPU(void)
+const unsigned int uX_callconv has_FPU(void)
 {
-	return CPU_Rep0.has_FPU();
+    return CPU_Rep0.has_FPU();
 }
 
-const unsigned __int8 uX_callconv uX_has_TSC(void)
+const unsigned int uX_callconv has_TSC(void)
 {
-	return CPU_Rep0.has_TSC();
+    return CPU_Rep0.has_TSC();
 }
 
-const unsigned __int8 uX_callconv uX_has_MSR(void)
+const unsigned int uX_callconv has_MSR(void)
 {
-	return CPU_Rep0.has_MSR();
+    return CPU_Rep0.has_MSR();
 }
 
-const unsigned __int8 uX_callconv uX_has_CMPXCHG8B(void)
+const unsigned int uX_callconv has_CMPXCHG8B(void)
 {
-	return CPU_Rep0.has_CMPXCHG8B();
+    return CPU_Rep0.has_CMPXCHG8B();
 }
 
-const unsigned __int8 uX_callconv uX_has_SEP(void)
+const unsigned int uX_callconv has_SEP(void)
 {
-	return CPU_Rep0.has_SEP();
+    return CPU_Rep0.has_SEP();
 }
 
-const unsigned __int8 uX_callconv uX_has_CMOV(void)
+const unsigned int uX_callconv has_CMOV(void)
 {
-	return CPU_Rep0.has_CMOV();
+    return CPU_Rep0.has_CMOV();
 }
 
-const unsigned __int8 uX_callconv uX_has_CLFSH(void)
+const unsigned int uX_callconv has_CLFSH(void)
 {
-	return CPU_Rep0.has_CLFSH();
+    return CPU_Rep0.has_CLFSH();
 }
 
-const unsigned __int8 uX_callconv uX_has_MMX(void)
+const unsigned int uX_callconv has_MMX(void)
 {
-	return CPU_Rep0.has_MMX();
+    return CPU_Rep0.has_MMX();
 }
 
-const unsigned __int8 uX_callconv uX_has_FXSR(void)
+const unsigned int uX_callconv has_FXSR(void)
 {
-	return CPU_Rep0.has_FXSR();
+    return CPU_Rep0.has_FXSR();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSE(void)
+const unsigned int uX_callconv has_SSE(void)
 {
-	return CPU_Rep0.has_SSE();
+    return CPU_Rep0.has_SSE();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSE2(void)
+const unsigned int uX_callconv has_SSE2(void)
 {
-	return CPU_Rep0.has_SSE2();
+    return CPU_Rep0.has_SSE2();
 }
 
 /* %eax=07H, %ebx */
-const unsigned __int8 uX_callconv uX_has_FSGSBASE(void)
+const unsigned int uX_callconv has_FSGSBASE(void)
 {
-	return CPU_Rep0.has_FSGSBASE();
+    return CPU_Rep0.has_FSGSBASE();
 }
 
-const unsigned __int8 uX_callconv uX_has_SGX(void)
+const unsigned int uX_callconv has_SGX(void)
 {
-	return CPU_Rep0.has_SGX();
+    return CPU_Rep0.has_SGX();
 }
 
-const unsigned __int8 uX_callconv uX_has_BMI1(void)
+const unsigned int uX_callconv has_BMI1(void)
 {
-	return CPU_Rep0.has_BMI1();
+    return CPU_Rep0.has_BMI1();
 }
 
-const unsigned __int8 uX_callconv uX_has_HLE(void)
+const unsigned int uX_callconv has_HLE(void)
 {
-	return CPU_Rep0.has_HLE();
+    return CPU_Rep0.has_HLE();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX2(void)
+const unsigned int uX_callconv has_AVX2(void)
 {
-	return CPU_Rep0.has_AVX2();
+    return CPU_Rep0.has_AVX2();
 }
 
-const unsigned __int8 uX_callconv uX_has_SMEP(void)
+const unsigned int uX_callconv has_SMEP(void)
 {
-	return CPU_Rep0.has_SMEP();
+    return CPU_Rep0.has_SMEP();
 }
 
-const unsigned __int8 uX_callconv uX_has_BMI2(void)
+const unsigned int uX_callconv has_BMI2(void)
 {
-	return CPU_Rep0.has_BMI2();
+    return CPU_Rep0.has_BMI2();
 }
 
-const unsigned __int8 uX_callconv uX_has_ERMS(void)
+const unsigned int uX_callconv has_ERMS(void)
 {
-	return CPU_Rep0.has_ERMS();
+    return CPU_Rep0.has_ERMS();
 }
 
-const unsigned __int8 uX_callconv uX_has_INVPCID(void)
+const unsigned int uX_callconv has_INVPCID(void)
 {
-	return CPU_Rep0.has_INVPCID();
+    return CPU_Rep0.has_INVPCID();
 }
 
-const unsigned __int8 uX_callconv uX_has_RTM(void)
+const unsigned int uX_callconv has_RTM(void)
 {
-	return CPU_Rep0.has_RTM();
+    return CPU_Rep0.has_RTM();
 }
 
-const unsigned __int8 uX_callconv uX_has_MPX(void)
+const unsigned int uX_callconv has_MPX(void)
 {
-	return CPU_Rep0.has_MPX();
+    return CPU_Rep0.has_MPX();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512F(void)
+const unsigned int uX_callconv has_AVX512F(void)
 {
-	return CPU_Rep0.has_AVX512F();
+    return CPU_Rep0.has_AVX512F();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512DQ(void)
+const unsigned int uX_callconv has_AVX512DQ(void)
 {
-	return CPU_Rep0.has_AVX512DQ();
+    return CPU_Rep0.has_AVX512DQ();
 }
 
-const unsigned __int8 uX_callconv uX_has_RDSEED(void)
+const unsigned int uX_callconv has_RDSEED(void)
 {
-	return CPU_Rep0.has_RDSEED();
+    return CPU_Rep0.has_RDSEED();
 }
 
-const unsigned __int8 uX_callconv uX_has_ADX(void)
+const unsigned int uX_callconv has_ADX(void)
 {
-	return CPU_Rep0.has_ADX();
+    return CPU_Rep0.has_ADX();
 }
 
-const unsigned __int8 uX_callconv uX_has_SMAP(void)
+const unsigned int uX_callconv has_SMAP(void)
 {
-	return CPU_Rep0.has_SMAP();
+    return CPU_Rep0.has_SMAP();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512_IFMA(void)
+const unsigned int uX_callconv has_AVX512_IFMA(void)
 {
-	return CPU_Rep0.has_AVX512_IFMA();
+    return CPU_Rep0.has_AVX512_IFMA();
 }
 
-const unsigned __int8 uX_callconv uX_has_CLFLUSHOPT(void)
+const unsigned int uX_callconv has_CLFLUSHOPT(void)
 {
-	return CPU_Rep0.has_CLFLUSHOPT();
+    return CPU_Rep0.has_CLFLUSHOPT();
 }
 
-const unsigned __int8 uX_callconv uX_has_CLWB(void)
+const unsigned int uX_callconv has_CLWB(void)
 {
-	return CPU_Rep0.has_CLWB();
+    return CPU_Rep0.has_CLWB();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512PF(void)
+const unsigned int uX_callconv has_AVX512PF(void)
 {
-	return CPU_Rep0.has_AVX512PF();
+    return CPU_Rep0.has_AVX512PF();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512ER(void)
+const unsigned int uX_callconv has_AVX512ER(void)
 {
-	return CPU_Rep0.has_AVX512ER();
+    return CPU_Rep0.has_AVX512ER();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512CD(void)
+const unsigned int uX_callconv has_AVX512CD(void)
 {
-	return CPU_Rep0.has_AVX512CD();
+    return CPU_Rep0.has_AVX512CD();
 }
 
-const unsigned __int8 uX_callconv uX_has_SHA(void)
+const unsigned int uX_callconv has_SHA(void)
 {
-	return CPU_Rep0.has_SHA();
+    return CPU_Rep0.has_SHA();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512BW(void)
+const unsigned int uX_callconv has_AVX512BW(void)
 {
-	return CPU_Rep0.has_AVX512BW();
+    return CPU_Rep0.has_AVX512BW();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512VL(void)
+const unsigned int uX_callconv has_AVX512VL(void)
 {
-	return CPU_Rep0.has_AVX512VL();
+    return CPU_Rep0.has_AVX512VL();
 }
 
 /* %eax=07H, %ecx */
-const unsigned __int8 uX_callconv uX_has_PREFETCHWT1(void)
+const unsigned int uX_callconv has_PREFETCHWT1(void)
 {
-	return CPU_Rep0.has_PREFETCHWT1();
+    return CPU_Rep0.has_PREFETCHWT1();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512_VBMI(void)
+const unsigned int uX_callconv has_AVX512_VBMI(void)
 {
-	return CPU_Rep0.has_AVX512_VBMI();
+    return CPU_Rep0.has_AVX512_VBMI();
 }
 
-const unsigned __int8 uX_callconv uX_has_UMIP(void)
+const unsigned int uX_callconv has_UMIP(void)
 {
-	return CPU_Rep0.has_UMIP();
+    return CPU_Rep0.has_UMIP();
 }
 
-const unsigned __int8 uX_callconv uX_has_PKU(void)
+const unsigned int uX_callconv has_PKU(void)
 {
-	return CPU_Rep0.has_PKU();
+    return CPU_Rep0.has_PKU();
 }
 
-const unsigned __int8 uX_callconv uX_has_OSPKE(void)
+const unsigned int uX_callconv has_OSPKE(void)
 {
-	return CPU_Rep0.has_OSPKE();
+    return CPU_Rep0.has_OSPKE();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512_VBMI2(void)
+const unsigned int uX_callconv has_AVX512_VBMI2(void)
 {
-	return CPU_Rep0.has_AVX512_VBMI2();
+    return CPU_Rep0.has_AVX512_VBMI2();
 }
 
-const unsigned __int8 uX_callconv uX_has_GFNI(void)
+const unsigned int uX_callconv has_GFNI(void)
 {
-	return CPU_Rep0.has_GFNI();
+    return CPU_Rep0.has_GFNI();
 }
 
-const unsigned __int8 uX_callconv uX_has_VAES(void)
+const unsigned int uX_callconv has_VAES(void)
 {
-	return CPU_Rep0.has_VAES();
+    return CPU_Rep0.has_VAES();
 }
 
-const unsigned __int8 uX_callconv uX_has_VPCLMULQDQ(void)
+const unsigned int uX_callconv has_VPCLMULQDQ(void)
 {
-	return CPU_Rep0.has_VPCLMULQDQ();
+    return CPU_Rep0.has_VPCLMULQDQ();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512_VNNI(void)
+const unsigned int uX_callconv has_AVX512_VNNI(void)
 {
-	return CPU_Rep0.has_AVX512_VNNI();
+    return CPU_Rep0.has_AVX512_VNNI();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512_BITALG(void)
+const unsigned int uX_callconv has_AVX512_BITALG(void)
 {
-	return CPU_Rep0.has_AVX512_BITALG();
+    return CPU_Rep0.has_AVX512_BITALG();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512_VPOPCNTDQ(void)
+const unsigned int uX_callconv has_AVX512_VPOPCNTDQ(void)
 {
-	return CPU_Rep0.has_AVX512_VPOPCNTDQ();
+    return CPU_Rep0.has_AVX512_VPOPCNTDQ();
 }
 
-const unsigned __int8 uX_callconv uX_has_RDPID(void)
+const unsigned int uX_callconv has_RDPID(void)
 {
-	return CPU_Rep0.has_RDPID();
+    return CPU_Rep0.has_RDPID();
 }
 
 /* %eax=07H, %edx */
-const unsigned __int8 uX_callconv uX_has_AVX512_4VNNIW(void)
+const unsigned int uX_callconv has_AVX512_4VNNIW(void)
 {
-	return CPU_Rep0.has_AVX512_4VNNIW();
+    return CPU_Rep0.has_AVX512_4VNNIW();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512_4FMAPS(void)
+const unsigned int uX_callconv has_AVX512_4FMAPS(void)
 {
-	return CPU_Rep0.has_AVX512_4FMAPS();
+    return CPU_Rep0.has_AVX512_4FMAPS();
 }
 
 /* %eax=80000001H, %ecx */
-const unsigned __int8 uX_callconv uX_has_LAHF(void)
+const unsigned int uX_callconv has_LAHF(void)
 {
-	return CPU_Rep0.has_LAHF();
+    return CPU_Rep0.has_LAHF();
 }
 
-const unsigned __int8 uX_callconv uX_has_LZCNT(void)
+const unsigned int uX_callconv has_LZCNT(void)
 {
-	return CPU_Rep0.has_LZCNT();
+    return CPU_Rep0.has_LZCNT();
 }
 
-const unsigned __int8 uX_callconv uX_has_ABM(void)
+const unsigned int uX_callconv has_ABM(void)
 {
-	return CPU_Rep0.has_ABM();
+    return CPU_Rep0.has_ABM();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSE4a(void)
+const unsigned int uX_callconv has_SSE4a(void)
 {
-	return CPU_Rep0.has_SSE4a();
+    return CPU_Rep0.has_SSE4a();
 }
 
-const unsigned __int8 uX_callconv uX_has_PREFETCHW(void)
+const unsigned int uX_callconv has_PREFETCHW(void)
 {
-	return CPU_Rep0.has_PREFETCHW();
+    return CPU_Rep0.has_PREFETCHW();
 }
 
-const unsigned __int8 uX_callconv uX_has_XOP(void)
+const unsigned int uX_callconv has_XOP(void)
 {
-	return CPU_Rep0.has_XOP();
+    return CPU_Rep0.has_XOP();
 }
 
-const unsigned __int8 uX_callconv uX_has_LWP(void)
+const unsigned int uX_callconv has_LWP(void)
 {
-	return CPU_Rep0.has_LWP();
+    return CPU_Rep0.has_LWP();
 }
 
-const unsigned __int8 uX_callconv uX_has_FMA4(void)
+const unsigned int uX_callconv has_FMA4(void)
 {
-	return CPU_Rep0.has_FMA4();
+    return CPU_Rep0.has_FMA4();
 }
 
-const unsigned __int8 uX_callconv uX_has_TBM(void)
+const unsigned int uX_callconv has_TBM(void)
 {
-	return CPU_Rep0.has_TBM();
+    return CPU_Rep0.has_TBM();
 }
 
-const unsigned __int8 uX_callconv uX_has_MWAITX(void)
+const unsigned int uX_callconv has_MWAITX(void)
 {
-	return CPU_Rep0.has_MWAITX();
+    return CPU_Rep0.has_MWAITX();
 }
 
 /* %eax=80000001H, %edx */
-const unsigned __int8 uX_callconv uX_has_SYSCALL(void)
+const unsigned int uX_callconv has_SYSCALL(void)
 {
-	return CPU_Rep0.has_SYSCALL();
+    return CPU_Rep0.has_SYSCALL();
 }
 
-const unsigned __int8 uX_callconv uX_has_MMXEXT(void)
+const unsigned int uX_callconv has_MMXEXT(void)
 {
-	return CPU_Rep0.has_MMXEXT();
+    return CPU_Rep0.has_MMXEXT();
 }
 
-const unsigned __int8 uX_callconv uX_has_RDTSCP(void)
+const unsigned int uX_callconv has_RDTSCP(void)
 {
-	return CPU_Rep0.has_RDTSCP();
+    return CPU_Rep0.has_RDTSCP();
 }
 
-const unsigned __int8 uX_callconv uX_has_3DNOWEXT(void)
+const unsigned int uX_callconv has_3DNOWEXT(void)
 {
-	return CPU_Rep0.has_3DNOWEXT();
+    return CPU_Rep0.has_3DNOWEXT();
 }
 
-const unsigned __int8 uX_callconv uX_has_3DNOW(void)
+const unsigned int uX_callconv has_3DNOW(void)
 {
-	return CPU_Rep0.has_3DNOW();
+    return CPU_Rep0.has_3DNOW();
 }
 
 /* %eax=07H, %ebx, %ecx */
-const unsigned __int8 uX_callconv uX_has_AVX512_GFNI(void)
+const unsigned int uX_callconv has_AVX512_GFNI(void)
 {
-	return CPU_Rep0.has_AVX512_GFNI();
+    return CPU_Rep0.has_AVX512_GFNI();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512_GFNI_VL(void)
+const unsigned int uX_callconv has_AVX512_GFNI_VL(void)
 {
-	return CPU_Rep0.has_AVX512_GFNI_VL();
+    return CPU_Rep0.has_AVX512_GFNI_VL();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512_VAES(void)
+const unsigned int uX_callconv has_AVX512_VAES(void)
 {
-	return CPU_Rep0.has_AVX512_VAES();
+    return CPU_Rep0.has_AVX512_VAES();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512_VAES_VL(void)
+const unsigned int uX_callconv has_AVX512_VAES_VL(void)
 {
-	return CPU_Rep0.has_AVX512_VAES_VL();
+    return CPU_Rep0.has_AVX512_VAES_VL();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512_VPCLMULQDQ(void)
+const unsigned int uX_callconv has_AVX512_VPCLMULQDQ(void)
 {
-	return CPU_Rep0.has_AVX512_VPCLMULQDQ();
+    return CPU_Rep0.has_AVX512_VPCLMULQDQ();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512_VPCLMULQDQ_VL(void)
+const unsigned int uX_callconv has_AVX512_VPCLMULQDQ_VL(void)
 {
-	return CPU_Rep0.has_AVX512_VPCLMULQDQ_VL();
+    return CPU_Rep0.has_AVX512_VPCLMULQDQ_VL();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512_IFMA_VL(void)
+const unsigned int uX_callconv has_AVX512_IFMA_VL(void)
 {
-	return CPU_Rep0.has_AVX512_IFMA_VL();
+    return CPU_Rep0.has_AVX512_IFMA_VL();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512_VBMI_VL(void)
+const unsigned int uX_callconv has_AVX512_VBMI_VL(void)
 {
-	return CPU_Rep0.has_AVX512_VBMI_VL();
+    return CPU_Rep0.has_AVX512_VBMI_VL();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512_VBMI2_VL(void)
+const unsigned int uX_callconv has_AVX512_VBMI2_VL(void)
 {
-	return CPU_Rep0.has_AVX512_VBMI2_VL();
+    return CPU_Rep0.has_AVX512_VBMI2_VL();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512_VNNI_VL(void)
+const unsigned int uX_callconv has_AVX512_VNNI_VL(void)
 {
-	return CPU_Rep0.has_AVX512_VNNI_VL();
+    return CPU_Rep0.has_AVX512_VNNI_VL();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512_BITALG_VL(void)
+const unsigned int uX_callconv has_AVX512_BITALG_VL(void)
 {
-	return CPU_Rep0.has_AVX512_BITALG_VL();
+    return CPU_Rep0.has_AVX512_BITALG_VL();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512_VPOPCNTDQ_VL(void)
+const unsigned int uX_callconv has_AVX512_VPOPCNTDQ_VL(void)
 {
-	return CPU_Rep0.has_AVX512_VPOPCNTDQ_VL();
+    return CPU_Rep0.has_AVX512_VPOPCNTDQ_VL();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512BW_GFNI(void)
+const unsigned int uX_callconv has_AVX512BW_GFNI(void)
 {
-	return CPU_Rep0.has_AVX512BW_GFNI();
+    return CPU_Rep0.has_AVX512BW_GFNI();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512BW_GFNI_VL(void)
+const unsigned int uX_callconv has_AVX512BW_GFNI_VL(void)
 {
-	return CPU_Rep0.has_AVX512BW_GFNI_VL();
+    return CPU_Rep0.has_AVX512BW_GFNI_VL();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512BW_VAES(void)
+const unsigned int uX_callconv has_AVX512BW_VAES(void)
 {
-	return CPU_Rep0.has_AVX512BW_VAES();
+    return CPU_Rep0.has_AVX512BW_VAES();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512BW_VAES_VL(void)
+const unsigned int uX_callconv has_AVX512BW_VAES_VL(void)
 {
-	return CPU_Rep0.has_AVX512BW_VAES_VL();
+    return CPU_Rep0.has_AVX512BW_VAES_VL();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512BW_VPCLMULQDQ(void)
+const unsigned int uX_callconv has_AVX512BW_VPCLMULQDQ(void)
 {
-	return CPU_Rep0.has_AVX512BW_VPCLMULQDQ();
+    return CPU_Rep0.has_AVX512BW_VPCLMULQDQ();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512BW_VPCLMULQDQ_VL(void)
+const unsigned int uX_callconv has_AVX512BW_VPCLMULQDQ_VL(void)
 {
-	return CPU_Rep0.has_AVX512BW_VPCLMULQDQ_VL();
+    return CPU_Rep0.has_AVX512BW_VPCLMULQDQ_VL();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512BW_VL(void)
+const unsigned int uX_callconv has_AVX512BW_VL(void)
 {
-	return CPU_Rep0.has_AVX512BW_VL();
+    return CPU_Rep0.has_AVX512BW_VL();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512DQ_GFNI(void)
+const unsigned int uX_callconv has_AVX512DQ_GFNI(void)
 {
-	return CPU_Rep0.has_AVX512DQ_GFNI();
+    return CPU_Rep0.has_AVX512DQ_GFNI();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512DQ_GFNI_VL(void)
+const unsigned int uX_callconv has_AVX512DQ_GFNI_VL(void)
 {
-	return CPU_Rep0.has_AVX512DQ_GFNI_VL();
+    return CPU_Rep0.has_AVX512DQ_GFNI_VL();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512DQ_VAES(void)
+const unsigned int uX_callconv has_AVX512DQ_VAES(void)
 {
-	return CPU_Rep0.has_AVX512DQ_VAES();
+    return CPU_Rep0.has_AVX512DQ_VAES();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512DQ_VAES_VL(void)
+const unsigned int uX_callconv has_AVX512DQ_VAES_VL(void)
 {
-	return CPU_Rep0.has_AVX512DQ_VAES_VL();
+    return CPU_Rep0.has_AVX512DQ_VAES_VL();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512DQ_VPCLMULQDQ(void)
+const unsigned int uX_callconv has_AVX512DQ_VPCLMULQDQ(void)
 {
-	return CPU_Rep0.has_AVX512DQ_VPCLMULQDQ();
+    return CPU_Rep0.has_AVX512DQ_VPCLMULQDQ();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512DQ_VPCLMULQDQ_VL(void)
+const unsigned int uX_callconv has_AVX512DQ_VPCLMULQDQ_VL(void)
 {
-	return CPU_Rep0.has_AVX512DQ_VPCLMULQDQ_VL();
+    return CPU_Rep0.has_AVX512DQ_VPCLMULQDQ_VL();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512DQ_VL(void)
+const unsigned int uX_callconv has_AVX512DQ_VL(void)
 {
-	return CPU_Rep0.has_AVX512DQ_VL();
+    return CPU_Rep0.has_AVX512DQ_VL();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX512CD_VL(void)
+const unsigned int uX_callconv has_AVX512CD_VL(void)
 {
-	return CPU_Rep0.has_AVX512CD_VL();
+    return CPU_Rep0.has_AVX512CD_VL();
 }
 
 /* %eax=07H, %ecx, %ebx | %eax=01H, %ecx , %edx */
-const unsigned __int8 uX_callconv uX_has_SSE_AES(void)
+const unsigned int uX_callconv has_SSE_AES(void)
 {
-	return CPU_Rep0.has_SSE_AES();
+    return CPU_Rep0.has_SSE_AES();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSE_GFNI(void)
+const unsigned int uX_callconv has_SSE_GFNI(void)
 {
-	return CPU_Rep0.has_SSE_GFNI();
+    return CPU_Rep0.has_SSE_GFNI();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSE_PCLMULQDQ(void)
+const unsigned int uX_callconv has_SSE_PCLMULQDQ(void)
 {
-	return CPU_Rep0.has_SSE_PCLMULQDQ();
+    return CPU_Rep0.has_SSE_PCLMULQDQ();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSE2_AES(void)
+const unsigned int uX_callconv has_SSE2_AES(void)
 {
-	return CPU_Rep0.has_SSE2_AES();
+    return CPU_Rep0.has_SSE2_AES();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSE2_GFNI(void)
+const unsigned int uX_callconv has_SSE2_GFNI(void)
 {
-	return CPU_Rep0.has_SSE2_GFNI();
+    return CPU_Rep0.has_SSE2_GFNI();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSE2_PCLMULQDQ(void)
+const unsigned int uX_callconv has_SSE2_PCLMULQDQ(void)
 {
-	return CPU_Rep0.has_SSE2_PCLMULQDQ();
+    return CPU_Rep0.has_SSE2_PCLMULQDQ();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSE3_AES(void)
+const unsigned int uX_callconv has_SSE3_AES(void)
 {
-	return CPU_Rep0.has_SSE3_AES();
+    return CPU_Rep0.has_SSE3_AES();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSE3_GFNI(void)
+const unsigned int uX_callconv has_SSE3_GFNI(void)
 {
-	return CPU_Rep0.has_SSE3_GFNI();
+    return CPU_Rep0.has_SSE3_GFNI();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSE3_PCLMULQDQ(void)
+const unsigned int uX_callconv has_SSE3_PCLMULQDQ(void)
 {
-	return CPU_Rep0.has_SSE3_PCLMULQDQ();
+    return CPU_Rep0.has_SSE3_PCLMULQDQ();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSSE3_AES(void)
+const unsigned int uX_callconv has_SSSE3_AES(void)
 {
-	return CPU_Rep0.has_SSSE3_AES();
+    return CPU_Rep0.has_SSSE3_AES();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSSE3_GFNI(void)
+const unsigned int uX_callconv has_SSSE3_GFNI(void)
 {
-	return CPU_Rep0.has_SSSE3_GFNI();
+    return CPU_Rep0.has_SSSE3_GFNI();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSSE3_PCLMULQDQ(void)
+const unsigned int uX_callconv has_SSSE3_PCLMULQDQ(void)
 {
-	return CPU_Rep0.has_SSSE3_PCLMULQDQ();
+    return CPU_Rep0.has_SSSE3_PCLMULQDQ();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSE41_AES(void)
+const unsigned int uX_callconv has_SSE41_AES(void)
 {
-	return CPU_Rep0.has_SSE41_AES();
+    return CPU_Rep0.has_SSE41_AES();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSE41_GFNI(void)
+const unsigned int uX_callconv has_SSE41_GFNI(void)
 {
-	return CPU_Rep0.has_SSE41_GFNI();
+    return CPU_Rep0.has_SSE41_GFNI();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSE41_PCLMULQDQ(void)
+const unsigned int uX_callconv has_SSE41_PCLMULQDQ(void)
 {
-	return CPU_Rep0.has_SSE41_PCLMULQDQ();
+    return CPU_Rep0.has_SSE41_PCLMULQDQ();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSE42_AES(void)
+const unsigned int uX_callconv has_SSE42_AES(void)
 {
-	return CPU_Rep0.has_SSE42_AES();
+    return CPU_Rep0.has_SSE42_AES();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSE42_GFNI(void)
+const unsigned int uX_callconv has_SSE42_GFNI(void)
 {
-	return CPU_Rep0.has_SSE42_GFNI();
+    return CPU_Rep0.has_SSE42_GFNI();
 }
 
-const unsigned __int8 uX_callconv uX_has_SSE42_PCLMULQDQ(void)
+const unsigned int uX_callconv has_SSE42_PCLMULQDQ(void)
 {
-	return CPU_Rep0.has_SSE42_PCLMULQDQ();
+    return CPU_Rep0.has_SSE42_PCLMULQDQ();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX_AES(void)
+const unsigned int uX_callconv has_AVX_AES(void)
 {
-	return CPU_Rep0.has_AVX_AES();
+    return CPU_Rep0.has_AVX_AES();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX_GFNI(void)
+const unsigned int uX_callconv has_AVX_GFNI(void)
 {
-	return CPU_Rep0.has_AVX_GFNI();
+    return CPU_Rep0.has_AVX_GFNI();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX_PCLMULQDQ(void)
+const unsigned int uX_callconv has_AVX_PCLMULQDQ(void)
 {
-	return CPU_Rep0.has_AVX_PCLMULQDQ();
+    return CPU_Rep0.has_AVX_PCLMULQDQ();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX_VAES(void)
+const unsigned int uX_callconv has_AVX_VAES(void)
 {
-	return CPU_Rep0.has_AVX_VAES();
+    return CPU_Rep0.has_AVX_VAES();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX_VPCLMULQDQ(void)
+const unsigned int uX_callconv has_AVX_VPCLMULQDQ(void)
 {
-	return CPU_Rep0.has_AVX_VPCLMULQDQ();
+    return CPU_Rep0.has_AVX_VPCLMULQDQ();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX2_AES(void)
+const unsigned int uX_callconv has_AVX2_AES(void)
 {
-	return CPU_Rep0.has_AVX2_AES();
+    return CPU_Rep0.has_AVX2_AES();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX2_GFNI(void)
+const unsigned int uX_callconv has_AVX2_GFNI(void)
 {
-	return CPU_Rep0.has_AVX2_GFNI();
+    return CPU_Rep0.has_AVX2_GFNI();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX2_PCLMULQDQ(void)
+const unsigned int uX_callconv has_AVX2_PCLMULQDQ(void)
 {
-	return CPU_Rep0.has_AVX2_PCLMULQDQ();
+    return CPU_Rep0.has_AVX2_PCLMULQDQ();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX2_VAES(void)
+const unsigned int uX_callconv has_AVX2_VAES(void)
 {
-	return CPU_Rep0.has_AVX2_VAES();
+    return CPU_Rep0.has_AVX2_VAES();
 }
 
-const unsigned __int8 uX_callconv uX_has_AVX2_VPCLMULQDQ(void)
+const unsigned int uX_callconv has_AVX2_VPCLMULQDQ(void)
 {
-	return CPU_Rep0.has_AVX2_VPCLMULQDQ();
+    return CPU_Rep0.has_AVX2_VPCLMULQDQ();
 }
 
-const unsigned __int8 uX_callconv uX_has_enabled_XMM(void)
+const unsigned int uX_callconv has_enabled_XMM(void)
 {
-	return CPU_Rep0.has_enabled_XMM();
+    return CPU_Rep0.has_enabled_XMM();
 }
 
-const unsigned __int8 uX_callconv uX_has_enabled_YMM(void)
+const unsigned int uX_callconv has_enabled_YMM(void)
 {
-	return CPU_Rep0.has_enabled_YMM();
+    return CPU_Rep0.has_enabled_YMM();
 }
 
-const unsigned __int8 uX_callconv uX_has_enabled_ZMM(void)
+const unsigned int uX_callconv has_enabled_ZMM(void)
 {
-	return CPU_Rep0.has_enabled_ZMM();
+    return CPU_Rep0.has_enabled_ZMM();
 }
 
-const unsigned __int8 uX_callconv uX_CPUFeatures_Is_Inited(void)
+const unsigned int uX_callconv CPUFeatures_is_inited(void)
 {
-	return CPU_Rep0.Is_Inited();
+    return CPU_Rep0.is_inited();
 }
 
-uX_PACK_POP
+uX_PACK_SIZE_T
 
-static const uXCPUFeatures CPU_Rep1(1);
+static const _internal::CPUFeatures CPU_Rep1(1);
 
-uX_PACK_PUSH_POINTER
+uX_PACK_PTR
 
-void uX_callconv uX_CpuType(int* vendor, int* family, int* model)
+void uX_callconv CpuType(int* vendor, int* family, int* model)
 {
-	CPU_Rep1.CpuType(vendor, family, model);
+    CPU_Rep1.CpuType(vendor, family, model);
 }
 
-char* uX_callconv uX_ProcessorName(void)
+char* uX_callconv ProcessorName(void)
 {
-	return CPU_Rep1.ProcessorName();
+    return CPU_Rep1.ProcessorName();
 }
 
-size_t uX_callconv uX_DataCacheSize(int level)
+uX_PACK_SIZE_T
+
+size_t uX_callconv DataCacheSize(int level)
 {
-	return CPU_Rep1.DataCacheSize(level);
+    return CPU_Rep1.DataCacheSize(level);
 }
 
 /*
-void uX_cpuid(int abcd[4], int eax)
-{
-	uX_cpuidex(abcd, eax, 0);
-}*/
+const char* wet = uX_Stringer(_uX_MM_BLEND_EPI16_IM(a, b, 255));
+*/
 
 uX_PACK_POP
-
 uX_EXTERNC_END
+namespace_CPU_end
+namespace_uX_end

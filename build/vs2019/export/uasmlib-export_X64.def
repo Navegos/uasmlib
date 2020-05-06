@@ -183,8 +183,8 @@ _uXCPUFeatures_CpuType
 _uXCPUFeatures_ProcessorName
 _uXCPUFeatures_DataCacheSize
 
-uX_cpuidex
-uX_cpuid
+_uX_cpuidex
+_uX_cpuid
 _uX_xgetbv
 _uX_xsetbv
 
@@ -452,12 +452,12 @@ _uX_mm_cvt_ss2si
 _uX_mm_cvtt_ss2si
 _uX_mm_cvt_si2ss
 
-_uX_mm_cvtss_f32
-_uX_mm_cvt0s_f32
-_uX_mm_cvt1s_f32
-_uX_mm_cvt2s_f32
-_uX_mm_cvt3s_f32
-_uX_mm_cvtelts_f32
+_uX_mm_cvtss_flt
+_uX_mm_cvt0s_flt
+_uX_mm_cvt1s_flt
+_uX_mm_cvt2s_flt
+_uX_mm_cvt3s_flt
+_uX_mm_cvtelts_flt
 
 ;/*
 ; * Support for 64-bit intrinsics
@@ -493,6 +493,10 @@ _uX_mm_movemask_ps
 
 _uX_mm_set_ss
 _uX_mm_set_ps1
+_uX_mm_set_0s
+_uX_mm_set_1s
+_uX_mm_set_2s
+_uX_mm_set_3s
 _uX_mm_set_ps
 _uX_mm_setr_ps
 _uX_mm_setzero_ps

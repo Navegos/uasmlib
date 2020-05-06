@@ -16,8 +16,7 @@
 #error "!This header cannot be used alone! INCLUDE uXsmmintrin.h to use this header"
 #endif
 
-uX_EXTERNCC_BEGIN
-
+uX_EXTERNC_BEGIN
 uX_PACK_PUSH32
 
 /*
@@ -1447,7 +1446,6 @@ uX_PACK_PUSH32
 	extern __m256i uX_callconv _uX_mm256_mpsadbw_epu8_255(__m256i Inymm_A, __m256i Inymm_B);
 
 uX_PACK_POP
-
 uX_EXTERNC_END
 
 #endif // uX_AVX

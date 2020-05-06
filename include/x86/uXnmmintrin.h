@@ -67,35 +67,35 @@
 #define uX_SIDD_UNIT_MASK                0x40
 
  /*******************************************************/
- /* MACRO for use _uX_mm_cmpistrm_*().				*/
+ /* MACRO for use _uX_mm_cmpistrm_*().              */
  /* result                                              */
  /* const __m128i temp = _uX_MM_CMPISTRM_IM(Inxmm_A, Inxmm_B, 127); */
  /*******************************************************/
 #define _uX_MM_CMPISTRM_IM(VA,VB,IMM) _uX_mm_cmpistrm_##IMM##(VA,VB)
 
  /*******************************************************/
- /* MACRO for use _uX_mm_cmpistri_*().				*/
+ /* MACRO for use _uX_mm_cmpistri_*().              */
  /* result                                              */
  /* const int temp = _uX_MM_CMPISTRI_IM(Inxmm_A, Inxmm_B, 127); */
  /*******************************************************/
 #define _uX_MM_CMPISTRI_IM(VA,VB,IMM) _uX_mm_cmpistri_##IMM##(VA,VB)
 
  /*******************************************************/
- /* MACRO for use _uX_mm_cmpestrm_*().				*/
+ /* MACRO for use _uX_mm_cmpestrm_*().              */
  /* result                                              */
  /* const __m128i temp = _uX_MM_CMPESTRM_IM(Inxmm_A, InintA, Inxmm_B, InintB, 127); */
  /*******************************************************/
 #define _uX_MM_CMPESTRM_IM(VA,LA,VB,LB,IMM) _uX_mm_cmpestrm_##IMM##(VA,LA,VB,LB)
 
  /*******************************************************/
- /* MACRO for use _uX_mm_cmpestri_*().				*/
+ /* MACRO for use _uX_mm_cmpestri_*().              */
  /* result                                              */
  /* const int temp = _uX_MM_CMPESTRI_IM(Inxmm_A, InintA, Inxmm_B, InintB, 127); */
  /*******************************************************/
 #define _uX_MM_CMPESTRI_IM(VA,LA,VB,LB,IMM) _uX_mm_cmpestri_##IMM##(VA,LA,VB,LB)
 
  /*******************************************************/
- /* MACRO for use _uX_mm_cmpistrz_*().				*/
+ /* MACRO for use _uX_mm_cmpistrz_*().              */
  /* result                                              */
  /* const int temp = _uX_MM_CMPISTRZ_IM(Inxmm_A, Inxmm_B, 127); */
  /*******************************************************/
@@ -106,7 +106,7 @@
 #define _uX_MM_CMPISTRA_IM(VA,VB,IMM) _uX_mm_cmpistra_##IMM##(VA,VB)
 
  /*******************************************************/
- /* MACRO for use _uX_mm_cmpestrz_*().				*/
+ /* MACRO for use _uX_mm_cmpestrz_*().              */
  /* result                                              */
  /* const int temp = _uX_MM_CMPESTRZ_IM(Inxmm_A, InintA, Inxmm_B, InintB, 127); */
  /*******************************************************/
@@ -117,60 +117,53 @@
 #define _uX_MM_CMPESTRA_IM(VA,LA,VB,LB,IMM) _uX_mm_cmpestra_##IMM##(VA,LA,VB,LB)
 
 uX_EXTERNC_BEGIN
-
-uX_PACK_PUSH16
+uX_PACK_PUSH_XMM
 
 /*
  * Intrinsics for text/string processing.
  */
-	extern __m128i uX_callconv _uX_mm_cmpistrm(__m128i Inxmm_A, __m128i Inxmm_B, const unsigned int Inint_Control);
-	extern int uX_callconv _uX_mm_cmpistri(__m128i Inxmm_A, __m128i Inxmm_B, const unsigned int Inint_Control);
+    extern __m128i uX_callconv _uX_mm_cmpistrm(__m128i Inxmm_A, __m128i Inxmm_B, const unsigned int Inint_Control);
+    extern int uX_callconv _uX_mm_cmpistri(__m128i Inxmm_A, __m128i Inxmm_B, const unsigned int Inint_Control);
 
-	extern __m128i uX_callconv _uX_mm_cmpestrm(__m128i Inxmm_A, int Inint_LA, __m128i Inxmm_B, int Inint_LB, const unsigned int Inint_Control);
-	extern int uX_callconv _uX_mm_cmpestri(__m128i Inxmm_A, int Inint_LA, __m128i Inxmm_B, int Inint_LB, const unsigned int Inint_Control);
+    extern __m128i uX_callconv _uX_mm_cmpestrm(__m128i Inxmm_A, int Inint_LA, __m128i Inxmm_B, int Inint_LB, const unsigned int Inint_Control);
+    extern int uX_callconv _uX_mm_cmpestri(__m128i Inxmm_A, int Inint_LA, __m128i Inxmm_B, int Inint_LB, const unsigned int Inint_Control);
 
 /*
  * Intrinsics for text/string processing and reading values of EFlags.
  */
-	extern int uX_callconv _uX_mm_cmpistrz(__m128i Inxmm_A, __m128i Inxmm_B, const unsigned int Inint_Control);
-	extern int uX_callconv _uX_mm_cmpistrc(__m128i Inxmm_A, __m128i Inxmm_B, const unsigned int Inint_Control);
-	extern int uX_callconv _uX_mm_cmpistrs(__m128i Inxmm_A, __m128i Inxmm_B, const unsigned int Inint_Control);
-	extern int uX_callconv _uX_mm_cmpistro(__m128i Inxmm_A, __m128i Inxmm_B, const unsigned int Inint_Control);
-	extern int uX_callconv _uX_mm_cmpistra(__m128i Inxmm_A, __m128i Inxmm_B, const unsigned int Inint_Control);
+    extern int uX_callconv _uX_mm_cmpistrz(__m128i Inxmm_A, __m128i Inxmm_B, const unsigned int Inint_Control);
+    extern int uX_callconv _uX_mm_cmpistrc(__m128i Inxmm_A, __m128i Inxmm_B, const unsigned int Inint_Control);
+    extern int uX_callconv _uX_mm_cmpistrs(__m128i Inxmm_A, __m128i Inxmm_B, const unsigned int Inint_Control);
+    extern int uX_callconv _uX_mm_cmpistro(__m128i Inxmm_A, __m128i Inxmm_B, const unsigned int Inint_Control);
+    extern int uX_callconv _uX_mm_cmpistra(__m128i Inxmm_A, __m128i Inxmm_B, const unsigned int Inint_Control);
 
-	extern int uX_callconv _uX_mm_cmpestrz(__m128i Inxmm_A, int Inint_LA, __m128i Inxmm_B, int Inint_LB, const unsigned int Inint_Control);
-	extern int uX_callconv _uX_mm_cmpestrc(__m128i Inxmm_A, int Inint_LA, __m128i Inxmm_B, int Inint_LB, const unsigned int Inint_Control);
-	extern int uX_callconv _uX_mm_cmpestrs(__m128i Inxmm_A, int Inint_LA, __m128i Inxmm_B, int Inint_LB, const unsigned int Inint_Control);
-	extern int uX_callconv _uX_mm_cmpestro(__m128i Inxmm_A, int Inint_LA, __m128i Inxmm_B, int Inint_LB, const unsigned int Inint_Control);
-	extern int uX_callconv _uX_mm_cmpestra(__m128i Inxmm_A, int Inint_LA, __m128i Inxmm_B, int Inint_LB, const unsigned int Inint_Control);
-
-/*
- * Packed integer 64-bit comparison, zeroing or filling with ones corresponding parts of result
- */
-	extern __m128i uX_callconv _uX_mm_cmpgt_epi64(__m128i Inxmm_A, __m128i Inxmm_B);
+    extern int uX_callconv _uX_mm_cmpestrz(__m128i Inxmm_A, int Inint_LA, __m128i Inxmm_B, int Inint_LB, const unsigned int Inint_Control);
+    extern int uX_callconv _uX_mm_cmpestrc(__m128i Inxmm_A, int Inint_LA, __m128i Inxmm_B, int Inint_LB, const unsigned int Inint_Control);
+    extern int uX_callconv _uX_mm_cmpestrs(__m128i Inxmm_A, int Inint_LA, __m128i Inxmm_B, int Inint_LB, const unsigned int Inint_Control);
+    extern int uX_callconv _uX_mm_cmpestro(__m128i Inxmm_A, int Inint_LA, __m128i Inxmm_B, int Inint_LB, const unsigned int Inint_Control);
+    extern int uX_callconv _uX_mm_cmpestra(__m128i Inxmm_A, int Inint_LA, __m128i Inxmm_B, int Inint_LB, const unsigned int Inint_Control);
 
 /*
  * Calculate a number of bits set to 1
  */
-	extern int uX_callconv _uX_mm_popcnt_u32(unsigned int Inint_A);
+    extern int uX_callconv _uX_mm_popcnt_u32(unsigned int Inint_A);
 
 #if defined(uX_X64)
-	extern __int64 uX_callconv _uX_mm_popcnt_u64(unsigned __int64 Inint_A);
+    extern __int64 uX_callconv _uX_mm_popcnt_u64(unsigned __int64 Inint_A);
 #endif // uX_X64
 
 /*
  * Accumulate CRC32(polynomial 0x11EDC6F41) value
  */
-	extern unsigned int uX_callconv _uX_mm_crc32_u8(unsigned int Inint_A, unsigned char Inint_B);
-	extern unsigned int uX_callconv _uX_mm_crc32_u16(unsigned int Inint_A, unsigned short Inint_B);
-	extern unsigned int uX_callconv _uX_mm_crc32_u32(unsigned int Inint_A, unsigned int Inint_B);
+    extern unsigned int uX_callconv _uX_mm_crc32_u8(unsigned int Inint_A, unsigned char Inint_B);
+    extern unsigned int uX_callconv _uX_mm_crc32_u16(unsigned int Inint_A, unsigned short Inint_B);
+    extern unsigned int uX_callconv _uX_mm_crc32_u32(unsigned int Inint_A, unsigned int Inint_B);
 
 #if defined(uX_X64)
-	extern unsigned __int64 uX_callconv _uX_mm_crc32_u64(unsigned __int64 Inint_A, unsigned __int64 Inint_B);
+    extern unsigned __int64 uX_callconv _uX_mm_crc32_u64(unsigned __int64 Inint_A, unsigned __int64 Inint_B);
 #endif // uX_X64
 
 uX_PACK_POP
-
 uX_EXTERNC_END
 
 #ifndef uX_NMM_CMPESTR_H
