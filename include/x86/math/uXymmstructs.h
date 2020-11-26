@@ -2,10 +2,10 @@
 #pragma once
 
 #ifndef uX_AVX256_STRUCTS_H
-#define uX_AVX256_STRUCTS_H
+#define uX_AVX256_STRUCTS_H 1
 
 #ifndef uX_TYPES_H
-#include "uXTypes.h"
+#include "uXtypes.h"
 #endif  /* uX_TYPES_H */
 
 #if defined(uX_INTRINSICS_SUPPORT) && defined(uX_X86_OR_X64_CPU) && !defined(uX_NO_INTRINSICS_SUPPORT) && !defined(uX_MIC)

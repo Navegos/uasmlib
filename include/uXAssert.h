@@ -1,62 +1,34 @@
 
+/*
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / /                                                                               / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
+; / /                                                                               / /
+; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
+; / /    you may not use this file except in compliance with the License.           / /
+; / /    You may obtain a copy of the License at                                    / /
+; / /                                                                               / /
+; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
+; / /                                                                               / /
+; / /    Unless required by applicable law or agreed to in writing, software        / /
+; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
+; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
+; / /    See the License for the specific language governing permissions and        / /
+; / /    limitations under the License.                                             / /
+; / /                                                                               / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+*/
+
 #pragma once
 
 #ifndef uX_ASSERT_H
-#define uX_ASSERT_H
+#define uX_ASSERT_H 1
 
-#include "uXTypes.h"
+#include "uXtypes.h"
 
 #include "assert.h"
-
-#if defined(uX_VC)
-
-//uX_BT_ASSERT((vmin <= vmax) != 0)
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1700) && 0
-#include <CppUnitTest.h>
-#   define uX_CPUASSERT(Expr) _ASSERTE(Expr) uX_ANALYSIS(Expr)
-
-namespace MVCCPTF = Microsoft::VisualStudio::CppUnitTestFramework;
-
-#   define uX_ASSERT_AREEQUAL(Expr) MVCCPTF::Assert::AreEqual(Expr)
-#   define uX_ASSERT_ARENOTEQUAL(Expr) MVCCPTF::Assert::AreNotEqual(Expr)
-#   define uX_ASSERT_ARESAME(Expr) MVCCPTF::Assert::AreSame(Expr)
-#   define uX_ASSERT_ARENOTSAME MVCCPTF::Assert::AreNotSame(Expr)
-#   define uX_ASSERT_ISTRUE(Expr) MVCCPTF::Assert::IsTrue(Expr)
-#   define uX_ASSERT_ISFALSE(Expr) MVCCPTF::Assert::IsFalse(Expr)
-#   define uX_ASSERT_ISNULL(Expr) MVCCPTF::Assert::IsNull(Expr)
-#   define uX_ASSERT_ISNOTNULL(Expr) MVCCPTF::Assert::IsNotNull(Expr)
-#else
-#ifndef NDEBUG
-#   define uX_CPUASSERT(Expr) assert(Expr)
-#else
-#   define uX_CPUASSERT(Expr) ((void)0)
-#endif
-#   define uX_GPUASSERT(Expr) ((void)0)
-#   define uX_ASSERT_AREEQUAL(Expr) Expr
-#   define uX_ASSERT_ARENOTEQUAL(Expr) Expr
-#   define uX_ASSERT_ARESAME(Expr) Expr
-#   define uX_ASSERT_ISNOTSAME(Expr) Expr
-#   define uX_ASSERT_ISTRUE(Expr) Expr
-#   define uX_ASSERT_ISFALSE(Expr) Expr
-#   define uX_ASSERT_ISNULL(Expr) Expr
-#   define uX_ASSERT_ISNOTNULL(Expr) Expr
-#endif
-
-#else
-
-#   define uX_CPUASSERT(Expr) assert(Expr)
-#   define uX_GPUASSERT(Expr) ((void)0)
-
-#   define uX_ASSERT_AREEQUAL(Expr) Expr
-#   define uX_ASSERT_ARENOTEQUAL(Expr) Expr
-#   define uX_ASSERT_ARESAME(Expr) Expr
-#   define uX_ASSERT_ISNOTSAME(Expr) Expr
-#   define uX_ASSERT_ISTRUE(Expr) Expr
-#   define uX_ASSERT_ISFALSE(Expr) Expr
-#   define uX_ASSERT_ISNULL(Expr) Expr
-#   define uX_ASSERT_ISNOTNULL(Expr) Expr
-#endif
 
 namespace_uX
 
@@ -68,23 +40,33 @@ namespace_uX
 #define uX_COMPILE_TIME_ASSERT(Expr) typedef char uXCompileTimeAssert_Dummy[(Expr) ? 1 : -1]
 #endif
 
-/**
-\brief Prints the string literally (does not consume % specifier), trying to make sure it's visible to the app
-programmer
-*/
-uX_EXAPI void printString(const char*);
-
 #ifdef __cplusplus
 // Template for compile-time error messages
 template <bool> class uXCompileTimeAssert
 {
-public: uX_TARGET_CPU_GPU uXCompileTimeAssert() uX_CPU_AMP {};
+public: uX_TARGET_CPU_GPU uXCompileTimeAssert() {};
 };
 
 template <> class uXCompileTimeAssert<false>
 {    // generate compile-time error if false
-private: uX_TARGET_CPU_GPU uXCompileTimeAssert() uX_CPU_AMP {};
+private: uX_TARGET_CPU_GPU uXCompileTimeAssert() {};
 };
+#endif //__cplusplus
+
+namespace_internal
+EXTERN_CC_BEGIN
+uX_PACK_PUSH_STACK
+
+/**
+\brief Prints the string literally (does not consume % specifier), trying to make sure it's visible to the app
+programmer
+*/
+extern uX_API void uX_ABI printString(const char*);
+extern uX_API void uX_ABI asserthandler(const char* Msg, const char* Expr, const char* File, int Line, bool& Ignore);
+
+uX_PACK_POP
+EXTERN_CC_END
+namespace_internal_end
 
 /*
 template<class T> class uXSTCompileTimeAssert
@@ -97,21 +79,24 @@ public: uX_TARGET_CPU_GPU uXSTCompileTimeAssert() uX_CPU_AMP { static_assert(T, 
 //template <class T>
 //uX_TARGET_CPU_GPU_INLINE void uX_UNUSED(T const&) uX_CPU_AMP {}
 
+EXTERN_CC_BEGIN
+uX_PACK_PUSH_STACK
 
 /* Base class to handle assert failures */
-class uXAssertHandler
+class AssertHandler
 {
 public:
-    virtual ~uXAssertHandler()
+    virtual ~AssertHandler()
     {}
-    virtual void operator()(const char* Msg, const char* Expr, const char* File, int Line, bool& Ignore) = 0;
-    virtual void operator()(const char* Msg, const char* Expr, const char* File, int Line) = 0;
+    virtual void uX_ABI operator()(const char* Msg, const char* Expr, const char* File, int Line, bool& Ignore) = 0;
+    virtual void uX_ABI operator()(const char* Msg, const char* Expr, const char* File, int Line) = 0;
 };
 
-uX_EXAPI uXAssertHandler& uXGetAssertHandler();
-uX_EXAPI void uXSetAssertHandler(uXAssertHandler& Handler);
+extern uX_API AssertHandler& uX_ABI GetAssertHandler();
+extern uX_API void uX_ABI SetAssertHandler(AssertHandler& Handler);
 
-#endif //__cplusplus
+uX_PACK_POP
+EXTERN_CC_END
 
 // Ensure that the application hasn't tweaked the pack value to less than 8, which would break
 // matching between the API headers and the binaries
@@ -145,13 +130,13 @@ namespace_uX_end
 #define uX_STMSSG_ASSERT(ctExpr, mssg)  typedef char XMStaticAssert[(ctExpr)] char (mssg)*/
 
 #define uX_STATIC_ASSERT(Expr) static_assert(Expr, uX_Stringer((Expr) file: __FILE__ line: __LINE__))
-#define uX_STATIC_ASSERT_MESSAGE(Expr) static_assert(Expr, uX_Stringer(message (Expr) file: __FILE__ line : __LINE__))
+#define uX_STATIC_ASSERT_MESSAGE(Expr, message) static_assert(Expr, uX_Stringer(message (Expr) file: __FILE__ line : __LINE__))
 
 #define uX_ST_ASSERT(Expr) static_assert(Expr, uX_Stringer((Expr) file: __FILE__ line: __LINE__))
-#define uX_ST_ASSERT_Msg(Expr, message) static_assert(Expr, uX_Stringer(message (Expr) file: __FILE__ line: __LINE__))
+#define uX_ST_ASSERT_MESSAGE(Expr, message) static_assert(Expr, uX_Stringer(message (Expr) file: __FILE__ line: __LINE__))
 
 #define uX_ST_ASSERTIF(Expr) if(!Expr) { static_assert(false, uX_Stringer((Expr) file: __FILE__ line: __LINE__)); }
-#define uX_ST_ASSERTIF_Msg(Expr, message) if(!Expr) { static_assert(false, uX_Stringer(message (Expr) file: __FILE__ line: __LINE__)); }
+#define uX_ST_ASSERTIF_MESSAGE(Expr, message) if(!Expr) { static_assert(false, uX_Stringer(message (Expr) file: __FILE__ line: __LINE__)); }
 
 #if uX_VC
 #define uX_code_analysis_assume(Expr)                                                                                   \
@@ -161,18 +146,16 @@ namespace_uX_end
 #define uX_code_analysis_assume(Expr)
 #endif
 
-//# define uX_assert(Expr) uX_CPUASSERT(Expr)
-
 #if (defined(uX_ENABLE_ASSERTS) && (uX_ENABLE_ASSERTS >= 1))
 #   define uX_assert_msg(Expr, Msg)                                                                             \
     {                                                                                                           \
         static bool _ignore = false;                                                                            \
         ((void)((!!(Expr)) || (!_ignore &&                                                                      \
-        (uX::uXGetAssertHandler()(uX_Stringer(Msg), uX_Stringer(Expr), __FILE__, __LINE__, _ignore), false)))); \
+        (uX::GetAssertHandler()(uX_Stringer(Msg), uX_Stringer(Expr), __FILE__, __LINE__, _ignore), false))));   \
         uX_code_analysis_assume(Expr);                                                                          \
     }
 
-#   define uX_ensure_msg(Expr,Msg)                      ((!!(Expr)) || (uX::uXGetAssertHandler()(uX_Stringer(Msg), uX_Stringer(Expr), __FILE__, __LINE__), false))
+#   define uX_ensure_msg(Expr,Msg)                      ((!!(Expr)) || (uX::GetAssertHandler()(uX_Stringer(Msg), uX_Stringer(Expr), __FILE__, __LINE__), false))
 #   define uX_ensure_return_msg(Expr,Msg)               if(!(Expr)) { uX_assert_msg(Expr, Msg); return; }
 #   define uX_ensure_return_null_msg(Expr,Msg)          if(!(Expr)) { uX_assert_msg(Expr, Msg); return 0; }
 #   define uX_ensure_return_val_msg(Expr,Msg,Val)       if(!(Expr)) { uX_assert_msg(Expr, Msg); return Val; }
@@ -195,9 +178,5 @@ namespace_uX_end
 #   define uX_ensure_return_null(Expr)                  if(!(Expr)) { return 0; }
 #   define uX_ensure_return_val(Expr,Val)               if(!(Expr)) { return Val; }
 #endif
-
-EXTERN_C_BEGIN
-extern void uX_callconv __uX_asserthandler(const char* Msg, const char* Expr, const char* File, int Line, bool& Ignore);
-EXTERN_C_END
 
 #endif // uX_ASSERT_H

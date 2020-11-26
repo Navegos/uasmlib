@@ -1,24 +1,50 @@
 
+/*
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / /                                                                               / /
+; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /                                                                               / /
+; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
+; / /    you may not use this file except in compliance with the License.           / /
+; / /    You may obtain a copy of the License at                                    / /
+; / /                                                                               / /
+; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
+; / /                                                                               / /
+; / /    Unless required by applicable law or agreed to in writing, software        / /
+; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
+; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
+; / /    See the License for the specific language governing permissions and        / /
+; / /    limitations under the License.                                             / /
+; / /                                                                               / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+*/
+
 #pragma once
 
 #ifndef uX_EMM_DATA_H
-#define uX_EMM_DATA_H
+#define uX_EMM_DATA_H 1
 
 #ifndef uX_TYPES_H
-#include "uXTypes.h"
+#include "uXtypes.h"
 #endif  /* uX_TYPES_H */
 
 #if defined(uX_INTRINSICS_SUPPORT) && defined(uX_X86_OR_X64_CPU) && !defined(uX_NO_INTRINSICS_SUPPORT) && !defined(uX_MIC)
 
 #ifdef uX_SSE2
 
-#ifndef uX_XMM_INTRIN_H
-#include "uXxmmintrin.h"
-#endif  /* uX_XMM_INTRIN_H */
+/*#ifndef uX_XMM_INTRIN_H*/
+/*#include "uXxmmintrin.h"*/
+/*#endif*/  /* uX_XMM_INTRIN_H */
 
-#ifndef _INCLUDED_EMM
-#include <emmintrin.h>
-#endif  /* _INCLUDED_EMM */
+/*#ifndef _INCLUDED_EMM*/
+/*#include <emmintrin.h>*/
+/*#endif*/  /* _INCLUDED_EMM */
+
+/*#ifndef uX_XMM_MATH_H*/
+/*#include "uXxmmmath.h"*/
+/*#endif*/  /* _INCLUDED_EMM */
 
 uX_EXTERNC_BEGIN
 uX_PACK_PUSH_XMM
@@ -116,6 +142,23 @@ uX_PACK_PUSH_XMM
     extern const __m128i __m128i_i32_neg0; //                __m128i, i32_neg0
     extern const __m128i __m128i_i32_neg1; //                __m128i, i32_neg1
 
+    extern const __m128i __m128i_i32_select0000; //                __m128i, i32_false, i32_false, i32_false, i32_false
+    extern const __m128i __m128i_i32_select0001; //                __m128i, i32_false, i32_false, i32_false, i32_true
+    extern const __m128i __m128i_i32_select0010; //                __m128i, i32_false, i32_false, i32_true, i32_false
+    extern const __m128i __m128i_i32_select0100; //                __m128i, i32_false, i32_true, i32_false, i32_false
+    extern const __m128i __m128i_i32_select1000; //                __m128i, i32_true, i32_false, i32_false, i32_false
+    extern const __m128i __m128i_i32_select0011; //                __m128i, i32_false, i32_false, i32_true, i32_true
+    extern const __m128i __m128i_i32_select0111; //                __m128i, i32_false, i32_true, i32_true, i32_true
+    extern const __m128i __m128i_i32_select1111; //                __m128i, i32_true, i32_true, i32_true, i32_true
+    extern const __m128i __m128i_i32_select1110; //                __m128i, i32_true, i32_true, i32_true, i32_false
+    extern const __m128i __m128i_i32_select1100; //                __m128i, i32_true, i32_true, i32_false, i32_false
+    extern const __m128i __m128i_i32_select1001; //                __m128i, i32_true, i32_false, i32_false, i32_true
+    extern const __m128i __m128i_i32_select0110; //                __m128i, i32_false, i32_true, i32_true, i32_false
+    extern const __m128i __m128i_i32_select1011; //                __m128i, i32_true, i32_false, i32_true, i32_true
+    extern const __m128i __m128i_i32_select1101; //                __m128i, i32_true, i32_true, i32_false, i32_true
+    extern const __m128i __m128i_i32_select0101; //                __m128i, i32_false, i32_true, i32_false, i32_true
+    extern const __m128i __m128i_i32_select1010; //                __m128i, i32_true, i32_false, i32_true, i32_false
+
     //;;int32 mask low;;
     
     extern const __m128i __m128i_i32_0e_true; //            __m128i; // i32_true; // i32_false; // i32_false; // i32_false
@@ -151,6 +194,11 @@ uX_PACK_PUSH_XMM
     extern const __m128i __m128i_i64_1; //               __m128q, i64_1
     extern const __m128i __m128i_i64_neg0; //                __m128q, i64_neg0
     extern const __m128i __m128i_i64_neg1; //                __m128q, i64_neg1
+
+    extern const __m128i __m128i_i64_select00; //                __m128q, i64_false, i64_false
+    extern const __m128i __m128i_i64_select01; //                __m128q, i64_false, i64_true
+    extern const __m128i __m128i_i64_select10; //                __m128q, i64_true, i64_false
+    extern const __m128i __m128i_i64_select11; //                __m128q, i64_true, i64_true
 
     //;;int64 mask low;;
     
@@ -554,15 +602,22 @@ uX_PACK_PUSH_XMM
     extern const __m128i __m128i_flt_maskx16y16z16w16; //           __m128i; // flt_16low_msk; // flt_16low_msk; // flt_16high_msk; // flt_16high_msk
     extern const __m128i __m128i_flt_flipx16y16z16w16; //           __m128i; // flt_flip16_msk; // flt_flip16_msk; // flt_false; // flt_false
     extern const __m128i __m128i_flt_maskbyte; //                   __m128i; // flt_byte_msk; // flt_byte_msk; // flt_byte_msk; // flt_byte_msk
-    extern const __m128i __m128i_flt_select0011; //                 __m128i; // flt_false; // flt_false; // flt_true; // flt_true
-    extern const __m128i __m128i_flt_select1100; //                 __m128i; // flt_true; // flt_true; // flt_false; // flt_false
-    extern const __m128i __m128i_flt_select0101; //                 __m128i; // flt_false; // flt_true; // flt_false; // flt_true
-    extern const __m128i __m128i_flt_select1010; //                 __m128i; // flt_true; // flt_false; // flt_true; // flt_false
-    extern const __m128i __m128i_flt_select1000; //                 __m128i; // flt_true; // flt_false; // flt_false; // flt_false
-    extern const __m128i __m128i_flt_select1110; //                 __m128i; // flt_true; // flt_true; // flt_true; // flt_false
-    extern const __m128i __m128i_flt_select1011; //                 __m128i; // flt_true; // flt_false; // flt_true; // flt_true
-    extern const __m128i __m128i_flt_select1111; //                 __m128i; // flt_true; // flt_true; // flt_true; // flt_true
-    extern const __m128i __m128i_flt_select0000; //                 __m128i; // flt_false; // flt_false; // flt_false; // flt_false
+    extern const __m128i __m128i_flt_select0000; //                 __m128i; flt_false, flt_false, flt_false, flt_false
+    extern const __m128i __m128i_flt_select0001; //                 __m128i; flt_false, flt_false, flt_false, flt_true
+    extern const __m128i __m128i_flt_select0010; //                 __m128i; flt_false, flt_false, flt_true, flt_false
+    extern const __m128i __m128i_flt_select0100; //                 __m128i; flt_false, flt_true, flt_false, flt_false
+    extern const __m128i __m128i_flt_select1000; //                 __m128i; flt_true, flt_false, flt_false, flt_false
+    extern const __m128i __m128i_flt_select0011; //                 __m128i; flt_false, flt_false, flt_true, flt_true
+    extern const __m128i __m128i_flt_select0111; //                 __m128i; flt_false, flt_true, flt_true, flt_true
+    extern const __m128i __m128i_flt_select1111; //                 __m128i; flt_true, flt_true, flt_true, flt_true
+    extern const __m128i __m128i_flt_select1110; //                 __m128i; flt_true, flt_true, flt_true, flt_false
+    extern const __m128i __m128i_flt_select1100; //                 __m128i; flt_true, flt_true, flt_false, flt_false
+    extern const __m128i __m128i_flt_select1001; //                 __m128i; flt_true, flt_false, flt_false, flt_true
+    extern const __m128i __m128i_flt_select0110; //                 __m128i; flt_false, flt_true, flt_true, flt_false
+    extern const __m128i __m128i_flt_select1011; //                 __m128i; flt_true, flt_false, flt_true, flt_true
+    extern const __m128i __m128i_flt_select1101; //                 __m128i; flt_true, flt_true, flt_false, flt_true
+    extern const __m128i __m128i_flt_select0101; //                 __m128i; flt_false, flt_true, flt_false, flt_true
+    extern const __m128i __m128i_flt_select1010; //                 __m128i; flt_true, flt_false, flt_true, flt_false
     extern const __m128i __m128i_flt_onehalfminusepsilon; //        __m128i; // flt_halfminuseps_msk; // flt_halfminuseps_msk; // flt_halfminuseps_msk; // flt_halfminuseps_msk
     extern const __m128i __m128i_flt_flipy; //                  __m128i; // flt_false; // flt_flip32_msk; // flt_false; // flt_false
     extern const __m128i __m128i_flt_flipz; //                  __m128i; // flt_false; // flt_false; // flt_flip32_msk; // flt_false
@@ -578,6 +633,160 @@ uX_PACK_PUSH_XMM
     extern const __m128i __m128i_flt_subnormalexponent; //      __m128i; // flt_subnormalexp_msk; // flt_subnormalexp_msk; // flt_subnormalexp_msk; // flt_subnormalexp_msk
     extern const __m128i __m128i_flt_numtrailing; //                __m128i; // flt_mant_msk; // flt_mant_msk; // flt_mant_msk; // flt_mant_msk
     extern const __m128i __m128i_flt_neginfinity; //                __m128i; // flt_neginf_msk; // flt_neginf_msk; // flt_neginf_msk; // flt_neginf_msk
+
+namespace_DirectX
+    /*uX_GLOBAL_CONST XMVECTORF32 g_UShortMax = __m128_ushortmax;*/
+namespace_DirectX_end
+
+namespace_uX
+namespace_XMM
+
+namespace_XMM_end
+namespace_uX_end
+
+/*
+# define g_XMSinCoefficients0
+# define g_XMSinCoefficients1
+# define g_XMCosCoefficients0
+# define g_XMCosCoefficients1
+# define g_XMTanCoefficients0
+# define g_XMTanCoefficients1
+# define g_XMTanCoefficients2
+# define g_XMArcCoefficients0
+# define g_XMArcCoefficients1
+# define g_XMATanCoefficients0
+# define g_XMATanCoefficients1
+# define g_XMATanEstCoefficients0
+# define g_XMATanEstCoefficients1
+# define g_XMTanEstCoefficients
+# define g_XMArcEstCoefficients
+# define g_XMPiConstants0
+# define g_XMIdentityR0
+# define g_XMIdentityR1
+# define g_XMIdentityR2
+# define g_XMIdentityR3
+# define g_XMNegIdentityR0
+# define g_XMNegIdentityR1
+# define g_XMNegIdentityR2
+# define g_XMNegIdentityR3
+# define g_XMNegativeZero
+# define g_XMNegate3
+# define g_XMMaskXY
+# define g_XMMask3
+# define g_XMMaskX
+# define g_XMMaskY
+# define g_XMMaskZ
+# define g_XMMaskW
+# define g_XMOne
+# define g_XMOne3
+# define g_XMZero
+# define g_XMTwo
+# define g_XMFour
+# define g_XMSix
+# define g_XMNegativeOne
+# define g_XMOneHalf
+# define g_XMNegativeOneHalf
+# define g_XMNegativeTwoPi
+# define g_XMNegativePi
+# define g_XMHalfPi
+# define g_XMPi
+# define g_XMReciprocalPi
+# define g_XMTwoPi
+# define g_XMReciprocalTwoPi
+# define g_XMEpsilon
+# define g_XMInfinity
+# define g_XMQNaN
+# define g_XMQNaNTest
+# define g_XMAbsMask
+# define g_XMFltMin
+# define g_XMFltMax
+# define g_XMNegOneMask
+# define g_XMMaskA8R8G8B8
+# define g_XMFlipA8R8G8B8
+# define g_XMFixAA8R8G8B8
+# define g_XMNormalizeA8R8G8B8
+# define g_XMMaskA2B10G10R10
+# define g_XMFlipA2B10G10R10
+# define g_XMFixAA2B10G10R10
+# define g_XMNormalizeA2B10G10R10
+# define g_XMMaskX16Y16
+# define g_XMFlipX16Y16
+# define g_XMFixX16Y16
+# define g_XMNormalizeX16Y16
+# define g_XMMaskX16Y16Z16W16
+# define g_XMFlipX16Y16Z16W16
+# define g_XMFixX16Y16Z16W16
+# define g_XMNormalizeX16Y16Z16W16
+# define g_XMNoFraction
+# define g_XMMaskByte
+# define g_XMNegateX
+# define g_XMNegateY
+# define g_XMNegateZ
+# define g_XMNegateW
+# define g_XMSelect0101
+# define g_XMSelect1010
+# define g_XMOneHalfMinusEpsilon
+# define g_XMSelect1000
+# define g_XMSelect1100
+# define g_XMSelect1110
+# define g_XMSelect1011
+# define g_XMFixupY16
+# define g_XMFixupY16W16
+# define g_XMFlipY
+# define g_XMFlipZ
+# define g_XMFlipW
+# define g_XMFlipYZ
+# define g_XMFlipZW
+# define g_XMFlipYW
+# define g_XMMaskDec4
+# define g_XMXorDec4
+# define g_XMAddUDec4
+# define g_XMAddDec4
+# define g_XMMulDec4
+# define g_XMMaskByte4
+# define g_XMXorByte4
+# define g_XMAddByte4
+# define g_XMFixUnsigned
+# define g_XMMaxInt
+# define g_XMMaxUInt
+# define g_XMUnsignedFix
+# define g_XMsrgbScale
+# define g_XMsrgbA
+# define g_XMsrgbA1
+# define g_XMExponentBias
+# define g_XMSubnormalExponent
+# define g_XMNumTrailing
+# define g_XMMinNormal
+# define g_XMNegInfinity
+# define g_XMNegQNaN
+# define g_XMBin128
+# define g_XMBinNeg150
+# define g_XM253
+# define g_XMExpEst1
+# define g_XMExpEst2
+# define g_XMExpEst3
+# define g_XMExpEst4
+# define g_XMExpEst5
+# define g_XMExpEst6
+# define g_XMExpEst7
+# define g_XMLogEst0
+# define g_XMLogEst1
+# define g_XMLogEst2
+# define g_XMLogEst3
+# define g_XMLogEst4
+# define g_XMLogEst5
+# define g_XMLogEst6
+# define g_XMLogEst7
+# define g_XMLgE
+# define g_XMInvLgE
+# define g_XMLg10
+# define g_XMInvLg10
+# define g_UByteMax
+# define g_ByteMin
+# define g_ByteMax
+# define g_ShortMin
+# define g_ShortMax
+# define g_UShortMax*/
 
     //;;double mask;;
 
@@ -2894,6 +3103,18 @@ uX_PACK_PUSH_XMM
     extern const __m128d __m128d_0e_logest5; //                 __m128d; // dbl_logest5; // dbl_false
     extern const __m128d __m128d_0e_logest6; //                 __m128d; // dbl_logest6; // dbl_false
     extern const __m128d __m128d_0e_logest7; //                 __m128d; // dbl_logest7; // dbl_false
+
+    //;;DirectX Math constants;;
+
+    extern const __m128i __m128i_dbl_select00; //                 __m128q; dbl_false, dbl_false
+    extern const __m128i __m128i_dbl_select01; //                 __m128q; dbl_false, dbl_true
+    extern const __m128i __m128i_dbl_select10; //                 __m128q; dbl_true, dbl_false
+    extern const __m128i __m128i_dbl_select11; //                 __m128q; dbl_true, dbl_true
+
+    extern const __m128d __m128d_select00; //                 __m128q; dbl_false, dbl_false
+    extern const __m128d __m128d_select01; //                 __m128q; dbl_false, dbl_true
+    extern const __m128d __m128d_select10; //                 __m128q; dbl_true, dbl_false
+    extern const __m128d __m128d_select11; //                 __m128q; dbl_true, dbl_true
 
 uX_PACK_POP
 uX_EXTERNC_END

@@ -1,20 +1,42 @@
 
+/*
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / /                                                                               / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
+; / /                                                                               / /
+; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
+; / /    you may not use this file except in compliance with the License.           / /
+; / /    You may obtain a copy of the License at                                    / /
+; / /                                                                               / /
+; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
+; / /                                                                               / /
+; / /    Unless required by applicable law or agreed to in writing, software        / /
+; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
+; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
+; / /    See the License for the specific language governing permissions and        / /
+; / /    limitations under the License.                                             / /
+; / /                                                                               / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+*/
+
 #pragma once
 
 #ifndef uX_BASEDEFS_H
-#define uX_BASEDEFS_H
+#define uX_BASEDEFS_H 1
 
-#include "uXPreprocessor.h"
-#include "uXExp.h"
+#include "uXpreprocessor.h"
+#include "uXexp.h"
 
 /**
 Calling convention  // currently defined for windows only for (MSVC / Intel ICW) & (GCC compatible compiler / Intel ICU), needs researching for other compilers implementation
 */
 #if defined(uX_MSVC_COMPATIBLE_COMPILER) && !defined(uX_MIC)
 #  if defined(uX_X86_OR_X64_CPU)
-#     define uX_CDECL __cdecl
-#     define uX_STDCALL __stdcall
-#     define uX_FASTCALL __fastcall
+#     define uX_cdecl __cdecl
+#     define uX_stdcall __stdcall
+#     define uX_fastcall __fastcall
 #    ifndef uX_callconv
 #      if defined(uX_VECTORCALL_SUPPORT)
 #        if defined(uX_VC) || defined(uX_CLANGW) || defined(uX_ICW)
@@ -49,9 +71,9 @@ Calling convention  // currently defined for windows only for (MSVC / Intel ICW)
 #      endif
 #    endif //uX_regcall
 #  else
-#       define uX_CDECL
-#       define uX_STDCALL
-#       define uX_FASTCALL
+#       define uX_cdecl
+#       define uX_stdcall
+#       define uX_fastcall
 #       define uX_callconv
 #       define uX_veccall
 #       define uX_regcall
@@ -110,30 +132,30 @@ Calling convention  // currently defined for windows only for (MSVC / Intel ICW)
 #  endif
 /*# endif*/
 #   if defined(uX_X86_OR_X64_CPU) && !defined(uX_MIC)
-#   define uX_CDECL __attribute__((cdecl))
-#   define uX_FASTCALL __attribute__((fastcall))
-#   define uX_STDCALL  __attribute__((stdcall))
+#   define uX_cdecl __attribute__((cdecl))
+#   define uX_fastcall __attribute__((fastcall))
+#   define uX_stdcall  __attribute__((stdcall))
 # else
-#   define uX_CDECL
-#   define uX_FASTCALL
-#   define uX_STDCALL
+#   define uX_cdecl
+#   define uX_fastcall
+#   define uX_stdcall
 # endif
 #    endif //uX_WINDOWS
 #   endif //uX_X86_OR_X64_CPU
 #else
 #   define uX_callconv
 #   define uX_veccall
-#   define uX_CDECL
-#   define uX_STDCALL
-#   define uX_FASTCALL
+#   define uX_cdecl
+#   define uX_stdcall
+#   define uX_fastcall
 #endif
 
-#if defined(uX_X86_ABI) && (defined(uX_MSVC_COMPATIBLE_COMPILER))
-#   define uXABI uX_CDECL
-#elif defined(uX_X86_ABI) && (defined(uX_GCC_COMPATIBLE_COMPILER))
-#   define uXABI uX_CDECL
+#if defined(uX_X86_OR_X64_ABI) && (defined(uX_MSVC_COMPATIBLE_COMPILER))
+#   define uX_ABI uX_callconv
+#elif defined(uX_X86_OR_X64_ABI) && (defined(uX_GCC_COMPATIBLE_COMPILER))
+#   define uX_ABI uX_callconv
 #else
-#   define uXABI
+#   define uX_ABI
 #endif
 
 #if defined(uX_MSVC_COMPATIBLE_COMPILER)
@@ -172,8 +194,10 @@ Calling convention  // currently defined for windows only for (MSVC / Intel ICW)
 #   define uX_PACK_256               __pragma( pack(16) )
 #   define uX_PACK_512               __pragma( pack(16) )
 # endif
+#   define uX_PACK_PUSH_STACK           __pragma( pack(push, uX_STACK_SIZE) )
 #   define uX_PACK_PUSH_SIZE_T          __pragma( pack(push, uX_SIZE_T_SIZE) )
 #   define uX_PACK_PUSH_PTR             __pragma( pack(push, uX_PTR_SIZE) )
+#   define uX_PACK_STACK                __pragma( pack(uX_STACK_SIZE) )
 #   define uX_PACK_SIZE_T               __pragma( pack(uX_SIZE_T_SIZE) )
 #   define uX_PACK_PTR                  __pragma( pack(uX_PTR_SIZE) )
 #   define uX_PACK_POP                  __pragma( pack(pop) )
@@ -183,29 +207,31 @@ Calling convention  // currently defined for windows only for (MSVC / Intel ICW)
 #   define uX_PRAGMA_OPTIMIZE_ON            __pragma(optimize("", on))
 #elif (uX_GCC_COMPATIBLE_COMPILER) && !defined(__SPU__)
 #   define uX_PACK_PUSH_DEF(X)          _Pragma("pack(push, X)")
-#   define uX_PACK_PUSH_1                _Pragma("pack(push, 1)")
-#   define uX_PACK_PUSH_2                _Pragma("pack(push, 2)")
-#   define uX_PACK_PUSH_4                _Pragma("pack(push, 4)")
-#   define uX_PACK_PUSH_8                _Pragma("pack(push, 8)")
-#   define uX_PACK_PUSH_16               _Pragma("pack(push, 16)")
-#   define uX_PACK_PUSH_32               _Pragma("pack(push, 32)")
-#   define uX_PACK_PUSH_64               _Pragma("pack(push, 64)")
-#   define uX_PACK_PUSH_128              _Pragma("pack(push, 128)")
-#   define uX_PACK_PUSH_256              _Pragma("pack(push, 256)")
-#   define uX_PACK_PUSH_512              _Pragma("pack(push, 512)")
+#   define uX_PACK_PUSH_1               _Pragma("pack(push, 1)")
+#   define uX_PACK_PUSH_2               _Pragma("pack(push, 2)")
+#   define uX_PACK_PUSH_4               _Pragma("pack(push, 4)")
+#   define uX_PACK_PUSH_8               _Pragma("pack(push, 8)")
+#   define uX_PACK_PUSH_16              _Pragma("pack(push, 16)")
+#   define uX_PACK_PUSH_32              _Pragma("pack(push, 32)")
+#   define uX_PACK_PUSH_64              _Pragma("pack(push, 64)")
+#   define uX_PACK_PUSH_128             _Pragma("pack(push, 128)")
+#   define uX_PACK_PUSH_256             _Pragma("pack(push, 256)")
+#   define uX_PACK_PUSH_512             _Pragma("pack(push, 512)")
+#   define uX_PACK_PUSH_STACK           _Pragma("pack(push, uX_STACK_SIZE)")
 #   define uX_PACK_PUSH_SIZE_T          _Pragma("pack(push, uX_SIZE_T_SIZE)")
 #   define uX_PACK_PUSH_PTR         _Pragma("pack(push, uX_PTR_SIZE)")
 #   define uX_PACK_DEF(X)           _Pragma("pack(X)")
-#   define uX_PACK_1                 _Pragma("pack(1)")
-#   define uX_PACK_2                 _Pragma("pack(2)")
-#   define uX_PACK_4                 _Pragma("pack(4)")
-#   define uX_PACK_8                 _Pragma("pack(8)")
-#   define uX_PACK_16                _Pragma("pack(16)")
-#   define uX_PACK_32                _Pragma("pack(32)")
-#   define uX_PACK_64                _Pragma("pack(64)")
-#   define uX_PACK_128               _Pragma("pack(128)")
-#   define uX_PACK_256               _Pragma("pack(256)")
-#   define uX_PACK_512               _Pragma("pack(512)")
+#   define uX_PACK_1                _Pragma("pack(1)")
+#   define uX_PACK_2                _Pragma("pack(2)")
+#   define uX_PACK_4                _Pragma("pack(4)")
+#   define uX_PACK_8                _Pragma("pack(8)")
+#   define uX_PACK_16               _Pragma("pack(16)")
+#   define uX_PACK_32               _Pragma("pack(32)")
+#   define uX_PACK_64               _Pragma("pack(64)")
+#   define uX_PACK_128              _Pragma("pack(128)")
+#   define uX_PACK_256              _Pragma("pack(256)")
+#   define uX_PACK_512              _Pragma("pack(512)")
+#   define uX_PACK_STACK            _Pragma("pack(uX_STACK_SIZE)")
 #   define uX_PACK_SIZE_T           _Pragma("pack(uX_SIZE_T_SIZE)")
 #   define uX_PACK_PTR              _Pragma("pack(uX_PTR_SIZE)")
 #   define uX_PACK_POP                  _Pragma("pack(pop)")
@@ -230,6 +256,7 @@ Calling convention  // currently defined for windows only for (MSVC / Intel ICW)
 #   define uX_PACK_PUSH_128              _Pragma("pack(128)")
 #   define uX_PACK_PUSH_256              _Pragma("pack(256)")
 #   define uX_PACK_PUSH_512              _Pragma("pack(512)")
+#   define uX_PACK_PUSH_STACK            _Pragma("pack(uX_STACK_SIZE)")
 #   define uX_PACK_PUSH_SIZE_T           _Pragma("pack(uX_SIZE_T_SIZE)")
 #   define uX_PACK_PUSH_PTR         _Pragma("pack(uX_PTR_SIZE)")
 #   define uX_PACK_DEF(X)           _Pragma("pack(X)")
@@ -243,11 +270,14 @@ Calling convention  // currently defined for windows only for (MSVC / Intel ICW)
 #   define uX_PACK_128               _Pragma("pack(128)")
 #   define uX_PACK_256               _Pragma("pack(256)")
 #   define uX_PACK_512               _Pragma("pack(512)")
+#   define uX_PACK_STACK            _Pragma("pack(uX_STACK_SIZE)")
 #   define uX_PACK_SIZE_T           _Pragma("pack(uX_SIZE_T_SIZE)")
 #   define uX_PACK_PTR              _Pragma("pack(uX_PTR_SIZE)")
 #   define uX_PACK_POP                  _Pragma("pack(pop)")
 #   define uX_PRAGMA_ONCE               _Pragma("once")
 #   define uX_PRAGMA(exprs)             _Pragma(uX_Stringer(exprs))
+#   define _PRAGMA_OPTIMIZE_OFF     _Pragma("ibmc optimize(off)")
+#   define _PRAGMA_OPTIMIZE_ON      _Pragma("ibmc optimize(on)")
 #else
 #   define uX_PACK_PUSH_DEF(X)
 #   define uX_PACK_PUSH_1
@@ -260,6 +290,7 @@ Calling convention  // currently defined for windows only for (MSVC / Intel ICW)
 #   define uX_PACK_PUSH_128
 #   define uX_PACK_PUSH_256
 #   define uX_PACK_PUSH_512
+#   define uX_PACK_PUSH_STACK
 #   define uX_PACK_PUSH_SIZE_T
 #   define uX_PACK_PUSH_PTR
 #   define uX_PACK_DEF(X)
@@ -273,12 +304,15 @@ Calling convention  // currently defined for windows only for (MSVC / Intel ICW)
 #   define uX_PACK_128
 #   define uX_PACK_256
 #   define uX_PACK_512
+#   define uX_PACK_STACK
 #   define uX_PACK_SIZE_T
 #   define uX_PACK_PTR
 #   define uX_PACK_POP
 #   define uX_PRAGMA_ONCE
 #   define uX_PRAGMAERROR(exprs)
 #   define uX_PRAGMA(exprs)
+#   define _PRAGMA_OPTIMIZE_OFF
+#   define _PRAGMA_OPTIMIZE_ON
 #endif
 
 #   define uX_PACK_PUSH_MM      uX_PACK_PUSH_8
@@ -1198,6 +1232,15 @@ Empty function class body macro
 #   define uX_default
 #endif
 
+/**
+No exception function class body macro
+*/
+#if defined(uX_NOEXCEPT_SUPPORT)
+#   define uX_noexcept noexcept
+#else
+#   define uX_noexcept
+#endif
+
 /*! restrict macro */
 #if defined(uX_CUDACC)
 # if defined(uX_MSVC_COMPATIBLE_COMPILER) && (_MSC_VER >= 1400))
@@ -1676,7 +1719,7 @@ Empty function class body macro
 #   define uX_CPU_AMP       restrict(amp,cpu)
 #   define uX_AMP_ONLY      restrict(amp)
 #   define uX_AMP           restrict(amp)
-#   define uX_CPU_ONLY
+#   define uX_CPU_ONLY      restrict(cpu)
 #   define uX_CPU
 #else
 #   define uX_CPU_AMP

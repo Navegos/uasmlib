@@ -1,11 +1,33 @@
 
+/*
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / /                                                                               / /
+; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /                                                                               / /
+; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
+; / /    you may not use this file except in compliance with the License.           / /
+; / /    You may obtain a copy of the License at                                    / /
+; / /                                                                               / /
+; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
+; / /                                                                               / /
+; / /    Unless required by applicable law or agreed to in writing, software        / /
+; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
+; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
+; / /    See the License for the specific language governing permissions and        / /
+; / /    limitations under the License.                                             / /
+; / /                                                                               / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+*/
+
 #pragma once
 
 #ifndef uX_MMX_STRUCTS_H
-#define uX_MMX_STRUCTS_H
+#define uX_MMX_STRUCTS_H 1
 
 #ifndef uX_TYPES_H
-#include "uXTypes.h"
+#include "uXtypes.h"
 #endif  /* uX_TYPES_H */
 
 #if defined(uX_INTRINSICS_SUPPORT) && defined(uX_X86_OR_X64_CPU) && !defined(uX_NO_INTRINSICS_SUPPORT) && !defined(uX_MIC)

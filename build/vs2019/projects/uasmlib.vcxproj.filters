@@ -49,39 +49,24 @@
     <Filter Include="Source Files\x86\AVX256\asm">
       <UniqueIdentifier>{65e36f2d-ac6d-4aae-a135-9ffb1bc5b0aa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\x86\math">
+      <UniqueIdentifier>{011c9cbd-5b19-4392-a9d4-cb5a34706882}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\SSE\math">
+      <UniqueIdentifier>{9209f439-19a3-41f2-90a2-5c30ea02bf93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\x86\math\sse">
+      <UniqueIdentifier>{15ac8d18-5f93-482b-a935-1d301f0f3259}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\x86\math\sse\inline">
+      <UniqueIdentifier>{a466ab1b-2109-4f45-a9c5-6e7fb3eec8ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\resource\resource.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\uasmlib.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\uXAssert.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\uXBaseDefs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\uXConstants.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\uXExp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\uXMisc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\uXPreprocessor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\uXSalProcess.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\uXTypes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\uXVers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\x86\uXemmintmisc.h">
@@ -132,12 +117,6 @@
     <ClInclude Include="..\..\..\include\x86\uXwmmintrin.h">
       <Filter>Header Files\x86</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXx86Cpu.h">
-      <Filter>Header Files\x86</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXx86Intrin.h">
-      <Filter>Header Files\x86</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\x86\uXxmmintrin.h">
       <Filter>Header Files\x86</Filter>
     </ClInclude>
@@ -148,9 +127,6 @@
       <Filter>Header Files\x86</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\x86\uXxmmshuffleps.h">
-      <Filter>Header Files\x86</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXMMXStructs.h">
       <Filter>Header Files\x86</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\x86\uXimmblend.h">
@@ -171,21 +147,168 @@
     <ClInclude Include="..\..\..\include\x86\uXmmintshifts.h">
       <Filter>Header Files\x86</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXxmmStructs.h">
-      <Filter>Header Files\x86</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\x86\uXymmStructs.h">
-      <Filter>Header Files\x86</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\x86\uXemmarithmetic.h">
       <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXintrin.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXcpu.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\uXbasedefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\uXconstants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\uXassert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\uXexp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\uXmisc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\uXpreprocessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\uXsalprocess.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\uXtypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\uXvers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdouble.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdouble1.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdouble2.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdouble3x3.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdouble3.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdouble4.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdouble4x3.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdouble4x4.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecfloat.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecfloat1.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecfloat2.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecfloat3.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecfloat3x3.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecfloat4.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecfloat4x3.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecfloat4x4.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecint8.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecint16.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecint32.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecint64.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecuint8.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecuint16.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecuint32.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecuint64.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\uXxmmmath.h">
+      <Filter>Header Files\x86</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdword4.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecudword4.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdword3.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecudword3.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdword2.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecudword2.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdword1.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecudword1.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecqword1.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecqword2.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecqword3.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecqword4.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecuqword1.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecuqword2.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecuqword3.h">
+      <Filter>Header Files\x86\math\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecuqword4.h">
+      <Filter>Header Files\x86\math\sse</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\uasmlib.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\uXMisc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\x86\AVX256\asm\uXymmconstdata.asm">
@@ -200,17 +323,86 @@
     <ClCompile Include="..\..\..\src\x86\AVX256\asm\uXimmlegacy.asm">
       <Filter>Source Files\x86\AVX256\asm</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\x86\uXx86Cpu.cpp">
+    <ClCompile Include="..\..\..\src\x86\uXcpu.cpp">
       <Filter>Source Files\x86</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\uXAssert.cpp">
+    <ClCompile Include="..\..\..\src\uXassert.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\x86\uXx86Intrin.cpp">
+    <ClCompile Include="..\..\..\src\uXmisc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\x86\SSE\uXxmmStructs.cpp">
-      <Filter>Source Files\x86\SSE</Filter>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble1.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble2.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble3.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble3x3.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble4.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble4x3.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble4x4.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat1.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat2.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat3.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat3x3.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat4.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat4x3.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat4x4.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecint8.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecint16.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecint32.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecint64.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecuin16.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecuint8.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecuint32.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecuint64.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -231,11 +423,26 @@
     <None Include="..\..\..\src\x86\AVX256\asm\uXymmconstdata.inc">
       <Filter>Source Files\x86\AVX256\asm</Filter>
     </None>
-    <None Include="..\..\..\src\x86\SSE\uXAVX256Structs.cpp">
-      <Filter>Source Files\x86\AVX256</Filter>
-    </None>
     <None Include="..\..\..\src\x86\asm\uXasm.inc">
       <Filter>Source Files\x86\asm</Filter>
+    </None>
+    <None Include="..\..\..\src\x86\SSE\uXymmstructs.cpp">
+      <Filter>Source Files\x86\AVX256</Filter>
+    </None>
+    <None Include="..\..\..\include\x86\math\sse\inline\uXxmmvecdouble4.inl">
+      <Filter>Header Files\x86\math\sse\inline</Filter>
+    </None>
+    <None Include="..\..\..\include\x86\math\sse\inline\uXxmmvecdouble3.inl">
+      <Filter>Header Files\x86\math\sse\inline</Filter>
+    </None>
+    <None Include="..\..\..\include\x86\math\sse\inline\uXxmmvecdouble2.inl">
+      <Filter>Header Files\x86\math\sse\inline</Filter>
+    </None>
+    <None Include="..\..\..\include\x86\math\sse\inline\uXxmmvecdouble1.inl">
+      <Filter>Header Files\x86\math\sse\inline</Filter>
+    </None>
+    <None Include="..\..\..\include\x86\math\sse\inline\uXxmmvecqword4.inl">
+      <Filter>Header Files\x86\math\sse\inline</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -311,10 +518,13 @@
     <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmpshufw.asm">
       <Filter>Source Files\x86\SSE\asm</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXemmarithmethic.asm">
+    <UASM Include="..\..\..\src\x86\asm\uXcpua.asm">
+      <Filter>Source Files\x86\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXemmarithmetic.asm">
       <Filter>Source Files\x86\SSE\asm</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\asm\uXcpua.asm">
+    <UASM Include="..\..\..\src\x86\asm\uXmemcpy.asm">
       <Filter>Source Files\x86\asm</Filter>
     </UASM>
   </ItemGroup>

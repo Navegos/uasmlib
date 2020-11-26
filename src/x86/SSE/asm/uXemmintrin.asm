@@ -55,6 +55,12 @@ ifndef __MIC__
     externdef __m128d_0e_0:__m128d
     externdef __m128d_0e_1:__m128d
     externdef __m128d_0e_sign:__m128q
+    
+    externdef __uX_CPUFeatures_SSE41:dword
+    externdef __uX_CPUFeatures_FMA:dword
+
+    externdef __uX_CPUFeatures_SSE41:dword
+    externdef __uX_CPUFeatures_SSE42:dword
 
     .code
     
@@ -66,11 +72,9 @@ ifndef __MIC__
 
     ;externdef callconv _uX_CPUFeatures_has_SSE41:proc
     ;externdef callconv _uX_CPUFeatures_has_SSE42:proc
-    ;externdef callconv _uX_CPUFeatures_has_XOP:proc
 
     _uX_CPUFeatures_has_SSE41 proto callconv (dword)
     _uX_CPUFeatures_has_SSE42 proto callconv (dword)
-    _uX_CPUFeatures_has_XOP proto callconv (dword)
 
     callconvopt
     alignxmmfieldproc
@@ -118,8 +122,29 @@ procstart _uX_mm_div_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:x
         ret
 procend
 
-procstart _uX_mm_sqrt_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        sqrtsd          xmm0,           xmm1
+procstart _uX_mm_scale_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inreal8_B:real8
+        mulsd          xmm0,           xmm1
+        ret
+procend
+
+procstart _uX_mm_scale_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inreal8_B:real8
+        shufpd          xmm1,           xmm1,           0
+        mulpd          xmm0,           xmm1
+        ret
+procend
+
+procstart _uX_mm_square_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
+        mulsd          xmm0,           xmm0
+        ret
+procend
+
+procstart _uX_mm_square_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
+        mulpd          xmm0,           xmm0
+        ret
+procend
+
+procstart _uX_mm_sqrt_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
+        sqrtsd          xmm0,           xmm0
         ret
 procend
 
@@ -164,7 +189,7 @@ procstart _uX_mm_min_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:x
 procend
 
 procstart _uX_mm_min_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        mInpd           xmm0,           xmm1
+        minpd           xmm0,           xmm1
         ret
 procend
 
@@ -248,97 +273,97 @@ procstart _uX_mm_negate_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_iand_pd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,        rreturn
+        xor             rret(),        rret()
         andpd           xmm0,           xmm1
-        movmskpd        rparam0,        xmm0
-        cmp             rparam0,        0x3
-        cmove           rreturn,        true
+        movmskpd        rp0(),        xmm0
+        cmp             rp0(),        0x3
+        cmove           rret(),        true
         ret
 procend
 
 procstart _uX_mm_iandnot_pd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,        rreturn
+        xor             rret(),        rret()
         andnpd          xmm0,           xmm1
-        movmskpd        rparam0,        xmm0
-        cmp             rparam0,        0x3
-        cmove           rreturn,        true
+        movmskpd        rp0(),        xmm0
+        cmp             rp0(),        0x3
+        cmove           rret(),        true
         ret
 procend
 
 procstart _uX_mm_ior_pd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,        rreturn
+        xor             rret(),        rret()
         orpd            xmm0,           xmm1
-        movmskpd        rparam0,        xmm0
-        cmp             rparam0,        0x0
-        cmovne          rreturn,        true
+        movmskpd        rp0(),        xmm0
+        cmp             rp0(),        0x0
+        cmovne          rret(),        true
         ret
 procend
 
 procstart _uX_mm_inot_pd, callconv, dword, < >, < >, Inxmm_A:xmmword
-        xor             rreturn,        rreturn
+        xor             rret(),        rret()
         cmppd           xmm0,           __m128d_false,           CMPP_EQ
-        movmskpd        rparam0,        xmm0
-        cmp             rparam0,        0x3
-        cmove           rreturn,        true
+        movmskpd        rp0(),        xmm0
+        cmp             rp0(),        0x3
+        cmove           rret(),        true
         ret
 procend
 
 procstart _uX_mm_iand_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,        rreturn
+        xor             rret(),        rret()
         andpd           xmm0,           xmm1
-        movmskpd        rparam0,        xmm0
-        and             rparam0,        0x1
-        cmp             rparam0,        0x1
-        cmove           rreturn,        true
+        movmskpd        rp0(),        xmm0
+        and             rp0(),        0x1
+        cmp             rp0(),        0x1
+        cmove           rret(),        true
         ret
 procend
 
 procstart _uX_mm_iandnot_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,        rreturn
+        xor             rret(),        rret()
         andnpd          xmm0,           xmm1
-        movmskpd        rparam0,        xmm0
-        and             rparam0,        0x1
-        cmp             rparam0,        0x1
-        cmove           rreturn,        true
+        movmskpd        rp0(),        xmm0
+        and             rp0(),        0x1
+        cmp             rp0(),        0x1
+        cmove           rret(),        true
         ret
 procend
 
 procstart _uX_mm_ior_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,        rreturn
+        xor             rret(),        rret()
         orpd            xmm0,           xmm1
-        movmskpd        rparam0,        xmm0
-        and             rparam0,        0x1
-        cmp             rparam0,        0x0
-        cmovne          rreturn,        true
+        movmskpd        rp0(),        xmm0
+        and             rp0(),        0x1
+        cmp             rp0(),        0x0
+        cmovne          rret(),        true
         ret
 procend
 
 procstart _uX_mm_inot_sd, callconv, dword, < >, < >, Inxmm_A:xmmword
-        xor             rreturn,        rreturn
+        xor             rret(),        rret()
         movapd          xmm1,           __m128d_0e_false
         cmpsd           xmm0,           xmm1,           CMPP_EQ
-        movmskpd        rparam0,        xmm0
-        and             rparam0,        0x1
-        cmp             rparam0,        0x1
-        cmove           rreturn,        true
+        movmskpd        rp0(),        xmm0
+        and             rp0(),        0x1
+        cmp             rp0(),        0x1
+        cmove           rret(),        true
         ret
 procend
 
 procstart _uX_mm_ihand_pd, callconv, dword, < >, < >, Inxmm_A:xmmword
-        xor             rreturn,        rreturn
+        xor             rret(),        rret()
         ;andps           xmm0,           xmm0
-        movmskpd        rparam0,        xmm0
-        cmp             rparam0,        0x3
-        cmove           rreturn,        true
+        movmskpd        rp0(),        xmm0
+        cmp             rp0(),        0x3
+        cmove           rret(),        true
         ret
 procend
 
 procstart _uX_mm_ihor_pd, callconv, dword, < >, < >, Inxmm_A:xmmword
-        xor             rreturn,        rreturn
+        xor             rret(),        rret()
         ;orps            xmm0,           xmm0
-        movmskpd        rparam0,        xmm0
-        cmp             rparam0,        0x0
-        cmovne          rreturn,        true
+        movmskpd        rp0(),        xmm0
+        cmp             rp0(),        0x0
+        cmovne          rret(),        true
         ret
 procend
 
@@ -469,142 +494,142 @@ procend
 ; DP, comparison return int
 ;******************
 procstart _uX_mm_comieq_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,            rreturn
+        xor             rret(),            rret()
         comisd          xmm0,           xmm1
-        cmove           rreturn,            true
+        cmove           rret(),            true
         ret
 procend
 
 procstart _uX_mm_comilt_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,            rreturn
+        xor             rret(),            rret()
         comisd          xmm0,           xmm1
-        cmovb           rreturn,            true
+        cmovb           rret(),            true
         ret
 procend
 
 procstart _uX_mm_comile_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,            rreturn
+        xor             rret(),            rret()
         comisd          xmm0,           xmm1
-        cmovbe          rreturn,            true
+        cmovbe          rret(),            true
         ret
 procend
 
 procstart _uX_mm_comigt_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,            rreturn
+        xor             rret(),            rret()
         comisd          xmm0,           xmm1
-        cmova           rreturn,            true
+        cmova           rret(),            true
         ret
 procend
 
 procstart _uX_mm_comige_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,            rreturn
+        xor             rret(),            rret()
         comisd          xmm0,           xmm1
-        cmovae          rreturn,            true
+        cmovae          rret(),            true
         ret
 procend
 
 procstart _uX_mm_comineq_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,            rreturn
+        xor             rret(),            rret()
         comisd          xmm0,           xmm1
-        cmovne          rreturn,            true
+        cmovne          rret(),            true
         ret
 procend
 
 procstart _uX_mm_cominlt_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,            rreturn
+        xor             rret(),            rret()
         comisd          xmm0,           xmm1
-        cmovnb          rreturn,            true
+        cmovnb          rret(),            true
         ret
 procend
 
 procstart _uX_mm_cominle_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,            rreturn
+        xor             rret(),            rret()
         comisd          xmm0,           xmm1
-        cmovnbe         rreturn,            true
+        cmovnbe         rret(),            true
         ret
 procend
 
 procstart _uX_mm_comingt_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,            rreturn
+        xor             rret(),            rret()
         comisd          xmm0,           xmm1
-        cmovna          rreturn,            true
+        cmovna          rret(),            true
         ret
 procend
 
 procstart _uX_mm_cominge_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,            rreturn
+        xor             rret(),            rret()
         comisd          xmm0,           xmm1
-        cmovnae         rreturn,            true
+        cmovnae         rret(),            true
         ret
 procend
 
 procstart _uX_mm_ucomieq_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,            rreturn
+        xor             rret(),            rret()
         ucomisd         xmm0,           xmm1
-        cmove           rreturn,            true
+        cmove           rret(),            true
         ret
 procend
 
 procstart _uX_mm_ucomilt_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,            rreturn
+        xor             rret(),            rret()
         ucomisd         xmm0,           xmm1
-        cmovb           rreturn,            true
+        cmovb           rret(),            true
         ret
 procend
 
 procstart _uX_mm_ucomile_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,            rreturn
+        xor             rret(),            rret()
         ucomisd         xmm0,           xmm1
-        cmovbe          rreturn,            true
+        cmovbe          rret(),            true
         ret
 procend
 
 procstart _uX_mm_ucomigt_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,            rreturn
+        xor             rret(),            rret()
         ucomisd         xmm0,           xmm1
-        cmova           rreturn,            true
+        cmova           rret(),            true
         ret
 procend
 
 procstart _uX_mm_ucomige_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,            rreturn
+        xor             rret(),            rret()
         ucomisd         xmm0,           xmm1
-        cmovae          rreturn,            true
+        cmovae          rret(),            true
         ret
 procend
 
 procstart _uX_mm_ucomineq_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,            rreturn
+        xor             rret(),            rret()
         ucomisd         xmm0,           xmm1
-        cmovne          rreturn,            true
+        cmovne          rret(),            true
         ret
 procend
 
 procstart _uX_mm_ucominlt_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,            rreturn
+        xor             rret(),            rret()
         ucomisd         xmm0,           xmm1
-        cmovnb          rreturn,            true
+        cmovnb          rret(),            true
         ret
 procend
 
 procstart _uX_mm_ucominle_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,            rreturn
+        xor             rret(),            rret()
         ucomisd         xmm0,           xmm1
-        cmovnbe         rreturn,            true
+        cmovnbe         rret(),            true
         ret
 procend
 
 procstart _uX_mm_ucomingt_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,            rreturn
+        xor             rret(),            rret()
         ucomisd         xmm0,           xmm1
-        cmovna          rreturn,            true
+        cmovna          rret(),            true
         ret
 procend
 
 procstart _uX_mm_ucominge_sd, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,            rreturn
+        xor             rret(),            rret()
         ucomisd         xmm0,           xmm1
-        cmovnae         rreturn,            true
+        cmovnae         rret(),            true
         ret
 procend
 
@@ -671,8 +696,8 @@ procstart _uX_mm_cvttsd_si32, callconv, dword, < >, < >, Inxmm_A:xmmword
         ret
 procend
 
-procstart _uX_mm_cvtsi32_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, InInt_B:dword            
-        cvtsi2sd            xmm0,           dparam1
+procstart _uX_mm_cvtsi32_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_B:dword
+        cvtsi2sd            xmm0,           dp1()
         ret
 procend
 
@@ -690,28 +715,28 @@ procstart _uX_mm_cvttpd_pi32, callconv, mmword, < >, < >, Inxmm_A:xmmword
         ret
 procend
 
-procstart _uX_mm_cvtpi32_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inmm_A:mmword            
+procstart _uX_mm_cvtpi32_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inmm_A:mmword
         cvtpi2pd            xmm0,           mm1
         ret
 procend
 endif ;__X32__
 
-ifdef __X64__
+ifdef __x64__
 procstart _uX_mm_cvtsd_si64, callconv, qword, < >, < >, Inxmm_A:xmmword
-        cvtsd2si            dreturn,            xmm0
+        cvtsd2si            rret(),            xmm0
         ret
 procend
 
 procstart _uX_mm_cvttsd_si64, callconv, qword, < >, < >, Inxmm_A:xmmword
-        cvttsd2si           dreturn,            xmm0
+        cvttsd2si           rret(),            xmm0
         ret
 procend
 
-procstart _uX_mm_cvtsi64_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, InInt_B:qword            
-        cvtsi2sd            xmm0,           rparam1
+procstart _uX_mm_cvtsi64_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_B:qword
+        cvtsi2sd            xmm0,           rp1()
         ret
 procend
-endif ;__X64__
+endif ;__x64__
 
 procstart _uX_mm_cvtsd_dbl, callconv, real8, < >, < >, Inxmm_A:xmmword            
         movsd           xmm0,           xmm0
@@ -729,18 +754,18 @@ procstart _uX_mm_cvt1d_dbl, callconv, real8, < >, < >, Inxmm_A:xmmword
         ret
 procend
 
-procstart _uX_mm_cvtpd_dbl, callconv, real8, < >, < >, Inxmm_A:xmmword, InInt_BSel:dword
+procstart _uX_mm_cvtpd_dbl, callconv, real8, < >, < >, Inxmm_A:xmmword, Inint_BSel:dword
         push         rbase
-        .if((rparam1 < 0) || (rparam1 > 1))
+        .if((rp1() < 0) || (rp1() > 1))
         jmp         _m128cvteltdbl_end
         .endif
 
         ifdef __X32__
-        movzx           rbase,    byte ptr [rparam1]
+        movzx           rbase,    byte ptr [rp1()]
         jmp     dword ptr [_m128cvteltdbljmptable+rbase*size_t_size]
         else
         lea             rbase,    qword ptr [_m128cvteltdbljmptable]
-        mov             rbase,    qword ptr [rbase+rparam1*size_t_size]
+        mov             rbase,    qword ptr [rbase+rp1()*size_t_size]
         jmp             rbx
         endif
         
@@ -784,35 +809,34 @@ procstart _uX_mm_set_sd, callconv, xmmword, < >, < >, Inreal8_B:real8
 procend
 
 procstart _uX_mm_set_pd1, callconv, xmmword, < >, < >, Inreal8_B:real8
-        movsd           xmm0,           xmm0
         shufpd          xmm0,           xmm0,           0
         ret
 procend
 
-procstart _uX_mm_cvt_0d, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inreal8_B:real8
+procstart _uX_mm_cvtdbl_0d, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inreal8_B:real8
         movsd           xmm0,           xmm1
         ret
 procend
 
-procstart _uX_mm_cvt_1d, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inreal8_B:real8
+procstart _uX_mm_cvtdbl_1d, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inreal8_B:real8
         shufpd          xmm0,           xmm0,           shuffler2(0,0)
         movsd           xmm0,           xmm1
         shufpd          xmm0,           xmm0,           shuffler2(1,0)
         ret
 procend
 
-procstart _uX_mm_cvtdbl_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inreal8_B:real8, InInt_BSel:dword
+procstart _uX_mm_cvtdbl_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inreal8_B:real8, Inint_BSel:dword
         push         rbase
-        .if((rparam2 < 0) || (rparam2 > 1))
+        .if((rp2() < 0) || (rp2() > 1))
         jmp         _m128seteltpd_end
         .endif
 
         ifdef __X32__
-        movzx           rbase,    byte ptr [rparam2]
+        movzx           rbase,    byte ptr [rp2()]
         jmp     dword ptr [_m128seteltpdjmptable+rbase*size_t_size]
         else
         lea             rbase,    qword ptr [_m128seteltpdjmptable]
-        mov             rbase,    qword ptr [rbase+rparam2*size_t_size]
+        mov             rbase,    qword ptr [rbase+rp2()*size_t_size]
         jmp             rbx
         endif
 
@@ -831,17 +855,13 @@ procstart _uX_mm_cvtdbl_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inreal
 procend
 
 procstart _uX_mm_set_pd, callconv, xmmword, < >, < >, Inreal8_B:real8, Inreal8_A:real8
-        movsd           xmm0,           xmm0
         shufpd          xmm0,           xmm0,           shuffle2(0,0)
         movsd           xmm0,           xmm1
         ret
 procend
 
 procstart _uX_mm_setr_pd, callconv, xmmword, < >, < >, Inreal8_A:real8, Inreal8_B:real8
-        movsd           xmm0,           xmm0
-        shufpd          xmm0,           xmm0,           shuffler2(0,0)
-        movsd           xmm0,           xmm1
-        shufpd          xmm0,           xmm0,           shuffler2(1,0)
+        shufpd          xmm0,           xmm1,           shuffler2(0,0)
         ret
 procend
 
@@ -850,49 +870,77 @@ procstart _uX_mm_setzero_pd, callconv, xmmword, < >, < >, < >
         ret
 procend
 
+procstart _uX_mm_iszero_pd, callconv, dword, < >, < >, Inxmm_A:xmmword
+    ifdef __unix32__
+        define rpdisp, ecx, text
+    else
+        define rpdisp, rp0(), text
+    endif
+        xor             rret(),        rret()
+        cmppd           xmm0,           __m128d_0,           CMPP_EQ
+        movmskpd        rpdisp,        xmm0
+        cmp             rpdisp,        0x3
+        cmove           rret(),        true
+        ret
+procend
+
+procstart _uX_mm_iszero_sd, callconv, dword, < >, < >, Inxmm_A:xmmword
+    ifdef __unix32__
+        define rpdisp, ecx, text
+    else
+        define rpdisp, rp0(), text
+    endif
+        xor             rret(),        rret()
+        cmpsd           xmm0,           __m128d_0e_0,           CMPP_EQ
+        movmskpd        rpdisp,        xmm0
+        cmp             rpdisp,        0x1
+        cmove           rret(),        true
+        ret
+procend
+
 ;******************
 ; DP, loads
 ;******************
 procstart _uX_mm_load_sd, callconv, xmmword, < >, < >, Inpreal8_A:ptr real8
-        movsd           xmm0,       real8 ptr [rparam0]
+        movsd           xmm0,       real8 ptr [rp0()]
         ret
 procend
 
 procstart _uX_mm_load_pd1, callconv, xmmword, < >, < >, Inpreal8_A:ptr real8
-        movsd           xmm0,       real8 ptr [rparam0]
+        movsd           xmm0,       real8 ptr [rp0()]
         shufpd          xmm0,           xmm0,           0
         ret
 procend
 
 procstart _uX_mm_load_pd, callconv, xmmword, < >, < >, Inpreal8_A:ptr xmmword
-        movapd          xmm0,       xmmword ptr [rparam0]
+        movapd          xmm0,       xmmword ptr [rp0()]
         ret
 procend
 
 procstart _uX_mm_loadr_pd, callconv, xmmword, < >, < >, Inpreal8_A:ptr xmmword
-        movapd          xmm0,       xmmword ptr [rparam0]
+        movapd          xmm0,       xmmword ptr [rp0()]
         shufpd          xmm0,           xmm0,           shuffler2(1,0)
         ret
 procend
 
 procstart _uX_mm_loadu_pd, callconv, xmmword, < >, < >, Inpreal8_A:ptr xmmword
-        movupd          xmm0,       xmmword ptr [rparam0]
+        movupd          xmm0,       xmmword ptr [rp0()]
         ret
 procend
 
 procstart _uX_mm_loadur_pd, callconv, xmmword, < >, < >, Inpreal8_A:ptr xmmword
-        movupd          xmm0,       xmmword ptr [rparam0]
+        movupd          xmm0,       xmmword ptr [rp0()]
         shufpd          xmm0,           xmm0,           shuffler2(1,0)
         ret
 procend
 
 procstart _uX_mm_loadh_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inpreal8_A:ptr mmword
-        movhpd          xmm0,       mmword ptr [rparam1]
+        movhpd          xmm0,       mmword ptr [rp1()]
         ret
 procend
 
 procstart _uX_mm_loadl_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inpreal8_A:ptr mmword
-        movlpd          xmm0,       mmword ptr [rparam1]
+        movlpd          xmm0,       mmword ptr [rp1()]
         ret
 procend
 
@@ -900,72 +948,72 @@ procend
 ; DP, stores
 ;******************
 procstart _uX_mm_store_sd, callconv, voidarg, < >, < >, OutPreal8_A:ptr real8, Inxmm_B:xmmword
-        movsd       real8 ptr [rparam0],            xmm1
+        movsd       real8 ptr [rp0()],            xmm1
         ret
 procend
 
 procstart _uX_mm_store_pd1, callconv, voidarg, < >, < >, OutPreal8_A:ptr xmmword, Inxmm_B:xmmword
         movapd          xmm0,           xmm1
         shufpd          xmm0,           xmm0,           0
-        movapd      xmmword ptr [rparam0],          xmm0
+        movapd      xmmword ptr [rp0()],          xmm0
         ret
 procend
 
 procstart _uX_mm_storeu_pd1, callconv, voidarg, < >, < >, OutPreal8_A:ptr xmmword, Inxmm_B:xmmword
         movapd          xmm0,           xmm1
         shufpd          xmm0,           xmm0,           0
-        movupd      xmmword ptr [rparam0],          xmm0
+        movupd      xmmword ptr [rp0()],          xmm0
         ret
 procend
 
 procstart _uX_mm_store_pd, callconv, voidarg, < >, < >, OutPreal8_A:ptr xmmword, Inxmm_B:xmmword
-        movapd      xmmword ptr [rparam0],          xmm1
+        movapd      xmmword ptr [rp0()],          xmm1
         ret
 procend
 
 procstart _uX_mm_storeu_pd, callconv, voidarg, < >, < >, OutPreal8_A:ptr xmmword, Inxmm_B:xmmword
-        movupd      xmmword ptr [rparam0],          xmm1
+        movupd      xmmword ptr [rp0()],          xmm1
         ret
 procend
 
 procstart _uX_mm_storer_pd, callconv, voidarg, < >, < >, OutPreal8_A:ptr xmmword, Inxmm_B:xmmword
         movapd          xmm0,           xmm1
         shufpd          xmm0,           xmm0,           shuffler2(1,0)
-        movapd      xmmword ptr [rparam0],          xmm0
+        movapd      xmmword ptr [rp0()],          xmm0
         ret
 procend
 
 procstart _uX_mm_storeur_pd, callconv, voidarg, < >, < >, OutPreal8_A:ptr xmmword, Inxmm_B:xmmword
         movapd          xmm0,           xmm1
         shufpd          xmm0,           xmm0,           shuffler2(1,0)
-        movupd      xmmword ptr [rparam0],          xmm0
+        movupd      xmmword ptr [rp0()],          xmm0
         ret
 procend
 
 procstart _uX_mm_storeh_pd, callconv, voidarg, < >, < >, OutPreal8_A:ptr mmword, Inxmm_B:xmmword
-        movhpd      mmword ptr [rparam0],           xmm1
+        movhpd      mmword ptr [rp0()],           xmm1
         ret
 procend
 
 procstart _uX_mm_storel_pd, callconv, voidarg, < >, < >, OutPreal8_A:ptr mmword, Inxmm_B:xmmword
-        movlpd      mmword ptr [rparam0],           xmm1
+        movlpd      mmword ptr [rp0()],           xmm1
         ret
 procend
 
 procstart _uX_mm_store_mm_pd, callconv, voidarg, < >, < >, OutPreal8_A:ptr xmmword, Inxmm_B:xmmword
-        movapd      xmmword ptr [rparam0],          xmm1
+        movapd      xmmword ptr [rp0()],          xmm1
         ret
 procend
 
 procstart _uX_mm_store_pdouble_pd, callconv, voidarg, < >, < >, OutPreal8_A:ptr xmmword, Inpreal8_B:ptr xmmword
-        movapd          xmm1,           xmmword ptr [rparam1]
-        movapd      xmmword ptr [rparam0],          xmm1
+        movapd          xmm1,           xmmword ptr [rp1()]
+        movapd      xmmword ptr [rp0()],          xmm1
         ret
 procend
 
 procstart _uX_mm_storeu_pdouble_pd, callconv, voidarg, < >, < >, OutPreal8_A:ptr xmmword, Inpreal8_B:ptr xmmword
-        movupd          xmm1,           xmmword ptr [rparam1]
-        movupd      xmmword ptr [rparam0],          xmm1
+        movupd          xmm1,           xmmword ptr [rp1()]
+        movupd      xmmword ptr [rp0()],          xmm1
         ret
 procend
 
@@ -994,49 +1042,49 @@ procend
 
 procstart _uX_ptr_move_mm_sd, callconv, ptr, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
         movsd           xmm0,           xmm1
-        movapd      xmmword ptr [rreturn],          xmm0
+        movapd      xmmword ptr [rret()],          xmm0
         ret
 procend
 
 procstart _uX_ptr_move_mm_pd1, callconv, ptr, < >, < >, Inxmm_A:xmmword
         shufpd          xmm0,           xmm0,           0
-        movapd      xmmword ptr [rreturn],          xmm0
+        movapd      xmmword ptr [rret()],          xmm0
         ret
 procend
 
 procstart _uX_ptr_move_mm_pd, callconv, ptr, < >, < >, Inxmm_A:xmmword
         movapd          xmm0,           xmm0
-        movapd      xmmword ptr [rreturn],          xmm0
+        movapd      xmmword ptr [rret()],          xmm0
         ret
 procend
 
 procstart _uX_ptr_mover_mm_pd, callconv, ptr, < >, < >, Inxmm_A:xmmword
         shufpd          xmm0,           xmm0,           shuffler2(1,0)
-        movapd      xmmword ptr [rreturn],          xmm0
+        movapd      xmmword ptr [rret()],          xmm0
         ret
 procend
 
 procstart _uX_ptr_moveu_mm_sd, callconv, ptr, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
         movsd           xmm0,           xmm1
-        movupd      xmmword ptr [rreturn],          xmm0
+        movupd      xmmword ptr [rret()],          xmm0
         ret
 procend
 
 procstart _uX_ptr_moveu_mm_pd1, callconv, ptr, < >, < >, Inxmm_A:xmmword
         shufpd          xmm0,           xmm0,           0
-        movupd      xmmword ptr [rreturn],          xmm0
+        movupd      xmmword ptr [rret()],          xmm0
         ret
 procend
 
 procstart _uX_ptr_moveu_mm_pd, callconv, ptr, < >, < >, Inxmm_A:xmmword
         movapd          xmm0,           xmm0
-        movupd      xmmword ptr [rreturn],          xmm0
+        movupd      xmmword ptr [rret()],          xmm0
         ret
 procend
 
 procstart _uX_ptr_moveur_mm_pd, callconv, ptr, < >, < >, Inxmm_A:xmmword
         shufpd          xmm0,           xmm0,           shuffler2(1,0)
-        movupd      xmmword ptr [rreturn],          xmm0
+        movupd      xmmword ptr [rret()],          xmm0
         ret
 procend
 
@@ -1144,11 +1192,6 @@ procstart _uX_mm_mullo_epi16, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxm
         ret
 procend
 
-procstart _uX_mm_mule_epi16, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        pmullw           xmm0,           xmm1
-        ret
-procend
-    
 ifdef __X32__
     alignmmfieldproc
 
@@ -1294,83 +1337,92 @@ procstart _uX_mm_negate_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_iand_si128, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,        rreturn
+        xor             rret(),        rret()
         pand            xmm0,           xmm1
-        pmovmskb        rparam0,        xmm0
-        cmp             rparam0,        0xffff
-        cmove           rreturn,        true
+        pmovmskb        rp0(),        xmm0
+        cmp             rp0(),        0xffff
+        cmove           rret(),        true
         ret
 procend
 
 procstart _uX_mm_iandnot_si128, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,        rreturn
+        xor             rret(),        rret()
         pandn           xmm0,           xmm1
-        pmovmskb        rparam0,        xmm0
-        cmp             rparam0,        0xffff
-        cmove           rreturn,        true
+        pmovmskb        rp0(),        xmm0
+        cmp             rp0(),        0xffff
+        cmove           rret(),        true
         ret
 procend
 
 procstart _uX_mm_ior_si128, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor             rreturn,        rreturn
+        xor             rret(),        rret()
         por             xmm0,           xmm1
-        pmovmskb        rparam0,        xmm0
-        cmp             rparam0,        0x0
-        cmovne          rreturn,        true
+        pmovmskb        rp0(),        xmm0
+        cmp             rp0(),        0x0
+        cmovne          rret(),        true
         ret
 procend
 
 procstart _uX_mm_inot_epi8, callconv, dword, < >, < >, Inxmm_A:xmmword
-        xor             rreturn,        rreturn
+        xor             rret(),        rret()
         pcmpeqb         xmm0,           __m128i_i8_false
-        pmovmskb        rparam0,        xmm0
-        cmp             rparam0,        0xffff
-        cmove           rreturn,        true
+        pmovmskb        rp0(),        xmm0
+        cmp             rp0(),        0xffff
+        cmove           rret(),        true
         ret
 procend
 
 procstart _uX_mm_inot_epi16, callconv, dword, < >, < >, Inxmm_A:xmmword
-        xor             rreturn,        rreturn
+        xor             rret(),        rret()
         pcmpeqw         xmm0,           __m128i_i16_false
-        pmovmskb        rparam0,        xmm0
-        cmp             rparam0,        0xffff
-        cmove           rreturn,        true
+        pmovmskb        rp0(),        xmm0
+        cmp             rp0(),        0xffff
+        cmove           rret(),        true
         ret
 procend
 
 procstart _uX_mm_inot_epi32, callconv, dword, < >, < >, Inxmm_A:xmmword
-        xor             rreturn,        rreturn
+        xor             rret(),        rret()
         pcmpeqd         xmm0,           __m128i_i32_false
-        pmovmskb        rparam0,        xmm0
-        cmp             rparam0,        0xffff
-        cmove           rreturn,        true
+        pmovmskb        rp0(),        xmm0
+        cmp             rp0(),        0xffff
+        cmove           rret(),        true
         ret
 procend
 
 procstart _uX_mm_inot_epi64, callconv, dword, < >, < >, Inxmm_A:xmmword
-        xor             rreturn,        rreturn
-        pcmpeqq         xmm0,           __m128i_i64_false
-        pmovmskb        rparam0,        xmm0
-        cmp             rparam0,        0xffff
-        cmove           rreturn,        true
+        mov             rret(),         __uX_CPUFeatures_SSE41
+        .if (rret() == true)
+        pcmpeqq             xmm0,           __m128i_i64_false
+        .else
+        pcmpeqd             xmm0,           __m128i_i64_false                     ;_mm_cmpeq_epi32(a,b);           // 32 bit compares
+        pshufd              xmm2,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
+        pand                xmm0,           xmm2                     ;_mm_and_si128(com32,com32s);       // low & high
+        psrad               xmm0,           31                   ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
+        pshufd              xmm0,           xmm0,           shuffle4(3,3,1,1)   ;_mm_shuffle_epi32(teste,0xF5);     // extend sign bit to 64 bits shuffle
+        .endif
+        mov             rret(),        false
+        pmovmskb        rp0(),        xmm0
+        cmp             rp0(),        0xffff
+        cmove           rret(),        true
         ret
 procend
 
 procstart _uX_mm_ihand_si128, callconv, dword, < >, < >, Inxmm_A:xmmword
-        xor             rreturn,        rreturn
+        xor             rret(),        rret()
         ;pand            xmm0,           xmm0
-        pmovmskb        rparam0,        xmm0
-        cmp             rparam0,        0xffff
-        cmove           rreturn,        true
+        pmovmskb        rp0(),        xmm0
+        cmp             rp0(),        0xffff
+        cmove           rret(),        true
         ret
 procend
 
 procstart _uX_mm_ihor_si128, callconv, dword, < >, < >, Inxmm_A:xmmword
-        xor             rreturn,        rreturn
+        xor             rret(),        rret()
         ;por             xmm0,           xmm0
-        pmovmskb        rparam0,        xmm0
-        cmp             rparam0,        0x0
-        cmovne          rreturn,        true
+        pmovmskb        rp0(),        xmm0
+        cmp             rp0(),        0x0
+        cmovne          rret(),        true
         ret
 procend
 
@@ -1399,6 +1451,11 @@ procend
 
 procstart _uX_mm_sra_epi32, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B_Count:xmmword
         psrad           xmm0,           xmm1
+        ret
+procend
+
+procstart _uX_mm_sra_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B_Count:xmmword
+        psraq           xmm0,           xmm1
         ret
 procend
 
@@ -1602,9 +1659,8 @@ procend
 
 ;//qword//
 procstart _uX_mm_cmpeq_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor           rreturn,            rreturn
-        call           _uX_CPUFeatures_has_SSE41
-        .if (rreturn == true)
+        mov           rret(),            __uX_CPUFeatures_SSE41
+        .if (rret() == true)
         pcmpeqq             xmm0,           xmm1
         .else
         pcmpeqd             xmm0,           xmm1                     ;_mm_cmpeq_epi32(a,b);           // 32 bit compares
@@ -1617,9 +1673,8 @@ procstart _uX_mm_cmpeq_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxm
 procend
 
 procstart _uX_mm_cmplt_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor           rreturn,            rreturn
-        call           _uX_CPUFeatures_has_SSE42
-        .if (rreturn == true)
+        mov           rret(),            __uX_CPUFeatures_SSE42
+        .if (rret() == true)
         pcmpgtq             xmm1,           xmm0
         movdqa              xmm0,           xmm1
         .else
@@ -1627,63 +1682,60 @@ procstart _uX_mm_cmplt_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxm
         movdqa           xmm2,           xmm0
         movdqa           xmm3,           xmm0
         movdqa           xmm4,           xmm0
-        psubb            xmm2,           xmm1           ;__m128i s      = _mm_sub_epi64(a,b);             // a-b
-        pxor             xmm3,           xmm1           ;__m128i axb    = _mm_xor_si128(a,b);             // a ^ b
+        psubq            xmm2,           xmm1                                   ;__m128i s      = _mm_sub_epi64(a,b);                   // a-b
+        pxor             xmm3,           xmm1                                   ;__m128i axb    = _mm_xor_si128(a,b);                   // a ^ b
         movdqa           xmm0,           xmm1
-        pandn            xmm0,           xmm4           ;__m128i anb    = _mm_andnot_si128(b,a);           // a & ~b
-        pandn            xmm3,           xmm2           ;__m128i snaxb  = _mm_andnot_si128(axb,s);           // s & ~(a ^ b)
-        por              xmm0,           xmm3           ;__m128i or1    = _mm_or_si128(anb,snaxb);           // (a & ~b) | (s & ~(a ^ b))
-        psrad            xmm0,           31            ;__m128i teste  = _mm_srai_epi32(or1,31);           // extend sign bit to 32 bits
-        pshufd           xmm0,           xmm0,           shuffle4(3,3,1,1)   ;__m128i testee = _mm_shuffle_epi32(teste,0xF5);        // extend sign bit to 64 bits    
+        pandn            xmm0,           xmm4                                   ;__m128i anb    = _mm_andnot_si128(b,a);                // a & ~b
+        pandn            xmm3,           xmm2                                   ;__m128i snaxb  = _mm_andnot_si128(axb,s);              // s & ~(a ^ b)
+        por              xmm0,           xmm3                                   ;__m128i or1    = _mm_or_si128(anb,snaxb);              // (a & ~b) | (s & ~(a ^ b))
+        psrad            xmm0,           31                                     ;__m128i teste  = _mm_srai_epi32(or1,31);               // extend sign bit to 32 bits
+        pshufd           xmm0,           xmm0,           shuffle4(3,3,1,1)      ;__m128i testee = _mm_shuffle_epi32(teste,0xF5);        // extend sign bit to 64 bits
         .endif
         ret
 procend
 
 procstart _uX_mm_cmple_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor           rreturn,            rreturn
-        call           _uX_CPUFeatures_has_SSE42
-        .if (rreturn == true)
+        mov           rret(),            __uX_CPUFeatures_SSE42
+        .if (rret() == true)
         pcmpgtq             xmm0,           xmm1
         .else
         ;// no 64 compare instruction. Subtract
         movdqa           xmm2,           xmm1
         movdqa           xmm3,           xmm1
-        psubb            xmm2,           xmm0           ;__m128i s      = _mm_sub_epi64(a,b);             // a-b
-        pxor             xmm3,           xmm0           ;__m128i axb    = _mm_xor_si128(a,b);             // a ^ b
-        pandn            xmm0,           xmm1           ;__m128i anb    = _mm_andnot_si128(b,a);           // a & ~b
-        pandn            xmm3,           xmm2           ;__m128i snaxb  = _mm_andnot_si128(axb,s);           // s & ~(a ^ b)
-        por              xmm0,           xmm3           ;__m128i or1    = _mm_or_si128(anb,snaxb);           // (a & ~b) | (s & ~(a ^ b))
-        psrad            xmm0,           31            ;__m128i teste  = _mm_srai_epi32(or1,31);           // extend sign bit to 32 bits
-        pshufd           xmm0,           xmm0,           shuffle4(3,3,1,1)   ;__m128i testee = _mm_shuffle_epi32(teste,0xF5);        // extend sign bit to 64 bits    
+        psubq            xmm2,           xmm0                                   ;__m128i s      = _mm_sub_epi64(a,b);                   // a-b
+        pxor             xmm3,           xmm0                                   ;__m128i axb    = _mm_xor_si128(a,b);                   // a ^ b
+        pandn            xmm0,           xmm1                                   ;__m128i anb    = _mm_andnot_si128(b,a);                // a & ~b
+        pandn            xmm3,           xmm2                                   ;__m128i snaxb  = _mm_andnot_si128(axb,s);              // s & ~(a ^ b)
+        por              xmm0,           xmm3                                   ;__m128i or1    = _mm_or_si128(anb,snaxb);              // (a & ~b) | (s & ~(a ^ b))
+        psrad            xmm0,           31                                     ;__m128i teste  = _mm_srai_epi32(or1,31);               // extend sign bit to 32 bits
+        pshufd           xmm0,           xmm0,           shuffle4(3,3,1,1)      ;__m128i testee = _mm_shuffle_epi32(teste,0xF5);        // extend sign bit to 64 bits
         .endif
         pxor             xmm0,           __m128i_i64_true
         ret
 procend
 
 procstart _uX_mm_cmpgt_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor           rreturn,            rreturn
-        call           _uX_CPUFeatures_has_SSE42
-        .if (rreturn == true)
+        mov           rret(),            __uX_CPUFeatures_SSE42
+        .if (rret() == true)
         pcmpgtq             xmm0,           xmm1
         .else
         ;// no 64 compare instruction. Subtract
         movdqa           xmm2,           xmm1
         movdqa           xmm3,           xmm1
-        psubb            xmm2,           xmm0           ;__m128i s      = _mm_sub_epi64(a,b);             // a-b
-        pxor             xmm3,           xmm0           ;__m128i axb    = _mm_xor_si128(a,b);             // a ^ b
-        pandn            xmm0,           xmm1           ;__m128i anb    = _mm_andnot_si128(b,a);           // a & ~b
-        pandn            xmm3,           xmm2           ;__m128i snaxb  = _mm_andnot_si128(axb,s);           // s & ~(a ^ b)
-        por              xmm0,           xmm3           ;__m128i or1    = _mm_or_si128(anb,snaxb);           // (a & ~b) | (s & ~(a ^ b))
-        psrad            xmm0,           31            ;__m128i teste  = _mm_srai_epi32(or1,31);           // extend sign bit to 32 bits
-        pshufd           xmm0,           xmm0,           shuffle4(3,3,1,1)   ;__m128i testee = _mm_shuffle_epi32(teste,0xF5);        // extend sign bit to 64 bits    
+        psubq            xmm2,           xmm0                                   ;__m128i s      = _mm_sub_epi64(a,b);                   // a-b
+        pxor             xmm3,           xmm0                                   ;__m128i axb    = _mm_xor_si128(a,b);                   // a ^ b
+        pandn            xmm0,           xmm1                                   ;__m128i anb    = _mm_andnot_si128(b,a);                // a & ~b
+        pandn            xmm3,           xmm2                                   ;__m128i snaxb  = _mm_andnot_si128(axb,s);              // s & ~(a ^ b)
+        por              xmm0,           xmm3                                   ;__m128i or1    = _mm_or_si128(anb,snaxb);              // (a & ~b) | (s & ~(a ^ b))
+        psrad            xmm0,           31                                     ;__m128i teste  = _mm_srai_epi32(or1,31);               // extend sign bit to 32 bits
+        pshufd           xmm0,           xmm0,           shuffle4(3,3,1,1)      ;__m128i testee = _mm_shuffle_epi32(teste,0xF5);        // extend sign bit to 64 bits
         .endif
         ret
 procend
 
 procstart _uX_mm_cmpge_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor           rreturn,            rreturn
-        call           _uX_CPUFeatures_has_SSE42
-        .if (rreturn == true)
+        mov           rret(),            __uX_CPUFeatures_SSE42
+        .if (rret() == true)
         pcmpgtq          xmm1,           xmm0
         movdqa           xmm0,           xmm1
         .else
@@ -1691,23 +1743,22 @@ procstart _uX_mm_cmpge_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxm
         movdqa           xmm2,           xmm0
         movdqa           xmm3,           xmm0
         movdqa           xmm4,           xmm0
-        psubb            xmm2,           xmm1           ;__m128i s      = _mm_sub_epi64(a,b);             // a-b
+        psubq            xmm2,           xmm1           ;__m128i s      = _mm_sub_epi64(a,b);             // a-b
         pxor             xmm3,           xmm1           ;__m128i axb    = _mm_xor_si128(a,b);             // a ^ b
         movdqa           xmm0,           xmm1
         pandn            xmm0,           xmm4           ;__m128i anb    = _mm_andnot_si128(b,a);           // a & ~b
         pandn            xmm3,           xmm2           ;__m128i snaxb  = _mm_andnot_si128(axb,s);           // s & ~(a ^ b)
         por              xmm0,           xmm3           ;__m128i or1    = _mm_or_si128(anb,snaxb);           // (a & ~b) | (s & ~(a ^ b))
         psrad            xmm0,           31            ;__m128i teste  = _mm_srai_epi32(or1,31);           // extend sign bit to 32 bits
-        pshufd           xmm0,           xmm0,           shuffle4(3,3,1,1)   ;__m128i testee = _mm_shuffle_epi32(teste,0xF5);        // extend sign bit to 64 bits    
+        pshufd           xmm0,           xmm0,           shuffle4(3,3,1,1)   ;__m128i testee = _mm_shuffle_epi32(teste,0xF5);        // extend sign bit to 64 bits
         .endif
         pxor             xmm0,           __m128i_i64_true
         ret
 procend
 
 procstart _uX_mm_cmpneq_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor           rreturn,            rreturn
-        call           _uX_CPUFeatures_has_SSE41
-        .if (rreturn == true)
+        mov           rret(),            __uX_CPUFeatures_SSE41
+        .if (rret() == true)
         pcmpeqq         xmm0,           xmm1
         .else
         pcmpeqd         xmm0,           xmm1                     ;_mm_cmpeq_epi32(a,b);           // 32 bit compares
@@ -1721,9 +1772,8 @@ procstart _uX_mm_cmpneq_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inx
 procend
 
 procstart _uX_mm_cmpnlt_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor           rreturn,            rreturn
-        call           _uX_CPUFeatures_has_SSE42
-        .if (rreturn == true)
+        mov           rret(),            __uX_CPUFeatures_SSE42
+        .if (rret() == true)
         pcmpgtq         xmm1,           xmm0
         movdqa          xmm0,           xmm1
         .else
@@ -1731,64 +1781,61 @@ procstart _uX_mm_cmpnlt_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inx
         movdqa          xmm2,           xmm0
         movdqa          xmm3,           xmm0
         movdqa          xmm4,           xmm0
-        psubb           xmm2,           xmm1           ;__m128i s      = _mm_sub_epi64(a,b);             // a-b
+        psubq           xmm2,           xmm1           ;__m128i s      = _mm_sub_epi64(a,b);             // a-b
         pxor            xmm3,           xmm1           ;__m128i axb    = _mm_xor_si128(a,b);             // a ^ b
         movdqa          xmm0,           xmm1
         pandn           xmm0,           xmm4           ;__m128i anb    = _mm_andnot_si128(b,a);           // a & ~b
         pandn           xmm3,           xmm2           ;__m128i snaxb  = _mm_andnot_si128(axb,s);           // s & ~(a ^ b)
         por             xmm0,           xmm3           ;__m128i or1    = _mm_or_si128(anb,snaxb);           // (a & ~b) | (s & ~(a ^ b))
         psrad           xmm0,           31            ;__m128i teste  = _mm_srai_epi32(or1,31);           // extend sign bit to 32 bits
-        pshufd          xmm0,           xmm0,           shuffle4(3,3,1,1)   ;__m128i testee = _mm_shuffle_epi32(teste,0xF5);        // extend sign bit to 64 bits    
+        pshufd          xmm0,           xmm0,           shuffle4(3,3,1,1)   ;__m128i testee = _mm_shuffle_epi32(teste,0xF5);        // extend sign bit to 64 bits
         .endif
         pxor            xmm0,           __m128i_i64_true
         ret
 procend
 
 procstart _uX_mm_cmpnle_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor           rreturn,            rreturn
-        call           _uX_CPUFeatures_has_SSE42
-        .if (rreturn == true)
+        mov           rret(),            __uX_CPUFeatures_SSE42
+        .if (rret() == true)
         pcmpgtq         xmm0,           xmm1
         .else
         ;// no 64 compare instruction. Subtract
         movdqa          xmm2,           xmm1
         movdqa          xmm3,           xmm1
-        psubb           xmm2,           xmm0           ;__m128i s      = _mm_sub_epi64(a,b);             // a-b
+        psubq           xmm2,           xmm0           ;__m128i s      = _mm_sub_epi64(a,b);             // a-b
         pxor            xmm3,           xmm0           ;__m128i axb    = _mm_xor_si128(a,b);             // a ^ b
         pandn           xmm0,           xmm1           ;__m128i anb    = _mm_andnot_si128(b,a);           // a & ~b
         pandn           xmm3,           xmm2           ;__m128i snaxb  = _mm_andnot_si128(axb,s);           // s & ~(a ^ b)
         por             xmm0,           xmm3           ;__m128i or1    = _mm_or_si128(anb,snaxb);           // (a & ~b) | (s & ~(a ^ b))
         psrad           xmm0,           31            ;__m128i teste  = _mm_srai_epi32(or1,31);           // extend sign bit to 32 bits
-        pshufd          xmm0,           xmm0,           shuffle4(3,3,1,1)   ;__m128i testee = _mm_shuffle_epi32(teste,0xF5);        // extend sign bit to 64 bits    
+        pshufd          xmm0,           xmm0,           shuffle4(3,3,1,1)   ;__m128i testee = _mm_shuffle_epi32(teste,0xF5);        // extend sign bit to 64 bits
         .endif
         ret
 procend
 
 procstart _uX_mm_cmpngt_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor           rreturn,            rreturn
-        call           _uX_CPUFeatures_has_SSE42
-        .if (rreturn == true)
+        mov           rret(),            __uX_CPUFeatures_SSE42
+        .if (rret() == true)
         pcmpgtq         xmm0,           xmm1
         .else
         ;// no 64 compare instruction. Subtract
         movdqa          xmm2,           xmm1
         movdqa          xmm3,           xmm1
-        psubb           xmm2,           xmm0           ;__m128i s      = _mm_sub_epi64(a,b);             // a-b
+        psubq           xmm2,           xmm0           ;__m128i s      = _mm_sub_epi64(a,b);             // a-b
         pxor            xmm3,           xmm0           ;__m128i axb    = _mm_xor_si128(a,b);             // a ^ b
         pandn           xmm0,           xmm1           ;__m128i anb    = _mm_andnot_si128(b,a);           // a & ~b
         pandn           xmm3,           xmm2           ;__m128i snaxb  = _mm_andnot_si128(axb,s);           // s & ~(a ^ b)
         por             xmm0,           xmm3           ;__m128i or1    = _mm_or_si128(anb,snaxb);           // (a & ~b) | (s & ~(a ^ b))
         psrad           xmm0,           31            ;__m128i teste  = _mm_srai_epi32(or1,31);           // extend sign bit to 32 bits
-        pshufd          xmm0,           xmm0,           shuffle4(3,3,1,1)   ;__m128i testee = _mm_shuffle_epi32(teste,0xF5);        // extend sign bit to 64 bits    
+        pshufd          xmm0,           xmm0,           shuffle4(3,3,1,1)   ;__m128i testee = _mm_shuffle_epi32(teste,0xF5);        // extend sign bit to 64 bits
         .endif
         pxor            xmm0,           __m128i_i64_true
         ret
 procend
 
 procstart _uX_mm_cmpnge_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        xor           rreturn,            rreturn
-        call           _uX_CPUFeatures_has_SSE42
-        .if (rreturn == true)
+        mov           rret(),            __uX_CPUFeatures_SSE42
+        .if (rret() == true)
         pcmpgtq          xmm1,           xmm0
         movdqa           xmm0,           xmm1
         .else
@@ -1796,14 +1843,14 @@ procstart _uX_mm_cmpnge_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inx
         movdqa           xmm2,           xmm0
         movdqa           xmm3,           xmm0
         movdqa           xmm4,           xmm0
-        psubb            xmm2,           xmm1           ;__m128i s      = _mm_sub_epi64(a,b);             // a-b
+        psubq            xmm2,           xmm1           ;__m128i s      = _mm_sub_epi64(a,b);             // a-b
         pxor             xmm3,           xmm1           ;__m128i axb    = _mm_xor_si128(a,b);             // a ^ b
         movdqa           xmm0,           xmm1
         pandn            xmm0,           xmm4           ;__m128i anb    = _mm_andnot_si128(b,a);           // a & ~b
         pandn            xmm3,           xmm2           ;__m128i snaxb  = _mm_andnot_si128(axb,s);           // s & ~(a ^ b)
         por              xmm0,           xmm3           ;__m128i or1    = _mm_or_si128(anb,snaxb);           // (a & ~b) | (s & ~(a ^ b))
         psrad            xmm0,           31            ;__m128i teste  = _mm_srai_epi32(or1,31);           // extend sign bit to 32 bits
-        pshufd           xmm0,           xmm0,           shuffle4(3,3,1,1)   ;__m128i testee = _mm_shuffle_epi32(teste,0xF5);        // extend sign bit to 64 bits    
+        pshufd           xmm0,           xmm0,           shuffle4(3,3,1,1)   ;__m128i testee = _mm_shuffle_epi32(teste,0xF5);        // extend sign bit to 64 bits
         .endif
         ret
 procend
@@ -1811,8 +1858,8 @@ procend
 ;******************
 ; Integer, converts
 ;******************
-procstart _uX_mm_cvtsi32_si128, callconv, xmmword, < >, < >, InInt_A:dword
-        movd            xmm0,           rparam0
+procstart _uX_mm_cvtsi32_si128, callconv, xmmword, < >, < >, Inint_A:dword
+        movd            xmm0,           rp0()
         ret
 procend
 
@@ -1821,17 +1868,22 @@ procstart _uX_mm_cvtsi128_si32, callconv, dword, < >, < >, Inxmm_A:xmmword
         ret
 procend
 
-ifdef __X64__
-procstart _uX_mm_cvtsi64_si128, callconv, xmmword, < >, < >, InInt_A:qword
-        movq            xmm0,           rparam0
+procstart _uX_mm_cvtsi64_si128, callconv, xmmword, < >, < >, Inint_A:qword
+ifdef __x64__
+        movq            xmm0,           rp0()
+endif
+        movq            xmm0,    qword ptr [rp0()]
         ret
 procend
 
 procstart _uX_mm_cvtsi128_si64, callconv, qword, < >, < >, Inxmm_A:xmmword
-        movq            dreturn,            xmm0
+ifdef __x64__
+        movq            rret(),            xmm0
+else
+        movq    qword ptr [rret()],            xmm0
+endif
         ret
 procend
-endif ;__X64__
 
 ;******************
 ; Integer, misc
@@ -1900,80 +1952,82 @@ procend
 ; Integer, loads
 ;******************
 procstart _uX_mm_load1_epi64, callconv, xmmword, < >, < >, Inpqword_A:ptr qword
-        movq            xmm0,       qword ptr [rparam0]
+        movq            xmm0,       qword ptr [rp0()]
         pshufd          xmm0,           xmm0,           shuffler4(0,1,0,1)
         ret
 procend
 
 procstart _uX_mm_load1_epi32, callconv, xmmword, < >, < >, Inpdword_A:ptr dword
-        movd            xmm0,       dword ptr [rparam0]
+        movd            xmm0,       dword ptr [rp0()]
         pshufd          xmm0,           xmm0,           0
         ret
 procend
 
 procstart _uX_mm_load_si128, callconv, xmmword, < >, < >, Inpxmm_A:ptr xmmword
-        movdqa          xmm0,       xmmword ptr [rparam0]
+        movdqa          xmm0,       xmmword ptr [rp0()]
         ret
 procend
 
 procstart _uX_mm_loadr_epi64, callconv, xmmword, < >, < >, Inpxmm_A:ptr xmmword
-        movdqa          xmm0,       xmmword ptr [rparam0]
+        movdqa          xmm0,       xmmword ptr [rp0()]
         pshufd          xmm0,           xmm0,           shuffler4(2,3,0,1)
         ret
 procend
 
 procstart _uX_mm_loadr_epi32, callconv, xmmword, < >, < >, Inpxmm_A:ptr xmmword
-        movdqa          xmm0,       xmmword ptr [rparam0]
+        movdqa          xmm0,       xmmword ptr [rp0()]
         pshufd          xmm0,           xmm0,           shuffler4(3,2,1,0)
         ret
 procend
 
 procstart _uX_mm_loadu_si128, callconv, xmmword, < >, < >, Inpxmm_A:ptr xmmword
-        movdqu          xmm0,       xmmword ptr [rparam0]
+        movdqu          xmm0,       xmmword ptr [rp0()]
         ret
 procend
 
 procstart _uX_mm_loadur_epi64, callconv, xmmword, < >, < >, Inpxmm_A:ptr xmmword
-        movdqu          xmm0,       xmmword ptr [rparam0]
+        movdqu          xmm0,       xmmword ptr [rp0()]
         pshufd          xmm0,           xmm0,           shuffler4(2,3,0,1)
         ret
 procend
 
 procstart _uX_mm_loadur_epi32, callconv, xmmword, < >, < >, Inpxmm_A:ptr xmmword
-        movdqu          xmm0,       xmmword ptr [rparam0]
+        movdqu          xmm0,       xmmword ptr [rp0()]
         pshufd          xmm0,           xmm0,           shuffler4(3,2,1,0)
         ret
 procend
 
 procstart _uX_mm_loadh_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inpint_B:ptr qword
-        movq            xmm1,       qword ptr [rparam1]
-        punpcklqdq      xmm0,           xmm1            ;shuffle2(1,0)
+        movq            xmm0,       qword ptr [rp1()]
+        pshufd          xmm0,           xmm0,           shuffler4(2,3,0,1)
+        ;punpcklqdq      xmm0,           xmm1            ;shuffle2(1,0)
         ret
 procend
 
 procstart _uX_mm_loadl_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inpint_B:ptr qword
-        movq            xmm1,       qword ptr [rparam1]
-        punpcklqdq      xmm1,           xmm0        ;shuffler2(0,1) (0:0,1|1:2,3)
-        movdqa          xmm0,           xmm1
+        movq            xmm0,       qword ptr [rp1()]
+        ;punpcklqdq      xmm1,           xmm0        ;shuffler2(0,1) (0:0,1|1:2,3)
+        ;movdqa          xmm0,           xmm1
         ret
 procend
 
 procstart _uX_mm_loadh_epi32, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inpint_B:ptr dword
-        movd            xmm1,       dword ptr [rparam1]
-        movdqa          xmm2,           xmm0
-        pshufd          xmm2,           xmm2,           shuffler4(2,1,2,3)
-        punpckldq       xmm2,           xmm1        ;shuffler4(2,3,2,3)
-        punpcklqdq      xmm0,           xmm2        ;shuffler2(0,1) (0:0,1|1:2,3)
+        movd            xmm0,       dword ptr [rp1()]
+        pshufd          xmm0,           xmm0,           shuffler4(3,1,2,0)
+        ;movdqa          xmm2,           xmm0
+        ;pshufd          xmm2,           xmm2,           shuffler4(2,1,2,3)
+        ;punpckldq       xmm2,           xmm1        ;shuffler4(2,3,2,3)
+        ;punpcklqdq      xmm0,           xmm2        ;shuffler2(0,1) (0:0,1|1:2,3)
         ret
 procend
 
 procstart _uX_mm_loadl_epi32, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inpint_B:ptr dword
-        movd            xmm1,       dword ptr [rparam1]         
-        movdqa          xmm2,           xmm0
-        pshufd          xmm2,           xmm2,           shuffler4(1,1,2,3)
-        punpckldq       xmm1,           xmm2        ;shuffler4(0,1,0,1)
-        punpcklqdq      xmm1,           xmm0        ;shuffler2(0,1) (0:0,1|1:2,3)
-        movdqa          xmm0,           xmm1
+        movd            xmm0,       dword ptr [rp1()]         
+        ;movdqa          xmm2,           xmm0
+        ;pshufd          xmm2,           xmm2,           shuffler4(1,1,2,3)
+        ;punpckldq       xmm1,           xmm2        ;shuffler4(0,1,0,1)
+        ;punpcklqdq      xmm1,           xmm0        ;shuffler2(0,1) (0:0,1|1:2,3)
+        ;movdqa          xmm0,           xmm1
         ret
 procend
 
@@ -2011,85 +2065,93 @@ procstart _uX_mm_set_epi64, callconv, xmmword, < >, < >, Inxmm_Q1:xmmword, Inxmm
         ret
 procend
 
-ifdef __X64__
-procstart _uX_mm_set_epi64x, callconv, xmmword, < >, < >, InInt_Q1:qword, InInt_Q0:qword
-        movq            xmm1,           rparam0
-        movq            xmm0,           rparam1
+procstart _uX_mm_set_epi64x, callconv, xmmword, < >, < >, Inint_Q1:qword, Inint_Q0:qword
+ifdef __x64__
+        movq            xmm1,           rp0()
+        movq            xmm0,           rp1()
+else
+        movq            xmm1,    qword ptr [rp0()]
+        movq            xmm0,    qword ptr [rp1()]
+endif
         punpcklqdq      xmm0,           xmm1            ;shuffle2(1,0)
         ret
 procend
-endif
 
 procstart _uX_mm_setr_epi64, callconv, xmmword, < >, < >, Inxmm_Q0:xmmword, Inxmm_Q1:xmmword
         punpcklqdq      xmm0,           xmm1            ;shuffler2(0,1)
         ret
 procend
 
-ifdef __X64__
-procstart _uX_mm_setr_epi64x, callconv, xmmword, < >, < >, InInt_Q0:qword, InInt_Q1:qword
-        movq            xmm0,           rparam0
-        movq            xmm1,           rparam1
+procstart _uX_mm_setr_epi64x, callconv, xmmword, < >, < >, Inint_Q0:qword, Inint_Q1:qword
+ifdef __x64__
+        movq            xmm0,           rp0()
+        movq            xmm1,           rp1()
+else
+        movq            xmm0,    qword ptr [rp0()]
+        movq            xmm1,    qword ptr [rp1()]
+endif
         punpcklqdq      xmm0,           xmm1            ;shuffler2(0,1)
         ret
 procend
-endif
 
 procstart _uX_mm_set1_epi64, callconv, xmmword, < >, < >, Inxmm_Q:xmmword
         punpcklqdq      xmm0,           xmm0        ;shuffle2(0,0)
         ret
 procend
 
-ifdef __X64__
-procstart _uX_mm_set1_epi64x, callconv, xmmword, < >, < >, InInt_Q:qword
-        movq            xmm0,           rparam0
+procstart _uX_mm_set1_epi64x, callconv, xmmword, < >, < >, Inint_Q:qword
+ifdef __x64__
+        movq            xmm0,           rp0()
+else
+        movq            xmm0,     qword ptr [rp0()]
+endif
         punpcklqdq      xmm0,           xmm0        ;shuffle2(0,0)
         ret
 procend
-endif
 
-procstart _uX_mm_set_epi32, callconv, xmmword, < >, < >, InInt_D3:dword, InInt_D2:dword, InInt_D1:dword, InInt_D0:dword
-        movd            xmm3,           rparam0
-        movd            xmm2,           rparam1
-        movd            xmm1,           rparam2
-        movd            xmm0,           rparam3
+procstart _uX_mm_set_epi32, callconv, xmmword, < >, < >, Inint_D3:dword, Inint_D2:dword, Inint_D1:dword, Inint_D0:dword
+        movd            xmm3,           rp0()
+        movd            xmm2,           rp1()
+        movd            xmm1,           rp2()
+        movd            xmm0,           rp3()
         punpckldq       xmm2,           xmm3        ;shuffle4(3,2,3,2)
         punpckldq       xmm0,           xmm1        ;shuffle4(1,0,1,0)
         punpcklqdq      xmm0,           xmm2        ;shuffle2(1,0) (1:3,2|0:1,0)
         ret
 procend
 
-procstart _uX_mm_setr_epi32, callconv, xmmword, < >, < >, InInt_D0:dword, InInt_D1:dword, InInt_D2:dword, InInt_D3:dword
-        movd            xmm0,           rparam0
-        movd            xmm1,           rparam1
-        movd            xmm2,           rparam2
-        movd            xmm3,           rparam3
+procstart _uX_mm_setr_epi32, callconv, xmmword, < >, < >, Inint_D0:dword, Inint_D1:dword, Inint_D2:dword, Inint_D3:dword
+        movd            xmm0,           rp0()
+        movd            xmm1,           rp1()
+        movd            xmm2,           rp2()
+        movd            xmm3,           rp3()
         punpckldq       xmm2,           xmm3        ;shuffler4(2,3,2,3)
         punpckldq       xmm0,           xmm1        ;shuffler4(0,1,0,1)
         punpcklqdq      xmm0,           xmm2        ;shuffler2(0,1) (0:0,1|1:2,3)
         ret
 procend
 
-procstart _uX_mm_set1_epi32, callconv, xmmword, < >, < >, InInt_D:dword
-        movd            xmm0,           rparam0
+procstart _uX_mm_set1_epi32, callconv, xmmword, < >, < >, Inint_D:dword
+        movd            xmm0,           rp0()
         pshufd          xmm0,           xmm0,           0
         ret
 procend
 
-ifdef WINDOWS
+ifdef __windows__
     xmmsetepi16uses textequ <uses xmm6 xmm7>
 else
     xmmsetepi16uses textequ < >
 endif
 
-procstart _uX_mm_set_epi16, callconv, xmmword, < >, xmmsetepi16uses, InInt_W7:word, InInt_W6:word, InInt_W5:word, InInt_W4:word, InInt_W3:word, InInt_W2:word, InInt_W1:word, InInt_W0:word
-        movd            xmm7,           rparam0
-        movd            xmm6,           rparam1
-        movd            xmm5,           rparam2
-        movd            xmm4,           rparam3
-        movd            xmm3,           rparam4
-        movd            xmm2,           rparam5
-        movd            xmm1,           rparam6
-        movd            xmm0,           rparam7
+procstart _uX_mm_set_epi16, callconv, xmmword, < >, xmmsetepi16uses, Inint_W7:word, Inint_W6:word, Inint_W5:word, Inint_W4:word, Inint_W3:word, Inint_W2:word, Inint_W1:word, Inint_W0:word
+        movd            xmm7,           rp0()
+        movd            xmm6,           rp1()
+        movd            xmm5,           rp2()
+        movd            xmm4,           rp3()
+        movd            xmm3,           rp4()
+        movd            xmm2,           rp5()
+        movd            xmm1,           rp6()
+        movd            xmm0,           rp7()
         punpcklwd       xmm6,           xmm7        ;shufflehi4(3,2,3,2)
         punpcklwd       xmm4,           xmm5        ;shufflehi4(1,0,1,0)
         punpcklwd       xmm2,           xmm3        ;shufflelo4(3,2,3,2)
@@ -2100,21 +2162,21 @@ procstart _uX_mm_set_epi16, callconv, xmmword, < >, xmmsetepi16uses, InInt_W7:wo
         ret
 procend
 
-ifdef WINDOWS
+ifdef __windows__
     xmmsetrepi16uses textequ <uses xmm6 xmm7>
 else
     xmmsetrepi16uses textequ < >
 endif
 
-procstart _uX_mm_setr_epi16, callconv, xmmword, < >, xmmsetrepi16uses, InInt_W0:word, InInt_W1:word, InInt_W2:word, InInt_W3:word, InInt_W4:word, InInt_W5:word, InInt_W6:word, InInt_W7:word
-        movd            xmm0,           rparam0
-        movd            xmm1,           rparam1
-        movd            xmm2,           rparam2
-        movd            xmm3,           rparam3
-        movd            xmm4,           rparam4
-        movd            xmm5,           rparam5
-        movd            xmm6,           rparam6
-        movd            xmm7,           rparam7
+procstart _uX_mm_setr_epi16, callconv, xmmword, < >, xmmsetrepi16uses, Inint_W0:word, Inint_W1:word, Inint_W2:word, Inint_W3:word, Inint_W4:word, Inint_W5:word, Inint_W6:word, Inint_W7:word
+        movd            xmm0,           rp0()
+        movd            xmm1,           rp1()
+        movd            xmm2,           rp2()
+        movd            xmm3,           rp3()
+        movd            xmm4,           rp4()
+        movd            xmm5,           rp5()
+        movd            xmm6,           rp6()
+        movd            xmm7,           rp7()
         punpcklwd       xmm6,           xmm7        ;shufflerhi4(2,3,2,3)
         punpcklwd       xmm4,           xmm5        ;shufflerhi4(0,1,0,1)
         punpcklwd       xmm2,           xmm3        ;shufflerlo4(2,3,2,3)
@@ -2125,46 +2187,46 @@ procstart _uX_mm_setr_epi16, callconv, xmmword, < >, xmmsetrepi16uses, InInt_W0:
         ret
 procend
 
-procstart _uX_mm_set1_epi16, callconv, xmmword, < >, < >, InInt_D:word
-        movd            xmm0,           rparam0
+procstart _uX_mm_set1_epi16, callconv, xmmword, < >, < >, Inint_D:word
+        movd            xmm0,           rp0()
         punpcklwd       xmm0,           xmm0        ;shufflerlo4(0,1,0,1)
         punpckldq       xmm0,           xmm0        ;shuffler4(0,1,0,1)         
         punpcklqdq      xmm0,           xmm0        ;shuffler2(0,1) (0:0,1|1:2,3)
         ret
 procend
 
-ifdef WINDOWS
-    ifdef __X64__
+ifdef __windows__
+    ifdef __x64__
     xmmsetepi8uses textequ <uses xmm6 xmm7 xmm8 xmm9 xmm10 xmm11 xmm12 xmm13 xmm14 xmm15>
     else
     xmmsetepi8uses textequ <uses xmm6 xmm7>
     endif
 else
-    ifdef __X64__
+    ifdef __x64__
     xmmsetepi8uses textequ <uses xmm8 xmm9 xmm10 xmm11 xmm12 xmm13 xmm14 xmm15>
     else
     xmmsetepi8uses textequ < >
     endif
 endif
 
-procstart _uX_mm_set_epi8, callconv, xmmword, < >, xmmsetepi8uses, InInt_W15:byte, InInt_W14:byte, InInt_W13:byte, InInt_W12:byte, InInt_W11:byte, InInt_W10:byte, InInt_W9:byte, InInt_W8:byte, InInt_W7:byte, InInt_W6:byte, InInt_W5:byte, InInt_W4:byte, InInt_W3:byte, InInt_W2:byte, InInt_W1:byte, InInt_W0:byte
-        ifdef __X64__           
-        movd            xmm15,          rparam0
-        movd            xmm14,          rparam1
-        movd            xmm13,          rparam2
-        movd            xmm12,          rparam3
-        movd            xmm11,          rparam4
-        movd            xmm10,          rparam5
-        movd            xmm9,           rparam6
-        movd            xmm8,           rparam7
-        movd            xmm7,           rparam8
-        movd            xmm6,           rparam9
-        movd            xmm5,           rparam10
-        movd            xmm4,           rparam11
-        movd            xmm3,           rparam12
-        movd            xmm2,           rparam13
-        movd            xmm1,           rparam14
-        movd            xmm0,           rparam15
+procstart _uX_mm_set_epi8, callconv, xmmword, < >, xmmsetepi8uses, Inint_W15:byte, Inint_W14:byte, Inint_W13:byte, Inint_W12:byte, Inint_W11:byte, Inint_W10:byte, Inint_W9:byte, Inint_W8:byte, Inint_W7:byte, Inint_W6:byte, Inint_W5:byte, Inint_W4:byte, Inint_W3:byte, Inint_W2:byte, Inint_W1:byte, Inint_W0:byte
+        ifdef __x64__           
+        movd            xmm15,          rp0()
+        movd            xmm14,          rp1()
+        movd            xmm13,          rp2()
+        movd            xmm12,          rp3()
+        movd            xmm11,          rp4()
+        movd            xmm10,          rp5()
+        movd            xmm9,           rp6()
+        movd            xmm8,           rp7()
+        movd            xmm7,           rp8()
+        movd            xmm6,           rp9()
+        movd            xmm5,           rp10()
+        movd            xmm4,           rp11()
+        movd            xmm3,           rp12()
+        movd            xmm2,           rp13()
+        movd            xmm1,           rp14()
+        movd            xmm0,           rp15()
         punpcklbw       xmm14,          xmm15       ;shufflehi4(3,2,3,2)
         punpcklbw       xmm12,          xmm13       ;shufflehi4(1,0,1,0)
         punpcklbw       xmm10,          xmm11       ;shufflelo4(3,2,3,2)
@@ -2181,14 +2243,14 @@ procstart _uX_mm_set_epi8, callconv, xmmword, < >, xmmsetepi8uses, InInt_W15:byt
         punpckldq       xmm0,           xmm4        ;shuffle4(1,0,1,0)
         punpcklqdq      xmm0,           xmm8        ;shuffle2(1,0) (1:3,2|0:1,0)
         else
-        movd            xmm7,           rparam0
-        movd            xmm6,           rparam1
-        movd            xmm5,           rparam2
-        movd            xmm4,           rparam3
-        movd            xmm3,           rparam4
-        movd            xmm2,           rparam5
-        movd            xmm1,           rparam6
-        movd            xmm0,           rparam7
+        movd            xmm7,           rp0()
+        movd            xmm6,           rp1()
+        movd            xmm5,           rp2()
+        movd            xmm4,           rp3()
+        movd            xmm3,           rp4()
+        movd            xmm2,           rp5()
+        movd            xmm1,           rp6()
+        movd            xmm0,           rp7()
         punpcklbw       xmm6,           xmm7        ;shufflehi4(3,2,3,2)
         punpcklbw       xmm4,           xmm5        ;shufflehi4(1,0,1,0)
         punpcklbw       xmm2,           xmm3        ;shufflelo4(3,2,3,2)
@@ -2197,14 +2259,14 @@ procstart _uX_mm_set_epi8, callconv, xmmword, < >, xmmsetepi8uses, InInt_W15:byt
         punpcklwd       xmm0,           xmm2        ;shufflelo4(1,0,1,0)
         movdqa          m128_setepi8_hi1, xmm4
         movdqa          m128_setepi8_hi0, xmm0
-        movd            xmm7,           rparam8
-        movd            xmm6,           rparam9
-        movd            xmm5,           rparam10
-        movd            xmm4,           rparam11
-        movd            xmm3,           rparam12
-        movd            xmm2,           rparam13
-        movd            xmm1,           rparam14
-        movd            xmm0,           rparam15
+        movd            xmm7,           rp8()
+        movd            xmm6,           rp9()
+        movd            xmm5,           rp10()
+        movd            xmm4,           rp11()
+        movd            xmm3,           rp12()
+        movd            xmm2,           rp13()
+        movd            xmm1,           rp14()
+        movd            xmm0,           rp15()
         punpcklbw       xmm6,           xmm7        ;shufflehi4(3,2,3,2)
         punpcklbw       xmm4,           xmm5        ;shufflehi4(1,0,1,0)
         punpcklbw       xmm2,           xmm3        ;shufflelo4(3,2,3,2)
@@ -2220,38 +2282,38 @@ procstart _uX_mm_set_epi8, callconv, xmmword, < >, xmmsetepi8uses, InInt_W15:byt
         ret
 procend
 
-ifdef WINDOWS
-    ifdef __X64__
+ifdef __windows__
+    ifdef __x64__
     xmmsetrepi8uses textequ <uses xmm6 xmm7 xmm8 xmm9 xmm10 xmm11 xmm12 xmm13 xmm14 xmm15>
     else
     xmmsetrepi8uses textequ <uses xmm6 xmm7>
     endif
 else
-    ifdef __X64__
+    ifdef __x64__
     xmmsetrepi8uses textequ <uses xmm8 xmm9 xmm10 xmm11 xmm12 xmm13 xmm14 xmm15>
     else
     xmmsetrepi8uses textequ < >
     endif
 endif
 
-procstart _uX_mm_setr_epi8, callconv, xmmword, < >, xmmsetrepi8uses, InInt_W0:byte, InInt_W1:byte, InInt_W2:byte, InInt_W3:byte, InInt_W4:byte, InInt_W5:byte, InInt_W6:byte, InInt_W7:byte, InInt_W8:byte, InInt_W9:byte, InInt_W10:byte, InInt_W11:byte, InInt_W12:byte, InInt_W13:byte, InInt_W14:byte, InInt_W15:byte
-        ifdef __X64__           
-        movd            xmm0,           rparam0
-        movd            xmm1,           rparam1
-        movd            xmm2,           rparam2
-        movd            xmm3,           rparam3
-        movd            xmm4,           rparam4
-        movd            xmm5,           rparam5
-        movd            xmm6,           rparam6
-        movd            xmm7,           rparam7
-        movd            xmm8,           rparam8
-        movd            xmm9,           rparam9
-        movd            xmm10,          rparam10
-        movd            xmm11,          rparam11
-        movd            xmm12,          rparam12
-        movd            xmm13,          rparam13
-        movd            xmm14,          rparam14
-        movd            xmm15,          rparam15
+procstart _uX_mm_setr_epi8, callconv, xmmword, < >, xmmsetrepi8uses, Inint_W0:byte, Inint_W1:byte, Inint_W2:byte, Inint_W3:byte, Inint_W4:byte, Inint_W5:byte, Inint_W6:byte, Inint_W7:byte, Inint_W8:byte, Inint_W9:byte, Inint_W10:byte, Inint_W11:byte, Inint_W12:byte, Inint_W13:byte, Inint_W14:byte, Inint_W15:byte
+        ifdef __x64__           
+        movd            xmm0,           rp0()
+        movd            xmm1,           rp1()
+        movd            xmm2,           rp2()
+        movd            xmm3,           rp3()
+        movd            xmm4,           rp4()
+        movd            xmm5,           rp5()
+        movd            xmm6,           rp6()
+        movd            xmm7,           rp7()
+        movd            xmm8,           rp8()
+        movd            xmm9,           rp9()
+        movd            xmm10,          rp10()
+        movd            xmm11,          rp11()
+        movd            xmm12,          rp12()
+        movd            xmm13,          rp13()
+        movd            xmm14,          rp14()
+        movd            xmm15,          rp15()
         punpcklbw       xmm14,          xmm15       ;shufflehi4(3,2,3,2)
         punpcklbw       xmm12,          xmm13       ;shufflehi4(1,0,1,0)
         punpcklbw       xmm10,          xmm11       ;shufflelo4(3,2,3,2)
@@ -2268,14 +2330,14 @@ procstart _uX_mm_setr_epi8, callconv, xmmword, < >, xmmsetrepi8uses, InInt_W0:by
         punpckldq       xmm0,           xmm4        ;shuffle4(1,0,1,0)
         punpcklqdq      xmm0,           xmm8        ;shuffle2(1,0) (1:3,2|0:1,0)
         else
-        movd            xmm0,           rparam0
-        movd            xmm1,           rparam1
-        movd            xmm2,           rparam2
-        movd            xmm3,           rparam3
-        movd            xmm4,           rparam4
-        movd            xmm5,           rparam5
-        movd            xmm6,           rparam6
-        movd            xmm7,           rparam7
+        movd            xmm0,           rp0()
+        movd            xmm1,           rp1()
+        movd            xmm2,           rp2()
+        movd            xmm3,           rp3()
+        movd            xmm4,           rp4()
+        movd            xmm5,           rp5()
+        movd            xmm6,           rp6()
+        movd            xmm7,           rp7()
         punpcklbw       xmm6,           xmm7        ;shufflehi4(3,2,3,2)
         punpcklbw       xmm4,           xmm5        ;shufflehi4(1,0,1,0)
         punpcklbw       xmm2,           xmm3        ;shufflelo4(3,2,3,2)
@@ -2284,14 +2346,14 @@ procstart _uX_mm_setr_epi8, callconv, xmmword, < >, xmmsetrepi8uses, InInt_W0:by
         punpcklwd       xmm0,           xmm2        ;shufflelo4(1,0,1,0)
         movdqa          m128_setrepi8_hi1, xmm4
         movdqa          m128_setrepi8_hi0, xmm0
-        movd            xmm0,           rparam8
-        movd            xmm1,           rparam9
-        movd            xmm2,           rparam10
-        movd            xmm3,           rparam11
-        movd            xmm4,           rparam12
-        movd            xmm5,           rparam13
-        movd            xmm6,           rparam14
-        movd            xmm7,           rparam15
+        movd            xmm0,           rp8()
+        movd            xmm1,           rp9()
+        movd            xmm2,           rp10()
+        movd            xmm3,           rp11()
+        movd            xmm4,           rp12()
+        movd            xmm5,           rp13()
+        movd            xmm6,           rp14()
+        movd            xmm7,           rp15()
         punpcklbw       xmm6,           xmm7        ;shufflehi4(3,2,3,2)
         punpcklbw       xmm4,           xmm5        ;shufflehi4(1,0,1,0)
         punpcklbw       xmm2,           xmm3        ;shufflelo4(3,2,3,2)
@@ -2307,8 +2369,8 @@ procstart _uX_mm_setr_epi8, callconv, xmmword, < >, xmmsetrepi8uses, InInt_W0:by
         ret
 procend
 
-procstart _uX_mm_set1_epi8, callconv, xmmword, < >, < >, InInt_D:byte
-        movd            xmm0,           rparam0
+procstart _uX_mm_set1_epi8, callconv, xmmword, < >, < >, Inint_D:byte
+        movd            xmm0,           rp0()
         punpcklbw       xmm0,           xmm0        ;shufflelo4(1,0,1,0)            
         punpcklwd       xmm0,           xmm0        ;shufflehi4(1,0,1,0)            
         punpckldq       xmm0,           xmm0        ;shuffle4(1,0,1,0)          
@@ -2317,44 +2379,48 @@ procstart _uX_mm_set1_epi8, callconv, xmmword, < >, < >, InInt_D:byte
 procend
 
 procstart _uX_mm_seth_epi64, callconv, xmmword, < >, < >, Inxmm_Q:xmmword
-        movq            xmm1,           xmm0
-        punpcklqdq      xmm0,           xmm1
+        movq            xmm0,           xmm0
+        pshufd          xmm0,           xmm0,           shuffler4(2,3,0,1)
         ret
 procend
 
-ifdef __X64__
-procstart _uX_mm_seth_epi64x, callconv, xmmword, < >, < >, InInt_Q:qword
-        movq            xmm1,           rparam0
-        punpcklqdq      xmm0,           xmm1
+procstart _uX_mm_seth_epi64x, callconv, xmmword, < >, < >, Inint_Q:qword
+ifdef __x64__
+        movq            xmm0,           rp0()
+else
+        movq            xmm0,    qword ptr [rp0()]
+endif
+        pshufd          xmm0,           xmm0,           shuffler4(2,3,0,1)
         ret
 procend
-endif
 
 procstart _uX_mm_setl_epi64, callconv, xmmword, < >, < >, Inxmm_Q:xmmword
         movq            xmm0,           xmm0
         ret
 procend
 
-ifdef __X64__
-procstart _uX_mm_setl_epi64x, callconv, xmmword, < >, < >, InInt_Q:qword
-        movq            xmm0,           rparam0
-        ret
-procend
+procstart _uX_mm_setl_epi64x, callconv, xmmword, < >, < >, Inint_Q:qword
+ifdef __x64__
+        movq            xmm0,           rp0()
+else
+        movq            xmm0,    qword ptr [rp0()]
 endif
-
-procstart _uX_mm_seth_epi32, callconv, xmmword, < >, < >, InInt_Q:dword
-        movd            xmm1,           dparam0
-        pshufd          xmm0,           xmm1,           shuffler4(3,2,1,0)
         ret
 procend
 
-procstart _uX_mm_setl_epi32, callconv, xmmword, < >, < >, InInt_Q:dword
-        movd            xmm0,           dparam0
+procstart _uX_mm_seth_epi32, callconv, xmmword, < >, < >, Inint_Q:dword
+        movd            xmm1,           dp0()
+        pshufd          xmm0,           xmm1,           shuffler4(3,1,2,0)
+        ret
+procend
+
+procstart _uX_mm_setl_epi32, callconv, xmmword, < >, < >, Inint_Q:dword
+        movd            xmm0,           dp0()
         ret
 procend
 
 procstart _uX_mm_setzero_si128, callconv, xmmword, < >, < >, < >
-        pxor            xmm0,           xmm1
+        pxor            xmm0,           xmm0
         ret
 procend
 
@@ -2363,102 +2429,104 @@ procend
 ;******************
 procstart _uX_mm_store1_epi64, callconv, voidarg, < >, < >, OutPxmm_A:ptr qword, Inxmm_B:xmmword
         pshufd          xmm0,           xmm1,           shuffler4(0,1,0,1)
-        movq    qword ptr [rparam0],    xmm0
+        movq    qword ptr [rp0()],    xmm0
         ret
 procend
 
 procstart _uX_mm_store1_epi32, callconv, voidarg, < >, < >, OutPxmm_A:ptr dword, Inxmm_B:xmmword
         pshufd          xmm0,           xmm1,           shuffler4(0,0,0,0)
-        movd    dword ptr [rparam0],    xmm0
+        movd    dword ptr [rp0()],    xmm0
         ret
 procend
 
 procstart _uX_mm_store_si128, callconv, voidarg, < >, < >, OutPxmm_A:ptr xmmword, Inxmm_B:xmmword
-        movdqa  xmmword ptr [rparam0],  xmm1
+        movdqa  xmmword ptr [rp0()],  xmm1
         ret
 procend
 
 procstart _uX_mm_storer_epi64, callconv, voidarg, < >, < >, OutPxmm_A:ptr xmmword, Inxmm_B:xmmword
         pshufd          xmm0,           xmm1,           shuffler4(2,3,0,1)
-        movdqa  xmmword ptr [rparam0],  xmm0
+        movdqa  xmmword ptr [rp0()],  xmm0
         ret
 procend
 
 procstart _uX_mm_storer_epi32, callconv, voidarg, < >, < >, OutPxmm_A:ptr xmmword, Inxmm_B:xmmword
         pshufd          xmm0,           xmm1,           shuffler4(3,2,1,0)
-        movdqa  xmmword ptr [rparam0],  xmm0
+        movdqa  xmmword ptr [rp0()],  xmm0
         ret
 procend
 
 procstart _uX_mm_storeu_si128, callconv, voidarg, < >, < >, OutPxmm_A:ptr xmmword, Inxmm_B:xmmword
-        movdqu  xmmword ptr [rparam0],  xmm1
+        movdqu  xmmword ptr [rp0()],  xmm1
         ret
 procend
 
 procstart _uX_mm_storeur_epi64, callconv, voidarg, < >, < >, OutPxmm_A:ptr xmmword, Inxmm_B:xmmword
         pshufd          xmm0,           xmm1,           shuffler4(2,3,0,1)
-        movdqu  xmmword ptr [rparam0],  xmm0
+        movdqu  xmmword ptr [rp0()],  xmm0
         ret
 procend
 
 procstart _uX_mm_storeur_epi32, callconv, voidarg, < >, < >, OutPxmm_A:ptr xmmword, Inxmm_B:xmmword
         pshufd          xmm0,           xmm1,           shuffler4(3,2,1,0)
-        movdqu  xmmword ptr [rparam0],  xmm0
+        movdqu  xmmword ptr [rp0()],  xmm0
         ret
 procend
 
 
 procstart _uX_mm_storeh_epi64, callconv, voidarg, < >, < >, OutPxmm_A:ptr qword, Inxmm_B:xmmword
         pshufd          xmm0,           xmm1,           shuffler4(2,3,2,3)
-        movq    qword ptr [rparam0],    xmm0
+        movq    qword ptr [rp0()],    xmm0
         ret
 procend
 
 procstart _uX_mm_storel_epi64, callconv, voidarg, < >, < >, OutPxmm_A:ptr qword, Inxmm_B:xmmword
-        movq    qword ptr [rparam0],    xmm1
+        movq    qword ptr [rp0()],    xmm1
         ret
 procend
 
 procstart _uX_mm_storeh_epi32, callconv, voidarg, < >, < >, OutPxmm_A:ptr dword, Inxmm_B:xmmword
         pshufd          xmm0,           xmm1,           shuffler4(3,3,3,3)
-        movd    dword ptr [rparam0],    xmm0
+        movd    dword ptr [rp0()],    xmm0
         ret
 procend
 
 procstart _uX_mm_storel_epi32, callconv, voidarg, < >, < >, OutPxmm_A:ptr dword, Inxmm_B:xmmword
-        movd    dword ptr [rparam0],    xmm1
+        movd    dword ptr [rp0()],    xmm1
         ret
 procend
 
 procstart _uX_mm_maskmoveu_si128, callconv, voidarg, < >, < >, Inxmm_B:xmmword, Inxmm_N:xmmword, OutPint_P:ptr byte
         push            rdidx
-        mov             bdidx,  byte ptr [rparam2]
+        mov             bdidx,  byte ptr [rp2()]
         maskmovdqu      xmm0,           xmm1
         pop             rdidx
         ret
 procend
 
 procstart _uX_mm_store_psi128, callconv, voidarg, < >, < >, OutPxmmword_A:ptr xmmword, Inpxmm_B:ptr xmmword
-        movdqa          xmm1,           xmmword ptr [rparam1]
-        movdqa      xmmword ptr [rparam0],          xmm1
+        movdqa          xmm1,           xmmword ptr [rp1()]
+        movdqa      xmmword ptr [rp0()],          xmm1
         ret
 procend
 
 procstart _uX_mm_storeu_psi128, callconv, voidarg, < >, < >, OutPxmmword_A:ptr xmmword, Inpxmm_B:ptr xmmword
-        movdqu          xmm1,           xmmword ptr [rparam1]
-        movdqu      xmmword ptr [rparam0],          xmm1
+        movdqu          xmm1,           xmmword ptr [rp1()]
+        movdqu      xmmword ptr [rp0()],          xmm1
         ret
 procend
 
 ;******************
 ; Integer, moves
 ;******************
-ifdef __X64__
 procstart _uX_mm_move_epi64x, callconv, qword, < >, < >, Inxmm_A:xmmword
-        movq            rreturn,            xmm0
+ifdef __x64__
+        movq            rret(),            xmm0
+else
+        movq    qword ptr [rret()],            xmm0
+endif
         ret
 procend
-endif
 
 procstart _uX_mm_move_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         movq            xmm0,           xmm0
@@ -2467,7 +2535,7 @@ procend
 
 procstart _uX_mm_mover_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         movq            xmm0,           xmm0
-        punpcklqdq      xmm0,           xmm0            ;shuffle2(1,0)
+        pshufd          xmm0,           xmm0,           shuffler4(2,3,0,1)
         ret
 procend
 
@@ -2477,14 +2545,14 @@ procstart _uX_mm_move_epi32x, callconv, dword, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_move_epi32, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        movd            eax,            xmm0
-        movd            xmm0,           eax
+        movd            dreturn,            xmm0
+        movd            xmm0,           dreturn
         ret
 procend
 
 procstart _uX_mm_mover_epi32, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        movd            eax,            xmm0
-        movd            xmm0,           eax
+        movd            dreturn,            xmm0
+        movd            xmm0,           dreturn
         pshufd          xmm0,           xmm0,           shuffler4(3,2,1,0)
         ret
 procend
@@ -2505,12 +2573,37 @@ procstart _uX_mm_move_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_move_si128_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
+        pshufd          xmm0,           xmm0,           shuffler4(2,3,2,3)
+        punpcklqdq      xmm1,           xmm0            ;shuffle2(1,0)
+        movdqa          xmm0,           xmm1
+        ret
+procend
+
+procstart _uX_mm_move_si128_epi64x, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_D:qword
+ifdef __x64__
+        movq            xmm1,           rp1()
+else
+        movq            xmm1,    qword ptr [rp1()]
+endif
+        pshufd          xmm0,           xmm0,           shuffler4(2,3,2,3)
         punpcklqdq      xmm1,           xmm0            ;shuffle2(1,0)
         movdqa          xmm0,           xmm1
         ret
 procend
 
 procstart _uX_mm_mover_si128_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
+        pshufd          xmm1,           xmm1,           shuffler4(2,3,2,3)
+        punpcklqdq      xmm0,           xmm1            ;shuffle2(1,0)
+        ret
+procend
+
+procstart _uX_mm_mover_si128_epi64x, callconv, xmmword, < >, < >, Inint_D:qword, Inxmm_B:xmmword
+        pshufd          xmm1,           xmm1,           shuffler4(2,3,2,3)
+ifdef __x64__
+        movq            xmm0,           rp0()
+else
+        movq            xmm0,    qword ptr [rp0()]
+endif
         punpcklqdq      xmm0,           xmm1            ;shuffle2(1,0)
         ret
 procend
@@ -2518,15 +2611,36 @@ procend
 procstart _uX_mm_move_si128_epi32, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
         pshufd          xmm0,           xmm0,           shuffler4(1,1,2,3)
         punpckldq       xmm1,           xmm0        ;shuffler4(0,0,1,1)
+        pshufd          xmm0,           xmm0,           shuffler4(2,3,2,3)
+        punpcklqdq      xmm1,           xmm0        ;shuffler2(0,0) (0:0,0|1:0,0)
+        movdqa          xmm0,           xmm1
+        ret
+procend
+
+procstart _uX_mm_move_si128_epi32x, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_D:qword
+        pshufd          xmm0,           xmm0,           shuffler4(1,1,2,3)
+        movd            xmm1,           dp1()
+        punpckldq       xmm1,           xmm0        ;shuffler4(0,0,1,1)
+        pshufd          xmm0,           xmm0,           shuffler4(2,3,2,3)
         punpcklqdq      xmm1,           xmm0        ;shuffler2(0,0) (0:0,0|1:0,0)
         movdqa          xmm0,           xmm1
         ret
 procend
 
 procstart _uX_mm_mover_si128_epi32, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        movdqa          xmm2,           xmm0
-        punpckldq       xmm2,           xmm1        ;shuffler4(2,3,2,3)
-        punpcklqdq      xmm0,           xmm2        ;shuffler2(0,1) (0:0,1|1:2,3)
+        pshufd          xmm1,           xmm1,           shuffler4(1,1,2,3)
+        punpckldq       xmm0,           xmm1        ;shuffler4(0,0,1,1)
+        pshufd          xmm1,           xmm1,           shuffler4(2,3,2,3)
+        punpcklqdq      xmm0,           xmm1        ;shuffler2(0,0) (0:0,0|1:0,0)
+        ret
+procend
+
+procstart _uX_mm_mover_si128_epi32x, callconv, xmmword, < >, < >, Inint_D:qword, Inxmm_B:xmmword
+        pshufd          xmm1,           xmm1,           shuffler4(1,1,2,3)
+        movd            xmm0,           dp0()
+        punpckldq       xmm0,           xmm1        ;shuffler4(0,0,1,1)
+        pshufd          xmm1,           xmm1,           shuffler4(2,3,2,3)
+        punpcklqdq      xmm0,           xmm1        ;shuffler2(0,0) (0:0,0|1:0,0)
         ret
 procend
 
@@ -2545,38 +2659,38 @@ endif ;__X32__
 procstart _uX_ptr_move_mm_epi64, callconv, ptr, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
         movq            xmm2,           xmm1
         punpcklqdq      xmm2,           xmm0            ;shuffle2(1,0)
-        movdqa      xmmword ptr [rreturn],          xmm2
+        movdqa      xmmword ptr [rret()],          xmm2
         ret
 procend
 
 procstart _uX_ptr_mover_mm_epi64, callconv, ptr, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
         punpcklqdq      xmm0,           xmm1            ;shuffle2(1,0)
-        movdqa      xmmword ptr [rreturn],          xmm0
+        movdqa      xmmword ptr [rret()],          xmm0
         ret
 procend
 
 procstart _uX_ptr_move1_mm_epi64, callconv, ptr, < >, < >, Inxmm_A:xmmword
         pshufd          xmm0,           xmm0,           shuffler4(0,1,0,1)
-        movdqa      xmmword ptr [rreturn],          xmm0
+        movdqa      xmmword ptr [rret()],          xmm0
         ret
 procend
 
 procstart _uX_ptr_moveu_mm_epi64, callconv, ptr, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
         movq            xmm2,           xmm1
         punpcklqdq      xmm2,           xmm0            ;shuffle2(1,0)
-        movdqu      xmmword ptr [rreturn],          xmm2
+        movdqu      xmmword ptr [rret()],          xmm2
         ret
 procend
 
 procstart _uX_ptr_moveur_mm_epi64, callconv, ptr, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
         punpcklqdq      xmm0,           xmm1            ;shuffle2(1,0)
-        movdqu      xmmword ptr [rreturn],          xmm0
+        movdqu      xmmword ptr [rret()],          xmm0
         ret
 procend
 
 procstart _uX_ptr_moveu1_mm_epi64, callconv, ptr, < >, < >, Inxmm_A:xmmword
         pshufd          xmm0,           xmm0,           shuffler4(0,1,0,1)
-        movdqu      xmmword ptr [rreturn],          xmm0
+        movdqu      xmmword ptr [rret()],          xmm0
         ret
 procend
 
@@ -2586,7 +2700,7 @@ procstart _uX_ptr_move_mm_epi32, callconv, ptr, < >, < >, Inxmm_A:xmmword, Inxmm
         pshufd          xmm3,           xmm3,           shuffler4(1,1,2,3)
         punpckldq       xmm2,           xmm3        ;shuffler4(0,1,0,1)
         punpcklqdq      xmm2,           xmm0        ;shuffler2(0,1) (0:0,1|1:2,3)
-        movdqa      xmmword ptr [rreturn],          xmm2
+        movdqa      xmmword ptr [rret()],          xmm2
         ret
 procend
 
@@ -2595,14 +2709,14 @@ procstart _uX_ptr_mover_mm_epi32, callconv, ptr, < >, < >, Inxmm_A:xmmword, Inxm
         pshufd          xmm2,           xmm2,           shuffler4(2,1,2,3)
         punpckldq       xmm2,           xmm1        ;shuffler4(2,3,2,3)
         punpcklqdq      xmm0,           xmm2        ;shuffler2(0,1) (0:0,1|1:2,3)
-        movdqa      xmmword ptr [rreturn],          xmm0
+        movdqa      xmmword ptr [rret()],          xmm0
         ret
 procend
 
 procstart _uX_ptr_move1_mm_epi32, callconv, ptr, < >, < >, Inxmm_A:xmmword
 
         pshufd          xmm0,           xmm0,           0
-        movdqa      xmmword ptr [rreturn],          xmm0
+        movdqa      xmmword ptr [rret()],          xmm0
         ret
 procend
 
@@ -2612,7 +2726,7 @@ procstart _uX_ptr_moveu_mm_epi32, callconv, ptr, < >, < >, Inxmm_A:xmmword, Inxm
         pshufd          xmm3,           xmm3,           shuffler4(1,1,2,3)
         punpckldq       xmm2,           xmm3        ;shuffler4(0,1,0,1)
         punpcklqdq      xmm2,           xmm0        ;shuffler2(0,1) (0:0,1|1:2,3)
-        movdqu      xmmword ptr [rreturn],          xmm2
+        movdqu      xmmword ptr [rret()],          xmm2
         ret
 procend
 
@@ -2621,23 +2735,23 @@ procstart _uX_ptr_moveur_mm_epi32, callconv, ptr, < >, < >, Inxmm_A:xmmword, Inx
         pshufd          xmm2,           xmm2,           shuffler4(2,1,2,3)
         punpckldq       xmm2,           xmm1        ;shuffler4(2,3,2,3)
         punpcklqdq      xmm0,           xmm2        ;shuffler2(0,1) (0:0,1|1:2,3)
-        movdqu      xmmword ptr [rreturn],          xmm0
+        movdqu      xmmword ptr [rret()],          xmm0
         ret
 procend
 
 procstart _uX_ptr_moveu1_mm_epi32, callconv, ptr, < >, < >, Inxmm_A:xmmword
         pshufd          xmm0,           xmm0,           0
-        movdqu      xmmword ptr [rreturn],          xmm0
+        movdqu      xmmword ptr [rret()],          xmm0
         ret
 procend
 
 procstart _uX_ptr_move_mm_si128, callconv, ptr, < >, < >, Inxmm_A:xmmword
-        movdqa      xmmword ptr [rreturn],          xmm0
+        movdqa      xmmword ptr [rret()],          xmm0
         ret
 procend
 
 procstart _uX_ptr_moveu_mm_si128, callconv, ptr, < >, < >, Inxmm_A:xmmword
-        movdqu      xmmword ptr [rreturn],          xmm0
+        movdqu      xmmword ptr [rret()],          xmm0
         ret
 procend
 
@@ -2645,17 +2759,17 @@ procend
 ; Cacheability support
 ;******************
 procstart _uX_mm_stream_pd, callconv, voidarg, < >, < >, OutPreal8_A:ptr xmmword, Inxmm_B:xmmword
-        movntpd     xmmword ptr [rparam0],          xmm1
+        movntpd     xmmword ptr [rp0()],          xmm1
         ret
 procend
 
 procstart _uX_mm_stream_si128, callconv, voidarg, < >, < >, OutPxmm_A:ptr xmmword, Inxmm_B:xmmword
-        movntdq     xmmword ptr [rparam0],          xmm1
+        movntdq     xmmword ptr [rp0()],          xmm1
         ret
 procend
 
 procstart _uX_mm_clflush, callconv, voidarg, < >, < >, Inpbyte:ptr byte
-        clflush     byte ptr [rparam0]
+        clflush     byte ptr [rp0()]
         ret
 procend
 
@@ -2669,13 +2783,13 @@ procstart _uX_mm_mfence, callconv, voidarg, < >, < >, < >
         ret
 procend
 
-procstart _uX_mm_stream_si32, callconv, voidarg, < >, < >, OutPint:ptr dword, InInt:dword
-        movnti      dword ptr [rparam0],            dparam1
+procstart _uX_mm_stream_si32, callconv, voidarg, < >, < >, OutPint:ptr dword, Inint:dword
+        movnti      dword ptr [rp0()],            dp1()
         ret
 procend
 
-procstart _uX_mm_stream_si64, callconv, voidarg, < >, < >, OutPint:ptr qword, InInt:qword
-        movnti      qword ptr [rparam0],            rparam1
+procstart _uX_mm_stream_si64, callconv, voidarg, < >, < >, OutPint:ptr qword, Inint:qword
+        movnti      qword ptr [rp0()],            rp1()
         ret
 procend
 
@@ -2688,32 +2802,26 @@ procend
 ; Casting
 ;******************
 procstart _uX_mm_castpd_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        movaps          xmm0,           xmm0
         ret
 procend
 
 procstart _uX_mm_castpd_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        movdqa          xmm0,           xmm0
         ret
 procend
 
 procstart _uX_mm_castps_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        movapd          xmm0,           xmm0
         ret
 procend
 
 procstart _uX_mm_castps_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        movdqa          xmm0,           xmm0
         ret
 procend
 
 procstart _uX_mm_castsi128_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        movaps          xmm0,           xmm0
         ret
 procend
 
 procstart _uX_mm_castsi128_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        movapd          xmm0,           xmm0
         ret
 procend
 

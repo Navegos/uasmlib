@@ -1,7 +1,30 @@
 
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / /                                                                               / /
+; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /                                                                               / /
+; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
+; / /    you may not use this file except in compliance with the License.           / /
+; / /    You may obtain a copy of the License at                                    / /
+; / /                                                                               / /
+; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
+; / /                                                                               / /
+; / /    Unless required by applicable law or agreed to in writing, software        / /
+; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
+; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
+; / /    See the License for the specific language governing permissions and        / /
+; / /    limitations under the License.                                             / /
+; / /                                                                               / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
+    OPTION CASEMAP:NONE
+    include macrolib.inc
+    
 ifndef __MIC__
 
-    include uXx86asm.inc
+    include uXasm.inc
 
     .xmm
     option arch:sse
@@ -107,6 +130,23 @@ ifndef __MIC__
     v4ci __m128i_i32_neg1,              __m128i, i32_neg1
     v4ci __m128i_i32_neg2,              __m128i, i32_neg2
 
+    v4ci4 __m128i_i32_select0000,       __m128i, i32_false, i32_false, i32_false, i32_false
+    v4ci4 __m128i_i32_select0001,       __m128i, i32_false, i32_false, i32_false, i32_true
+    v4ci4 __m128i_i32_select0010,       __m128i, i32_false, i32_false, i32_true, i32_false
+    v4ci4 __m128i_i32_select0100,       __m128i, i32_false, i32_true, i32_false, i32_false
+    v4ci4 __m128i_i32_select1000,       __m128i, i32_true, i32_false, i32_false, i32_false
+    v4ci4 __m128i_i32_select0011,       __m128i, i32_false, i32_false, i32_true, i32_true
+    v4ci4 __m128i_i32_select0111,       __m128i, i32_false, i32_true, i32_true, i32_true
+    v4ci4 __m128i_i32_select1111,       __m128i, i32_true, i32_true, i32_true, i32_true
+    v4ci4 __m128i_i32_select1110,       __m128i, i32_true, i32_true, i32_true, i32_false
+    v4ci4 __m128i_i32_select1100,       __m128i, i32_true, i32_true, i32_false, i32_false
+    v4ci4 __m128i_i32_select1001,       __m128i, i32_true, i32_false, i32_false, i32_true
+    v4ci4 __m128i_i32_select0110,       __m128i, i32_false, i32_true, i32_true, i32_false
+    v4ci4 __m128i_i32_select1011,       __m128i, i32_true, i32_false, i32_true, i32_true
+    v4ci4 __m128i_i32_select1101,       __m128i, i32_true, i32_true, i32_false, i32_true
+    v4ci4 __m128i_i32_select0101,       __m128i, i32_false, i32_true, i32_false, i32_true
+    v4ci4 __m128i_i32_select1010,       __m128i, i32_true, i32_false, i32_true, i32_false
+
     ;;int32 mask low;;
     
     v4ci4 __m128i_i32_0e_true,          __m128i, i32_true, i32_false, i32_false, i32_false
@@ -144,6 +184,11 @@ ifndef __MIC__
     v2ci __m128i_i64_1,                 __m128q, i64_1
     v2ci __m128i_i64_neg0,              __m128q, i64_neg0
     v2ci __m128i_i64_neg1,              __m128q, i64_neg1
+
+    v2ci2 __m128i_i64_select00,         __m128q, i64_false, i64_false
+    v2ci2 __m128i_i64_select01,         __m128q, i64_false, i64_true
+    v2ci2 __m128i_i64_select10,         __m128q, i64_true, i64_false
+    v2ci2 __m128i_i64_select11,         __m128q, i64_true, i64_true
 
     ;;int64 mask low;;
 
@@ -1400,174 +1445,188 @@ ifndef __MIC__
 
     ;;DirectX Math constants;;
 
-    v4ci __m128_sincoefficients0,               __m128f, (-0.16666667), (+0.0083333310), (-0.00019840874), (+2.7525562e-06)
-    v4ci __m128_sincoefficients1,               __m128f, (-2.3889859e-08), (-0.16665852), (+0.0083139502), (-0.00018524670)
-    v4ci __m128_coscoefficients0,               __m128f, (-0.5), (+0.041666638), (-0.0013888378), (+2.4760495e-05)
-    v4ci __m128_coscoefficients1,               __m128f, (-2.6051615e-07), (-0.49992746), (+0.041493919), (-0.0012712436)
-    v4ci __m128_tancoefficients0,               __m128f, 1.0, 0.333333333, 0.133333333, (5.396825397e-02)
-    v4ci __m128_tancoefficients1,               __m128f, (2.186948854e-02), (8.863235530e-03), (3.592128167e-03), (1.455834485e-03)
-    v4ci __m128_tancoefficients2,               __m128f, (5.900274264e-04), (2.391290764e-04), (9.691537707e-05), (3.927832950e-05)
-    v4ci __m128_arccoefficients0,               __m128f, (+1.5707963050), (-0.2145988016), (+0.0889789874), (-0.0501743046)
-    v4ci __m128_arccoefficients1,               __m128f, (+0.0308918810), (-0.0170881256), (+0.0066700901), (-0.0012624911)
-    v4ci __m128_atancoefficients0,              __m128f, (-0.3333314528), (+0.1999355085), (-0.1420889944), (+0.1065626393)
-    v4ci __m128_atancoefficients1,              __m128f, (-0.0752896400), (+0.0429096138), (-0.0161657367), (+0.0028662257)
-    v4ci __m128_atanestcoefficients0,           __m128f, (+0.999866), (+0.999866), (+0.999866), (+0.999866)
-    v4ci __m128_atanestcoefficients1,           __m128f, (-0.3302995), (+0.180141), (-0.085133), (+0.0208351)
-    v4ci __m128_tanestcoefficients,             __m128f, 2.484, (-1.954923183e-01), 2.467401101, flt_rcppi
-    v4ci __m128_arcestcoefficients,             __m128f, (+1.5707288), (-0.2121144), (+0.0742610), (-0.0187293)
-    v4ci __m128_piconstants0,                   __m128f, flt_pi, flt_2pi, flt_rcppi, flt_rcp2pi
-    v4ci __m128_identityr0,                     __m128f, flt_1, flt_0, flt_0, flt_0
-    v4ci __m128_identityr1,                     __m128f, flt_0, flt_1, flt_0, flt_0
-    v4ci __m128_identityr2,                     __m128f, flt_0, flt_0, flt_1, flt_0
-    v4ci __m128_identityr3,                     __m128f, flt_0, flt_0, flt_0, flt_1
-    v4ci __m128_negidentityr0,                  __m128f, flt_neg1, flt_0, flt_0, flt_0
-    v4ci __m128_negidentityr1,                  __m128f, flt_0, flt_neg1, flt_0, flt_0
-    v4ci __m128_negidentityr2,                  __m128f, flt_0, flt_0, flt_neg1, flt_0
-    v4ci __m128_negidentityr3,                  __m128f, flt_0, flt_0, flt_0, flt_neg1
-    v4ci __m128_negativezero,                   __m128i, flt_neg0_msk, flt_neg0_msk, flt_neg0_msk, flt_neg0_msk
-    v4ci __m128_negate3,                        __m128i, flt_neg0_msk, flt_neg0_msk, flt_neg0_msk, flt_false_msk
-    v4ci __m128_maskxy,                         __m128i, flt_true_msk, flt_true_msk, flt_false_msk, flt_false_msk
-    v4ci __m128_maskxyz,                        __m128i, flt_true_msk, flt_true_msk, flt_true_msk, flt_false_msk
-    v4ci __m128_maskxyzw,                       __m128i, flt_true_msk, flt_true_msk, flt_true_msk, flt_true_msk
-    v4ci __m128_mask3,                          __m128i, flt_true_msk, flt_true_msk, flt_true_msk, flt_false_msk
-    v4ci __m128_maskx,                          __m128i, flt_true_msk, flt_false_msk, flt_false_msk, flt_false_msk
-    v4ci __m128_masky,                          __m128i, flt_false_msk, flt_true_msk, flt_false_msk, flt_false_msk
-    v4ci __m128_maskz,                          __m128i, flt_false_msk, flt_false_msk, flt_true_msk, flt_false_msk
-    v4ci __m128_maskw,                          __m128i, flt_false_msk, flt_false_msk, flt_false_msk, flt_true_msk
-    v4ci __m128i_flt_negativezero,              __m128i, flt_neg0_msk, flt_neg0_msk, flt_neg0_msk, flt_neg0_msk
-    v4ci __m128i_flt_negate3,                   __m128i, flt_neg0_msk, flt_neg0_msk, flt_neg0_msk, flt_false_msk
-    v4ci __m128i_flt_maskxy,                    __m128i, flt_true_msk, flt_true_msk, flt_false_msk, flt_false_msk
-    v4ci __m128i_flt_maskxyz,                   __m128i, flt_true_msk, flt_true_msk, flt_true_msk, flt_false_msk
-    v4ci __m128i_flt_maskxyzw,                  __m128i, flt_true_msk, flt_true_msk, flt_true_msk, flt_true_msk
-    v4ci __m128i_flt_mask3,                     __m128i, flt_true_msk, flt_true_msk, flt_true_msk, flt_false_msk
-    v4ci __m128i_flt_maskx,                     __m128i, flt_true_msk, flt_false_msk, flt_false_msk, flt_false_msk
-    v4ci __m128i_flt_masky,                     __m128i, flt_false_msk, flt_true_msk, flt_false_msk, flt_false_msk
-    v4ci __m128i_flt_maskz,                     __m128i, flt_false_msk, flt_false_msk, flt_true_msk, flt_false_msk
-    v4ci __m128i_flt_maskw,                     __m128i, flt_false_msk, flt_false_msk, flt_false_msk, flt_true_msk
-    v4ci __m128_one,                            __m128f, flt_1, flt_1, flt_1, flt_1
-    v4ci __m128_one3,                           __m128f, flt_1, flt_1, flt_1, flt_0
-    v4ci __m128_zero,                           __m128f, flt_0, flt_0, flt_0, flt_0
-    v4ci __m128_two,                            __m128f, flt_2, flt_2, flt_2, flt_2
-    v4ci __m128_four,                           __m128f, flt_4, flt_4, flt_4, flt_4
-    v4ci __m128_six,                            __m128f, flt_6, flt_6, flt_6, flt_6
-    v4ci __m128_negativeone,                    __m128f, flt_neg1, flt_neg1, flt_neg1, flt_neg1
-    v4ci __m128_onehalf,                        __m128f, flt_0d5, flt_0d5, flt_0d5, flt_0d5
-    v4ci __m128_negativeonehalf,                __m128f, flt_neg0d5, flt_neg0d5, flt_neg0d5, flt_neg0d5
-    v4ci __m128_negativetwopi,                  __m128f, flt_neg2pi, flt_neg2pi, flt_neg2pi, flt_neg2pi
-    v4ci __m128_negativepi,                     __m128f, flt_negpi, flt_negpi, flt_negpi, flt_negpi
-    v4ci __m128_reciprocalpi,                   __m128f, flt_rcppi, flt_rcppi, flt_rcppi, flt_rcppi
-    v4ci __m128_twopi,                          __m128f, flt_2pi, flt_2pi, flt_2pi, flt_2pi
-    v4ci __m128_reciprocaltwopi,                __m128f, flt_rcp2pi, flt_rcp2pi, flt_rcp2pi, flt_rcp2pi
-    v4ci __m128i_flt_infinity,                  __m128i, flt_inf_msk, flt_inf_msk, flt_inf_msk, flt_inf_msk
-    v4ci __m128i_flt_qnantest,                  __m128i, flt_nantest_msk, flt_nantest_msk, flt_nantest_msk, flt_nantest_msk
-    v4ci __m128i_flt_absmask,                   __m128i, flt_abs_msk, flt_abs_msk, flt_abs_msk, flt_abs_msk
-    v4ci __m128i_flt_fltmin,                    __m128i, flt_min_msk, flt_min_msk, flt_min_msk, flt_min_msk
-    v4ci __m128i_flt_fltmax,                    __m128i, flt_max_msk, flt_max_msk, flt_max_msk, flt_max_msk
-    v4ci __m128i_flt_negonemask,                __m128i, flt_true_msk, flt_true_msk, flt_true_msk, flt_true_msk
-    v4ci __m128i_flt_maska8r8g8b8,              __m128i, flt_a8_msk, flt_r8_msk, flt_g8_msk, flt_b8_msk
-    v4ci __m128i_flt_flipa8r8g8b8,              __m128i, flt_flipa8_msk, flt_flipr8_msk, flt_flipg8_msk, flt_flipb8_msk
-    v4ci __m128_infinity,                       __m128i, flt_inf_msk, flt_inf_msk, flt_inf_msk, flt_inf_msk
-    v4ci __m128_qnantest,                       __m128i, flt_nantest_msk, flt_nantest_msk, flt_nantest_msk, flt_nantest_msk
-    v4ci __m128_absmask,                        __m128i, flt_abs_msk, flt_abs_msk, flt_abs_msk, flt_abs_msk
-    v4ci __m128_fltmin,                         __m128i, flt_min_msk, flt_min_msk, flt_min_msk, flt_min_msk
-    v4ci __m128_fltmax,                         __m128i, flt_max_msk, flt_max_msk, flt_max_msk, flt_max_msk
-    v4ci __m128_negonemask,                     __m128i, flt_true_msk, flt_true_msk, flt_true_msk, flt_true_msk
-    v4ci __m128_maska8r8g8b8,                   __m128i, flt_a8_msk, flt_r8_msk, flt_g8_msk, flt_b8_msk
-    v4ci __m128_flipa8r8g8b8,                   __m128i, flt_flipa8_msk, flt_flipr8_msk, flt_flipg8_msk, flt_flipb8_msk
-    v4ci __m128_fixaa8r8g8b8,                   __m128f, flt_fixaa8, flt_fixr8, flt_fixg8, flt_fixb8
-    v4ci __m128_normalizea8r8g8b8,              __m128f, flt_norma8, flt_normr8, flt_normg8, flt_normb8
-    v4ci __m128i_flt_maska2b10g10r10,           __m128i, flt_a2_msk, flt_b10_msk, flt_g10_msk, flt_r10_msk
-    v4ci __m128i_flt_flipa2b10g10r10,           __m128i, flt_flipa2_msk, flt_flipb10_msk, flt_flipg10_msk, flt_flipr10_msk
-    v4ci __m128_maska2b10g10r10,                __m128i, flt_a2_msk, flt_b10_msk, flt_g10_msk, flt_r10_msk
-    v4ci __m128_flipa2b10g10r10,                __m128i, flt_flipa2_msk, flt_flipb10_msk, flt_flipg10_msk, flt_flipr10_msk
-    v4ci __m128_fixaa2b10g10r10,                __m128f, flt_fixaa2, flt_fixb10, flt_fixg10, flt_fixr10
-    v4ci __m128_normalizea2b10g10r10,           __m128f, flt_norma2, flt_normb10, flt_normg10, flt_normr10
-    v4ci __m128i_flt_maskx16y16,                __m128i, flt_16low_msk, flt_16high_msk, flt_false, flt_false
-    v4ci __m128i_flt_flipx16y16,                __m128i, flt_flip16_msk, flt_flip16_msk, flt_false, flt_false
-    v4ci __m128_maskx16y16,                     __m128i, flt_16low_msk, flt_16high_msk, flt_false, flt_false
-    v4ci __m128_flipx16y16,                     __m128i, flt_flip16_msk, flt_flip16_msk, flt_false, flt_false
-    v4ci __m128_fixx16y16,                      __m128f, flt_neg32768, flt_0, flt_0, flt_0
-    v4ci __m128_normalizex16y16,                __m128f, 3.051850947599719e-05, 4.656754985961486e-010, flt_0, flt_0
-    v4ci __m128i_flt_maskx16y16z16w16,          __m128i, flt_16low_msk, flt_16low_msk, flt_16high_msk, flt_16high_msk
-    v4ci __m128i_flt_flipx16y16z16w16,          __m128i, flt_flip16_msk, flt_flip16_msk, flt_false, flt_false
-    v4ci __m128_maskx16y16z16w16,               __m128i, flt_16low_msk, flt_16low_msk, flt_16high_msk, flt_16high_msk
-    v4ci __m128_flipx16y16z16w16,               __m128i, flt_flip16_msk, flt_flip16_msk, flt_false, flt_false
-    v4ci __m128_fixx16y16z16w16,                __m128f, flt_neg32768, flt_neg32768, flt_0, flt_0
-    v4ci __m128_normalizex16y16z16w16,          __m128f, 3.051850947599719e-05, 3.051850947599719e-05, 4.656754985961486e-010, 4.656754985961486e-010
-    v4ci __m128i_flt_maskbyte,                  __m128i, flt_byte_msk, flt_byte_msk, flt_byte_msk, flt_byte_msk
-    v4ci __m128_maskbyte,                       __m128i, flt_byte_msk, flt_byte_msk, flt_byte_msk, flt_byte_msk
-    v4ci __m128_negatex,                        __m128f, flt_neg1, flt_1, flt_1, flt_1
-    v4ci __m128_negatey,                        __m128f, flt_1, flt_neg1, flt_1, flt_1
-    v4ci __m128_negatez,                        __m128f, flt_1, flt_1, flt_neg1, flt_1
-    v4ci __m128_negatew,                        __m128f, flt_1, flt_1, flt_1, flt_neg1
-    v4ci __m128i_flt_select0011,                __m128i, flt_false, flt_false, flt_true, flt_true
-    v4ci __m128i_flt_select1100,                __m128i, flt_true, flt_true, flt_false, flt_false
-    v4ci __m128i_flt_select0101,                __m128i, flt_false, flt_true, flt_false, flt_true
-    v4ci __m128i_flt_select1010,                __m128i, flt_true, flt_false, flt_true, flt_false
-    v4ci __m128i_flt_select1000,                __m128i, flt_true, flt_false, flt_false, flt_false
-    v4ci __m128i_flt_select1110,                __m128i, flt_true, flt_true, flt_true, flt_false
-    v4ci __m128i_flt_select1011,                __m128i, flt_true, flt_false, flt_true, flt_true
-    v4ci __m128i_flt_select1111,                __m128i, flt_true, flt_true, flt_true, flt_true
-    v4ci __m128i_flt_select0000,                __m128i, flt_false, flt_false, flt_false, flt_false
-    v4ci __m128i_flt_onehalfminusepsilon,       __m128i, flt_halfminuseps_msk, flt_halfminuseps_msk, flt_halfminuseps_msk, flt_halfminuseps_msk
-    v4ci __m128_select0011,                     __m128i, flt_false, flt_false, flt_true, flt_true
-    v4ci __m128_select1100,                     __m128i, flt_true, flt_true, flt_false, flt_false
-    v4ci __m128_select0101,                     __m128i, flt_false, flt_true, flt_false, flt_true
-    v4ci __m128_select1010,                     __m128i, flt_true, flt_false, flt_true, flt_false
-    v4ci __m128_select1000,                     __m128i, flt_true, flt_false, flt_false, flt_false
-    v4ci __m128_select1110,                     __m128i, flt_true, flt_true, flt_true, flt_false
-    v4ci __m128_select1011,                     __m128i, flt_true, flt_false, flt_true, flt_true
-    v4ci __m128_select1111,                     __m128i, flt_true, flt_true, flt_true, flt_true
-    v4ci __m128_select0000,                     __m128i, flt_false, flt_false, flt_false, flt_false
-    v4ci __m128_onehalfminusepsilon,            __m128i, flt_halfminuseps_msk, flt_halfminuseps_msk, flt_halfminuseps_msk, flt_halfminuseps_msk
-    v4ci __m128_fixupy16,                       __m128f, flt_1, 0.0000152587890625, flt_0, flt_0
-    v4ci __m128_fixupy16w16,                    __m128f, flt_1, flt_1, 0.0000152587890625, 0.0000152587890625   
-    v4ci __m128i_flt_flipy,                     __m128i, flt_false, flt_flip32_msk, flt_false, flt_false
-    v4ci __m128i_flt_flipz,                     __m128i, flt_false, flt_false, flt_flip32_msk, flt_false
-    v4ci __m128i_flt_flipw,                     __m128i, flt_false, flt_false, flt_false, flt_flip32_msk
-    v4ci __m128i_flt_flipyz,                    __m128i, flt_false, flt_flip32_msk, flt_flip32_msk, flt_false
-    v4ci __m128i_flt_flipzw,                    __m128i, flt_false, flt_false, flt_flip32_msk, flt_flip32_msk
-    v4ci __m128i_flt_flipyw,                    __m128i, flt_false, flt_flip32_msk, flt_false, flt_flip32_msk
-    v4ci __m128i_flt_maskdec4,                  __m128i, 0x000003ff, 0x000ffc00, 0x3ff00000, 0xc0000000
-    v4ci __m128i_flt_xordec4,                   __m128i, 0x00000200, 0x00080000, 0x20000000, 0x00000000
-    v4ci __m128_flipy,                          __m128i, flt_false, flt_flip32_msk, flt_false, flt_false
-    v4ci __m128_flipz,                          __m128i, flt_false, flt_false, flt_flip32_msk, flt_false
-    v4ci __m128_flipw,                          __m128i, flt_false, flt_false, flt_false, flt_flip32_msk
-    v4ci __m128_flipyz,                         __m128i, flt_false, flt_flip32_msk, flt_flip32_msk, flt_false
-    v4ci __m128_flipzw,                         __m128i, flt_false, flt_false, flt_flip32_msk, flt_flip32_msk
-    v4ci __m128_flipyw,                         __m128i, flt_false, flt_flip32_msk, flt_false, flt_flip32_msk
-    v4ci __m128_maskdec4,                       __m128i, 0x000003ff, 0x000ffc00, 0x3ff00000, 0xc0000000
-    v4ci __m128_xordec4,                        __m128i, 0x00000200, 0x00080000, 0x20000000, 0x00000000
-    v4ci __m128_addudec4,                       __m128f, flt_0, flt_0, flt_0, flt_2147483648
-    v4ci __m128_addec4,                         __m128f, flt_neg512, (-524288.0), (-536870912.0), flt_0
-    v4ci __m128_muldec4,                        __m128f, flt_1, 0.0009765625, 0.00000095367431640625, 0.000000000931322574615478515625  
-    v4ci __m128i_flt_maskbyte4,                 __m128i, 0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000
-    v4ci __m128i_flt_xorbyte4,                  __m128i, 0x00000080, 0x00008000, 0x00800000, 0x00000000
-    v4ci __m128_maskbyte4,                      __m128i, 0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000
-    v4ci __m128_xorbyte4,                       __m128i, 0x00000080, 0x00008000, 0x00800000, 0x00000000
-    v4ci __m128_addbyte4,                       __m128f, flt_neg128, flt_neg32768, flt_mini8xu16, flt_0
-    v4ci __m128_fixmaxint,                      __m128f, flt_fixmaxi32, flt_fixmaxi32, flt_fixmaxi32, flt_fixmaxi32
-    v4ci __m128_fixmaxuint,                     __m128f, flt_fixmaxu32, flt_fixmaxu32, flt_fixmaxu32, flt_fixmaxu32
-    v4ci __m128_unsignedfix,                    __m128f, flt_fixunsigned, flt_fixunsigned, flt_fixunsigned, flt_fixunsigned
-    v4ci __m128_srgbscale,                      __m128f, 12.92, 12.92, 12.92, flt_1
-    v4ci __m128_srgba,                          __m128f, 0.055, 0.055, 0.055, flt_0
-    v4ci __m128_srgba1,                         __m128f, 1.055, 1.055, 1.055, flt_1
-    v4ci __m128i_flt_exponentbias,              __m128i, flt_expo_msk, flt_expo_msk, flt_expo_msk, flt_expo_msk
-    v4ci __m128i_flt_subnormalexponent,         __m128i, flt_subnormalexpo_msk, flt_subnormalexpo_msk, flt_subnormalexpo_msk, flt_subnormalexpo_msk
-    v4ci __m128i_flt_numtrailing,               __m128i, flt_mant_msk, flt_mant_msk, flt_mant_msk, flt_mant_msk
-    v4ci __m128i_flt_neginfinity,               __m128i, flt_neginf_msk, flt_neginf_msk, flt_neginf_msk, flt_neginf_msk
-    v4ci __m128_exponentbias,                   __m128i, flt_expo_msk, flt_expo_msk, flt_expo_msk, flt_expo_msk
-    v4ci __m128_subnormalexponent,              __m128i, flt_subnormalexpo_msk, flt_subnormalexpo_msk, flt_subnormalexpo_msk, flt_subnormalexpo_msk
-    v4ci __m128_numtrailing,                    __m128i, flt_mant_msk, flt_mant_msk, flt_mant_msk, flt_mant_msk
-    v4ci __m128_neginfinity,                    __m128i, flt_neginf_msk, flt_neginf_msk, flt_neginf_msk, flt_neginf_msk
-    v4ci __m128_lge,                            __m128f, flt_log2e, flt_log2e, flt_log2e, flt_log2e
-    v4ci __m128_invlge,                         __m128f, flt_rcplog2e, flt_rcplog2e, flt_rcplog2e, flt_rcplog2e
-    v4ci __m128_ubytemax,                       __m128f, flt_255, flt_255, flt_255, flt_255
-    v4ci __m128_bytemin,                        __m128f, flt_neg127, flt_neg127, flt_neg127, flt_neg127
-    v4ci __m128_bytemax,                        __m128f, flt_127, flt_127, flt_127, flt_127
-    v4ci __m128_shortmin,                       __m128f, flt_neg32767, flt_neg32767, flt_neg32767, flt_neg32767
-    v4ci __m128_shortmax,                       __m128f, flt_32767, flt_32767, flt_32767, flt_32767
-    v4ci __m128_ushortmax,                      __m128f, flt_65535, flt_65535, flt_65535, flt_65535
+    v4ci4 __m128_sincoefficients0,               __m128f, (-0.16666667), (+0.0083333310), (-0.00019840874), (+2.7525562e-06)
+    v4ci4 __m128_sincoefficients1,               __m128f, (-2.3889859e-08), (-0.16665852), (+0.0083139502), (-0.00018524670)
+    v4ci4 __m128_coscoefficients0,               __m128f, (-0.5), (+0.041666638), (-0.0013888378), (+2.4760495e-05)
+    v4ci4 __m128_coscoefficients1,               __m128f, (-2.6051615e-07), (-0.49992746), (+0.041493919), (-0.0012712436)
+    v4ci4 __m128_tancoefficients0,               __m128f, 1.0, 0.333333333, 0.133333333, (5.396825397e-02)
+    v4ci4 __m128_tancoefficients1,               __m128f, (2.186948854e-02), (8.863235530e-03), (3.592128167e-03), (1.455834485e-03)
+    v4ci4 __m128_tancoefficients2,               __m128f, (5.900274264e-04), (2.391290764e-04), (9.691537707e-05), (3.927832950e-05)
+    v4ci4 __m128_arccoefficients0,               __m128f, (+1.5707963050), (-0.2145988016), (+0.0889789874), (-0.0501743046)
+    v4ci4 __m128_arccoefficients1,               __m128f, (+0.0308918810), (-0.0170881256), (+0.0066700901), (-0.0012624911)
+    v4ci4 __m128_atancoefficients0,              __m128f, (-0.3333314528), (+0.1999355085), (-0.1420889944), (+0.1065626393)
+    v4ci4 __m128_atancoefficients1,              __m128f, (-0.0752896400), (+0.0429096138), (-0.0161657367), (+0.0028662257)
+    v4ci4 __m128_atanestcoefficients0,           __m128f, (+0.999866), (+0.999866), (+0.999866), (+0.999866)
+    v4ci4 __m128_atanestcoefficients1,           __m128f, (-0.3302995), (+0.180141), (-0.085133), (+0.0208351)
+    v4ci4 __m128_tanestcoefficients,             __m128f, 2.484, (-1.954923183e-01), 2.467401101, flt_rcppi
+    v4ci4 __m128_arcestcoefficients,             __m128f, (+1.5707288), (-0.2121144), (+0.0742610), (-0.0187293)
+    v4ci4 __m128_piconstants0,                   __m128f, flt_pi, flt_2pi, flt_rcppi, flt_rcp2pi
+    v4ci4 __m128_identityr0,                     __m128f, flt_1, flt_0, flt_0, flt_0
+    v4ci4 __m128_identityr1,                     __m128f, flt_0, flt_1, flt_0, flt_0
+    v4ci4 __m128_identityr2,                     __m128f, flt_0, flt_0, flt_1, flt_0
+    v4ci4 __m128_identityr3,                     __m128f, flt_0, flt_0, flt_0, flt_1
+    v4ci4 __m128_negidentityr0,                  __m128f, flt_neg1, flt_0, flt_0, flt_0
+    v4ci4 __m128_negidentityr1,                  __m128f, flt_0, flt_neg1, flt_0, flt_0
+    v4ci4 __m128_negidentityr2,                  __m128f, flt_0, flt_0, flt_neg1, flt_0
+    v4ci4 __m128_negidentityr3,                  __m128f, flt_0, flt_0, flt_0, flt_neg1
+    v4ci4 __m128_negativezero,                   __m128i, flt_neg0_msk, flt_neg0_msk, flt_neg0_msk, flt_neg0_msk
+    v4ci4 __m128_negate3,                        __m128i, flt_neg0_msk, flt_neg0_msk, flt_neg0_msk, flt_false_msk
+    v4ci4 __m128_maskxy,                         __m128i, flt_true_msk, flt_true_msk, flt_false_msk, flt_false_msk
+    v4ci4 __m128_maskxyz,                        __m128i, flt_true_msk, flt_true_msk, flt_true_msk, flt_false_msk
+    v4ci4 __m128_maskxyzw,                       __m128i, flt_true_msk, flt_true_msk, flt_true_msk, flt_true_msk
+    v4ci4 __m128_mask3,                          __m128i, flt_true_msk, flt_true_msk, flt_true_msk, flt_false_msk
+    v4ci4 __m128_maskx,                          __m128i, flt_true_msk, flt_false_msk, flt_false_msk, flt_false_msk
+    v4ci4 __m128_masky,                          __m128i, flt_false_msk, flt_true_msk, flt_false_msk, flt_false_msk
+    v4ci4 __m128_maskz,                          __m128i, flt_false_msk, flt_false_msk, flt_true_msk, flt_false_msk
+    v4ci4 __m128_maskw,                          __m128i, flt_false_msk, flt_false_msk, flt_false_msk, flt_true_msk
+    v4ci4 __m128i_flt_negativezero,              __m128i, flt_neg0_msk, flt_neg0_msk, flt_neg0_msk, flt_neg0_msk
+    v4ci4 __m128i_flt_negate3,                   __m128i, flt_neg0_msk, flt_neg0_msk, flt_neg0_msk, flt_false_msk
+    v4ci4 __m128i_flt_maskxy,                    __m128i, flt_true_msk, flt_true_msk, flt_false_msk, flt_false_msk
+    v4ci4 __m128i_flt_maskxyz,                   __m128i, flt_true_msk, flt_true_msk, flt_true_msk, flt_false_msk
+    v4ci4 __m128i_flt_maskxyzw,                  __m128i, flt_true_msk, flt_true_msk, flt_true_msk, flt_true_msk
+    v4ci4 __m128i_flt_mask3,                     __m128i, flt_true_msk, flt_true_msk, flt_true_msk, flt_false_msk
+    v4ci4 __m128i_flt_maskx,                     __m128i, flt_true_msk, flt_false_msk, flt_false_msk, flt_false_msk
+    v4ci4 __m128i_flt_masky,                     __m128i, flt_false_msk, flt_true_msk, flt_false_msk, flt_false_msk
+    v4ci4 __m128i_flt_maskz,                     __m128i, flt_false_msk, flt_false_msk, flt_true_msk, flt_false_msk
+    v4ci4 __m128i_flt_maskw,                     __m128i, flt_false_msk, flt_false_msk, flt_false_msk, flt_true_msk
+    v4ci4 __m128_one,                            __m128f, flt_1, flt_1, flt_1, flt_1
+    v4ci4 __m128_one3,                           __m128f, flt_1, flt_1, flt_1, flt_0
+    v4ci4 __m128_zero,                           __m128f, flt_0, flt_0, flt_0, flt_0
+    v4ci4 __m128_two,                            __m128f, flt_2, flt_2, flt_2, flt_2
+    v4ci4 __m128_four,                           __m128f, flt_4, flt_4, flt_4, flt_4
+    v4ci4 __m128_six,                            __m128f, flt_6, flt_6, flt_6, flt_6
+    v4ci4 __m128_negativeone,                    __m128f, flt_neg1, flt_neg1, flt_neg1, flt_neg1
+    v4ci4 __m128_onehalf,                        __m128f, flt_0d5, flt_0d5, flt_0d5, flt_0d5
+    v4ci4 __m128_negativeonehalf,                __m128f, flt_neg0d5, flt_neg0d5, flt_neg0d5, flt_neg0d5
+    v4ci4 __m128_negativetwopi,                  __m128f, flt_neg2pi, flt_neg2pi, flt_neg2pi, flt_neg2pi
+    v4ci4 __m128_negativepi,                     __m128f, flt_negpi, flt_negpi, flt_negpi, flt_negpi
+    v4ci4 __m128_reciprocalpi,                   __m128f, flt_rcppi, flt_rcppi, flt_rcppi, flt_rcppi
+    v4ci4 __m128_twopi,                          __m128f, flt_2pi, flt_2pi, flt_2pi, flt_2pi
+    v4ci4 __m128_reciprocaltwopi,                __m128f, flt_rcp2pi, flt_rcp2pi, flt_rcp2pi, flt_rcp2pi
+    v4ci4 __m128i_flt_infinity,                  __m128i, flt_inf_msk, flt_inf_msk, flt_inf_msk, flt_inf_msk
+    v4ci4 __m128i_flt_qnantest,                  __m128i, flt_nantest_msk, flt_nantest_msk, flt_nantest_msk, flt_nantest_msk
+    v4ci4 __m128i_flt_absmask,                   __m128i, flt_abs_msk, flt_abs_msk, flt_abs_msk, flt_abs_msk
+    v4ci4 __m128i_flt_fltmin,                    __m128i, flt_min_msk, flt_min_msk, flt_min_msk, flt_min_msk
+    v4ci4 __m128i_flt_fltmax,                    __m128i, flt_max_msk, flt_max_msk, flt_max_msk, flt_max_msk
+    v4ci4 __m128i_flt_negonemask,                __m128i, flt_true_msk, flt_true_msk, flt_true_msk, flt_true_msk
+    v4ci4 __m128i_flt_maska8r8g8b8,              __m128i, flt_a8_msk, flt_r8_msk, flt_g8_msk, flt_b8_msk
+    v4ci4 __m128i_flt_flipa8r8g8b8,              __m128i, flt_flipa8_msk, flt_flipr8_msk, flt_flipg8_msk, flt_flipb8_msk
+    v4ci4 __m128_infinity,                       __m128i, flt_inf_msk, flt_inf_msk, flt_inf_msk, flt_inf_msk
+    v4ci4 __m128_qnantest,                       __m128i, flt_nantest_msk, flt_nantest_msk, flt_nantest_msk, flt_nantest_msk
+    v4ci4 __m128_absmask,                        __m128i, flt_abs_msk, flt_abs_msk, flt_abs_msk, flt_abs_msk
+    v4ci4 __m128_fltmin,                         __m128i, flt_min_msk, flt_min_msk, flt_min_msk, flt_min_msk
+    v4ci4 __m128_fltmax,                         __m128i, flt_max_msk, flt_max_msk, flt_max_msk, flt_max_msk
+    v4ci4 __m128_negonemask,                     __m128i, flt_true_msk, flt_true_msk, flt_true_msk, flt_true_msk
+    v4ci4 __m128_maska8r8g8b8,                   __m128i, flt_a8_msk, flt_r8_msk, flt_g8_msk, flt_b8_msk
+    v4ci4 __m128_flipa8r8g8b8,                   __m128i, flt_flipa8_msk, flt_flipr8_msk, flt_flipg8_msk, flt_flipb8_msk
+    v4ci4 __m128_fixaa8r8g8b8,                   __m128f, flt_fixaa8, flt_fixr8, flt_fixg8, flt_fixb8
+    v4ci4 __m128_normalizea8r8g8b8,              __m128f, flt_norma8, flt_normr8, flt_normg8, flt_normb8
+    v4ci4 __m128i_flt_maska2b10g10r10,           __m128i, flt_a2_msk, flt_b10_msk, flt_g10_msk, flt_r10_msk
+    v4ci4 __m128i_flt_flipa2b10g10r10,           __m128i, flt_flipa2_msk, flt_flipb10_msk, flt_flipg10_msk, flt_flipr10_msk
+    v4ci4 __m128_maska2b10g10r10,                __m128i, flt_a2_msk, flt_b10_msk, flt_g10_msk, flt_r10_msk
+    v4ci4 __m128_flipa2b10g10r10,                __m128i, flt_flipa2_msk, flt_flipb10_msk, flt_flipg10_msk, flt_flipr10_msk
+    v4ci4 __m128_fixaa2b10g10r10,                __m128f, flt_fixaa2, flt_fixb10, flt_fixg10, flt_fixr10
+    v4ci4 __m128_normalizea2b10g10r10,           __m128f, flt_norma2, flt_normb10, flt_normg10, flt_normr10
+    v4ci4 __m128i_flt_maskx16y16,                __m128i, flt_16low_msk, flt_16high_msk, flt_false, flt_false
+    v4ci4 __m128i_flt_flipx16y16,                __m128i, flt_flip16_msk, flt_flip16_msk, flt_false, flt_false
+    v4ci4 __m128_maskx16y16,                     __m128i, flt_16low_msk, flt_16high_msk, flt_false, flt_false
+    v4ci4 __m128_flipx16y16,                     __m128i, flt_flip16_msk, flt_flip16_msk, flt_false, flt_false
+    v4ci4 __m128_fixx16y16,                      __m128f, flt_neg32768, flt_0, flt_0, flt_0
+    v4ci4 __m128_normalizex16y16,                __m128f, (3.051850947599719e-05), (4.656754985961486e-010), flt_0, flt_0
+    v4ci4 __m128i_flt_maskx16y16z16w16,          __m128i, flt_16low_msk, flt_16low_msk, flt_16high_msk, flt_16high_msk
+    v4ci4 __m128i_flt_flipx16y16z16w16,          __m128i, flt_flip16_msk, flt_flip16_msk, flt_false, flt_false
+    v4ci4 __m128_maskx16y16z16w16,               __m128i, flt_16low_msk, flt_16low_msk, flt_16high_msk, flt_16high_msk
+    v4ci4 __m128_flipx16y16z16w16,               __m128i, flt_flip16_msk, flt_flip16_msk, flt_false, flt_false
+    v4ci4 __m128_fixx16y16z16w16,                __m128f, flt_neg32768, flt_neg32768, flt_0, flt_0
+    v4ci4 __m128_normalizex16y16z16w16,          __m128f, (3.051850947599719e-05), (3.051850947599719e-05), (4.656754985961486e-010), (4.656754985961486e-010)
+    v4ci4 __m128i_flt_maskbyte,                  __m128i, flt_byte_msk, flt_byte_msk, flt_byte_msk, flt_byte_msk
+    v4ci4 __m128_maskbyte,                       __m128i, flt_byte_msk, flt_byte_msk, flt_byte_msk, flt_byte_msk
+    v4ci4 __m128_negatex,                        __m128f, flt_neg1, flt_1, flt_1, flt_1
+    v4ci4 __m128_negatey,                        __m128f, flt_1, flt_neg1, flt_1, flt_1
+    v4ci4 __m128_negatez,                        __m128f, flt_1, flt_1, flt_neg1, flt_1
+    v4ci4 __m128_negatew,                        __m128f, flt_1, flt_1, flt_1, flt_neg1
+    v4ci4 __m128i_flt_select0000,                __m128i, flt_false, flt_false, flt_false, flt_false
+    v4ci4 __m128i_flt_select0001,                __m128i, flt_false, flt_false, flt_false, flt_true
+    v4ci4 __m128i_flt_select0010,                __m128i, flt_false, flt_false, flt_true, flt_false
+    v4ci4 __m128i_flt_select0100,                __m128i, flt_false, flt_true, flt_false, flt_false
+    v4ci4 __m128i_flt_select1000,                __m128i, flt_true, flt_false, flt_false, flt_false
+    v4ci4 __m128i_flt_select0011,                __m128i, flt_false, flt_false, flt_true, flt_true
+    v4ci4 __m128i_flt_select0111,                __m128i, flt_false, flt_true, flt_true, flt_true
+    v4ci4 __m128i_flt_select1111,                __m128i, flt_true, flt_true, flt_true, flt_true
+    v4ci4 __m128i_flt_select1110,                __m128i, flt_true, flt_true, flt_true, flt_false
+    v4ci4 __m128i_flt_select1100,                __m128i, flt_true, flt_true, flt_false, flt_false
+    v4ci4 __m128i_flt_select1001,                __m128i, flt_true, flt_false, flt_false, flt_true
+    v4ci4 __m128i_flt_select0110,                __m128i, flt_false, flt_true, flt_true, flt_false
+    v4ci4 __m128i_flt_select1011,                __m128i, flt_true, flt_false, flt_true, flt_true
+    v4ci4 __m128i_flt_select1101,                __m128i, flt_true, flt_true, flt_false, flt_true
+    v4ci4 __m128i_flt_select0101,                __m128i, flt_false, flt_true, flt_false, flt_true
+    v4ci4 __m128i_flt_select1010,                __m128i, flt_true, flt_false, flt_true, flt_false
+    v4ci4 __m128i_flt_onehalfminusepsilon,       __m128i, flt_halfminuseps_msk, flt_halfminuseps_msk, flt_halfminuseps_msk, flt_halfminuseps_msk
+    v4ci4 __m128_select0000,                    __m128i, flt_false, flt_false, flt_false, flt_false
+    v4ci4 __m128_select0001,                    __m128i, flt_false, flt_false, flt_false, flt_true
+    v4ci4 __m128_select0010,                    __m128i, flt_false, flt_false, flt_true, flt_false
+    v4ci4 __m128_select0100,                    __m128i, flt_false, flt_true, flt_false, flt_false
+    v4ci4 __m128_select1000,                    __m128i, flt_true, flt_false, flt_false, flt_false
+    v4ci4 __m128_select0011,                    __m128i, flt_false, flt_false, flt_true, flt_true
+    v4ci4 __m128_select0111,                    __m128i, flt_false, flt_true, flt_true, flt_true
+    v4ci4 __m128_select1111,                    __m128i, flt_true, flt_true, flt_true, flt_true
+    v4ci4 __m128_select1110,                    __m128i, flt_true, flt_true, flt_true, flt_false
+    v4ci4 __m128_select1100,                    __m128i, flt_true, flt_true, flt_false, flt_false
+    v4ci4 __m128_select1001,                    __m128i, flt_true, flt_false, flt_false, flt_true
+    v4ci4 __m128_select0110,                    __m128i, flt_false, flt_true, flt_true, flt_false
+    v4ci4 __m128_select1011,                    __m128i, flt_true, flt_false, flt_true, flt_true
+    v4ci4 __m128_select1101,                    __m128i, flt_true, flt_true, flt_false, flt_true
+    v4ci4 __m128_select0101,                    __m128i, flt_false, flt_true, flt_false, flt_true
+    v4ci4 __m128_select1010,                    __m128i, flt_true, flt_false, flt_true, flt_false
+    v4ci4 __m128_onehalfminusepsilon,            __m128i, flt_halfminuseps_msk, flt_halfminuseps_msk, flt_halfminuseps_msk, flt_halfminuseps_msk
+    v4ci4 __m128_fixupy16,                       __m128f, flt_1, 0.0000152587890625, flt_0, flt_0
+    v4ci4 __m128_fixupy16w16,                    __m128f, flt_1, flt_1, 0.0000152587890625, 0.0000152587890625   
+    v4ci4 __m128i_flt_flipy,                     __m128i, flt_false, flt_flip32_msk, flt_false, flt_false
+    v4ci4 __m128i_flt_flipz,                     __m128i, flt_false, flt_false, flt_flip32_msk, flt_false
+    v4ci4 __m128i_flt_flipw,                     __m128i, flt_false, flt_false, flt_false, flt_flip32_msk
+    v4ci4 __m128i_flt_flipyz,                    __m128i, flt_false, flt_flip32_msk, flt_flip32_msk, flt_false
+    v4ci4 __m128i_flt_flipzw,                    __m128i, flt_false, flt_false, flt_flip32_msk, flt_flip32_msk
+    v4ci4 __m128i_flt_flipyw,                    __m128i, flt_false, flt_flip32_msk, flt_false, flt_flip32_msk
+    v4ci4 __m128i_flt_maskdec4,                  __m128i, 0x000003ff, 0x000ffc00, 0x3ff00000, 0xc0000000
+    v4ci4 __m128i_flt_xordec4,                   __m128i, 0x00000200, 0x00080000, 0x20000000, 0x00000000
+    v4ci4 __m128_flipy,                          __m128i, flt_false, flt_flip32_msk, flt_false, flt_false
+    v4ci4 __m128_flipz,                          __m128i, flt_false, flt_false, flt_flip32_msk, flt_false
+    v4ci4 __m128_flipw,                          __m128i, flt_false, flt_false, flt_false, flt_flip32_msk
+    v4ci4 __m128_flipyz,                         __m128i, flt_false, flt_flip32_msk, flt_flip32_msk, flt_false
+    v4ci4 __m128_flipzw,                         __m128i, flt_false, flt_false, flt_flip32_msk, flt_flip32_msk
+    v4ci4 __m128_flipyw,                         __m128i, flt_false, flt_flip32_msk, flt_false, flt_flip32_msk
+    v4ci4 __m128_maskdec4,                       __m128i, 0x000003ff, 0x000ffc00, 0x3ff00000, 0xc0000000
+    v4ci4 __m128_xordec4,                        __m128i, 0x00000200, 0x00080000, 0x20000000, 0x00000000
+    v4ci4 __m128_addudec4,                       __m128f, flt_0, flt_0, flt_0, flt_2147483648
+    v4ci4 __m128_addec4,                         __m128f, flt_neg512, (-524288.0), (-536870912.0), flt_0
+    v4ci4 __m128_muldec4,                        __m128f, flt_1, 0.0009765625, 0.00000095367431640625, 0.000000000931322574615478515625  
+    v4ci4 __m128i_flt_maskbyte4,                 __m128i, 0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000
+    v4ci4 __m128i_flt_xorbyte4,                  __m128i, 0x00000080, 0x00008000, 0x00800000, 0x00000000
+    v4ci4 __m128_maskbyte4,                      __m128i, 0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000
+    v4ci4 __m128_xorbyte4,                       __m128i, 0x00000080, 0x00008000, 0x00800000, 0x00000000
+    v4ci4 __m128_addbyte4,                       __m128f, flt_neg128, flt_neg32768, flt_mini8xu16, flt_0
+    v4ci4 __m128_fixmaxint,                      __m128f, flt_fixmaxi32, flt_fixmaxi32, flt_fixmaxi32, flt_fixmaxi32
+    v4ci4 __m128_fixmaxuint,                     __m128f, flt_fixmaxu32, flt_fixmaxu32, flt_fixmaxu32, flt_fixmaxu32
+    v4ci4 __m128_unsignedfix,                    __m128f, flt_fixunsigned, flt_fixunsigned, flt_fixunsigned, flt_fixunsigned
+    v4ci4 __m128_srgbscale,                      __m128f, 12.92, 12.92, 12.92, flt_1
+    v4ci4 __m128_srgba,                          __m128f, 0.055, 0.055, 0.055, flt_0
+    v4ci4 __m128_srgba1,                         __m128f, 1.055, 1.055, 1.055, flt_1
+    v4ci4 __m128i_flt_exponentbias,              __m128i, flt_expo_msk, flt_expo_msk, flt_expo_msk, flt_expo_msk
+    v4ci4 __m128i_flt_subnormalexponent,         __m128i, flt_subnormalexpo_msk, flt_subnormalexpo_msk, flt_subnormalexpo_msk, flt_subnormalexpo_msk
+    v4ci4 __m128i_flt_numtrailing,               __m128i, flt_mant_msk, flt_mant_msk, flt_mant_msk, flt_mant_msk
+    v4ci4 __m128i_flt_neginfinity,               __m128i, flt_neginf_msk, flt_neginf_msk, flt_neginf_msk, flt_neginf_msk
+    v4ci4 __m128_exponentbias,                   __m128i, flt_expo_msk, flt_expo_msk, flt_expo_msk, flt_expo_msk
+    v4ci4 __m128_subnormalexponent,              __m128i, flt_subnormalexpo_msk, flt_subnormalexpo_msk, flt_subnormalexpo_msk, flt_subnormalexpo_msk
+    v4ci4 __m128_numtrailing,                    __m128i, flt_mant_msk, flt_mant_msk, flt_mant_msk, flt_mant_msk
+    v4ci4 __m128_neginfinity,                    __m128i, flt_neginf_msk, flt_neginf_msk, flt_neginf_msk, flt_neginf_msk
+    v4ci4 __m128_lge,                            __m128f, flt_log2e, flt_log2e, flt_log2e, flt_log2e
+    v4ci4 __m128_invlge,                         __m128f, flt_rcplog2e, flt_rcplog2e, flt_rcplog2e, flt_rcplog2e
+    v4ci4 __m128_ubytemax,                       __m128f, flt_255, flt_255, flt_255, flt_255
+    v4ci4 __m128_bytemin,                        __m128f, flt_neg127, flt_neg127, flt_neg127, flt_neg127
+    v4ci4 __m128_bytemax,                        __m128f, flt_127, flt_127, flt_127, flt_127
+    v4ci4 __m128_shortmin,                       __m128f, flt_neg32767, flt_neg32767, flt_neg32767, flt_neg32767
+    v4ci4 __m128_shortmax,                       __m128f, flt_32767, flt_32767, flt_32767, flt_32767
+    v4ci4 __m128_ushortmax,                      __m128f, flt_65535, flt_65535, flt_65535, flt_65535
 
     ;;float low;;
 
@@ -4795,9 +4854,22 @@ ifndef __MIC__
     v2ci2 __m128d_0e_logest6,               __m128d, dbl_logest6, dbl_false
     v2ci2 __m128d_0e_logest7,               __m128d, dbl_logest7, dbl_false
 
-    alignymmfieldproc
-    __m128i_flt_cutoffmask              dd flt_true, flt_true, flt_true, flt_true, flt_false, flt_false, flt_false, flt_false
-    __m128_cutoffmask                   dd flt_true, flt_true, flt_true, flt_true, flt_false, flt_false, flt_false, flt_false
+    ;;DirectX Math constants;;
+
+    v2ci2 __m128i_dbl_select00,                __m128q, dbl_false, dbl_false
+    v2ci2 __m128i_dbl_select01,                __m128q, dbl_false, dbl_true
+    v2ci2 __m128i_dbl_select10,                __m128q, dbl_true, dbl_false
+    v2ci2 __m128i_dbl_select11,                __m128q, dbl_true, dbl_true
+
+    v2ci2 __m128d_select00,                __m128q, dbl_false, dbl_false
+    v2ci2 __m128d_select01,                __m128q, dbl_false, dbl_true
+    v2ci2 __m128d_select10,                __m128q, dbl_true, dbl_false
+    v2ci2 __m128d_select11,                __m128q, dbl_true, dbl_true
+
+    ;removed
+    ;alignymmfieldproc
+    ;__m128i_flt_cutoffmask              dd flt_true, flt_true, flt_true, flt_true, flt_false, flt_false, flt_false, flt_false
+    ;__m128_cutoffmask                   dd flt_true, flt_true, flt_true, flt_true, flt_false, flt_false, flt_false, flt_false
 
     .code
 

@@ -1,11 +1,11 @@
 
 #pragma once
 
-#ifndef uX_SSE_STRUCTS_H
-#define uX_SSE_STRUCTS_H
+#ifndef uX_SSE_MATH_H
+#define uX_SSE_MATH_H
 
 #ifndef uX_TYPES_H
-#include "uXTypes.h"
+#include "uXtypes.h"
 #endif  /* uX_TYPES_H */
 
 #if defined(uX_INTRINSICS_SUPPORT) && defined(uX_X86_OR_X64_CPU) && !defined(uX_NO_INTRINSICS_SUPPORT) && !defined(uX_MIC)
@@ -32,41 +32,40 @@
 
 namespace_uX
 namespace_XMM
-
-uX_EXTERNC_BEGIN
 uX_PACK_PUSH_XMM
 
 // VECTORS'S
 
-struct vecfloat;
-struct vecfloat1;
-struct vecfloat2;
-struct vecfloat3;
-struct vecfloat4;
-struct vecfloat3x3;
-struct vecfloat4x3;
-struct vecfloat4x4;
+class vecfloat;
+class vecfloat1;
+class vecfloat2;
+class vecfloat3;
+class vecfloat4;
+class vecfloat3x3;
+class vecfloat4x3;
+class vecfloat4x4;
 #ifdef uX_SSE2
-struct vecint8;
-struct vecuint8;
-struct vecint16;
-struct vecuint16;
-struct vecint32;
-struct vecuint32;
-struct vecint64;
-struct vecuint64;
-struct vecdouble;
-struct vecdouble1;
-struct vecdouble2;
-struct vecdouble3;
-struct vecdouble4;
-struct vecdouble3x3;
-struct vecdouble4x3;
-struct vecdouble4x4;
+class vecint8;
+class vecuint8;
+class vecint16;
+class vecuint16;
+class vecint32;
+class vecuint32;
+class vecint64;
+class vecuint64;
+class vecdouble;
+class vecdouble1;
+class vecdouble2;
+class vecdouble3;
+class vecdouble4;
+class vecdouble3x3;
+class vecdouble4x3;
+class vecdouble4x4;
 #endif
 
-typedef struct uX_EXAPI vecfloat
+typedef class uX_EXAPI vecfloat
 {
+public:
     vecfloat()uX_default;
     ~vecfloat()uX_default;
 
@@ -86,42 +85,42 @@ typedef struct uX_EXAPI vecfloat
     /**
      * Constructor initialization from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     uX_constexpr vecfloat(const __m128 Inxmm) : m128_xmm(Inxmm) {}
 
     /**
      * Constructor initialization from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     uX_constexpr vecfloat(const vecfloat4 Inxmm) : m128_xmm(Inxmm) {}
 
     /**
      * Constructor initialization from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     uX_constexpr vecfloat(const vecfloat3 Inxmm) : m128_xmm(Inxmm) {}
 
     /**
      * Constructor initialization from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     uX_constexpr vecfloat(const vecfloat2 Inxmm) : m128_xmm(Inxmm) {}
 
     /**
      * Constructor initialization from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     uX_constexpr vecfloat(const vecfloat1 Inxmm) : m128_xmm(Inxmm) {}
 
     /**
      * Constructor initialization from type float*.
      *
-     * @param Inpfloat Value to copy from.
+     * @param Inpfloat value to copy from.
      */
     uX_explicit vecfloat(uX_InReads(4) const float* Inpfloat);
 
@@ -131,45 +130,45 @@ typedef struct uX_EXAPI vecfloat
     /**
      * Assignment operator to convert from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     vecfloat& uX_callconv operator=(const __m128 Inxmm);
 
     /**
      * Assignment operator to convert from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     vecfloat& uX_callconv operator=(const vecfloat4 Inxmm);
 
     /**
      * Assignment operator to convert from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     vecfloat& uX_callconv operator=(const vecfloat3 Inxmm);
 
     /**
      * Assignment operator to convert from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     vecfloat& uX_callconv operator=(const vecfloat2 Inxmm);
 
     /**
      * Assignment operator to convert from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     vecfloat& uX_callconv operator=(const vecfloat1 Inxmm);
 
     /**
      * Constructor initialization from 4 type float.
      *
-     * @param Infloat_X Value to copy from.
-     * @param Infloat_Y Value to copy from.
-     * @param Infloat_Z Value to copy from.
-     * @param Infloat_W Value to copy from.
+     * @param Infloat_X value to copy from.
+     * @param Infloat_Y value to copy from.
+     * @param Infloat_Z value to copy from.
+     * @param Infloat_W value to copy from.
      */
     uX_explicit vecfloat(float Infloat_X, float Infloat_Y, float Infloat_Z, float Infloat_W);
 
@@ -186,7 +185,7 @@ typedef struct uX_EXAPI vecfloat
     /**
      * Assignment operator to convert from type float*.
      *
-     * @param Inpfloat Value to copy from.
+     * @param Inpfloat value to copy from.
      */
     vecfloat& uX_callconv operator=(uX_InReads(4) const float* Inpfloat);
 
@@ -246,28 +245,28 @@ typedef struct uX_EXAPI vecfloat
     /**
      * Load function to load from type float* unaligned.
      *
-     * @param Inpfloat Value to copy from.
+     * @param Inpfloat value to copy from.
      */
     vecfloat& uX_callconv load(uX_InReads(4) const float* Inpfloat);
 
     /**
      * Load function to load from type float* aligned by 16.
      *
-     * @param Inpfloat Value to copy from.
+     * @param Inpfloat value to copy from.
      */
     vecfloat& uX_callconv load_a(uX_InReads(4) const float* Inpfloat);
 
     /**
      * Store function to store to type float* unaligned.
      *
-     * @param Outpfloat Value to store to.
+     * @param Outpfloat value to store to.
      */
     void uX_callconv store(uX_OutWrites(4) float* Outpfloat) const;
 
     /**
      * Store function to store to type float* aligned by 16.
      *
-     * @param Outpfloat Value to store to.
+     * @param Outpfloat value to store to.
      */
     void uX_callconv store_a(uX_OutWrites(4) float* Outpfloat) const;
 
@@ -490,6 +489,8 @@ typedef struct uX_EXAPI vecfloat
     friend vecfloat uX_callconv rsqrt(const vecfloat Inxmm_a);
 
 protected:
+
+private:
     union
     {
         __m128          m128_xmm;
@@ -500,11 +501,10 @@ protected:
         float          m128_f[4];
     };
 
-private:
-    static uX_const int m128_xmm_size = 16;
-    static uX_const int m128_flt_ptr_lenght = 4;
-    static uX_const int m128_flt_ptr_size = 16;
-    static uX_const int m128_flt_size = 4;
+    static uX_const uint32_t m128_xmm_size = 16;
+    static uX_const uint32_t m128_flt_ptr_lenght = 4;
+    static uX_const uint32_t m128_flt_ptr_size = 16;
+    static uX_const uint32_t m128_flt_size = 4;
 
 }vecfloat_t;
 
@@ -512,8 +512,9 @@ private:
 
 #ifdef uX_SSE2
 
-typedef struct uX_EXAPI vecint8
+typedef class uX_EXAPI vecint8
 {
+public:
     vecint8()uX_default;
     ~vecint8()uX_default;
 
@@ -533,14 +534,14 @@ typedef struct uX_EXAPI vecint8
     /**
      * Constructor initialization from type __m128i.
      *
-     * @param Inxmmi Value to copy from.
+     * @param Inxmmi value to copy from.
      */
     uX_constexpr vecint8(const __m128i Inxmmi) : m128_xmmi{Inxmmi} {}
 
     /**
      * Constructor initialization from type __int8*.
      *
-     * @param Inpint8 Value to copy from.
+     * @param Inpint8 value to copy from.
      */
     uX_explicit vecint8(uX_InReads(16) const __int8* Inpint8);
 
@@ -550,14 +551,14 @@ typedef struct uX_EXAPI vecint8
     /**
      * Assignment operator to convert from type __m128i.
      *
-     * @param Inxmmi Value to copy from.
+     * @param Inxmmi value to copy from.
      */
     vecint8& uX_callconv operator=(const __m128i Inxmmi);
 
     /**
      * Constructor initialization from 16 type byte.
      *
-     * @param Inpint8_0 to Inpint8_15 Value to copy from.
+     * @param Inpint8_0 to Inpint8_15 value to copy from.
      */
     uX_explicit vecint8(const __int8 Inpint8_0, const __int8 Inpint8_1, const __int8 Inpint8_2, const __int8 Inpint8_3, 
                         const __int8 Inpint8_4, const __int8 Inpint8_5, const __int8 Inpint8_6, const __int8 Inpint8_7, 
@@ -570,7 +571,7 @@ typedef struct uX_EXAPI vecint8
     /**
      * Assignment operator to convert from type __int8*.
      *
-     * @param Inpint8 Value to copy from.
+     * @param Inpint8 value to copy from.
      */
     vecint8& uX_callconv operator=(uX_InReads(16) const __int8* Inpint8);
 
@@ -643,28 +644,28 @@ typedef struct uX_EXAPI vecint8
     /**
      * Load function to load from type __int8* unaligned.
      *
-     * @param Inpint8 Value to copy from.
+     * @param Inpint8 value to copy from.
      */
     vecint8& uX_callconv load(uX_InReads(16) const __int8* Inpint8);
 
     /**
      * Load function to load from type __int8* aligned by 16.
      *
-     * @param Inpint8 Value to copy from.
+     * @param Inpint8 value to copy from.
      */
     vecint8& uX_callconv load_a(uX_InReads(16) const __int8* Inpint8);
 
     /**
      * Store function to store to type __int8* unaligned.
      *
-     * @param Outpint8 Value to store to.
+     * @param Outpint8 value to store to.
      */
     void uX_callconv store(uX_OutWrites(16) __int8* Outpint8) const;
 
     /**
      * Store function to store to type __int8* aligned by 16.
      *
-     * @param Outpint8 Value to store to.
+     * @param Outpint8 value to store to.
      */
     void uX_callconv store_a(uX_OutWrites(16) __int8* Outpfloat) const;
 
@@ -704,29 +705,31 @@ typedef struct uX_EXAPI vecint8
     friend vecint8 uX_callconv compress_saturated(const vecint16 Inxmm_low, const vecint16 Inxmm_high);
 
 protected:
+
+private:
     union
     {
         __m128i             m128_xmmi;
         struct
         {
-            __int8 _0, _1, _2, _3, 
-                   _4, _5, _6, _7, 
-                   _8, _9, _10, _11,
+            __int8     _0, _1, _2, _3,
+                       _4, _5, _6, _7,
+                     _8, _9, _10, _11,
                    _12, _13, _14, _15;
         };
         __int8            m128_ib[16];
     };
 
-private:
-    static uX_const int m128_xmm_size = 16;
-    static uX_const int m128_i8_ptr_lenght = 16;
-    static uX_const int m128_i8_ptr_size = 16;
-    static uX_const int m128_i8_size = 1;
+    static uX_const uint32_t m128_xmm_size = 16;
+    static uX_const uint32_t m128_i8_ptr_lenght = 16;
+    static uX_const uint32_t m128_i8_ptr_size = 16;
+    static uX_const uint32_t m128_i8_size = 1;
 
 }vecint8_t;
 
-typedef struct uX_EXAPI vecuint8
+typedef class uX_EXAPI vecuint8
 {
+public:
     vecuint8()uX_default;
     ~vecuint8()uX_default;
 
@@ -746,7 +749,7 @@ typedef struct uX_EXAPI vecuint8
     /**
      * Constructor initialization from type __m128i.
      *
-     * @param Inxmmi Value to copy from.
+     * @param Inxmmi value to copy from.
      */
     uX_constexpr vecuint8(const __m128i Inxmmi) : m128_xmmi{Inxmmi} {}
 
@@ -756,14 +759,14 @@ typedef struct uX_EXAPI vecuint8
     /**
      * Assignment operator to convert from type __m128i.
      *
-     * @param Inxmmi Value to copy from.
+     * @param Inxmmi value to copy from.
      */
     vecuint8& uX_callconv operator=(const __m128i Inxmmi);
 
     /**
      * Constructor initialization from type unsigned __int8*.
      *
-     * @param Inpint8 Value to copy from.
+     * @param Inpint8 value to copy from.
      */
     uX_explicit vecuint8(uX_InReads(16) const unsigned __int8* Inpint8);
 
@@ -773,34 +776,36 @@ typedef struct uX_EXAPI vecuint8
     /**
      * Assignment operator to convert from type unsigned __int8*.
      *
-     * @param Inpint8 Value to copy from.
+     * @param Inpint8 value to copy from.
      */
     vecuint8& uX_callconv operator=(uX_InReads(16) const unsigned __int8* Inpint8);
 
 protected:
+
+private:
     union
     {
         __m128i                      m128_xmmi;
         struct
         {
-            unsigned __int8 _0, _1, _2, _3,
-                            _4, _5, _6, _7,
-                            _8, _9, _10, _11,
+            unsigned     __int8 _0, _1, _2, _3,
+                                _4, _5, _6, _7,
+                              _8, _9, _10, _11,
                             _12, _13, _14, _15;
         };
         unsigned __int8            m128_ub[16];
     };
 
-private:
-    static uX_const int m128_xmm_size = 16;
-    static uX_const int m128_ui8_ptr_lenght = 16;
-    static uX_const int m128_ui8_ptr_size = 16;
-    static uX_const int m128_ui8_size = 1;
+    static uX_const uint32_t m128_xmm_size = 16;
+    static uX_const uint32_t m128_ui8_ptr_lenght = 16;
+    static uX_const uint32_t m128_ui8_ptr_size = 16;
+    static uX_const uint32_t m128_ui8_size = 1;
 
 }vecuint8_t;
 
-typedef struct uX_EXAPI vecint16
+typedef class uX_EXAPI vecint16
 {
+public:
     vecint16()uX_default;
     ~vecint16()uX_default;
 
@@ -820,14 +825,14 @@ typedef struct uX_EXAPI vecint16
     /**
      * Constructor initialization from type __m128i.
      *
-     * @param Inxmmi Value to copy from.
+     * @param Inxmmi value to copy from.
      */
     uX_constexpr vecint16(const __m128i Inxmmi) : m128_xmmi{Inxmmi} {}
 
     /**
      * Constructor initialization from type __int16*.
      *
-     * @param Inpint16 Value to copy from.
+     * @param Inpint16 value to copy from.
      */
     uX_explicit vecint16(uX_InReads(8) const __int16* Inpint16);
 
@@ -840,14 +845,14 @@ typedef struct uX_EXAPI vecint16
     /**
      * Assignment operator to convert from type __m128i.
      *
-     * @param Inxmmi Value to copy from.
+     * @param Inxmmi value to copy from.
      */
     vecint16& uX_callconv operator=(const __m128i Inxmmi);
 
     /**
      * Assignment operator to convert from type __int16*.
      *
-     * @param Inpint16 Value to copy from.
+     * @param Inpint16 value to copy from.
      */
     vecint16& uX_callconv operator=(uX_InReads(8) const __int16* Inpint16);
 
@@ -858,6 +863,8 @@ typedef struct uX_EXAPI vecint16
     vecint16 uX_callconv extend_high(const vecint8 Inxmm_a);
 
 protected:
+
+private:
     union
     {
         __m128i          m128_xmmi;
@@ -869,16 +876,16 @@ protected:
         __int16         m128_iw[8];
     };
 
-private:
-    static uX_const int m128_xmm_size = 16;
-    static uX_const int m128_i16_ptr_lenght = 8;
-    static uX_const int m128_i16_ptr_size = 16;
-    static uX_const int m128_i16_size = 2;
+    static uX_const uint32_t m128_xmm_size = 16;
+    static uX_const uint32_t m128_i16_ptr_lenght = 8;
+    static uX_const uint32_t m128_i16_ptr_size = 16;
+    static uX_const uint32_t m128_i16_size = 2;
 
 }vecint16_t;
 
-typedef struct uX_EXAPI vecuint16
+typedef class uX_EXAPI vecuint16
 {
+public:
     vecuint16()uX_default;
     ~vecuint16()uX_default;
 
@@ -898,14 +905,14 @@ typedef struct uX_EXAPI vecuint16
     /**
      * Constructor initialization from type __m128i.
      *
-     * @param Inxmmi Value to copy from.
+     * @param Inxmmi value to copy from.
      */
     uX_constexpr vecuint16(const __m128i Inxmmi) : m128_xmmi{Inxmmi} {}
 
     /**
      * Constructor initialization from type unsigned __int16*.
      *
-     * @param Inpint16 Value to copy from.
+     * @param Inpint16 value to copy from.
      */
     uX_explicit vecuint16(uX_InReads(8) const unsigned __int16* Inpint16);
 
@@ -918,18 +925,20 @@ typedef struct uX_EXAPI vecuint16
     /**
      * Assignment operator to convert from type __m128i.
      *
-     * @param Inxmmi Value to copy from.
+     * @param Inxmmi value to copy from.
      */
     vecuint16& uX_callconv operator=(const __m128i Inxmmi);
 
     /**
      * Assignment operator to convert from type unsigned __int16*.
      *
-     * @param Inpint16 Value to copy from.
+     * @param Inpint16 value to copy from.
      */
     vecuint16& uX_callconv operator=(uX_InReads(8) const unsigned __int16* Inpint16);
 
 protected:
+
+private:
     union
     {
         __m128i                   m128_xmmi;
@@ -941,16 +950,16 @@ protected:
         unsigned __int16         m128_uw[8];
     };
 
-private:
-    static uX_const int m128_xmm_size = 16;
-    static uX_const int m128_ui16_ptr_lenght = 8;
-    static uX_const int m128_ui16_ptr_size = 16;
-    static uX_const int m128_ui16_size = 2;
+    static uX_const uint32_t m128_xmm_size = 16;
+    static uX_const uint32_t m128_ui16_ptr_lenght = 8;
+    static uX_const uint32_t m128_ui16_ptr_size = 16;
+    static uX_const uint32_t m128_ui16_size = 2;
 
 }vecuint16_t;
 
-typedef struct uX_EXAPI vecint32
+typedef class uX_EXAPI vecint32
 {
+public:
     vecint32()uX_default;
     ~vecint32()uX_default;
 
@@ -970,14 +979,14 @@ typedef struct uX_EXAPI vecint32
     /**
      * Constructor initialization from type __m128i.
      *
-     * @param Inxmmi Value to copy from.
+     * @param Inxmmi value to copy from.
      */
     uX_constexpr vecint32(const __m128i Inxmmi) : m128_xmmi{Inxmmi} {}
 
     /**
      * Constructor initialization from type __int32*.
      *
-     * @param Inpint32 Value to copy from.
+     * @param Inpint32 value to copy from.
      */
     uX_explicit vecint32(uX_InReads(4) const __int32* Inpint32);
 
@@ -990,18 +999,20 @@ typedef struct uX_EXAPI vecint32
     /**
      * Assignment operator to convert from type __m128i.
      *
-     * @param Inxmmi Value to copy from.
+     * @param Inxmmi value to copy from.
      */
     vecint32& uX_callconv operator=(const __m128i Inxmmi);
 
     /**
      * Assignment operator to convert from type __int32*.
      *
-     * @param Inpint32 Value to copy from.
+     * @param Inpint32 value to copy from.
      */
     vecint32& uX_callconv operator=(uX_InReads(4) const __int32* Inpint32);
 
 protected:
+
+private:
     union
     {
         __m128i          m128_xmmi;
@@ -1012,16 +1023,16 @@ protected:
         __int32         m128_id[4];
     };
 
-private:
-    static uX_const int m128_xmm_size = 16;
-    static uX_const int m128_i32_ptr_lenght = 4;
-    static uX_const int m128_i32_ptr_size = 16;
-    static uX_const int m128_i32_size = 4;
+    static uX_const uint32_t m128_xmm_size = 16;
+    static uX_const uint32_t m128_i32_ptr_lenght = 4;
+    static uX_const uint32_t m128_i32_ptr_size = 16;
+    static uX_const uint32_t m128_i32_size = 4;
 
 }vecint32_t;
 
-typedef struct uX_EXAPI vecuint32
+typedef class uX_EXAPI vecuint32
 {
+public:
     vecuint32()uX_default;
     ~vecuint32()uX_default;
 
@@ -1041,14 +1052,14 @@ typedef struct uX_EXAPI vecuint32
     /**
      * Constructor initialization from type __m128i.
      *
-     * @param Inxmmi Value to copy from.
+     * @param Inxmmi value to copy from.
      */
     uX_constexpr vecuint32(const __m128i Inxmmi) : m128_xmmi{Inxmmi} {}
 
     /**
      * Constructor initialization from type unsigned __int32*.
      *
-     * @param Inpint32 Value to copy from.
+     * @param Inpint32 value to copy from.
      */
     uX_explicit vecuint32(uX_InReads(4) const unsigned __int32* Inpint32);
 
@@ -1061,18 +1072,20 @@ typedef struct uX_EXAPI vecuint32
     /**
      * Assignment operator to convert from type __m128i.
      *
-     * @param Inxmmi Value to copy from.
+     * @param Inxmmi value to copy from.
      */
     vecuint32& uX_callconv operator=(const __m128i Inxmmi);
 
     /**
      * Assignment operator to convert from type unsigned __int32*.
      *
-     * @param Inpint32 Value to copy from.
+     * @param Inpint32 value to copy from.
      */
     vecuint32& uX_callconv operator=(uX_InReads(4) const unsigned __int32* Inpint32);
 
 protected:
+
+private:
     union
     {
         __m128i                   m128_xmmi;
@@ -1083,16 +1096,16 @@ protected:
         unsigned __int32         m128_ud[4];
     };
 
-private:
-    static uX_const int m128_xmm_size = 16;
-    static uX_const int m128_ui32_ptr_lenght = 4;
-    static uX_const int m128_ui32_ptr_size = 16;
-    static uX_const int m128_ui32_size = 4;
+    static uX_const uint32_t m128_xmm_size = 16;
+    static uX_const uint32_t m128_ui32_ptr_lenght = 4;
+    static uX_const uint32_t m128_ui32_ptr_size = 16;
+    static uX_const uint32_t m128_ui32_size = 4;
 
 }vecuint32_t;
 
-typedef struct uX_EXAPI vecint64
+typedef class uX_EXAPI vecint64
 {
+public:
     vecint64()uX_default;
     ~vecint64()uX_default;
 
@@ -1112,14 +1125,14 @@ typedef struct uX_EXAPI vecint64
     /**
      * Constructor initialization from type __m128i.
      *
-     * @param Inxmmi Value to copy from.
+     * @param Inxmmi value to copy from.
      */
     uX_constexpr vecint64(const __m128i Inxmmi) : m128_xmmi{Inxmmi} {}
 
     /**
      * Constructor initialization from type __int64*.
      *
-     * @param Inpint64 Value to copy from.
+     * @param Inpint64 value to copy from.
      */
     uX_explicit vecint64(uX_InReads(2) const __int64* Inpint64);
 
@@ -1132,18 +1145,20 @@ typedef struct uX_EXAPI vecint64
     /**
      * Assignment operator to convert from type __m128i.
      *
-     * @param Inxmmi Value to copy from.
+     * @param Inxmmi value to copy from.
      */
     vecint64& uX_callconv operator=(const __m128i Inxmmi);
 
     /**
      * Assignment operator to convert from type __int64*.
      *
-     * @param Inpint64 Value to copy from.
+     * @param Inpint64 value to copy from.
      */
     vecint64& uX_callconv operator=(uX_InReads(2) const __int64* Inpint64);
 
 protected:
+
+private:
     union
     {
         __m128i  m128_xmmi;
@@ -1154,16 +1169,16 @@ protected:
         __int64 m128_iq[2];
     };
 
-private:
-    static uX_const int m128_xmm_size = 16;
-    static uX_const int m128_i64_ptr_lenght = 2;
-    static uX_const int m128_i64_ptr_size = 16;
-    static uX_const int m128_i64_size = 8;
+    static uX_const uint32_t m128_xmm_size = 16;
+    static uX_const uint32_t m128_i64_ptr_lenght = 2;
+    static uX_const uint32_t m128_i64_ptr_size = 16;
+    static uX_const uint32_t m128_i64_size = 8;
 
 }vecint64_t;
 
-typedef struct uX_EXAPI vecuint64
+typedef class uX_EXAPI vecuint64
 {
+public:
     vecuint64()uX_default;
     ~vecuint64()uX_default;
 
@@ -1183,14 +1198,14 @@ typedef struct uX_EXAPI vecuint64
     /**
      * Constructor initialization from type __m128i.
      *
-     * @param Inxmmi Value to copy from.
+     * @param Inxmmi value to copy from.
      */
     uX_constexpr vecuint64(const __m128i Inxmmi) : m128_xmmi{Inxmmi} {}
 
     /**
      * Constructor initialization from type unsigned __int64*.
      *
-     * @param Inpint64 Value to copy from.
+     * @param Inpint64 value to copy from.
      */
     uX_explicit vecuint64(uX_InReads(2) const unsigned __int64* Inpint64);
 
@@ -1203,18 +1218,20 @@ typedef struct uX_EXAPI vecuint64
     /**
      * Assignment operator to convert from type __m128i.
      *
-     * @param Inxmmi Value to copy from.
+     * @param Inxmmi value to copy from.
      */
     vecuint64& uX_callconv operator=(const __m128i Inxmmi);
 
     /**
      * Assignment operator to convert from type unsigned __int64*.
      *
-     * @param Inpint64 Value to copy from.
+     * @param Inpint64 value to copy from.
      */
     vecuint64& uX_callconv operator=(uX_InReads(2) const unsigned __int64* Inpint64);
 
 protected:
+
+private:
     union
     {
         __m128i           m128_xmmi;
@@ -1225,16 +1242,16 @@ protected:
         unsigned __int64 m128_uq[2];
     };
 
-private:
-    static uX_const int m128_xmm_size = 16;
-    static uX_const int m128_ui64_ptr_lenght = 2;
-    static uX_const int m128_ui64_ptr_size = 16;
-    static uX_const int m128_ui64_size = 8;
+    static uX_const uint32_t m128_xmm_size = 16;
+    static uX_const uint32_t m128_ui64_ptr_lenght = 2;
+    static uX_const uint32_t m128_ui64_ptr_size = 16;
+    static uX_const uint32_t m128_ui64_size = 8;
 
 }vecuint64_t;
 
-typedef struct uX_EXAPI vecdouble
+typedef class uX_EXAPI vecdouble
 {
+public:
     vecdouble()uX_default;
     ~vecdouble()uX_default;
 
@@ -1254,14 +1271,14 @@ typedef struct uX_EXAPI vecdouble
     /**
      * Constructor initialization from type __m128d.
      *
-     * @param Inxmmd Value to copy from.
+     * @param Inxmmd value to copy from.
      */
     uX_constexpr vecdouble(const __m128d Inxmmd) : m128_xmmd{Inxmmd} {}
     
     /**
      * Constructor initialization from type double*.
      *
-     * @param Inpdouble Value to copy from.
+     * @param Inpdouble value to copy from.
      */
     uX_explicit vecdouble(uX_InReads(2) const double* Inpdouble);
 
@@ -1274,18 +1291,20 @@ typedef struct uX_EXAPI vecdouble
     /**
      * Assignment operator to convert from type __m128d.
      *
-     * @param Inxmmd Value to copy from.
+     * @param Inxmmd value to copy from.
      */
     vecdouble& uX_callconv operator=(const __m128d Inxmmd);
 
     /**
      * Assignment operator to convert from type double*.
      *
-     * @param Inpdouble Value to copy from.
+     * @param Inpdouble value to copy from.
      */
     vecdouble& uX_callconv operator=(uX_InReads(2) const double* Inpdouble);
 
 protected:
+
+private:
     union
     {
         __m128d m128_xmmd;
@@ -1296,19 +1315,19 @@ protected:
         double  m128_d[2];
     };
 
-private:
-    static uX_const int m128_xmm_size = 16;
-    static uX_const int m128_dbl_ptr_lenght = 2;
-    static uX_const int m128_dbl_ptr_size = 16;
-    static uX_const int m128_dbl_size = 8;
+    static uX_const uint32_t m128_xmm_size = 16;
+    static uX_const uint32_t m128_dbl_ptr_lenght = 2;
+    static uX_const uint32_t m128_dbl_ptr_size = 16;
+    static uX_const uint32_t m128_dbl_size = 8;
 
 }vecdouble_t;
 #endif // uX_SSE2
 
 // Elementary Structs
 
-typedef struct uX_EXAPI vecfloat1
+typedef class uX_EXAPI vecfloat1
 {
+public:
     vecfloat1()uX_default;
     ~vecfloat1()uX_default;
 
@@ -1328,21 +1347,21 @@ typedef struct uX_EXAPI vecfloat1
     /**
      * Constructor initialization from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     uX_constexpr vecfloat1(const __m128 Inxmm) : m128_xmm(_uX_mm_move_ss(__m128_false, Inxmm)) {}
 
     /**
      * Constructor initialization from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     uX_constexpr vecfloat1(const vecfloat Inxmm) : m128_xmm(_uX_mm_move_ss(__m128_false, Inxmm)) {}
 
     /**
      * Constructor initialization from type float.
      *
-     * @param Infloat Value to copy from.
+     * @param Infloat value to copy from.
      */
     uX_explicit vecfloat1(float Infloat);
 
@@ -1355,21 +1374,21 @@ typedef struct uX_EXAPI vecfloat1
     /**
      * Assignment operator to convert from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     vecfloat1& uX_callconv operator=(const __m128 Inxmm);
 
     /**
      * Assignment operator to convert from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     vecfloat1& uX_callconv operator=(const vecfloat Inxmm);
 
     /**
      * Assignment operator to convert from type float.
      *
-     * @param Infloat Value to copy from.
+     * @param Infloat value to copy from.
      */
     vecfloat1& uX_callconv operator=(float Infloat);
 
@@ -1394,20 +1413,22 @@ typedef struct uX_EXAPI vecfloat1
     float& uX_callconv ref_x();
 
 protected:
+
+private:
     union
     {
         __m128 m128_xmm;
         float        _x;
     };
 
-private:
-    static uX_const int m128_xmm_size = 16;
-    static uX_const int m128_flt_size = 4;
+    static uX_const uint32_t m128_xmm_size = 16;
+    static uX_const uint32_t m128_flt_size = 4;
 
 }vecfloat1_t;
 
-typedef struct uX_EXAPI vecfloat2
+typedef class uX_EXAPI vecfloat2
 {
+public:
     vecfloat2()uX_default;
     ~vecfloat2()uX_default;
 
@@ -1427,29 +1448,29 @@ typedef struct uX_EXAPI vecfloat2
     /**
      * Constructor initialization from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     uX_constexpr vecfloat2(const __m128 Inxmm) : m128_xmm(_uX_MM_SHUFFLER_IM_PS(Inxmm, __m128_false, 0, 1, 2, 3)) {}
 
     /**
      * Constructor initialization from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     uX_constexpr vecfloat2(const vecfloat Inxmm) : m128_xmm(_uX_MM_SHUFFLER_IM_PS(Inxmm, __m128_false, 0, 1, 2, 3)) {}
 
     /**
      * Constructor initialization from 2 type float.
      *
-     * @param Infloat_X Value to copy from.
-     * @param Infloat_Y Value to copy from.
+     * @param Infloat_X value to copy from.
+     * @param Infloat_Y value to copy from.
      */
     uX_explicit vecfloat2(float Infloat_X, float Infloat_Y);
 
     /**
      * Constructor initialization from type float*.
      *
-     * @param Inpfloat Value to copy from.
+     * @param Inpfloat value to copy from.
      */
     uX_explicit vecfloat2(uX_InReads(2) const float* Inpfloat);
 
@@ -1462,21 +1483,21 @@ typedef struct uX_EXAPI vecfloat2
     /**
      * Assignment operator to convert from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     vecfloat2& uX_callconv operator=(const __m128 Inxmm);
 
     /**
      * Assignment operator to convert from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     vecfloat2& uX_callconv operator=(const vecfloat Inxmm);
 
     /**
      * Assignment operator to convert from type float*.
      *
-     * @param Inpfloat Value to copy from.
+     * @param Inpfloat value to copy from.
      */
     vecfloat2& uX_callconv operator=(uX_InReads(2) const float* Inpfloat);
 
@@ -1511,6 +1532,8 @@ typedef struct uX_EXAPI vecfloat2
     float& uX_callconv ref_y();
 
 protected:
+
+private:
     union
     {
         __m128  m128_xmm;
@@ -1521,16 +1544,16 @@ protected:
         float  m128_f[2];
     };
 
-private:
-    static uX_const int m128_xmm_size = 16;
-    static uX_const int m128_flt_ptr_lenght = 2;
-    static uX_const int m128_flt_ptr_size = 8;
-    static uX_const int m128_flt_size = 4;
+    static uX_const uint32_t m128_xmm_size = 16;
+    static uX_const uint32_t m128_flt_ptr_lenght = 2;
+    static uX_const uint32_t m128_flt_ptr_size = 8;
+    static uX_const uint32_t m128_flt_size = 4;
 
 }vecfloat2_t;
 
-typedef struct uX_EXAPI vecfloat3
+typedef class uX_EXAPI vecfloat3
 {
+public:
     vecfloat3()uX_default;
     ~vecfloat3()uX_default;
 
@@ -1550,30 +1573,30 @@ typedef struct uX_EXAPI vecfloat3
     /**
      * Constructor initialization from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     uX_constexpr vecfloat3(const __m128 Inxmm) : m128_xmm(_uX_MM_SHUFFLER_IM_PS(Inxmm, _uX_mm_move_ss(__m128_false, _uX_MM_SHUFFLER_IM_PS(Inxmm, Inxmm, 2, 2, 2, 2)), 0, 1, 2, 3)) {}
     
     /**
      * Constructor initialization from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     uX_constexpr vecfloat3(const vecfloat Inxmm) : m128_xmm(_uX_MM_SHUFFLER_IM_PS(Inxmm, _uX_mm_move_ss(__m128_false, _uX_MM_SHUFFLER_IM_PS(Inxmm, Inxmm, 2, 2, 2, 2)), 0, 1, 2, 3)) {}
 
     /**
      * Constructor initialization from 3 type float.
      *
-     * @param Infloat_X Value to copy from.
-     * @param Infloat_Y Value to copy from.
-     * @param Infloat_Z Value to copy from.
+     * @param Infloat_X value to copy from.
+     * @param Infloat_Y value to copy from.
+     * @param Infloat_Z value to copy from.
      */
     uX_explicit vecfloat3(float Infloat_X, float Infloat_Y, float Infloat_Z);
 
     /**
      * Constructor initialization from type float*.
      *
-     * @param Inpfloat Value to copy from.
+     * @param Inpfloat value to copy from.
      */
     uX_explicit vecfloat3(uX_InReads(3) const float* Inpfloat);
 
@@ -1586,21 +1609,21 @@ typedef struct uX_EXAPI vecfloat3
     /**
      * Assignment operator to convert from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     vecfloat3& uX_callconv operator=(const __m128 Inxmm);
 
     /**
      * Assignment operator to convert from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     vecfloat3& uX_callconv operator=(const vecfloat Inxmm);
 
     /**
      * Assignment operator to convert from type float*.
      *
-     * @param Inpfloat Value to copy from.
+     * @param Inpfloat value to copy from.
      */
     vecfloat3& uX_callconv operator=(uX_InReads(3) const float* Inpfloat);
 
@@ -1645,6 +1668,8 @@ typedef struct uX_EXAPI vecfloat3
     float& uX_callconv ref_z();
 
 protected:
+
+private:
     union
     {
         __m128      m128_xmm;
@@ -1655,16 +1680,16 @@ protected:
         float      m128_f[3];
     };
 
-private:
-    static uX_const int m128_xmm_size = 16;
-    static uX_const int m128_flt_ptr_lenght = 3;
-    static uX_const int m128_flt_ptr_size = 12;
-    static uX_const int m128_flt_size = 4;
+    static uX_const uint32_t m128_xmm_size = 16;
+    static uX_const uint32_t m128_flt_ptr_lenght = 3;
+    static uX_const uint32_t m128_flt_ptr_size = 12;
+    static uX_const uint32_t m128_flt_size = 4;
 
 }vecfloat3_t;
 
-typedef struct uX_EXAPI vecfloat4
+typedef class uX_EXAPI vecfloat4
 {
+public:
     vecfloat4()uX_default;
     ~vecfloat4()uX_default;
 
@@ -1684,31 +1709,31 @@ typedef struct uX_EXAPI vecfloat4
     /**
      * Constructor initialization from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     uX_constexpr vecfloat4(const __m128 Inxmm) : m128_xmm(Inxmm) {}
 
     /**
      * Constructor initialization from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     uX_constexpr vecfloat4(const vecfloat Inxmm) : m128_xmm(Inxmm) {}
 
     /**
      * Constructor initialization from 4 type float.
      *
-     * @param Infloat_X Value to copy from.
-     * @param Infloat_Y Value to copy from.
-     * @param Infloat_Z Value to copy from.
-     * @param Infloat_W Value to copy from.
+     * @param Infloat_X value to copy from.
+     * @param Infloat_Y value to copy from.
+     * @param Infloat_Z value to copy from.
+     * @param Infloat_W value to copy from.
      */
     uX_explicit vecfloat4(float Infloat_X, float Infloat_Y, float Infloat_Z, float Infloat_W);
 
     /**
      * Constructor initialization from type float*.
      *
-     * @param Inpfloat Value to copy from.
+     * @param Inpfloat value to copy from.
      */
     uX_explicit vecfloat4(uX_InReads(4) const float* Inpfloat);
 
@@ -1721,21 +1746,21 @@ typedef struct uX_EXAPI vecfloat4
     /**
      * Assignment operator to convert from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     vecfloat4& uX_callconv operator=(const __m128 Inxmm);
 
     /**
      * Assignment operator to convert from type __m128.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     vecfloat4& uX_callconv operator=(const vecfloat Inxmm);
 
     /**
      * Assignment operator to convert from type float*.
      *
-     * @param Inpfloat Value to copy from.
+     * @param Inpfloat value to copy from.
      */
     vecfloat4& uX_callconv operator=(uX_InReads(4) const float* Inpfloat);
 
@@ -1800,6 +1825,8 @@ typedef struct uX_EXAPI vecfloat4
     float& uX_callconv ref_w();
 
 protected:
+
+private:
     union
     {
         __m128          m128_xmm;
@@ -1810,19 +1837,19 @@ protected:
         float          m128_f[4];
     };
 
-private:
-    static uX_const int m128_xmm_size = 16;
-    static uX_const int m128_flt_ptr_lenght = 4;
-    static uX_const int m128_flt_ptr_size = 16;
-    static uX_const int m128_flt_size = 4;
+    static uX_const uint32_t m128_xmm_size = 16;
+    static uX_const uint32_t m128_flt_ptr_lenght = 4;
+    static uX_const uint32_t m128_flt_ptr_size = 16;
+    static uX_const uint32_t m128_flt_size = 4;
 
 }vecfloat4_t;
 
 // double precision
 
 #ifdef uX_SSE2
-typedef struct uX_EXAPI vecdouble1
+typedef class uX_EXAPI vecdouble1
 {
+public:
     vecdouble1()uX_default;
     ~vecdouble1()uX_default;
 
@@ -1842,14 +1869,14 @@ typedef struct uX_EXAPI vecdouble1
     /**
      * Constructor initialization from type __m128d.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     uX_constexpr vecdouble1(const __m128d Inxmmd) : m128_xmmd{Inxmmd} {}
 
     /**
      * Constructor initialization from type double.
      *
-     * @param Indouble Value to copy from.
+     * @param Indouble value to copy from.
      */
     uX_explicit vecdouble1(const double Indouble);
     
@@ -1862,32 +1889,34 @@ typedef struct uX_EXAPI vecdouble1
     /**
      * Assignment operator to convert from type __m128d.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     vecdouble1& uX_callconv operator=(const __m128d Inxmmd);
 
     /**
      * Assignment operator to convert from type double.
      *
-     * @param Indouble Value to copy from.
+     * @param Indouble value to copy from.
      */
     vecdouble1& uX_callconv operator=(const double Indouble);
 
 protected:
-    union
-    {
-        __m128d m128_xmmd;
-        double     m128_d;
-    };
 
 private:
-    static uX_const int m128_xmm_size = 16;
-    static uX_const int m128_dbl_size = 8;
+    union
+    {
+        __m128d         m128_xmmd;
+        double             m128_d;
+    };
+
+    static uX_const uint32_t m128_xmm_size = 16;
+    static uX_const uint32_t m128_dbl_size = 8;
 
 }vecdouble1_t;
 
-typedef struct uX_EXAPI vecdouble2
+typedef class uX_EXAPI vecdouble2
 {
+public:
     vecdouble2()uX_default;
     ~vecdouble2()uX_default;
 
@@ -1907,22 +1936,22 @@ typedef struct uX_EXAPI vecdouble2
     /**
      * Constructor initialization from type __m128d.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     uX_constexpr vecdouble2(const __m128d Inxmmd) : m128_xmmd{Inxmmd} {}
 
     /**
      * Constructor initialization from 2 type double.
      *
-     * @param Indouble_X Value to copy from.
-     * @param Indouble_Y Value to copy from.
+     * @param Indouble_X value to copy from.
+     * @param Indouble_Y value to copy from.
      */
     uX_explicit vecdouble2(const double Indouble_X, const double Indouble_Y);
 
     /**
      * Constructor initialization from type double*.
      *
-     * @param Inpdouble Value to copy from.
+     * @param Inpdouble value to copy from.
      */
     uX_explicit vecdouble2(uX_InReads(2) const double* Inpdouble);
 
@@ -1935,38 +1964,40 @@ typedef struct uX_EXAPI vecdouble2
     /**
      * Assignment operator to convert from type __m128d.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     vecdouble2& uX_callconv operator=(const __m128d Inxmmd);
     
     /**
      * Assignment operator to convert from type double*.
      *
-     * @param Inpdouble Value to copy from.
+     * @param Inpdouble value to copy from.
      */
     vecdouble2& uX_callconv operator=(uX_InReads(2) const double* Inpdouble);
 
 protected:
-    union
-    {
-        __m128d m128_xmmd;
-        struct
-        {
-            double _x, _y;
-        };
-        double  m128_d[2];
-    };
 
 private:
-    static uX_const int m128_xmm_size = 16;
-    static uX_const int m128_dbl_ptr_lenght = 2;
-    static uX_const int m128_dbl_ptr_size = 16;
-    static uX_const int m128_dbl_size = 8;
+    union
+    {
+        __m128d         m128_xmmd;
+        struct
+        {
+            double         _x, _y;
+        };
+        double          m128_d[2];
+    };
+
+    static uX_const uint32_t m128_xmm_size = 16;
+    static uX_const uint32_t m128_dbl_ptr_lenght = 2;
+    static uX_const uint32_t m128_dbl_ptr_size = 16;
+    static uX_const uint32_t m128_dbl_size = 8;
 
 }vecdouble2_t;
 
-typedef struct uX_EXAPI vecdouble3
+typedef class uX_EXAPI vecdouble3
 {
+public:
     vecdouble3()uX_default;
     ~vecdouble3()uX_default;
 
@@ -1986,30 +2017,30 @@ typedef struct uX_EXAPI vecdouble3
     /**
      * Constructor initialization from 2 type __m128d.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     uX_constexpr vecdouble3(const __m128d Inxmmd_0, const __m128d Inxmmd_1) : m128_xmmd{Inxmmd_0,Inxmmd_1} {}
     
     /**
      * Constructor initialization from type __m128*.
      *
-     * @param Inpxmm Value to copy from.
+     * @param Inpxmm value to copy from.
      */
     uX_constexpr vecdouble3(uX_InReads(2) const __m128d* Inpxmmd) : m128_xmmd{Inpxmmd[0],Inpxmmd[1]} {}
 
     /**
      * Constructor initialization from 3 type double.
      *
-     * @param Indouble_X Value to copy from.
-     * @param Indouble_Y Value to copy from.
-     * @param Indouble_Z Value to copy from.
+     * @param Indouble_X value to copy from.
+     * @param Indouble_Y value to copy from.
+     * @param Indouble_Z value to copy from.
      */
     uX_explicit vecdouble3(const double Indouble_X, const double Indouble_Y, const double Indouble_Z);
 
     /**
      * Constructor initialization from type double*.
      *
-     * @param Inpdouble Value to copy from.
+     * @param Inpdouble value to copy from.
      */
     uX_explicit vecdouble3(uX_InReads(3) const double* Inpdouble);
     
@@ -2022,45 +2053,47 @@ typedef struct uX_EXAPI vecdouble3
     /**
      * Assignment operator to convert from type __m128d*.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     vecdouble3& uX_callconv operator=(uX_InReads(2) const __m128d* Inpxmmd);
 
     /**
      * Assignment operator to convert from type double*.
      *
-     * @param Inpdouble Value to copy from.
+     * @param Inpdouble value to copy from.
      */
     vecdouble3& uX_callconv operator=(uX_InReads(3) const double* Inpdouble);
 
 protected:
+
+private:
     union
     {
         struct
         {
-            __m128d m128_xmmd_0;
-            __m128d m128_xmmd_1;
+            __m128d     m128_xmmd_0;
+            __m128d     m128_xmmd_1;
         };
-        __m128d    m128_xmmd[2];
+        __m128d        m128_xmmd[2];
         struct
         {
-            double   _x, _y, _z;
+            double       _x, _y, _z;
         };
-        double        m128_d[3];
+        double            m128_d[3];
     };
 
-private:
-    static uX_const int m128_xmm_ptr_lenght = 2;
-    static uX_const int m128_xmm_ptr_size = 32;
-    static uX_const int m128_xmm_size = 16;
-    static uX_const int m128_dbl_ptr_lenght = 3;
-    static uX_const int m128_dbl_ptr_size = 24;
-    static uX_const int m128_dbl_size = 8;
+    static uX_const uint32_t m128_xmm_ptr_lenght = 2;
+    static uX_const uint32_t m128_xmm_ptr_size = 32;
+    static uX_const uint32_t m128_xmm_size = 16;
+    static uX_const uint32_t m128_dbl_ptr_lenght = 3;
+    static uX_const uint32_t m128_dbl_ptr_size = 24;
+    static uX_const uint32_t m128_dbl_size = 8;
 
 }vecdouble3_t;
 
-typedef struct uX_EXAPI vecdouble4
+typedef class uX_EXAPI vecdouble4
 {
+public:
     vecdouble4()uX_default;
     ~vecdouble4()uX_default;
 
@@ -2080,31 +2113,31 @@ typedef struct uX_EXAPI vecdouble4
     /**
      * Constructor initialization from 2 type __m128d.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     uX_constexpr vecdouble4(const __m128d Inxmmd_0, const __m128d Inxmmd_1) : m128_xmmd{Inxmmd_0,Inxmmd_1} {}
     
     /**
      * Constructor initialization from type __m128*.
      *
-     * @param Inpxmm Value to copy from.
+     * @param Inpxmm value to copy from.
      */
     uX_constexpr vecdouble4(uX_InReads(2) const __m128d* Inpxmmd) : m128_xmmd{Inpxmmd[0],Inpxmmd[1]} {}
 
     /**
      * Constructor initialization from 4 type double.
      *
-     * @param Indouble_X Value to copy from.
-     * @param Indouble_Y Value to copy from.
-     * @param Indouble_Z Value to copy from.
-     * @param Indouble_W Value to copy from.
+     * @param Indouble_X value to copy from.
+     * @param Indouble_Y value to copy from.
+     * @param Indouble_Z value to copy from.
+     * @param Indouble_W value to copy from.
      */
     uX_explicit vecdouble4(const double Indouble_X, const double Indouble_Y, const double Indouble_Z, const double Indouble_W);
 
     /**
      * Constructor initialization from type double*.
      *
-     * @param Inpdouble Value to copy from.
+     * @param Inpdouble value to copy from.
      */
     uX_explicit vecdouble4(uX_InReads(4) const double* Inpdouble);
 
@@ -2117,48 +2150,50 @@ typedef struct uX_EXAPI vecdouble4
     /**
      * Assignment operator to convert from type __m128d*.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     vecdouble4& uX_callconv operator=(uX_InReads(2) const __m128d* Inpxmmd);
 
     /**
      * Assignment operator to convert from type double*.
      *
-     * @param Inpdouble Value to copy from.
+     * @param Inpdouble value to copy from.
      */
     vecdouble4& uX_callconv operator=(uX_InReads(4) const double* Inpdouble);
 
 protected:
+
+private:
     union
     {
         struct
         {
-            __m128d   m128_xmmd_0;
-            __m128d   m128_xmmd_1;
+            __m128d         m128_xmmd_0;
+            __m128d         m128_xmmd_1;
         };
-        __m128d      m128_xmmd[2];
+        __m128d            m128_xmmd[2];
         struct
         {
-            double _x, _y, _z, _w;
+            double       _x, _y, _z, _w;
         };
-        double          m128_d[4];
+        double                m128_d[4];
     };
 
-private:
-    static uX_const int m128_xmm_ptr_lenght = 2;
-    static uX_const int m128_xmm_ptr_size = 32;
-    static uX_const int m128_xmm_size = 16;
-    static uX_const int m128_dbl_ptr_lenght = 4;
-    static uX_const int m128_dbl_ptr_size = 32;
-    static uX_const int m128_dbl_size = 8;
+    static uX_const uint32_t m128_xmm_ptr_lenght = 2;
+    static uX_const uint32_t m128_xmm_ptr_size = 32;
+    static uX_const uint32_t m128_xmm_size = 16;
+    static uX_const uint32_t m128_dbl_ptr_lenght = 4;
+    static uX_const uint32_t m128_dbl_ptr_size = 32;
+    static uX_const uint32_t m128_dbl_size = 8;
 
 }vecdouble4_t;
 #endif // uX_SSE2
 
 // MATRIX'S
 
-typedef struct uX_EXAPI vecfloat3x3
+typedef class uX_EXAPI vecfloat3x3
 {
+public:
     vecfloat3x3()uX_default;
     ~vecfloat3x3()uX_default;
 
@@ -2178,31 +2213,31 @@ typedef struct uX_EXAPI vecfloat3x3
     /**
      * Constructor initialization from 3 type __m128.
      *
-     * @param Inxmm_0 Value to copy from.
-     * @param Inxmm_1 Value to copy from.
-     * @param Inxmm_2 Value to copy from.
+     * @param Inxmm_0 value to copy from.
+     * @param Inxmm_1 value to copy from.
+     * @param Inxmm_2 value to copy from.
      */
     uX_constexpr vecfloat3x3(const __m128 Inxmm_0, const __m128 Inxmm_1, const __m128 Inxmm_2) : m128_xmm_0(Inxmm_0), m128_xmm_1(Inxmm_1) {}
 
     /**
      * Constructor initialization from type __m128*.
      *
-     * @param Inpxmm Value to copy from.
+     * @param Inpxmm value to copy from.
      */
     uX_constexpr vecfloat3x3(uX_InReads(3) const __m128* Inpxmm) : m128_xmm{ Inpxmm[0], Inpxmm[1], Inpxmm[2] } {}
 
     /**
      * Constructor initialization from 4x4 type floats.
      *
-     * @param Infloat_X0 Value to copy from.
-     * @param Infloat_X1 Value to copy from.
-     * @param Infloat_X2 Value to copy from.
-     * @param Infloat_Y0 Value to copy from.
-     * @param Infloat_Y1 Value to copy from.
-     * @param Infloat_Y2 Value to copy from.
-     * @param Infloat_Z0 Value to copy from.
-     * @param Infloat_Z1 Value to copy from.
-     * @param Infloat_Z2 Value to copy from.
+     * @param Infloat_X0 value to copy from.
+     * @param Infloat_X1 value to copy from.
+     * @param Infloat_X2 value to copy from.
+     * @param Infloat_Y0 value to copy from.
+     * @param Infloat_Y1 value to copy from.
+     * @param Infloat_Y2 value to copy from.
+     * @param Infloat_Z0 value to copy from.
+     * @param Infloat_Z1 value to copy from.
+     * @param Infloat_Z2 value to copy from.
      */
     uX_explicit vecfloat3x3(float Infloat_X0, float Infloat_X1, float Infloat_X2,
                             float Infloat_Y0, float Infloat_Y1, float Infloat_Y2, 
@@ -2211,7 +2246,7 @@ typedef struct uX_EXAPI vecfloat3x3
     /**
      * Constructor initialization from type float*.
      *
-     * @param Inpfloat Value to copy from.
+     * @param Inpfloat value to copy from.
      */
     uX_explicit vecfloat3x3(uX_InReads(9) const float* Inpfloat);
 
@@ -2224,50 +2259,52 @@ typedef struct uX_EXAPI vecfloat3x3
     /**
      * Assignment operator to convert from type __m128*.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     vecfloat3x3& uX_callconv operator=(uX_InReads(3) const __m128* Inpxmm);
 
     /**
      * Assignment operator to convert from type float*.
      *
-     * @param Inpfloat Value to copy from.
+     * @param Inpfloat value to copy from.
      */
     vecfloat3x3& uX_callconv operator=(uX_InReads(9) const float* Inpfloat);
 
 protected:
+
+private:
     union
     {
         struct
         {
-            __m128   m128_xmm_0;
-            __m128   m128_xmm_1;
+            __m128          m128_xmm_0;
+            __m128          m128_xmm_1;
         };
-        __m128      m128_xmm[3];
+        __m128             m128_xmm[3];
         struct
         {
-            float _11, _12, _13;
-            float _21, _22, _23;
-            float _31, _32, _33;
+            float        _11, _12, _13;
+            float        _21, _22, _23;
+            float        _31, _32, _33;
         };
-        float     m128_fm[3][3];
-        float         m128_f[9];
+        float            m128_fm[3][3];
+        float                m128_f[9];
     };
 
-private:
-    static uX_const int m128_xmm_ptr_lenght = 3;
-    static uX_const int m128_xmm_ptr_size = 48;
-    static uX_const int m128_xmm_size = 16;
-    static uX_const int m128_row_lenght = 3;
-    static uX_const int m128_column_lenght = 3;
-    static uX_const int m128_flt_ptr_lenght = 9;
-    static uX_const int m128_flt_ptr_size = 36;
-    static uX_const int m128_flt_size = 4;
+    static uX_const uint32_t m128_xmm_ptr_lenght = 3;
+    static uX_const uint32_t m128_xmm_ptr_size = 48;
+    static uX_const uint32_t m128_xmm_size = 16;
+    static uX_const uint32_t m128_row_lenght = 3;
+    static uX_const uint32_t m128_column_lenght = 3;
+    static uX_const uint32_t m128_flt_ptr_lenght = 9;
+    static uX_const uint32_t m128_flt_ptr_size = 36;
+    static uX_const uint32_t m128_flt_size = 4;
 
 }vecfloat3x3_t;
 
-typedef struct uX_EXAPI vecfloat4x3
+typedef class uX_EXAPI vecfloat4x3
 {
+public:
     vecfloat4x3()uX_default;
     ~vecfloat4x3()uX_default;
 
@@ -2287,10 +2324,10 @@ typedef struct uX_EXAPI vecfloat4x3
     /**
      * Constructor initialization from 4 type __m128.
      *
-     * @param Inxmm_0 Value to copy from.
-     * @param Inxmm_1 Value to copy from.
-     * @param Inxmm_2 Value to copy from.
-     * @param Inxmm_3 Value to copy from.
+     * @param Inxmm_0 value to copy from.
+     * @param Inxmm_1 value to copy from.
+     * @param Inxmm_2 value to copy from.
+     * @param Inxmm_3 value to copy from.
      */
     uX_constexpr vecfloat4x3(const __m128 Inxmm_0, const __m128 Inxmm_1, const __m128 Inxmm_2, const __m128 Inxmm_3) : m128_xmm_0(Inxmm_0), m128_xmm_1(Inxmm_1), 
                                                                                                                        m128_xmm_2(Inxmm_2), m128_xmm_3(Inxmm_3) {}
@@ -2298,25 +2335,25 @@ typedef struct uX_EXAPI vecfloat4x3
     /**
      * Constructor initialization from type __m128*.
      *
-     * @param Inpxmm Value to copy from.
+     * @param Inpxmm value to copy from.
      */
     uX_constexpr vecfloat4x3(uX_InReads(4) const __m128* Inpxmm) : m128_xmm{ Inpxmm[0], Inpxmm[1], Inpxmm[2], Inpxmm[3] } {}
 
     /**
      * Constructor initialization from 4x4 type floats.
      *
-     * @param Infloat_X0 Value to copy from.
-     * @param Infloat_X1 Value to copy from.
-     * @param Infloat_X2 Value to copy from.
-     * @param Infloat_Y0 Value to copy from.
-     * @param Infloat_Y1 Value to copy from.
-     * @param Infloat_Y2 Value to copy from.
-     * @param Infloat_Z0 Value to copy from.
-     * @param Infloat_Z1 Value to copy from.
-     * @param Infloat_Z2 Value to copy from.
-     * @param Infloat_W0 Value to copy from.
-     * @param Infloat_W1 Value to copy from.
-     * @param Infloat_W2 Value to copy from.
+     * @param Infloat_X0 value to copy from.
+     * @param Infloat_X1 value to copy from.
+     * @param Infloat_X2 value to copy from.
+     * @param Infloat_Y0 value to copy from.
+     * @param Infloat_Y1 value to copy from.
+     * @param Infloat_Y2 value to copy from.
+     * @param Infloat_Z0 value to copy from.
+     * @param Infloat_Z1 value to copy from.
+     * @param Infloat_Z2 value to copy from.
+     * @param Infloat_W0 value to copy from.
+     * @param Infloat_W1 value to copy from.
+     * @param Infloat_W2 value to copy from.
      */
     uX_explicit vecfloat4x3(float Infloat_X0, float Infloat_X1, float Infloat_X2,
                             float Infloat_Y0, float Infloat_Y1, float Infloat_Y2, 
@@ -2326,7 +2363,7 @@ typedef struct uX_EXAPI vecfloat4x3
     /**
      * Constructor initialization from type float*.
      *
-     * @param Inpfloat Value to copy from.
+     * @param Inpfloat value to copy from.
      */
     uX_explicit vecfloat4x3(uX_InReads(12) const float* Inpfloat);
 
@@ -2339,53 +2376,55 @@ typedef struct uX_EXAPI vecfloat4x3
     /**
      * Assignment operator to convert from type __m128*.
      *
-     * @param Inxmm Value to copy from.
+     * @param Inxmm value to copy from.
      */
     vecfloat4x3& uX_callconv operator=(uX_InReads(4) const __m128* Inpxmm);
 
     /**
      * Assignment operator to convert from type float*.
      *
-     * @param Inpfloat Value to copy from.
+     * @param Inpfloat value to copy from.
      */
     vecfloat4x3& uX_callconv operator=(uX_InReads(12) const float* Inpfloat);
 
 protected:
+
+private:
     union
     {
         struct
         {
-            __m128   m128_xmm_0;
-            __m128   m128_xmm_1;
-            __m128   m128_xmm_2;
-            __m128   m128_xmm_3;
+            __m128          m128_xmm_0;
+            __m128          m128_xmm_1;
+            __m128          m128_xmm_2;
+            __m128          m128_xmm_3;
         };
-        __m128      m128_xmm[4];
+        __m128             m128_xmm[4];
         struct
         {
-            float _11, _12, _13;
-            float _21, _22, _23;
-            float _31, _32, _33;
-            float _41, _42, _43;
+            float        _11, _12, _13;
+            float        _21, _22, _23;
+            float        _31, _32, _33;
+            float        _41, _42, _43;
         };
-        float     m128_fm[4][3];
-        float        m128_f[12];
+        float            m128_fm[4][3];
+        float               m128_f[12];
     };
 
-private:
-    static uX_const int m128_xmm_ptr_lenght = 4;
-    static uX_const int m128_xmm_ptr_size = 64;
-    static uX_const int m128_xmm_size = 16;
-    static uX_const int m128_row_lenght = 4;
-    static uX_const int m128_column_lenght = 3;
-    static uX_const int m128_flt_ptr_lenght = 12;
-    static uX_const int m128_flt_ptr_size = 48;
-    static uX_const int m128_flt_size = 4;
+    static uX_const uint32_t m128_xmm_ptr_lenght = 4;
+    static uX_const uint32_t m128_xmm_ptr_size = 64;
+    static uX_const uint32_t m128_xmm_size = 16;
+    static uX_const uint32_t m128_row_lenght = 4;
+    static uX_const uint32_t m128_column_lenght = 3;
+    static uX_const uint32_t m128_flt_ptr_lenght = 12;
+    static uX_const uint32_t m128_flt_ptr_size = 48;
+    static uX_const uint32_t m128_flt_size = 4;
 
 }vecfloat4x3_t;
 
-typedef struct uX_EXAPI vecfloat4x4
+typedef class uX_EXAPI vecfloat4x4
 {
+public:
     vecfloat4x4()uX_default;
     ~vecfloat4x4()uX_default;
 
@@ -2405,10 +2444,10 @@ typedef struct uX_EXAPI vecfloat4x4
     /**
      * Constructor initialization from 4 type __m128.
      *
-     * @param Inxmm_0 Value to copy from.
-     * @param Inxmm_1 Value to copy from.
-     * @param Inxmm_2 Value to copy from.
-     * @param Inxmm_3 Value to copy from.
+     * @param Inxmm_0 value to copy from.
+     * @param Inxmm_1 value to copy from.
+     * @param Inxmm_2 value to copy from.
+     * @param Inxmm_3 value to copy from.
      */
     uX_constexpr vecfloat4x4(const __m128 Inxmm_0, const __m128 Inxmm_1, const __m128 Inxmm_2, const __m128 Inxmm_3) : m128_xmm_0(Inxmm_0), m128_xmm_1(Inxmm_1), 
                                                                                                                        m128_xmm_2(Inxmm_2), m128_xmm_3(Inxmm_3) {}
@@ -2416,29 +2455,29 @@ typedef struct uX_EXAPI vecfloat4x4
     /**
      * Constructor initialization from type __m128*.
      *
-     * @param Inpxmm Value to copy from.
+     * @param Inpxmm value to copy from.
      */
     uX_constexpr vecfloat4x4(uX_InReads(4) const __m128* Inpxmm) : m128_xmm{ Inpxmm[0], Inpxmm[1], Inpxmm[2], Inpxmm[3]} {}
 
     /**
      * Constructor initialization from 4x4 type floats.
      *
-     * @param Infloat_X0 Value to copy from.
-     * @param Infloat_X1 Value to copy from.
-     * @param Infloat_X2 Value to copy from.
-     * @param Infloat_X3 Value to copy from.
-     * @param Infloat_Y0 Value to copy from.
-     * @param Infloat_Y1 Value to copy from.
-     * @param Infloat_Y2 Value to copy from.
-     * @param Infloat_Y3 Value to copy from.
-     * @param Infloat_Z0 Value to copy from.
-     * @param Infloat_Z1 Value to copy from.
-     * @param Infloat_Z2 Value to copy from.
-     * @param Infloat_Z3 Value to copy from.
-     * @param Infloat_W0 Value to copy from.
-     * @param Infloat_W1 Value to copy from.
-     * @param Infloat_W2 Value to copy from.
-     * @param Infloat_W3 Value to copy from.
+     * @param Infloat_X0 value to copy from.
+     * @param Infloat_X1 value to copy from.
+     * @param Infloat_X2 value to copy from.
+     * @param Infloat_X3 value to copy from.
+     * @param Infloat_Y0 value to copy from.
+     * @param Infloat_Y1 value to copy from.
+     * @param Infloat_Y2 value to copy from.
+     * @param Infloat_Y3 value to copy from.
+     * @param Infloat_Z0 value to copy from.
+     * @param Infloat_Z1 value to copy from.
+     * @param Infloat_Z2 value to copy from.
+     * @param Infloat_Z3 value to copy from.
+     * @param Infloat_W0 value to copy from.
+     * @param Infloat_W1 value to copy from.
+     * @param Infloat_W2 value to copy from.
+     * @param Infloat_W3 value to copy from.
      */
     uX_explicit vecfloat4x4(float Infloat_X0, float Infloat_X1, float Infloat_X2, float Infloat_X3,
                             float Infloat_Y0, float Infloat_Y1, float Infloat_Y2, float Infloat_Y3,
@@ -2448,7 +2487,7 @@ typedef struct uX_EXAPI vecfloat4x4
     /**
      * Constructor initialization from type float*.
      *
-     * @param Inpfloat Value to copy from.
+     * @param Inpfloat value to copy from.
      */
     uX_explicit vecfloat4x4(uX_InReads(16) const float* Inpfloat);
 
@@ -2461,54 +2500,56 @@ typedef struct uX_EXAPI vecfloat4x4
     /**
      * Assignment operator to convert from type __m128*.
      *
-     * @param Inpxmm Value to copy from.
+     * @param Inpxmm value to copy from.
      */
     vecfloat4x4& uX_callconv operator=(uX_InReads(4) const __m128* Inpxmm);
 
     /**
      * Assignment operator to convert from type float*.
      *
-     * @param Inpfloat Value to copy from.
+     * @param Inpfloat value to copy from.
      */
     vecfloat4x4& uX_callconv operator=(uX_InReads(16) const float* Inpfloat);
 
 protected:
+
+private:
     union
     {
         struct
         {
-            __m128        m128_xmm_0;
-            __m128        m128_xmm_1;
-            __m128        m128_xmm_2;
-            __m128        m128_xmm_3;
+            __m128              m128_xmm_0;
+            __m128              m128_xmm_1;
+            __m128              m128_xmm_2;
+            __m128              m128_xmm_3;
         };
-        __m128           m128_xmm[4];
+        __m128                 m128_xmm[4];
         struct
         {
-            float _11, _12, _13, _14;
-            float _21, _22, _23, _24;
-            float _31, _32, _33, _34;
-            float _41, _42, _43, _44;
+            float       _11, _12, _13, _14;
+            float       _21, _22, _23, _24;
+            float       _31, _32, _33, _34;
+            float       _41, _42, _43, _44;
         };
-        float          m128_fm[4][4];
-        float             m128_f[16];
+        float                m128_fm[4][4];
+        float                   m128_f[16];
     };
 
-private:
-    static uX_const int m128_xmm_ptr_lenght = 4;
-    static uX_const int m128_xmm_ptr_size = 64;
-    static uX_const int m128_xmm_size = 16;
-    static uX_const int m128_row_lenght = 4;
-    static uX_const int m128_column_lenght = 4;
-    static uX_const int m128_flt_ptr_lenght = 16;
-    static uX_const int m128_flt_ptr_size = 64;
-    static uX_const int m128_flt_size = 4;
+    static uX_const uint32_t m128_xmm_ptr_lenght = 4;
+    static uX_const uint32_t m128_xmm_ptr_size = 64;
+    static uX_const uint32_t m128_xmm_size = 16;
+    static uX_const uint32_t m128_row_lenght = 4;
+    static uX_const uint32_t m128_column_lenght = 4;
+    static uX_const uint32_t m128_flt_ptr_lenght = 16;
+    static uX_const uint32_t m128_flt_ptr_size = 64;
+    static uX_const uint32_t m128_flt_size = 4;
 
 }vecfloat4x4_t;
 
 #ifdef uX_SSE2
-typedef struct uX_EXAPI vecdouble3x3
+typedef class uX_EXAPI vecdouble3x3
 {
+public:
     vecdouble3x3()uX_default;
     ~vecdouble3x3()uX_default;
 
@@ -2528,12 +2569,12 @@ typedef struct uX_EXAPI vecdouble3x3
     /**
      * Constructor initialization from 3 type __m128d.
      *
-     * @param Inxmmd_0 Value to copy from.
-     * @param Inxmmd_1 Value to copy from.
-     * @param Inxmmd_2 Value to copy from.
-     * @param Inxmmd_3 Value to copy from.
-     * @param Inxmmd_4 Value to copy from.
-     * @param Inxmmd_5 Value to copy from.
+     * @param Inxmmd_0 value to copy from.
+     * @param Inxmmd_1 value to copy from.
+     * @param Inxmmd_2 value to copy from.
+     * @param Inxmmd_3 value to copy from.
+     * @param Inxmmd_4 value to copy from.
+     * @param Inxmmd_5 value to copy from.
      */
     uX_constexpr vecdouble3x3(const __m128d Inxmmd_0, const __m128d Inxmmd_1, const __m128d Inxmmd_2, 
                               const __m128d Inxmmd_3, const __m128d Inxmmd_4, const __m128d Inxmmd_5) : m128_xmmd_0(Inxmmd_0), m128_xmmd_1(Inxmmd_1), m128_xmmd_2(Inxmmd_2), 
@@ -2542,22 +2583,22 @@ typedef struct uX_EXAPI vecdouble3x3
     /**
      * Constructor initialization from type __m128d*.
      *
-     * @param Inpxmmd Value to copy from.
+     * @param Inpxmmd value to copy from.
      */
     uX_constexpr vecdouble3x3(uX_InReads(6) const __m128d* Inpxmmd) : m128_xmmd{ Inpxmmd[0], Inpxmmd[1], Inpxmmd[2], Inpxmmd[3], Inpxmmd[4], Inpxmmd[5] } {}
 
     /**
      * Constructor initialization from 4x4 type doubles.
      *
-     * @param Indouble_X0 Value to copy from.
-     * @param Indouble_X1 Value to copy from.
-     * @param Indouble_X2 Value to copy from.
-     * @param Indouble_Y0 Value to copy from.
-     * @param Indouble_Y1 Value to copy from.
-     * @param Indouble_Y2 Value to copy from.
-     * @param Indouble_Z0 Value to copy from.
-     * @param Indouble_Z1 Value to copy from.
-     * @param Indouble_Z2 Value to copy from.
+     * @param Indouble_X0 value to copy from.
+     * @param Indouble_X1 value to copy from.
+     * @param Indouble_X2 value to copy from.
+     * @param Indouble_Y0 value to copy from.
+     * @param Indouble_Y1 value to copy from.
+     * @param Indouble_Y2 value to copy from.
+     * @param Indouble_Z0 value to copy from.
+     * @param Indouble_Z1 value to copy from.
+     * @param Indouble_Z2 value to copy from.
      */
     uX_explicit vecdouble3x3(const double Indouble_X0, const double Indouble_X1, const double Indouble_X2,
                              const double Indouble_Y0, const double Indouble_Y1, const double Indouble_Y2, 
@@ -2566,7 +2607,7 @@ typedef struct uX_EXAPI vecdouble3x3
     /**
      * Constructor initialization from type double*.
      *
-     * @param Inpdouble Value to copy from.
+     * @param Inpdouble value to copy from.
      */
     uX_explicit vecdouble3x3(uX_InReads(9) const double* Inpdouble);
 
@@ -2579,54 +2620,56 @@ typedef struct uX_EXAPI vecdouble3x3
     /**
      * Assignment operator to convert from type __m128d*.
      *
-     * @param Inpxmmd Value to copy from.
+     * @param Inpxmmd value to copy from.
      */
     vecdouble3x3& uX_callconv operator=(uX_InReads(6) const __m128d* Inpxmmd);
 
     /**
      * Assignment operator to convert from type double*.
      *
-     * @param Inpdouble Value to copy from.
+     * @param Inpdouble value to copy from.
      */
     vecdouble3x3& uX_callconv operator=(uX_InReads(9) const double* Inpdouble);
 
 protected:
+
+private:
     union
     {
         struct
         {
-            __m128d  m128_xmmd_0;
-            __m128d  m128_xmmd_1;
-            __m128d  m128_xmmd_2;
-            __m128d  m128_xmmd_3;
-            __m128d  m128_xmmd_4;
-            __m128d  m128_xmmd_5;
+            __m128d         m128_xmmd_0;
+            __m128d         m128_xmmd_1;
+            __m128d         m128_xmmd_2;
+            __m128d         m128_xmmd_3;
+            __m128d         m128_xmmd_4;
+            __m128d         m128_xmmd_5;
         };
-        __m128d     m128_xmmd[6];
+        __m128d            m128_xmmd[6];
         struct
         {
-            double _11, _12, _13;
-            double _21, _22, _23;
-            double _31, _32, _33;
+            double        _11, _12, _13;
+            double        _21, _22, _23;
+            double        _31, _32, _33;
         };
-        double     m128_dm[3][3];
-        double         m128_d[9];
+        double            m128_dm[3][3];
+        double                m128_d[9];
     };
 
-private:
-    static uX_const int m128_xmmd_ptr_lenght = 6;
-    static uX_const int m128_xmmd_ptr_size = 96;
-    static uX_const int m128_xmmd_size = 16;
-    static uX_const int m128_row_lenght = 3;
-    static uX_const int m128_column_lenght = 3;
-    static uX_const int m128_dbl_ptr_lenght = 9;
-    static uX_const int m128_dbl_ptr_size = 72;
-    static uX_const int m128_dbl_size = 8;
+    static uX_const uint32_t m128_xmmd_ptr_lenght = 6;
+    static uX_const uint32_t m128_xmmd_ptr_size = 96;
+    static uX_const uint32_t m128_xmmd_size = 16;
+    static uX_const uint32_t m128_row_lenght = 3;
+    static uX_const uint32_t m128_column_lenght = 3;
+    static uX_const uint32_t m128_dbl_ptr_lenght = 9;
+    static uX_const uint32_t m128_dbl_ptr_size = 72;
+    static uX_const uint32_t m128_dbl_size = 8;
 
 }vecdouble3x3_t;
 
-typedef struct uX_EXAPI vecdouble4x3
+typedef class uX_EXAPI vecdouble4x3
 {
+public:
     vecdouble4x3()uX_default;
     ~vecdouble4x3()uX_default;
 
@@ -2646,14 +2689,14 @@ typedef struct uX_EXAPI vecdouble4x3
     /**
      * Constructor initialization from 8 type __m128d.
      *
-     * @param Inxmmd_0 Value to copy from.
-     * @param Inxmmd_1 Value to copy from.
-     * @param Inxmmd_2 Value to copy from.
-     * @param Inxmmd_3 Value to copy from.
-     * @param Inxmmd_4 Value to copy from.
-     * @param Inxmmd_5 Value to copy from.
-     * @param Inxmmd_6 Value to copy from.
-     * @param Inxmmd_7 Value to copy from.
+     * @param Inxmmd_0 value to copy from.
+     * @param Inxmmd_1 value to copy from.
+     * @param Inxmmd_2 value to copy from.
+     * @param Inxmmd_3 value to copy from.
+     * @param Inxmmd_4 value to copy from.
+     * @param Inxmmd_5 value to copy from.
+     * @param Inxmmd_6 value to copy from.
+     * @param Inxmmd_7 value to copy from.
      */
     uX_constexpr vecdouble4x3(const __m128d Inxmmd_0, const __m128d Inxmmd_1, const __m128d Inxmmd_2, const __m128d Inxmmd_3,
                               const __m128d Inxmmd_4, const __m128d Inxmmd_5, const __m128d Inxmmd_6, const __m128d Inxmmd_7) : m128_xmmd_0(Inxmmd_0), m128_xmmd_1(Inxmmd_1), 
@@ -2664,25 +2707,25 @@ typedef struct uX_EXAPI vecdouble4x3
     /**
      * Constructor initialization from type __m128d*.
      *
-     * @param Inpxmmd Value to copy from.
+     * @param Inpxmmd value to copy from.
      */
     uX_constexpr vecdouble4x3(uX_InReads(8) const __m128d* Inpxmmd) : m128_xmmd{ Inpxmmd[0], Inpxmmd[1], Inpxmmd[2], Inpxmmd[3], Inpxmmd[4], Inpxmmd[5], Inpxmmd[6], Inpxmmd[7] } {}
 
     /**
      * Constructor initialization from 4x4 type doubles.
      *
-     * @param Indouble_X0 Value to copy from.
-     * @param Indouble_X1 Value to copy from.
-     * @param Indouble_X2 Value to copy from.
-     * @param Indouble_Y0 Value to copy from.
-     * @param Indouble_Y1 Value to copy from.
-     * @param Indouble_Y2 Value to copy from.
-     * @param Indouble_Z0 Value to copy from.
-     * @param Indouble_Z1 Value to copy from.
-     * @param Indouble_Z2 Value to copy from.
-     * @param Indouble_W0 Value to copy from.
-     * @param Indouble_W1 Value to copy from.
-     * @param Indouble_W2 Value to copy from.
+     * @param Indouble_X0 value to copy from.
+     * @param Indouble_X1 value to copy from.
+     * @param Indouble_X2 value to copy from.
+     * @param Indouble_Y0 value to copy from.
+     * @param Indouble_Y1 value to copy from.
+     * @param Indouble_Y2 value to copy from.
+     * @param Indouble_Z0 value to copy from.
+     * @param Indouble_Z1 value to copy from.
+     * @param Indouble_Z2 value to copy from.
+     * @param Indouble_W0 value to copy from.
+     * @param Indouble_W1 value to copy from.
+     * @param Indouble_W2 value to copy from.
      */
     uX_explicit vecdouble4x3(const double Indouble_X0, const double Indouble_X1, const double Indouble_X2,
                              const double Indouble_Y0, const double Indouble_Y1, const double Indouble_Y2, 
@@ -2692,7 +2735,7 @@ typedef struct uX_EXAPI vecdouble4x3
     /**
      * Constructor initialization from type double*.
      *
-     * @param Inpdouble Value to copy from.
+     * @param Inpdouble value to copy from.
      */
     uX_explicit vecdouble4x3(uX_InReads(12) const double* Inpdouble);
 
@@ -2705,57 +2748,59 @@ typedef struct uX_EXAPI vecdouble4x3
     /**
      * Assignment operator to convert from type __m128d*.
      *
-     * @param Inpxmmd Value to copy from.
+     * @param Inpxmmd value to copy from.
      */
     vecdouble4x3& uX_callconv operator=(uX_InReads(8) const __m128d* Inpxmmd);
 
     /**
      * Assignment operator to convert from type double*.
      *
-     * @param Inpdouble Value to copy from.
+     * @param Inpdouble value to copy from.
      */
     vecdouble4x3& uX_callconv operator=(uX_InReads(12) const double* Inpdouble);
 
 protected:
+
+private:
     union
     {
         struct
         {
-            __m128d  m128_xmmd_0;
-            __m128d  m128_xmmd_1;
-            __m128d  m128_xmmd_2;
-            __m128d  m128_xmmd_3;
-            __m128d  m128_xmmd_4;
-            __m128d  m128_xmmd_5;
-            __m128d  m128_xmmd_6;
-            __m128d  m128_xmmd_7;
+            __m128d         m128_xmmd_0;
+            __m128d         m128_xmmd_1;
+            __m128d         m128_xmmd_2;
+            __m128d         m128_xmmd_3;
+            __m128d         m128_xmmd_4;
+            __m128d         m128_xmmd_5;
+            __m128d         m128_xmmd_6;
+            __m128d         m128_xmmd_7;
         };
-        __m128d     m128_xmmd[8];
+        __m128d            m128_xmmd[8];
         struct
         {
-            double _11, _12, _13;
-            double _21, _22, _23;
-            double _31, _32, _33;
-            double _41, _42, _43;
+            double        _11, _12, _13;
+            double        _21, _22, _23;
+            double        _31, _32, _33;
+            double        _41, _42, _43;
         };
-        double     m128_dm[4][3];
-        double        m128_d[12];
+        double            m128_dm[4][3];
+        double               m128_d[12];
     };
 
-private:
-    static uX_const int m128_xmmd_ptr_lenght = 8;
-    static uX_const int m128_xmmd_ptr_size = 128;
-    static uX_const int m128_xmmd_size = 16;
-    static uX_const int m128_row_lenght = 4;
-    static uX_const int m128_column_lenght = 3;
-    static uX_const int m128_dbl_ptr_lenght = 12;
-    static uX_const int m128_dbl_ptr_size = 96;
-    static uX_const int m128_dbl_size = 8;
+    static uX_const uint32_t m128_xmmd_ptr_lenght = 8;
+    static uX_const uint32_t m128_xmmd_ptr_size = 128;
+    static uX_const uint32_t m128_xmmd_size = 16;
+    static uX_const uint32_t m128_row_lenght = 4;
+    static uX_const uint32_t m128_column_lenght = 3;
+    static uX_const uint32_t m128_dbl_ptr_lenght = 12;
+    static uX_const uint32_t m128_dbl_ptr_size = 96;
+    static uX_const uint32_t m128_dbl_size = 8;
 
 }vecdouble4x3_t;
 
-typedef struct uX_EXAPI vecdouble4x4
+typedef class uX_EXAPI vecdouble4x4
 {
+public:
     vecdouble4x4()uX_default;
     ~vecdouble4x4()uX_default;
 
@@ -2775,59 +2820,62 @@ typedef struct uX_EXAPI vecdouble4x4
     /**
      * Constructor initialization from 8 type __m128d.
      *
-     * @param Inxmmd_0 Value to copy from.
-     * @param Inxmmd_1 Value to copy from.
-     * @param Inxmmd_2 Value to copy from.
-     * @param Inxmmd_3 Value to copy from.
-     * @param Inxmmd_4 Value to copy from.
-     * @param Inxmmd_5 Value to copy from.
-     * @param Inxmmd_6 Value to copy from.
-     * @param Inxmmd_7 Value to copy from.
+     * @param Inxmmd_0 value to copy from.
+     * @param Inxmmd_1 value to copy from.
+     * @param Inxmmd_2 value to copy from.
+     * @param Inxmmd_3 value to copy from.
+     * @param Inxmmd_4 value to copy from.
+     * @param Inxmmd_5 value to copy from.
+     * @param Inxmmd_6 value to copy from.
+     * @param Inxmmd_7 value to copy from.
      */
-    uX_constexpr vecdouble4x4(const __m128d Inxmmd_0, const __m128d Inxmmd_1, const __m128d Inxmmd_2, const __m128d Inxmmd_3,
-                              const __m128d Inxmmd_4, const __m128d Inxmmd_5, const __m128d Inxmmd_6, const __m128d Inxmmd_7) : m128_xmmd_0(Inxmmd_0), m128_xmmd_1(Inxmmd_1), 
-                                                                                                                                m128_xmmd_2(Inxmmd_2), m128_xmmd_3(Inxmmd_3), 
-                                                                                                                                m128_xmmd_4(Inxmmd_4), m128_xmmd_5(Inxmmd_5), 
-                                                                                                                                m128_xmmd_6(Inxmmd_6), m128_xmmd_7(Inxmmd_7) {}
+    vecdouble4x4(const __m128d Inxmmd_0, const __m128d Inxmmd_1, const __m128d Inxmmd_2, const __m128d Inxmmd_3,
+                 const __m128d Inxmmd_4, const __m128d Inxmmd_5, const __m128d Inxmmd_6, const __m128d Inxmmd_7);
 
     /**
      * Constructor initialization from type __m128d*.
      *
-     * @param Inpxmmd Value to copy from.
+     * @param Inpxmmd __m128d pointer value to copy from.
+     * @param idxbegin pointer start index.
+     * @param idxend pointer end index.
+     * @warning No internall checks. Inpxmmd assumes 1*1 __m128d in the max range off 1*8.
      */
-    uX_constexpr vecdouble4x4(uX_InReads(8) const __m128d* Inpxmmd) : m128_xmmd{ Inpxmmd[0], Inpxmmd[1], Inpxmmd[2], Inpxmmd[3], Inpxmmd[4], Inpxmmd[5], Inpxmmd[6], Inpxmmd[7] } {}
+    uX_explicit vecdouble4x4(const __m128d* Inpxmmd, size_t idxbegin = 0, size_t idxend = m128_xmmd_ptr_lenght);
 
     /**
      * Constructor initialization from 4x4 type doubles.
      *
-     * @param Indouble_X0 Value to copy from.
-     * @param Indouble_X1 Value to copy from.
-     * @param Indouble_X2 Value to copy from.
-     * @param Indouble_X3 Value to copy from.
-     * @param Indouble_Y0 Value to copy from.
-     * @param Indouble_Y1 Value to copy from.
-     * @param Indouble_Y2 Value to copy from.
-     * @param Indouble_Y3 Value to copy from.
-     * @param Indouble_Z0 Value to copy from.
-     * @param Indouble_Z1 Value to copy from.
-     * @param Indouble_Z2 Value to copy from.
-     * @param Indouble_Z3 Value to copy from.
-     * @param Indouble_W0 Value to copy from.
-     * @param Indouble_W1 Value to copy from.
-     * @param Indouble_W2 Value to copy from.
-     * @param Indouble_W3 Value to copy from.
+     * @param Indouble_X0 value to copy from.
+     * @param Indouble_X1 value to copy from.
+     * @param Indouble_X2 value to copy from.
+     * @param Indouble_X3 value to copy from.
+     * @param Indouble_Y0 value to copy from.
+     * @param Indouble_Y1 value to copy from.
+     * @param Indouble_Y2 value to copy from.
+     * @param Indouble_Y3 value to copy from.
+     * @param Indouble_Z0 value to copy from.
+     * @param Indouble_Z1 value to copy from.
+     * @param Indouble_Z2 value to copy from.
+     * @param Indouble_Z3 value to copy from.
+     * @param Indouble_W0 value to copy from.
+     * @param Indouble_W1 value to copy from.
+     * @param Indouble_W2 value to copy from.
+     * @param Indouble_W3 value to copy from.
      */
-    uX_explicit vecdouble4x4(const double Indouble_X0, const double Indouble_X1, const double Indouble_X2, const double Indouble_X3,
-                             const double Indouble_Y0, const double Indouble_Y1, const double Indouble_Y2, const double Indouble_Y3,
-                             const double Indouble_Z0, const double Indouble_Z1, const double Indouble_Z2, const double Indouble_Z3,
-                             const double Indouble_W0, const double Indouble_W1, const double Indouble_W2, const double Indouble_W3);
+    vecdouble4x4(const double Indouble_X0, const double Indouble_X1, const double Indouble_X2, const double Indouble_X3,
+                 const double Indouble_Y0, const double Indouble_Y1, const double Indouble_Y2, const double Indouble_Y3,
+                 const double Indouble_Z0, const double Indouble_Z1, const double Indouble_Z2, const double Indouble_Z3,
+                 const double Indouble_W0, const double Indouble_W1, const double Indouble_W2, const double Indouble_W3);
 
     /**
      * Constructor initialization from type double*.
      *
-     * @param Inpdouble Value to copy from.
+     * @param Inpdouble double pointer value to copy from.
+     * @param idxbegin pointer start index.
+     * @param idxend pointer end index.
+     * @warning No internall checks. Inpdouble assumes multiples off double in power off 2 in the max range off 8*2.
      */
-    uX_explicit vecdouble4x4(uX_InReads(16) const double* Inpdouble);
+    uX_explicit vecdouble4x4(const double* Inpdouble, size_t idxbegin = 0, size_t idxend = m128_xmmd_ptr_lenght);
 
     /** Type cast operator to convert to __m128d*. */
     operator __m128d*() const;
@@ -2838,60 +2886,60 @@ typedef struct uX_EXAPI vecdouble4x4
     /**
      * Assignment operator to convert from type __m128d*.
      *
-     * @param Inpxmmd Value to copy from.
+     * @param Inpxmmd value to copy from.
      */
     vecdouble4x4& uX_callconv operator=(uX_InReads(8) const __m128d* Inpxmmd);
 
     /**
      * Assignment operator to convert from type double*.
      *
-     * @param Inpdouble Value to copy from.
+     * @param Inpdouble value to copy from.
      */
     vecdouble4x4& uX_callconv operator=(uX_InReads(16) const double* Inpdouble);
 
 protected:
+
+private:
     union
     {
         struct
         {
-            __m128d       m128_xmmd_0;
-            __m128d       m128_xmmd_1;
-            __m128d       m128_xmmd_2;
-            __m128d       m128_xmmd_3;
-            __m128d       m128_xmmd_4;
-            __m128d       m128_xmmd_5;
-            __m128d       m128_xmmd_6;
-            __m128d       m128_xmmd_7;
+            __m128d             m128_xmmd_0;
+            __m128d             m128_xmmd_1;
+            __m128d             m128_xmmd_2;
+            __m128d             m128_xmmd_3;
+            __m128d             m128_xmmd_4;
+            __m128d             m128_xmmd_5;
+            __m128d             m128_xmmd_6;
+            __m128d             m128_xmmd_7;
         };
-        __m128d          m128_xmmd[8];
+        __m128d                m128_xmmd[8];
         struct
         {
-            double _11, _12, _13, _14;
-            double _21, _22, _23, _24;
-            double _31, _32, _33, _34;
-            double _41, _42, _43, _44;
+            double       _11, _12, _13, _14;
+            double       _21, _22, _23, _24;
+            double       _31, _32, _33, _34;
+            double       _41, _42, _43, _44;
         };
-        double          m128_dm[4][4];
-        double             m128_d[16];
+        double                m128_dm[4][4];
+        double                   m128_d[16];
     };
 
-private:
-    static uX_const int m128_xmmd_ptr_lenght = 8;
-    static uX_const int m128_xmmd_ptr_size = 128;
-    static uX_const int m128_xmmd_size = 16;
-    static uX_const int m128_row_lenght = 4;
-    static uX_const int m128_column_lenght = 4;
-    static uX_const int m128_dbl_ptr_lenght = 16;
-    static uX_const int m128_dbl_ptr_size = 128;
-    static uX_const int m128_dbl_size = 8;
+    static uX_const uint32_t m128_xmmd_ptr_lenght = 8;
+    static uX_const uint32_t m128_xmmd_ptr_size = 128;
+    static uX_const uint32_t m128_xmmd_size = 16;
+    static uX_const uint32_t m128_xmmd_elements = 2;
+    static uX_const uint32_t m128_row_lenght = 4;
+    static uX_const uint32_t m128_column_lenght = 4;
+    static uX_const uint32_t m128_dbl_ptr_lenght = 16;
+    static uX_const uint32_t m128_dbl_ptr_size = 128;
+    static uX_const uint32_t m128_dbl_size = 8;
 
 }vecdouble4x4_t;
 
 #endif // uX_SSE2
 
 uX_PACK_POP
-uX_EXTERNCC_END
-
 namespace_XMM_end
 namespace_uX_end
 
@@ -2899,4 +2947,4 @@ namespace_uX_end
 
 #endif /*defined(uX_INTRINSICS_SUPPORT) && defined(uX_X86_OR_X64_CPU) && !defined(uX_NO_INTRINSICS_SUPPORT)*/
 
-#endif // uX_SSE_STRUCTS_H
+#endif // uX_SSE_MATH_H

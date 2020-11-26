@@ -2,7 +2,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /    Copyright 2020 UASM assembly library for the Open Source Initiative        / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -27,19 +27,19 @@ endm
 
 ifdef __x32__
     .686p
-    .model flat
-    option frame:auto
-    option stackbase:ebp        ; RSP or RBP are supported options for the stackbase.
+    .model flat,c
+    ;option frame:auto
+    ;option stackbase:ebp        ; RSP or RBP are supported options for the stackbase.
 endif
 ifdef __x64__
     .x64p
     ifdef __windows__
-    option win64:15             ; 11-15 for RSP and 1-7 for RBP.
-    option frame:auto
     option stackbase:rsp        ; RSP or RBP are supported options for the stackbase.
-    else
-    option win64:7              ; 11-15 for RSP and 1-7 for RBP.
     option frame:auto
+    option win64:15             ; 11-15 for RSP and 1-7 for RBP.
+    else
     option stackbase:rbp        ; RSP or RBP are supported options for the stackbase.
+    option frame:auto
+    option sysv64:7              ; 11-15 for RSP and 1-7 for RBP.
     endif
 endif

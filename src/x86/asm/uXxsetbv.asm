@@ -2,7 +2,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /    Copyright 2020 UASM assembly library for the Open Source Initiative        / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -19,35 +19,35 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
-    OPTION CASEMAP:NONE
-    include macrolib.inc
-    
+option casemap:none
+include uXasm.inc
+include macrolib.inc
+
 ifndef __MIC__
 
-    include uXasm.inc
+alignstackfieldproc
 
-    .data?
+.data?
 
-    .data
+.data
 
-    .const
+.const
 
-    .code
+.code
 
-    callconvopt
-    alignfieldproc qword_size
+callconvopt
+;alignfieldproc qword_size
 
 procstart _uX_xsetbv, callconv, void, < >, < >, EXCR:dword, EXCRSet:qword
-
     ifdef __x32__
         ifdef __windows__
             mov         eax,        [dp1()]
             mov         edx,        [dp1()+4]
         endif
         ifdef __unix__
-            mov         ecx,        [dp0()+4]
-            mov         eax,        [dp1()+8]
-            mov         edx,        [dp1()+12]
+            mov         ecx,        EXCR
+            mov         eax,        [EXCRSet]
+            mov         edx,        [EXCRSet+4]
         endif
             xsetbv
     endif
@@ -65,4 +65,4 @@ procend
 
 endif ;__MIC__
 
-    end
+end

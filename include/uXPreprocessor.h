@@ -1,8 +1,30 @@
 
+/*
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / /                                                                               / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
+; / /                                                                               / /
+; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
+; / /    you may not use this file except in compliance with the License.           / /
+; / /    You may obtain a copy of the License at                                    / /
+; / /                                                                               / /
+; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
+; / /                                                                               / /
+; / /    Unless required by applicable law or agreed to in writing, software        / /
+; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
+; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
+; / /    See the License for the specific language governing permissions and        / /
+; / /    limitations under the License.                                             / /
+; / /                                                                               / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+*/
+
 #pragma once
 
 #ifndef uX_PREPROCESSOR_H
-#define uX_PREPROCESSOR_H
+#define uX_PREPROCESSOR_H 1
 
 // Helper macros to convert value of macro to string literal.
 #ifndef _uX_Stringer
@@ -94,6 +116,15 @@ Compiler defines
 #   elif defined(_MSC_VER) && (_MSC_VER == 1925)
 #       define uX_VC14_25 1
 #       define uX_COMPILER "Microsoft Visual C++ 16.2.5"
+#   elif defined(_MSC_VER) && (_MSC_VER == 1926)
+#       define uX_VC14_26 1
+#       define uX_COMPILER "Microsoft Visual C++ 16.2.6"
+#   elif defined(_MSC_VER) && (_MSC_VER == 1927)
+#       define uX_VC14_27 1
+#       define uX_COMPILER "Microsoft Visual C++ 16.2.7"
+#   elif defined(_MSC_VER) && (_MSC_VER == 1928)
+#       define uX_VC14_28 1
+#       define uX_COMPILER "Microsoft Visual C++ 16.2.8"
 #   else
 #error ERROR: add your vc compiler version
 #   endif
@@ -341,6 +372,7 @@ Compiler defines
 #       define uX_ENDIAN_LITTLE 1
 #       define uX_PTR_SIZE 4
 #       define uX_SIZE_T_SIZE 4
+#       define uX_STACK_SIZE 8
 #       define uX_INTRINSICS 1
 #       define uX_ARCH_SUPPORTS_INT64 1
 #       define uX_NUM_SIMD_REGISTERS 8
@@ -356,6 +388,7 @@ Compiler defines
 #       define uX_ENDIAN_LITTLE 1
 #       define uX_PTR_SIZE 8
 #       define uX_SIZE_T_SIZE 8
+#       define uX_STACK_SIZE 16
 #       define uX_INTRINSICS 1
 #       define uX_ARCH_SUPPORTS_DOUBLE 1
 #       define uX_ARCH_SUPPORTS_INT64 1
@@ -398,6 +431,7 @@ Compiler defines
 #       define uX_ENDIAN_LITTLE 1
 #       define uX_PTR_SIZE 4
 #       define uX_SIZE_T_SIZE 4
+#       define uX_STACK_SIZE 8
 #       define uX_INTRINSICS 1
 #       define uX_NUM_SIMD_REGISTERS 16
 #       define uX_ARCH_STR "x86"
@@ -412,6 +446,7 @@ Compiler defines
 #       define uX_ENDIAN_LITTLE 1
 #       define uX_PTR_SIZE 8
 #       define uX_SIZE_T_SIZE 8
+#       define uX_STACK_SIZE 16
 #       define uX_INTRINSICS 1
 #       define uX_ARCH_SUPPORTS_DOUBLE 1
 #       define uX_ARCH_SUPPORTS_INT64 1
@@ -443,6 +478,7 @@ Compiler defines
 #       define uX_ENDIAN_BIG    1
 #       define uX_PTR_SIZE 4
 #       define uX_SIZE_T_SIZE 4
+#       define uX_STACK_SIZE 8
 #       define uX_ARCH_SUPPORTS_DOUBLE 1
 #       define uX_ARCH_SUPPORTS_INT64 1
 #       define uX_NUM_SIMD_REGISTERS 8
@@ -499,6 +535,7 @@ Compiler defines
 #       define uX_ENDIAN_BIG    1
 #       define uX_PTR_SIZE 4
 #       define uX_SIZE_T_SIZE 4
+#       define uX_STACK_SIZE 8
 #       define uX_ARCH_SUPPORTS_DOUBLE 1
 #       define uX_ARCH_SUPPORTS_INT64 1
 #       define uX_NUM_SIMD_REGISTERS 8
@@ -530,6 +567,7 @@ Compiler defines
 #       define uX_ENDIAN_BIG    1
 #       define uX_PTR_SIZE 4
 #       define uX_SIZE_T_SIZE 4
+#       define uX_STACK_SIZE 8
 #       define uX_ARCH_SUPPORTS_DOUBLE 1
 #       define uX_ARCH_SUPPORTS_INT64
 #       define uX_NUM_SIMD_REGISTERS 32
@@ -550,6 +588,7 @@ Compiler defines
 #       define uX_ENDIAN_BIG    1
 #       define uX_PTR_SIZE 4
 #       define uX_SIZE_T_SIZE 4
+#       define uX_STACK_SIZE 8
 #       define uX_ARCH_SUPPORTS_INT64 1
 #       define uX_NUM_SIMD_REGISTERS 128
 #       define uX_PLATFORM_IS_CONSOLE 1
@@ -635,6 +674,7 @@ Compiler defines
 #       define uX_ARM_ABI64 1
 #       define uX_PTR_SIZE 8
 #       define uX_SIZE_T_SIZE 8
+#       define uX_STACK_SIZE 16
 #       define uX_ARCH_SUPPORTS_DOUBLE 1
 #       define uX_ARCH_SUPPORTS_INT64 1
 #       define uX_NUM_SIMD_REGISTERS 16
@@ -651,6 +691,7 @@ Compiler defines
 #       define uX_ARM_ABI32 1
 #       define uX_PTR_SIZE 4
 #       define uX_SIZE_T_SIZE 4
+#       define uX_STACK_SIZE 8
 #       define uX_ARCH_SUPPORTS_INT64 1
 #       define uX_NUM_SIMD_REGISTERS 8
 #       define uX_ARCH_STR "Arm32"
@@ -878,6 +919,8 @@ Platform define
 #       define uX_PTR_SIZE 4 // always 4 in NaCl
 #       undef uX_SIZE_T_SIZE
 #       define uX_SIZE_T_SIZE 4 // always 4 in NaCl
+#       undef uX_STACK_SIZE
+#       define uX_STACK_SIZE 8
 #    endif
 #  elif defined(__CYGWIN__)
 #       define uX_CYGWIN 1
@@ -1028,6 +1071,12 @@ Platform define
 #if (defined(uX_VC) && (_MSC_VER >= 1800) || (defined(__clang__) && (__clang_major__ >= 5)) || (defined(__GNUC__) && (__GNUC__ >= 7)))
 #ifdef __cplusplus
 #       define uX_DEFAULT_CTOR_SUPPORT 1
+#endif
+#endif
+
+#if (defined(uX_VC) && (_MSC_VER >= 1800) || (defined(__clang__) && (__clang_major__ >= 5)) || (defined(__GNUC__) && (__GNUC__ >= 7)))
+#ifdef __cplusplus
+#       define uX_NOEXCEPT_SUPPORT 1
 #endif
 #endif
 

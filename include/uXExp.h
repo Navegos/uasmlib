@@ -1,11 +1,32 @@
 
+/*
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / /                                                                               / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
+; / /                                                                               / /
+; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
+; / /    you may not use this file except in compliance with the License.           / /
+; / /    You may obtain a copy of the License at                                    / /
+; / /                                                                               / /
+; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
+; / /                                                                               / /
+; / /    Unless required by applicable law or agreed to in writing, software        / /
+; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
+; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
+; / /    See the License for the specific language governing permissions and        / /
+; / /    limitations under the License.                                             / /
+; / /                                                                               / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+*/
+
 #pragma once
 
 #ifndef uX_EXPORTS_H
-#define uX_EXPORTS_H
+#define uX_EXPORTS_H 1
 
-#include "uXPreprocessor.h"
-
+#include "uXpreprocessor.h"
 
 #if defined(_WINDOWS) || defined(_WIN32) || defined(_WIN64) || defined(_M_ARM) || defined(_XBOX_ONE) || defined(_M_PPC)
 
@@ -239,28 +260,28 @@ EXTERN_CC_END
 #  if defined(uX_MSVC_COMPATIBLE_COMPILER)
 #    if defined(uX_LIB_DLL) && !defined(uX_LIB_STATIC)
 #      if defined(uX_LIB_EXPORTS)
-#        define uX_EXAPI uX_EXPORT_SYMBOL
+#        define uX_API uX_EXPORT_SYMBOL
 #      elif defined (uX_LIB_IMPORTS)
-#        define uX_EXAPI uX_IMPORT_SYMBOL
+#        define uX_API uX_IMPORT_SYMBOL
 #      else
-#        define uX_EXAPI
+#        define uX_API
 #      endif
 #    else  // uX_LIB_LIB
-#      define uX_EXAPI
+#      define uX_API
 #    endif
 #  else  // uX_LIB_LIB
 #      if defined(uX_LIB_EXPORTS)
-#           define uX_EXAPI uX_EXPORT_SYMBOL
+#           define uX_API uX_EXPORT_SYMBOL
 #      elif defined (uX_LIB_IMPORTS)
-#        define uX_EXAPI uX_IMPORT_SYMBOL
+#        define uX_API uX_IMPORT_SYMBOL
 #      else // uX_LIB_STATIC  _LIB
-#        define uX_EXAPI
+#        define uX_API
 #      endif
 #  endif  /* ! uX_LIB_DLL */
 
 /*
 #else
-#   define uX_EXAPI
+#   define uX_API
 #endif // _WINDOWS*/
 
 

@@ -2,7 +2,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /    Copyright 2020 UASM assembly library for the Open Source Initiative        / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -19,23 +19,24 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
-    OPTION CASEMAP:NONE
-    include macrolib.inc
-    
+option casemap:none
+include uXasm.inc
+include macrolib.inc
+
 ifndef __MIC__
 
-    include uXasm.inc
+alignstackfieldproc
 
-    .data?
+.data?
 
-    .data
+.data
 
-    .const
+.const
 
-    .code
-    
-    callconvopt
-    alignptrfieldproc
+.code
+
+callconvopt
+;alignptrfieldproc
     
 ; ********** cpuid function **********
 ; C++ prototype:
@@ -46,26 +47,54 @@ ifndef __MIC__
 ;_uX_cpuidex proto uXveccall
 ;extern callconv _uX_cpuidex:proc
 
-_uX_cpuidex proto callconv (void) CPUInfo:ptr dword, CPUInfoType:dword, ECXValue:dword
+;_uX_cpuidex proto callconv (void) CPUInfo:ptr dword, CPUInfoType:dword, ECXValue:dword
+
+;extern callconv _uX_cpuidex
 
 procstart _uX_cpuid, callconv, void, < >, < >, CPUInfo:ptr dword, CPUInfoType:dword
-
+            push        rbase()
     ifdef __x32__
         ifdef __windows__
-            xor         rp2(),            rp2()
-        endif
+            xor         rp2(),          rp2()
+            mov         eax,            dp1()        ; eax in ecx
+            mov         ecx,            dp2()        ; ecx in edx
+            cpuid                                       ; input eax, ecx, output eax, ebx ecx, edx
+            mov         [dp0()+12],       edx
+            mov         [dp0()+8],        ecx
+            mov         [dp0()+4],        ebx
+            mov         [dp0()],          eax
+        endif ;__x32__
         ifdef __unix__
-            mov         [rp2()+12],            null
-        endif
-            call        _uX_cpuidex
-    endif
+            xor         ecx,            ecx
+            push        edi
+            mov         edi,            CPUInfo        ; CPUInfo out
+            mov         eax,            CPUInfoType         ; eax in
+            ;mov         ecx,            ECXValue        ; ecx in
+            cpuid                                         ; input eax, ecx, output eax, ebx ecx, edx
+            mov         [edi+12],       edx
+            mov         [edi+8],        ecx
+            mov         [edi+4],        ebx
+            mov         [edi],          eax
+            mov         CPUInfo,        edi
+            pop         edi
+        endif ;__x32__
+    endif ;__x32__
     ifdef __x64__
-            xor         rp2(),            rp2()
-            call        _uX_cpuidex
-    endif
+            ; parameters: rcx = CPUInfo, edx = CPUInfoType, r8d = ECXValue (Windows)
+            ; parameters: rdi = CPUInfo, esi = CPUInfoType, edx = ECXValue (Unix)
+            xor         rp2(),          rp2()
+            mov         eax,            dp1()
+            mov         ecx,            dp2()
+            cpuid
+            mov     dword ptr[dp0()+12],  edx
+            mov     dword ptr[dp0()+8],   ecx
+            mov     dword ptr[dp0()+4],   ebx
+            mov     dword ptr[dp0()],     eax
+    endif ;__x64__
+            pop        rbase()
             ret
 procend
 
 endif ;__MIC__
 
-    end
+end

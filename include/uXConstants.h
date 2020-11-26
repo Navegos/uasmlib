@@ -1,10 +1,32 @@
 
+/*
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / /                                                                               / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
+; / /                                                                               / /
+; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
+; / /    you may not use this file except in compliance with the License.           / /
+; / /    You may obtain a copy of the License at                                    / /
+; / /                                                                               / /
+; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
+; / /                                                                               / /
+; / /    Unless required by applicable law or agreed to in writing, software        / /
+; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
+; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
+; / /    See the License for the specific language governing permissions and        / /
+; / /    limitations under the License.                                             / /
+; / /                                                                               / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+*/
+
 #pragma once
 
 #ifndef uX_CONSTANTS_H
-#define uX_CONSTANTS_H
+#define uX_CONSTANTS_H 1
 
-#include "uXTypes.h"
+#include "uXtypes.h"
 
 /* / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / */
 /*                   start of head macro constants                     */
@@ -958,21 +980,21 @@
 #define uX_FLT_neg1lshl31       (-2147483648.0f)
 
 #define uX_FLT_false                0.0f
-#define uX_FLT_true                 uX_int32_as_float(uX_FLT_true_msk)
+#define uX_FLT_true                 uX::_internal::int32_as_float(uX_FLT_true_msk)
 
-#define uX_FLT_Magic                uX_int32_as_float(uX_FLT_Magic_msk)             /*8388608.0f*/                              /* 1258291200 */
-#define uX_FLT_Sign                 uX_uint32_as_float(uX_FLT_Sign_msk)             /*-0.0f*/                                   /* -2147483648 MinI32 */
-#define uX_FLT_invSign              uX_int32_as_float(uX_FLT_invSign_msk)           /* 2147483647 MaxI32 */
+#define uX_FLT_Magic                uX::_internal::int32_as_float(uX_FLT_Magic_msk)             /*8388608.0f*/                              /* 1258291200 */
+#define uX_FLT_Sign                 uX::_internal::uint32_as_float(uX_FLT_Sign_msk)             /*-0.0f*/                                   /* -2147483648 MinI32 */
+#define uX_FLT_invSign              uX::_internal::int32_as_float(uX_FLT_invSign_msk)           /* 2147483647 MaxI32 */
 
-#define uX_FLT_Inf                  uX_int32_as_float(uX_FLT_Inf_msk)               /* 2139095040 MaxI32+1-pow2^23*/
-#define uX_FLT_Fin                  uX_uint32_as_float(uX_FLT_Fin_msk)              /* 4278190080 */
-#define uX_FLT_invInf               uX_uint32_as_float(uX_FLT_invInf_msk)           /*1.17549420987015360768624e-38f*/              /* -2139095041 */
-#define uX_FLT_negInf               uX_uint32_as_float(uX_FLT_negInf_msk)           /* -8388608 */
-#define uX_FLT_NaN                  uX_int32_as_float(uX_FLT_NaN_msk)               /* 2147483647 MaxI32 */
-#define uX_FLT_QNaN                 uX_int32_as_float(uX_FLT_QNaN_msk)              /* 2143289344 */
-#define uX_FLT_negQNaN              uX_uint32_as_float(uX_FLT_negQNaN_msk)          /* -4194304 */
-#define uX_FLT_NaNTest              uX_int32_as_float(uX_FLT_NaNTest_msk)           /*1.17549420987015360768624e-38f*/              /* 8388607 */
-#define uX_FLT_Abs                  uX_int32_as_float(uX_FLT_Abs_msk)               /* 2147483647 MaxI32 */
+#define uX_FLT_Inf                  uX::_internal::int32_as_float(uX_FLT_Inf_msk)               /* 2139095040 MaxI32+1-pow2^23*/
+#define uX_FLT_Fin                  uX::_internal::uint32_as_float(uX_FLT_Fin_msk)              /* 4278190080 */
+#define uX_FLT_invInf               uX::_internal::uint32_as_float(uX_FLT_invInf_msk)           /*1.17549420987015360768624e-38f*/              /* -2139095041 */
+#define uX_FLT_negInf               uX::_internal::uint32_as_float(uX_FLT_negInf_msk)           /* -8388608 */
+#define uX_FLT_NaN                  uX::_internal::int32_as_float(uX_FLT_NaN_msk)               /* 2147483647 MaxI32 */
+#define uX_FLT_QNaN                 uX::_internal::int32_as_float(uX_FLT_QNaN_msk)              /* 2143289344 */
+#define uX_FLT_negQNaN              uX::_internal::uint32_as_float(uX_FLT_negQNaN_msk)          /* -4194304 */
+#define uX_FLT_NaNTest              uX::_internal::int32_as_float(uX_FLT_NaNTest_msk)           /*1.17549420987015360768624e-38f*/              /* 8388607 */
+#define uX_FLT_Abs                  uX::_internal::int32_as_float(uX_FLT_Abs_msk)               /* 2147483647 MaxI32 */
 #define uX_FLT_Min                  1.175494351e-38f                                /*1.175494351e-38f*/                            /* 8388608 pow2^23*/
 #define uX_FLT_Max                  3.402823457175904428664032e+38f                 /*3.402823457175904428664032e+38f*/             /* 2139095039 MaxI32-pow2^23*/
 #define uX_FLT_NoFraction           8388608.0f                                      /*1.175494351e-38f*/                            /* 8388608 pow2^23*/
@@ -2424,21 +2446,21 @@
 #define uX_DBL_neg1lshl63       (-9223372036854775808.0)
 
 #define uX_DBL_false                0.0
-#define uX_DBL_true                 uX_int64_as_double(uX_DBL_true_msk)
+#define uX_DBL_true                 uX::_internal::int64_as_double(uX_DBL_true_msk)
 
-#define uX_DBL_Magic                uX_int64_as_double(uX_DBL_Magic_msk)            /* 4503599627370496. 4503599627370496 */
-#define uX_DBL_Sign                 uX_uint64_as_double(uX_DBL_Sign_msk)            /*-0.0 -9223372036854775808 MinI64 */
-#define uX_DBL_invSign              uX_int64_as_double(uX_DBL_invSign_msk)          /* 9223372036854775807 MaxI64 */
+#define uX_DBL_Magic                uX::_internal::int64_as_double(uX_DBL_Magic_msk)            /* 4503599627370496. 4503599627370496 */
+#define uX_DBL_Sign                 uX::_internal::uint64_as_double(uX_DBL_Sign_msk)            /*-0.0 -9223372036854775808 MinI64 */
+#define uX_DBL_invSign              uX::_internal::int64_as_double(uX_DBL_invSign_msk)          /* 9223372036854775807 MaxI64 */
 
-#define uX_DBL_Inf                  uX_int64_as_double(uX_DBL_Inf_msk)              /* 9218868437227405312 MaxI64+1-pow2^52*/
-#define uX_DBL_Fin                  uX_uint64_as_double(uX_DBL_Fin_msk)             /* -72057594037927936 */
-#define uX_DBL_invInf               uX_uint64_as_double(uX_DBL_invInf_msk)          /* -9218868437227405313 */
-#define uX_DBL_negInf               uX_uint64_as_double(uX_DBL_negInf_msk)          /* -4503599627370496 -pow2^52*/
-#define uX_DBL_NaN                  uX_int64_as_double(uX_DBL_NaN_msk)              /* 9223372036854775807 MaxI64 */
-#define uX_DBL_QNaN                 uX_int64_as_double(uX_DBL_QNaN_msk)             /* 9221120237041090576 */
-#define uX_DBL_negQNaN              uX_uint64_as_double(uX_DBL_negQNaN_msk)         /* -2251799813685248 */
-#define uX_DBL_NaNTest              uX_int64_as_double(uX_DBL_NaNTest_msk)          /* 4503599627370495 */
-#define uX_DBL_Abs                  uX_int64_as_double(uX_DBL_Abs_msk)              /* 9223372036854775807 MaxI64 */
+#define uX_DBL_Inf                  uX::_internal::int64_as_double(uX_DBL_Inf_msk)              /* 9218868437227405312 MaxI64+1-pow2^52*/
+#define uX_DBL_Fin                  uX::_internal::uint64_as_double(uX_DBL_Fin_msk)             /* -72057594037927936 */
+#define uX_DBL_invInf               uX::_internal::uint64_as_double(uX_DBL_invInf_msk)          /* -9218868437227405313 */
+#define uX_DBL_negInf               uX::_internal::uint64_as_double(uX_DBL_negInf_msk)          /* -4503599627370496 -pow2^52*/
+#define uX_DBL_NaN                  uX::_internal::int64_as_double(uX_DBL_NaN_msk)              /* 9223372036854775807 MaxI64 */
+#define uX_DBL_QNaN                 uX::_internal::int64_as_double(uX_DBL_QNaN_msk)             /* 9221120237041090576 */
+#define uX_DBL_negQNaN              uX::_internal::uint64_as_double(uX_DBL_negQNaN_msk)         /* -2251799813685248 */
+#define uX_DBL_NaNTest              uX::_internal::int64_as_double(uX_DBL_NaNTest_msk)          /* 4503599627370495 */
+#define uX_DBL_Abs                  uX::_internal::int64_as_double(uX_DBL_Abs_msk)              /* 9223372036854775807 MaxI64 */
 #define uX_DBL_Min                  2.2250738585072014e-308                         /* 4503599627370496 pow2^52*/   /* min positive value */
 #define uX_DBL_Max                  1.7976931348623158e+308                         /* 9218868437227405311 MaxI64-pow2^52*/ /* maximum possible double value */
 #define uX_DBL_NoFraction           4503599627370496.0                              /* 2.2250738585072014e-308 */   /* 4503599627370496 pow2^52*/
@@ -3969,7 +3991,7 @@
   uX_NMGLOBAL_CONST uX_NMALIGN8(double uXrealna_##Name)  = ( Val );
 #endif
 
-#include "uXMisc.h"
+#include "uXmisc.h"
 
 /* / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / */
 /*                         uX_FLT_ constants                           */

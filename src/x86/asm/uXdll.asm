@@ -2,7 +2,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /    Copyright 2020 UASM assembly library for the Open Source Initiative        / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -19,81 +19,82 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
-    OPTION CASEMAP:NONE
-    include macrolib.inc
-    
+option casemap:none
+include uXasm.inc
+include macrolib.inc
+
 ifndef __MIC__
+ifdef __windows__
 
-    ifdef __windows__
-    include uXasm.inc
+alignstackfieldproc
 
-    .data?
+.data?
 
-    .data
+.data
 
-    .const
+.const
 
-    .code
-    
+.code
+ 
+ .err <"TODO-KRAD move this to a proper system thread dynamic link">
+
 ;DllMain proto stdcall (dword) ;hModule:ptr, dwReason:dword, dwReserved:ptr
 
 ifdef __x64__
     ifndef WINAPI
-        WINAPI textequ <callconv>
-        WINAPIOPT textequ <callconvopt>
+        define WINAPI, callconv, text
     endif
     ifndef WINAPIOPT
-        WINAPIOPT textequ <callconvopt>
+        define WINAPIOPT, callconvopt, text
     endif
 endif
 
 ifdef __x32__
     ifndef WINAPI
-        WINAPI textequ <stdcall>
-        WINAPIOPT textequ <stdcallopt>
+        define WINAPI, stdcall, text
     endif
     ifndef WINAPIOPT
-        WINAPIOPT textequ <stdcallopt>
+        define WINAPIOPT, stdcallopt, text
     endif
 endif
 
 ifndef HINSTANCE
-        HINSTANCE textequ <ptr size_t>
+        define HINSTANCE, ptr size_t, text
 endif
 
 ifndef HMODULE
-        HMODULE textequ <HINSTANCE>
+        define HMODULE, ptr size_t, text
 endif
 
 ifndef LPVOID
-        LPVOID textequ <ptr>
+        define LPVOID, ptr, text
 endif
 
 ifndef DLL_PROCESS_ATTACH
-    DLL_PROCESS_ATTACH  equ 1
+    define DLL_PROCESS_ATTACH, 1
 endif
 ifndef DLL_THREAD_ATTACH
-    DLL_THREAD_ATTACH   equ 2
+    define DLL_THREAD_ATTACH, 2
 endif
 ifndef DLL_THREAD_DETACH
-    DLL_THREAD_DETACH   equ 3
+    define DLL_THREAD_DETACH, 3
 endif
 ifndef DLL_PROCESS_DETACH
-    DLL_PROCESS_DETACH  equ 0
+    define DLL_PROCESS_DETACH, 0
 endif
 
 OPTION SWITCHSTYLE:ASMSTYLE
 
 ifdef __x64__
-hinstDLL textequ <rp0()>
-fdwReason textequ <rp1()>
-lpReserved textequ <rp2()>
+    define hinstDLL, rp0(), text
+    define fdwReason, rp1(), text
+    define lpReserved, rp2(), text
 endif
 
 ifdef __x32__
-hinstDLL textequ <[rp0()+4]>
-fdwReason textequ <[rp1()+8]>
-lpReserved textequ <[rp1()+12]>
+    define hinstDLL, [rp0()+4], text
+    define fdwReason, [rp1()+8], text
+    define lpReserved, [rp1()+12], text
 endif
 
 ifndef DisableThreadLibraryCalls
@@ -101,10 +102,10 @@ ifndef DisableThreadLibraryCalls
 endif
 
 ifndef __uX_CPUFeatures_inited
-    externdef __uX_CPUFeatures_inited:word
+    externdef __uX_CPUFeatures_inited:dword
 endif
 
-ifndef __uX_CPUFeatures_inited
+ifndef _uX_CPUFeatures_init
     _uX_CPUFeatures_init proto callconv (void) :dword
 endif
 
@@ -112,11 +113,10 @@ ifndef _uX_CPUFeatures_destroy
     _uX_CPUFeatures_destroy proto callconv (void)
 endif
 
-    WINAPIOPT
-    alignptrfieldproc
+WINAPIOPT
+;alignptrfieldproc
 
 procstart DllMain, WINAPI, BOOL, < >, < >, _hinstDLL:HINSTANCE, _fdwReason:DWORD, _lpReserved:LPVOID
-
         ;// Perform actions based on the reason for calling.
         .switch fdwReason
 
@@ -125,9 +125,9 @@ procstart DllMain, WINAPI, BOOL, < >, < >, _hinstDLL:HINSTANCE, _fdwReason:DWORD
             ;// Return FALSE to fail DLL load.
                 ;//  For optimization.
                 invoke DisableThreadLibraryCalls, hinstDLL
-                .if(__uX_CPUFeatures_inited == false)
-                    invoke _uX_CPUFeatures_init, 1
-                .endif
+                ;.if(__uX_CPUFeatures_inited != true)
+                ;    invoke _uX_CPUFeatures_init, 1
+                ;.endif
 
             ;.case DLL_THREAD_ATTACH
             ;// Do thread-specific initialization.
@@ -137,18 +137,16 @@ procstart DllMain, WINAPI, BOOL, < >, < >, _hinstDLL:HINSTANCE, _fdwReason:DWORD
 
             .case DLL_PROCESS_DETACH
             ;// Perform any necessary cleanup.
-                .if(__uX_CPUFeatures_inited == true)
-                    invoke _uX_CPUFeatures_destroy
-                .endif
-
+                ;.if(__uX_CPUFeatures_inited == true)
+                ;    invoke _uX_CPUFeatures_destroy
+                ;.endif
         .endsw
 
-        mov         rret(),        true;  // Successful DLL_PROCESS_ATTACH
-
+        mov         rret(),        true ;  // Successful DLL_PROCESS_ATTACH
         ret
 procend
 
-    endif ;__windows__
+endif ;__windows__
 endif ;__MIC__
 
-    end
+end

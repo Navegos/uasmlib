@@ -1,11 +1,33 @@
 
+/*
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / /                                                                               / /
+; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /                                                                               / /
+; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
+; / /    you may not use this file except in compliance with the License.           / /
+; / /    You may obtain a copy of the License at                                    / /
+; / /                                                                               / /
+; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
+; / /                                                                               / /
+; / /    Unless required by applicable law or agreed to in writing, software        / /
+; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
+; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
+; / /    See the License for the specific language governing permissions and        / /
+; / /    limitations under the License.                                             / /
+; / /                                                                               / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+*/
+
 #pragma once
 
 #ifndef uX_TMM_INTRIN_H
-#define uX_TMM_INTRIN_H
+#define uX_TMM_INTRIN_H 1
 
 #ifndef uX_TYPES_H
-#include "uXTypes.h"
+#include "uXtypes.h"
 #endif  /* uX_TYPES_H */
 
 #if defined(uX_INTRINSICS_SUPPORT) && defined(uX_X86_OR_X64_CPU) && !defined(uX_NO_INTRINSICS_SUPPORT) && !defined(uX_MIC)
@@ -49,15 +71,15 @@ uX_PACK_PUSH_XMM
     // the second argument. The "hadds" forms saturate the signed
     // addition rather than wrapping.
 
-    extern __m128i uX_callconv _uX_mm_hadd_epi16(__m128i Inxmm_A, __m128i Inxmm_B);
-    extern __m128i uX_callconv _uX_mm_hadd_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
-    extern __m128i uX_callconv _uX_mm_hadds_epi16(__m128i Inxmm_A, __m128i Inxmm_B);
+    extern __m128i uX_ABI _uX_mm_hadd_epi16(__m128i Inxmm_A, __m128i Inxmm_B);
+    extern __m128i uX_ABI _uX_mm_hadd_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
+    extern __m128i uX_ABI _uX_mm_hadds_epi16(__m128i Inxmm_A, __m128i Inxmm_B);
 
 #if defined(uX_X86)
     uX_PACK_MM
-    extern __m64 uX_callconv _uX_mm_hadd_pi16(__m64 Inmm_A, __m64 Inmm_B);
-    extern __m64 uX_callconv _uX_mm_hadd_pi32(__m64 Inmm_A, __m64 Inmm_B);
-    extern __m64 uX_callconv _uX_mm_hadds_pi16(__m64 Inmm_A, __m64 Inmm_B);
+    extern __m64 uX_ABI _uX_mm_hadd_pi16(__m64 Inmm_A, __m64 Inmm_B);
+    extern __m64 uX_ABI _uX_mm_hadd_pi32(__m64 Inmm_A, __m64 Inmm_B);
+    extern __m64 uX_ABI _uX_mm_hadds_pi16(__m64 Inmm_A, __m64 Inmm_B);
     uX_PACK_XMM
 #endif
 
@@ -69,15 +91,15 @@ uX_PACK_PUSH_XMM
     // the second argument. The "hsubs" forms saturate the signed
     // subtraction rather than wrapping.
 
-    extern __m128i uX_callconv _uX_mm_hsub_epi16(__m128i Inxmm_A, __m128i Inxmm_B);
-    extern __m128i uX_callconv _uX_mm_hsub_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
-    extern __m128i uX_callconv _uX_mm_hsubs_epi16(__m128i Inxmm_A, __m128i Inxmm_B);
+    extern __m128i uX_ABI _uX_mm_hsub_epi16(__m128i Inxmm_A, __m128i Inxmm_B);
+    extern __m128i uX_ABI _uX_mm_hsub_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
+    extern __m128i uX_ABI _uX_mm_hsubs_epi16(__m128i Inxmm_A, __m128i Inxmm_B);
 
 #if defined(uX_X86)
     uX_PACK_MM
-    extern __m64 uX_callconv _uX_mm_hsub_pi16(__m64 Inmm_A, __m64 Inmm_B);
-    extern __m64 uX_callconv _uX_mm_hsub_pi32(__m64 Inmm_A, __m64 Inmm_B);
-    extern __m64 uX_callconv _uX_mm_hsubs_pi16(__m64 Inmm_A, __m64 Inmm_B);
+    extern __m64 uX_ABI _uX_mm_hsub_pi16(__m64 Inmm_A, __m64 Inmm_B);
+    extern __m64 uX_ABI _uX_mm_hsub_pi32(__m64 Inmm_A, __m64 Inmm_B);
+    extern __m64 uX_ABI _uX_mm_hsubs_pi16(__m64 Inmm_A, __m64 Inmm_B);
     uX_PACK_XMM
 #endif
 
@@ -90,74 +112,74 @@ uX_PACK_PUSH_XMM
     // that result are added horizontally with saturation
     // to give the final result.
 
-    extern __m128i uX_callconv _uX_mm_maddubs_epi16(__m128i Inxmm_A, __m128i Inxmm_B);
+    extern __m128i uX_ABI _uX_mm_maddubs_epi16(__m128i Inxmm_A, __m128i Inxmm_B);
 
 #if defined(uX_X86)
     uX_PACK_MM
-        extern __m64 uX_callconv _uX_mm_maddubs_pi16(__m64 Inmm_A, __m64 Inmm_B);
+    extern __m64 uX_ABI _uX_mm_maddubs_pi16(__m64 Inmm_A, __m64 Inmm_B);
     uX_PACK_XMM
 #endif
 
     // Packed multiply high integers with round and scaling,
     // {X,}MM2/m{128,64}(b) to {X,}MM1(a).
 
-    extern __m128i uX_callconv _uX_mm_mulhrs_epi16(__m128i Inxmm_A, __m128i Inxmm_B);
+    extern __m128i uX_ABI _uX_mm_mulhrs_epi16(__m128i Inxmm_A, __m128i Inxmm_B);
 
 #if defined(uX_X86)
     uX_PACK_MM
-        extern __m64 uX_callconv _uX_mm_mulhrs_pi16(__m64 Inmm_A, __m64 Inmm_B);
+    extern __m64 uX_ABI _uX_mm_mulhrs_pi16(__m64 Inmm_A, __m64 Inmm_B);
     uX_PACK_XMM
 #endif
 
     // Packed shuffle bytes
     // {X,}MM2/m{128,64}(b) by {X,}MM1(a).
 
-    extern __m128i uX_callconv _uX_mm_shuffle_epi8(__m128i Inxmm_A, __m128i Inxmm_B);
+    extern __m128i uX_ABI _uX_mm_shuffle_epi8(__m128i Inxmm_A, __m128i Inxmm_B);
 
 #if defined(uX_X86)
     uX_PACK_MM
-        extern __m64 uX_callconv _uX_mm_shuffle_pi8(__m64 Inmm_A, __m64 Inmm_B);
+    extern __m64 uX_ABI _uX_mm_shuffle_pi8(__m64 Inmm_A, __m64 Inmm_B);
     uX_PACK_XMM
 #endif
 
     // Packed byte, word, double word sign, {X,}MM2/m{128,64}(b) to
     // {X,}MM1(a).
 
-    extern __m128i uX_callconv _uX_mm_sign_epi8(__m128i Inxmm_A, __m128i Inxmm_B);
-    extern __m128i uX_callconv _uX_mm_sign_epi16(__m128i Inxmm_A, __m128i Inxmm_B);
-    extern __m128i uX_callconv _uX_mm_sign_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
+    extern __m128i uX_ABI _uX_mm_sign_epi8(__m128i Inxmm_A, __m128i Inxmm_B);
+    extern __m128i uX_ABI _uX_mm_sign_epi16(__m128i Inxmm_A, __m128i Inxmm_B);
+    extern __m128i uX_ABI _uX_mm_sign_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
 
 #if defined(uX_X86)
     uX_PACK_MM
-    extern __m64 uX_callconv _uX_mm_sign_pi8(__m64 Inmm_A, __m64 Inmm_B);
-    extern __m64 uX_callconv _uX_mm_sign_pi16(__m64 Inmm_A, __m64 Inmm_B);
-    extern __m64 uX_callconv _uX_mm_sign_pi32(__m64 Inmm_A, __m64 Inmm_B);
+    extern __m64 uX_ABI _uX_mm_sign_pi8(__m64 Inmm_A, __m64 Inmm_B);
+    extern __m64 uX_ABI _uX_mm_sign_pi16(__m64 Inmm_A, __m64 Inmm_B);
+    extern __m64 uX_ABI _uX_mm_sign_pi32(__m64 Inmm_A, __m64 Inmm_B);
     uX_PACK_XMM
 #endif
 
     // Packed align and shift right by n*8 bits,
     // {X,}MM2/m{128,64}(b) to {X,}MM1(a).
 
-    extern __m128i uX_callconv _uX_mm_alignr_epi8(__m128i Inxmm_A, __m128i Inxmm_B, const unsigned int Inint_Count);
+    extern __m128i uX_ABI _uX_mm_alignr_epi8(__m128i Inxmm_A, __m128i Inxmm_B, const count_t Inint_Count);
 
 #if defined(uX_X86)
     uX_PACK_MM
-        extern __m64 uX_callconv _uX_mm_alignr_pi8(__m64 Inmm_A, __m64 Inmm_B, const unsigned int Inint_Count);
+    extern __m64 uX_ABI _uX_mm_alignr_pi8(__m64 Inmm_A, __m64 Inmm_B, const count_t Inint_Count);
     uX_PACK_XMM
 #endif
 
     // Packed byte, word, double word absolute value,
     // {X,}MM2/m{128,64}(b) to {X,}MM1(a).
 
-    extern __m128i uX_callconv _uX_mm_abs_epi8(__m128i Inxmm_A);
-    extern __m128i uX_callconv _uX_mm_abs_epi16(__m128i Inxmm_A);
-    extern __m128i uX_callconv _uX_mm_abs_epi32(__m128i Inxmm_A);
+    extern __m128i uX_ABI _uX_mm_abs_epi8(__m128i Inxmm_A);
+    extern __m128i uX_ABI _uX_mm_abs_epi16(__m128i Inxmm_A);
+    extern __m128i uX_ABI _uX_mm_abs_epi32(__m128i Inxmm_A);
 
 #if defined(uX_X86)
     uX_PACK_MM
-    extern __m64 uX_callconv _uX_mm_abs_pi8(__m64 Inmm_A);
-    extern __m64 uX_callconv _uX_mm_abs_pi16(__m64 Inmm_A);
-    extern __m64 uX_callconv _uX_mm_abs_pi32(__m64 Inmm_A);
+    extern __m64 uX_ABI _uX_mm_abs_pi8(__m64 Inmm_A);
+    extern __m64 uX_ABI _uX_mm_abs_pi16(__m64 Inmm_A);
+    extern __m64 uX_ABI _uX_mm_abs_pi32(__m64 Inmm_A);
     uX_PACK_XMM
 #endif
 

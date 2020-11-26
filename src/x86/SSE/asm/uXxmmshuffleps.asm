@@ -1,7 +1,30 @@
 
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / /                                                                               / /
+; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /                                                                               / /
+; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
+; / /    you may not use this file except in compliance with the License.           / /
+; / /    You may obtain a copy of the License at                                    / /
+; / /                                                                               / /
+; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
+; / /                                                                               / /
+; / /    Unless required by applicable law or agreed to in writing, software        / /
+; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
+; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
+; / /    See the License for the specific language governing permissions and        / /
+; / /    limitations under the License.                                             / /
+; / /                                                                               / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
+    OPTION CASEMAP:NONE
+    include macrolib.inc
+    
 ifndef __MIC__
 
-    include uXx86asm.inc
+    include uXasm.inc
 
     .xmm
     option arch:sse
@@ -56,7 +79,7 @@ ifndef __MIC__
                                     offset _m128shufps_234, offset _m128shufps_235, offset _m128shufps_236, offset _m128shufps_237, offset _m128shufps_238, offset _m128shufps_239, \
                                     offset _m128shufps_240, offset _m128shufps_241, offset _m128shufps_242, offset _m128shufps_243, offset _m128shufps_244, offset _m128shufps_245, \
                                     offset _m128shufps_246, offset _m128shufps_247, offset _m128shufps_248, offset _m128shufps_249, offset _m128shufps_250, offset _m128shufps_251, \
-                                    offset _m128shufps_252, offset _m128shufps_253, offset _m128shufps_254, offset _m128shufps_255              
+                                    offset _m128shufps_252, offset _m128shufps_253, offset _m128shufps_254, offset _m128shufps_255
 
     .code
 
@@ -1344,19 +1367,27 @@ procstart _uX_mm_shuffle_3333_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword, 
 procend
 
 procstart _uX_mm_shuffle_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword, _Imm8:dword
-        push         rbase
-        .if((rparam2 < 0) || (rparam2 > 255))
+        push         rbase()
+    ifdef __unix32__
+        define rpdisp, ecx, text
+        define bpdisp, cl, text
+        mov     rpdisp,    _Imm8
+    else
+        define rpdisp, rp2(), text
+        define bpdisp, bp2(), text
+    endif
+    .if((rpdisp < 0) || (rpdisp > 255))
         jmp         _m128shufps_end
-        .endif
-
-        ifdef __X32__
-        movzx           rbase,    byte ptr [rparam2]
-        jmp     dword ptr [_m128shufpsjmptable+rbase*size_t_size]
-        else
-        lea             rbase,    qword ptr [_m128shufpsjmptable]
-        mov             rbase,    qword ptr [rbase+rparam2*size_t_size]
-        jmp             rbx
-        endif
+    .endif
+    ifdef __x32__
+        movzx           rbase(),        bpdisp
+        jmp     dword ptr [_m128shufpsjmptable+rbase()*size_t_size]
+    endif
+    ifdef __x64__
+        lea             rbase(),    qword ptr [_m128shufpsjmptable]
+        mov             rbase(),    qword ptr [rbase()+rp2()*size_t_size]
+        jmp             rbase()
+    endif
 
         _m128shufps_0 label size_t
         shufps          xmm0,           xmm1,           0
@@ -2128,7 +2159,7 @@ procstart _uX_mm_shuffle_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm
         ;jmp         _m128shufps_end
 
         _m128shufps_end:
-        pop         rbase
+        pop         rbase()
         ret
 procend
 

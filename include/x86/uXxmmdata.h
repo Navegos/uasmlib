@@ -1,11 +1,33 @@
 
+/*
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / /                                                                               / /
+; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /                                                                               / /
+; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
+; / /    you may not use this file except in compliance with the License.           / /
+; / /    You may obtain a copy of the License at                                    / /
+; / /                                                                               / /
+; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
+; / /                                                                               / /
+; / /    Unless required by applicable law or agreed to in writing, software        / /
+; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
+; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
+; / /    See the License for the specific language governing permissions and        / /
+; / /    limitations under the License.                                             / /
+; / /                                                                               / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+*/
+
 #pragma once
 
 #ifndef uX_XMM_DATA_H
-#define uX_XMM_DATA_H
+#define uX_XMM_DATA_H 1
 
 #ifndef uX_TYPES_H
-#include "uXTypes.h"
+#include "uXtypes.h"
 #endif  /* uX_TYPES_H */
 
 #if defined(uX_INTRINSICS_SUPPORT) && defined(uX_X86_OR_X64_CPU) && !defined(uX_NO_INTRINSICS_SUPPORT) && !defined(uX_MIC)
@@ -16,7 +38,7 @@ uX_EXTERNC_BEGIN
 uX_PACK_PUSH_XMM
 
 /*
- * Data; //              Constants
+ * Data; Constants
  */
     
     //;;float;;
@@ -970,15 +992,22 @@ uX_PACK_PUSH_XMM
     extern const __m128 __m128_negatey; //                      __m128f; // flt_1; // flt_neg1; // flt_1; // flt_1
     extern const __m128 __m128_negatez; //                      __m128f; // flt_1; // flt_1; // flt_neg1; // flt_1
     extern const __m128 __m128_negatew; //                      __m128f; // flt_1; // flt_1; // flt_1; // flt_neg1
-    extern const __m128 __m128_select0011; //                   __m128i; // flt_false; // flt_false; // flt_true; // flt_true
-    extern const __m128 __m128_select1100; //                   __m128i; // flt_true; // flt_true; // flt_false; // flt_false
-    extern const __m128 __m128_select0101; //                   __m128i; // flt_false; // flt_true; // flt_false; // flt_true
-    extern const __m128 __m128_select1010; //                   __m128i; // flt_true; // flt_false; // flt_true; // flt_false
-    extern const __m128 __m128_select1000; //                   __m128i; // flt_true; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_select1110; //                   __m128i; // flt_true; // flt_true; // flt_true; // flt_false
-    extern const __m128 __m128_select1011; //                   __m128i; // flt_true; // flt_false; // flt_true; // flt_true
-    extern const __m128 __m128_select1111; //                   __m128i; // flt_true; // flt_true; // flt_true; // flt_true
-    extern const __m128 __m128_select0000; //                   __m128i; // flt_false; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_select0000; //                 __m128i; flt_false, flt_false, flt_false, flt_false
+    extern const __m128 __m128_select0001; //                 __m128i; flt_false, flt_false, flt_false, flt_true
+    extern const __m128 __m128_select0010; //                 __m128i; flt_false, flt_false, flt_true, flt_false
+    extern const __m128 __m128_select0100; //                 __m128i; flt_false, flt_true, flt_false, flt_false
+    extern const __m128 __m128_select1000; //                 __m128i; flt_true, flt_false, flt_false, flt_false
+    extern const __m128 __m128_select0011; //                 __m128i; flt_false, flt_false, flt_true, flt_true
+    extern const __m128 __m128_select0111; //                 __m128i; flt_false, flt_true, flt_true, flt_true
+    extern const __m128 __m128_select1111; //                 __m128i; flt_true, flt_true, flt_true, flt_true
+    extern const __m128 __m128_select1110; //                 __m128i; flt_true, flt_true, flt_true, flt_false
+    extern const __m128 __m128_select1100; //                 __m128i; flt_true, flt_true, flt_false, flt_false
+    extern const __m128 __m128_select1001; //                 __m128i; flt_true, flt_false, flt_false, flt_true
+    extern const __m128 __m128_select0110; //                 __m128i; flt_false, flt_true, flt_true, flt_false
+    extern const __m128 __m128_select1011; //                 __m128i; flt_true, flt_false, flt_true, flt_true
+    extern const __m128 __m128_select1101; //                 __m128i; flt_true, flt_true, flt_false, flt_true
+    extern const __m128 __m128_select0101; //                 __m128i; flt_false, flt_true, flt_false, flt_true
+    extern const __m128 __m128_select1010; //                 __m128i; flt_true, flt_false, flt_true, flt_false
     extern const __m128 __m128_onehalfminusepsilon; //          __m128i; // flt_halfminuseps_msk; // flt_halfminuseps_msk; // flt_halfminuseps_msk; // flt_halfminuseps_msk
     extern const __m128 __m128_fixupy16; //                         __m128f; // flt_1; // 0.0000152587890625; // flt_0; // flt_0
     extern const __m128 __m128_fixupy16w16; //                  __m128f; // flt_1; // flt_1; // 0.0000152587890625; // 0.0000152587890625   

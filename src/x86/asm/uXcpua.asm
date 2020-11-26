@@ -2,7 +2,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /    Copyright 2020 UASM assembly library for the Open Source Initiative        / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -19,27 +19,24 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
-    OPTION CASEMAP:NONE
-    include macrolib.inc
-    
+option casemap:none
+include uXasm.inc
+include macrolib.inc
+
 ifndef __MIC__
 
-    include uXasm.inc
-    
-    .xmm
-    option arch:sse
-    option evex:0
+alignstackfieldproc
 
-    .data?
+.data?
     
     input_datacachelevel                dword ?
     
     cpu_data_layout struct
         ok     dword 2 dup(?)
-        level1 qword 1 dup(?)
-        level2 qword 1 dup(?)
-        level3 qword 1 dup(?)
-        level4 qword 1 dup(?)
+        level1 sise_t 1 dup(?)
+        level2 sise_t 1 dup(?)
+        level3 sise_t 1 dup(?)
+        level4 sise_t 1 dup(?)
         descriptortable dword 60 dup(?)
     cpu_data_layout ends
 
@@ -50,16 +47,16 @@ ifndef __MIC__
         d_2pow  dword 1 dup(?)          ; power of 2. size = d_sizem << d_2pow
     cpu_descriptor_record ends
         
-    .data
+.data
             ;align 16
             
-    cpu_dataref label ptr qword                              ; reference point
-        cpu_ok_       dd      0, 0                ; 1 when values are determined
-        cpu_level1_   dq      0                   ; level 1 data cache size
-        cpu_level2_   dq      0                   ; level 2 data cache size
-        cpu_level3_   dq      0                   ; level 3 data cache size
-        cpu_level4_   dq      0                   ; level 4 data cache size
-    cpu_numlevels  equ     4                   ; max level
+    cpu_dataref label ptr sise_t                              ; reference point
+        cpu_ok_       dd           0, 0                ; 1 when values are determined
+        cpu_level1_   isise_t      0                   ; level 1 data cache size
+        cpu_level2_   isise_t      0                   ; level 2 data cache size
+        cpu_level3_   isise_t      0                   ; level 3 data cache size
+        cpu_level4_   isise_t      0                   ; level 4 data cache size
+    cpu_numlevels   equ            4                   ; max level
 
         ; From "Intel Processor Identification and the CPUID Instruction, Application note 485
         ; table of Intel cache descriptors
@@ -358,59 +355,59 @@ ifndef __MIC__
     v1ci __uX_CPUFeatures_80000001H_ECX,                dd, 0
     v1ci __uX_CPUFeatures_80000001H_EDX,                dd, 0
     
-    .const
+.const
     
-    .code
+.code
     
-    callconvopt
-    alignsize_tfieldproc
+callconvopt
+;alignsize_tfieldproc
     
 ifndef _CLASS_uXCPUFEATURES
 _CLASS_uXCPUFEATURES equ 1
 
 ; Constructor
 procstart _uX_CPUFeatures_init, callconv, void, < >, uses rbase(), infolevel:dword
-
     ifdef __x32__
             push                edi
             push                esi
-            r00ecx  textequ     <edi>
-            r01edx  textequ     <esi>
-            r07ebx  textequ     <edi>
-            r01ecx  textequ     <esi>
-            r07ecx  textequ     <edi>
-            r81ecx  textequ     <esi>
-            r81edx  textequ     <edi>
-            r07edx  textequ     <esi>
+            define r00ecx, edi, text
+            define r01edx, esi, text
+            define r07ebx, edi, text
+            define r01ecx, esi, text
+            define r07ecx, edi, text
+            define r81ecx, esi, text
+            define r81edx, edi, text
+            define r07edx, esi, text
     endif
     ifdef __x64__
-        ifdef windows
+        ifdef __windows__
             push                rdi
             push                rsi
-            r00ecx  textequ     <edi>
+            define r00ecx, edi, text
         else            
-            r00ecx  textequ     <r8d>
+            define r00ecx, r8d, text
         endif
             push                r11
             push                r12
             push                r14
             push                r15
-            r01edx  textequ     <esi>
-            r07ebx  textequ     <r8d>
-            r01ecx  textequ     <r9d>
-            r07ecx  textequ     <r11d>
-            r81ecx  textequ     <r12d>
-            r81edx  textequ     <r14d>
-            r07edx  textequ     <r15d>
+            define r01edx, esi, text
+            define r07ebx, r8d, text
+            define r01ecx, r9d, text
+            define r07ecx, r11d, text
+            define r81ecx, r12d, text
+            define r81edx, r14d, text
+            define r07edx, r15d, text
     endif
     
     ifdef __x32__
-            mov     __uX_CPUFeatures_infolevel,       dp0()
         ifdef __windows__
+            mov     __uX_CPUFeatures_infolevel,       dp0()
             xor             dp0(),                    dp0()
         endif
         ifdef __unix__
-            mov             [dp0()+4],                null
+            mov     __uX_CPUFeatures_infolevel,       infolevel
+            ;mov             [dp0()+4],                null
         endif
     endif
     ifdef __x64__
@@ -568,74 +565,74 @@ procstart _uX_CPUFeatures_init, callconv, void, < >, uses rbase(), infolevel:dwo
             mov                 r00ecx,     __uX_CPUFeatures_0H_ECX
 
             cmp                 r00ecx,                 BIT_NTEL            ; 'GenuineIntel'
-            .if(EQUAL?)
+            .if (EQUAL?)
             mov     __uX_CPUFeatures_ntel,              true
             je                  bvendor
             .endif
         
             cmp                 r00ecx,                 BIT_CAMD            ; 'AuthenticAMD'
-            .if(EQUAL?)
+            .if (EQUAL?)
             mov     __uX_CPUFeatures_cAMD,              true
             je                  bvendor
             .endif
             
             mov                 r00ecx,     __uX_CPUFeatures_0H_EBX
             cmp                 r00ecx,                 BIT_CENT            ; 'CentaurHauls'
-            .if(EQUAL?)
+            .if (EQUAL?)
             mov     __uX_CPUFeatures_Cent,              true
             je                  bvendor
             .endif
         
             cmp                 r00ecx,                 BIT_VIA             ; 'VIA VIA VIA'
-            .if(EQUAL?)
+            .if (EQUAL?)
             mov     __uX_CPUFeatures_VIA,               true
             je                  bvendor
             .endif
         
             cmp                 r00ecx,                 BIT_CYRI            ; 'CyrixInstead'
-            .if(EQUAL?)
+            .if (EQUAL?)
             mov     __uX_CPUFeatures_Cyri,              true
             je                  bvendor
             .endif
         
             cmp                 r00ecx,                 BIT_NEXG            ; 'NexGenDriven'
-            .if(EQUAL?)
+            .if (EQUAL?)
             mov     __uX_CPUFeatures_NexG,              true
             ;je                 bvendor
             .endif
-        
+
     bvendor:
-        .if(__uX_CPUFeatures_infolevel >= 1)
+            .if (__uX_CPUFeatures_infolevel >= 1) ;infolevel >= 1
     ifdef __x32__
-                efamily textequ <edi>
-                emodel textequ <ebx>
+                define efamily, edi, text
+                define emodel, ebx, text
     endif
     ifdef __x64__
-                efamily textequ <r8d>
-                emodel textequ  <r9d>
+                define efamily, r8d, text
+                define emodel, r9d, text
     endif
 
-                .if(__uX_CPUFeatures_ntel == true)
+                .if (__uX_CPUFeatures_ntel == true)
                 mov     __uX_CPUFeatures_vendor,            1
                 .endif
 
-                .if(__uX_CPUFeatures_cAMD == true)
+                .if (__uX_CPUFeatures_cAMD == true)
                 mov     __uX_CPUFeatures_vendor,            2
                 .endif
 
-                .if(__uX_CPUFeatures_Cent == true)
+                .if (__uX_CPUFeatures_Cent == true)
                 mov     __uX_CPUFeatures_vendor,            3
                 .endif
 
-                .if(__uX_CPUFeatures_VIA == true)
+                .if (__uX_CPUFeatures_VIA == true)
                 mov     __uX_CPUFeatures_vendor,            3
                 .endif
 
-                .if(__uX_CPUFeatures_Cyri == true)
+                .if (__uX_CPUFeatures_Cyri == true)
                 mov     __uX_CPUFeatures_vendor,            4
                 .endif
 
-                .if(__uX_CPUFeatures_NexG == true)
+                .if (__uX_CPUFeatures_NexG == true)
                 mov     __uX_CPUFeatures_vendor,            5
                 .endif
 
@@ -650,7 +647,7 @@ procstart _uX_CPUFeatures_init, callconv, void, < >, uses rbase(), infolevel:dwo
                 push                rbx
                 push                rcx
                 push                rdx
-    endif       
+    endif
 
                 ; Get family and model
                 mov                 eax,                    1H
@@ -700,7 +697,7 @@ procstart _uX_CPUFeatures_init, callconv, void, < >, uses rbase(), infolevel:dwo
                 pop                 rcx
                 pop                 rbx
                 pop                 rax
-    endif           
+    endif
 
     ifdef __x32__
                 push                eax
@@ -708,7 +705,7 @@ procstart _uX_CPUFeatures_init, callconv, void, < >, uses rbase(), infolevel:dwo
                 push                ecx
                 push                edx
                 push                edi
-                rdest   textequ     <edi>
+                define rdest, edi, text
     endif
     ifdef __x64__
                 push                rax
@@ -716,8 +713,8 @@ procstart _uX_CPUFeatures_init, callconv, void, < >, uses rbase(), infolevel:dwo
                 push                rcx
                 push                rdx
                 push                rdi
-                rdest   textequ     <rdi>   
-    endif       
+                define rdest, rdi, text
+    endif
     
     ifdef __x32__
                 mov                 rdest,                  __uX_CPUFeatures_ProcessorName        ; Pointer to result
@@ -727,7 +724,7 @@ procstart _uX_CPUFeatures_init, callconv, void, < >, uses rbase(), infolevel:dwo
     endif
 
     ifdef __x32__
-                .if(__uX_CPUFeatures_CPUID == false)
+                .if (__uX_CPUFeatures_CPUID == false)
         ; processor has no CPUID
                 mov     dword ptr [rdest],                  '8038'    ; Write text '80386 or 80486'
                 mov     dword ptr [rdest+4],                '6 or'
@@ -826,7 +823,7 @@ PNEND:  ; finished
                 xor                 ecx,                    ecx
 
                 pop                 rdest
-                
+
     ifdef __x32__
                 pop                 edx
                 pop                 ecx
@@ -838,10 +835,8 @@ PNEND:  ; finished
                 pop                 rcx
                 pop                 rbx
                 pop                 rax
-    endif           
+    endif
 
-
-    
     ifdef __x32__
                 push                eax
                 push                ebx
@@ -861,14 +856,14 @@ PNEND:  ; finished
                 push                rsi
                 push                rbp
                 push                rsp
-    endif       
+    endif
     
     ;ifdef __x32__
                 ;rret()        textequ     <eax>
                 ;rsidx()      textequ     <esi>
                 ;rlevel     textequ     <ebp>
     ;else   
-        ;ifdef windows
+        ;ifdef __windows__
     ; -> The proc arguments conform to vectorcall calling convention: rcx=thisPtr, rdx=level
           ;      rcpup1 textequ     <rcx>
           ;      rcpup2 textequ     <rdx>
@@ -881,7 +876,7 @@ PNEND:  ; finished
         ;        rcpup2 textequ     <rsi>
         ;        rcpup3 textequ     <rdx>
                 
-       ; endif ;windows 
+       ; endif ;__windows__ 
         
                 ;rret()        textequ     <rax>
                 ;rsidx()      textequ     <rsi>
@@ -992,9 +987,9 @@ D900:
                 pop                 rcx
                 pop                 rbx
                 pop                 rax
-    endif           
+    endif
 
-        .endif ;infolevel >= 1
+            .endif ;infolevel >= 1
 
             mov                 r01edx,     __uX_CPUFeatures_1H_EDX
 
@@ -1015,19 +1010,19 @@ D900:
             
             ;/* %eax=01H, %edx */
             bt                  r01edx,                 4                   ; TSC READTSC support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_TSC,               true
             .endif
             
             ;/* %eax=01H, %edx */
             bt                  r01edx,                 5                   ; MSR support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_MSR,               true
             .endif
             
             ;/* %eax=01H, %edx */
             bt                  r01edx,                 8                   ; CMPXCHG8B support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_CMPXCHG8B,         true
             .endif
             
@@ -1037,23 +1032,23 @@ D900:
             mov     __uX_CPUFeatures_intrinset,         8                   ; 8
             mov     __uX_CPUFeatures_MMX,               true
             
-            .if(__uX_CPUFeatures_cAMD == true)
+            .if (__uX_CPUFeatures_cAMD == true)
             mov                 r00ecx,     __uX_CPUFeatures_80000001H_EDX
             ; /* %eax=80000001H, %edx */
             bt                  r00ecx,                 22                  ; MMXEXT support by microprocessor          
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_MMXEXT,            true
             .endif
             
             ; /* %eax=80000001H, %edx */
             bt                  r00ecx,                 31                  ; 3DNOW support by microprocessor           
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_3DNOW,             true
             .endif
             
             ; /* %eax=80000001H, %edx */
             bt                  r00ecx,                 30                  ; 3DNOWEXT support by microprocessor            
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_3DNOWEXT,          true
             .endif
             .endif ;cAMD
@@ -1102,7 +1097,7 @@ TESTPS   EQU 10CH                                                           ; po
             
             ;/* %eax=01H, %edx */
             bt                  r01edx,                 11                   ; SEP support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_SEP,               true
             .endif
 
@@ -1115,7 +1110,7 @@ TESTPS   EQU 10CH                                                           ; po
     ifdef __x64__
             mov     __uX_CPUFeatures_intrinset,         20                   ; at least SSE2 supported in 64 bit mode
             mov     __uX_CPUFeatures_FPU,               true
-            .if(__uX_CPUFeatures_cAMD == true)
+            .if (__uX_CPUFeatures_cAMD == true)
             mov     __uX_CPUFeatures_3DNOW,             true
             mov     __uX_CPUFeatures_MMXEXT,            true
             mov     __uX_CPUFeatures_3DNOWEXT,          true
@@ -1130,26 +1125,26 @@ TESTPS   EQU 10CH                                                           ; po
             
             ;/* %eax=01H, %edx */
             bt                  r01edx,                 4                    ; TSC READTSC support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_TSC,               true
             .endif
             
             ;/* %eax=01H, %edx */
             bt                  r01edx,                 5                    ; MSR support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_MSR,               true
             .endif
             
             ;/* %eax=01H, %edx */
             bt                  r01edx,                 11                  ; SEP support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_SEP,               true
             .endif
     endif ;__x64__
 
             ;/* %eax=01H, %edx */
             bt                  r01edx,                 19                 ; CLFSH support by microprocessor (SSE2)
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_CLFSH,             true
             .endif
 
@@ -1160,7 +1155,7 @@ TESTPS   EQU 10CH                                                           ; po
 
             ;/* %eax=07H, %ebx */
             test                r07ebx,                 1                   ; FSGSBASE support by microprocessor
-            .if(!ZERO?)
+            .if (!ZERO?)
             mov     __uX_CPUFeatures_FSGSBASE,          true
             .endif
 
@@ -1172,7 +1167,7 @@ TESTPS   EQU 10CH                                                           ; po
         
             ;/* %eax=01H, %ecx */   
             bt                  r01ecx,                 3                   ; MONITOR support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_MONITOR,           true
             .endif
         
@@ -1184,7 +1179,7 @@ TESTPS   EQU 10CH                                                           ; po
             
             ;/* %eax=01H, %ecx */
             bt                  r01ecx,                 13                  ; CMPXCHG16B support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_CMPXCHG16B,        true
             .endif          
             
@@ -1207,104 +1202,104 @@ TESTPS   EQU 10CH                                                           ; po
         
             ;/* %eax=01H, %ecx */
             bt                  r01ecx,                 1                   ; PCLMUL support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_PCLMULQDQ,         true 
             .endif     
         
             ;/* %eax=01H, %ecx */
             bt                  r01ecx,                 22                  ; MOVBE support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_MOVBE,             true
             .endif
             
             ;/* %eax=01H, %ecx */
             bt                  r01ecx,                 25                  ; AES support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_AES,               true
             .endif
             
             ;/* %eax=01H, %ecx */
             bt                  r01ecx,                 30                  ; RDRAND support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_RDRAND,            true
             .endif
             
             ;/* %eax=07H, %ebx */
-            .if(__uX_CPUFeatures_ntel == true)
+            .if (__uX_CPUFeatures_ntel == true)
             bt                  r07ebx,                 2                   ; SGX support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_SGX,               true
             .endif
             
             ;/* %eax=07H, %ebx */
             bt                  r07ebx,                 4                   ; HLE support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_HLE,               true
             .endif
 
             ;/* %eax=07H, %ebx */
             bt                  r07ebx,                 7                   ; SMEP support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_SMEP,              true
             .endif
             
             ;/* %eax=07H, %ebx */
             bt                  r07ebx,                 9                   ; ERMS support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_ERMS,              true
             .endif
 
             ;/* %eax=07H, %ebx */
             bt                  r07ebx,                 10                  ; INVPCID support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_INVPCID,           true
             .endif
             
             ;/* %eax=07H, %ebx */
             bt                  r07ebx,                 11                  ; RTM support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_RTM,               true
             .endif
             
             ;/* %eax=07H, %ebx */
             bt                  r07ebx,                 14                  ; MPX support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_MPX,               true
             .endif
 
             ;/* %eax=07H, %ebx */
             bt                  r07ebx,                 18                  ; RDSEED support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_RDSEED,            true
             .endif
             
             ;/* %eax=07H, %ebx */
             bt                  r07ebx,                 19                  ; ADX support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_ADX,               true
             .endif
             
             ;/* %eax=07H, %ebx */
             bt                  r07ebx,                 20                  ; SMAP support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_SMAP,              true
             .endif
             
             ;/* %eax=07H, %ebx */
             bt                  r07ebx,                 23                  ; CLFLUSHOPT support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_CLFLUSHOPT,        true
             .endif
             
             ;/* %eax=07H, %ebx */
             bt                  r07ebx,                 24                  ; CLWB support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_CLWB,              true
             .endif
 
             ;/* %eax=07H, %ebx */
             bt                  r07ebx,                 29                  ; SHA support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_SHA,               true
             .endif
 
@@ -1314,37 +1309,37 @@ TESTPS   EQU 10CH                                                           ; po
 
             ;/* %eax=07H, %ecx */
             test                r07ecx,                 1                   ; PREFETCHWT1 support by microprocessor
-            .if(!ZERO?)
+            .if (!ZERO?)
             mov     __uX_CPUFeatures_PREFETCHWT1,       true
             .endif
 
             ;/* %eax=07H, %ecx */
             bt                  r07ecx,                 2                   ; UMIP support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_UMIP,              true
             .endif
 
             ;/* %eax=07H, %ecx */
             bt                  r07ecx,                 3                   ; PKU support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_PKU,               true
             .endif
 
             ;/* %eax=07H, %ecx */
             bt                  r07ecx,                 4                   ; OSPKE support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_OSPKE,             true
             .endif
             
             ;/* %eax=07H, %ecx */
             bt                  r07ecx,                 8                   ; GFNI support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_GFNI,              true
             .endif
             
             ;/* %eax=07H, %ecx */
             bt                  r07ecx,                 22                  ; RDPID support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_RDPID,             true
             .endif
             .endif ;ntel
@@ -1355,38 +1350,38 @@ TESTPS   EQU 10CH                                                           ; po
 
             ;/* %eax=80000001H, %ecx */
             test                r81ecx,                 1                   ; LAHF/SAHF available in 64-bit mode only support by microprocessor
-            .if(!ZERO?)
+            .if (!ZERO?)
             mov     __uX_CPUFeatures_LAHF,              true
             .endif
 
             ;/* %eax=80000001H, %ecx */
             bt                  r81ecx,                 8                   ; PREFETCHW support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_PREFETCHW,         true
             .endif
             
-            .if(__uX_CPUFeatures_cAMD == true)
+            .if (__uX_CPUFeatures_cAMD == true)
             ;/* %eax=80000001H, %ecx */
             bt                  r81ecx,                 6                   ; SSE4a support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_SSE4a,             true
             .endif
             
             ;/* %eax=80000001H, %ecx */
             bt                  r81ecx,                 15                  ; LWP support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_LWP,               true
             .endif
             
             ;/* %eax=80000001H, %ecx */
             bt                  r81ecx,                 21                  ; TBM support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_TBM,               true
             .endif
             
             ;/* %eax=80000001H, %ecx */
             bt                  r81ecx,                 29                  ; MWAITX support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_MWAITX,            true
             .endif
             .endif ;cAMD
@@ -1397,17 +1392,17 @@ TESTPS   EQU 10CH                                                           ; po
 
             ;/* %eax=80000001H, %edx */
             bt                  r81edx,                 11                  ; SYSCALL support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_SYSCALL,           true
             .endif
             
             ;/* %eax=80000001H, %edx */
             bt                  r81edx,                 27                  ; RDTSCP support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_RDTSCP,            true
             .endif
             
-            .if(__uX_CPUFeatures_AES == true)
+            .if (__uX_CPUFeatures_AES == true)
             mov     __uX_CPUFeatures_SSE_AES,           true
             mov     __uX_CPUFeatures_SSE2_AES,          true
             mov     __uX_CPUFeatures_SSE3_AES,          true
@@ -1416,7 +1411,7 @@ TESTPS   EQU 10CH                                                           ; po
             mov     __uX_CPUFeatures_SSE42_AES,         true
             .endif
 
-            .if(__uX_CPUFeatures_GFNI == true)
+            .if (__uX_CPUFeatures_GFNI == true)
             mov     __uX_CPUFeatures_SSE_GFNI,          true
             mov     __uX_CPUFeatures_SSE2_GFNI,         true
             mov     __uX_CPUFeatures_SSE3_GFNI,         true
@@ -1425,7 +1420,7 @@ TESTPS   EQU 10CH                                                           ; po
             mov     __uX_CPUFeatures_SSE42_GFNI,        true
             .endif
 
-            .if(__uX_CPUFeatures_PCLMULQDQ == true)
+            .if (__uX_CPUFeatures_PCLMULQDQ == true)
             mov     __uX_CPUFeatures_SSE_PCLMULQDQ,     true
             mov     __uX_CPUFeatures_SSE2_PCLMULQDQ,    true
             mov     __uX_CPUFeatures_SSE3_PCLMULQDQ,    true
@@ -1483,37 +1478,37 @@ TESTPS   EQU 10CH                                                           ; po
             mov     __uX_CPUFeatures_intrinset,         50                  ; 50
             mov     __uX_CPUFeatures_AVX,               true
             
-            .if(__uX_CPUFeatures_AES == true)
+            .if (__uX_CPUFeatures_AES == true)
             mov     __uX_CPUFeatures_AVX_AES,           true
             .endif
 
-            .if(__uX_CPUFeatures_GFNI == true)
+            .if (__uX_CPUFeatures_GFNI == true)
             mov     __uX_CPUFeatures_AVX_GFNI,          true
             .endif
 
-            .if(__uX_CPUFeatures_PCLMULQDQ == true)
+            .if (__uX_CPUFeatures_PCLMULQDQ == true)
             mov     __uX_CPUFeatures_AVX_PCLMULQDQ,     true
             .endif
 
-            .if(__uX_CPUFeatures_cAMD == true)
+            .if (__uX_CPUFeatures_cAMD == true)
     ifdef __x32__
             mov                 r81ecx,     __uX_CPUFeatures_80000001H_ECX
     endif ;
 
             ;/* %eax=80000001H, %ecx */
             bt                  r81ecx,                 11                  ; XOP support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_XOP,               true
             .endif
 
             ;/* %eax=80000001H, %ecx */
             bt                  r81ecx,                 16                  ; FMA4 support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_FMA4,              true
             .endif
             .endif ;cAMD
 
-            .if(__uX_CPUFeatures_PCLMULQDQ == true && __uX_CPUFeatures_AES == true)
+            .if (__uX_CPUFeatures_PCLMULQDQ == true && __uX_CPUFeatures_AES == true)
             mov     __uX_CPUFeatures_intrinset,         51                  ; 51
             .endif
 
@@ -1533,34 +1528,34 @@ TESTPS   EQU 10CH                                                           ; po
 
             ;/* %eax=07H, %ecx */
             bt                  r07ecx,                 9                   ; VAES support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_VAES,              true
             .endif
 
             ;/* %eax=07H, %ecx */
             bt                  r07ecx,                 10                  ; VPCLMULQDQ support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_VPCLMULQDQ,        true
             .endif
             
-            .if(__uX_CPUFeatures_AES == true)
+            .if (__uX_CPUFeatures_AES == true)
             mov     __uX_CPUFeatures_AVX2_AES,          true
             .endif
 
-            .if(__uX_CPUFeatures_GFNI == true)
+            .if (__uX_CPUFeatures_GFNI == true)
             mov     __uX_CPUFeatures_AVX2_GFNI,         true
             .endif
 
-            .if(__uX_CPUFeatures_PCLMULQDQ == true)
+            .if (__uX_CPUFeatures_PCLMULQDQ == true)
             mov     __uX_CPUFeatures_AVX2_PCLMULQDQ,    true
             .endif
         
-            .if(__uX_CPUFeatures_VAES == true)
+            .if (__uX_CPUFeatures_VAES == true)
             mov     __uX_CPUFeatures_AVX_VAES,          true
             mov     __uX_CPUFeatures_AVX2_VAES,         true
             .endif
 
-            .if(__uX_CPUFeatures_VPCLMULQDQ == true)
+            .if (__uX_CPUFeatures_VPCLMULQDQ == true)
             mov     __uX_CPUFeatures_AVX_VPCLMULQDQ,    true
             mov     __uX_CPUFeatures_AVX2_VPCLMULQDQ,   true
             .endif
@@ -1605,7 +1600,7 @@ TESTPS   EQU 10CH                                                           ; po
             mov     __uX_CPUFeatures_LZCNT,             true
             mov     __uX_CPUFeatures_ABM,               true
             
-            .if(__uX_CPUFeatures_ntel == true)
+            .if (__uX_CPUFeatures_ntel == true)
     ifdef __x32__
             push                eax
             push                ebx
@@ -1648,15 +1643,15 @@ TESTPS   EQU 10CH                                                           ; po
             mov     __uX_CPUFeatures_intrinset,         60                  ; 60
             mov     __uX_CPUFeatures_AVX512F,           true
             
-            .if(__uX_CPUFeatures_GFNI == true)
+            .if (__uX_CPUFeatures_GFNI == true)
             mov     __uX_CPUFeatures_AVX512_GFNI,       true
             .endif
             
-            .if(__uX_CPUFeatures_VAES == true)
+            .if (__uX_CPUFeatures_VAES == true)
             mov     __uX_CPUFeatures_AVX512_VAES,       true
             .endif
             
-            .if(__uX_CPUFeatures_VPCLMULQDQ == true)
+            .if (__uX_CPUFeatures_VPCLMULQDQ == true)
             mov     __uX_CPUFeatures_AVX512_VPCLMULQDQ, true
             .endif
 
@@ -1665,16 +1660,16 @@ TESTPS   EQU 10CH                                                           ; po
             jnc                 not_supported
             mov     __uX_CPUFeatures_intrinset,         61                  ; 61
             mov     __uX_CPUFeatures_AVX512DQ,          true
-            
-            .if(__uX_CPUFeatures_GFNI == true)
+
+            .if (__uX_CPUFeatures_GFNI == true)
             mov     __uX_CPUFeatures_AVX512DQ_GFNI,     true
             .endif
         
-            .if(__uX_CPUFeatures_VAES == true)
+            .if (__uX_CPUFeatures_VAES == true)
             mov     __uX_CPUFeatures_AVX512DQ_VAES,     true
             .endif
-        
-            .if(__uX_CPUFeatures_VPCLMULQDQ == true)
+
+            .if (__uX_CPUFeatures_VPCLMULQDQ == true)
             mov     __uX_CPUFeatures_AVX512DQ_VPCLMULQDQ,   true
             .endif
 
@@ -1683,16 +1678,16 @@ TESTPS   EQU 10CH                                                           ; po
             jnc                 not_supported
             mov     __uX_CPUFeatures_intrinset,         62                  ; 62
             mov     __uX_CPUFeatures_AVX512BW,          true
-            
-            .if(__uX_CPUFeatures_GFNI == true)
+
+            .if (__uX_CPUFeatures_GFNI == true)
             mov     __uX_CPUFeatures_AVX512BW_GFNI,     true
             .endif
-            
-            .if(__uX_CPUFeatures_VAES == true)
+
+            .if (__uX_CPUFeatures_VAES == true)
             mov     __uX_CPUFeatures_AVX512BW_VAES,     true
             .endif
-            
-            .if(__uX_CPUFeatures_VPCLMULQDQ == true)
+
+            .if (__uX_CPUFeatures_VPCLMULQDQ == true)
             mov     __uX_CPUFeatures_AVX512BW_VPCLMULQDQ,   true
             .endif
 
@@ -1701,28 +1696,28 @@ TESTPS   EQU 10CH                                                           ; po
             jnc                 not_supported
             mov     __uX_CPUFeatures_intrinset,         63                  ; 63
             mov     __uX_CPUFeatures_AVX512VL,          true
-            
+
             ;/* %eax=07H, %ebx */
             bt                  r07ebx,                 26                  ; AVX512PF support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_AVX512PF,          true
             .endif
             
             ;/* %eax=07H, %ebx */
             bt                  r07ebx,                 27                  ; AVX512ER support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_AVX512ER,          true
             .endif
             
             ;/* %eax=07H, %ebx */
             bt                  r07ebx,                 28                  ; AVX512CD support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_AVX512CD,          true
             .endif
             
             ;/* %eax=07H, %ebx */
             bt                  r07ebx,                 21                  ; AVX512_IFMA support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_AVX512_IFMA,       true
             .endif
             
@@ -1732,31 +1727,31 @@ TESTPS   EQU 10CH                                                           ; po
 
             ;/* %eax=07H, %ecx */
             bt                  r07ecx,                 1                   ; AVX512_VBMI support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_AVX512_VBMI,       true
             .endif
             
             ;/* %eax=07H, %ecx */
             bt                  r07ecx,                 6                   ; AVX512_VBMI2 support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_AVX512_VBMI2,      true
             .endif
 
             ;/* %eax=07H, %ecx */
             bt                  r07ecx,                 11                  ; AVX512_VNNI support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_AVX512_VNNI,       true
             .endif
 
             ;/* %eax=07H, %ecx */
             bt                  r07ecx,                 12                  ; AVX512_BITALG support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_AVX512_BITALG,     true
             .endif
 
             ;/* %eax=07H, %ecx */
             bt                  r07ecx,                 14                  ; AVX512_VPOPCNTDQ support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_AVX512_VPOPCNTDQ,  true
             .endif
 
@@ -1766,85 +1761,85 @@ TESTPS   EQU 10CH                                                           ; po
 
             ;/* %eax=07H, %edx */
             bt                  r07edx,                 2                   ; AVX512_4VNNIW support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_AVX512_4VNNIW,     true
             .endif
             
             ;/* %eax=07H, %edx */   
             bt                  r07edx,                 3                   ; AVX512_4FMAPS support by microprocessor
-            .if(CARRY?)
+            .if (CARRY?)
             mov     __uX_CPUFeatures_AVX512_4FMAPS,     true
             .endif
             
-            .if(__uX_CPUFeatures_GFNI == true)
+            .if (__uX_CPUFeatures_GFNI == true)
             mov     __uX_CPUFeatures_AVX512_GFNI_VL,    true
             .endif
 
-            .if(__uX_CPUFeatures_VAES == true)
+            .if (__uX_CPUFeatures_VAES == true)
             mov     __uX_CPUFeatures_AVX512_VAES_VL,    true
             .endif
 
-            .if(__uX_CPUFeatures_VPCLMULQDQ == true)
+            .if (__uX_CPUFeatures_VPCLMULQDQ == true)
             mov     __uX_CPUFeatures_AVX512_VPCLMULQDQ_VL,  true
             .endif
 
-            .if(__uX_CPUFeatures_AVX512_IFMA == true)
+            .if (__uX_CPUFeatures_AVX512_IFMA == true)
             mov     __uX_CPUFeatures_AVX512_IFMA_VL,    true
             .endif
 
-            .if(__uX_CPUFeatures_AVX512_VBMI == true)
+            .if (__uX_CPUFeatures_AVX512_VBMI == true)
             mov     __uX_CPUFeatures_AVX512_VBMI_VL,    true
             .endif
 
-            .if(__uX_CPUFeatures_AVX512_VBMI2 == true)
+            .if (__uX_CPUFeatures_AVX512_VBMI2 == true)
             mov     __uX_CPUFeatures_AVX512_VBMI2_VL,   true
             .endif
 
-            .if(__uX_CPUFeatures_AVX512_VNNI == true)
+            .if (__uX_CPUFeatures_AVX512_VNNI == true)
             mov     __uX_CPUFeatures_AVX512_VNNI_VL,    true
             .endif
 
-            .if(__uX_CPUFeatures_AVX512_BITALG == true)
+            .if (__uX_CPUFeatures_AVX512_BITALG == true)
             mov     __uX_CPUFeatures_AVX512_BITALG_VL,  true
             .endif
 
-            .if(__uX_CPUFeatures_AVX512_VPOPCNTDQ == true)
+            .if (__uX_CPUFeatures_AVX512_VPOPCNTDQ == true)
             mov     __uX_CPUFeatures_AVX512_VPOPCNTDQ_VL,   true
             .endif
 
-            .if(__uX_CPUFeatures_GFNI == true)
+            .if (__uX_CPUFeatures_GFNI == true)
             mov     __uX_CPUFeatures_AVX512BW_GFNI_VL,  true
             .endif
 
-            .if(__uX_CPUFeatures_VAES == true)
+            .if (__uX_CPUFeatures_VAES == true)
             mov     __uX_CPUFeatures_AVX512BW_VAES_VL,  true
             .endif
 
-            .if(__uX_CPUFeatures_VPCLMULQDQ == true)
+            .if (__uX_CPUFeatures_VPCLMULQDQ == true)
             mov     __uX_CPUFeatures_AVX512BW_VPCLMULQDQ_VL,    true
             .endif
 
-            .if(__uX_CPUFeatures_AVX512BW == true)
+            .if (__uX_CPUFeatures_AVX512BW == true)
             mov     __uX_CPUFeatures_AVX512BW_VL,   true
             .endif
 
-            .if(__uX_CPUFeatures_GFNI == true)
+            .if (__uX_CPUFeatures_GFNI == true)
             mov     __uX_CPUFeatures_AVX512DQ_GFNI_VL,  true
             .endif
 
-            .if(__uX_CPUFeatures_VAES == true)
+            .if (__uX_CPUFeatures_VAES == true)
             mov     __uX_CPUFeatures_AVX512DQ_VAES_VL,  true
             .endif
 
-            .if(__uX_CPUFeatures_VPCLMULQDQ == true)
+            .if (__uX_CPUFeatures_VPCLMULQDQ == true)
             mov     __uX_CPUFeatures_AVX512DQ_VPCLMULQDQ_VL,    true
             .endif
 
-            .if(__uX_CPUFeatures_AVX512DQ == true)
+            .if (__uX_CPUFeatures_AVX512DQ == true)
             mov     __uX_CPUFeatures_AVX512DQ_VL,   true
             .endif
 
-            .if(__uX_CPUFeatures_AVX512CD == true)
+            .if (__uX_CPUFeatures_AVX512CD == true)
             mov     __uX_CPUFeatures_AVX512CD_VL,   true
             .endif
 
@@ -1865,10 +1860,10 @@ not_supported:
             pop                 r14
             pop                 r12
             pop                 r11
-        ifdef windows
+        ifdef __windows__
             pop                 rsi
             pop                 rdi
-        endif       
+        endif
 
             ; The constructor MUST return it's this pointer in RAX.
             ;mov                    rax,                    thisPtr     
@@ -1883,190 +1878,190 @@ procstart _uX_CPUFeatures_destroy, callconv, void, < >, < >, < >
             xor             rret(),                    rret()
 
             mov     __uX_CPUFeatures_DataCacheSize,         rret()
-            mov     __uX_CPUFeatures_infolevel,             rret()
+            mov     __uX_CPUFeatures_infolevel,             dret()
             mov     __uX_CPUFeatures_ProcessorName,         rret()
-            mov     __uX_CPUFeatures_model,                 rret()
-            mov     __uX_CPUFeatures_family,                rret()
-            mov     __uX_CPUFeatures_vendor,                rret()
-            mov     __uX_CPUFeatures_inited,                rret()
-            mov     __uX_CPUFeatures_intrinset,             rret()
+            mov     __uX_CPUFeatures_model,                 dret()
+            mov     __uX_CPUFeatures_family,                dret()
+            mov     __uX_CPUFeatures_vendor,                dret()
+            mov     __uX_CPUFeatures_inited,                dret()
+            mov     __uX_CPUFeatures_intrinset,             dret()
 
-            mov     __uX_CPUFeatures_enabled_ZMM,           rret()
-            mov     __uX_CPUFeatures_enabled_YMM,           rret()
-            mov     __uX_CPUFeatures_enabled_XMM,           rret()
+            mov     __uX_CPUFeatures_enabled_ZMM,           dret()
+            mov     __uX_CPUFeatures_enabled_YMM,           dret()
+            mov     __uX_CPUFeatures_enabled_XMM,           dret()
             
     ;/* %eax=07H, %ecx, %ebx | %eax=01H, %ecx , %edx */
-            mov     __uX_CPUFeatures_AVX2_VPCLMULQDQ,       rret()
-            mov     __uX_CPUFeatures_AVX2_VAES,             rret()
-            mov     __uX_CPUFeatures_AVX2_PCLMULQDQ,        rret()
-            mov     __uX_CPUFeatures_AVX2_GFNI,             rret()
-            mov     __uX_CPUFeatures_AVX2_AES,              rret()
-            mov     __uX_CPUFeatures_AVX_VPCLMULQDQ,        rret()
-            mov     __uX_CPUFeatures_AVX_VAES,              rret()
-            mov     __uX_CPUFeatures_AVX_PCLMULQDQ,         rret()
-            mov     __uX_CPUFeatures_AVX_GFNI,              rret()
-            mov     __uX_CPUFeatures_AVX_AES,               rret()
-            mov     __uX_CPUFeatures_SSE42_PCLMULQDQ,       rret()
-            mov     __uX_CPUFeatures_SSE42_GFNI,            rret()
-            mov     __uX_CPUFeatures_SSE42_AES,             rret()
-            mov     __uX_CPUFeatures_SSE41_PCLMULQDQ,       rret()
-            mov     __uX_CPUFeatures_SSE41_GFNI,            rret()
-            mov     __uX_CPUFeatures_SSE41_AES,             rret()
-            mov     __uX_CPUFeatures_SSSE3_PCLMULQDQ,       rret()
-            mov     __uX_CPUFeatures_SSSE3_GFNI,            rret()
-            mov     __uX_CPUFeatures_SSSE3_AES,             rret()
-            mov     __uX_CPUFeatures_SSE3_PCLMULQDQ,        rret()
-            mov     __uX_CPUFeatures_SSE3_GFNI,             rret()
-            mov     __uX_CPUFeatures_SSE3_AES,              rret()
-            mov     __uX_CPUFeatures_SSE2_PCLMULQDQ,        rret()
-            mov     __uX_CPUFeatures_SSE2_GFNI,             rret()
-            mov     __uX_CPUFeatures_SSE2_AES,              rret()
-            mov     __uX_CPUFeatures_SSE_PCLMULQDQ,         rret()
-            mov     __uX_CPUFeatures_SSE_GFNI,              rret()
-            mov     __uX_CPUFeatures_SSE_AES,               rret()
+            mov     __uX_CPUFeatures_AVX2_VPCLMULQDQ,       dret()
+            mov     __uX_CPUFeatures_AVX2_VAES,             dret()
+            mov     __uX_CPUFeatures_AVX2_PCLMULQDQ,        dret()
+            mov     __uX_CPUFeatures_AVX2_GFNI,             dret()
+            mov     __uX_CPUFeatures_AVX2_AES,              dret()
+            mov     __uX_CPUFeatures_AVX_VPCLMULQDQ,        dret()
+            mov     __uX_CPUFeatures_AVX_VAES,              dret()
+            mov     __uX_CPUFeatures_AVX_PCLMULQDQ,         dret()
+            mov     __uX_CPUFeatures_AVX_GFNI,              dret()
+            mov     __uX_CPUFeatures_AVX_AES,               dret()
+            mov     __uX_CPUFeatures_SSE42_PCLMULQDQ,       dret()
+            mov     __uX_CPUFeatures_SSE42_GFNI,            dret()
+            mov     __uX_CPUFeatures_SSE42_AES,             dret()
+            mov     __uX_CPUFeatures_SSE41_PCLMULQDQ,       dret()
+            mov     __uX_CPUFeatures_SSE41_GFNI,            dret()
+            mov     __uX_CPUFeatures_SSE41_AES,             dret()
+            mov     __uX_CPUFeatures_SSSE3_PCLMULQDQ,       dret()
+            mov     __uX_CPUFeatures_SSSE3_GFNI,            dret()
+            mov     __uX_CPUFeatures_SSSE3_AES,             dret()
+            mov     __uX_CPUFeatures_SSE3_PCLMULQDQ,        dret()
+            mov     __uX_CPUFeatures_SSE3_GFNI,             dret()
+            mov     __uX_CPUFeatures_SSE3_AES,              dret()
+            mov     __uX_CPUFeatures_SSE2_PCLMULQDQ,        dret()
+            mov     __uX_CPUFeatures_SSE2_GFNI,             dret()
+            mov     __uX_CPUFeatures_SSE2_AES,              dret()
+            mov     __uX_CPUFeatures_SSE_PCLMULQDQ,         dret()
+            mov     __uX_CPUFeatures_SSE_GFNI,              dret()
+            mov     __uX_CPUFeatures_SSE_AES,               dret()
             
     ;/* %eax=07H, %ebx, %ecx */
-            mov     __uX_CPUFeatures_AVX512CD_VL,           rret()
-            mov     __uX_CPUFeatures_AVX512DQ_VL,           rret()
-            mov     __uX_CPUFeatures_AVX512DQ_VPCLMULQDQ_VL,rret()
-            mov     __uX_CPUFeatures_AVX512DQ_VPCLMULQDQ,   rret()
-            mov     __uX_CPUFeatures_AVX512DQ_VAES_VL,      rret()
-            mov     __uX_CPUFeatures_AVX512DQ_VAES,         rret()
-            mov     __uX_CPUFeatures_AVX512DQ_GFNI_VL,      rret()
-            mov     __uX_CPUFeatures_AVX512DQ_GFNI,         rret()
-            mov     __uX_CPUFeatures_AVX512BW_VL,           rret()
-            mov     __uX_CPUFeatures_AVX512BW_VPCLMULQDQ_VL,rret()
-            mov     __uX_CPUFeatures_AVX512BW_VPCLMULQDQ,   rret()
-            mov     __uX_CPUFeatures_AVX512BW_VAES_VL,      rret()
-            mov     __uX_CPUFeatures_AVX512BW_VAES,         rret()
-            mov     __uX_CPUFeatures_AVX512BW_GFNI_VL,      rret()
-            mov     __uX_CPUFeatures_AVX512BW_GFNI,         rret()
-            mov     __uX_CPUFeatures_AVX512_VPOPCNTDQ_VL,   rret()
-            mov     __uX_CPUFeatures_AVX512_BITALG_VL,      rret()
-            mov     __uX_CPUFeatures_AVX512_VNNI_VL,        rret()
-            mov     __uX_CPUFeatures_AVX512_VBMI2_VL,       rret()
-            mov     __uX_CPUFeatures_AVX512_VBMI_VL,        rret()
-            mov     __uX_CPUFeatures_AVX512_IFMA_VL,        rret()
-            mov     __uX_CPUFeatures_AVX512_VPCLMULQDQ_VL,  rret()
-            mov     __uX_CPUFeatures_AVX512_VPCLMULQDQ,     rret()
-            mov     __uX_CPUFeatures_AVX512_VAES_VL,        rret()
-            mov     __uX_CPUFeatures_AVX512_VAES,           rret()
-            mov     __uX_CPUFeatures_AVX512_GFNI_VL,        rret()
-            mov     __uX_CPUFeatures_AVX512_GFNI,           rret()
+            mov     __uX_CPUFeatures_AVX512CD_VL,           dret()
+            mov     __uX_CPUFeatures_AVX512DQ_VL,           dret()
+            mov     __uX_CPUFeatures_AVX512DQ_VPCLMULQDQ_VL,dret()
+            mov     __uX_CPUFeatures_AVX512DQ_VPCLMULQDQ,   dret()
+            mov     __uX_CPUFeatures_AVX512DQ_VAES_VL,      dret()
+            mov     __uX_CPUFeatures_AVX512DQ_VAES,         dret()
+            mov     __uX_CPUFeatures_AVX512DQ_GFNI_VL,      dret()
+            mov     __uX_CPUFeatures_AVX512DQ_GFNI,         dret()
+            mov     __uX_CPUFeatures_AVX512BW_VL,           dret()
+            mov     __uX_CPUFeatures_AVX512BW_VPCLMULQDQ_VL,dret()
+            mov     __uX_CPUFeatures_AVX512BW_VPCLMULQDQ,   dret()
+            mov     __uX_CPUFeatures_AVX512BW_VAES_VL,      dret()
+            mov     __uX_CPUFeatures_AVX512BW_VAES,         dret()
+            mov     __uX_CPUFeatures_AVX512BW_GFNI_VL,      dret()
+            mov     __uX_CPUFeatures_AVX512BW_GFNI,         dret()
+            mov     __uX_CPUFeatures_AVX512_VPOPCNTDQ_VL,   dret()
+            mov     __uX_CPUFeatures_AVX512_BITALG_VL,      dret()
+            mov     __uX_CPUFeatures_AVX512_VNNI_VL,        dret()
+            mov     __uX_CPUFeatures_AVX512_VBMI2_VL,       dret()
+            mov     __uX_CPUFeatures_AVX512_VBMI_VL,        dret()
+            mov     __uX_CPUFeatures_AVX512_IFMA_VL,        dret()
+            mov     __uX_CPUFeatures_AVX512_VPCLMULQDQ_VL,  dret()
+            mov     __uX_CPUFeatures_AVX512_VPCLMULQDQ,     dret()
+            mov     __uX_CPUFeatures_AVX512_VAES_VL,        dret()
+            mov     __uX_CPUFeatures_AVX512_VAES,           dret()
+            mov     __uX_CPUFeatures_AVX512_GFNI_VL,        dret()
+            mov     __uX_CPUFeatures_AVX512_GFNI,           dret()
 
     ;/* %eax=80000001H, %edx */
-            mov     __uX_CPUFeatures_3DNOW,                 rret()
-            mov     __uX_CPUFeatures_3DNOWEXT,              rret()
-            mov     __uX_CPUFeatures_RDTSCP,                rret()
-            mov     __uX_CPUFeatures_MMXEXT,                rret()
-            mov     __uX_CPUFeatures_SYSCALL,               rret()
+            mov     __uX_CPUFeatures_3DNOW,                 dret()
+            mov     __uX_CPUFeatures_3DNOWEXT,              dret()
+            mov     __uX_CPUFeatures_RDTSCP,                dret()
+            mov     __uX_CPUFeatures_MMXEXT,                dret()
+            mov     __uX_CPUFeatures_SYSCALL,               dret()
 
     ;/* %eax=80000001H, %ecx */
-            mov     __uX_CPUFeatures_MWAITX,                rret()
-            mov     __uX_CPUFeatures_TBM,                   rret()
-            mov     __uX_CPUFeatures_FMA4,                  rret()
-            mov     __uX_CPUFeatures_LWP,                   rret()
-            mov     __uX_CPUFeatures_XOP,                   rret()
-            mov     __uX_CPUFeatures_PREFETCHW,             rret()
-            mov     __uX_CPUFeatures_SSE4a,                 rret()
-            mov     __uX_CPUFeatures_ABM,                   rret()
-            mov     __uX_CPUFeatures_LZCNT,                 rret()
-            mov     __uX_CPUFeatures_LAHF,                  rret()
+            mov     __uX_CPUFeatures_MWAITX,                dret()
+            mov     __uX_CPUFeatures_TBM,                   dret()
+            mov     __uX_CPUFeatures_FMA4,                  dret()
+            mov     __uX_CPUFeatures_LWP,                   dret()
+            mov     __uX_CPUFeatures_XOP,                   dret()
+            mov     __uX_CPUFeatures_PREFETCHW,             dret()
+            mov     __uX_CPUFeatures_SSE4a,                 dret()
+            mov     __uX_CPUFeatures_ABM,                   dret()
+            mov     __uX_CPUFeatures_LZCNT,                 dret()
+            mov     __uX_CPUFeatures_LAHF,                  dret()
 
     ;/* %eax=07H, %edx */
-            mov     __uX_CPUFeatures_AVX512_4FMAPS,         rret()
-            mov     __uX_CPUFeatures_AVX512_4VNNIW,         rret()
+            mov     __uX_CPUFeatures_AVX512_4FMAPS,         dret()
+            mov     __uX_CPUFeatures_AVX512_4VNNIW,         dret()
 
     ;/* %eax=07H, %ecx */
-            mov     __uX_CPUFeatures_RDPID,                 rret()
-            mov     __uX_CPUFeatures_AVX512_VPOPCNTDQ,      rret()
-            mov     __uX_CPUFeatures_AVX512_BITALG,         rret()
-            mov     __uX_CPUFeatures_AVX512_VNNI,           rret()
-            mov     __uX_CPUFeatures_VPCLMULQDQ,            rret()
-            mov     __uX_CPUFeatures_VAES,                  rret()
-            mov     __uX_CPUFeatures_GFNI,                  rret()
-            mov     __uX_CPUFeatures_AVX512_VBMI2,          rret()
-            mov     __uX_CPUFeatures_OSPKE,                 rret()
-            mov     __uX_CPUFeatures_PKU,                   rret()
-            mov     __uX_CPUFeatures_UMIP,                  rret()
-            mov     __uX_CPUFeatures_AVX512_VBMI,           rret()
-            mov     __uX_CPUFeatures_PREFETCHWT1,           rret()
+            mov     __uX_CPUFeatures_RDPID,                 dret()
+            mov     __uX_CPUFeatures_AVX512_VPOPCNTDQ,      dret()
+            mov     __uX_CPUFeatures_AVX512_BITALG,         dret()
+            mov     __uX_CPUFeatures_AVX512_VNNI,           dret()
+            mov     __uX_CPUFeatures_VPCLMULQDQ,            dret()
+            mov     __uX_CPUFeatures_VAES,                  dret()
+            mov     __uX_CPUFeatures_GFNI,                  dret()
+            mov     __uX_CPUFeatures_AVX512_VBMI2,          dret()
+            mov     __uX_CPUFeatures_OSPKE,                 dret()
+            mov     __uX_CPUFeatures_PKU,                   dret()
+            mov     __uX_CPUFeatures_UMIP,                  dret()
+            mov     __uX_CPUFeatures_AVX512_VBMI,           dret()
+            mov     __uX_CPUFeatures_PREFETCHWT1,           dret()
 
     ;/* %eax=07H, %ebx */
-            mov     __uX_CPUFeatures_AVX512VL,              rret()
-            mov     __uX_CPUFeatures_AVX512BW,              rret()
-            mov     __uX_CPUFeatures_SHA,                   rret()
-            mov     __uX_CPUFeatures_AVX512CD,              rret()
-            mov     __uX_CPUFeatures_AVX512ER,              rret()
-            mov     __uX_CPUFeatures_AVX512PF,              rret()
-            mov     __uX_CPUFeatures_CLWB,                  rret()
-            mov     __uX_CPUFeatures_CLFLUSHOPT,            rret()
-            mov     __uX_CPUFeatures_AVX512_IFMA,           rret()
-            mov     __uX_CPUFeatures_SMAP,                  rret()
-            mov     __uX_CPUFeatures_ADX,                   rret()
-            mov     __uX_CPUFeatures_RDSEED,                rret()
-            mov     __uX_CPUFeatures_AVX512DQ,              rret()
-            mov     __uX_CPUFeatures_AVX512F,               rret()
-            mov     __uX_CPUFeatures_MPX,                   rret()
-            mov     __uX_CPUFeatures_RTM,                   rret()
-            mov     __uX_CPUFeatures_INVPCID,               rret()
-            mov     __uX_CPUFeatures_ERMS,                  rret()
-            mov     __uX_CPUFeatures_BMI2,                  rret()
-            mov     __uX_CPUFeatures_SMEP,                  rret()
-            mov     __uX_CPUFeatures_AVX2,                  rret()
-            mov     __uX_CPUFeatures_HLE,                   rret()
-            mov     __uX_CPUFeatures_BMI1,                  rret()
-            mov     __uX_CPUFeatures_SGX,                   rret()
-            mov     __uX_CPUFeatures_FSGSBASE,              rret()
+            mov     __uX_CPUFeatures_AVX512VL,              dret()
+            mov     __uX_CPUFeatures_AVX512BW,              dret()
+            mov     __uX_CPUFeatures_SHA,                   dret()
+            mov     __uX_CPUFeatures_AVX512CD,              dret()
+            mov     __uX_CPUFeatures_AVX512ER,              dret()
+            mov     __uX_CPUFeatures_AVX512PF,              dret()
+            mov     __uX_CPUFeatures_CLWB,                  dret()
+            mov     __uX_CPUFeatures_CLFLUSHOPT,            dret()
+            mov     __uX_CPUFeatures_AVX512_IFMA,           dret()
+            mov     __uX_CPUFeatures_SMAP,                  dret()
+            mov     __uX_CPUFeatures_ADX,                   dret()
+            mov     __uX_CPUFeatures_RDSEED,                dret()
+            mov     __uX_CPUFeatures_AVX512DQ,              dret()
+            mov     __uX_CPUFeatures_AVX512F,               dret()
+            mov     __uX_CPUFeatures_MPX,                   dret()
+            mov     __uX_CPUFeatures_RTM,                   dret()
+            mov     __uX_CPUFeatures_INVPCID,               dret()
+            mov     __uX_CPUFeatures_ERMS,                  dret()
+            mov     __uX_CPUFeatures_BMI2,                  dret()
+            mov     __uX_CPUFeatures_SMEP,                  dret()
+            mov     __uX_CPUFeatures_AVX2,                  dret()
+            mov     __uX_CPUFeatures_HLE,                   dret()
+            mov     __uX_CPUFeatures_BMI1,                  dret()
+            mov     __uX_CPUFeatures_SGX,                   dret()
+            mov     __uX_CPUFeatures_FSGSBASE,              dret()
 
     ;/* %eax=01H, %edx */
-            mov     __uX_CPUFeatures_SSE2,                  rret()
-            mov     __uX_CPUFeatures_SSE,                   rret()
-            mov     __uX_CPUFeatures_FXSR,                  rret()
-            mov     __uX_CPUFeatures_MMX,                   rret()
-            mov     __uX_CPUFeatures_CLFSH,                 rret()
-            mov     __uX_CPUFeatures_CMOV,                  rret()
-            mov     __uX_CPUFeatures_SEP,                   rret()
-            mov     __uX_CPUFeatures_CMPXCHG8B,             rret()
-            mov     __uX_CPUFeatures_MSR,                   rret()
-            mov     __uX_CPUFeatures_TSC,                   rret()
-            mov     __uX_CPUFeatures_FPU,                   rret()
+            mov     __uX_CPUFeatures_SSE2,                  dret()
+            mov     __uX_CPUFeatures_SSE,                   dret()
+            mov     __uX_CPUFeatures_FXSR,                  dret()
+            mov     __uX_CPUFeatures_MMX,                   dret()
+            mov     __uX_CPUFeatures_CLFSH,                 dret()
+            mov     __uX_CPUFeatures_CMOV,                  dret()
+            mov     __uX_CPUFeatures_SEP,                   dret()
+            mov     __uX_CPUFeatures_CMPXCHG8B,             dret()
+            mov     __uX_CPUFeatures_MSR,                   dret()
+            mov     __uX_CPUFeatures_TSC,                   dret()
+            mov     __uX_CPUFeatures_FPU,                   dret()
 
     ;/* %eax=01H, %ecx */
-            mov     __uX_CPUFeatures_RDRAND,                rret()
-            mov     __uX_CPUFeatures_F16C,                  rret()
-            mov     __uX_CPUFeatures_AVX,                   rret()
-            mov     __uX_CPUFeatures_OSXSAVE,               rret()
-            mov     __uX_CPUFeatures_XSAVE,                 rret()
-            mov     __uX_CPUFeatures_AES,                   rret()
-            mov     __uX_CPUFeatures_POPCNT,                rret()
-            mov     __uX_CPUFeatures_MOVBE,                 rret()
-            mov     __uX_CPUFeatures_SSE42,                 rret()
-            mov     __uX_CPUFeatures_SSE41,                 rret()
-            mov     __uX_CPUFeatures_CMPXCHG16B,            rret()
-            mov     __uX_CPUFeatures_FMA,                   rret()
-            mov     __uX_CPUFeatures_SSSE3,                 rret()
-            mov     __uX_CPUFeatures_MONITOR,               rret()
-            mov     __uX_CPUFeatures_PCLMULQDQ,             rret()
-            mov     __uX_CPUFeatures_SSE3,                  rret()
+            mov     __uX_CPUFeatures_RDRAND,                dret()
+            mov     __uX_CPUFeatures_F16C,                  dret()
+            mov     __uX_CPUFeatures_AVX,                   dret()
+            mov     __uX_CPUFeatures_OSXSAVE,               dret()
+            mov     __uX_CPUFeatures_XSAVE,                 dret()
+            mov     __uX_CPUFeatures_AES,                   dret()
+            mov     __uX_CPUFeatures_POPCNT,                dret()
+            mov     __uX_CPUFeatures_MOVBE,                 dret()
+            mov     __uX_CPUFeatures_SSE42,                 dret()
+            mov     __uX_CPUFeatures_SSE41,                 dret()
+            mov     __uX_CPUFeatures_CMPXCHG16B,            dret()
+            mov     __uX_CPUFeatures_FMA,                   dret()
+            mov     __uX_CPUFeatures_SSSE3,                 dret()
+            mov     __uX_CPUFeatures_MONITOR,               dret()
+            mov     __uX_CPUFeatures_PCLMULQDQ,             dret()
+            mov     __uX_CPUFeatures_SSE3,                  dret()
     
     ; /* %eax=00H, %ebx */
-            mov     __uX_CPUFeatures_NexG,                  rret()
-            mov     __uX_CPUFeatures_Cyri,                  rret()
-            mov     __uX_CPUFeatures_VIA,                   rret()
-            mov     __uX_CPUFeatures_Cent,                  rret()
+            mov     __uX_CPUFeatures_NexG,                  dret()
+            mov     __uX_CPUFeatures_Cyri,                  dret()
+            mov     __uX_CPUFeatures_VIA,                   dret()
+            mov     __uX_CPUFeatures_Cent,                  dret()
 
     ; /* %eax=00H, %ecx */
-            mov     __uX_CPUFeatures_cAMD,                  rret()
-            mov     __uX_CPUFeatures_ntel,                  rret()
+            mov     __uX_CPUFeatures_cAMD,                  dret()
+            mov     __uX_CPUFeatures_ntel,                  dret()
     
     ; /* EFLAGS %eax=00H, %ebx=00H */
-            mov     __uX_CPUFeatures_CPUID,                 rret()
+            mov     __uX_CPUFeatures_CPUID,                 dret()
 
             ret
 procend
 
-    alignptrfieldproc
+;alignptrfieldproc
 
 procstart _uX_CPUFeatures_CpuType, callconv, void, < >, < >, vendor:ptr dword, family:ptr dword, model:ptr dword
 
@@ -2075,7 +2070,7 @@ procstart _uX_CPUFeatures_CpuType, callconv, void, < >, < >, vendor:ptr dword, f
     ;            efamily    textequ     <esp+20>
     ;            emodel textequ     <esp+24>
     ;else
-    ;    ifdef windows
+    ;    ifdef __windows__
     ; -> The proc arguments conform to vectorcall calling convention: rcx=thisPtr, rdx=vendor, r8=family, r9=model
     ;            evendor    textequ     <edx>
     ;            efamily    textequ     <r8d>
@@ -2092,42 +2087,42 @@ procstart _uX_CPUFeatures_CpuType, callconv, void, < >, < >, vendor:ptr dword, f
                 push edi
                 push esi
                 push eax
-                mov     eax,     [dp0()+4]
-                mov     esi,     [dp0()+8]
-                mov     edi,     [dp0()+12]
-                evendor textequ     <eax>
-                efamily textequ     <esi>
-                emodel  textequ     <edi>
+                mov     eax,     vendor
+                mov     esi,     family
+                mov     edi,     model
+                define evendor, eax, text
+                define efamily, esi, text
+                define emodel, edi, text
         else
-                evendor textequ     <dp0()>
-                efamily textequ     <dp1()>
+                define evendor, dp0(), text
+                define efamily, dp1(), text
                 push eax
-                mov     eax,     [dp2()+4]
-                emodel  textequ     <eax>
+                mov     eax,     model
+                define emodel, eax, text
         endif
     endif
     ifdef __x64__
-                evendor textequ     <dp0()>
-                efamily textequ     <dp1()>
-                emodel  textequ     <dp2()>
+                define evendor, dp0(), text
+                define efamily, dp1(), text
+                define emodel, dp2(), text
     endif
 
 C300:   ; return r9d = vendor, r10d = family, r11d = model
             test            evendor,                evendor
             jz              C310
-            mov             evendor,                __uX_CPUFeatures_vendor
+            mov             evendor,             __uX_CPUFeatures_vendor
     ifdef __x32__
         ifdef __unix__
-            mov             [dp0()+4],              evendor
+            mov             vendor,              evendor
         endif
     endif
 C310:   
             test            efamily,                efamily
             jz              C320
-            mov             efamily,                __uX_CPUFeatures_family
+            mov             efamily,             __uX_CPUFeatures_family
     ifdef __x32__
         ifdef __unix__
-            mov             [dp1()+8],              efamily
+            mov             family,              efamily
         endif
     endif
 C320:   
@@ -2136,9 +2131,9 @@ C320:
             mov             emodel,                 __uX_CPUFeatures_model
     ifdef __x32__
         ifdef __unix__
-            mov             [dp2()+12],              emodel
+            mov             model,              emodel
         else
-            mov             [dp2()+4],              emodel
+            mov             model,              emodel
         endif
     endif
 C330:   
@@ -2156,39 +2151,31 @@ C330:
 procend
 
 procstart _uX_CPUFeatures_ProcessorName, callconv, ptr, < >, < >, < >
-
     ifdef __x32__
-            mov                 eax,                    __uX_CPUFeatures_ProcessorName        ; Pointer to result
+            mov             rret(),             __uX_CPUFeatures_ProcessorName        ; Pointer to result
     endif
     ifdef __x64__
-            lea                 rax,                    [__uX_CPUFeatures_ProcessorName]      ; Pointer to result
+            lea             rret(),             [__uX_CPUFeatures_ProcessorName]      ; Pointer to result
     endif
-
             ret
 procend
 
-    alignsize_tfieldproc
+    ;alignsize_tfieldproc
 
 procstart _uX_CPUFeatures_DataCacheSize, callconv, size_t, < >, < >, level:dword
-
-    ;ifdef __x32__
-            ;rret()        textequ     <eax>
-    ;else   
-            ;rret()        textequ     <rax>
-    ;endif ;__x64__
-
-    ;ifdef __x32__
-    ;        mov        input_datacachelevel,   edx
-    ;else
-    ;    ifdef windows
-    ;        mov        input_datacachelevel,   edx
-    ;    else   
-    ;        mov        input_datacachelevel,   esi
-    ;    endif
-    ;endif ;__x64__ 
-            mov     input_datacachelevel,   dp0()
+    ifdef __x32__
+        ifdef __windows__
+            define drlevel, dp0(), text
+        endif
+        ifdef __unix__
+            define drlevel, level, text
+        endif
+    endif
+    ifdef __x64__
+            define drlevel, dp0(), text
+    endif
+            mov     input_datacachelevel,   drlevel
             mov                 rret(),                    __uX_CPUFeatures_DataCacheSize        ; Pointer to result
-
             ret
 procend
 
@@ -2201,13 +2188,13 @@ procstart _uX_CPUFeatures_WriteHex, callconv, void, < >, < >, < >
             push                eax
             push                ecx
             push                edi
-            rdest   textequ     <edi>
+            define rdest, edi, text
     endif
     ifdef __x64__
             push                rax
             push                rcx
             push                rdi
-            rdest   textequ     <rdi>
+            define rdest, rdi, text
     endif
     
             mov                 ecx,                    eax
@@ -2276,17 +2263,17 @@ procstart _uX_CPUFeatures_IntelNewMethod, callconv, void, < >, < >, < >; level:d
     ifdef __x32__
             ;rret()        textequ     <eax>
             ;rsidx()      textequ     <esi>
-            rbreg       textequ     <ebx>
-            rcreg       textequ     <ecx>
+            define rbreg, ebx, text
+            define rcreg, ecx, text
     endif
     ifdef __x64__
-            rbreg       textequ     <rbx>
-            rcreg       textequ     <rcx>
+            define rbreg, rbx, text
+            define rcreg, rcx, text
             ;rret()        textequ     <rax>
             ;rsidx()      textequ     <rsi>
     endif ;__x64__
 
-            eloopcount  textequ     <edi>
+            define eloopcount, edi, text
 
             xor                 eax,                    eax
             cpuid                          ; get number of CPUID functions
@@ -2348,7 +2335,7 @@ I900:
             pop                 rcx
             pop                 rbx
             pop                 rax
-    endif           
+    endif
 
             ret                            ; carry flag set if fail
 procend
@@ -2381,18 +2368,18 @@ procstart _uX_CPUFeatures_IntelOldMethod, callconv, void, < >, < >, < >; level:d
     ifdef __x32__
             ;rret()        textequ     <eax>
             ;rsidx()      textequ     <esi>
-            rbreg       textequ     <ebx>
-            rcreg       textequ     <ecx>
-            rdreg       textequ     <edx>
-            rspreg      textequ     <esp>
+            define rbreg, ebx, text
+            define rcreg, ecx, text
+            define rdreg, edx, text
+            define rspreg, esp, text
     endif
     ifdef __x64__
             ;rret()        textequ     <rax>
             ;rsidx()      textequ     <rsi>
-            rbreg       textequ     <rbx>
-            rcreg       textequ     <rcx>
-            rdreg       textequ     <rdx>
-            rspreg      textequ     <rsp>
+            define rbreg, rbx, text
+            define rcreg, rcx, text
+            define rdreg, rdx, text
+            define rspreg, rsp, text
     endif ;__x64__
     
             xor                 eax,                    eax
@@ -2492,12 +2479,12 @@ procstart _uX_CPUFeatures_AMDMethod, callconv, void, < >, < >, < >; level:dword
     ifdef __x32__
             ;rret()        textequ     <eax>
             ;rsidx()      textequ     <esi>
-            rcreg       textequ     <ecx>
+            define rcreg, ecx, text
     endif
     ifdef __x64__
             ;rret()        textequ     <rax>
             ;rsidx()      textequ     <rsi>
-            rcreg       textequ     <rcx>
+            define rcreg, rcx, text
     endif ;__x64__
 
             mov                 eax,                    80000000H
@@ -2555,7 +2542,7 @@ K900:
             ret                            ; carry flag set if fail
 procend
 
-    alignfieldproc dword_size
+;alignsize_tfieldproc
 
     ;/* find supported instruction set
     ;return value:
@@ -2578,1021 +2565,733 @@ procend
     ;63  or above = AVX512VL
     ;*/
 procstart _uX_CPUFeatures_intrinset, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_intrinset
-
+        mov             dret(),             __uX_CPUFeatures_intrinset
         ret
 procend
     
     ; /* %eax=00H, %ecx */
 procstart _uX_CPUFeatures_is_Intel, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_ntel
-
+        mov             dret(),             __uX_CPUFeatures_ntel
         ret
 procend
 
 procstart _uX_CPUFeatures_is_AMD, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_cAMD
-
+        mov             dret(),             __uX_CPUFeatures_cAMD
         ret
 procend
 
     ;/* %eax=01H, %ecx */
 procstart _uX_CPUFeatures_has_SSE3, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSE3
-
+        mov             dret(),             __uX_CPUFeatures_SSE3
         ret
 procend
 
 procstart _uX_CPUFeatures_has_PCLMULQDQ, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_PCLMULQDQ
-
+        mov             dret(),             __uX_CPUFeatures_PCLMULQDQ
         ret
 procend
 
 procstart _uX_CPUFeatures_has_MONITOR, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_MONITOR
-
+        mov             dret(),             __uX_CPUFeatures_MONITOR
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSSE3, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSSE3
-
+        mov             dret(),             __uX_CPUFeatures_SSSE3
         ret
 procend
 
 procstart _uX_CPUFeatures_has_FMA, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_FMA
-
+        mov             dret(),             __uX_CPUFeatures_FMA
         ret
 procend
 
 procstart _uX_CPUFeatures_has_CMPXCHG16B, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_CMPXCHG16B
-
+        mov             dret(),             __uX_CPUFeatures_CMPXCHG16B
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSE41, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSE41
-
+        mov             dret(),             __uX_CPUFeatures_SSE41
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSE42, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSE42
-
+        mov             dret(),             __uX_CPUFeatures_SSE42
         ret
 procend
 
 procstart _uX_CPUFeatures_has_MOVBE, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_MOVBE
-
+        mov             dret(),             __uX_CPUFeatures_MOVBE
         ret
 procend
 
 procstart _uX_CPUFeatures_has_POPCNT, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_POPCNT
-
+        mov             dret(),             __uX_CPUFeatures_POPCNT
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AES, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AES
-
+        mov             dret(),             __uX_CPUFeatures_AES
         ret
 procend
 
 procstart _uX_CPUFeatures_has_XSAVE, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_XSAVE
-
+        mov             dret(),             __uX_CPUFeatures_XSAVE
         ret
 procend
 
 procstart _uX_CPUFeatures_has_OSXSAVE, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_OSXSAVE
-
+        mov             dret(),             __uX_CPUFeatures_OSXSAVE
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX
-
+        mov             dret(),             __uX_CPUFeatures_AVX
         ret
 procend
 
 procstart _uX_CPUFeatures_has_F16C, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_F16C
-
+        mov             dret(),             __uX_CPUFeatures_F16C
         ret
 procend
 
 procstart _uX_CPUFeatures_has_RDRAND, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_RDRAND
-
+        mov             dret(),             __uX_CPUFeatures_RDRAND
         ret
 procend
 
     ;/* %eax=01H, %edx */
 procstart _uX_CPUFeatures_has_FPU, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_FPU
-
+        mov             dret(),             __uX_CPUFeatures_FPU
         ret
 procend
 
 procstart _uX_CPUFeatures_has_TSC, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_TSC
-
+        mov             dret(),             __uX_CPUFeatures_TSC
         ret
 procend
 
 procstart _uX_CPUFeatures_has_MSR, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_MSR
-
+        mov             dret(),             __uX_CPUFeatures_MSR
         ret
 procend
 
 procstart _uX_CPUFeatures_has_CMPXCHG8B, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_CMPXCHG8B
-
+        mov             dret(),             __uX_CPUFeatures_CMPXCHG8B
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SEP, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SEP
-
+        mov             dret(),             __uX_CPUFeatures_SEP
         ret
 procend
 
 procstart _uX_CPUFeatures_has_CMOV, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_CMOV
-
+        mov             dret(),             __uX_CPUFeatures_CMOV
         ret
 procend
 
 procstart _uX_CPUFeatures_has_CLFSH, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_CLFSH
-
+        mov             dret(),             __uX_CPUFeatures_CLFSH
         ret
 procend
 
 procstart _uX_CPUFeatures_has_MMX, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_MMX
-
+        mov             dret(),             __uX_CPUFeatures_MMX
         ret
 procend
 
 procstart _uX_CPUFeatures_has_FXSR, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_FXSR
-
+        mov             dret(),             __uX_CPUFeatures_FXSR
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSE, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSE
-
+        mov             dret(),             __uX_CPUFeatures_SSE
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSE2, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSE2
-
+        mov             dret(),             __uX_CPUFeatures_SSE2
         ret
 procend
 
     ;/* %eax=07H, %ebx */
 procstart _uX_CPUFeatures_has_FSGSBASE, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_FSGSBASE
-
+        mov             dret(),             __uX_CPUFeatures_FSGSBASE
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SGX, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SGX
-
+        mov             dret(),             __uX_CPUFeatures_SGX
         ret
 procend
 
 procstart _uX_CPUFeatures_has_BMI1, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_BMI1
-
+        mov             dret(),             __uX_CPUFeatures_BMI1
         ret
 procend
 
 procstart _uX_CPUFeatures_has_HLE, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_HLE
-
+        mov             dret(),             __uX_CPUFeatures_HLE
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX2, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX2
-
+        mov             dret(),             __uX_CPUFeatures_AVX2
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SMEP, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SMEP
-
+        mov             dret(),             __uX_CPUFeatures_SMEP
         ret
 procend
 
 procstart _uX_CPUFeatures_has_BMI2, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_BMI2
-
+        mov             dret(),             __uX_CPUFeatures_BMI2
         ret
 procend
 
 procstart _uX_CPUFeatures_has_ERMS, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_ERMS
-
+        mov             dret(),             __uX_CPUFeatures_ERMS
         ret
 procend
 
 procstart _uX_CPUFeatures_has_INVPCID, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_INVPCID
-
+        mov             dret(),             __uX_CPUFeatures_INVPCID
         ret
 procend
 
 procstart _uX_CPUFeatures_has_RTM, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_RTM
-
+        mov             dret(),             __uX_CPUFeatures_RTM
         ret
 procend
 
 procstart _uX_CPUFeatures_has_MPX, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_MPX
-
+        mov             dret(),             __uX_CPUFeatures_MPX
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512F, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512F
-
+        mov             dret(),             __uX_CPUFeatures_AVX512F
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512DQ, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512DQ
-
+        mov             dret(),             __uX_CPUFeatures_AVX512DQ
         ret
 procend
 
 procstart _uX_CPUFeatures_has_RDSEED, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_RDSEED
-
+        mov             dret(),             __uX_CPUFeatures_RDSEED
         ret
 procend
 
 procstart _uX_CPUFeatures_has_ADX, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_ADX
-
+        mov             dret(),             __uX_CPUFeatures_ADX
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SMAP, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SMAP
-
+        mov             dret(),             __uX_CPUFeatures_SMAP
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512_IFMA, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512_IFMA
-
+        mov             dret(),             __uX_CPUFeatures_AVX512_IFMA
         ret
 procend
 
 procstart _uX_CPUFeatures_has_CLFLUSHOPT, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_CLFLUSHOPT
-
+        mov             dret(),             __uX_CPUFeatures_CLFLUSHOPT
         ret
 procend
 
 procstart _uX_CPUFeatures_has_CLWB, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_CLWB
-
+        mov             dret(),             __uX_CPUFeatures_CLWB
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512PF, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512PF
-
+        mov             dret(),             __uX_CPUFeatures_AVX512PF
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512ER, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512ER
-
+        mov             dret(),             __uX_CPUFeatures_AVX512ER
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512CD, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512CD
-
+        mov             dret(),             __uX_CPUFeatures_AVX512CD
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SHA, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SHA
-
+        mov             dret(),             __uX_CPUFeatures_SHA
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512BW, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512BW
-
+        mov             dret(),             __uX_CPUFeatures_AVX512BW
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512VL, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512VL
-
+        mov             dret(),             __uX_CPUFeatures_AVX512VL
         ret
 procend
 
 
     ;/* %eax=07H, %ecx */
 procstart _uX_CPUFeatures_has_PREFETCHWT1, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_PREFETCHWT1
-
+        mov             dret(),             __uX_CPUFeatures_PREFETCHWT1
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512_VBMI, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512_VBMI
-
+        mov             dret(),             __uX_CPUFeatures_AVX512_VBMI
         ret
 procend
 
 procstart _uX_CPUFeatures_has_UMIP, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_UMIP
-
+        mov             dret(),             __uX_CPUFeatures_UMIP
         ret
 procend
 
 procstart _uX_CPUFeatures_has_PKU, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_PKU
-
+        mov             dret(),             __uX_CPUFeatures_PKU
         ret
 procend
 
 procstart _uX_CPUFeatures_has_OSPKE, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_OSPKE
-
+        mov             dret(),             __uX_CPUFeatures_OSPKE
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512_VBMI2, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512_VBMI2
-
+        mov             dret(),             __uX_CPUFeatures_AVX512_VBMI2
         ret
 procend
 
 procstart _uX_CPUFeatures_has_GFNI, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_GFNI
-
+        mov             dret(),             __uX_CPUFeatures_GFNI
         ret
 procend
 
 procstart _uX_CPUFeatures_has_VAES, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_VAES
-
+        mov             dret(),             __uX_CPUFeatures_VAES
         ret
 procend
 
 procstart _uX_CPUFeatures_has_VPCLMULQDQ, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_VPCLMULQDQ
-
+        mov             dret(),             __uX_CPUFeatures_VPCLMULQDQ
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512_VNNI, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512_VNNI
-
+        mov             dret(),             __uX_CPUFeatures_AVX512_VNNI
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512_BITALG, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512_BITALG
-
+        mov             dret(),             __uX_CPUFeatures_AVX512_BITALG
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512_VPOPCNTDQ, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512_VPOPCNTDQ
-
+        mov             dret(),             __uX_CPUFeatures_AVX512_VPOPCNTDQ
         ret
 procend
 
 procstart _uX_CPUFeatures_has_RDPID, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_RDPID
-
+        mov             dret(),             __uX_CPUFeatures_RDPID
         ret
 procend
 
     ;/* %eax=07H, %edx */
 procstart _uX_CPUFeatures_has_AVX512_4VNNIW, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512_4VNNIW
-
+        mov             dret(),             __uX_CPUFeatures_AVX512_4VNNIW
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512_4FMAPS, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512_4FMAPS
-
+        mov             dret(),             __uX_CPUFeatures_AVX512_4FMAPS
         ret
 procend
 
     ;/* %eax=80000001H, %ecx */
 procstart _uX_CPUFeatures_has_LAHF, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_LAHF
-
+        mov             dret(),             __uX_CPUFeatures_LAHF
         ret
 procend
 
 procstart _uX_CPUFeatures_has_LZCNT, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_LZCNT
-
+        mov             dret(),             __uX_CPUFeatures_LZCNT
         ret
 procend
 
 procstart _uX_CPUFeatures_has_ABM, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_ABM
-
+        mov             dret(),             __uX_CPUFeatures_ABM
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSE4a, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSE4a
-
+        mov             dret(),             __uX_CPUFeatures_SSE4a
         ret
 procend
 
 procstart _uX_CPUFeatures_has_PREFETCHW, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_PREFETCHW
-
+        mov             dret(),             __uX_CPUFeatures_PREFETCHW
         ret
 procend
 
 procstart _uX_CPUFeatures_has_XOP, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_XOP
-
+        mov             dret(),             __uX_CPUFeatures_XOP
         ret
 procend
 
 procstart _uX_CPUFeatures_has_LWP, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_LWP
-
+        mov             dret(),             __uX_CPUFeatures_LWP
         ret
 procend
 
 procstart _uX_CPUFeatures_has_FMA4, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_FMA4
-
+        mov             dret(),             __uX_CPUFeatures_FMA4
         ret
 procend
 
 procstart _uX_CPUFeatures_has_TBM, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_TBM
-
+        mov             dret(),             __uX_CPUFeatures_TBM
         ret
 procend
 
 procstart _uX_CPUFeatures_has_MWAITX, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_MWAITX
-
+        mov             dret(),             __uX_CPUFeatures_MWAITX
         ret
 procend
 
     ;/* %eax=80000001H, %edx */
 procstart _uX_CPUFeatures_has_SYSCALL, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SYSCALL
-
+        mov             dret(),             __uX_CPUFeatures_SYSCALL
         ret
 procend
 
 procstart _uX_CPUFeatures_has_MMXEXT, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_MMXEXT
-
+        mov             dret(),             __uX_CPUFeatures_MMXEXT
         ret
 procend
 
 procstart _uX_CPUFeatures_has_RDTSCP, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_RDTSCP
-
+        mov             dret(),             __uX_CPUFeatures_RDTSCP
         ret
 procend
 
 procstart _uX_CPUFeatures_has_3DNOWEXT, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_3DNOWEXT
-
+        mov             dret(),             __uX_CPUFeatures_3DNOWEXT
         ret
 procend
 
 procstart _uX_CPUFeatures_has_3DNOW, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_3DNOW
-
+        mov             dret(),             __uX_CPUFeatures_3DNOW
         ret
 procend
 
     ;/* %eax=07H, %ebx, %ecx */
 procstart _uX_CPUFeatures_has_AVX512_GFNI, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512_GFNI
-
+        mov             dret(),             __uX_CPUFeatures_AVX512_GFNI
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512_GFNI_VL, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512_GFNI_VL
-
+        mov             dret(),             __uX_CPUFeatures_AVX512_GFNI_VL
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512_VAES, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512_VAES
-
+        mov             dret(),             __uX_CPUFeatures_AVX512_VAES
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512_VAES_VL, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512_VAES_VL
-
+        mov             dret(),             __uX_CPUFeatures_AVX512_VAES_VL
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512_VPCLMULQDQ, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512_VPCLMULQDQ
-
+        mov             dret(),             __uX_CPUFeatures_AVX512_VPCLMULQDQ
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512_VPCLMULQDQ_VL, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512_VPCLMULQDQ_VL
-
+        mov             dret(),             __uX_CPUFeatures_AVX512_VPCLMULQDQ_VL
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512_IFMA_VL, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512_IFMA_VL
-
+        mov             dret(),             __uX_CPUFeatures_AVX512_IFMA_VL
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512_VBMI_VL, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512_VBMI_VL
-
+        mov             dret(),             __uX_CPUFeatures_AVX512_VBMI_VL
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512_VBMI2_VL, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512_VBMI2_VL
-
+        mov             dret(),             __uX_CPUFeatures_AVX512_VBMI2_VL
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512_VNNI_VL, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512_VNNI_VL
-
+        mov             dret(),             __uX_CPUFeatures_AVX512_VNNI_VL
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512_BITALG_VL, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512_BITALG_VL
-
+        mov             dret(),             __uX_CPUFeatures_AVX512_BITALG_VL
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512_VPOPCNTDQ_VL, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512_VPOPCNTDQ_VL
-
+        mov             dret(),             __uX_CPUFeatures_AVX512_VPOPCNTDQ_VL
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512BW_GFNI, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512BW_GFNI
-
+        mov             dret(),             __uX_CPUFeatures_AVX512BW_GFNI
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512BW_GFNI_VL, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512BW_GFNI_VL
-
+        mov             dret(),             __uX_CPUFeatures_AVX512BW_GFNI_VL
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512BW_VAES, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512BW_VAES
-
+        mov             dret(),             __uX_CPUFeatures_AVX512BW_VAES
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512BW_VAES_VL, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512BW_VAES_VL
-
+        mov             dret(),             __uX_CPUFeatures_AVX512BW_VAES_VL
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512BW_VPCLMULQDQ, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512BW_VPCLMULQDQ
-
+        mov             dret(),             __uX_CPUFeatures_AVX512BW_VPCLMULQDQ
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512BW_VPCLMULQDQ_VL, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512BW_VPCLMULQDQ_VL
-
+        mov             dret(),             __uX_CPUFeatures_AVX512BW_VPCLMULQDQ_VL
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512BW_VL, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512BW_VL
-
+        mov             dret(),             __uX_CPUFeatures_AVX512BW_VL
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512DQ_GFNI, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512DQ_GFNI
-
+        mov             dret(),             __uX_CPUFeatures_AVX512DQ_GFNI
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512DQ_GFNI_VL, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512DQ_GFNI_VL
-
+        mov             dret(),             __uX_CPUFeatures_AVX512DQ_GFNI_VL
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512DQ_VAES, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512DQ_VAES
-
+        mov             dret(),             __uX_CPUFeatures_AVX512DQ_VAES
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512DQ_VAES_VL, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512DQ_VAES_VL
-
+        mov             dret(),             __uX_CPUFeatures_AVX512DQ_VAES_VL
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512DQ_VPCLMULQDQ, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512DQ_VPCLMULQDQ
-
+        mov             dret(),             __uX_CPUFeatures_AVX512DQ_VPCLMULQDQ
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512DQ_VPCLMULQDQ_VL, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512DQ_VPCLMULQDQ_VL
-
+        mov             dret(),             __uX_CPUFeatures_AVX512DQ_VPCLMULQDQ_VL
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512DQ_VL, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512DQ_VL
-
+        mov             dret(),             __uX_CPUFeatures_AVX512DQ_VL
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX512CD_VL, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX512CD_VL
-
+        mov             dret(),             __uX_CPUFeatures_AVX512CD_VL
         ret
 procend
 
     ;/* %eax=07H, %ecx, %ebx | %eax=01H, %ecx , %edx */
 procstart _uX_CPUFeatures_has_SSE_AES, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSE_AES
-
+        mov             dret(),             __uX_CPUFeatures_SSE_AES
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSE_GFNI, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSE_GFNI
-
+        mov             dret(),             __uX_CPUFeatures_SSE_GFNI
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSE_PCLMULQDQ, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSE_PCLMULQDQ
-
+        mov             dret(),             __uX_CPUFeatures_SSE_PCLMULQDQ
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSE2_AES, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSE2_AES
-
+        mov             dret(),             __uX_CPUFeatures_SSE2_AES
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSE2_GFNI, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSE2_GFNI
-
+        mov             dret(),             __uX_CPUFeatures_SSE2_GFNI
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSE2_PCLMULQDQ, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSE2_PCLMULQDQ
-
+        mov             dret(),             __uX_CPUFeatures_SSE2_PCLMULQDQ
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSE3_AES, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSE3_AES
-
+        mov             dret(),             __uX_CPUFeatures_SSE3_AES
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSE3_GFNI, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSE3_GFNI
-
+        mov             dret(),             __uX_CPUFeatures_SSE3_GFNI
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSE3_PCLMULQDQ, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSE3_PCLMULQDQ
-
+        mov             dret(),             __uX_CPUFeatures_SSE3_PCLMULQDQ
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSSE3_AES, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSSE3_AES
-
+        mov             dret(),             __uX_CPUFeatures_SSSE3_AES
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSSE3_GFNI, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSSE3_GFNI
-
+        mov             dret(),             __uX_CPUFeatures_SSSE3_GFNI
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSSE3_PCLMULQDQ, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSSE3_PCLMULQDQ
-
+        mov             dret(),             __uX_CPUFeatures_SSSE3_PCLMULQDQ
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSE41_AES, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSE41_AES
-
+        mov             dret(),             __uX_CPUFeatures_SSE41_AES
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSE41_GFNI, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSE41_GFNI
-
+        mov             dret(),             __uX_CPUFeatures_SSE41_GFNI
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSE41_PCLMULQDQ, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSE41_PCLMULQDQ
-
+        mov             dret(),             __uX_CPUFeatures_SSE41_PCLMULQDQ
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSE42_AES, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSE42_AES
-
+        mov             dret(),             __uX_CPUFeatures_SSE42_AES
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSE42_GFNI, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSE42_GFNI
-
+        mov             dret(),             __uX_CPUFeatures_SSE42_GFNI
         ret
 procend
 
 procstart _uX_CPUFeatures_has_SSE42_PCLMULQDQ, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_SSE42_PCLMULQDQ
-
+        mov             dret(),             __uX_CPUFeatures_SSE42_PCLMULQDQ
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX_AES, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX_AES
-
+        mov             dret(),             __uX_CPUFeatures_AVX_AES
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX_GFNI, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX_GFNI
-
+        mov             dret(),             __uX_CPUFeatures_AVX_GFNI
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX_PCLMULQDQ, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX_PCLMULQDQ
-
+        mov             dret(),             __uX_CPUFeatures_AVX_PCLMULQDQ
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX_VAES, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX_VAES
-
+        mov             dret(),             __uX_CPUFeatures_AVX_VAES
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX_VPCLMULQDQ, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX_VPCLMULQDQ
-
+        mov             dret(),             __uX_CPUFeatures_AVX_VPCLMULQDQ
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX2_AES, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX2_AES
-
+        mov             dret(),             __uX_CPUFeatures_AVX2_AES
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX2_GFNI, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX2_GFNI
-
+        mov             dret(),             __uX_CPUFeatures_AVX2_GFNI
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX2_PCLMULQDQ, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX2_PCLMULQDQ
-
+        mov             dret(),             __uX_CPUFeatures_AVX2_PCLMULQDQ
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX2_VAES, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX2_VAES
-
+        mov             dret(),             __uX_CPUFeatures_AVX2_VAES
         ret
 procend
 
 procstart _uX_CPUFeatures_has_AVX2_VPCLMULQDQ, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_AVX2_VPCLMULQDQ
-
+        mov             dret(),             __uX_CPUFeatures_AVX2_VPCLMULQDQ
         ret
 procend
 
 procstart _uX_CPUFeatures_has_enabled_XMM, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_enabled_XMM
-
+        mov             dret(),             __uX_CPUFeatures_enabled_XMM
         ret
 procend
 
 procstart _uX_CPUFeatures_has_enabled_YMM, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_enabled_YMM
-
+        mov             dret(),             __uX_CPUFeatures_enabled_YMM
         ret
 procend
 
 procstart _uX_CPUFeatures_has_enabled_ZMM, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_enabled_ZMM
-
+        mov             dret(),             __uX_CPUFeatures_enabled_ZMM
         ret
 procend
 
 procstart _uX_CPUFeatures_is_inited, callconv, dword, < >, < >, < >
-
-        mov             rret(),                __uX_CPUFeatures_inited
-
+        mov             dret(),             __uX_CPUFeatures_inited
         ret
 procend
 

@@ -1,7 +1,30 @@
 
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / /                                                                               / /
+; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /                                                                               / /
+; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
+; / /    you may not use this file except in compliance with the License.           / /
+; / /    You may obtain a copy of the License at                                    / /
+; / /                                                                               / /
+; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
+; / /                                                                               / /
+; / /    Unless required by applicable law or agreed to in writing, software        / /
+; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
+; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
+; / /    See the License for the specific language governing permissions and        / /
+; / /    limitations under the License.                                             / /
+; / /                                                                               / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
+    OPTION CASEMAP:NONE
+    include macrolib.inc
+    
 ifndef __MIC__
 
-    include uXx86asm.inc
+    include uXasm.inc
 
     .xmm
     option arch:sse
@@ -56,7 +79,7 @@ ifndef __MIC__
                                     offset _m128permps_234, offset _m128permps_235, offset _m128permps_236, offset _m128permps_237, offset _m128permps_238, offset _m128permps_239, \
                                     offset _m128permps_240, offset _m128permps_241, offset _m128permps_242, offset _m128permps_243, offset _m128permps_244, offset _m128permps_245, \
                                     offset _m128permps_246, offset _m128permps_247, offset _m128permps_248, offset _m128permps_249, offset _m128permps_250, offset _m128permps_251, \
-                                    offset _m128permps_252, offset _m128permps_253, offset _m128permps_254, offset _m128permps_255              
+                                    offset _m128permps_252, offset _m128permps_253, offset _m128permps_254, offset _m128permps_255
 
     .code
 
@@ -1344,19 +1367,27 @@ procstart _uX_mm_permute_3333_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_permute_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword, _Imm8:dword
-        push         rbase
-        .if((rparam1 < 0) || (rparam1 > 255))
+        push         rbase()
+    ifdef __unix32__
+        define rpdisp, ecx, text
+        define bpdisp, cl, text
+        mov     rpdisp,     _Imm8
+    else
+        define rpdisp, rp1(), text
+        define bpdisp, bp1(), text
+    endif
+    .if((rpdisp < 0) || (rpdisp > 255))
         jmp         _m128permps_end
-        .endif
-
-        ifdef __X32__
-        movzx           rbase,    byte ptr [rparam1]
-        jmp     dword ptr [_m128permpsjmptable+rbase*size_t_size]
-        else
-        lea             rbase,    qword ptr [_m128permpsjmptable]
-        mov             rbase,    qword ptr [rbase+rparam1*size_t_size]
-        jmp             rbx
-        endif
+    .endif
+    ifdef __x32__
+        movzx           rbase(),        bpdisp
+        jmp     dword ptr [_m128permpsjmptable+rbase()*size_t_size]
+    endif
+    ifdef __x64__
+        lea             rbase(),    qword ptr [_m128permpsjmptable]
+        mov             rbase(),    qword ptr [rbase()+rp1()*size_t_size]
+        jmp             rbase()
+    endif
 
         _m128permps_0 label size_t
         shufps          xmm0,           xmm0,           0
@@ -2128,7 +2159,7 @@ procstart _uX_mm_permute_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword, _Imm8
         ;jmp         _m128permps_end
 
         _m128permps_end:
-        pop         rbase
+        pop         rbase()
         ret
 procend
 
