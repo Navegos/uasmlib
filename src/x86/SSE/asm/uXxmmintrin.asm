@@ -2,7 +2,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -19,54 +19,55 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
-    OPTION CASEMAP:NONE
-    include macrolib.inc
-    
+option casemap:none
+include uXasm.inc
+include macrolib.inc
+
 ifndef __MIC__
 
-    include uXasm.inc
+.xmm
+option arch:sse
+option evex:0
 
-    .xmm
-    option arch:sse
-    option evex:0
+alignstackfieldproc
 
-    .data?
+.data?
 
-    .data
+.data
 
-    .const
+.const
 
-        alignsize_t
-        _m128cvteltfltjmptable isize_t offset _m128cvteltflt_0, offset _m128cvteltflt_1, offset _m128cvteltflt_2, offset _m128cvteltflt_3
-
-        alignsize_t
-        _m128seteltpsjmptable isize_t offset _m128seteltps_0, offset _m128seteltps_1, offset _m128seteltps_2, offset _m128seteltps_3
-
-        alignsize_t
-        _m128prefetchjmptable isize_t offset _m128prefetch_0, offset _m128prefetch_1, offset _m128prefetch_2, offset _m128prefetch_3
-
-    ifdef __x32__
-        alignsize_t
-        _m64pextrwjmptable isize_t offset _m64pextrw_0, offset _m64pextrw_1, offset _m64pextrw_2, offset _m64pextrw_3
-
-        alignsize_t
-        _m64pinsrwjmptable isize_t offset _m64pinsrw_0, offset _m64pinsrw_1, offset _m64pinsrw_2, offset _m64pinsrw_3
-    endif ;!__x32__
-
-    externdef __m128_true:__m128i
-    externdef __m128_false:__m128i
-    externdef __m128_0:__m128f
-    externdef __m128_sign:__m128i
+    _m128cvteltfltjmptable label size_t
+    isize_t _m128cvteltflt_0, _m128cvteltflt_1, _m128cvteltflt_2, _m128cvteltflt_3
+        
+    _m128seteltpsjmptable label size_t
+    isize_t _m128seteltps_0, _m128seteltps_1, _m128seteltps_2, _m128seteltps_3
     
-    externdef __m128_0e_true:__m128i
-    externdef __m128_0e_false:__m128i
-    externdef __m128_0e_0:__m128f
-    externdef __m128_0e_sign:__m128i
+    _m128prefetchjmptable label size_t
+    isize_t _m128prefetch_0, _m128prefetch_1, _m128prefetch_2, _m128prefetch_3
 
-    .code
+ifdef __x32__
+    _m64pextrwjmptable label size_t
+    isize_t _m64pextrw_0, _m64pextrw_1, _m64pextrw_2, _m64pextrw_3
+    
+    _m64pinsrwjmptable label size_t
+    isize_t _m64pinsrw_0, _m64pinsrw_1, _m64pinsrw_2, _m64pinsrw_3
+endif ;!__x32__
 
-    callconvopt
-    alignxmmfieldproc
+externdef __m128_true:__m128i
+externdef __m128_false:__m128i
+externdef __m128_0:__m128f
+externdef __m128_sign:__m128i
+
+externdef __m128_0e_true:__m128i
+externdef __m128_0e_false:__m128i
+externdef __m128_0e_0:__m128f
+externdef __m128_0e_sign:__m128i
+
+.code
+
+callconvopt
+alignxmmfieldproc
 
     ;ifdef __x32__
         ;externdef intrin_has_SSE2:byte
@@ -204,12 +205,14 @@ procstart _uX_mm_xor_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:x
 procend
 
 procstart _uX_mm_not_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        xorps           xmm0,           __m128_true
+        movaps          xmm1,           __m128_true
+        xorps           xmm0,           xmm1
         ret
 procend
 
 procstart _uX_mm_negate_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        xorps           xmm0,           __m128_sign
+        movaps          xmm1,           __m128_sign
+        xorps           xmm0,           xmm1
         ret
 procend
 
@@ -234,19 +237,21 @@ procstart _uX_mm_xor_ss, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:x
 procend
 
 procstart _uX_mm_not_ss, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        xorps           xmm0,           __m128_0e_true
+        movaps          xmm1,           __m128_0e_true
+        xorps           xmm0,           xmm1
         ret
 procend
 
 procstart _uX_mm_negate_ss, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        xorps           xmm0,           __m128_0e_sign
+        movaps          xmm1,           __m128_0e_sign
+        xorps           xmm0,           xmm1
         ret
 procend
 
 ifdef __unix32__
-    define rpdcmp, ecx, text
+    rpdcmp textequ <ecx>
 else
-    define rpdcmp, rp0(), text
+    rpdcmp textequ <rp0()>
 endif
 procstart _uX_mm_iand_ps, callconv, dword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
         xor             rret(),        rret()
@@ -277,7 +282,8 @@ procend
 
 procstart _uX_mm_inot_ps, callconv, dword, < >, < >, Inxmm_A:xmmword
         xor             rret(),        rret()
-        cmpps           xmm0,          __m128_false,           CMPP_EQ
+        movaps          xmm1,           __m128_false
+        cmpps           xmm0,          xmm1,           CMPP_EQ
         movmskps        rpdcmp,        xmm0
         cmp             rpdcmp,        0xf
         cmove           rret(),        true
@@ -624,10 +630,10 @@ procend
 
 procstart _uX_mm_cvt_si2ss, callconv, xmmword, < >, < >, Inxmm_A:xmmword, InInt_B:dword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov     rpdisp,    InInt_B
     else
-        define rpdisp, dp1(), text
+        rpdisp textequ <dp1()>
     endif
         cvtsi2ss            xmm0,           rpdisp
         ret
@@ -658,15 +664,15 @@ procstart _uX_mm_cvt3s_flt, callconv, real4, < >, < >, Inxmm_A:xmmword
         ret
 procend
 
-procstart _uX_mm_cvtps_flt, callconv, real4, < >, < >, Inxmm_A:xmmword, InInt_BSel:dword
+procstart _uX_mm_cvtps_flt, callconv, real4, < >, < >, Inxmm_A:xmmword, InInt_BSel:count_t
         push         rbase()
     ifdef __unix32__
-        define rpdisp, ecx, text
-        define bpdisp, cl, text
+        rpdisp textequ <ecx>
+        bpdisp textequ <cl>
         mov     rpdisp,     InInt_BSel
     else
-        define rpdisp, rp1(), text
-        define bpdisp, bp1(), text
+        rpdisp textequ <rp1()>
+        bpdisp textequ <bp1()>
     endif
     .if((rpdisp < 0) || (rpdisp > 3))
         jmp         _m128cvteltflt_end
@@ -816,10 +822,10 @@ procend
 
 procstart _uX_mm_loadh_pi, callconv, xmmword, < >, < >, Inxmm_A:xmmword, InPmm_B:ptr mmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,     InPmm_B
     else
-        define rpdisp, rp1(), text
+        rpdisp textequ <rp1()>
     endif
         movhps          xmm0,   mmword ptr [rpdisp]
         ret
@@ -827,10 +833,10 @@ procend
 
 procstart _uX_mm_loadl_pi, callconv, xmmword, < >, < >, Inxmm_A:xmmword, InPmm_B:ptr mmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,     InPmm_B
     else
-        define rpdisp, rp1(), text
+        rpdisp textequ <rp1()>
     endif
         movlps          xmm0,   mmword ptr [rpdisp]
         ret
@@ -838,10 +844,10 @@ procend
 
 procstart _uX_mm_storeh_pi, callconv, void, < >, < >, OutPmm_A:ptr mmword, Inxmm_B:xmmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,     OutPmm_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         movhps      mmword ptr [rpdisp],           xmm1
     ifdef __unix32__
@@ -852,10 +858,10 @@ procend
 
 procstart _uX_mm_storel_pi, callconv, void, < >, < >, OutPmm_A:ptr mmword, Inxmm_B:xmmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,     OutPmm_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         movlps      mmword ptr [rpdisp],           xmm1
     ifdef __unix32__
@@ -894,15 +900,15 @@ procstart _uX_mm_pextrw_3, callconv, dword, < >, < >, Inmm_A:mmword
         ret
 procend
 
-procstart _uX_mm_pextrw, callconv, dword, < >, < >, Inmm_A:mmword, _Imm8:dword
+procstart _uX_mm_pextrw, callconv, dword, < >, < >, Inmm_A:mmword, _Imm8:count_t
         push         rbase()
     ifdef __unix32__
-        define rpdisp, ecx, text
-        define bpdisp, cl, text
+        rpdisp textequ <ecx>
+        bpdisp textequ <cl>
         mov             rpdisp,          _Imm8
     else
-        define rpdisp, rp1(), text
-        define bpdisp, bp1(), text
+        rpdisp textequ <rp1()>
+        bpdisp textequ <bp1()>
     endif
     .if((rpdisp < 0) || (rpdisp > 3))
         jmp         _m64pextrw_end
@@ -930,10 +936,10 @@ procend
 
 procstart _uX_mm_pinsrw_0, callconv, mmword, < >, < >, Inmm_A:mmword, InInt_B:dword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov             rpdisp,          InInt_B
     else
-        define rpdisp, rp1(), text
+        rpdisp textequ <rp1()>
     endif
         pinsrw          mm0,            rpdisp,            0
         ret
@@ -941,10 +947,10 @@ procend
 
 procstart _uX_mm_pinsrw_1, callconv, mmword, < >, < >, Inmm_A:mmword, InInt_B:dword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov             rpdisp,          InInt_B
     else
-        define rpdisp, rp1(), text
+        rpdisp textequ <rp1()>
     endif
         pinsrw          mm0,            rpdisp,            1
         ret
@@ -952,10 +958,10 @@ procend
 
 procstart _uX_mm_pinsrw_2, callconv, mmword, < >, < >, Inmm_A:mmword, InInt_B:dword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov             rpdisp,          InInt_B
     else
-        define rpdisp, rp1(), text
+        rpdisp textequ <rp1()>
     endif
         pinsrw          mm0,            rpdisp,            2
         ret
@@ -963,27 +969,27 @@ procend
 
 procstart _uX_mm_pinsrw_3, callconv, mmword, < >, < >, Inmm_A:mmword, InInt_B:dword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov             rpdisp,          InInt_B
     else
-        define rpdisp, rp1(), text
+        rpdisp textequ <rp1()>
     endif
         pinsrw          mm0,            rpdisp,            3
         ret
 procend
 
-procstart _uX_mm_pinsrw, callconv, mmword, < >, < >, Inmm_A:mmword, InInt_B:dword,  _Imm8:dword
+procstart _uX_mm_pinsrw, callconv, mmword, < >, < >, Inmm_A:mmword, InInt_B:dword,  _Imm8:count_t
         push         rbase()
     ifdef __unix32__
-        define rpdisp, ecx, text
-        define rpdisp1, edx, text
-        define bpdisp1, dl, text
+        rpdisp textequ <ecx>
+        rpdisp1 textequ <edx>
+        bpdisp1 textequ <dl>
         mov     rpdisp,     InInt_B
         mov     rpdisp1,    _Imm8
     else
-        define rpdisp, rp1(), text
-        define rpdisp1, rp2(), text
-        define bpdisp1, bp2(), text
+        rpdisp textequ <rp1()>
+        rpdisp1 textequ <rp2()>
+        bpdisp1 textequ <bp2()>
     endif
     .if((rpdisp1 < 0) || (rpdisp1 > 3))
         jmp         _m64pinsrw_end
@@ -1041,15 +1047,15 @@ procend
 
 procstart _uX_mm_maskmovq, callconv, void, < >, < >, Inmm_A:mmword, Inmm_B:mmword, OutInt8_C:ptr byte
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov             rpdisp,          OutInt8_C
     else
-        define rpdisp, rp2(), text
+        rpdisp textequ <rp2()>
     endif
-        push            rdidx
-        mov             rdidx,  byte ptr [rpdisp]
+        push            rdidx()
+        mov             rdidx(),  byte ptr [rpdisp]
         maskmovq        mm0,            mm1
-        pop             rdidx
+        pop             rdidx()
         ret
 procend
 
@@ -1110,15 +1116,15 @@ procstart _uX_mm_cvtflt_3s, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inreal
         ret
 procend
 
-procstart _uX_mm_cvtflt_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inreal4_B:real4, InInt_BSel:dword
+procstart _uX_mm_cvtflt_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inreal4_B:real4, InInt_BSel:count_t
         push         rbase()
     ifdef __unix32__
-        define rpdisp, ecx, text
-        define bpdisp, cl, text
+        rpdisp textequ <ecx>
+        bpdisp textequ <cl>
         mov         rpdisp,        InInt_BSel
     else
-        define rpdisp, rp2(), text
-        define bpdisp, bp2(), text
+        rpdisp textequ <rp2()>
+        bpdisp textequ <bp2()>
     endif
     .if((rpdisp < 0) || (rpdisp > 3))
         jmp         _m128seteltps_end
@@ -1187,12 +1193,13 @@ procend
 
 procstart _uX_mm_iszero_ps, callconv, dword, < >, < >, Inxmm_A:xmmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         xor             rret(),        rret()
-        cmpps           xmm0,           __m128_0,           CMPP_EQ
+        movaps          xmm1,          __m128_0
+        cmpps           xmm0,           xmm1,           CMPP_EQ
         movmskps        rpdisp,        xmm0
         cmp             rpdisp,        0xf
         cmove           rret(),        true
@@ -1201,12 +1208,13 @@ procend
 
 procstart _uX_mm_iszero_ss, callconv, dword, < >, < >, Inxmm_A:xmmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         xor             rret(),        rret()
-        cmpss           xmm0,           __m128_0e_0,           CMPP_EQ
+        movaps          xmm1,          __m128_0e_0
+        cmpss           xmm0,           xmm1,           CMPP_EQ
         movmskps        rpdisp,        xmm0
         cmp             rpdisp,        0x1
         cmove           rret(),        true
@@ -1218,10 +1226,10 @@ procend
 ;******************
 procstart _uX_mm_load_ss, callconv, xmmword, < >, < >, InPreal4_A:ptr real4
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        InPreal4_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         movss           xmm0,       real4 ptr [rpdisp]
         ret
@@ -1229,10 +1237,10 @@ procend
 
 procstart _uX_mm_load_ps1, callconv, xmmword, < >, < >, InPreal4_A:ptr real4
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        InPreal4_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         movss           xmm0,       real4 ptr [rpdisp]
         shufps          xmm0,           xmm0,           0
@@ -1241,10 +1249,10 @@ procend
 
 procstart _uX_mm_load_ps, callconv, xmmword, < >, < >, InPreal4_A:ptr xmmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        InPreal4_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         movaps          xmm0,       xmmword ptr [rpdisp]
         ret
@@ -1252,10 +1260,10 @@ procend
 
 procstart _uX_mm_loadr_ps, callconv, xmmword, < >, < >, InPreal4_A:ptr xmmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        InPreal4_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         movaps          xmm0,       xmmword ptr [rpdisp]
         shufps          xmm0,           xmm0,           shuffler4(3,2,1,0)
@@ -1264,10 +1272,10 @@ procend
 
 procstart _uX_mm_loadu_ps, callconv, xmmword, < >, < >, InPreal4_A:ptr xmmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        InPreal4_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         movups          xmm0,       xmmword ptr [rpdisp]
         ret
@@ -1275,10 +1283,10 @@ procend
 
 procstart _uX_mm_loadur_ps, callconv, xmmword, < >, < >, InPreal4_A:ptr xmmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        InPreal4_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         movups          xmm0,       xmmword ptr [rpdisp]
         shufps          xmm0,           xmm0,           shuffler4(3,2,1,0)
@@ -1287,10 +1295,10 @@ procend
 
 procstart _uX_mm_loadh_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword, InPreal4_B:ptr mmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        InPreal4_B
     else
-        define rpdisp, rp1(), text
+        rpdisp textequ <rp1()>
     endif
         movhps          xmm0,           mmword ptr [rpdisp]
         ret
@@ -1298,10 +1306,10 @@ procend
 
 procstart _uX_mm_loadl_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword, InPreal4_B:ptr mmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        InPreal4_B
     else
-        define rpdisp, rp1(), text
+        rpdisp textequ <rp1()>
     endif
         movlps          xmm0,       mmword ptr [rpdisp]
         ret
@@ -1312,10 +1320,10 @@ procend
 ;******************
 procstart _uX_mm_store_ss, callconv, void, < >, < >, OutPreal4_A:ptr real4, Inxmm_B:xmmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        OutPreal4_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         movss       real4 ptr [rpdisp],            xmm1
     ifdef __unix32__
@@ -1326,10 +1334,10 @@ procend
 
 procstart _uX_mm_store_ps1, callconv, void, < >, < >, OutPreal4_A:ptr real4, Inxmm_B:xmmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        OutPreal4_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         movaps          xmm0,           xmm1
         shufps          xmm0,           xmm0,           0
@@ -1342,10 +1350,10 @@ procend
 
 procstart _uX_mm_storeu_ps1, callconv, void, < >, < >, OutPreal4_A:ptr real4, Inxmm_B:xmmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        OutPreal4_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         movaps          xmm0,           xmm1
         shufps          xmm0,           xmm0,           0
@@ -1358,10 +1366,10 @@ procend
 
 procstart _uX_mm_store_ps, callconv, void, < >, < >, OutPreal4_A:ptr xmmword, Inxmm_B:xmmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        OutPreal4_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         movaps      xmmword ptr [rpdisp],          xmm1
     ifdef __unix32__
@@ -1372,10 +1380,10 @@ procend
 
 procstart _uX_mm_storeu_ps, callconv, void, < >, < >, OutPreal4_A:ptr xmmword, Inxmm_B:xmmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        OutPreal4_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         movups      xmmword ptr [rpdisp],          xmm1
     ifdef __unix32__
@@ -1386,10 +1394,10 @@ procend
 
 procstart _uX_mm_storer_ps, callconv, void, < >, < >, OutPreal4_A:ptr xmmword, Inxmm_B:xmmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        OutPreal4_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         movaps          xmm0,           xmm1
         shufps          xmm0,           xmm0,           shuffler4(3,2,1,0)
@@ -1402,10 +1410,10 @@ procend
 
 procstart _uX_mm_storeur_ps, callconv, void, < >, < >, OutPreal4_A:ptr xmmword, Inxmm_B:xmmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        OutPreal4_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         movaps          xmm0,           xmm1
         shufps          xmm0,           xmm0,           shuffler4(3,2,1,0)
@@ -1418,10 +1426,10 @@ procend
 
 procstart _uX_mm_storeh_ps, callconv, void, < >, < >, OutPreal4_A:ptr mmword, Inxmm_B:xmmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        OutPreal4_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         movhps      mmword ptr [rpdisp],           xmm1
     ifdef __unix32__
@@ -1432,10 +1440,10 @@ procend
 
 procstart _uX_mm_storel_ps, callconv, void, < >, < >, OutPreal4_A:ptr mmword, Inxmm_B:xmmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        OutPreal4_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         movlps      mmword ptr [rpdisp],           xmm1
     ifdef __unix32__
@@ -1446,10 +1454,10 @@ procend
 
 procstart _uX_mm_store_mm_ps, callconv, void, < >, < >, OutPreal4_A:ptr xmmword, Inxmm_B:xmmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        OutPreal4_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         movaps      xmmword ptr [rpdisp],          xmm1
     ifdef __unix32__
@@ -1460,13 +1468,13 @@ procend
 
 procstart _uX_mm_store_pfloat_ps, callconv, void, < >, < >, OutPxmmword_A:ptr xmmword, InPreal4_B:ptr xmmword
     ifdef __unix32__
-        define rpdisp, ecx, text
-        define rpdisp1, edx, text
+        rpdisp textequ <ecx>
+        rpdisp1 textequ <edx>
         mov         rpdisp1,        InPreal4_B
         mov         rpdisp,        OutPxmmword_A
     else
-        define rpdisp, rp0(), text
-        define rpdisp1, rp1(), text
+        rpdisp textequ <rp0()>
+        rpdisp1 textequ <rp1()>
     endif
         movaps          xmm1,           xmmword ptr [rpdisp1]
         movaps      xmmword ptr [rpdisp],          xmm1
@@ -1478,13 +1486,13 @@ procend
 
 procstart _uX_mm_storeu_pfloat_ps, callconv, void, < >, < >, OutPxmmword_A:ptr xmmword, InPreal4_B:ptr xmmword
     ifdef __unix32__
-        define rpdisp, ecx, text
-        define rpdisp1, edx, text
+        rpdisp textequ <ecx>
+        rpdisp1 textequ <edx>
         mov         rpdisp1,        InPreal4_B
         mov         rpdisp,        OutPxmmword_A
     else
-        define rpdisp, rp0(), text
-        define rpdisp1, rp1(), text
+        rpdisp textequ <rp0()>
+        rpdisp1 textequ <rp1()>
     endif
         movups          xmm1,           xmmword ptr [rpdisp1]
         movups      xmmword ptr [rpdisp],          xmm1
@@ -1579,10 +1587,10 @@ procend
 ;******************
 procstart _uX_mm_prefetch_0, callconv, void, < >, < >, InPInt8_A:ptr byte
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        InPInt8_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         prefetchnta         byte ptr [rpdisp]
         ret
@@ -1590,10 +1598,10 @@ procend
 
 procstart _uX_mm_prefetch_1, callconv, void, < >, < >, InPInt8_A:ptr byte
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        InPInt8_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         prefetcht0          byte ptr [rpdisp]
         ret
@@ -1601,10 +1609,10 @@ procend
 
 procstart _uX_mm_prefetch_2, callconv, void, < >, < >, InPInt8_A:ptr byte
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        InPInt8_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         prefetcht1          byte ptr [rpdisp]
         ret
@@ -1612,27 +1620,27 @@ procend
 
 procstart _uX_mm_prefetch_3, callconv, void, < >, < >, InPInt8_A:ptr byte
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        InPInt8_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         prefetcht2          byte ptr [rpdisp]
         ret
 procend
 
-procstart _uX_mm_prefetch, callconv, void, < >, < >, InPInt8_A:ptr byte, InInt_BSel:dword
+procstart _uX_mm_prefetch, callconv, void, < >, < >, InPInt8_A:ptr byte, InInt_BSel:count_t
         push         rbase()
     ifdef __unix32__
-        define rpdisp, ecx, text
-        define rpdisp1, edx, text
-        define bpdisp1, dl, text
+        rpdisp textequ <ecx>
+        rpdisp1 textequ <edx>
+        bpdisp1 textequ <dl>
         mov         rpdisp,       InPInt8_A
         mov         rpdisp1,      InInt_BSel
     else
-        define rpdisp, rp0(), text
-        define rpdisp1, rp1(), text
-        define bpdisp1, bp1(), text
+        rpdisp textequ <rp0()>
+        rpdisp1 textequ <rp1()>
+        bpdisp1 textequ <bp1()>
     endif
     .if((rpdisp1 < 0) || (rpdisp1 > 3))
         jmp         _m128prefetch_end
@@ -1669,10 +1677,10 @@ ifdef __x32__
     alignmmfieldproc
 procstart _uX_mm_stream_pi, callconv, void, < >, < >, OutPmm_A:ptr mmword, Inmm_B:mmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov         rpdisp,        OutPmm_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         movntq      mmword ptr [rpdisp],           mm1
     ifdef __unix32__
@@ -1685,10 +1693,10 @@ endif ;__x32__
 
 procstart _uX_mm_stream_ps, callconv, void, < >, < >, OutPxmm_A:ptr xmmword, Inxmm_B:xmmword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov        rpdisp,       OutPxmm_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         movntps         xmmword ptr [rpdisp],          xmm1
     ifdef __unix32__
@@ -1709,10 +1717,10 @@ procend
 
 procstart _uX_mm_setcsr, callconv, void, < >, < >, InInt_A:dword
     ifdef __unix32__
-        define rpdisp, ecx, text
+        rpdisp textequ <ecx>
         mov        rpdisp,       InInt_A
     else
-        define rpdisp, rp0(), text
+        rpdisp textequ <rp0()>
     endif
         ldmxcsr         dword ptr [rpdisp]
         ret
@@ -1720,4 +1728,4 @@ procend
 
 endif ;__MIC__
 
-    end
+end

@@ -49,726 +49,726 @@ const int uX_ABI CPUFeatures::intrinset(void)
 }
 
 / * %eax=00H, %ecx * /
-const bool_t uX_ABI CPUFeatures::is_Intel(void)
+bool_t const uX_ABI CPUFeatures::is_Intel(void)
 {   
     return _uX_CPUFeatures_is_Intel();
 }
 
-const bool_t uX_ABI CPUFeatures::is_AMD(void)
+bool_t const uX_ABI CPUFeatures::is_AMD(void)
 {
     return _uX_CPUFeatures_is_AMD();
 }
 
 / * %eax=01H, %ecx * /
-const bool_t uX_ABI CPUFeatures::has_SSE3(void)
+bool_t const uX_ABI CPUFeatures::has_SSE3(void)
 {
     return _uX_CPUFeatures_has_SSE3();
 }
 
-const bool_t uX_ABI CPUFeatures::has_PCLMULQDQ(void)
+bool_t const uX_ABI CPUFeatures::has_PCLMULQDQ(void)
 {
     return _uX_CPUFeatures_has_PCLMULQDQ();
 }
 
-const bool_t uX_ABI CPUFeatures::has_MONITOR(void)
+bool_t const uX_ABI CPUFeatures::has_MONITOR(void)
 {
     return _uX_CPUFeatures_has_MONITOR();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSSE3(void)
+bool_t const uX_ABI CPUFeatures::has_SSSE3(void)
 {
     return _uX_CPUFeatures_has_SSSE3();
 }
 
-const bool_t uX_ABI CPUFeatures::has_FMA(void)
+bool_t const uX_ABI CPUFeatures::has_FMA(void)
 {
     return _uX_CPUFeatures_has_FMA();
 }
 
-const bool_t uX_ABI CPUFeatures::has_CMPXCHG16B(void)
+bool_t const uX_ABI CPUFeatures::has_CMPXCHG16B(void)
 {
     return _uX_CPUFeatures_has_CMPXCHG16B();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSE41(void)
+bool_t const uX_ABI CPUFeatures::has_SSE41(void)
 {
     return _uX_CPUFeatures_has_SSE41();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSE42(void)
+bool_t const uX_ABI CPUFeatures::has_SSE42(void)
 {
     return _uX_CPUFeatures_has_SSE42();
 }
 
-const bool_t uX_ABI CPUFeatures::has_MOVBE(void)
+bool_t const uX_ABI CPUFeatures::has_MOVBE(void)
 {
     return _uX_CPUFeatures_has_MOVBE();
 }
 
-const bool_t uX_ABI CPUFeatures::has_POPCNT(void)
+bool_t const uX_ABI CPUFeatures::has_POPCNT(void)
 {
     return _uX_CPUFeatures_has_POPCNT();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AES(void)
+bool_t const uX_ABI CPUFeatures::has_AES(void)
 {
     return _uX_CPUFeatures_has_AES();
 }
 
-const bool_t uX_ABI CPUFeatures::has_XSAVE(void)
+bool_t const uX_ABI CPUFeatures::has_XSAVE(void)
 {
     return _uX_CPUFeatures_has_XSAVE();
 }
 
-const bool_t uX_ABI CPUFeatures::has_OSXSAVE(void)
+bool_t const uX_ABI CPUFeatures::has_OSXSAVE(void)
 {
     return _uX_CPUFeatures_has_OSXSAVE();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX(void)
+bool_t const uX_ABI CPUFeatures::has_AVX(void)
 {
     return _uX_CPUFeatures_has_AVX();
 }
 
-const bool_t uX_ABI CPUFeatures::has_F16C(void)
+bool_t const uX_ABI CPUFeatures::has_F16C(void)
 {
     return _uX_CPUFeatures_has_F16C();
 }
 
-const bool_t uX_ABI CPUFeatures::has_RDRAND(void)
+bool_t const uX_ABI CPUFeatures::has_RDRAND(void)
 {
     return _uX_CPUFeatures_has_RDRAND();
 }
 
 / * %eax=01H, %edx * /
-const bool_t uX_ABI CPUFeatures::has_FPU(void)
+bool_t const uX_ABI CPUFeatures::has_FPU(void)
 {
     return _uX_CPUFeatures_has_FPU();
 }
 
-const bool_t uX_ABI CPUFeatures::has_TSC(void)
+bool_t const uX_ABI CPUFeatures::has_TSC(void)
 {
     return _uX_CPUFeatures_has_TSC();
 }
 
-const bool_t uX_ABI CPUFeatures::has_MSR(void)
+bool_t const uX_ABI CPUFeatures::has_MSR(void)
 {
     return _uX_CPUFeatures_has_MSR();
 }
 
-const bool_t uX_ABI CPUFeatures::has_CMPXCHG8B(void)
+bool_t const uX_ABI CPUFeatures::has_CMPXCHG8B(void)
 {
     return _uX_CPUFeatures_has_CMPXCHG8B();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SEP(void)
+bool_t const uX_ABI CPUFeatures::has_SEP(void)
 {
     return _uX_CPUFeatures_has_SEP();
 }
 
-const bool_t uX_ABI CPUFeatures::has_CMOV(void)
+bool_t const uX_ABI CPUFeatures::has_CMOV(void)
 {
     return _uX_CPUFeatures_has_CMOV();
 }
 
-const bool_t uX_ABI CPUFeatures::has_CLFSH(void)
+bool_t const uX_ABI CPUFeatures::has_CLFSH(void)
 {
     return _uX_CPUFeatures_has_CLFSH();
 }
 
-const bool_t uX_ABI CPUFeatures::has_MMX(void)
+bool_t const uX_ABI CPUFeatures::has_MMX(void)
 {
     return _uX_CPUFeatures_has_MMX();
 }
 
-const bool_t uX_ABI CPUFeatures::has_FXSR(void)
+bool_t const uX_ABI CPUFeatures::has_FXSR(void)
 {
     return _uX_CPUFeatures_has_FXSR();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSE(void)
+bool_t const uX_ABI CPUFeatures::has_SSE(void)
 {
     return _uX_CPUFeatures_has_SSE();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSE2(void)
+bool_t const uX_ABI CPUFeatures::has_SSE2(void)
 {
     return _uX_CPUFeatures_has_SSE2();
 }
 
 / * %eax=07H, %ebx * /
-const bool_t uX_ABI CPUFeatures::has_FSGSBASE(void)
+bool_t const uX_ABI CPUFeatures::has_FSGSBASE(void)
 {
     return _uX_CPUFeatures_has_FSGSBASE();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SGX(void)
+bool_t const uX_ABI CPUFeatures::has_SGX(void)
 {
     return _uX_CPUFeatures_has_SGX();
 }
 
-const bool_t uX_ABI CPUFeatures::has_BMI1(void)
+bool_t const uX_ABI CPUFeatures::has_BMI1(void)
 {
     return _uX_CPUFeatures_has_BMI1();
 }
 
-const bool_t uX_ABI CPUFeatures::has_HLE(void)
+bool_t const uX_ABI CPUFeatures::has_HLE(void)
 {
     return _uX_CPUFeatures_has_HLE();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX2(void)
+bool_t const uX_ABI CPUFeatures::has_AVX2(void)
 {
     return _uX_CPUFeatures_has_AVX2();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SMEP(void)
+bool_t const uX_ABI CPUFeatures::has_SMEP(void)
 {
     return _uX_CPUFeatures_has_SMEP();
 }
 
-const bool_t uX_ABI CPUFeatures::has_BMI2(void)
+bool_t const uX_ABI CPUFeatures::has_BMI2(void)
 {
     return _uX_CPUFeatures_has_BMI2();
 }
 
-const bool_t uX_ABI CPUFeatures::has_ERMS(void)
+bool_t const uX_ABI CPUFeatures::has_ERMS(void)
 {
     return _uX_CPUFeatures_has_ERMS();
 }
 
-const bool_t uX_ABI CPUFeatures::has_INVPCID(void)
+bool_t const uX_ABI CPUFeatures::has_INVPCID(void)
 {
     return _uX_CPUFeatures_has_INVPCID();
 }
 
-const bool_t uX_ABI CPUFeatures::has_RTM(void)
+bool_t const uX_ABI CPUFeatures::has_RTM(void)
 {
     return _uX_CPUFeatures_has_RTM();
 }
 
-const bool_t uX_ABI CPUFeatures::has_MPX(void)
+bool_t const uX_ABI CPUFeatures::has_MPX(void)
 {
     return _uX_CPUFeatures_has_MPX();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512F(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512F(void)
 {
     return _uX_CPUFeatures_has_AVX512F();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512DQ(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512DQ(void)
 {
     return _uX_CPUFeatures_has_AVX512DQ();
 }
 
-const bool_t uX_ABI CPUFeatures::has_RDSEED(void)
+bool_t const uX_ABI CPUFeatures::has_RDSEED(void)
 {
     return _uX_CPUFeatures_has_RDSEED();
 }
 
-const bool_t uX_ABI CPUFeatures::has_ADX(void)
+bool_t const uX_ABI CPUFeatures::has_ADX(void)
 {
     return _uX_CPUFeatures_has_ADX();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SMAP(void)
+bool_t const uX_ABI CPUFeatures::has_SMAP(void)
 {
     return _uX_CPUFeatures_has_SMAP();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512_IFMA(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512_IFMA(void)
 {
     return _uX_CPUFeatures_has_AVX512_IFMA();
 }
 
-const bool_t uX_ABI CPUFeatures::has_CLFLUSHOPT(void)
+bool_t const uX_ABI CPUFeatures::has_CLFLUSHOPT(void)
 {
     return _uX_CPUFeatures_has_CLFLUSHOPT();
 }
 
-const bool_t uX_ABI CPUFeatures::has_CLWB(void)
+bool_t const uX_ABI CPUFeatures::has_CLWB(void)
 {
     return _uX_CPUFeatures_has_CLWB();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512PF(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512PF(void)
 {
     return _uX_CPUFeatures_has_AVX512PF();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512ER(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512ER(void)
 {
     return _uX_CPUFeatures_has_AVX512ER();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512CD(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512CD(void)
 {
     return _uX_CPUFeatures_has_AVX512CD();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SHA(void)
+bool_t const uX_ABI CPUFeatures::has_SHA(void)
 {
     return _uX_CPUFeatures_has_SHA();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512BW(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512BW(void)
 {
     return _uX_CPUFeatures_has_AVX512BW();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512VL(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512VL(void)
 {
     return _uX_CPUFeatures_has_AVX512VL();
 }
 
 / * %eax=07H, %ecx * /
-const bool_t uX_ABI CPUFeatures::has_PREFETCHWT1(void)
+bool_t const uX_ABI CPUFeatures::has_PREFETCHWT1(void)
 {
     return _uX_CPUFeatures_has_PREFETCHWT1();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512_VBMI(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512_VBMI(void)
 {
     return _uX_CPUFeatures_has_AVX512_VBMI();
 }
 
-const bool_t uX_ABI CPUFeatures::has_UMIP(void)
+bool_t const uX_ABI CPUFeatures::has_UMIP(void)
 {
     return _uX_CPUFeatures_has_UMIP();
 }
 
-const bool_t uX_ABI CPUFeatures::has_PKU(void)
+bool_t const uX_ABI CPUFeatures::has_PKU(void)
 {
     return _uX_CPUFeatures_has_PKU();
 }
 
-const bool_t uX_ABI CPUFeatures::has_OSPKE(void)
+bool_t const uX_ABI CPUFeatures::has_OSPKE(void)
 {
     return _uX_CPUFeatures_has_OSPKE();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512_VBMI2(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512_VBMI2(void)
 {
     return _uX_CPUFeatures_has_AVX512_VBMI2();
 }
 
-const bool_t uX_ABI CPUFeatures::has_GFNI(void)
+bool_t const uX_ABI CPUFeatures::has_GFNI(void)
 {
     return _uX_CPUFeatures_has_GFNI();
 }
 
-const bool_t uX_ABI CPUFeatures::has_VAES(void)
+bool_t const uX_ABI CPUFeatures::has_VAES(void)
 {
     return _uX_CPUFeatures_has_VAES();
 }
 
-const bool_t uX_ABI CPUFeatures::has_VPCLMULQDQ(void)
+bool_t const uX_ABI CPUFeatures::has_VPCLMULQDQ(void)
 {
     return _uX_CPUFeatures_has_VPCLMULQDQ();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512_VNNI(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512_VNNI(void)
 {
     return _uX_CPUFeatures_has_AVX512_VNNI();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512_BITALG(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512_BITALG(void)
 {
     return _uX_CPUFeatures_has_AVX512_BITALG();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512_VPOPCNTDQ(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512_VPOPCNTDQ(void)
 {
     return _uX_CPUFeatures_has_AVX512_VPOPCNTDQ();
 }
 
-const bool_t uX_ABI CPUFeatures::has_RDPID(void)
+bool_t const uX_ABI CPUFeatures::has_RDPID(void)
 {
     return _uX_CPUFeatures_has_RDPID();
 }
 
 / * %eax=07H, %edx * /
-const bool_t uX_ABI CPUFeatures::has_AVX512_4VNNIW(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512_4VNNIW(void)
 {
     return _uX_CPUFeatures_has_AVX512_4VNNIW();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512_4FMAPS(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512_4FMAPS(void)
 {
     return _uX_CPUFeatures_has_AVX512_4FMAPS();
 }
 
 / * %eax=80000001H, %ecx * /
-const bool_t uX_ABI CPUFeatures::has_LAHF(void)
+bool_t const uX_ABI CPUFeatures::has_LAHF(void)
 {
     return _uX_CPUFeatures_has_LAHF();
 }
 
-const bool_t uX_ABI CPUFeatures::has_LZCNT(void)
+bool_t const uX_ABI CPUFeatures::has_LZCNT(void)
 {
     return _uX_CPUFeatures_has_LZCNT();
 }
 
-const bool_t uX_ABI CPUFeatures::has_ABM(void)
+bool_t const uX_ABI CPUFeatures::has_ABM(void)
 {
     return _uX_CPUFeatures_has_ABM();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSE4a(void)
+bool_t const uX_ABI CPUFeatures::has_SSE4a(void)
 {
     return _uX_CPUFeatures_has_SSE4a();
 }
 
-const bool_t uX_ABI CPUFeatures::has_PREFETCHW(void)
+bool_t const uX_ABI CPUFeatures::has_PREFETCHW(void)
 {
     return _uX_CPUFeatures_has_PREFETCHW();
 }
 
-const bool_t uX_ABI CPUFeatures::has_XOP(void)
+bool_t const uX_ABI CPUFeatures::has_XOP(void)
 {
     return _uX_CPUFeatures_has_XOP();
 }
 
-const bool_t uX_ABI CPUFeatures::has_LWP(void)
+bool_t const uX_ABI CPUFeatures::has_LWP(void)
 {
     return _uX_CPUFeatures_has_LWP();
 }
 
-const bool_t uX_ABI CPUFeatures::has_FMA4(void)
+bool_t const uX_ABI CPUFeatures::has_FMA4(void)
 {
     return _uX_CPUFeatures_has_FMA4();
 }
 
-const bool_t uX_ABI CPUFeatures::has_TBM(void)
+bool_t const uX_ABI CPUFeatures::has_TBM(void)
 {
     return _uX_CPUFeatures_has_TBM();
 }
 
-const bool_t uX_ABI CPUFeatures::has_MWAITX(void)
+bool_t const uX_ABI CPUFeatures::has_MWAITX(void)
 {
     return _uX_CPUFeatures_has_MWAITX();
 }
 
 / * %eax=80000001H, %edx * /
-const bool_t uX_ABI CPUFeatures::has_SYSCALL(void)
+bool_t const uX_ABI CPUFeatures::has_SYSCALL(void)
 {
     return _uX_CPUFeatures_has_SYSCALL();
 }
 
-const bool_t uX_ABI CPUFeatures::has_MMXEXT(void)
+bool_t const uX_ABI CPUFeatures::has_MMXEXT(void)
 {
     return _uX_CPUFeatures_has_MMXEXT();
 }
 
-const bool_t uX_ABI CPUFeatures::has_RDTSCP(void)
+bool_t const uX_ABI CPUFeatures::has_RDTSCP(void)
 {
     return _uX_CPUFeatures_has_RDTSCP();
 }
 
-const bool_t uX_ABI CPUFeatures::has_3DNOWEXT(void)
+bool_t const uX_ABI CPUFeatures::has_3DNOWEXT(void)
 {
     return _uX_CPUFeatures_has_3DNOWEXT();
 }
 
-const bool_t uX_ABI CPUFeatures::has_3DNOW(void)
+bool_t const uX_ABI CPUFeatures::has_3DNOW(void)
 {
     return _uX_CPUFeatures_has_3DNOW();
 }
 
 / * %eax=07H, %ebx, %ecx * /
-const bool_t uX_ABI CPUFeatures::has_AVX512_GFNI(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512_GFNI(void)
 {
     return _uX_CPUFeatures_has_AVX512_GFNI();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512_GFNI_VL(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512_GFNI_VL(void)
 {
     return _uX_CPUFeatures_has_AVX512_GFNI_VL();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512_VAES(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512_VAES(void)
 {
     return _uX_CPUFeatures_has_AVX512_VAES();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512_VAES_VL(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512_VAES_VL(void)
 {
     return _uX_CPUFeatures_has_AVX512_VAES_VL();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512_VPCLMULQDQ(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512_VPCLMULQDQ(void)
 {
     return _uX_CPUFeatures_has_AVX512_VPCLMULQDQ();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512_VPCLMULQDQ_VL(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512_VPCLMULQDQ_VL(void)
 {
     return _uX_CPUFeatures_has_AVX512_VPCLMULQDQ_VL();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512_IFMA_VL(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512_IFMA_VL(void)
 {
     return _uX_CPUFeatures_has_AVX512_IFMA_VL();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512_VBMI_VL(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512_VBMI_VL(void)
 {
     return _uX_CPUFeatures_has_AVX512_VBMI_VL();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512_VBMI2_VL(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512_VBMI2_VL(void)
 {
     return _uX_CPUFeatures_has_AVX512_VBMI2_VL();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512_VNNI_VL(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512_VNNI_VL(void)
 {
     return _uX_CPUFeatures_has_AVX512_VNNI_VL();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512_BITALG_VL(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512_BITALG_VL(void)
 {
     return _uX_CPUFeatures_has_AVX512_BITALG_VL();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512_VPOPCNTDQ_VL(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512_VPOPCNTDQ_VL(void)
 {
     return _uX_CPUFeatures_has_AVX512_VPOPCNTDQ_VL();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512BW_GFNI(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512BW_GFNI(void)
 {
     return _uX_CPUFeatures_has_AVX512BW_GFNI();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512BW_GFNI_VL(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512BW_GFNI_VL(void)
 {
     return _uX_CPUFeatures_has_AVX512BW_GFNI_VL();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512BW_VAES(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512BW_VAES(void)
 {
     return _uX_CPUFeatures_has_AVX512BW_VAES();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512BW_VAES_VL(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512BW_VAES_VL(void)
 {
     return _uX_CPUFeatures_has_AVX512BW_VAES_VL();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512BW_VPCLMULQDQ(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512BW_VPCLMULQDQ(void)
 {
     return _uX_CPUFeatures_has_AVX512BW_VPCLMULQDQ();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512BW_VPCLMULQDQ_VL(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512BW_VPCLMULQDQ_VL(void)
 {
     return _uX_CPUFeatures_has_AVX512BW_VPCLMULQDQ_VL();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512BW_VL(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512BW_VL(void)
 {
     return _uX_CPUFeatures_has_AVX512BW_VL();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512DQ_GFNI(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512DQ_GFNI(void)
 {
     return _uX_CPUFeatures_has_AVX512DQ_GFNI();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512DQ_GFNI_VL(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512DQ_GFNI_VL(void)
 {
     return _uX_CPUFeatures_has_AVX512DQ_GFNI_VL();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512DQ_VAES(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512DQ_VAES(void)
 {
     return _uX_CPUFeatures_has_AVX512DQ_VAES();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512DQ_VAES_VL(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512DQ_VAES_VL(void)
 {
     return _uX_CPUFeatures_has_AVX512DQ_VAES_VL();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512DQ_VPCLMULQDQ(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512DQ_VPCLMULQDQ(void)
 {
     return _uX_CPUFeatures_has_AVX512DQ_VPCLMULQDQ();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512DQ_VPCLMULQDQ_VL(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512DQ_VPCLMULQDQ_VL(void)
 {
     return _uX_CPUFeatures_has_AVX512DQ_VPCLMULQDQ_VL();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512DQ_VL(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512DQ_VL(void)
 {
     return _uX_CPUFeatures_has_AVX512DQ_VL();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX512CD_VL(void)
+bool_t const uX_ABI CPUFeatures::has_AVX512CD_VL(void)
 {
     return _uX_CPUFeatures_has_AVX512CD_VL();
 }
 
 / * %eax=07H, %ecx, %ebx | %eax=01H, %ecx , %edx * /
-const bool_t uX_ABI CPUFeatures::has_SSE_AES(void)
+bool_t const uX_ABI CPUFeatures::has_SSE_AES(void)
 {
     return _uX_CPUFeatures_has_SSE_AES();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSE_GFNI(void)
+bool_t const uX_ABI CPUFeatures::has_SSE_GFNI(void)
 {
     return _uX_CPUFeatures_has_SSE_GFNI();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSE_PCLMULQDQ(void)
+bool_t const uX_ABI CPUFeatures::has_SSE_PCLMULQDQ(void)
 {
     return _uX_CPUFeatures_has_SSE_PCLMULQDQ();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSE2_AES(void)
+bool_t const uX_ABI CPUFeatures::has_SSE2_AES(void)
 {
     return _uX_CPUFeatures_has_SSE2_AES();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSE2_GFNI(void)
+bool_t const uX_ABI CPUFeatures::has_SSE2_GFNI(void)
 {
     return _uX_CPUFeatures_has_SSE2_GFNI();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSE2_PCLMULQDQ(void)
+bool_t const uX_ABI CPUFeatures::has_SSE2_PCLMULQDQ(void)
 {
     return _uX_CPUFeatures_has_SSE2_PCLMULQDQ();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSE3_AES(void)
+bool_t const uX_ABI CPUFeatures::has_SSE3_AES(void)
 {
     return _uX_CPUFeatures_has_SSE3_AES();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSE3_GFNI(void)
+bool_t const uX_ABI CPUFeatures::has_SSE3_GFNI(void)
 {
     return _uX_CPUFeatures_has_SSE3_GFNI();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSE3_PCLMULQDQ(void)
+bool_t const uX_ABI CPUFeatures::has_SSE3_PCLMULQDQ(void)
 {
     return _uX_CPUFeatures_has_SSE3_PCLMULQDQ();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSSE3_AES(void)
+bool_t const uX_ABI CPUFeatures::has_SSSE3_AES(void)
 {
     return _uX_CPUFeatures_has_SSSE3_AES();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSSE3_GFNI(void)
+bool_t const uX_ABI CPUFeatures::has_SSSE3_GFNI(void)
 {
     return _uX_CPUFeatures_has_SSSE3_GFNI();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSSE3_PCLMULQDQ(void)
+bool_t const uX_ABI CPUFeatures::has_SSSE3_PCLMULQDQ(void)
 {
     return _uX_CPUFeatures_has_SSSE3_PCLMULQDQ();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSE41_AES(void)
+bool_t const uX_ABI CPUFeatures::has_SSE41_AES(void)
 {
     return _uX_CPUFeatures_has_SSE41_AES();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSE41_GFNI(void)
+bool_t const uX_ABI CPUFeatures::has_SSE41_GFNI(void)
 {
     return _uX_CPUFeatures_has_SSE41_GFNI();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSE41_PCLMULQDQ(void)
+bool_t const uX_ABI CPUFeatures::has_SSE41_PCLMULQDQ(void)
 {
     return _uX_CPUFeatures_has_SSE41_PCLMULQDQ();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSE42_AES(void)
+bool_t const uX_ABI CPUFeatures::has_SSE42_AES(void)
 {
     return _uX_CPUFeatures_has_SSE42_AES();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSE42_GFNI(void)
+bool_t const uX_ABI CPUFeatures::has_SSE42_GFNI(void)
 {
     return _uX_CPUFeatures_has_SSE42_GFNI();
 }
 
-const bool_t uX_ABI CPUFeatures::has_SSE42_PCLMULQDQ(void)
+bool_t const uX_ABI CPUFeatures::has_SSE42_PCLMULQDQ(void)
 {
     return _uX_CPUFeatures_has_SSE42_PCLMULQDQ();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX_AES(void)
+bool_t const uX_ABI CPUFeatures::has_AVX_AES(void)
 {
     return _uX_CPUFeatures_has_AVX_AES();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX_GFNI(void)
+bool_t const uX_ABI CPUFeatures::has_AVX_GFNI(void)
 {
     return _uX_CPUFeatures_has_AVX_GFNI();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX_PCLMULQDQ(void)
+bool_t const uX_ABI CPUFeatures::has_AVX_PCLMULQDQ(void)
 {
     return _uX_CPUFeatures_has_AVX_PCLMULQDQ();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX_VAES(void)
+bool_t const uX_ABI CPUFeatures::has_AVX_VAES(void)
 {
     return _uX_CPUFeatures_has_AVX_VAES();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX_VPCLMULQDQ(void)
+bool_t const uX_ABI CPUFeatures::has_AVX_VPCLMULQDQ(void)
 {
     return _uX_CPUFeatures_has_AVX_VPCLMULQDQ();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX2_AES(void)
+bool_t const uX_ABI CPUFeatures::has_AVX2_AES(void)
 {
     return _uX_CPUFeatures_has_AVX2_AES();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX2_GFNI(void)
+bool_t const uX_ABI CPUFeatures::has_AVX2_GFNI(void)
 {
     return _uX_CPUFeatures_has_AVX2_GFNI();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX2_PCLMULQDQ(void)
+bool_t const uX_ABI CPUFeatures::has_AVX2_PCLMULQDQ(void)
 {
     return _uX_CPUFeatures_has_AVX2_PCLMULQDQ();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX2_VAES(void)
+bool_t const uX_ABI CPUFeatures::has_AVX2_VAES(void)
 {
     return _uX_CPUFeatures_has_AVX2_VAES();
 }
 
-const bool_t uX_ABI CPUFeatures::has_AVX2_VPCLMULQDQ(void)
+bool_t const uX_ABI CPUFeatures::has_AVX2_VPCLMULQDQ(void)
 {
     return _uX_CPUFeatures_has_AVX2_VPCLMULQDQ();
 }
 
-const bool_t uX_ABI CPUFeatures::has_enabled_XMM(void)
+bool_t const uX_ABI CPUFeatures::has_enabled_XMM(void)
 {
     return _uX_CPUFeatures_has_enabled_XMM();
 }
 
-const bool_t uX_ABI CPUFeatures::has_enabled_YMM(void)
+bool_t const uX_ABI CPUFeatures::has_enabled_YMM(void)
 {
     return _uX_CPUFeatures_has_enabled_YMM();
 }
 
-const bool_t uX_ABI CPUFeatures::has_enabled_ZMM(void)
+bool_t const uX_ABI CPUFeatures::has_enabled_ZMM(void)
 {
     return _uX_CPUFeatures_has_enabled_ZMM();
 }
 
-const bool_t uX_ABI CPUFeatures::is_inited(void)
+bool_t const uX_ABI CPUFeatures::is_inited(void)
 {
     return _uX_CPUFeatures_is_inited();
 }
@@ -829,194 +829,196 @@ uX_PACK_SIZE_T
 ;62  or above = AVX512BW
 ;63  or above = AVX512VL
 ;*/
-    extern count_t uX_ABI _uX_CPUFeatures_intrinset(void);
+    extern count_t const uX_ABI _uX_CPUFeatures_intrinset(void);
 
 /* %eax=00H, %ecx */
-    extern intbool_t uX_ABI _uX_CPUFeatures_is_Intel(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_is_AMD(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_is_Intel(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_is_AMD(void);
 
 /* %eax=01H, %ecx */
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSE3(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_PCLMULQDQ(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_MONITOR(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSSE3(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_FMA(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_CMPXCHG16B(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSE41(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSE42(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_MOVBE(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_POPCNT(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AES(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_XSAVE(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_OSXSAVE(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_F16C(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_RDRAND(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE3(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_PCLMULQDQ(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_MONITOR(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSSE3(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_FMA(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_CMPXCHG16B(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE41(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE42(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_MOVBE(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_POPCNT(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AES(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_XSAVE(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_OSXSAVE(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_F16C(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_RDRAND(void);
 
 /* %eax=01H, %edx */
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_FPU(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_TSC(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_MSR(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_CMPXCHG8B(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SEP(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_CMOV(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_CLFSH(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_MMX(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_FXSR(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSE(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSE2(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_FPU(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_TSC(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_MSR(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_CMPXCHG8B(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SEP(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_CMOV(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_CLFSH(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_MMX(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_FXSR(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE2(void);
 
 /* %eax=07H, %ebx */
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_FSGSBASE(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SGX(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_BMI1(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_HLE(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX2(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SMEP(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_BMI2(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_ERMS(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_INVPCID(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_RTM(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_MPX(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512F(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512DQ(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_RDSEED(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_ADX(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SMAP(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512_IFMA(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_CLFLUSHOPT(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_CLWB(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512PF(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512ER(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512CD(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SHA(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512BW(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512VL(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_FSGSBASE(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SGX(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_BMI1(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_HLE(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX2(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SMEP(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_BMI2(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_ERMS(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_INVPCID(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_RTM(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_MPX(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512F(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_RDSEED(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_ADX(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SMAP(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_IFMA(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_CLFLUSHOPT(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_CLWB(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512PF(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512ER(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512CD(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SHA(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512VL(void);
 
 /* %eax=07H, %ecx */
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_PREFETCHWT1(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512_VBMI(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_UMIP(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_PKU(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_OSPKE(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512_VBMI2(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_GFNI(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_VAES(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_VPCLMULQDQ(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512_VNNI(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512_BITALG(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512_VPOPCNTDQ(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_RDPID(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_PREFETCHWT1(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VBMI(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_UMIP(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_PKU(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_OSPKE(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VBMI2(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_GFNI(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_VAES(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_VPCLMULQDQ(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VNNI(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_BITALG(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VPOPCNTDQ(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_RDPID(void);
 
 /* %eax=07H, %edx */
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512_4VNNIW(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512_4FMAPS(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_4VNNIW(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_4FMAPS(void);
 
 /* %eax=80000001H, %ecx */
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_LAHF(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_LZCNT(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_ABM(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSE4a(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_PREFETCHW(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_XOP(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_LWP(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_FMA4(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_TBM(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_MWAITX(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_LAHF(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_LZCNT(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_ABM(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE4a(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_PREFETCHW(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_XOP(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_LWP(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_FMA4(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_TBM(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_MWAITX(void);
 
 /* %eax=80000001H, %edx */
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SYSCALL(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_MMXEXT(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_RDTSCP(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_3DNOWEXT(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_3DNOW(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SYSCALL(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_MMXEXT(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_RDTSCP(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_3DNOWEXT(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_3DNOW(void);
 
 /* %eax=07H, %ebx, %ecx */
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512_GFNI(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512_GFNI_VL(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512_VAES(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512_VAES_VL(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512_VPCLMULQDQ(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512_VPCLMULQDQ_VL(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_GFNI(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_GFNI_VL(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VAES(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VAES_VL(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VPCLMULQDQ(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VPCLMULQDQ_VL(void);
 
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512_IFMA_VL(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512_VBMI_VL(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512_VBMI2_VL(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512_VNNI_VL(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512_BITALG_VL(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512_VPOPCNTDQ_VL(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_IFMA_VL(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VBMI_VL(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VBMI2_VL(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VNNI_VL(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_BITALG_VL(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VPOPCNTDQ_VL(void);
 
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512BW_GFNI(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512BW_GFNI_VL(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512BW_VAES(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512BW_VAES_VL(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512BW_VPCLMULQDQ(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512BW_VPCLMULQDQ_VL(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512BW_VL(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW_GFNI(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW_GFNI_VL(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW_VAES(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW_VAES_VL(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW_VPCLMULQDQ(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW_VPCLMULQDQ_VL(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW_VL(void);
 
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512DQ_GFNI(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512DQ_GFNI_VL(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512DQ_VAES(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512DQ_VAES_VL(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512DQ_VPCLMULQDQ(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512DQ_VPCLMULQDQ_VL(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512DQ_VL(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ_GFNI(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ_GFNI_VL(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ_VAES(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ_VAES_VL(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ_VPCLMULQDQ(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ_VPCLMULQDQ_VL(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ_VL(void);
 
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX512CD_VL(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512CD_VL(void);
 
 /* %eax=07H, %ecx, %ebx | %eax=01H, %ecx , %edx */
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSE_AES(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSE_GFNI(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSE_PCLMULQDQ(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE_AES(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE_GFNI(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE_PCLMULQDQ(void);
 
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSE2_AES(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSE2_GFNI(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSE2_PCLMULQDQ(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE2_AES(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE2_GFNI(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE2_PCLMULQDQ(void);
 
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSE3_AES(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSE3_GFNI(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSE3_PCLMULQDQ(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE3_AES(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE3_GFNI(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE3_PCLMULQDQ(void);
 
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSSE3_AES(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSSE3_GFNI(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSSE3_PCLMULQDQ(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSSE3_AES(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSSE3_GFNI(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSSE3_PCLMULQDQ(void);
 
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSE41_AES(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSE41_GFNI(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSE41_PCLMULQDQ(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE41_AES(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE41_GFNI(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE41_PCLMULQDQ(void);
 
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSE42_AES(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSE42_GFNI(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_SSE42_PCLMULQDQ(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE42_AES(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE42_GFNI(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE42_PCLMULQDQ(void);
 
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX_AES(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX_GFNI(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX_PCLMULQDQ(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX_VAES(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX_VPCLMULQDQ(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX_AES(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX_GFNI(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX_PCLMULQDQ(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX_VAES(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX_VPCLMULQDQ(void);
 
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX2_AES(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX2_GFNI(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX2_PCLMULQDQ(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX2_VAES(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_AVX2_VPCLMULQDQ(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX2_AES(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX2_GFNI(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX2_PCLMULQDQ(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX2_VAES(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX2_VPCLMULQDQ(void);
 
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_enabled_XMM(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_enabled_YMM(void);
-    extern intbool_t uX_ABI _uX_CPUFeatures_has_enabled_ZMM(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_enabled_XMM(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_enabled_YMM(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_has_enabled_ZMM(void);
 
 /* Check if CPUFeatures is initiated */
-    extern intbool_t uX_ABI _uX_CPUFeatures_is_inited(void);
+    extern intbool_t const uX_ABI _uX_CPUFeatures_is_inited(void);
 
 /* Extra info functions*/
 
 uX_PACK_STACK
 
-    extern void uX_ABI _uX_CPUFeatures_CpuType(int* /*vendor*/, int* /*family*/, int* /*model*/);
+    extern void const uX_ABI _uX_CPUFeatures_CpuType(int* /*vendor*/, int* /*family*/, int* /*model*/);
 
-    extern char* uX_ABI _uX_CPUFeatures_ProcessorName(void);
+    extern char const* const uX_ABI _uX_CPUFeatures_ProcessorName(void);
 
-    extern size_t uX_ABI _uX_CPUFeatures_DataCacheSize(int /*level*/);
+uX_PACK_SIZE_T
+
+    extern size_t const uX_ABI _uX_CPUFeatures_DataCacheSize(int /*level*/);
 
 uX_PACK_POP
 uX_EXTERNC_END
@@ -1035,11 +1037,11 @@ public:
     /* Initiate the CPUFeatures
      * Parameter int initiate the output info: 0 basic info, 1 extra info
      */
-    CPUFeatures(int infolevel) { _uX_CPUFeatures_init(infolevel); }
+    CPUFeatures(int infolevel) { if (!_uX_CPUFeatures_is_inited()) {_uX_CPUFeatures_init(infolevel);} }
     /* Destroy the CPUFeatures */
-    ~CPUFeatures(void) { _uX_CPUFeatures_destroy(); }
+    ~CPUFeatures(void) { if (_uX_CPUFeatures_is_inited()) {_uX_CPUFeatures_destroy();} }
 
-    uX_PACK_SIZE_T
+uX_PACK_SIZE_T
     /* find supported instruction set
     return value:
     0           = 80386 instruction set
@@ -1060,185 +1062,187 @@ public:
     62  or above = AVX512BW
     63  or above = AVX512VL
     */
-    uX_constexpr count_t uX_ABI intrinset(void) const { return _uX_CPUFeatures_intrinset(); }
+    uX_constexpr count_t const uX_ABI intrinset(void) const { return _uX_CPUFeatures_intrinset(); }
 
     /* %eax=00H, %ecx */
-    uX_constexpr bool_t uX_ABI is_Intel(void) const { return _uX_CPUFeatures_is_Intel(); }
-    uX_constexpr bool_t uX_ABI is_AMD(void) const { return _uX_CPUFeatures_is_AMD(); }
+    uX_constexpr bool_t const uX_ABI is_Intel(void) const { return _uX_CPUFeatures_is_Intel(); }
+    uX_constexpr bool_t const uX_ABI is_AMD(void) const { return _uX_CPUFeatures_is_AMD(); }
 
     /* %eax=01H, %ecx */
-    uX_constexpr bool_t uX_ABI has_SSE3(void) const { return _uX_CPUFeatures_has_SSE3(); }
-    uX_constexpr bool_t uX_ABI has_PCLMULQDQ(void) const { return _uX_CPUFeatures_has_PCLMULQDQ(); }
-    uX_constexpr bool_t uX_ABI has_MONITOR(void) const { return _uX_CPUFeatures_has_MONITOR(); }
-    uX_constexpr bool_t uX_ABI has_SSSE3(void) const { return _uX_CPUFeatures_has_SSSE3(); }
-    uX_constexpr bool_t uX_ABI has_FMA(void) const { return _uX_CPUFeatures_has_FMA(); }
-    uX_constexpr bool_t uX_ABI has_CMPXCHG16B(void) const { return _uX_CPUFeatures_has_CMPXCHG16B(); }
-    uX_constexpr bool_t uX_ABI has_SSE41(void) const { return _uX_CPUFeatures_has_SSE41(); }
-    uX_constexpr bool_t uX_ABI has_SSE42(void) const { return _uX_CPUFeatures_has_SSE42(); }
-    uX_constexpr bool_t uX_ABI has_MOVBE(void) const { return _uX_CPUFeatures_has_MOVBE(); }
-    uX_constexpr bool_t uX_ABI has_POPCNT(void) const { return _uX_CPUFeatures_has_POPCNT(); }
-    uX_constexpr bool_t uX_ABI has_AES(void) const { return _uX_CPUFeatures_has_AES(); }
-    uX_constexpr bool_t uX_ABI has_XSAVE(void) const { return _uX_CPUFeatures_has_XSAVE(); }
-    uX_constexpr bool_t uX_ABI has_OSXSAVE(void) const { return _uX_CPUFeatures_has_OSXSAVE(); }
-    uX_constexpr bool_t uX_ABI has_AVX(void) const { return _uX_CPUFeatures_has_AVX(); }
-    uX_constexpr bool_t uX_ABI has_F16C(void) const { return _uX_CPUFeatures_has_F16C(); }
-    uX_constexpr bool_t uX_ABI has_RDRAND(void) const { return _uX_CPUFeatures_has_RDRAND(); }
+    uX_constexpr bool_t const uX_ABI has_SSE3(void) const { return _uX_CPUFeatures_has_SSE3(); }
+    uX_constexpr bool_t const uX_ABI has_PCLMULQDQ(void) const { return _uX_CPUFeatures_has_PCLMULQDQ(); }
+    uX_constexpr bool_t const uX_ABI has_MONITOR(void) const { return _uX_CPUFeatures_has_MONITOR(); }
+    uX_constexpr bool_t const uX_ABI has_SSSE3(void) const { return _uX_CPUFeatures_has_SSSE3(); }
+    uX_constexpr bool_t const uX_ABI has_FMA(void) const { return _uX_CPUFeatures_has_FMA(); }
+    uX_constexpr bool_t const uX_ABI has_CMPXCHG16B(void) const { return _uX_CPUFeatures_has_CMPXCHG16B(); }
+    uX_constexpr bool_t const uX_ABI has_SSE41(void) const { return _uX_CPUFeatures_has_SSE41(); }
+    uX_constexpr bool_t const uX_ABI has_SSE42(void) const { return _uX_CPUFeatures_has_SSE42(); }
+    uX_constexpr bool_t const uX_ABI has_MOVBE(void) const { return _uX_CPUFeatures_has_MOVBE(); }
+    uX_constexpr bool_t const uX_ABI has_POPCNT(void) const { return _uX_CPUFeatures_has_POPCNT(); }
+    uX_constexpr bool_t const uX_ABI has_AES(void) const { return _uX_CPUFeatures_has_AES(); }
+    uX_constexpr bool_t const uX_ABI has_XSAVE(void) const { return _uX_CPUFeatures_has_XSAVE(); }
+    uX_constexpr bool_t const uX_ABI has_OSXSAVE(void) const { return _uX_CPUFeatures_has_OSXSAVE(); }
+    uX_constexpr bool_t const uX_ABI has_AVX(void) const { return _uX_CPUFeatures_has_AVX(); }
+    uX_constexpr bool_t const uX_ABI has_F16C(void) const { return _uX_CPUFeatures_has_F16C(); }
+    uX_constexpr bool_t const uX_ABI has_RDRAND(void) const { return _uX_CPUFeatures_has_RDRAND(); }
 
     /* %eax=01H, %edx */
-    uX_constexpr bool_t uX_ABI has_FPU(void) const { return _uX_CPUFeatures_has_FPU(); }
-    uX_constexpr bool_t uX_ABI has_TSC(void) const { return _uX_CPUFeatures_has_TSC(); }
-    uX_constexpr bool_t uX_ABI has_MSR(void) const { return _uX_CPUFeatures_has_MSR(); }
-    uX_constexpr bool_t uX_ABI has_CMPXCHG8B(void) const { return _uX_CPUFeatures_has_CMPXCHG8B(); }
-    uX_constexpr bool_t uX_ABI has_SEP(void) const { return _uX_CPUFeatures_has_SEP(); }
-    uX_constexpr bool_t uX_ABI has_CMOV(void) const { return _uX_CPUFeatures_has_CMOV(); }
-    uX_constexpr bool_t uX_ABI has_CLFSH(void) const { return _uX_CPUFeatures_has_CLFSH(); }
-    uX_constexpr bool_t uX_ABI has_MMX(void) const { return _uX_CPUFeatures_has_MMX(); }
-    uX_constexpr bool_t uX_ABI has_FXSR(void) const { return _uX_CPUFeatures_has_FXSR(); }
-    uX_constexpr bool_t uX_ABI has_SSE(void) const { return _uX_CPUFeatures_has_SSE(); }
-    uX_constexpr bool_t uX_ABI has_SSE2(void) const { return _uX_CPUFeatures_has_SSE2(); }
+    uX_constexpr bool_t const uX_ABI has_FPU(void) const { return _uX_CPUFeatures_has_FPU(); }
+    uX_constexpr bool_t const uX_ABI has_TSC(void) const { return _uX_CPUFeatures_has_TSC(); }
+    uX_constexpr bool_t const uX_ABI has_MSR(void) const { return _uX_CPUFeatures_has_MSR(); }
+    uX_constexpr bool_t const uX_ABI has_CMPXCHG8B(void) const { return _uX_CPUFeatures_has_CMPXCHG8B(); }
+    uX_constexpr bool_t const uX_ABI has_SEP(void) const { return _uX_CPUFeatures_has_SEP(); }
+    uX_constexpr bool_t const uX_ABI has_CMOV(void) const { return _uX_CPUFeatures_has_CMOV(); }
+    uX_constexpr bool_t const uX_ABI has_CLFSH(void) const { return _uX_CPUFeatures_has_CLFSH(); }
+    uX_constexpr bool_t const uX_ABI has_MMX(void) const { return _uX_CPUFeatures_has_MMX(); }
+    uX_constexpr bool_t const uX_ABI has_FXSR(void) const { return _uX_CPUFeatures_has_FXSR(); }
+    uX_constexpr bool_t const uX_ABI has_SSE(void) const { return _uX_CPUFeatures_has_SSE(); }
+    uX_constexpr bool_t const uX_ABI has_SSE2(void) const { return _uX_CPUFeatures_has_SSE2(); }
 
     /* %eax=07H, %ebx */
-    uX_constexpr bool_t uX_ABI has_FSGSBASE(void) const { return _uX_CPUFeatures_has_FSGSBASE(); }
-    uX_constexpr bool_t uX_ABI has_SGX(void) const { return _uX_CPUFeatures_has_SGX(); }
-    uX_constexpr bool_t uX_ABI has_BMI1(void) const { return _uX_CPUFeatures_has_BMI1(); }
-    uX_constexpr bool_t uX_ABI has_HLE(void) const { return _uX_CPUFeatures_has_HLE(); }
-    uX_constexpr bool_t uX_ABI has_AVX2(void) const { return _uX_CPUFeatures_has_AVX2(); }
-    uX_constexpr bool_t uX_ABI has_SMEP(void) const { return _uX_CPUFeatures_has_SMEP(); }
-    uX_constexpr bool_t uX_ABI has_BMI2(void) const { return _uX_CPUFeatures_has_BMI2(); }
-    uX_constexpr bool_t uX_ABI has_ERMS(void) const { return _uX_CPUFeatures_has_ERMS(); }
-    uX_constexpr bool_t uX_ABI has_INVPCID(void) const { return _uX_CPUFeatures_has_INVPCID(); }
-    uX_constexpr bool_t uX_ABI has_RTM(void) const { return _uX_CPUFeatures_has_RTM(); }
-    uX_constexpr bool_t uX_ABI has_MPX(void) const { return _uX_CPUFeatures_has_MPX(); }
-    uX_constexpr bool_t uX_ABI has_AVX512F(void) const { return _uX_CPUFeatures_has_AVX512F(); }
-    uX_constexpr bool_t uX_ABI has_AVX512DQ(void) const { return _uX_CPUFeatures_has_AVX512DQ(); }
-    uX_constexpr bool_t uX_ABI has_RDSEED(void) const { return _uX_CPUFeatures_has_RDSEED(); }
-    uX_constexpr bool_t uX_ABI has_ADX(void) const { return _uX_CPUFeatures_has_ADX(); }
-    uX_constexpr bool_t uX_ABI has_SMAP(void) const { return _uX_CPUFeatures_has_SMAP(); }
-    uX_constexpr bool_t uX_ABI has_AVX512_IFMA(void) const { return _uX_CPUFeatures_has_AVX512_IFMA(); }
-    uX_constexpr bool_t uX_ABI has_CLFLUSHOPT(void) const { return _uX_CPUFeatures_has_CLFLUSHOPT(); }
-    uX_constexpr bool_t uX_ABI has_CLWB(void) const { return _uX_CPUFeatures_has_CLWB(); }
-    uX_constexpr bool_t uX_ABI has_AVX512PF(void) const { return _uX_CPUFeatures_has_AVX512PF(); }
-    uX_constexpr bool_t uX_ABI has_AVX512ER(void) const { return _uX_CPUFeatures_has_AVX512ER(); }
-    uX_constexpr bool_t uX_ABI has_AVX512CD(void) const { return _uX_CPUFeatures_has_AVX512CD(); }
-    uX_constexpr bool_t uX_ABI has_SHA(void) const { return _uX_CPUFeatures_has_SHA(); }
-    uX_constexpr bool_t uX_ABI has_AVX512BW(void) const { return _uX_CPUFeatures_has_AVX512BW(); }
-    uX_constexpr bool_t uX_ABI has_AVX512VL(void) const { return _uX_CPUFeatures_has_AVX512VL(); }
+    uX_constexpr bool_t const uX_ABI has_FSGSBASE(void) const { return _uX_CPUFeatures_has_FSGSBASE(); }
+    uX_constexpr bool_t const uX_ABI has_SGX(void) const { return _uX_CPUFeatures_has_SGX(); }
+    uX_constexpr bool_t const uX_ABI has_BMI1(void) const { return _uX_CPUFeatures_has_BMI1(); }
+    uX_constexpr bool_t const uX_ABI has_HLE(void) const { return _uX_CPUFeatures_has_HLE(); }
+    uX_constexpr bool_t const uX_ABI has_AVX2(void) const { return _uX_CPUFeatures_has_AVX2(); }
+    uX_constexpr bool_t const uX_ABI has_SMEP(void) const { return _uX_CPUFeatures_has_SMEP(); }
+    uX_constexpr bool_t const uX_ABI has_BMI2(void) const { return _uX_CPUFeatures_has_BMI2(); }
+    uX_constexpr bool_t const uX_ABI has_ERMS(void) const { return _uX_CPUFeatures_has_ERMS(); }
+    uX_constexpr bool_t const uX_ABI has_INVPCID(void) const { return _uX_CPUFeatures_has_INVPCID(); }
+    uX_constexpr bool_t const uX_ABI has_RTM(void) const { return _uX_CPUFeatures_has_RTM(); }
+    uX_constexpr bool_t const uX_ABI has_MPX(void) const { return _uX_CPUFeatures_has_MPX(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512F(void) const { return _uX_CPUFeatures_has_AVX512F(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512DQ(void) const { return _uX_CPUFeatures_has_AVX512DQ(); }
+    uX_constexpr bool_t const uX_ABI has_RDSEED(void) const { return _uX_CPUFeatures_has_RDSEED(); }
+    uX_constexpr bool_t const uX_ABI has_ADX(void) const { return _uX_CPUFeatures_has_ADX(); }
+    uX_constexpr bool_t const uX_ABI has_SMAP(void) const { return _uX_CPUFeatures_has_SMAP(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512_IFMA(void) const { return _uX_CPUFeatures_has_AVX512_IFMA(); }
+    uX_constexpr bool_t const uX_ABI has_CLFLUSHOPT(void) const { return _uX_CPUFeatures_has_CLFLUSHOPT(); }
+    uX_constexpr bool_t const uX_ABI has_CLWB(void) const { return _uX_CPUFeatures_has_CLWB(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512PF(void) const { return _uX_CPUFeatures_has_AVX512PF(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512ER(void) const { return _uX_CPUFeatures_has_AVX512ER(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512CD(void) const { return _uX_CPUFeatures_has_AVX512CD(); }
+    uX_constexpr bool_t const uX_ABI has_SHA(void) const { return _uX_CPUFeatures_has_SHA(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512BW(void) const { return _uX_CPUFeatures_has_AVX512BW(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512VL(void) const { return _uX_CPUFeatures_has_AVX512VL(); }
 
     /* %eax=07H, %ecx */
-    uX_constexpr bool_t uX_ABI has_PREFETCHWT1(void) const { return _uX_CPUFeatures_has_PREFETCHWT1(); }
-    uX_constexpr bool_t uX_ABI has_AVX512_VBMI(void) const { return _uX_CPUFeatures_has_AVX512_VBMI(); }
-    uX_constexpr bool_t uX_ABI has_UMIP(void) const { return _uX_CPUFeatures_has_UMIP(); }
-    uX_constexpr bool_t uX_ABI has_PKU(void) const { return _uX_CPUFeatures_has_PKU(); }
-    uX_constexpr bool_t uX_ABI has_OSPKE(void) const { return _uX_CPUFeatures_has_OSPKE(); }
-    uX_constexpr bool_t uX_ABI has_AVX512_VBMI2(void) const { return _uX_CPUFeatures_has_AVX512_VBMI2(); }
-    uX_constexpr bool_t uX_ABI has_GFNI(void) const { return _uX_CPUFeatures_has_GFNI(); }
-    uX_constexpr bool_t uX_ABI has_VAES(void) const { return _uX_CPUFeatures_has_VAES(); }
-    uX_constexpr bool_t uX_ABI has_VPCLMULQDQ(void) const { return _uX_CPUFeatures_has_VPCLMULQDQ(); }
-    uX_constexpr bool_t uX_ABI has_AVX512_VNNI(void) const { return _uX_CPUFeatures_has_AVX512_VNNI(); }
-    uX_constexpr bool_t uX_ABI has_AVX512_BITALG(void) const { return _uX_CPUFeatures_has_AVX512_BITALG(); }
-    uX_constexpr bool_t uX_ABI has_AVX512_VPOPCNTDQ(void) const { return _uX_CPUFeatures_has_AVX512_VPOPCNTDQ(); }
-    uX_constexpr bool_t uX_ABI has_RDPID(void) const { return _uX_CPUFeatures_has_RDPID(); }
+    uX_constexpr bool_t const uX_ABI has_PREFETCHWT1(void) const { return _uX_CPUFeatures_has_PREFETCHWT1(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512_VBMI(void) const { return _uX_CPUFeatures_has_AVX512_VBMI(); }
+    uX_constexpr bool_t const uX_ABI has_UMIP(void) const { return _uX_CPUFeatures_has_UMIP(); }
+    uX_constexpr bool_t const uX_ABI has_PKU(void) const { return _uX_CPUFeatures_has_PKU(); }
+    uX_constexpr bool_t const uX_ABI has_OSPKE(void) const { return _uX_CPUFeatures_has_OSPKE(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512_VBMI2(void) const { return _uX_CPUFeatures_has_AVX512_VBMI2(); }
+    uX_constexpr bool_t const uX_ABI has_GFNI(void) const { return _uX_CPUFeatures_has_GFNI(); }
+    uX_constexpr bool_t const uX_ABI has_VAES(void) const { return _uX_CPUFeatures_has_VAES(); }
+    uX_constexpr bool_t const uX_ABI has_VPCLMULQDQ(void) const { return _uX_CPUFeatures_has_VPCLMULQDQ(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512_VNNI(void) const { return _uX_CPUFeatures_has_AVX512_VNNI(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512_BITALG(void) const { return _uX_CPUFeatures_has_AVX512_BITALG(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512_VPOPCNTDQ(void) const { return _uX_CPUFeatures_has_AVX512_VPOPCNTDQ(); }
+    uX_constexpr bool_t const uX_ABI has_RDPID(void) const { return _uX_CPUFeatures_has_RDPID(); }
 
     /* %eax=07H, %edx */
-    uX_constexpr bool_t uX_ABI has_AVX512_4VNNIW(void) const { return _uX_CPUFeatures_has_AVX512_4VNNIW(); }
-    uX_constexpr bool_t uX_ABI has_AVX512_4FMAPS(void) const { return _uX_CPUFeatures_has_AVX512_4FMAPS(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512_4VNNIW(void) const { return _uX_CPUFeatures_has_AVX512_4VNNIW(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512_4FMAPS(void) const { return _uX_CPUFeatures_has_AVX512_4FMAPS(); }
 
     /* %eax=80000001H, %ecx */
-    uX_constexpr bool_t uX_ABI has_LAHF(void) const { return _uX_CPUFeatures_has_LAHF(); }
-    uX_constexpr bool_t uX_ABI has_LZCNT(void) const { return _uX_CPUFeatures_has_LZCNT(); }
-    uX_constexpr bool_t uX_ABI has_ABM(void) const { return _uX_CPUFeatures_has_ABM(); }
-    uX_constexpr bool_t uX_ABI has_SSE4a(void) const { return _uX_CPUFeatures_has_SSE4a(); }
-    uX_constexpr bool_t uX_ABI has_PREFETCHW(void) const { return _uX_CPUFeatures_has_PREFETCHW(); }
-    uX_constexpr bool_t uX_ABI has_XOP(void) const { return _uX_CPUFeatures_has_XOP(); }
-    uX_constexpr bool_t uX_ABI has_LWP(void) const { return _uX_CPUFeatures_has_LWP(); }
-    uX_constexpr bool_t uX_ABI has_FMA4(void) const { return _uX_CPUFeatures_has_FMA4(); }
-    uX_constexpr bool_t uX_ABI has_TBM(void) const { return _uX_CPUFeatures_has_TBM(); }
-    uX_constexpr bool_t uX_ABI has_MWAITX(void) const { return _uX_CPUFeatures_has_MWAITX(); }
+    uX_constexpr bool_t const uX_ABI has_LAHF(void) const { return _uX_CPUFeatures_has_LAHF(); }
+    uX_constexpr bool_t const uX_ABI has_LZCNT(void) const { return _uX_CPUFeatures_has_LZCNT(); }
+    uX_constexpr bool_t const uX_ABI has_ABM(void) const { return _uX_CPUFeatures_has_ABM(); }
+    uX_constexpr bool_t const uX_ABI has_SSE4a(void) const { return _uX_CPUFeatures_has_SSE4a(); }
+    uX_constexpr bool_t const uX_ABI has_PREFETCHW(void) const { return _uX_CPUFeatures_has_PREFETCHW(); }
+    uX_constexpr bool_t const uX_ABI has_XOP(void) const { return _uX_CPUFeatures_has_XOP(); }
+    uX_constexpr bool_t const uX_ABI has_LWP(void) const { return _uX_CPUFeatures_has_LWP(); }
+    uX_constexpr bool_t const uX_ABI has_FMA4(void) const { return _uX_CPUFeatures_has_FMA4(); }
+    uX_constexpr bool_t const uX_ABI has_TBM(void) const { return _uX_CPUFeatures_has_TBM(); }
+    uX_constexpr bool_t const uX_ABI has_MWAITX(void) const { return _uX_CPUFeatures_has_MWAITX(); }
 
     /* %eax=80000001H, %edx */
-    uX_constexpr bool_t uX_ABI has_SYSCALL(void) const { return _uX_CPUFeatures_has_SYSCALL(); }
-    uX_constexpr bool_t uX_ABI has_MMXEXT(void) const { return _uX_CPUFeatures_has_MMXEXT(); }
-    uX_constexpr bool_t uX_ABI has_RDTSCP(void) const { return _uX_CPUFeatures_has_RDTSCP(); }
-    uX_constexpr bool_t uX_ABI has_3DNOWEXT(void) const { return _uX_CPUFeatures_has_3DNOWEXT(); }
-    uX_constexpr bool_t uX_ABI has_3DNOW(void) const { return _uX_CPUFeatures_has_3DNOW(); }
+    uX_constexpr bool_t const uX_ABI has_SYSCALL(void) const { return _uX_CPUFeatures_has_SYSCALL(); }
+    uX_constexpr bool_t const uX_ABI has_MMXEXT(void) const { return _uX_CPUFeatures_has_MMXEXT(); }
+    uX_constexpr bool_t const uX_ABI has_RDTSCP(void) const { return _uX_CPUFeatures_has_RDTSCP(); }
+    uX_constexpr bool_t const uX_ABI has_3DNOWEXT(void) const { return _uX_CPUFeatures_has_3DNOWEXT(); }
+    uX_constexpr bool_t const uX_ABI has_3DNOW(void) const { return _uX_CPUFeatures_has_3DNOW(); }
 
     /* %eax=07H, %ebx, %ecx */
-    uX_constexpr bool_t uX_ABI has_AVX512_GFNI(void) const { return _uX_CPUFeatures_has_AVX512_GFNI(); }
-    uX_constexpr bool_t uX_ABI has_AVX512_GFNI_VL(void) const { return _uX_CPUFeatures_has_AVX512_GFNI_VL(); }
-    uX_constexpr bool_t uX_ABI has_AVX512_VAES(void) const { return _uX_CPUFeatures_has_AVX512_VAES(); }
-    uX_constexpr bool_t uX_ABI has_AVX512_VAES_VL(void) const { return _uX_CPUFeatures_has_AVX512_VAES_VL(); }
-    uX_constexpr bool_t uX_ABI has_AVX512_VPCLMULQDQ(void) const { return _uX_CPUFeatures_has_AVX512_VPCLMULQDQ(); }
-    uX_constexpr bool_t uX_ABI has_AVX512_VPCLMULQDQ_VL(void) const { return _uX_CPUFeatures_has_AVX512_VPCLMULQDQ_VL(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512_GFNI(void) const { return _uX_CPUFeatures_has_AVX512_GFNI(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512_GFNI_VL(void) const { return _uX_CPUFeatures_has_AVX512_GFNI_VL(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512_VAES(void) const { return _uX_CPUFeatures_has_AVX512_VAES(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512_VAES_VL(void) const { return _uX_CPUFeatures_has_AVX512_VAES_VL(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512_VPCLMULQDQ(void) const { return _uX_CPUFeatures_has_AVX512_VPCLMULQDQ(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512_VPCLMULQDQ_VL(void) const { return _uX_CPUFeatures_has_AVX512_VPCLMULQDQ_VL(); }
 
-    uX_constexpr bool_t uX_ABI has_AVX512_IFMA_VL(void) const { return _uX_CPUFeatures_has_AVX512_IFMA_VL(); }
-    uX_constexpr bool_t uX_ABI has_AVX512_VBMI_VL(void) const { return _uX_CPUFeatures_has_AVX512_VBMI_VL(); }
-    uX_constexpr bool_t uX_ABI has_AVX512_VBMI2_VL(void) const { return _uX_CPUFeatures_has_AVX512_VBMI2_VL(); }
-    uX_constexpr bool_t uX_ABI has_AVX512_VNNI_VL(void) const { return _uX_CPUFeatures_has_AVX512_VNNI_VL(); }
-    uX_constexpr bool_t uX_ABI has_AVX512_BITALG_VL(void) const { return _uX_CPUFeatures_has_AVX512_BITALG_VL(); }
-    uX_constexpr bool_t uX_ABI has_AVX512_VPOPCNTDQ_VL(void) const { return _uX_CPUFeatures_has_AVX512_VPOPCNTDQ_VL(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512_IFMA_VL(void) const { return _uX_CPUFeatures_has_AVX512_IFMA_VL(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512_VBMI_VL(void) const { return _uX_CPUFeatures_has_AVX512_VBMI_VL(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512_VBMI2_VL(void) const { return _uX_CPUFeatures_has_AVX512_VBMI2_VL(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512_VNNI_VL(void) const { return _uX_CPUFeatures_has_AVX512_VNNI_VL(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512_BITALG_VL(void) const { return _uX_CPUFeatures_has_AVX512_BITALG_VL(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512_VPOPCNTDQ_VL(void) const { return _uX_CPUFeatures_has_AVX512_VPOPCNTDQ_VL(); }
 
-    uX_constexpr bool_t uX_ABI has_AVX512BW_GFNI(void) const { return _uX_CPUFeatures_has_AVX512BW_GFNI(); }
-    uX_constexpr bool_t uX_ABI has_AVX512BW_GFNI_VL(void) const { return _uX_CPUFeatures_has_AVX512BW_GFNI_VL(); }
-    uX_constexpr bool_t uX_ABI has_AVX512BW_VAES(void) const { return _uX_CPUFeatures_has_AVX512BW_VAES(); }
-    uX_constexpr bool_t uX_ABI has_AVX512BW_VAES_VL(void) const { return _uX_CPUFeatures_has_AVX512BW_VAES_VL(); }
-    uX_constexpr bool_t uX_ABI has_AVX512BW_VPCLMULQDQ(void) const { return _uX_CPUFeatures_has_AVX512BW_VPCLMULQDQ(); }
-    uX_constexpr bool_t uX_ABI has_AVX512BW_VPCLMULQDQ_VL(void) const { return _uX_CPUFeatures_has_AVX512BW_VPCLMULQDQ_VL(); }
-    uX_constexpr bool_t uX_ABI has_AVX512BW_VL(void) const { return _uX_CPUFeatures_has_AVX512BW_VL(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512BW_GFNI(void) const { return _uX_CPUFeatures_has_AVX512BW_GFNI(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512BW_GFNI_VL(void) const { return _uX_CPUFeatures_has_AVX512BW_GFNI_VL(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512BW_VAES(void) const { return _uX_CPUFeatures_has_AVX512BW_VAES(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512BW_VAES_VL(void) const { return _uX_CPUFeatures_has_AVX512BW_VAES_VL(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512BW_VPCLMULQDQ(void) const { return _uX_CPUFeatures_has_AVX512BW_VPCLMULQDQ(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512BW_VPCLMULQDQ_VL(void) const { return _uX_CPUFeatures_has_AVX512BW_VPCLMULQDQ_VL(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512BW_VL(void) const { return _uX_CPUFeatures_has_AVX512BW_VL(); }
 
-    uX_constexpr bool_t uX_ABI has_AVX512DQ_GFNI(void) const { return _uX_CPUFeatures_has_AVX512DQ_GFNI(); }
-    uX_constexpr bool_t uX_ABI has_AVX512DQ_GFNI_VL(void) const { return _uX_CPUFeatures_has_AVX512DQ_GFNI_VL(); }
-    uX_constexpr bool_t uX_ABI has_AVX512DQ_VAES(void) const { return _uX_CPUFeatures_has_AVX512DQ_VAES(); }
-    uX_constexpr bool_t uX_ABI has_AVX512DQ_VAES_VL(void) const { return _uX_CPUFeatures_has_AVX512DQ_VAES_VL(); }
-    uX_constexpr bool_t uX_ABI has_AVX512DQ_VPCLMULQDQ(void) const { return _uX_CPUFeatures_has_AVX512DQ_VPCLMULQDQ(); }
-    uX_constexpr bool_t uX_ABI has_AVX512DQ_VPCLMULQDQ_VL(void) const { return _uX_CPUFeatures_has_AVX512DQ_VPCLMULQDQ_VL(); }
-    uX_constexpr bool_t uX_ABI has_AVX512DQ_VL(void) const { return _uX_CPUFeatures_has_AVX512DQ_VL(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512DQ_GFNI(void) const { return _uX_CPUFeatures_has_AVX512DQ_GFNI(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512DQ_GFNI_VL(void) const { return _uX_CPUFeatures_has_AVX512DQ_GFNI_VL(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512DQ_VAES(void) const { return _uX_CPUFeatures_has_AVX512DQ_VAES(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512DQ_VAES_VL(void) const { return _uX_CPUFeatures_has_AVX512DQ_VAES_VL(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512DQ_VPCLMULQDQ(void) const { return _uX_CPUFeatures_has_AVX512DQ_VPCLMULQDQ(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512DQ_VPCLMULQDQ_VL(void) const { return _uX_CPUFeatures_has_AVX512DQ_VPCLMULQDQ_VL(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512DQ_VL(void) const { return _uX_CPUFeatures_has_AVX512DQ_VL(); }
 
-    uX_constexpr bool_t uX_ABI has_AVX512CD_VL(void) const { return _uX_CPUFeatures_has_AVX512CD_VL(); }
+    uX_constexpr bool_t const uX_ABI has_AVX512CD_VL(void) const { return _uX_CPUFeatures_has_AVX512CD_VL(); }
 
     /* %eax=07H, %ecx, %ebx | %eax=01H, %ecx , %edx */
-    uX_constexpr bool_t uX_ABI has_SSE_AES(void) const { return _uX_CPUFeatures_has_SSE_AES(); }
-    uX_constexpr bool_t uX_ABI has_SSE_GFNI(void) const { return _uX_CPUFeatures_has_SSE_GFNI(); }
-    uX_constexpr bool_t uX_ABI has_SSE_PCLMULQDQ(void) const { return _uX_CPUFeatures_has_SSE_PCLMULQDQ(); }
-    uX_constexpr bool_t uX_ABI has_SSE2_AES(void) const { return _uX_CPUFeatures_has_SSE2_AES(); }
-    uX_constexpr bool_t uX_ABI has_SSE2_GFNI(void) const { return _uX_CPUFeatures_has_SSE2_GFNI(); }
-    uX_constexpr bool_t uX_ABI has_SSE2_PCLMULQDQ(void) const { return _uX_CPUFeatures_has_SSE2_PCLMULQDQ(); }
-    uX_constexpr bool_t uX_ABI has_SSE3_AES(void) const { return _uX_CPUFeatures_has_SSE3_AES(); }
-    uX_constexpr bool_t uX_ABI has_SSE3_GFNI(void) const { return _uX_CPUFeatures_has_SSE3_GFNI(); }
-    uX_constexpr bool_t uX_ABI has_SSE3_PCLMULQDQ(void) const { return _uX_CPUFeatures_has_SSE3_PCLMULQDQ(); }
-    uX_constexpr bool_t uX_ABI has_SSSE3_AES(void) const { return _uX_CPUFeatures_has_SSSE3_AES(); }
-    uX_constexpr bool_t uX_ABI has_SSSE3_GFNI(void) const { return _uX_CPUFeatures_has_SSSE3_GFNI(); }
-    uX_constexpr bool_t uX_ABI has_SSSE3_PCLMULQDQ(void) const { return _uX_CPUFeatures_has_SSSE3_PCLMULQDQ(); }
-    uX_constexpr bool_t uX_ABI has_SSE41_AES(void) const { return _uX_CPUFeatures_has_SSE41_AES(); }
-    uX_constexpr bool_t uX_ABI has_SSE41_GFNI(void) const { return _uX_CPUFeatures_has_SSE41_GFNI(); }
-    uX_constexpr bool_t uX_ABI has_SSE41_PCLMULQDQ(void) const { return _uX_CPUFeatures_has_SSE41_PCLMULQDQ(); }
-    uX_constexpr bool_t uX_ABI has_SSE42_AES(void) const { return _uX_CPUFeatures_has_SSE42_AES(); }
-    uX_constexpr bool_t uX_ABI has_SSE42_GFNI(void) const { return _uX_CPUFeatures_has_SSE42_GFNI(); }
-    uX_constexpr bool_t uX_ABI has_SSE42_PCLMULQDQ(void) const { return _uX_CPUFeatures_has_SSE42_PCLMULQDQ(); }
-    uX_constexpr bool_t uX_ABI has_AVX_AES(void) const { return _uX_CPUFeatures_has_AVX_AES(); }
-    uX_constexpr bool_t uX_ABI has_AVX_GFNI(void) const { return _uX_CPUFeatures_has_AVX_GFNI(); }
-    uX_constexpr bool_t uX_ABI has_AVX_PCLMULQDQ(void) const { return _uX_CPUFeatures_has_AVX_PCLMULQDQ(); }
-    uX_constexpr bool_t uX_ABI has_AVX_VAES(void) const { return _uX_CPUFeatures_has_AVX_VAES(); }
-    uX_constexpr bool_t uX_ABI has_AVX_VPCLMULQDQ(void) const { return _uX_CPUFeatures_has_AVX_VPCLMULQDQ(); }
-    uX_constexpr bool_t uX_ABI has_AVX2_AES(void) const { return _uX_CPUFeatures_has_AVX2_AES(); }
-    uX_constexpr bool_t uX_ABI has_AVX2_GFNI(void) const { return _uX_CPUFeatures_has_AVX2_GFNI(); }
-    uX_constexpr bool_t uX_ABI has_AVX2_PCLMULQDQ(void) const { return _uX_CPUFeatures_has_AVX2_PCLMULQDQ(); }
-    uX_constexpr bool_t uX_ABI has_AVX2_VAES(void) const { return _uX_CPUFeatures_has_AVX2_VAES(); }
-    uX_constexpr bool_t uX_ABI has_AVX2_VPCLMULQDQ(void) const { return _uX_CPUFeatures_has_AVX2_VPCLMULQDQ(); }
+    uX_constexpr bool_t const uX_ABI has_SSE_AES(void) const { return _uX_CPUFeatures_has_SSE_AES(); }
+    uX_constexpr bool_t const uX_ABI has_SSE_GFNI(void) const { return _uX_CPUFeatures_has_SSE_GFNI(); }
+    uX_constexpr bool_t const uX_ABI has_SSE_PCLMULQDQ(void) const { return _uX_CPUFeatures_has_SSE_PCLMULQDQ(); }
+    uX_constexpr bool_t const uX_ABI has_SSE2_AES(void) const { return _uX_CPUFeatures_has_SSE2_AES(); }
+    uX_constexpr bool_t const uX_ABI has_SSE2_GFNI(void) const { return _uX_CPUFeatures_has_SSE2_GFNI(); }
+    uX_constexpr bool_t const uX_ABI has_SSE2_PCLMULQDQ(void) const { return _uX_CPUFeatures_has_SSE2_PCLMULQDQ(); }
+    uX_constexpr bool_t const uX_ABI has_SSE3_AES(void) const { return _uX_CPUFeatures_has_SSE3_AES(); }
+    uX_constexpr bool_t const uX_ABI has_SSE3_GFNI(void) const { return _uX_CPUFeatures_has_SSE3_GFNI(); }
+    uX_constexpr bool_t const uX_ABI has_SSE3_PCLMULQDQ(void) const { return _uX_CPUFeatures_has_SSE3_PCLMULQDQ(); }
+    uX_constexpr bool_t const uX_ABI has_SSSE3_AES(void) const { return _uX_CPUFeatures_has_SSSE3_AES(); }
+    uX_constexpr bool_t const uX_ABI has_SSSE3_GFNI(void) const { return _uX_CPUFeatures_has_SSSE3_GFNI(); }
+    uX_constexpr bool_t const uX_ABI has_SSSE3_PCLMULQDQ(void) const { return _uX_CPUFeatures_has_SSSE3_PCLMULQDQ(); }
+    uX_constexpr bool_t const uX_ABI has_SSE41_AES(void) const { return _uX_CPUFeatures_has_SSE41_AES(); }
+    uX_constexpr bool_t const uX_ABI has_SSE41_GFNI(void) const { return _uX_CPUFeatures_has_SSE41_GFNI(); }
+    uX_constexpr bool_t const uX_ABI has_SSE41_PCLMULQDQ(void) const { return _uX_CPUFeatures_has_SSE41_PCLMULQDQ(); }
+    uX_constexpr bool_t const uX_ABI has_SSE42_AES(void) const { return _uX_CPUFeatures_has_SSE42_AES(); }
+    uX_constexpr bool_t const uX_ABI has_SSE42_GFNI(void) const { return _uX_CPUFeatures_has_SSE42_GFNI(); }
+    uX_constexpr bool_t const uX_ABI has_SSE42_PCLMULQDQ(void) const { return _uX_CPUFeatures_has_SSE42_PCLMULQDQ(); }
+    uX_constexpr bool_t const uX_ABI has_AVX_AES(void) const { return _uX_CPUFeatures_has_AVX_AES(); }
+    uX_constexpr bool_t const uX_ABI has_AVX_GFNI(void) const { return _uX_CPUFeatures_has_AVX_GFNI(); }
+    uX_constexpr bool_t const uX_ABI has_AVX_PCLMULQDQ(void) const { return _uX_CPUFeatures_has_AVX_PCLMULQDQ(); }
+    uX_constexpr bool_t const uX_ABI has_AVX_VAES(void) const { return _uX_CPUFeatures_has_AVX_VAES(); }
+    uX_constexpr bool_t const uX_ABI has_AVX_VPCLMULQDQ(void) const { return _uX_CPUFeatures_has_AVX_VPCLMULQDQ(); }
+    uX_constexpr bool_t const uX_ABI has_AVX2_AES(void) const { return _uX_CPUFeatures_has_AVX2_AES(); }
+    uX_constexpr bool_t const uX_ABI has_AVX2_GFNI(void) const { return _uX_CPUFeatures_has_AVX2_GFNI(); }
+    uX_constexpr bool_t const uX_ABI has_AVX2_PCLMULQDQ(void) const { return _uX_CPUFeatures_has_AVX2_PCLMULQDQ(); }
+    uX_constexpr bool_t const uX_ABI has_AVX2_VAES(void) const { return _uX_CPUFeatures_has_AVX2_VAES(); }
+    uX_constexpr bool_t const uX_ABI has_AVX2_VPCLMULQDQ(void) const { return _uX_CPUFeatures_has_AVX2_VPCLMULQDQ(); }
 
-    uX_constexpr bool_t uX_ABI has_enabled_XMM(void) const { return _uX_CPUFeatures_has_enabled_XMM(); }
-    uX_constexpr bool_t uX_ABI has_enabled_YMM(void) const { return _uX_CPUFeatures_has_enabled_YMM(); }
-    uX_constexpr bool_t uX_ABI has_enabled_ZMM(void) const { return _uX_CPUFeatures_has_enabled_ZMM(); }
+    uX_constexpr bool_t const uX_ABI has_enabled_XMM(void) const { return _uX_CPUFeatures_has_enabled_XMM(); }
+    uX_constexpr bool_t const uX_ABI has_enabled_YMM(void) const { return _uX_CPUFeatures_has_enabled_YMM(); }
+    uX_constexpr bool_t const uX_ABI has_enabled_ZMM(void) const { return _uX_CPUFeatures_has_enabled_ZMM(); }
 
     /* Check if CPUFeatures is initiated */
-    uX_constexpr bool_t uX_ABI is_inited(void) const { return _uX_CPUFeatures_is_inited(); }
+    uX_constexpr bool_t const uX_ABI is_inited(void) const { return _uX_CPUFeatures_is_inited(); }
 
     uX_PACK_STACK
 
-    uX_constexpr void uX_ABI CpuType(int* vendor, int* family, int* model) const { _uX_CPUFeatures_CpuType(vendor, family, model); }
+    uX_constexpr void const uX_ABI CpuType(int* vendor, int* family, int* model) const { _uX_CPUFeatures_CpuType(vendor, family, model); }
 
-    uX_constexpr char* uX_ABI ProcessorName(void) const { return _uX_CPUFeatures_ProcessorName(); }
+    uX_constexpr char const* const uX_ABI ProcessorName(void) const { return _uX_CPUFeatures_ProcessorName(); }
 
-    uX_constexpr size_t uX_ABI DataCacheSize(int level) const { return _uX_CPUFeatures_DataCacheSize(level); }
+uX_PACK_SIZE_T
+
+    uX_constexpr size_t const uX_ABI DataCacheSize(int level) const { return _uX_CPUFeatures_DataCacheSize(level); }
 
 } CPUFeatures_t;
 
@@ -1254,761 +1258,763 @@ namespace_CPU
 uX_EXTERNCC_BEGIN
 uX_PACK_PUSH_STACK
 
-static const _internal::CPUFeatures CPU_Rep0(0);
+static _internal::CPUFeatures const CPU_Rep0(0);
 
 uX_PACK_SIZE_T
 
-const count_t uX_ABI intrinset(void)
+count_t const uX_ABI intrinset(void)
 {
     return CPU_Rep0.intrinset();
 }
 
 /* %eax=00H, %ecx */
-const bool_t uX_ABI is_Intel(void)
+bool_t const uX_ABI is_Intel(void)
 {
     return CPU_Rep0.is_Intel();
 }
 
-const bool_t uX_ABI is_AMD(void)
+bool_t const uX_ABI is_AMD(void)
 {
     return CPU_Rep0.is_AMD();
 }
 
 /* %eax=01H, %ecx */
-const bool_t uX_ABI has_SSE3(void)
+bool_t const uX_ABI has_SSE3(void)
 {
     return CPU_Rep0.has_SSE3();
 }
 
-const bool_t uX_ABI has_PCLMULQDQ(void)
+bool_t const uX_ABI has_PCLMULQDQ(void)
 {
     return CPU_Rep0.has_PCLMULQDQ();
 }
 
-const bool_t uX_ABI has_MONITOR(void)
+bool_t const uX_ABI has_MONITOR(void)
 {
     return CPU_Rep0.has_MONITOR();
 }
 
-const bool_t uX_ABI has_SSSE3(void)
+bool_t const uX_ABI has_SSSE3(void)
 {
     return CPU_Rep0.has_SSSE3();
 }
 
-const bool_t uX_ABI has_FMA(void)
+bool_t const uX_ABI has_FMA(void)
 {
     return CPU_Rep0.has_FMA();
 }
 
-const bool_t uX_ABI has_CMPXCHG16B(void)
+bool_t const uX_ABI has_CMPXCHG16B(void)
 {
     return CPU_Rep0.has_CMPXCHG16B();
 }
 
-const bool_t uX_ABI has_SSE41(void)
+bool_t const uX_ABI has_SSE41(void)
 {
     return CPU_Rep0.has_SSE41();
 }
 
-const bool_t uX_ABI has_SSE42(void)
+bool_t const uX_ABI has_SSE42(void)
 {
     return CPU_Rep0.has_SSE42();
 }
 
-const bool_t uX_ABI has_MOVBE(void)
+bool_t const uX_ABI has_MOVBE(void)
 {
     return CPU_Rep0.has_MOVBE();
 }
 
-const bool_t uX_ABI has_POPCNT(void)
+bool_t const uX_ABI has_POPCNT(void)
 {
     return CPU_Rep0.has_POPCNT();
 }
 
-const bool_t uX_ABI has_AES(void)
+bool_t const uX_ABI has_AES(void)
 {
     return CPU_Rep0.has_AES();
 }
 
-const bool_t uX_ABI has_XSAVE(void)
+bool_t const uX_ABI has_XSAVE(void)
 {
     return CPU_Rep0.has_XSAVE();
 }
 
-const bool_t uX_ABI has_OSXSAVE(void)
+bool_t const uX_ABI has_OSXSAVE(void)
 {
     return CPU_Rep0.has_OSXSAVE();
 }
 
-const bool_t uX_ABI has_AVX(void)
+bool_t const uX_ABI has_AVX(void)
 {
     return CPU_Rep0.has_AVX();
 }
 
-const bool_t uX_ABI has_F16C(void)
+bool_t const uX_ABI has_F16C(void)
 {
     return CPU_Rep0.has_F16C();
 }
 
-const bool_t uX_ABI has_RDRAND(void)
+bool_t const uX_ABI has_RDRAND(void)
 {
     return CPU_Rep0.has_RDRAND();
 }
 
 /* %eax=01H, %edx */
-const bool_t uX_ABI has_FPU(void)
+bool_t const uX_ABI has_FPU(void)
 {
     return CPU_Rep0.has_FPU();
 }
 
-const bool_t uX_ABI has_TSC(void)
+bool_t const uX_ABI has_TSC(void)
 {
     return CPU_Rep0.has_TSC();
 }
 
-const bool_t uX_ABI has_MSR(void)
+bool_t const uX_ABI has_MSR(void)
 {
     return CPU_Rep0.has_MSR();
 }
 
-const bool_t uX_ABI has_CMPXCHG8B(void)
+bool_t const uX_ABI has_CMPXCHG8B(void)
 {
     return CPU_Rep0.has_CMPXCHG8B();
 }
 
-const bool_t uX_ABI has_SEP(void)
+bool_t const uX_ABI has_SEP(void)
 {
     return CPU_Rep0.has_SEP();
 }
 
-const bool_t uX_ABI has_CMOV(void)
+bool_t const uX_ABI has_CMOV(void)
 {
     return CPU_Rep0.has_CMOV();
 }
 
-const bool_t uX_ABI has_CLFSH(void)
+bool_t const uX_ABI has_CLFSH(void)
 {
     return CPU_Rep0.has_CLFSH();
 }
 
-const bool_t uX_ABI has_MMX(void)
+bool_t const uX_ABI has_MMX(void)
 {
     return CPU_Rep0.has_MMX();
 }
 
-const bool_t uX_ABI has_FXSR(void)
+bool_t const uX_ABI has_FXSR(void)
 {
     return CPU_Rep0.has_FXSR();
 }
 
-const bool_t uX_ABI has_SSE(void)
+bool_t const uX_ABI has_SSE(void)
 {
     return CPU_Rep0.has_SSE();
 }
 
-const bool_t uX_ABI has_SSE2(void)
+bool_t const uX_ABI has_SSE2(void)
 {
     return CPU_Rep0.has_SSE2();
 }
 
 /* %eax=07H, %ebx */
-const bool_t uX_ABI has_FSGSBASE(void)
+bool_t const uX_ABI has_FSGSBASE(void)
 {
     return CPU_Rep0.has_FSGSBASE();
 }
 
-const bool_t uX_ABI has_SGX(void)
+bool_t const uX_ABI has_SGX(void)
 {
     return CPU_Rep0.has_SGX();
 }
 
-const bool_t uX_ABI has_BMI1(void)
+bool_t const uX_ABI has_BMI1(void)
 {
     return CPU_Rep0.has_BMI1();
 }
 
-const bool_t uX_ABI has_HLE(void)
+bool_t const uX_ABI has_HLE(void)
 {
     return CPU_Rep0.has_HLE();
 }
 
-const bool_t uX_ABI has_AVX2(void)
+bool_t const uX_ABI has_AVX2(void)
 {
     return CPU_Rep0.has_AVX2();
 }
 
-const bool_t uX_ABI has_SMEP(void)
+bool_t const uX_ABI has_SMEP(void)
 {
     return CPU_Rep0.has_SMEP();
 }
 
-const bool_t uX_ABI has_BMI2(void)
+bool_t const uX_ABI has_BMI2(void)
 {
     return CPU_Rep0.has_BMI2();
 }
 
-const bool_t uX_ABI has_ERMS(void)
+bool_t const uX_ABI has_ERMS(void)
 {
     return CPU_Rep0.has_ERMS();
 }
 
-const bool_t uX_ABI has_INVPCID(void)
+bool_t const uX_ABI has_INVPCID(void)
 {
     return CPU_Rep0.has_INVPCID();
 }
 
-const bool_t uX_ABI has_RTM(void)
+bool_t const uX_ABI has_RTM(void)
 {
     return CPU_Rep0.has_RTM();
 }
 
-const bool_t uX_ABI has_MPX(void)
+bool_t const uX_ABI has_MPX(void)
 {
     return CPU_Rep0.has_MPX();
 }
 
-const bool_t uX_ABI has_AVX512F(void)
+bool_t const uX_ABI has_AVX512F(void)
 {
     return CPU_Rep0.has_AVX512F();
 }
 
-const bool_t uX_ABI has_AVX512DQ(void)
+bool_t const uX_ABI has_AVX512DQ(void)
 {
     return CPU_Rep0.has_AVX512DQ();
 }
 
-const bool_t uX_ABI has_RDSEED(void)
+bool_t const uX_ABI has_RDSEED(void)
 {
     return CPU_Rep0.has_RDSEED();
 }
 
-const bool_t uX_ABI has_ADX(void)
+bool_t const uX_ABI has_ADX(void)
 {
     return CPU_Rep0.has_ADX();
 }
 
-const bool_t uX_ABI has_SMAP(void)
+bool_t const uX_ABI has_SMAP(void)
 {
     return CPU_Rep0.has_SMAP();
 }
 
-const bool_t uX_ABI has_AVX512_IFMA(void)
+bool_t const uX_ABI has_AVX512_IFMA(void)
 {
     return CPU_Rep0.has_AVX512_IFMA();
 }
 
-const bool_t uX_ABI has_CLFLUSHOPT(void)
+bool_t const uX_ABI has_CLFLUSHOPT(void)
 {
     return CPU_Rep0.has_CLFLUSHOPT();
 }
 
-const bool_t uX_ABI has_CLWB(void)
+bool_t const uX_ABI has_CLWB(void)
 {
     return CPU_Rep0.has_CLWB();
 }
 
-const bool_t uX_ABI has_AVX512PF(void)
+bool_t const uX_ABI has_AVX512PF(void)
 {
     return CPU_Rep0.has_AVX512PF();
 }
 
-const bool_t uX_ABI has_AVX512ER(void)
+bool_t const uX_ABI has_AVX512ER(void)
 {
     return CPU_Rep0.has_AVX512ER();
 }
 
-const bool_t uX_ABI has_AVX512CD(void)
+bool_t const uX_ABI has_AVX512CD(void)
 {
     return CPU_Rep0.has_AVX512CD();
 }
 
-const bool_t uX_ABI has_SHA(void)
+bool_t const uX_ABI has_SHA(void)
 {
     return CPU_Rep0.has_SHA();
 }
 
-const bool_t uX_ABI has_AVX512BW(void)
+bool_t const uX_ABI has_AVX512BW(void)
 {
     return CPU_Rep0.has_AVX512BW();
 }
 
-const bool_t uX_ABI has_AVX512VL(void)
+bool_t const uX_ABI has_AVX512VL(void)
 {
     return CPU_Rep0.has_AVX512VL();
 }
 
 /* %eax=07H, %ecx */
-const bool_t uX_ABI has_PREFETCHWT1(void)
+bool_t const uX_ABI has_PREFETCHWT1(void)
 {
     return CPU_Rep0.has_PREFETCHWT1();
 }
 
-const bool_t uX_ABI has_AVX512_VBMI(void)
+bool_t const uX_ABI has_AVX512_VBMI(void)
 {
     return CPU_Rep0.has_AVX512_VBMI();
 }
 
-const bool_t uX_ABI has_UMIP(void)
+bool_t const uX_ABI has_UMIP(void)
 {
     return CPU_Rep0.has_UMIP();
 }
 
-const bool_t uX_ABI has_PKU(void)
+bool_t const uX_ABI has_PKU(void)
 {
     return CPU_Rep0.has_PKU();
 }
 
-const bool_t uX_ABI has_OSPKE(void)
+bool_t const uX_ABI has_OSPKE(void)
 {
     return CPU_Rep0.has_OSPKE();
 }
 
-const bool_t uX_ABI has_AVX512_VBMI2(void)
+bool_t const uX_ABI has_AVX512_VBMI2(void)
 {
     return CPU_Rep0.has_AVX512_VBMI2();
 }
 
-const bool_t uX_ABI has_GFNI(void)
+bool_t const uX_ABI has_GFNI(void)
 {
     return CPU_Rep0.has_GFNI();
 }
 
-const bool_t uX_ABI has_VAES(void)
+bool_t const uX_ABI has_VAES(void)
 {
     return CPU_Rep0.has_VAES();
 }
 
-const bool_t uX_ABI has_VPCLMULQDQ(void)
+bool_t const uX_ABI has_VPCLMULQDQ(void)
 {
     return CPU_Rep0.has_VPCLMULQDQ();
 }
 
-const bool_t uX_ABI has_AVX512_VNNI(void)
+bool_t const uX_ABI has_AVX512_VNNI(void)
 {
     return CPU_Rep0.has_AVX512_VNNI();
 }
 
-const bool_t uX_ABI has_AVX512_BITALG(void)
+bool_t const uX_ABI has_AVX512_BITALG(void)
 {
     return CPU_Rep0.has_AVX512_BITALG();
 }
 
-const bool_t uX_ABI has_AVX512_VPOPCNTDQ(void)
+bool_t const uX_ABI has_AVX512_VPOPCNTDQ(void)
 {
     return CPU_Rep0.has_AVX512_VPOPCNTDQ();
 }
 
-const bool_t uX_ABI has_RDPID(void)
+bool_t const uX_ABI has_RDPID(void)
 {
     return CPU_Rep0.has_RDPID();
 }
 
 /* %eax=07H, %edx */
-const bool_t uX_ABI has_AVX512_4VNNIW(void)
+bool_t const uX_ABI has_AVX512_4VNNIW(void)
 {
     return CPU_Rep0.has_AVX512_4VNNIW();
 }
 
-const bool_t uX_ABI has_AVX512_4FMAPS(void)
+bool_t const uX_ABI has_AVX512_4FMAPS(void)
 {
     return CPU_Rep0.has_AVX512_4FMAPS();
 }
 
 /* %eax=80000001H, %ecx */
-const bool_t uX_ABI has_LAHF(void)
+bool_t const uX_ABI has_LAHF(void)
 {
     return CPU_Rep0.has_LAHF();
 }
 
-const bool_t uX_ABI has_LZCNT(void)
+bool_t const uX_ABI has_LZCNT(void)
 {
     return CPU_Rep0.has_LZCNT();
 }
 
-const bool_t uX_ABI has_ABM(void)
+bool_t const uX_ABI has_ABM(void)
 {
     return CPU_Rep0.has_ABM();
 }
 
-const bool_t uX_ABI has_SSE4a(void)
+bool_t const uX_ABI has_SSE4a(void)
 {
     return CPU_Rep0.has_SSE4a();
 }
 
-const bool_t uX_ABI has_PREFETCHW(void)
+bool_t const uX_ABI has_PREFETCHW(void)
 {
     return CPU_Rep0.has_PREFETCHW();
 }
 
-const bool_t uX_ABI has_XOP(void)
+bool_t const uX_ABI has_XOP(void)
 {
     return CPU_Rep0.has_XOP();
 }
 
-const bool_t uX_ABI has_LWP(void)
+bool_t const uX_ABI has_LWP(void)
 {
     return CPU_Rep0.has_LWP();
 }
 
-const bool_t uX_ABI has_FMA4(void)
+bool_t const uX_ABI has_FMA4(void)
 {
     return CPU_Rep0.has_FMA4();
 }
 
-const bool_t uX_ABI has_TBM(void)
+bool_t const uX_ABI has_TBM(void)
 {
     return CPU_Rep0.has_TBM();
 }
 
-const bool_t uX_ABI has_MWAITX(void)
+bool_t const uX_ABI has_MWAITX(void)
 {
     return CPU_Rep0.has_MWAITX();
 }
 
 /* %eax=80000001H, %edx */
-const bool_t uX_ABI has_SYSCALL(void)
+bool_t const uX_ABI has_SYSCALL(void)
 {
     return CPU_Rep0.has_SYSCALL();
 }
 
-const bool_t uX_ABI has_MMXEXT(void)
+bool_t const uX_ABI has_MMXEXT(void)
 {
     return CPU_Rep0.has_MMXEXT();
 }
 
-const bool_t uX_ABI has_RDTSCP(void)
+bool_t const uX_ABI has_RDTSCP(void)
 {
     return CPU_Rep0.has_RDTSCP();
 }
 
-const bool_t uX_ABI has_3DNOWEXT(void)
+bool_t const uX_ABI has_3DNOWEXT(void)
 {
     return CPU_Rep0.has_3DNOWEXT();
 }
 
-const bool_t uX_ABI has_3DNOW(void)
+bool_t const uX_ABI has_3DNOW(void)
 {
     return CPU_Rep0.has_3DNOW();
 }
 
 /* %eax=07H, %ebx, %ecx */
-const bool_t uX_ABI has_AVX512_GFNI(void)
+bool_t const uX_ABI has_AVX512_GFNI(void)
 {
     return CPU_Rep0.has_AVX512_GFNI();
 }
 
-const bool_t uX_ABI has_AVX512_GFNI_VL(void)
+bool_t const uX_ABI has_AVX512_GFNI_VL(void)
 {
     return CPU_Rep0.has_AVX512_GFNI_VL();
 }
 
-const bool_t uX_ABI has_AVX512_VAES(void)
+bool_t const uX_ABI has_AVX512_VAES(void)
 {
     return CPU_Rep0.has_AVX512_VAES();
 }
 
-const bool_t uX_ABI has_AVX512_VAES_VL(void)
+bool_t const uX_ABI has_AVX512_VAES_VL(void)
 {
     return CPU_Rep0.has_AVX512_VAES_VL();
 }
 
-const bool_t uX_ABI has_AVX512_VPCLMULQDQ(void)
+bool_t const uX_ABI has_AVX512_VPCLMULQDQ(void)
 {
     return CPU_Rep0.has_AVX512_VPCLMULQDQ();
 }
 
-const bool_t uX_ABI has_AVX512_VPCLMULQDQ_VL(void)
+bool_t const uX_ABI has_AVX512_VPCLMULQDQ_VL(void)
 {
     return CPU_Rep0.has_AVX512_VPCLMULQDQ_VL();
 }
 
-const bool_t uX_ABI has_AVX512_IFMA_VL(void)
+bool_t const uX_ABI has_AVX512_IFMA_VL(void)
 {
     return CPU_Rep0.has_AVX512_IFMA_VL();
 }
 
-const bool_t uX_ABI has_AVX512_VBMI_VL(void)
+bool_t const uX_ABI has_AVX512_VBMI_VL(void)
 {
     return CPU_Rep0.has_AVX512_VBMI_VL();
 }
 
-const bool_t uX_ABI has_AVX512_VBMI2_VL(void)
+bool_t const uX_ABI has_AVX512_VBMI2_VL(void)
 {
     return CPU_Rep0.has_AVX512_VBMI2_VL();
 }
 
-const bool_t uX_ABI has_AVX512_VNNI_VL(void)
+bool_t const uX_ABI has_AVX512_VNNI_VL(void)
 {
     return CPU_Rep0.has_AVX512_VNNI_VL();
 }
 
-const bool_t uX_ABI has_AVX512_BITALG_VL(void)
+bool_t const uX_ABI has_AVX512_BITALG_VL(void)
 {
     return CPU_Rep0.has_AVX512_BITALG_VL();
 }
 
-const bool_t uX_ABI has_AVX512_VPOPCNTDQ_VL(void)
+bool_t const uX_ABI has_AVX512_VPOPCNTDQ_VL(void)
 {
     return CPU_Rep0.has_AVX512_VPOPCNTDQ_VL();
 }
 
-const bool_t uX_ABI has_AVX512BW_GFNI(void)
+bool_t const uX_ABI has_AVX512BW_GFNI(void)
 {
     return CPU_Rep0.has_AVX512BW_GFNI();
 }
 
-const bool_t uX_ABI has_AVX512BW_GFNI_VL(void)
+bool_t const uX_ABI has_AVX512BW_GFNI_VL(void)
 {
     return CPU_Rep0.has_AVX512BW_GFNI_VL();
 }
 
-const bool_t uX_ABI has_AVX512BW_VAES(void)
+bool_t const uX_ABI has_AVX512BW_VAES(void)
 {
     return CPU_Rep0.has_AVX512BW_VAES();
 }
 
-const bool_t uX_ABI has_AVX512BW_VAES_VL(void)
+bool_t const uX_ABI has_AVX512BW_VAES_VL(void)
 {
     return CPU_Rep0.has_AVX512BW_VAES_VL();
 }
 
-const bool_t uX_ABI has_AVX512BW_VPCLMULQDQ(void)
+bool_t const uX_ABI has_AVX512BW_VPCLMULQDQ(void)
 {
     return CPU_Rep0.has_AVX512BW_VPCLMULQDQ();
 }
 
-const bool_t uX_ABI has_AVX512BW_VPCLMULQDQ_VL(void)
+bool_t const uX_ABI has_AVX512BW_VPCLMULQDQ_VL(void)
 {
     return CPU_Rep0.has_AVX512BW_VPCLMULQDQ_VL();
 }
 
-const bool_t uX_ABI has_AVX512BW_VL(void)
+bool_t const uX_ABI has_AVX512BW_VL(void)
 {
     return CPU_Rep0.has_AVX512BW_VL();
 }
 
-const bool_t uX_ABI has_AVX512DQ_GFNI(void)
+bool_t const uX_ABI has_AVX512DQ_GFNI(void)
 {
     return CPU_Rep0.has_AVX512DQ_GFNI();
 }
 
-const bool_t uX_ABI has_AVX512DQ_GFNI_VL(void)
+bool_t const uX_ABI has_AVX512DQ_GFNI_VL(void)
 {
     return CPU_Rep0.has_AVX512DQ_GFNI_VL();
 }
 
-const bool_t uX_ABI has_AVX512DQ_VAES(void)
+bool_t const uX_ABI has_AVX512DQ_VAES(void)
 {
     return CPU_Rep0.has_AVX512DQ_VAES();
 }
 
-const bool_t uX_ABI has_AVX512DQ_VAES_VL(void)
+bool_t const uX_ABI has_AVX512DQ_VAES_VL(void)
 {
     return CPU_Rep0.has_AVX512DQ_VAES_VL();
 }
 
-const bool_t uX_ABI has_AVX512DQ_VPCLMULQDQ(void)
+bool_t const uX_ABI has_AVX512DQ_VPCLMULQDQ(void)
 {
     return CPU_Rep0.has_AVX512DQ_VPCLMULQDQ();
 }
 
-const bool_t uX_ABI has_AVX512DQ_VPCLMULQDQ_VL(void)
+bool_t const uX_ABI has_AVX512DQ_VPCLMULQDQ_VL(void)
 {
     return CPU_Rep0.has_AVX512DQ_VPCLMULQDQ_VL();
 }
 
-const bool_t uX_ABI has_AVX512DQ_VL(void)
+bool_t const uX_ABI has_AVX512DQ_VL(void)
 {
     return CPU_Rep0.has_AVX512DQ_VL();
 }
 
-const bool_t uX_ABI has_AVX512CD_VL(void)
+bool_t const uX_ABI has_AVX512CD_VL(void)
 {
     return CPU_Rep0.has_AVX512CD_VL();
 }
 
 /* %eax=07H, %ecx, %ebx | %eax=01H, %ecx , %edx */
-const bool_t uX_ABI has_SSE_AES(void)
+bool_t const uX_ABI has_SSE_AES(void)
 {
     return CPU_Rep0.has_SSE_AES();
 }
 
-const bool_t uX_ABI has_SSE_GFNI(void)
+bool_t const uX_ABI has_SSE_GFNI(void)
 {
     return CPU_Rep0.has_SSE_GFNI();
 }
 
-const bool_t uX_ABI has_SSE_PCLMULQDQ(void)
+bool_t const uX_ABI has_SSE_PCLMULQDQ(void)
 {
     return CPU_Rep0.has_SSE_PCLMULQDQ();
 }
 
-const bool_t uX_ABI has_SSE2_AES(void)
+bool_t const uX_ABI has_SSE2_AES(void)
 {
     return CPU_Rep0.has_SSE2_AES();
 }
 
-const bool_t uX_ABI has_SSE2_GFNI(void)
+bool_t const uX_ABI has_SSE2_GFNI(void)
 {
     return CPU_Rep0.has_SSE2_GFNI();
 }
 
-const bool_t uX_ABI has_SSE2_PCLMULQDQ(void)
+bool_t const uX_ABI has_SSE2_PCLMULQDQ(void)
 {
     return CPU_Rep0.has_SSE2_PCLMULQDQ();
 }
 
-const bool_t uX_ABI has_SSE3_AES(void)
+bool_t const uX_ABI has_SSE3_AES(void)
 {
     return CPU_Rep0.has_SSE3_AES();
 }
 
-const bool_t uX_ABI has_SSE3_GFNI(void)
+bool_t const uX_ABI has_SSE3_GFNI(void)
 {
     return CPU_Rep0.has_SSE3_GFNI();
 }
 
-const bool_t uX_ABI has_SSE3_PCLMULQDQ(void)
+bool_t const uX_ABI has_SSE3_PCLMULQDQ(void)
 {
     return CPU_Rep0.has_SSE3_PCLMULQDQ();
 }
 
-const bool_t uX_ABI has_SSSE3_AES(void)
+bool_t const uX_ABI has_SSSE3_AES(void)
 {
     return CPU_Rep0.has_SSSE3_AES();
 }
 
-const bool_t uX_ABI has_SSSE3_GFNI(void)
+bool_t const uX_ABI has_SSSE3_GFNI(void)
 {
     return CPU_Rep0.has_SSSE3_GFNI();
 }
 
-const bool_t uX_ABI has_SSSE3_PCLMULQDQ(void)
+bool_t const uX_ABI has_SSSE3_PCLMULQDQ(void)
 {
     return CPU_Rep0.has_SSSE3_PCLMULQDQ();
 }
 
-const bool_t uX_ABI has_SSE41_AES(void)
+bool_t const uX_ABI has_SSE41_AES(void)
 {
     return CPU_Rep0.has_SSE41_AES();
 }
 
-const bool_t uX_ABI has_SSE41_GFNI(void)
+bool_t const uX_ABI has_SSE41_GFNI(void)
 {
     return CPU_Rep0.has_SSE41_GFNI();
 }
 
-const bool_t uX_ABI has_SSE41_PCLMULQDQ(void)
+bool_t const uX_ABI has_SSE41_PCLMULQDQ(void)
 {
     return CPU_Rep0.has_SSE41_PCLMULQDQ();
 }
 
-const bool_t uX_ABI has_SSE42_AES(void)
+bool_t const uX_ABI has_SSE42_AES(void)
 {
     return CPU_Rep0.has_SSE42_AES();
 }
 
-const bool_t uX_ABI has_SSE42_GFNI(void)
+bool_t const uX_ABI has_SSE42_GFNI(void)
 {
     return CPU_Rep0.has_SSE42_GFNI();
 }
 
-const bool_t uX_ABI has_SSE42_PCLMULQDQ(void)
+bool_t const uX_ABI has_SSE42_PCLMULQDQ(void)
 {
     return CPU_Rep0.has_SSE42_PCLMULQDQ();
 }
 
-const bool_t uX_ABI has_AVX_AES(void)
+bool_t const uX_ABI has_AVX_AES(void)
 {
     return CPU_Rep0.has_AVX_AES();
 }
 
-const bool_t uX_ABI has_AVX_GFNI(void)
+bool_t const uX_ABI has_AVX_GFNI(void)
 {
     return CPU_Rep0.has_AVX_GFNI();
 }
 
-const bool_t uX_ABI has_AVX_PCLMULQDQ(void)
+bool_t const uX_ABI has_AVX_PCLMULQDQ(void)
 {
     return CPU_Rep0.has_AVX_PCLMULQDQ();
 }
 
-const bool_t uX_ABI has_AVX_VAES(void)
+bool_t const uX_ABI has_AVX_VAES(void)
 {
     return CPU_Rep0.has_AVX_VAES();
 }
 
-const bool_t uX_ABI has_AVX_VPCLMULQDQ(void)
+bool_t const uX_ABI has_AVX_VPCLMULQDQ(void)
 {
     return CPU_Rep0.has_AVX_VPCLMULQDQ();
 }
 
-const bool_t uX_ABI has_AVX2_AES(void)
+bool_t const uX_ABI has_AVX2_AES(void)
 {
     return CPU_Rep0.has_AVX2_AES();
 }
 
-const bool_t uX_ABI has_AVX2_GFNI(void)
+bool_t const uX_ABI has_AVX2_GFNI(void)
 {
     return CPU_Rep0.has_AVX2_GFNI();
 }
 
-const bool_t uX_ABI has_AVX2_PCLMULQDQ(void)
+bool_t const uX_ABI has_AVX2_PCLMULQDQ(void)
 {
     return CPU_Rep0.has_AVX2_PCLMULQDQ();
 }
 
-const bool_t uX_ABI has_AVX2_VAES(void)
+bool_t const uX_ABI has_AVX2_VAES(void)
 {
     return CPU_Rep0.has_AVX2_VAES();
 }
 
-const bool_t uX_ABI has_AVX2_VPCLMULQDQ(void)
+bool_t const uX_ABI has_AVX2_VPCLMULQDQ(void)
 {
     return CPU_Rep0.has_AVX2_VPCLMULQDQ();
 }
 
-const bool_t uX_ABI has_enabled_XMM(void)
+bool_t const uX_ABI has_enabled_XMM(void)
 {
     return CPU_Rep0.has_enabled_XMM();
 }
 
-const bool_t uX_ABI has_enabled_YMM(void)
+bool_t const uX_ABI has_enabled_YMM(void)
 {
     return CPU_Rep0.has_enabled_YMM();
 }
 
-const bool_t uX_ABI has_enabled_ZMM(void)
+bool_t const uX_ABI has_enabled_ZMM(void)
 {
     return CPU_Rep0.has_enabled_ZMM();
 }
 
-const bool_t uX_ABI CPUFeatures_is_inited(void)
+bool_t const uX_ABI CPUFeatures_is_inited(void)
 {
     return CPU_Rep0.is_inited();
 }
 
 uX_PACK_STACK
 
-static const _internal::CPUFeatures CPU_Rep1(1);
+static _internal::CPUFeatures const CPU_Rep1(1);
 
-const void uX_ABI CpuType(int* vendor, int* family, int* model)
+void const uX_ABI CpuType(int* vendor, int* family, int* model)
 {
     CPU_Rep1.CpuType(vendor, family, model);
 }
 
-const char* uX_ABI ProcessorName(void)
+char const* const uX_ABI ProcessorName(void)
 {
     return CPU_Rep1.ProcessorName();
 }
 
-const size_t uX_ABI DataCacheSize(int level)
+uX_PACK_SIZE_T
+
+size_t const  uX_ABI DataCacheSize(int level)
 {
     return CPU_Rep1.DataCacheSize(level);
 }
 
 /*
-const char* wet = uX_Stringer(_uX_MM_BLEND_EPI16_IM(a, b, 255));
+char const* const wet = uX_Stringer(_uX_MM_BLEND_EPI16_IM(a, b, 255));
 */
 
 uX_PACK_POP

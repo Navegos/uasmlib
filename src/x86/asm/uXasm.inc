@@ -25,15 +25,15 @@ endm
 
 ;include uXmacros.inc
 
-ifdef __x32__
+ifdef _x32_
     .686p
     .model flat,c
     ;option frame:auto
     ;option stackbase:ebp        ; RSP or RBP are supported options for the stackbase.
 endif
-ifdef __x64__
+ifdef _x64_
     .x64p
-    ifdef __windows__
+    ifdef _windows_
     option stackbase:rsp        ; RSP or RBP are supported options for the stackbase.
     option frame:auto
     option win64:15             ; 11-15 for RSP and 1-7 for RBP.

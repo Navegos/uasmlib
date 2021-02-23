@@ -26,7 +26,9 @@
 #ifndef uX_VERSION_H
 #define uX_VERSION_H 1
 
+#ifndef uX_PREPROCESSOR_H
 #include "uXpreprocessor.h"
+#endif  /* uX_PREPROCESSOR_H */
 
 #define uX_VERSION_DATE "2020.09.21"
 

@@ -3,7 +3,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -43,7 +43,7 @@ uX_PACK_PUSH_XMM
     
     //;;float;;
 
-    //             sincos template, single precision
+    //;             sincos template, single precision
     extern const __m128 __m128_DP1F; //              __m128f; // (0.78515625 * 2.0)
     extern const __m128 __m128_DP2F; //              __m128f; // (2.4187564849853515625e-4 * 2.0)
     extern const __m128 __m128_DP3F; //              __m128f; // (3.77489497744594108e-8 * 2.0)
@@ -55,7 +55,7 @@ uX_PACK_PUSH_XMM
     extern const __m128 __m128_P0cosf; //              __m128f; // (4.166664568298827e-2)
     extern const __m128 __m128_P1cosf; //              __m128f; // (-1.388731625493765e-3)
     extern const __m128 __m128_P2cosf; //              __m128f; // (2.443315711809948e-5)
-    //             sincos template, single precision
+    //;             sincos template, single precision
 
     extern const __m128 __m128_1lshl3; //                   __m128f; // flt_1lshl3
     extern const __m128 __m128_1lshl4; //                   __m128f; // flt_1lshl4
@@ -814,64 +814,64 @@ uX_PACK_PUSH_XMM
     extern const __m128 __m128_kmphtomepm; //           __m128f; // flt_kmphtomepm
     extern const __m128 __m128_kmphtomilesph; //            __m128f; // flt_kmphtomilesph
     extern const __m128 __m128_kmphtomilesps; //            __m128f; // flt_kmphtomilesps
-    extern const __m128 __m128_kmphtofootps; //             __m128f; // flt_kmphtofootps
-    extern const __m128 __m128_kmphtofootpm; //             __m128f; // flt_kmphtofootpm
+    extern const __m128 __m128_kmphtofeetps; //             __m128f; // flt_kmphtofeetps
+    extern const __m128 __m128_kmphtofeetpm; //             __m128f; // flt_kmphtofeetpm
 
     extern const __m128 __m128_kmpstomeps; //           __m128f; // flt_kmpstomeps
     extern const __m128 __m128_kmpstokmph; //           __m128f; // flt_kmpstokmph
     extern const __m128 __m128_kmpstomepm; //           __m128f; // flt_kmpstomepm
     extern const __m128 __m128_kmpstomilesph; //            __m128f; // flt_kmpstomilesph
     extern const __m128 __m128_kmpstomilesps; //            __m128f; // flt_kmpstomilesps
-    extern const __m128 __m128_kmpstofootps; //             __m128f; // flt_kmpstofootps
-    extern const __m128 __m128_kmpstofootpm; //             __m128f; // flt_kmpstofootpm
+    extern const __m128 __m128_kmpstofeetps; //             __m128f; // flt_kmpstofeetps
+    extern const __m128 __m128_kmpstofeetpm; //             __m128f; // flt_kmpstofeetpm
 
     extern const __m128 __m128_mepstokmph; //           __m128f; // flt_mepstokmph
     extern const __m128 __m128_mepstokmps; //           __m128f; // flt_mepstokmps
     extern const __m128 __m128_mepstomepm; //           __m128f; // flt_mepstomepm
     extern const __m128 __m128_mepstomilesph; //            __m128f; // flt_mepstomilesph
     extern const __m128 __m128_mepstomilesps; //            __m128f; // flt_mepstomilesps
-    extern const __m128 __m128_mepstofootps; //             __m128f; // flt_mepstofootps
-    extern const __m128 __m128_mepstofootpm; //             __m128f; // flt_mepstofootpm
+    extern const __m128 __m128_mepstofeetps; //             __m128f; // flt_mepstofeetps
+    extern const __m128 __m128_mepstofeetpm; //             __m128f; // flt_mepstofeetpm
 
     extern const __m128 __m128_mepmtokmph; //           __m128f; // flt_mepmtokmph
     extern const __m128 __m128_mepmtokmps; //           __m128f; // flt_mepmtokmps
     extern const __m128 __m128_mepmtomeps; //           __m128f; // flt_mepmtomeps
     extern const __m128 __m128_mepmtomilesph; //            __m128f; // flt_mepmtomilesph
     extern const __m128 __m128_mepmtomilesps; //            __m128f; // flt_mepmtomilesps
-    extern const __m128 __m128_mepmtofootps; //             __m128f; // flt_mepmtofootps
-    extern const __m128 __m128_mepmtofootpm; //             __m128f; // flt_mepmtofootpm
+    extern const __m128 __m128_mepmtofeetps; //             __m128f; // flt_mepmtofeetps
+    extern const __m128 __m128_mepmtofeetpm; //             __m128f; // flt_mepmtofeetpm
 
     extern const __m128 __m128_milesphtokmph; //            __m128f; // flt_milesphtokmph
     extern const __m128 __m128_milesphtokmps; //            __m128f; // flt_milesphtokmps
     extern const __m128 __m128_milesphtomeps; //            __m128f; // flt_milesphtomeps
     extern const __m128 __m128_milesphtomepm; //            __m128f; // flt_milesphtomepm
     extern const __m128 __m128_milesphtomilesps; //     __m128f; // flt_milesphtomilesps
-    extern const __m128 __m128_milesphtofootps; //      __m128f; // flt_milesphtofootps
-    extern const __m128 __m128_milesphtofootpm; //      __m128f; // flt_milesphtofootpm
+    extern const __m128 __m128_milesphtofeetps; //      __m128f; // flt_milesphtofeetps
+    extern const __m128 __m128_milesphtofeetpm; //      __m128f; // flt_milesphtofeetpm
 
     extern const __m128 __m128_milespstokmph; //            __m128f; // flt_milespstokmph
     extern const __m128 __m128_milespstokmps; //            __m128f; // flt_milespstokmps
     extern const __m128 __m128_milespstomeps; //            __m128f; // flt_milespstomeps
     extern const __m128 __m128_milespstomepm; //            __m128f; // flt_milespstomepm
     extern const __m128 __m128_milespstomilespm; //     __m128f; // flt_milespstomilespm
-    extern const __m128 __m128_milespstofootps; //      __m128f; // flt_milespstofootps
-    extern const __m128 __m128_milespstofootpm; //      __m128f; // flt_milespstofootpm
+    extern const __m128 __m128_milespstofeetps; //      __m128f; // flt_milespstofeetps
+    extern const __m128 __m128_milespstofeetpm; //      __m128f; // flt_milespstofeetpm
 
-    extern const __m128 __m128_footpstokmph; //             __m128f; // flt_footpstokmph
-    extern const __m128 __m128_footpstokmps; //             __m128f; // flt_footpstokmps
-    extern const __m128 __m128_footpstomeps; //             __m128f; // flt_footpstomeps
-    extern const __m128 __m128_footpstomepm; //             __m128f; // flt_footpstomepm
-    extern const __m128 __m128_footpstomilesph; //      __m128f; // flt_footpstomilesph
-    extern const __m128 __m128_footpstomilesps; //      __m128f; // flt_footpstomilesps
-    extern const __m128 __m128_footpstofootpm; //       __m128f; // flt_footpstofootpm
+    extern const __m128 __m128_feetpstokmph; //             __m128f; // flt_feetpstokmph
+    extern const __m128 __m128_feetpstokmps; //             __m128f; // flt_feetpstokmps
+    extern const __m128 __m128_feetpstomeps; //             __m128f; // flt_feetpstomeps
+    extern const __m128 __m128_feetpstomepm; //             __m128f; // flt_feetpstomepm
+    extern const __m128 __m128_feetpstomilesph; //      __m128f; // flt_feetpstomilesph
+    extern const __m128 __m128_feetpstomilesps; //      __m128f; // flt_feetpstomilesps
+    extern const __m128 __m128_feetpstofeetpm; //       __m128f; // flt_feetpstofeetpm
 
-    extern const __m128 __m128_footpmtokmph; //         __m128f; // flt_footpmtokmph
-    extern const __m128 __m128_footpmtokmps; //             __m128f; // flt_footpmtokmps
-    extern const __m128 __m128_footpmtomeps; //             __m128f; // flt_footpmtomeps
-    extern const __m128 __m128_footpmtomepm; //             __m128f; // flt_footpmtomepm
-    extern const __m128 __m128_footpmtomilesph; //      __m128f; // flt_footpmtomilesph
-    extern const __m128 __m128_footpmtomilesps; //      __m128f; // flt_footpmtomilesps
-    extern const __m128 __m128_footpmtofootps; //       __m128f; // flt_footpmtofootps
+    extern const __m128 __m128_feetpmtokmph; //         __m128f; // flt_feetpmtokmph
+    extern const __m128 __m128_feetpmtokmps; //             __m128f; // flt_feetpmtokmps
+    extern const __m128 __m128_feetpmtomeps; //             __m128f; // flt_feetpmtomeps
+    extern const __m128 __m128_feetpmtomepm; //             __m128f; // flt_feetpmtomepm
+    extern const __m128 __m128_feetpmtomilesph; //      __m128f; // flt_feetpmtomilesph
+    extern const __m128 __m128_feetpmtomilesps; //      __m128f; // flt_feetpmtomilesps
+    extern const __m128 __m128_feetpmtofeetps; //       __m128f; // flt_feetpmtofeetps
 
     extern const __m128 __m128_soundspeedp50c; //       __m128f; // flt_soundspeedp50c
     extern const __m128 __m128_soundspeedp45c; //       __m128f; // flt_soundspeedp45c
@@ -1821,64 +1821,64 @@ uX_PACK_PUSH_XMM
     extern const __m128 __m128_0e_kmphtomepm; //                __m128f; // flt_kmphtomepm; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_kmphtomilesph; //             __m128f; // flt_kmphtomilesph; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_kmphtomilesps; //             __m128f; // flt_kmphtomilesps; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_kmphtofootps; //          __m128f; // flt_kmphtofootps; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_kmphtofootpm; //          __m128f; // flt_kmphtofootpm; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_kmphtofeetps; //          __m128f; // flt_kmphtofeetps; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_kmphtofeetpm; //          __m128f; // flt_kmphtofeetpm; // flt_false; // flt_false; // flt_false
 
     extern const __m128 __m128_0e_kmpstomeps; //                __m128f; // flt_kmpstomeps; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_kmpstokmph; //                __m128f; // flt_kmpstokmph; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_kmpstomepm; //                __m128f; // flt_kmpstomepm; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_kmpstomilesph; //             __m128f; // flt_kmpstomilesph; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_kmpstomilesps; //             __m128f; // flt_kmpstomilesps; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_kmpstofootps; //          __m128f; // flt_kmpstofootps; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_kmpstofootpm; //          __m128f; // flt_kmpstofootpm; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_kmpstofeetps; //          __m128f; // flt_kmpstofeetps; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_kmpstofeetpm; //          __m128f; // flt_kmpstofeetpm; // flt_false; // flt_false; // flt_false
 
     extern const __m128 __m128_0e_mepstokmph; //                __m128f; // flt_mepstokmph; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_mepstokmps; //                __m128f; // flt_mepstokmps; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_mepstomepm; //                __m128f; // flt_mepstomepm; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_mepstomilesph; //             __m128f; // flt_mepstomilesph; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_mepstomilesps; //             __m128f; // flt_mepstomilesps; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_mepstofootps; //          __m128f; // flt_mepstofootps; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_mepstofootpm; //          __m128f; // flt_mepstofootpm; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_mepstofeetps; //          __m128f; // flt_mepstofeetps; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_mepstofeetpm; //          __m128f; // flt_mepstofeetpm; // flt_false; // flt_false; // flt_false
 
     extern const __m128 __m128_0e_mepmtokmph; //                __m128f; // flt_mepmtokmph; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_mepmtokmps; //                __m128f; // flt_mepmtokmps; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_mepmtomeps; //                __m128f; // flt_mepmtomeps; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_mepmtomilesph; //             __m128f; // flt_mepmtomilesph; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_mepmtomilesps; //             __m128f; // flt_mepmtomilesps; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_mepmtofootps; //          __m128f; // flt_mepmtofootps; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_mepmtofootpm; //          __m128f; // flt_mepmtofootpm; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_mepmtofeetps; //          __m128f; // flt_mepmtofeetps; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_mepmtofeetpm; //          __m128f; // flt_mepmtofeetpm; // flt_false; // flt_false; // flt_false
 
     extern const __m128 __m128_0e_milesphtokmph; //             __m128f; // flt_milesphtokmph; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_milesphtokmps; //             __m128f; // flt_milesphtokmps; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_milesphtomeps; //             __m128f; // flt_milesphtomeps; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_milesphtomepm; //             __m128f; // flt_milesphtomepm; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_milesphtomilesps; //      __m128f; // flt_milesphtomilesps; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_milesphtofootps; //       __m128f; // flt_milesphtofootps; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_milesphtofootpm; //           __m128f; // flt_milesphtofootpm; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_milesphtofeetps; //       __m128f; // flt_milesphtofeetps; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_milesphtofeetpm; //           __m128f; // flt_milesphtofeetpm; // flt_false; // flt_false; // flt_false
 
     extern const __m128 __m128_0e_milespstokmph; //             __m128f; // flt_milespstokmph; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_milespstokmps; //             __m128f; // flt_milespstokmps; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_milespstomeps; //             __m128f; // flt_milespstomeps; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_milespstomepm; //             __m128f; // flt_milespstomepm; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_milespstomilespm; //      __m128f; // flt_milespstomilespm; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_milespstofootps; //       __m128f; // flt_milespstofootps; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_milespstofootpm; //           __m128f; // flt_milespstofootpm; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_milespstofeetps; //       __m128f; // flt_milespstofeetps; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_milespstofeetpm; //           __m128f; // flt_milespstofeetpm; // flt_false; // flt_false; // flt_false
 
-    extern const __m128 __m128_0e_footpstokmph; //          __m128f; // flt_footpstokmph; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_footpstokmps; //          __m128f; // flt_footpstokmps; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_footpstomeps; //          __m128f; // flt_footpstomeps; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_footpstomepm; //          __m128f; // flt_footpstomepm; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_footpstomilesph; //       __m128f; // flt_footpstomilesph; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_footpstomilesps; //       __m128f; // flt_footpstomilesps; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_footpstofootpm; //            __m128f; // flt_footpstofootpm; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_feetpstokmph; //          __m128f; // flt_feetpstokmph; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_feetpstokmps; //          __m128f; // flt_feetpstokmps; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_feetpstomeps; //          __m128f; // flt_feetpstomeps; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_feetpstomepm; //          __m128f; // flt_feetpstomepm; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_feetpstomilesph; //       __m128f; // flt_feetpstomilesph; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_feetpstomilesps; //       __m128f; // flt_feetpstomilesps; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_feetpstofeetpm; //            __m128f; // flt_feetpstofeetpm; // flt_false; // flt_false; // flt_false
 
-    extern const __m128 __m128_0e_footpmtokmph; //          __m128f; // flt_footpmtokmph; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_footpmtokmps; //          __m128f; // flt_footpmtokmps; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_footpmtomeps; //          __m128f; // flt_footpmtomeps; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_footpmtomepm; //          __m128f; // flt_footpmtomepm; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_footpmtomilesph; //       __m128f; // flt_footpmtomilesph; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_footpmtomilesps; //       __m128f; // flt_footpmtomilesps; // flt_false; // flt_false; // flt_false
-    extern const __m128 __m128_0e_footpmtofootps; //            __m128f; // flt_footpmtofootps; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_feetpmtokmph; //          __m128f; // flt_feetpmtokmph; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_feetpmtokmps; //          __m128f; // flt_feetpmtokmps; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_feetpmtomeps; //          __m128f; // flt_feetpmtomeps; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_feetpmtomepm; //          __m128f; // flt_feetpmtomepm; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_feetpmtomilesph; //       __m128f; // flt_feetpmtomilesph; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_feetpmtomilesps; //       __m128f; // flt_feetpmtomilesps; // flt_false; // flt_false; // flt_false
+    extern const __m128 __m128_0e_feetpmtofeetps; //            __m128f; // flt_feetpmtofeetps; // flt_false; // flt_false; // flt_false
 
     extern const __m128 __m128_0e_soundspeedp50c; //            __m128f; // flt_soundspeedp50c; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_soundspeedp45c; //            __m128f; // flt_soundspeedp45c; // flt_false; // flt_false; // flt_false
@@ -1920,6 +1920,1881 @@ uX_PACK_PUSH_XMM
     extern const __m128 __m128_0e_logest5; //               __m128f; // flt_logest5; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_logest6; //               __m128f; // flt_logest6; // flt_false; // flt_false; // flt_false
     extern const __m128 __m128_0e_logest7; //               __m128f; // flt_logest7; // flt_false; // flt_false; // flt_false
+
+    //;; float;;
+
+    //;;             sincos template, single precision
+    extern __m128 uX_ABI _uX_mm_const_DP1F_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_DP2F_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_DP3F_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_P0sinf_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_P1sinf_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_P2sinf_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_P0cosf_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_P1cosf_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_P2cosf_ps(void);
+    //;;             sincos template, single precision
+
+    extern __m128 uX_ABI _uX_mm_const_1lshl3_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl4_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl7_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl8_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl11_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl12_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl15_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl16_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl19_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl20_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl23_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl24_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl27_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl28_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl31_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl3_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl4_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl7_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl8_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl11_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl12_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl15_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl16_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl19_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl20_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl23_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl24_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl27_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl28_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl31_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_false_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_true_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_error_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_magic_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sign_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_invsign_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_inf_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_fin_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_invinf_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neginf_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_nan_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_qnan_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negqnan_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_nantest_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_abs_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_min_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_max_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_nofraction_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mindenorm_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_denormlimit_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_minnormal_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maxnormal_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_decdig_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_dig_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negdecdig_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negdig_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_eps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_epsilon_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_normeps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_guard_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mantpow2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maxmantpow2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mantdig_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mant_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negmantdig_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negmant_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maxexpo_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_exposign_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_expo_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negmaxexpo_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negexposign_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negexpo_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_subnormalexpo_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_minexpo_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maxdecexpo_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negmaxdecexpo_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mindecexpo_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_expofield_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mantfield_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_norm_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_radix_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rounds_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_subdec_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrtmax_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_smallnormal_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_halfminuseps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_trueint_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_byte_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_byte_even_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_byte_odd_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_4low_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_4high_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_flip4_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_8low_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_8high_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_flip8_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_16low_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_16high_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_flip16_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_24low_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_24high_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_flip24_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_28low_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_28high_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_flip28_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_32low_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_32high_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_flip32_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_0_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d0001_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d0002_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d0003_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d0004_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d0005_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d0006_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d0007_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d0008_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d0009_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d001_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d002_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d003_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d004_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d005_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d006_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d007_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d008_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d009_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d01_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d02_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d025_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d03_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d04_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d05_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d06_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d07_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d08_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d09_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d1_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d3_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d4_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d6_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d7_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d8_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_0d9_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1d25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_2d25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_2d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_3_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_3d25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_3d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_4_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_4d25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_4d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_5d25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_5d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_6_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_6d25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_6d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_7_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_7d25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_7d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_8_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_8d25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_8d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_9_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_9d25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_9d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_10_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_11_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_12_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_13_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_14_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_15_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_16_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_17_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_18_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_19_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_20_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_21_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_22_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_23_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_24_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_24d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_26_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_27_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_28_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_29_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_30_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_31_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_32_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_33_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_34_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_35_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_36_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_37_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_38_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_39_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_40_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_41_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_42_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_43_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_44_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_45_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_46_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_47_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_48_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_49_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_50_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_51_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_52_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_53_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_54_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_55_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_56_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_57_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_58_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_59_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_60_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_61_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_62_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_63_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_64_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_65_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_66_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_67_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_68_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_69_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_70_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_71_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_72_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_73_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_74_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_75_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_76_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_77_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_78_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_79_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_80_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_81_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_82_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_83_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_84_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_85_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_86_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_87_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_88_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_89_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_90_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_91_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_92_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_93_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_94_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_95_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_96_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_97_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_98_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_99_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_100_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_125_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_126_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_127_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_128_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_140_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_145_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_150_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_180_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_253_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_254_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_255_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_256_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_360_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_511_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_512_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_513_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1023_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1024_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1025_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_32767_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_32768_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_65535_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_65536_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_2147483647_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_2147483648_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_4294967295_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_4294967296_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_neg0_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d0001_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d0002_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d0003_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d0004_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d0005_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d0006_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d0007_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d0008_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d0009_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d001_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d002_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d003_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d004_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d005_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d006_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d007_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d008_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d009_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d01_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d02_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d025_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d03_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d04_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d05_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d06_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d07_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d08_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d09_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d1_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d3_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d4_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d6_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d7_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d8_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d9_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1d25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg2d25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg2d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg3_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg3d25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg3d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg4_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg4d25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg4d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg5d25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg5d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg6_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg6d25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg6d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg7_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg7d25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg7d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg8_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg8d25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg8d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg9_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg9d25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg9d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg10_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg11_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg12_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg13_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg14_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg15_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg16_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg17_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg18_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg19_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg20_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg21_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg22_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg23_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg24_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg24d5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg25_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg26_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg27_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg28_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg29_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg30_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg31_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg32_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg33_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg34_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg35_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg36_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg37_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg38_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg39_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg40_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg41_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg42_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg43_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg44_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg45_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg46_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg47_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg48_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg49_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg50_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg51_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg52_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg53_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg54_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg55_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg56_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg57_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg58_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg59_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg60_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg61_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg62_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg63_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg64_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg65_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg66_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg67_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg68_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg69_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg70_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg71_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg72_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg73_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg74_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg75_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg76_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg77_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg78_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg79_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg80_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg81_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg82_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg83_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg84_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg85_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg86_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg87_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg88_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg89_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg90_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg91_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg92_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg93_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg94_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg95_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg96_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg97_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg98_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg99_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg100_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg125_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg126_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg127_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg128_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg140_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg145_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg150_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg180_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg253_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg254_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg255_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg256_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg360_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg511_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg512_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg513_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1023_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1024_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1025_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_neg32767_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg32768_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg65535_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg65536_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg2147483647_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg2147483648_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg4294967295_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg4294967296_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_bin128_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_binneg150_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_maxrand_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_maxi8_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mini8_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maxu8_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_maxi16_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mini16_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maxu16_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_maxi32_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mini32_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maxu32_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_maxi8xu8_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mini8xu8_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maxi8xu16_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mini8xu16_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_maxi16xu16_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mini16xu16_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_fixunsigned_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_fixunsigned32_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_fixmaxi32_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_fixmaxu32_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_rcpi16_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpu16_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpi16xu16_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_fixaa8_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_fixr8_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_fixg8_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_fixb8_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_norma8_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_normr8_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_normg8_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_normb8_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_fixaa2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_fixb10_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_fixg10_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_fixr10_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_norma2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_normb10_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_normg10_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_normr10_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_mg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negmg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_halfmg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neghalfmg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mgdiv4_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negmgdiv4_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_halfmgxmg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_halfmgxsqrmg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_halfmgxcubemg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neghalfmgxmg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neghalfmgxsqrmg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neghalfmgxcubemg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrmg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_cubemg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrtmg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_cbrtmg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpmg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpsqrmg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpcubemg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpsqrtmg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpcbrtmg_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_2mg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg2mg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqr2mg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_cube2mg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt2mg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_cbrt2mg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_4mg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg4mg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqr4mg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_cube4mg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt4mg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_cbrt4mg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcp2mg_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcp4mg_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_e_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_exp_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_loge_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_logehigh_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_log2e_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_log2ehigh_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_log10e_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcplog2e_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcplog10e_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_log2t_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_log2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_log2high_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_ln2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_ln2high_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1divln2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_2divln2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_lnt_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_lnthigh_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_ln10_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpsqrt2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt2div2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt2div2high_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt2div2low_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrthalf_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrthalfhigh_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrthalflow_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_pow2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcppow2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_cbrt2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpcbrt2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1div3_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1div7_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_1div9_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_2div3_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_2div7_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_2div9_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_4div3_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_4div7_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_4div9_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_pi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_pihigh_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_halfpi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_2pi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negpi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neghalfpi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neg2pi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcppi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_invpi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcp2pi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_inv2pi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_pidiv2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_pidiv2high_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_pidiv4_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_pidiv4high_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_pix3div4_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrtpi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt2pi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt2pihigh_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpsqrtpi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpsqrt2pi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrtpidiv2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrtpidiv2high_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt2pidiv2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt2pidiv2high_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_2divpi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_2div2pi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_2divsqrtpi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_2divsqrt2pi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt2divpi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_logpi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_log2pi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_lnpi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_ln2pi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_powpi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcppowpi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_pow2pi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcppow2pi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_cbrtpi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpcbrtpi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_cbrt2pi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpcbrt2pi_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_pow2tom126_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_pow2to126_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_normhuge_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_pow2to23_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_pow2to24_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maxi32pow2to23_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_pow2to31_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_pow2to32_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_remquobits_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_remquomask_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_trigploss_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_degtorad_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_radtodeg_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_degtograd_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_gradtodeg_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_radtograd_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_gradtorad_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_sungravity_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_jupitergravity_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neptunegravity_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_saturngravity_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_uranusgravity_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_earthgravity_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_venusgravity_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_marsgravity_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mercurygravity_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_moongravity_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_plutogravity_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_kmtoinch_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_kmtofeet_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_kmtoyards_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_kmtomiles_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_metoinch_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_metofeet_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_metoyards_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_metomiles_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_cmtoinch_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_cmtofeet_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_cmtoyards_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_cmtomiles_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_milltoinch_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_milltofeet_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_milltoyards_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_milltomiles_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_inchtomill_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_inchtocm_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_inchtome_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_inchtokm_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_inchtofeet_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_inchtoyards_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_inchtomiles_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_feettomill_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_feettocm_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_feettome_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_feettokm_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_feettoinch_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_feettoyards_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_feettomiles_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_yardstomill_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_yardstocm_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_yardstome_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_yardstokm_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_yardstoinch_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_yardstofeet_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_yardstomiles_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_milestomill_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_milestocm_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_milestome_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_milestokm_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_milestoinch_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_milestofeet_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_milestoyards_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_kmphtomeps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_kmphtokmps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_kmphtomepm_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_kmphtomilesph_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_kmphtomilesps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_kmphtofeetps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_kmphtofeetpm_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_kmpstomeps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_kmpstokmph_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_kmpstomepm_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_kmpstomilesph_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_kmpstomilesps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_kmpstofeetps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_kmpstofeetpm_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_mepstokmph_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mepstokmps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mepstomepm_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mepstomilesph_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mepstomilesps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mepstofeetps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mepstofeetpm_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_mepmtokmph_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mepmtokmps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mepmtomeps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mepmtomilesph_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mepmtomilesps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mepmtofeetps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mepmtofeetpm_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_milesphtokmph_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_milesphtokmps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_milesphtomeps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_milesphtomepm_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_milesphtomilesps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_milesphtofeetps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_milesphtofeetpm_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_milespstokmph_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_milespstokmps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_milespstomeps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_milespstomepm_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_milespstomilesph_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_milespstofeetps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_milespstofeetpm_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_feetpstokmph_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpstokmps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpstomeps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpstomepm_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpstomilesph_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpstomilesps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpstofeetpm_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_feetpmtokmph_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpmtokmps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpmtomeps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpmtomepm_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpmtomilesph_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpmtomilesps_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpmtofeetps_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_soundspeedp50c_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedp45c_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedp40c_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedp35c_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedp30c_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedp25c_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedp20c_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedp15c_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedp10c_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedp5c_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeed0c_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedn5c_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedn10c_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedn15c_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedn20c_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedn25c_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedn30c_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedn35c_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedn40c_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedn45c_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedn50c_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_schscale_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_thscale_ps(void);
+
+    extern __m128 uX_ABI _uX_mm_const_expest1_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_expest2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_expest3_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_expest4_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_expest5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_expest6_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_expest7_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_logest0_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_logest1_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_logest2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_logest3_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_logest4_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_logest5_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_logest6_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_logest7_ps(void);
+
+    //;; DirectX Math constants;;
+
+    extern __m128 uX_ABI _uX_mm_const_sincoefficients0_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_sincoefficients1_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_coscoefficients0_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_coscoefficients1_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_tancoefficients0_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_tancoefficients1_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_tancoefficients2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_arccoefficients0_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_arccoefficients1_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_atancoefficients0_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_atancoefficients1_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_atanestcoefficients0_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_atanestcoefficients1_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_tanestcoefficients_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_arcestcoefficients_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_piconstants0_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_identityr0_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_identityr1_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_identityr2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_identityr3_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negidentityr0_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negidentityr1_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negidentityr2_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negidentityr3_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negativezero_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negate3_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maskxy_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maskxyz_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maskxyzw_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_mask3_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maskx_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_masky_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maskz_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maskw_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_one_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_one3_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_zero_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_two_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_four_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_six_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negativeone_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_onehalf_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negativeonehalf_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negativetwopi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negativepi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_reciprocalpi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_twopi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_reciprocaltwopi_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_infinity_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_qnantest_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_absmask_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_fltmin_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_fltmax_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negonemask_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maska8r8g8b8_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_flipa8r8g8b8_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_fixaa8r8g8b8_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_normalizea8r8g8b8_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maska2b10g10r10_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_flipa2b10g10r10_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_fixaa2b10g10r10_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_normalizea2b10g10r10_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maskx16y16_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_flipx16y16_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_fixx16y16_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_normalizex16y16_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maskx16y16z16w16_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_flipx16y16z16w16_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_fixx16y16z16w16_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_normalizex16y16z16w16_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maskbyte_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negatex_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negatey_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negatez_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_negatew_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_select0000_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_select0001_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_select0010_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_select0100_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_select1000_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_select0011_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_select0111_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_select1111_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_select1110_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_select1100_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_select1001_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_select0110_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_select1011_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_select1101_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_select0101_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_select1010_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_onehalfminusepsilon_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_fixupy16_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_fixupy16w16_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_flipy_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_flipz_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_flipw_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_flipyz_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_flipzw_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_flipyw_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maskdec4_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_xordec4_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_addudec4_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_addec4_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_muldec4_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_maskbyte4_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_xorbyte4_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_addbyte4_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_fixmaxint_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_fixmaxuint_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_unsignedfix_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_srgbscale_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_srgba_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_srgba1_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_exponentbias_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_subnormalexponent_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_numtrailing_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_neginfinity_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_lge_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_invlge_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_ubytemax_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_bytemin_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_bytemax_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_shortmin_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_shortmax_ps(void);
+    extern __m128 uX_ABI _uX_mm_const_ushortmax_ps(void);
+    
+    //;; float low;;
+
+    //;;             sincos template, single precision
+    extern __m128 uX_ABI _uX_mm_const_DP1F_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_DP2F_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_DP3F_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_P0sinf_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_P1sinf_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_P2sinf_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_P0cosf_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_P1cosf_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_P2cosf_ss(void);
+    //;;             sincos template, single precision
+
+    extern __m128 uX_ABI _uX_mm_const_1lshl3_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl4_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl7_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl8_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl11_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl12_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl15_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl16_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl19_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl20_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl23_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl24_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl27_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl28_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1lshl31_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl3_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl4_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl7_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl8_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl11_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl12_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl15_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl16_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl19_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl20_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl23_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl24_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl27_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl28_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1lshl31_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_false_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_true_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_error_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_magic_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sign_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_invsign_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_inf_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_fin_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_invinf_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neginf_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_nan_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_qnan_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_negqnan_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_nantest_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_abs_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_min_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_max_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_nofraction_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mindenorm_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_denormlimit_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_minnormal_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_maxnormal_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_decdig_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_dig_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_negdecdig_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_negdig_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_eps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_epsilon_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_normeps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_guard_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mantpow2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_maxmantpow2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mantdig_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mant_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_negmantdig_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_negmant_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_maxexpo_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_exposign_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_expo_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_negmaxexpo_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_negexposign_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_negexpo_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_subnormalexpo_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_minexpo_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_maxdecexpo_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_negmaxdecexpo_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mindecexpo_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_expofield_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mantfield_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_norm_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_radix_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rounds_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_subdec_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrtmax_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_smallnormal_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_halfminuseps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_trueint_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_byte_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_byt_even_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_byte_odd_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_4low_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_4high_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_flip4_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_8low_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_8high_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_flip8_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_16low_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_16high_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_flip16_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_24low_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_24high_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_flip24_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_28low_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_28high_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_flip28_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_32low_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_32high_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_flip32_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_0_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d0001_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d0002_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d0003_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d0004_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d0005_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d0006_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d0007_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d0008_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d0009_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d001_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d002_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d003_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d004_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d005_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d006_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d007_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d008_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d009_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d01_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d02_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d025_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d03_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d04_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d05_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d06_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d07_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d08_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d09_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d1_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d3_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d4_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d6_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d7_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d8_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_0d9_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1d25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_2d25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_2d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_3_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_3d25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_3d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_4_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_4d25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_4d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_5d25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_5d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_6_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_6d25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_6d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_7_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_7d25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_7d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_8_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_8d25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_8d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_9_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_9d25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_9d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_10_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_11_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_12_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_13_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_14_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_15_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_16_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_17_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_18_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_19_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_20_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_21_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_22_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_23_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_24_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_24d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_26_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_27_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_28_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_29_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_30_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_31_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_32_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_33_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_34_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_35_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_36_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_37_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_38_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_39_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_40_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_41_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_42_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_43_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_44_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_45_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_46_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_47_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_48_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_49_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_50_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_51_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_52_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_53_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_54_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_55_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_56_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_57_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_58_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_59_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_60_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_61_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_62_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_63_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_64_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_65_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_66_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_67_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_68_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_69_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_70_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_71_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_72_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_73_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_74_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_75_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_76_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_77_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_78_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_79_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_80_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_81_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_82_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_83_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_84_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_85_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_86_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_87_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_88_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_89_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_90_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_91_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_92_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_93_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_94_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_95_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_96_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_97_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_98_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_99_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_100_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_125_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_126_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_127_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_128_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_140_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_145_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_150_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_180_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_253_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_254_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_255_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_256_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_360_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_511_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_512_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_513_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1023_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1024_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1025_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_32767_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_32768_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_65535_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_65536_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_2147483647_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_2147483648_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_4294967295_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_4294967296_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_neg0_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d0001_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d0002_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d0003_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d0004_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d0005_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d0006_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d0007_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d0008_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d0009_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d001_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d002_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d003_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d004_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d005_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d006_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d007_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d008_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d009_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d01_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d02_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d025_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d03_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d04_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d05_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d06_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d07_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d08_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d09_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d1_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d3_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d4_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d6_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d7_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d8_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg0d9_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1d25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg2d25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg2d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg3_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg3d25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg3d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg4_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg4d25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg4d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg5d25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg5d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg6_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg6d25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg6d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg7_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg7d25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg7d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg8_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg8d25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg8d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg9_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg9d25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg9d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg10_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg11_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg12_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg13_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg14_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg15_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg16_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg17_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg18_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg19_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg20_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg21_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg22_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg23_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg24_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg24d5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg25_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg26_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg27_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg28_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg29_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg30_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg31_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg32_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg33_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg34_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg35_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg36_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg37_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg38_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg39_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg40_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg41_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg42_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg43_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg44_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg45_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg46_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg47_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg48_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg49_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg50_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg51_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg52_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg53_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg54_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg55_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg56_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg57_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg58_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg59_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg60_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg61_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg62_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg63_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg64_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg65_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg66_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg67_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg68_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg69_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg70_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg71_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg72_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg73_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg74_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg75_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg76_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg77_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg78_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg79_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg80_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg81_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg82_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg83_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg84_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg85_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg86_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg87_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg88_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg89_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg90_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg91_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg92_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg93_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg94_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg95_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg96_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg97_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg98_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg99_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg100_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg125_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg126_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg127_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg128_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg140_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg145_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg150_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg180_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg253_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg254_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg255_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg256_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg360_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg511_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg512_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg513_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1023_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1024_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg1025_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_neg32767_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg32768_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg65535_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg65536_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg2147483647_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg2147483648_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg4294967295_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg4294967296_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_bin128_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_binneg150_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_maxrand_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_maxi8_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mini8_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_maxu8_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_maxi16_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mini16_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_maxu16_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_maxi32_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mini32_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_maxu32_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_maxi8xu8_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mini8xu8_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_maxi8xu16_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mini8xu16_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_maxi16xu16_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mini16xu16_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_fixunsigned_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_fixunsigned32_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_fixmaxi32_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_fixmaxu32_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_rcpi16_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpu16_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpi16xu16_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_fixaa8_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_fixr8_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_fixg8_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_fixb8_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_norma8_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_normr8_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_normg8_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_normb8_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_fixaa2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_fixb10_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_fixg10_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_fixr10_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_norma2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_normb10_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_normg10_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_normr10_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_mg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_negmg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_halfmg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neghalfmg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mgdiv4_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_negmgdiv4_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_halfmgxmg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_halfmgxsqrmg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_halfmgxcubemg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neghalfmgxmg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neghalfmgxsqrmg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neghalfmgxcubemg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrmg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_cubemg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrtmg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_cbrtmg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpmg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpsqrmg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpcubemg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpsqrtmg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpcbrtmg_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_2mg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg2mg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqr2mg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_cube2mg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt2mg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_cbrt2mg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_4mg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg4mg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqr4mg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_cube4mg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt4mg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_cbrt4mg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcp2mg_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcp4mg_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_e_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_exp_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_loge_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_logehigh_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_log2e_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_log2ehigh_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_log10e_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcplog2e_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcplog10e_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_log2t_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_log2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_log2high_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_ln2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_ln2high_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1divln2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_2divln2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_lnt_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_lnthigh_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_ln10_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpsqrt2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt2div2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt2div2high_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt2div2low_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrthalf_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrthalfhigh_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrthalflow_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_pow2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcppow2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_cbrt2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpcbrt2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1div3_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1div7_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_1div9_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_2div3_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_2div7_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_2div9_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_4div3_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_4div7_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_4div9_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_pi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_pihigh_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_halfpi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_2pi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_negpi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neghalfpi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neg2pi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcppi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_invpi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcp2pi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_inv2pi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_pidiv2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_pidiv2high_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_pidiv4_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_pidiv4high_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_pix3div4_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrtpi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt2pi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt2pihigh_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpsqrtpi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpsqrt2pi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrtpidiv2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrtpidiv2high_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt2pidiv2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt2pidiv2high_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_2divpi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_2div2pi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_2divsqrtpi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_2divsqrt2pi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_sqrt2divpi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_logpi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_log2pi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_lnpi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_ln2pi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_powpi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcppowpi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_pow2pi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcppow2pi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_cbrtpi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpcbrtpi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_cbrt2pi_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_rcpcbrt2pi_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_pow2tom126_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_pow2to126_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_normhuge_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_pow2to23_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_pow2to24_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_maxi32pow2to23_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_pow2to31_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_pow2to32_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_remquobits_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_remquomask_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_trigploss_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_degtorad_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_radtodeg_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_degtograd_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_gradtodeg_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_radtograd_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_gradtorad_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_sungravity_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_jupitergravity_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_neptunegravity_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_saturngravity_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_uranusgravity_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_earthgravity_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_venusgravity_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_marsgravity_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mercurygravity_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_moongravity_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_plutogravity_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_kmtoinch_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_kmtofeet_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_kmtoyards_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_kmtomiles_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_metoinch_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_metofeet_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_metoyards_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_metomiles_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_cmtoinch_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_cmtofeet_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_cmtoyards_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_cmtomiles_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_milltoinch_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_milltofeet_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_milltoyards_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_milltomiles_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_inchtomill_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_inchtocm_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_inchtome_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_inchtokm_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_inchtofeet_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_inchtoyards_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_inchtomiles_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_feettomill_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_feettocm_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_feettome_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_feettokm_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_feettoinch_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_feettoyards_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_feettomiles_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_yardstomill_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_yardstocm_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_yardstome_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_yardstokm_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_yardstoinch_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_yardstofeet_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_yardstomiles_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_milestomill_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_milestocm_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_milestome_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_milestokm_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_milestoinch_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_milestofeet_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_milestoyards_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_kmphtomeps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_kmphtokmps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_kmphtomepm_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_kmphtomilesph_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_kmphtomilesps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_kmphtofeetps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_kmphtofeetpm_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_kmpstomeps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_kmpstokmph_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_kmpstomepm_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_kmpstomilesph_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_kmpstomilesps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_kmpstofeetps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_kmpstofeetpm_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_mepstokmph_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mepstokmps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mepstomepm_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mepstomilesph_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mepstomilesps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mepstofeetps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mepstofeetpm_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_mepmtokmph_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mepmtokmps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mepmtomeps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mepmtomilesph_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mepmtomilesps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mepmtofeetps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_mepmtofeetpm_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_milesphtokmph_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_milesphtokmps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_milesphtomeps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_milesphtomepm_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_milesphtomilesps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_milesphtofeetps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_milesphtofeetpm_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_milespstokmph_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_milespstokmps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_milespstomeps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_milespstomepm_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_milespstomilesph_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_milespstofeetps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_milespstofeetpm_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_feetpstokmph_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpstokmps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpstomeps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpstomepm_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpstomilesph_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpstomilesps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpstofeetpm_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_feetpmtokmph_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpmtokmps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpmtomeps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpmtomepm_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpmtomilesph_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpmtomilesps_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_feetpmtofeetps_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_soundspeedp50c_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedp45c_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedp40c_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedp35c_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedp30c_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedp25c_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedp20c_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedp15c_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedp10c_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedp5c_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeed0c_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedn5c_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedn10c_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedn15c_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedn20c_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedn25c_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedn30c_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedn35c_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedn40c_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedn45c_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_soundspeedn50c_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_schscale_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_thscale_ss(void);
+
+    extern __m128 uX_ABI _uX_mm_const_expest1_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_expest2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_expest3_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_expest4_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_expest5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_expest6_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_expest7_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_logest0_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_logest1_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_logest2_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_logest3_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_logest4_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_logest5_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_logest6_ss(void);
+    extern __m128 uX_ABI _uX_mm_const_logest7_ss(void);
 
 uX_PACK_POP
 uX_EXTERNC_END

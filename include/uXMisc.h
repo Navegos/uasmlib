@@ -26,7 +26,9 @@
 #ifndef uX_MISC_H
 #define uX_MISC_H 1
 
+#ifndef uX_TYPES_H
 #include "uXtypes.h"
+#endif  /* uX_TYPES_H */
 
 namespace_uX
 namespace_internal

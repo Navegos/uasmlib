@@ -2,7 +2,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -19,82 +19,64 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
-    OPTION CASEMAP:NONE
-    include macrolib.inc
-    
+option casemap:none
+include uXasm.inc
+include macrolib.inc
+
 ifndef __MIC__
 
 ifdef __x32__
-    include uXasm.inc
 
-    .xmm
-    option arch:sse
-    option evex:0
+.xmm
+option arch:sse
+option evex:0
 
-    .data?
+alignstackfieldproc
 
-    .data
+.data?
 
-    .const
+.data
 
-        alignsize_t
-        _m64pshufwjmptable isize_t offset _m64pshufw_0, offset _m64pshufw_1, offset _m64pshufw_2, offset _m64pshufw_3, offset _m64pshufw_4, \
-                                   offset _m64pshufw_5, offset _m64pshufw_6, offset _m64pshufw_7, offset _m64pshufw_8, offset _m64pshufw_9, \
-                                   offset _m64pshufw_10, offset _m64pshufw_11, offset _m64pshufw_12, offset _m64pshufw_13, offset _m64pshufw_14, \
-                                   offset _m64pshufw_15, offset _m64pshufw_16, offset _m64pshufw_17, offset _m64pshufw_18, offset _m64pshufw_19, \
-                                   offset _m64pshufw_20, offset _m64pshufw_21, offset _m64pshufw_22, offset _m64pshufw_23, offset _m64pshufw_24, \
-                                   offset _m64pshufw_25, offset _m64pshufw_26, offset _m64pshufw_27, offset _m64pshufw_28, offset _m64pshufw_29, \
-                                   offset _m64pshufw_30, offset _m64pshufw_31, offset _m64pshufw_32, offset _m64pshufw_33, offset _m64pshufw_34, \
-                                   offset _m64pshufw_35, offset _m64pshufw_36, offset _m64pshufw_37, offset _m64pshufw_38, offset _m64pshufw_39, \
-                                   offset _m64pshufw_40, offset _m64pshufw_41, offset _m64pshufw_42, offset _m64pshufw_43, offset _m64pshufw_44, \
-                                   offset _m64pshufw_45, offset _m64pshufw_46, offset _m64pshufw_47, offset _m64pshufw_48, offset _m64pshufw_49, \
-                                   offset _m64pshufw_50, offset _m64pshufw_51, offset _m64pshufw_52, offset _m64pshufw_53, offset _m64pshufw_54, \
-                                   offset _m64pshufw_55, offset _m64pshufw_56, offset _m64pshufw_57, offset _m64pshufw_58, offset _m64pshufw_59, \
-                                   offset _m64pshufw_60, offset _m64pshufw_61, offset _m64pshufw_62, offset _m64pshufw_63, offset _m64pshufw_64, \
-                                   offset _m64pshufw_65, offset _m64pshufw_66, offset _m64pshufw_67, offset _m64pshufw_68, offset _m64pshufw_69, \
-                                   offset _m64pshufw_70, offset _m64pshufw_71, offset _m64pshufw_72, offset _m64pshufw_73, offset _m64pshufw_74, \
-                                   offset _m64pshufw_75, offset _m64pshufw_76, offset _m64pshufw_77, offset _m64pshufw_78, offset _m64pshufw_79, \
-                                   offset _m64pshufw_80, offset _m64pshufw_81, offset _m64pshufw_82, offset _m64pshufw_83, offset _m64pshufw_84, \
-                                   offset _m64pshufw_85, offset _m64pshufw_86, offset _m64pshufw_87, offset _m64pshufw_88, offset _m64pshufw_89, \
-                                   offset _m64pshufw_90, offset _m64pshufw_91, offset _m64pshufw_92, offset _m64pshufw_93, offset _m64pshufw_94, \
-                                   offset _m64pshufw_95, offset _m64pshufw_96, offset _m64pshufw_97, offset _m64pshufw_98, offset _m64pshufw_99, \
-                                   offset _m64pshufw_100, offset _m64pshufw_101, offset _m64pshufw_102, offset _m64pshufw_103, offset _m64pshufw_104, \
-                                   offset _m64pshufw_105, offset _m64pshufw_106, offset _m64pshufw_107, offset _m64pshufw_108, offset _m64pshufw_109, \
-                                   offset _m64pshufw_110, offset _m64pshufw_111, offset _m64pshufw_112, offset _m64pshufw_113, offset _m64pshufw_114, \
-                                   offset _m64pshufw_115, offset _m64pshufw_116, offset _m64pshufw_117, offset _m64pshufw_118, offset _m64pshufw_119, \
-                                   offset _m64pshufw_120, offset _m64pshufw_121, offset _m64pshufw_122, offset _m64pshufw_123, offset _m64pshufw_124, \
-                                   offset _m64pshufw_125, offset _m64pshufw_126, offset _m64pshufw_127, offset _m64pshufw_128, offset _m64pshufw_129, \
-                                   offset _m64pshufw_130, offset _m64pshufw_131, offset _m64pshufw_132, offset _m64pshufw_133, offset _m64pshufw_134, \
-                                   offset _m64pshufw_135, offset _m64pshufw_136, offset _m64pshufw_137, offset _m64pshufw_138, offset _m64pshufw_139, \
-                                   offset _m64pshufw_140, offset _m64pshufw_141, offset _m64pshufw_142, offset _m64pshufw_143, offset _m64pshufw_144, \
-                                   offset _m64pshufw_145, offset _m64pshufw_146, offset _m64pshufw_147, offset _m64pshufw_148, offset _m64pshufw_149, \
-                                   offset _m64pshufw_150, offset _m64pshufw_151, offset _m64pshufw_152, offset _m64pshufw_153, offset _m64pshufw_154, \
-                                   offset _m64pshufw_155, offset _m64pshufw_156, offset _m64pshufw_157, offset _m64pshufw_158, offset _m64pshufw_159, \
-                                   offset _m64pshufw_160, offset _m64pshufw_161, offset _m64pshufw_162, offset _m64pshufw_163, offset _m64pshufw_164, \
-                                   offset _m64pshufw_165, offset _m64pshufw_166, offset _m64pshufw_167, offset _m64pshufw_168, offset _m64pshufw_169, \
-                                   offset _m64pshufw_170, offset _m64pshufw_171, offset _m64pshufw_172, offset _m64pshufw_173, offset _m64pshufw_174, \
-                                   offset _m64pshufw_175, offset _m64pshufw_176, offset _m64pshufw_177, offset _m64pshufw_178, offset _m64pshufw_179, \
-                                   offset _m64pshufw_180, offset _m64pshufw_181, offset _m64pshufw_182, offset _m64pshufw_183, offset _m64pshufw_184, \
-                                   offset _m64pshufw_185, offset _m64pshufw_186, offset _m64pshufw_187, offset _m64pshufw_188, offset _m64pshufw_189, \
-                                   offset _m64pshufw_190, offset _m64pshufw_191, offset _m64pshufw_192, offset _m64pshufw_193, offset _m64pshufw_194, \
-                                   offset _m64pshufw_195, offset _m64pshufw_196, offset _m64pshufw_197, offset _m64pshufw_198, offset _m64pshufw_199, \
-                                   offset _m64pshufw_200, offset _m64pshufw_201, offset _m64pshufw_202, offset _m64pshufw_203, offset _m64pshufw_204, \
-                                   offset _m64pshufw_205, offset _m64pshufw_206, offset _m64pshufw_207, offset _m64pshufw_208, offset _m64pshufw_209, \
-                                   offset _m64pshufw_210, offset _m64pshufw_211, offset _m64pshufw_212, offset _m64pshufw_213, offset _m64pshufw_214, \
-                                   offset _m64pshufw_215, offset _m64pshufw_216, offset _m64pshufw_217, offset _m64pshufw_218, offset _m64pshufw_219, \
-                                   offset _m64pshufw_220, offset _m64pshufw_221, offset _m64pshufw_222, offset _m64pshufw_223, offset _m64pshufw_224, \
-                                   offset _m64pshufw_225, offset _m64pshufw_226, offset _m64pshufw_227, offset _m64pshufw_228, offset _m64pshufw_229, \
-                                   offset _m64pshufw_230, offset _m64pshufw_231, offset _m64pshufw_232, offset _m64pshufw_233, offset _m64pshufw_234, \
-                                   offset _m64pshufw_235, offset _m64pshufw_236, offset _m64pshufw_237, offset _m64pshufw_238, offset _m64pshufw_239, \
-                                   offset _m64pshufw_240, offset _m64pshufw_241, offset _m64pshufw_242, offset _m64pshufw_243, offset _m64pshufw_244, \
-                                   offset _m64pshufw_245, offset _m64pshufw_246, offset _m64pshufw_247, offset _m64pshufw_248, offset _m64pshufw_249, \
-                                   offset _m64pshufw_250, offset _m64pshufw_251, offset _m64pshufw_252, offset _m64pshufw_253, offset _m64pshufw_254, \
-                                   offset _m64pshufw_255
+.const
 
-    .code
+    _m64pshufwjmptable label size_t
+    isize_t _m64pshufw_0, _m64pshufw_1, _m64pshufw_2, _m64pshufw_3, _m64pshufw_4, _m64pshufw_5, _m64pshufw_6, _m64pshufw_7
+    isize_t _m64pshufw_8, _m64pshufw_9, _m64pshufw_10, _m64pshufw_11, _m64pshufw_12, _m64pshufw_13, _m64pshufw_14, _m64pshufw_15
+    isize_t _m64pshufw_16, _m64pshufw_17, _m64pshufw_18, _m64pshufw_19, _m64pshufw_20, _m64pshufw_21, _m64pshufw_22, _m64pshufw_23
+    isize_t _m64pshufw_24, _m64pshufw_25, _m64pshufw_26, _m64pshufw_27, _m64pshufw_28, _m64pshufw_29, _m64pshufw_30, _m64pshufw_31
+    isize_t _m64pshufw_32, _m64pshufw_33, _m64pshufw_34, _m64pshufw_35, _m64pshufw_36, _m64pshufw_37, _m64pshufw_38, _m64pshufw_39
+    isize_t _m64pshufw_40, _m64pshufw_41, _m64pshufw_42, _m64pshufw_43, _m64pshufw_44, _m64pshufw_45, _m64pshufw_46, _m64pshufw_47
+    isize_t _m64pshufw_48, _m64pshufw_49, _m64pshufw_50, _m64pshufw_51, _m64pshufw_52, _m64pshufw_53, _m64pshufw_54, _m64pshufw_55
+    isize_t _m64pshufw_56, _m64pshufw_57, _m64pshufw_58, _m64pshufw_59, _m64pshufw_60, _m64pshufw_61, _m64pshufw_62, _m64pshufw_63
+    isize_t _m64pshufw_64, _m64pshufw_65, _m64pshufw_66, _m64pshufw_67, _m64pshufw_68, _m64pshufw_69, _m64pshufw_70, _m64pshufw_71
+    isize_t _m64pshufw_72, _m64pshufw_73, _m64pshufw_74, _m64pshufw_75, _m64pshufw_76, _m64pshufw_77, _m64pshufw_78, _m64pshufw_79
+    isize_t _m64pshufw_80, _m64pshufw_81, _m64pshufw_82, _m64pshufw_83, _m64pshufw_84, _m64pshufw_85, _m64pshufw_86, _m64pshufw_87
+    isize_t _m64pshufw_88, _m64pshufw_89, _m64pshufw_90, _m64pshufw_91, _m64pshufw_92, _m64pshufw_93, _m64pshufw_94, _m64pshufw_95
+    isize_t _m64pshufw_96, _m64pshufw_97, _m64pshufw_98, _m64pshufw_99, _m64pshufw_100, _m64pshufw_101, _m64pshufw_102, _m64pshufw_103
+    isize_t _m64pshufw_104, _m64pshufw_105, _m64pshufw_106, _m64pshufw_107, _m64pshufw_108, _m64pshufw_109, _m64pshufw_110, _m64pshufw_111
+    isize_t _m64pshufw_112, _m64pshufw_113, _m64pshufw_114, _m64pshufw_115, _m64pshufw_116, _m64pshufw_117, _m64pshufw_118, _m64pshufw_119
+    isize_t _m64pshufw_120, _m64pshufw_121, _m64pshufw_122, _m64pshufw_123, _m64pshufw_124, _m64pshufw_125, _m64pshufw_126, _m64pshufw_127
+    isize_t _m64pshufw_128, _m64pshufw_129, _m64pshufw_130, _m64pshufw_131, _m64pshufw_132, _m64pshufw_133, _m64pshufw_134, _m64pshufw_135
+    isize_t _m64pshufw_136, _m64pshufw_137, _m64pshufw_138, _m64pshufw_139, _m64pshufw_140, _m64pshufw_141, _m64pshufw_142, _m64pshufw_143
+    isize_t _m64pshufw_144, _m64pshufw_145, _m64pshufw_146, _m64pshufw_147, _m64pshufw_148, _m64pshufw_149, _m64pshufw_150, _m64pshufw_151
+    isize_t _m64pshufw_152, _m64pshufw_153, _m64pshufw_154, _m64pshufw_155, _m64pshufw_156, _m64pshufw_157, _m64pshufw_158, _m64pshufw_159
+    isize_t _m64pshufw_160, _m64pshufw_161, _m64pshufw_162, _m64pshufw_163, _m64pshufw_164, _m64pshufw_165, _m64pshufw_166, _m64pshufw_167
+    isize_t _m64pshufw_168, _m64pshufw_169, _m64pshufw_170, _m64pshufw_171, _m64pshufw_172, _m64pshufw_173, _m64pshufw_174, _m64pshufw_175
+    isize_t _m64pshufw_176, _m64pshufw_177, _m64pshufw_178, _m64pshufw_179, _m64pshufw_180, _m64pshufw_181, _m64pshufw_182, _m64pshufw_183
+    isize_t _m64pshufw_184, _m64pshufw_185, _m64pshufw_186, _m64pshufw_187, _m64pshufw_188, _m64pshufw_189, _m64pshufw_190, _m64pshufw_191
+    isize_t _m64pshufw_192, _m64pshufw_193, _m64pshufw_194, _m64pshufw_195, _m64pshufw_196, _m64pshufw_197, _m64pshufw_198, _m64pshufw_199
+    isize_t _m64pshufw_200, _m64pshufw_201, _m64pshufw_202, _m64pshufw_203, _m64pshufw_204, _m64pshufw_205, _m64pshufw_206, _m64pshufw_207
+    isize_t _m64pshufw_208, _m64pshufw_209, _m64pshufw_210, _m64pshufw_211, _m64pshufw_212, _m64pshufw_213, _m64pshufw_214, _m64pshufw_215
+    isize_t _m64pshufw_216, _m64pshufw_217, _m64pshufw_218, _m64pshufw_219, _m64pshufw_220, _m64pshufw_221, _m64pshufw_222, _m64pshufw_223
+    isize_t _m64pshufw_224, _m64pshufw_225, _m64pshufw_226, _m64pshufw_227, _m64pshufw_228, _m64pshufw_229, _m64pshufw_230, _m64pshufw_231
+    isize_t _m64pshufw_232, _m64pshufw_233, _m64pshufw_234, _m64pshufw_235, _m64pshufw_236, _m64pshufw_237, _m64pshufw_238, _m64pshufw_239
+    isize_t _m64pshufw_240, _m64pshufw_241, _m64pshufw_242, _m64pshufw_243, _m64pshufw_244, _m64pshufw_245, _m64pshufw_246, _m64pshufw_247
+    isize_t _m64pshufw_248, _m64pshufw_249, _m64pshufw_250, _m64pshufw_251, _m64pshufw_252, _m64pshufw_253, _m64pshufw_254, _m64pshufw_255
 
-    callconvopt
-    alignmmfieldproc
+.code
+
+callconvopt
+alignmmfieldproc
 
 procstart _uX_mm_pshufw_0000, callconv, mmword, < >, < >, Inmm_A:mmword
         pshufw          mm0,            mm0,           0
@@ -1376,12 +1358,12 @@ procstart _uX_mm_pshufw_3333, callconv, mmword, < >, < >, Inmm_A:mmword
         ret
 procend
 
-procstart _uX_mm_pshufw, callconv, mmword, < >, < >, Inmm_A:mmword, Inint_Imm:dword
+procstart _uX_mm_pshufw, callconv, mmword, < >, < >, Inmm_A:mmword, Inint_Imm:count_t
         push         rbase()
     ifdef __unix32__
-        define rpdisp, ecx, text
-        define bpdisp, cl, text
-        mov     rpdisp,     Inint_Imm
+        rpdisp textequ <ecx>
+        bpdisp textequ <cl>
+        mov     rpdisp,    Inint_Imm
     else
         define rpdisp, rp1(), text
         define bpdisp, bp1(), text
@@ -2170,4 +2152,4 @@ endif ;__x32__
 
 endif ;__MIC__
 
-    end
+end

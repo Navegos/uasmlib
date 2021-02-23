@@ -261,187 +261,189 @@ uX_PACK_SIZE_T
   62  or above = AVX512BW
   63  or above = AVX512VL
 */
-    extern uX_API const count_t uX_ABI intrinset(void);
+    extern uX_API count_t const uX_ABI intrinset(void);
 
 /* %eax=00H, %ecx */
-    extern uX_API const bool_t uX_ABI is_Intel(void);
-    extern uX_API const bool_t uX_ABI is_AMD(void);
+    extern uX_API bool_t const uX_ABI is_Intel(void);
+    extern uX_API bool_t const uX_ABI is_AMD(void);
 
 /* %eax=01H, %ecx */
-    extern uX_API const bool_t uX_ABI has_SSE3(void);
-    extern uX_API const bool_t uX_ABI has_PCLMULQDQ(void);
-    extern uX_API const bool_t uX_ABI has_MONITOR(void);
-    extern uX_API const bool_t uX_ABI has_SSSE3(void);
-    extern uX_API const bool_t uX_ABI has_FMA(void);
-    extern uX_API const bool_t uX_ABI has_CMPXCHG16B(void);
-    extern uX_API const bool_t uX_ABI has_SSE41(void);
-    extern uX_API const bool_t uX_ABI has_SSE42(void);
-    extern uX_API const bool_t uX_ABI has_MOVBE(void);
-    extern uX_API const bool_t uX_ABI has_POPCNT(void);
-    extern uX_API const bool_t uX_ABI has_AES(void);
-    extern uX_API const bool_t uX_ABI has_XSAVE(void);
-    extern uX_API const bool_t uX_ABI has_OSXSAVE(void);
-    extern uX_API const bool_t uX_ABI has_AVX(void);
-    extern uX_API const bool_t uX_ABI has_F16C(void);
-    extern uX_API const bool_t uX_ABI has_RDRAND(void);
+    extern uX_API bool_t const uX_ABI has_SSE3(void);
+    extern uX_API bool_t const uX_ABI has_PCLMULQDQ(void);
+    extern uX_API bool_t const uX_ABI has_MONITOR(void);
+    extern uX_API bool_t const uX_ABI has_SSSE3(void);
+    extern uX_API bool_t const uX_ABI has_FMA(void);
+    extern uX_API bool_t const uX_ABI has_CMPXCHG16B(void);
+    extern uX_API bool_t const uX_ABI has_SSE41(void);
+    extern uX_API bool_t const uX_ABI has_SSE42(void);
+    extern uX_API bool_t const uX_ABI has_MOVBE(void);
+    extern uX_API bool_t const uX_ABI has_POPCNT(void);
+    extern uX_API bool_t const uX_ABI has_AES(void);
+    extern uX_API bool_t const uX_ABI has_XSAVE(void);
+    extern uX_API bool_t const uX_ABI has_OSXSAVE(void);
+    extern uX_API bool_t const uX_ABI has_AVX(void);
+    extern uX_API bool_t const uX_ABI has_F16C(void);
+    extern uX_API bool_t const uX_ABI has_RDRAND(void);
 
 /* %eax=01H, %edx */
-    extern uX_API const bool_t uX_ABI has_FPU(void);
-    extern uX_API const bool_t uX_ABI has_TSC(void);
-    extern uX_API const bool_t uX_ABI has_MSR(void);
-    extern uX_API const bool_t uX_ABI has_CMPXCHG8B(void);
-    extern uX_API const bool_t uX_ABI has_SEP(void);
-    extern uX_API const bool_t uX_ABI has_CMOV(void);
-    extern uX_API const bool_t uX_ABI has_CLFSH(void);
-    extern uX_API const bool_t uX_ABI has_MMX(void);
-    extern uX_API const bool_t uX_ABI has_FXSR(void);
-    extern uX_API const bool_t uX_ABI has_SSE(void);
-    extern uX_API const bool_t uX_ABI has_SSE2(void);
+    extern uX_API bool_t const uX_ABI has_FPU(void);
+    extern uX_API bool_t const uX_ABI has_TSC(void);
+    extern uX_API bool_t const uX_ABI has_MSR(void);
+    extern uX_API bool_t const uX_ABI has_CMPXCHG8B(void);
+    extern uX_API bool_t const uX_ABI has_SEP(void);
+    extern uX_API bool_t const uX_ABI has_CMOV(void);
+    extern uX_API bool_t const uX_ABI has_CLFSH(void);
+    extern uX_API bool_t const uX_ABI has_MMX(void);
+    extern uX_API bool_t const uX_ABI has_FXSR(void);
+    extern uX_API bool_t const uX_ABI has_SSE(void);
+    extern uX_API bool_t const uX_ABI has_SSE2(void);
 
 /* %eax=07H, %ebx */
-    extern uX_API const bool_t uX_ABI has_FSGSBASE(void);
-    extern uX_API const bool_t uX_ABI has_SGX(void);
-    extern uX_API const bool_t uX_ABI has_BMI1(void);
-    extern uX_API const bool_t uX_ABI has_HLE(void);
-    extern uX_API const bool_t uX_ABI has_AVX2(void);
-    extern uX_API const bool_t uX_ABI has_SMEP(void);
-    extern uX_API const bool_t uX_ABI has_BMI2(void);
-    extern uX_API const bool_t uX_ABI has_ERMS(void);
-    extern uX_API const bool_t uX_ABI has_INVPCID(void);
-    extern uX_API const bool_t uX_ABI has_RTM(void);
-    extern uX_API const bool_t uX_ABI has_MPX(void);
-    extern uX_API const bool_t uX_ABI has_AVX512F(void);
-    extern uX_API const bool_t uX_ABI has_AVX512DQ(void);
-    extern uX_API const bool_t uX_ABI has_RDSEED(void);
-    extern uX_API const bool_t uX_ABI has_ADX(void);
-    extern uX_API const bool_t uX_ABI has_SMAP(void);
-    extern uX_API const bool_t uX_ABI has_AVX512_IFMA(void);
-    extern uX_API const bool_t uX_ABI has_CLFLUSHOPT(void);
-    extern uX_API const bool_t uX_ABI has_CLWB(void);
-    extern uX_API const bool_t uX_ABI has_AVX512PF(void);
-    extern uX_API const bool_t uX_ABI has_AVX512ER(void);
-    extern uX_API const bool_t uX_ABI has_AVX512CD(void);
-    extern uX_API const bool_t uX_ABI has_SHA(void);
-    extern uX_API const bool_t uX_ABI has_AVX512BW(void);
-    extern uX_API const bool_t uX_ABI has_AVX512VL(void);
+    extern uX_API bool_t const uX_ABI has_FSGSBASE(void);
+    extern uX_API bool_t const uX_ABI has_SGX(void);
+    extern uX_API bool_t const uX_ABI has_BMI1(void);
+    extern uX_API bool_t const uX_ABI has_HLE(void);
+    extern uX_API bool_t const uX_ABI has_AVX2(void);
+    extern uX_API bool_t const uX_ABI has_SMEP(void);
+    extern uX_API bool_t const uX_ABI has_BMI2(void);
+    extern uX_API bool_t const uX_ABI has_ERMS(void);
+    extern uX_API bool_t const uX_ABI has_INVPCID(void);
+    extern uX_API bool_t const uX_ABI has_RTM(void);
+    extern uX_API bool_t const uX_ABI has_MPX(void);
+    extern uX_API bool_t const uX_ABI has_AVX512F(void);
+    extern uX_API bool_t const uX_ABI has_AVX512DQ(void);
+    extern uX_API bool_t const uX_ABI has_RDSEED(void);
+    extern uX_API bool_t const uX_ABI has_ADX(void);
+    extern uX_API bool_t const uX_ABI has_SMAP(void);
+    extern uX_API bool_t const uX_ABI has_AVX512_IFMA(void);
+    extern uX_API bool_t const uX_ABI has_CLFLUSHOPT(void);
+    extern uX_API bool_t const uX_ABI has_CLWB(void);
+    extern uX_API bool_t const uX_ABI has_AVX512PF(void);
+    extern uX_API bool_t const uX_ABI has_AVX512ER(void);
+    extern uX_API bool_t const uX_ABI has_AVX512CD(void);
+    extern uX_API bool_t const uX_ABI has_SHA(void);
+    extern uX_API bool_t const uX_ABI has_AVX512BW(void);
+    extern uX_API bool_t const uX_ABI has_AVX512VL(void);
 
 /* %eax=07H, %ecx */
-    extern uX_API const bool_t uX_ABI has_PREFETCHWT1(void);
-    extern uX_API const bool_t uX_ABI has_AVX512_VBMI(void);
-    extern uX_API const bool_t uX_ABI has_UMIP(void);
-    extern uX_API const bool_t uX_ABI has_PKU(void);
-    extern uX_API const bool_t uX_ABI has_OSPKE(void);
-    extern uX_API const bool_t uX_ABI has_AVX512_VBMI2(void);
-    extern uX_API const bool_t uX_ABI has_GFNI(void);
-    extern uX_API const bool_t uX_ABI has_VAES(void);
-    extern uX_API const bool_t uX_ABI has_VPCLMULQDQ(void);
-    extern uX_API const bool_t uX_ABI has_AVX512_VNNI(void);
-    extern uX_API const bool_t uX_ABI has_AVX512_BITALG(void);
-    extern uX_API const bool_t uX_ABI has_AVX512_VPOPCNTDQ(void);
-    extern uX_API const bool_t uX_ABI has_RDPID(void);
+    extern uX_API bool_t const uX_ABI has_PREFETCHWT1(void);
+    extern uX_API bool_t const uX_ABI has_AVX512_VBMI(void);
+    extern uX_API bool_t const uX_ABI has_UMIP(void);
+    extern uX_API bool_t const uX_ABI has_PKU(void);
+    extern uX_API bool_t const uX_ABI has_OSPKE(void);
+    extern uX_API bool_t const uX_ABI has_AVX512_VBMI2(void);
+    extern uX_API bool_t const uX_ABI has_GFNI(void);
+    extern uX_API bool_t const uX_ABI has_VAES(void);
+    extern uX_API bool_t const uX_ABI has_VPCLMULQDQ(void);
+    extern uX_API bool_t const uX_ABI has_AVX512_VNNI(void);
+    extern uX_API bool_t const uX_ABI has_AVX512_BITALG(void);
+    extern uX_API bool_t const uX_ABI has_AVX512_VPOPCNTDQ(void);
+    extern uX_API bool_t const uX_ABI has_RDPID(void);
 
 /* %eax=07H, %edx */
-    extern uX_API const bool_t uX_ABI has_AVX512_4VNNIW(void);
-    extern uX_API const bool_t uX_ABI has_AVX512_4FMAPS(void);
+    extern uX_API bool_t const uX_ABI has_AVX512_4VNNIW(void);
+    extern uX_API bool_t const uX_ABI has_AVX512_4FMAPS(void);
 
 /* %eax=80000001H, %ecx */
-    extern uX_API const bool_t uX_ABI has_LAHF(void);
-    extern uX_API const bool_t uX_ABI has_LZCNT(void);
-    extern uX_API const bool_t uX_ABI has_ABM(void);
-    extern uX_API const bool_t uX_ABI has_SSE4a(void);
-    extern uX_API const bool_t uX_ABI has_PREFETCHW(void);
-    extern uX_API const bool_t uX_ABI has_XOP(void);
-    extern uX_API const bool_t uX_ABI has_LWP(void);
-    extern uX_API const bool_t uX_ABI has_FMA4(void);
-    extern uX_API const bool_t uX_ABI has_TBM(void);
-    extern uX_API const bool_t uX_ABI has_MWAITX(void);
+    extern uX_API bool_t const uX_ABI has_LAHF(void);
+    extern uX_API bool_t const uX_ABI has_LZCNT(void);
+    extern uX_API bool_t const uX_ABI has_ABM(void);
+    extern uX_API bool_t const uX_ABI has_SSE4a(void);
+    extern uX_API bool_t const uX_ABI has_PREFETCHW(void);
+    extern uX_API bool_t const uX_ABI has_XOP(void);
+    extern uX_API bool_t const uX_ABI has_LWP(void);
+    extern uX_API bool_t const uX_ABI has_FMA4(void);
+    extern uX_API bool_t const uX_ABI has_TBM(void);
+    extern uX_API bool_t const uX_ABI has_MWAITX(void);
 
 /* %eax=80000001H, %edx */
-    extern uX_API const bool_t uX_ABI has_SYSCALL(void);
-    extern uX_API const bool_t uX_ABI has_MMXEXT(void);
-    extern uX_API const bool_t uX_ABI has_RDTSCP(void);
-    extern uX_API const bool_t uX_ABI has_3DNOWEXT(void);
-    extern uX_API const bool_t uX_ABI has_3DNOW(void);
+    extern uX_API bool_t const uX_ABI has_SYSCALL(void);
+    extern uX_API bool_t const uX_ABI has_MMXEXT(void);
+    extern uX_API bool_t const uX_ABI has_RDTSCP(void);
+    extern uX_API bool_t const uX_ABI has_3DNOWEXT(void);
+    extern uX_API bool_t const uX_ABI has_3DNOW(void);
 
 /* %eax=07H, %ebx, %ecx */
-    extern uX_API const bool_t uX_ABI has_AVX512_GFNI(void);
-    extern uX_API const bool_t uX_ABI has_AVX512_GFNI_VL(void);
-    extern uX_API const bool_t uX_ABI has_AVX512_VAES(void);
-    extern uX_API const bool_t uX_ABI has_AVX512_VAES_VL(void);
-    extern uX_API const bool_t uX_ABI has_AVX512_VPCLMULQDQ(void);
-    extern uX_API const bool_t uX_ABI has_AVX512_VPCLMULQDQ_VL(void);
+    extern uX_API bool_t const uX_ABI has_AVX512_GFNI(void);
+    extern uX_API bool_t const uX_ABI has_AVX512_GFNI_VL(void);
+    extern uX_API bool_t const uX_ABI has_AVX512_VAES(void);
+    extern uX_API bool_t const uX_ABI has_AVX512_VAES_VL(void);
+    extern uX_API bool_t const uX_ABI has_AVX512_VPCLMULQDQ(void);
+    extern uX_API bool_t const uX_ABI has_AVX512_VPCLMULQDQ_VL(void);
 
-    extern uX_API const bool_t uX_ABI has_AVX512_IFMA_VL(void);
-    extern uX_API const bool_t uX_ABI has_AVX512_VBMI_VL(void);
-    extern uX_API const bool_t uX_ABI has_AVX512_VBMI2_VL(void);
-    extern uX_API const bool_t uX_ABI has_AVX512_VNNI_VL(void);
-    extern uX_API const bool_t uX_ABI has_AVX512_BITALG_VL(void);
-    extern uX_API const bool_t uX_ABI has_AVX512_VPOPCNTDQ_VL(void);
+    extern uX_API bool_t const uX_ABI has_AVX512_IFMA_VL(void);
+    extern uX_API bool_t const uX_ABI has_AVX512_VBMI_VL(void);
+    extern uX_API bool_t const uX_ABI has_AVX512_VBMI2_VL(void);
+    extern uX_API bool_t const uX_ABI has_AVX512_VNNI_VL(void);
+    extern uX_API bool_t const uX_ABI has_AVX512_BITALG_VL(void);
+    extern uX_API bool_t const uX_ABI has_AVX512_VPOPCNTDQ_VL(void);
 
-    extern uX_API const bool_t uX_ABI has_AVX512BW_GFNI(void);
-    extern uX_API const bool_t uX_ABI has_AVX512BW_GFNI_VL(void);
-    extern uX_API const bool_t uX_ABI has_AVX512BW_VAES(void);
-    extern uX_API const bool_t uX_ABI has_AVX512BW_VAES_VL(void);
-    extern uX_API const bool_t uX_ABI has_AVX512BW_VPCLMULQDQ(void);
-    extern uX_API const bool_t uX_ABI has_AVX512BW_VPCLMULQDQ_VL(void);
-    extern uX_API const bool_t uX_ABI has_AVX512BW_VL(void);
+    extern uX_API bool_t const uX_ABI has_AVX512BW_GFNI(void);
+    extern uX_API bool_t const uX_ABI has_AVX512BW_GFNI_VL(void);
+    extern uX_API bool_t const uX_ABI has_AVX512BW_VAES(void);
+    extern uX_API bool_t const uX_ABI has_AVX512BW_VAES_VL(void);
+    extern uX_API bool_t const uX_ABI has_AVX512BW_VPCLMULQDQ(void);
+    extern uX_API bool_t const uX_ABI has_AVX512BW_VPCLMULQDQ_VL(void);
+    extern uX_API bool_t const uX_ABI has_AVX512BW_VL(void);
 
-    extern uX_API const bool_t uX_ABI has_AVX512DQ_GFNI(void);
-    extern uX_API const bool_t uX_ABI has_AVX512DQ_GFNI_VL(void);
-    extern uX_API const bool_t uX_ABI has_AVX512DQ_VAES(void);
-    extern uX_API const bool_t uX_ABI has_AVX512DQ_VAES_VL(void);
-    extern uX_API const bool_t uX_ABI has_AVX512DQ_VPCLMULQDQ(void);
-    extern uX_API const bool_t uX_ABI has_AVX512DQ_VPCLMULQDQ_VL(void);
-    extern uX_API const bool_t uX_ABI has_AVX512DQ_VL(void);
+    extern uX_API bool_t const uX_ABI has_AVX512DQ_GFNI(void);
+    extern uX_API bool_t const uX_ABI has_AVX512DQ_GFNI_VL(void);
+    extern uX_API bool_t const uX_ABI has_AVX512DQ_VAES(void);
+    extern uX_API bool_t const uX_ABI has_AVX512DQ_VAES_VL(void);
+    extern uX_API bool_t const uX_ABI has_AVX512DQ_VPCLMULQDQ(void);
+    extern uX_API bool_t const uX_ABI has_AVX512DQ_VPCLMULQDQ_VL(void);
+    extern uX_API bool_t const uX_ABI has_AVX512DQ_VL(void);
 
-    extern uX_API const bool_t uX_ABI has_AVX512CD_VL(void);
+    extern uX_API bool_t const uX_ABI has_AVX512CD_VL(void);
 
 /* %eax=07H, %ecx, %ebx | %eax=01H, %ecx , %edx */
-    extern uX_API const bool_t uX_ABI has_SSE_AES(void);
-    extern uX_API const bool_t uX_ABI has_SSE_GFNI(void);
-    extern uX_API const bool_t uX_ABI has_SSE_PCLMULQDQ(void);
-    extern uX_API const bool_t uX_ABI has_SSE2_AES(void);
-    extern uX_API const bool_t uX_ABI has_SSE2_GFNI(void);
-    extern uX_API const bool_t uX_ABI has_SSE2_PCLMULQDQ(void);
-    extern uX_API const bool_t uX_ABI has_SSE3_AES(void);
-    extern uX_API const bool_t uX_ABI has_SSE3_GFNI(void);
-    extern uX_API const bool_t uX_ABI has_SSE3_PCLMULQDQ(void);
-    extern uX_API const bool_t uX_ABI has_SSSE3_AES(void);
-    extern uX_API const bool_t uX_ABI has_SSSE3_GFNI(void);
-    extern uX_API const bool_t uX_ABI has_SSSE3_PCLMULQDQ(void);
-    extern uX_API const bool_t uX_ABI has_SSE41_AES(void);
-    extern uX_API const bool_t uX_ABI has_SSE41_GFNI(void);
-    extern uX_API const bool_t uX_ABI has_SSE41_PCLMULQDQ(void);
-    extern uX_API const bool_t uX_ABI has_SSE42_AES(void);
-    extern uX_API const bool_t uX_ABI has_SSE42_GFNI(void);
-    extern uX_API const bool_t uX_ABI has_SSE42_PCLMULQDQ(void);
-    extern uX_API const bool_t uX_ABI has_AVX_AES(void);
-    extern uX_API const bool_t uX_ABI has_AVX_GFNI(void);
-    extern uX_API const bool_t uX_ABI has_AVX_PCLMULQDQ(void);
-    extern uX_API const bool_t uX_ABI has_AVX_VAES(void);
-    extern uX_API const bool_t uX_ABI has_AVX_VPCLMULQDQ(void);
-    extern uX_API const bool_t uX_ABI has_AVX2_AES(void);
-    extern uX_API const bool_t uX_ABI has_AVX2_GFNI(void);
-    extern uX_API const bool_t uX_ABI has_AVX2_PCLMULQDQ(void);
-    extern uX_API const bool_t uX_ABI has_AVX2_VAES(void);
-    extern uX_API const bool_t uX_ABI has_AVX2_VPCLMULQDQ(void);
+    extern uX_API bool_t const uX_ABI has_SSE_AES(void);
+    extern uX_API bool_t const uX_ABI has_SSE_GFNI(void);
+    extern uX_API bool_t const uX_ABI has_SSE_PCLMULQDQ(void);
+    extern uX_API bool_t const uX_ABI has_SSE2_AES(void);
+    extern uX_API bool_t const uX_ABI has_SSE2_GFNI(void);
+    extern uX_API bool_t const uX_ABI has_SSE2_PCLMULQDQ(void);
+    extern uX_API bool_t const uX_ABI has_SSE3_AES(void);
+    extern uX_API bool_t const uX_ABI has_SSE3_GFNI(void);
+    extern uX_API bool_t const uX_ABI has_SSE3_PCLMULQDQ(void);
+    extern uX_API bool_t const uX_ABI has_SSSE3_AES(void);
+    extern uX_API bool_t const uX_ABI has_SSSE3_GFNI(void);
+    extern uX_API bool_t const uX_ABI has_SSSE3_PCLMULQDQ(void);
+    extern uX_API bool_t const uX_ABI has_SSE41_AES(void);
+    extern uX_API bool_t const uX_ABI has_SSE41_GFNI(void);
+    extern uX_API bool_t const uX_ABI has_SSE41_PCLMULQDQ(void);
+    extern uX_API bool_t const uX_ABI has_SSE42_AES(void);
+    extern uX_API bool_t const uX_ABI has_SSE42_GFNI(void);
+    extern uX_API bool_t const uX_ABI has_SSE42_PCLMULQDQ(void);
+    extern uX_API bool_t const uX_ABI has_AVX_AES(void);
+    extern uX_API bool_t const uX_ABI has_AVX_GFNI(void);
+    extern uX_API bool_t const uX_ABI has_AVX_PCLMULQDQ(void);
+    extern uX_API bool_t const uX_ABI has_AVX_VAES(void);
+    extern uX_API bool_t const uX_ABI has_AVX_VPCLMULQDQ(void);
+    extern uX_API bool_t const uX_ABI has_AVX2_AES(void);
+    extern uX_API bool_t const uX_ABI has_AVX2_GFNI(void);
+    extern uX_API bool_t const uX_ABI has_AVX2_PCLMULQDQ(void);
+    extern uX_API bool_t const uX_ABI has_AVX2_VAES(void);
+    extern uX_API bool_t const uX_ABI has_AVX2_VPCLMULQDQ(void);
 
-    extern uX_API const bool_t uX_ABI has_enabled_XMM(void);
-    extern uX_API const bool_t uX_ABI has_enabled_YMM(void);
-    extern uX_API const bool_t uX_ABI has_enabled_ZMM(void);
+    extern uX_API bool_t const uX_ABI has_enabled_XMM(void);
+    extern uX_API bool_t const uX_ABI has_enabled_YMM(void);
+    extern uX_API bool_t const uX_ABI has_enabled_ZMM(void);
 
 /* Check if CPUFeatures is initiated */
-    extern uX_API const bool_t uX_ABI CPUFeatures_is_inited(void);
+    extern uX_API bool_t const uX_ABI CPUFeatures_is_inited(void);
 
 /* Extra info functions*/
 
 uX_PACK_STACK
 
-    extern uX_API const void uX_ABI CpuType(int* vendor, int* family, int* model);
+    extern uX_API void const uX_ABI CpuType(int* vendor, int* family, int* model);
 
-    extern uX_API const char* uX_ABI ProcessorName(void);
+    extern uX_API char const* const uX_ABI ProcessorName(void);
 
-    extern uX_API const size_t uX_ABI DataCacheSize(int level);
+uX_PACK_SIZE_T
+
+    extern uX_API size_t const uX_ABI DataCacheSize(int level);
 
 uX_PACK_POP
 uX_EXTERNCC_END

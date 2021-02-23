@@ -41,7 +41,7 @@ namespace_internal
 uX_PACK_PUSH_STACK
 
 EXTERN_CC_BEGIN
-void uX_ABI printString(const char* str)
+void uX_ABI printString(char const* const str)
 {
 #if uX_ANDROID
     __android_log_print(ANDROID_LOG_INFO, "PrintString", "%s", str);
@@ -54,7 +54,7 @@ void uX_ABI printString(const char* str)
 #endif
 }
 
-void uX_ABI asserthandler(const char* Msg, const char* Expr, const char* File, int Line, bool& Ignore)
+void uX_ABI asserthandler(char const* const Msg, char const* const Expr, char const* const File, int Line, bool& Ignore)
 {
     uX_UNUSED(Ignore); // is used only in debug windows config
     char buffer[1024];
@@ -95,7 +95,7 @@ EXTERN_CC_END
 EXTERN_CC_BEGIN
 class DefaultAssertHandler : public AssertHandler
 {
-    virtual void operator()(const char* Msg, const char* Expr, const char* File, int Line, bool& Ignore)
+    virtual void operator()(char const* const Msg, char const* const Expr, char const* const File, int Line, bool& Ignore)
     {
         asserthandler(Msg, Expr, File, Line, Ignore);
         /*uX_UNUSED(Ignore); // is used only in debug windows config
@@ -125,7 +125,7 @@ class DefaultAssertHandler : public AssertHandler
 #endif*/
     }
 
-    virtual void operator()(const char* Msg, const char* Expr, const char* File, int Line)
+    virtual void operator()(char const* const Msg, char const* const Expr, char const* const File, int Line)
     {
         char buffer[1024];
 #if (defined(uX_WINDOWS_FAMILY) && (uX_WINDOWS_FAMILY >= 1))
@@ -151,7 +151,7 @@ namespace
 {
 class DefaultAssertHandler : public uX::AssertHandler
 {
-    virtual void operator()(const char* Msg, const char* Expr, const char* File, int Line, bool& Ignore)
+    virtual void operator()(char const* const Msg, char const* const Expr, char const* const File, int Line, bool& Ignore)
     {
         uX::_internal::asserthandler(Msg, Expr, File, Line, Ignore);
         / *uX_UNUSED(Ignore); // is used only in debug windows config
@@ -181,7 +181,7 @@ class DefaultAssertHandler : public uX::AssertHandler
 #endif* /
     }
 
-    virtual void operator()(const char* Msg, const char* Expr, const char* File, int Line)
+    virtual void operator()(char const* const Msg, char const* const Expr, char const* const File, int Line)
     {
         char buffer[1024];
 #if (defined(uX_WINDOWS_FAMILY) && (uX_WINDOWS_FAMILY >= 1))

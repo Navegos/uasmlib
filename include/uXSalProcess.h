@@ -26,7 +26,9 @@
 #ifndef uX_SAL_PROCESS_H
 #define uX_SAL_PROCESS_H 1
 
+#ifndef uX_PREPROCESSOR_H
 #include "uXpreprocessor.h"
+#endif  /* uX_PREPROCESSOR_H */
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1700)
 #include <sal.h>

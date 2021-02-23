@@ -26,7 +26,9 @@
 #ifndef uX_CONSTANTS_H
 #define uX_CONSTANTS_H 1
 
+#ifndef uX_TYPES_H
 #include "uXtypes.h"
+#endif  /* uX_TYPES_H */
 
 /* / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / */
 /*                   start of head macro constants                     */
@@ -3991,7 +3993,9 @@
   uX_NMGLOBAL_CONST uX_NMALIGN8(double uXrealna_##Name)  = ( Val );
 #endif
 
+#ifndef uX_MISC_H
 #include "uXmisc.h"
+#endif  /* uX_MISC_H */
 
 /* / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / */
 /*                         uX_FLT_ constants                           */

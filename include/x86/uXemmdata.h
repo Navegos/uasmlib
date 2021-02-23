@@ -219,7 +219,10 @@ uX_PACK_PUSH_XMM
     extern const __m128i __m128i_i64_0e_neg1; //             __m128q, i64_neg1, i64_false
 
     //;;float mask;;
-    
+
+    extern const __m128i __m128i_flt_bigoverflow; //        __m128i, 0x2000000
+    extern const __m128i __m128i_flt_bytevtbl; //           __m128i, 0x3f802000
+
     extern const __m128i __m128i_flt_1lshl3; //         __m128i; // flt_1lshl3_msk
     extern const __m128i __m128i_flt_1lshl4; //         __m128i; // flt_1lshl4_msk
     extern const __m128i __m128i_flt_1lshl7; //         __m128i; // flt_1lshl7_msk
@@ -398,7 +401,10 @@ uX_PACK_PUSH_XMM
         
 
     //;;float mask low;;
-    
+
+    extern const __m128i __m128i_flt_0e_bigoverflow; //        __m128i, 0x2000000, flt_false_msk, flt_false_msk, flt_false_msk
+    extern const __m128i __m128i_flt_0e_bytevtbl; //           __m128i, 0x3f802000, flt_false_msk, flt_false_msk, flt_false_msk
+
     extern const __m128i __m128i_flt_0e_1lshl3; //              __m128i; // flt_1lshl3_msk; // flt_false_msk; // flt_false_msk; // flt_false_msk
     extern const __m128i __m128i_flt_0e_1lshl4; //              __m128i; // flt_1lshl4_msk; // flt_false_msk; // flt_false_msk; // flt_false_msk
     extern const __m128i __m128i_flt_0e_1lshl7; //              __m128i; // flt_1lshl7_msk; // flt_false_msk; // flt_false_msk; // flt_false_msk
@@ -1266,6 +1272,26 @@ namespace_uX_end
 
     //;; double;;
 
+    //;;             sincos template, double precision
+    extern const __m128d __m128d_P0sin; //          __m128d, (-1.66666666666666307295e-01)
+    extern const __m128d __m128d_P1sin; //          __m128d, (8.33333333332211858878e-03)
+    extern const __m128d __m128d_P2sin; //          __m128d, (-1.98412698295895385996e-04)
+    extern const __m128d __m128d_P3sin; //          __m128d, (2.75573136213857245213e-06)
+    extern const __m128d __m128d_P4sin; //          __m128d, (-2.50507477628578072866e-08)
+    extern const __m128d __m128d_P5sin; //          __m128d, (1.58962301576546568060e-010)
+
+    extern const __m128d __m128d_P0cos; //          __m128d, (4.16666666666665929218e-02)
+    extern const __m128d __m128d_P1cos; //          __m128d, (-1.38888888888730564116e-03)
+    extern const __m128d __m128d_P2cos; //          __m128d, (2.48015872888517045348e-05)
+    extern const __m128d __m128d_P3cos; //          __m128d, (-2.75573141792967388112e-07)
+    extern const __m128d __m128d_P4cos; //          __m128d, (2.08757008419747316778e-09)
+    extern const __m128d __m128d_P5cos; //          __m128d, (-1.13585365213876817300e-011)
+
+    extern const __m128d __m128d_DP1; //          __m128d, 1.570796310901641845703125
+    extern const __m128d __m128d_DP2; //          __m128d, 0.00000001589325471229585673428
+    extern const __m128d __m128d_DP3; //          __m128d, (6.12323399573676588614e-017)
+    //;;             sincos template, double precision
+
     extern const __m128d __m128d_1lshl3; //             __m128d; // dbl_1lshl3
     extern const __m128d __m128d_1lshl4; //             __m128d; // dbl_1lshl4
     extern const __m128d __m128d_1lshl7; //             __m128d; // dbl_1lshl7
@@ -2084,64 +2110,64 @@ namespace_uX_end
     extern const __m128d __m128d_kmphtomepm; //             __m128d; // dbl_kmphtomepm
     extern const __m128d __m128d_kmphtomilesph; //      __m128d; // dbl_kmphtomilesph
     extern const __m128d __m128d_kmphtomilesps; //      __m128d; // dbl_kmphtomilesps
-    extern const __m128d __m128d_kmphtofootps; //           __m128d; // dbl_kmphtofootps
-    extern const __m128d __m128d_kmphtofootpm; //           __m128d; // dbl_kmphtofootpm
+    extern const __m128d __m128d_kmphtofeetps; //           __m128d; // dbl_kmphtofeetps
+    extern const __m128d __m128d_kmphtofeetpm; //           __m128d; // dbl_kmphtofeetpm
 
     extern const __m128d __m128d_kmpstomeps; //             __m128d; // dbl_kmpstomeps
     extern const __m128d __m128d_kmpstokmph; //             __m128d; // dbl_kmpstokmph
     extern const __m128d __m128d_kmpstomepm; //             __m128d; // dbl_kmpstomepm
     extern const __m128d __m128d_kmpstomilesph; //      __m128d; // dbl_kmpstomilesph
     extern const __m128d __m128d_kmpstomilesps; //      __m128d; // dbl_kmpstomilesps
-    extern const __m128d __m128d_kmpstofootps; //           __m128d; // dbl_kmpstofootps
-    extern const __m128d __m128d_kmpstofootpm; //           __m128d; // dbl_kmpstofootpm
+    extern const __m128d __m128d_kmpstofeetps; //           __m128d; // dbl_kmpstofeetps
+    extern const __m128d __m128d_kmpstofeetpm; //           __m128d; // dbl_kmpstofeetpm
 
     extern const __m128d __m128d_mepstokmph; //             __m128d; // dbl_mepstokmph
     extern const __m128d __m128d_mepstokmps; //             __m128d; // dbl_mepstokmps
     extern const __m128d __m128d_mepstomepm; //             __m128d; // dbl_mepstomepm
     extern const __m128d __m128d_mepstomilesph; //      __m128d; // dbl_mepstomilesph
     extern const __m128d __m128d_mepstomilesps; //      __m128d; // dbl_mepstomilesps
-    extern const __m128d __m128d_mepstofootps; //           __m128d; // dbl_mepstofootps
-    extern const __m128d __m128d_mepstofootpm; //           __m128d; // dbl_mepstofootpm
+    extern const __m128d __m128d_mepstofeetps; //           __m128d; // dbl_mepstofeetps
+    extern const __m128d __m128d_mepstofeetpm; //           __m128d; // dbl_mepstofeetpm
 
     extern const __m128d __m128d_mepmtokmph; //             __m128d; // dbl_mepmtokmph
     extern const __m128d __m128d_mepmtokmps; //             __m128d; // dbl_mepmtokmps
     extern const __m128d __m128d_mepmtomeps; //             __m128d; // dbl_mepmtomeps
     extern const __m128d __m128d_mepmtomilesph; //      __m128d; // dbl_mepmtomilesph
     extern const __m128d __m128d_mepmtomilesps; //      __m128d; // dbl_mepmtomilesps
-    extern const __m128d __m128d_mepmtofootps; //           __m128d; // dbl_mepmtofootps
-    extern const __m128d __m128d_mepmtofootpm; //           __m128d; // dbl_mepmtofootpm
+    extern const __m128d __m128d_mepmtofeetps; //           __m128d; // dbl_mepmtofeetps
+    extern const __m128d __m128d_mepmtofeetpm; //           __m128d; // dbl_mepmtofeetpm
 
     extern const __m128d __m128d_milesphtokmph; //      __m128d; // dbl_milesphtokmph
     extern const __m128d __m128d_milesphtokmps; //      __m128d; // dbl_milesphtokmps
     extern const __m128d __m128d_milesphtomeps; //      __m128d; // dbl_milesphtomeps
     extern const __m128d __m128d_milesphtomepm; //      __m128d; // dbl_milesphtomepm
     extern const __m128d __m128d_milesphtomilesps; //       __m128d; // dbl_milesphtomilesps
-    extern const __m128d __m128d_milesphtofootps; //        __m128d; // dbl_milesphtofootps
-    extern const __m128d __m128d_milesphtofootpm; //        __m128d; // dbl_milesphtofootpm
+    extern const __m128d __m128d_milesphtofeetps; //        __m128d; // dbl_milesphtofeetps
+    extern const __m128d __m128d_milesphtofeetpm; //        __m128d; // dbl_milesphtofeetpm
 
     extern const __m128d __m128d_milespstokmph; //      __m128d; // dbl_milespstokmph
     extern const __m128d __m128d_milespstokmps; //      __m128d; // dbl_milespstokmps
     extern const __m128d __m128d_milespstomeps; //      __m128d; // dbl_milespstomeps
     extern const __m128d __m128d_milespstomepm; //      __m128d; // dbl_milespstomepm
     extern const __m128d __m128d_milespstomilespm; //       __m128d; // dbl_milespstomilespm
-    extern const __m128d __m128d_milespstofootps; //        __m128d; // dbl_milespstofootps
-    extern const __m128d __m128d_milespstofootpm; //        __m128d; // dbl_milespstofootpm
+    extern const __m128d __m128d_milespstofeetps; //        __m128d; // dbl_milespstofeetps
+    extern const __m128d __m128d_milespstofeetpm; //        __m128d; // dbl_milespstofeetpm
 
-    extern const __m128d __m128d_footpstokmph; //           __m128d; // dbl_footpstokmph
-    extern const __m128d __m128d_footpstokmps; //           __m128d; // dbl_footpstokmps
-    extern const __m128d __m128d_footpstomeps; //           __m128d; // dbl_footpstomeps
-    extern const __m128d __m128d_footpstomepm; //           __m128d; // dbl_footpstomepm
-    extern const __m128d __m128d_footpstomilesph; //        __m128d; // dbl_footpstomilesph
-    extern const __m128d __m128d_footpstomilesps; //        __m128d; // dbl_footpstomilesps
-    extern const __m128d __m128d_footpstofootpm; //         __m128d; // dbl_footpstofootpm
+    extern const __m128d __m128d_feetpstokmph; //           __m128d; // dbl_feetpstokmph
+    extern const __m128d __m128d_feetpstokmps; //           __m128d; // dbl_feetpstokmps
+    extern const __m128d __m128d_feetpstomeps; //           __m128d; // dbl_feetpstomeps
+    extern const __m128d __m128d_feetpstomepm; //           __m128d; // dbl_feetpstomepm
+    extern const __m128d __m128d_feetpstomilesph; //        __m128d; // dbl_feetpstomilesph
+    extern const __m128d __m128d_feetpstomilesps; //        __m128d; // dbl_feetpstomilesps
+    extern const __m128d __m128d_feetpstofeetpm; //         __m128d; // dbl_feetpstofeetpm
 
-    extern const __m128d __m128d_footpmtokmph; //           __m128d; // dbl_footpmtokmph
-    extern const __m128d __m128d_footpmtokmps; //           __m128d; // dbl_footpmtokmps
-    extern const __m128d __m128d_footpmtomeps; //           __m128d; // dbl_footpmtomeps
-    extern const __m128d __m128d_footpmtomepm; //           __m128d; // dbl_footpmtomepm
-    extern const __m128d __m128d_footpmtomilesph; //        __m128d; // dbl_footpmtomilesph
-    extern const __m128d __m128d_footpmtomilesps; //        __m128d; // dbl_footpmtomilesps
-    extern const __m128d __m128d_footpmtofootps; //         __m128d; // dbl_footpmtofootps
+    extern const __m128d __m128d_feetpmtokmph; //           __m128d; // dbl_feetpmtokmph
+    extern const __m128d __m128d_feetpmtokmps; //           __m128d; // dbl_feetpmtokmps
+    extern const __m128d __m128d_feetpmtomeps; //           __m128d; // dbl_feetpmtomeps
+    extern const __m128d __m128d_feetpmtomepm; //           __m128d; // dbl_feetpmtomepm
+    extern const __m128d __m128d_feetpmtomilesph; //        __m128d; // dbl_feetpmtomilesph
+    extern const __m128d __m128d_feetpmtomilesps; //        __m128d; // dbl_feetpmtomilesps
+    extern const __m128d __m128d_feetpmtofeetps; //         __m128d; // dbl_feetpmtofeetps
 
     extern const __m128d __m128d_soundspeedp50c; //         __m128d; // dbl_soundspeedp50c
     extern const __m128d __m128d_soundspeedp45c; //         __m128d; // dbl_soundspeedp45c
@@ -2185,6 +2211,26 @@ namespace_uX_end
     extern const __m128d __m128d_logest7; //                __m128d; // dbl_logest7
 
     //;; double low;;
+
+    //;;             sincos template, double precision
+    extern const __m128d __m128d_0e_P0sin; //          __m128d, (-1.66666666666666307295e-01), dbl_false
+    extern const __m128d __m128d_0e_P1sin; //          __m128d, (8.33333333332211858878e-03), dbl_false
+    extern const __m128d __m128d_0e_P2sin; //          __m128d, (-1.98412698295895385996e-04), dbl_false
+    extern const __m128d __m128d_0e_P3sin; //          __m128d, (2.75573136213857245213e-06), dbl_false
+    extern const __m128d __m128d_0e_P4sin; //          __m128d, (-2.50507477628578072866e-08), dbl_false
+    extern const __m128d __m128d_0e_P5sin; //          __m128d, (1.58962301576546568060e-010), dbl_false
+
+    extern const __m128d __m128d_0e_P0cos; //          __m128d, (4.16666666666665929218e-02), dbl_false
+    extern const __m128d __m128d_0e_P1cos; //          __m128d, (-1.38888888888730564116e-03), dbl_false
+    extern const __m128d __m128d_0e_P2cos; //          __m128d, (2.48015872888517045348e-05), dbl_false
+    extern const __m128d __m128d_0e_P3cos; //          __m128d, (-2.75573141792967388112e-07), dbl_false
+    extern const __m128d __m128d_0e_P4cos; //          __m128d, (2.08757008419747316778e-09), dbl_false
+    extern const __m128d __m128d_0e_P5cos; //          __m128d, (-1.13585365213876817300e-011), dbl_false
+
+    extern const __m128d __m128d_0e_DP1; //          __m128d, 1.570796310901641845703125, dbl_false
+    extern const __m128d __m128d_0e_DP2; //          __m128d, 0.00000001589325471229585673428, dbl_false
+    extern const __m128d __m128d_0e_DP3; //          __m128d, (6.12323399573676588614e-017), dbl_false
+    //;;             sincos template, double precision
 
     extern const __m128d __m128d_0e_1lshl3; //                  __m128d; // dbl_1lshl3; // dbl_false
     extern const __m128d __m128d_0e_1lshl4; //                  __m128d; // dbl_1lshl4; // dbl_false
@@ -3004,64 +3050,64 @@ namespace_uX_end
     extern const __m128d __m128d_0e_kmphtomepm; //          __m128d; // dbl_kmphtomepm; // dbl_false
     extern const __m128d __m128d_0e_kmphtomilesph; //           __m128d; // dbl_kmphtomilesph; // dbl_false
     extern const __m128d __m128d_0e_kmphtomilesps; //           __m128d; // dbl_kmphtomilesps; // dbl_false
-    extern const __m128d __m128d_0e_kmphtofootps; //            __m128d; // dbl_kmphtofootps; // dbl_false
-    extern const __m128d __m128d_0e_kmphtofootpm; //            __m128d; // dbl_kmphtofootpm; // dbl_false
+    extern const __m128d __m128d_0e_kmphtofeetps; //            __m128d; // dbl_kmphtofeetps; // dbl_false
+    extern const __m128d __m128d_0e_kmphtofeetpm; //            __m128d; // dbl_kmphtofeetpm; // dbl_false
 
     extern const __m128d __m128d_0e_kmpstomeps; //          __m128d; // dbl_kmpstomeps; // dbl_false
     extern const __m128d __m128d_0e_kmpstokmph; //          __m128d; // dbl_kmpstokmph; // dbl_false
     extern const __m128d __m128d_0e_kmpstomepm; //          __m128d; // dbl_kmpstomepm; // dbl_false
     extern const __m128d __m128d_0e_kmpstomilesph; //           __m128d; // dbl_kmpstomilesph; // dbl_false
     extern const __m128d __m128d_0e_kmpstomilesps; //           __m128d; // dbl_kmpstomilesps; // dbl_false
-    extern const __m128d __m128d_0e_kmpstofootps; //            __m128d; // dbl_kmpstofootps; // dbl_false
-    extern const __m128d __m128d_0e_kmpstofootpm; //            __m128d; // dbl_kmpstofootpm; // dbl_false
+    extern const __m128d __m128d_0e_kmpstofeetps; //            __m128d; // dbl_kmpstofeetps; // dbl_false
+    extern const __m128d __m128d_0e_kmpstofeetpm; //            __m128d; // dbl_kmpstofeetpm; // dbl_false
 
     extern const __m128d __m128d_0e_mepstokmph; //          __m128d; // dbl_mepstokmph; // dbl_false
     extern const __m128d __m128d_0e_mepstokmps; //          __m128d; // dbl_mepstokmps; // dbl_false
     extern const __m128d __m128d_0e_mepstomepm; //          __m128d; // dbl_mepstomepm; // dbl_false
     extern const __m128d __m128d_0e_mepstomilesph; //           __m128d; // dbl_mepstomilesph; // dbl_false
     extern const __m128d __m128d_0e_mepstomilesps; //           __m128d; // dbl_mepstomilesps; // dbl_false
-    extern const __m128d __m128d_0e_mepstofootps; //            __m128d; // dbl_mepstofootps; // dbl_false
-    extern const __m128d __m128d_0e_mepstofootpm; //            __m128d; // dbl_mepstofootpm; // dbl_false
+    extern const __m128d __m128d_0e_mepstofeetps; //            __m128d; // dbl_mepstofeetps; // dbl_false
+    extern const __m128d __m128d_0e_mepstofeetpm; //            __m128d; // dbl_mepstofeetpm; // dbl_false
 
     extern const __m128d __m128d_0e_mepmtokmph; //          __m128d; // dbl_mepmtokmph; // dbl_false
     extern const __m128d __m128d_0e_mepmtokmps; //          __m128d; // dbl_mepmtokmps; // dbl_false
     extern const __m128d __m128d_0e_mepmtomeps; //          __m128d; // dbl_mepmtomeps; // dbl_false
     extern const __m128d __m128d_0e_mepmtomilesph; //           __m128d; // dbl_mepmtomilesph; // dbl_false
     extern const __m128d __m128d_0e_mepmtomilesps; //           __m128d; // dbl_mepmtomilesps; // dbl_false
-    extern const __m128d __m128d_0e_mepmtofootps; //            __m128d; // dbl_mepmtofootps; // dbl_false
-    extern const __m128d __m128d_0e_mepmtofootpm; //            __m128d; // dbl_mepmtofootpm; // dbl_false
+    extern const __m128d __m128d_0e_mepmtofeetps; //            __m128d; // dbl_mepmtofeetps; // dbl_false
+    extern const __m128d __m128d_0e_mepmtofeetpm; //            __m128d; // dbl_mepmtofeetpm; // dbl_false
 
     extern const __m128d __m128d_0e_milesphtokmph; //           __m128d; // dbl_milesphtokmph; // dbl_false
     extern const __m128d __m128d_0e_milesphtokmps; //           __m128d; // dbl_milesphtokmps; // dbl_false
     extern const __m128d __m128d_0e_milesphtomeps; //           __m128d; // dbl_milesphtomeps; // dbl_false
     extern const __m128d __m128d_0e_milesphtomepm; //           __m128d; // dbl_milesphtomepm; // dbl_false
     extern const __m128d __m128d_0e_milesphtomilesps; //        __m128d; // dbl_milesphtomilesps; // dbl_false
-    extern const __m128d __m128d_0e_milesphtofootps; //         __m128d; // dbl_milesphtofootps; // dbl_false
-    extern const __m128d __m128d_0e_milesphtofootpm; //     __m128d; // dbl_milesphtofootpm; // dbl_false
+    extern const __m128d __m128d_0e_milesphtofeetps; //         __m128d; // dbl_milesphtofeetps; // dbl_false
+    extern const __m128d __m128d_0e_milesphtofeetpm; //     __m128d; // dbl_milesphtofeetpm; // dbl_false
 
     extern const __m128d __m128d_0e_milespstokmph; //           __m128d; // dbl_milespstokmph; // dbl_false
     extern const __m128d __m128d_0e_milespstokmps; //           __m128d; // dbl_milespstokmps; // dbl_false
     extern const __m128d __m128d_0e_milespstomeps; //           __m128d; // dbl_milespstomeps; // dbl_false
     extern const __m128d __m128d_0e_milespstomepm; //           __m128d; // dbl_milespstomepm; // dbl_false
     extern const __m128d __m128d_0e_milespstomilespm; //        __m128d; // dbl_milespstomilespm; // dbl_false
-    extern const __m128d __m128d_0e_milespstofootps; //         __m128d; // dbl_milespstofootps; // dbl_false
-    extern const __m128d __m128d_0e_milespstofootpm; //     __m128d; // dbl_milespstofootpm; // dbl_false
+    extern const __m128d __m128d_0e_milespstofeetps; //         __m128d; // dbl_milespstofeetps; // dbl_false
+    extern const __m128d __m128d_0e_milespstofeetpm; //     __m128d; // dbl_milespstofeetpm; // dbl_false
 
-    extern const __m128d __m128d_0e_footpstokmph; //            __m128d; // dbl_footpstokmph; // dbl_false
-    extern const __m128d __m128d_0e_footpstokmps; //            __m128d; // dbl_footpstokmps; // dbl_false
-    extern const __m128d __m128d_0e_footpstomeps; //            __m128d; // dbl_footpstomeps; // dbl_false
-    extern const __m128d __m128d_0e_footpstomepm; //            __m128d; // dbl_footpstomepm; // dbl_false
-    extern const __m128d __m128d_0e_footpstomilesph; //         __m128d; // dbl_footpstomilesph; // dbl_false
-    extern const __m128d __m128d_0e_footpstomilesps; //         __m128d; // dbl_footpstomilesps; // dbl_false
-    extern const __m128d __m128d_0e_footpstofootpm; //      __m128d; // dbl_footpstofootpm; // dbl_false
+    extern const __m128d __m128d_0e_feetpstokmph; //            __m128d; // dbl_feetpstokmph; // dbl_false
+    extern const __m128d __m128d_0e_feetpstokmps; //            __m128d; // dbl_feetpstokmps; // dbl_false
+    extern const __m128d __m128d_0e_feetpstomeps; //            __m128d; // dbl_feetpstomeps; // dbl_false
+    extern const __m128d __m128d_0e_feetpstomepm; //            __m128d; // dbl_feetpstomepm; // dbl_false
+    extern const __m128d __m128d_0e_feetpstomilesph; //         __m128d; // dbl_feetpstomilesph; // dbl_false
+    extern const __m128d __m128d_0e_feetpstomilesps; //         __m128d; // dbl_feetpstomilesps; // dbl_false
+    extern const __m128d __m128d_0e_feetpstofeetpm; //      __m128d; // dbl_feetpstofeetpm; // dbl_false
 
-    extern const __m128d __m128d_0e_footpmtokmph; //            __m128d; // dbl_footpmtokmph; // dbl_false
-    extern const __m128d __m128d_0e_footpmtokmps; //            __m128d; // dbl_footpmtokmps; // dbl_false
-    extern const __m128d __m128d_0e_footpmtomeps; //            __m128d; // dbl_footpmtomeps; // dbl_false
-    extern const __m128d __m128d_0e_footpmtomepm; //            __m128d; // dbl_footpmtomepm; // dbl_false
-    extern const __m128d __m128d_0e_footpmtomilesph; //         __m128d; // dbl_footpmtomilesph; // dbl_false
-    extern const __m128d __m128d_0e_footpmtomilesps; //         __m128d; // dbl_footpmtomilesps; // dbl_false
-    extern const __m128d __m128d_0e_footpmtofootps; //      __m128d; // dbl_footpmtofootps; // dbl_false
+    extern const __m128d __m128d_0e_feetpmtokmph; //            __m128d; // dbl_feetpmtokmph; // dbl_false
+    extern const __m128d __m128d_0e_feetpmtokmps; //            __m128d; // dbl_feetpmtokmps; // dbl_false
+    extern const __m128d __m128d_0e_feetpmtomeps; //            __m128d; // dbl_feetpmtomeps; // dbl_false
+    extern const __m128d __m128d_0e_feetpmtomepm; //            __m128d; // dbl_feetpmtomepm; // dbl_false
+    extern const __m128d __m128d_0e_feetpmtomilesph; //         __m128d; // dbl_feetpmtomilesph; // dbl_false
+    extern const __m128d __m128d_0e_feetpmtomilesps; //         __m128d; // dbl_feetpmtomilesps; // dbl_false
+    extern const __m128d __m128d_0e_feetpmtofeetps; //      __m128d; // dbl_feetpmtofeetps; // dbl_false
 
     extern const __m128d __m128d_0e_soundspeedp50c; //      __m128d; // dbl_soundspeedp50c; // dbl_false
     extern const __m128d __m128d_0e_soundspeedp45c; //      __m128d; // dbl_soundspeedp45c; // dbl_false

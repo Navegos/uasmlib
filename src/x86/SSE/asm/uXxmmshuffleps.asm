@@ -2,7 +2,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -19,72 +19,62 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
-    OPTION CASEMAP:NONE
-    include macrolib.inc
-    
+option casemap:none
+include uXasm.inc
+include macrolib.inc
+
 ifndef __MIC__
 
-    include uXasm.inc
+.xmm
+option arch:sse
+option evex:0
 
-    .xmm
-    option arch:sse
-    option evex:0
+alignstackfieldproc
 
-    .data?
+.data?
 
-    .data
+.data
 
-    .const
+.const
 
-        alignsize_t
-        _m128shufpsjmptable isize_t offset _m128shufps_0, offset _m128shufps_1, offset _m128shufps_2, offset _m128shufps_3, offset _m128shufps_4, offset _m128shufps_5, \
-                                    offset _m128shufps_6, offset _m128shufps_7, offset _m128shufps_8, offset _m128shufps_9, offset _m128shufps_10, offset _m128shufps_11, \
-                                    offset _m128shufps_12, offset _m128shufps_13, offset _m128shufps_14, offset _m128shufps_15, offset _m128shufps_16, offset _m128shufps_17, \
-                                    offset _m128shufps_18, offset _m128shufps_19, offset _m128shufps_20, offset _m128shufps_21, offset _m128shufps_22, offset _m128shufps_23, \
-                                    offset _m128shufps_24, offset _m128shufps_25, offset _m128shufps_26, offset _m128shufps_27, offset _m128shufps_28, offset _m128shufps_29, \
-                                    offset _m128shufps_30, offset _m128shufps_31, offset _m128shufps_32, offset _m128shufps_33, offset _m128shufps_34, offset _m128shufps_35, \
-                                    offset _m128shufps_36, offset _m128shufps_37, offset _m128shufps_38, offset _m128shufps_39, offset _m128shufps_40, offset _m128shufps_41, \
-                                    offset _m128shufps_42, offset _m128shufps_43, offset _m128shufps_44, offset _m128shufps_45, offset _m128shufps_46, offset _m128shufps_47, \
-                                    offset _m128shufps_48, offset _m128shufps_49, offset _m128shufps_50, offset _m128shufps_51, offset _m128shufps_52, offset _m128shufps_53, \
-                                    offset _m128shufps_54, offset _m128shufps_55, offset _m128shufps_56, offset _m128shufps_57, offset _m128shufps_58, offset _m128shufps_59, \
-                                    offset _m128shufps_60, offset _m128shufps_61, offset _m128shufps_62, offset _m128shufps_63, offset _m128shufps_64, offset _m128shufps_65, \
-                                    offset _m128shufps_66, offset _m128shufps_67, offset _m128shufps_68, offset _m128shufps_69, offset _m128shufps_70, offset _m128shufps_71, \
-                                    offset _m128shufps_72, offset _m128shufps_73, offset _m128shufps_74, offset _m128shufps_75, offset _m128shufps_76, offset _m128shufps_77, \
-                                    offset _m128shufps_78, offset _m128shufps_79, offset _m128shufps_80, offset _m128shufps_81, offset _m128shufps_82, offset _m128shufps_83, \
-                                    offset _m128shufps_84, offset _m128shufps_85, offset _m128shufps_86, offset _m128shufps_87, offset _m128shufps_88, offset _m128shufps_89, \
-                                    offset _m128shufps_90, offset _m128shufps_91, offset _m128shufps_92, offset _m128shufps_93, offset _m128shufps_94, offset _m128shufps_95, \
-                                    offset _m128shufps_96, offset _m128shufps_97, offset _m128shufps_98, offset _m128shufps_99, offset _m128shufps_100, offset _m128shufps_101, \
-                                    offset _m128shufps_102, offset _m128shufps_103, offset _m128shufps_104, offset _m128shufps_105, offset _m128shufps_106, offset _m128shufps_107, \
-                                    offset _m128shufps_108, offset _m128shufps_109, offset _m128shufps_110, offset _m128shufps_111, offset _m128shufps_112, offset _m128shufps_113, \
-                                    offset _m128shufps_114, offset _m128shufps_115, offset _m128shufps_116, offset _m128shufps_117, offset _m128shufps_118, offset _m128shufps_119, \
-                                    offset _m128shufps_120, offset _m128shufps_121, offset _m128shufps_122, offset _m128shufps_123, offset _m128shufps_124, offset _m128shufps_125, \
-                                    offset _m128shufps_126, offset _m128shufps_127, offset _m128shufps_128, offset _m128shufps_129, offset _m128shufps_130, offset _m128shufps_131, \
-                                    offset _m128shufps_132, offset _m128shufps_133, offset _m128shufps_134, offset _m128shufps_135, offset _m128shufps_136, offset _m128shufps_137, \
-                                    offset _m128shufps_138, offset _m128shufps_139, offset _m128shufps_140, offset _m128shufps_141, offset _m128shufps_142, offset _m128shufps_143, \
-                                    offset _m128shufps_144, offset _m128shufps_145, offset _m128shufps_146, offset _m128shufps_147, offset _m128shufps_148, offset _m128shufps_149, \
-                                    offset _m128shufps_150, offset _m128shufps_151, offset _m128shufps_152, offset _m128shufps_153, offset _m128shufps_154, offset _m128shufps_155, \
-                                    offset _m128shufps_156, offset _m128shufps_157, offset _m128shufps_158, offset _m128shufps_159, offset _m128shufps_160, offset _m128shufps_161, \
-                                    offset _m128shufps_162, offset _m128shufps_163, offset _m128shufps_164, offset _m128shufps_165, offset _m128shufps_166, offset _m128shufps_167, \
-                                    offset _m128shufps_168, offset _m128shufps_169, offset _m128shufps_170, offset _m128shufps_171, offset _m128shufps_172, offset _m128shufps_173, \
-                                    offset _m128shufps_174, offset _m128shufps_175, offset _m128shufps_176, offset _m128shufps_177, offset _m128shufps_178, offset _m128shufps_179, \
-                                    offset _m128shufps_180, offset _m128shufps_181, offset _m128shufps_182, offset _m128shufps_183, offset _m128shufps_184, offset _m128shufps_185, \
-                                    offset _m128shufps_186, offset _m128shufps_187, offset _m128shufps_188, offset _m128shufps_189, offset _m128shufps_190, offset _m128shufps_191, \
-                                    offset _m128shufps_192, offset _m128shufps_193, offset _m128shufps_194, offset _m128shufps_195, offset _m128shufps_196, offset _m128shufps_197, \
-                                    offset _m128shufps_198, offset _m128shufps_199, offset _m128shufps_200, offset _m128shufps_201, offset _m128shufps_202, offset _m128shufps_203, \
-                                    offset _m128shufps_204, offset _m128shufps_205, offset _m128shufps_206, offset _m128shufps_207, offset _m128shufps_208, offset _m128shufps_209, \
-                                    offset _m128shufps_210, offset _m128shufps_211, offset _m128shufps_212, offset _m128shufps_213, offset _m128shufps_214, offset _m128shufps_215, \
-                                    offset _m128shufps_216, offset _m128shufps_217, offset _m128shufps_218, offset _m128shufps_219, offset _m128shufps_220, offset _m128shufps_221, \
-                                    offset _m128shufps_222, offset _m128shufps_223, offset _m128shufps_224, offset _m128shufps_225, offset _m128shufps_226, offset _m128shufps_227, \
-                                    offset _m128shufps_228, offset _m128shufps_229, offset _m128shufps_230, offset _m128shufps_231, offset _m128shufps_232, offset _m128shufps_233, \
-                                    offset _m128shufps_234, offset _m128shufps_235, offset _m128shufps_236, offset _m128shufps_237, offset _m128shufps_238, offset _m128shufps_239, \
-                                    offset _m128shufps_240, offset _m128shufps_241, offset _m128shufps_242, offset _m128shufps_243, offset _m128shufps_244, offset _m128shufps_245, \
-                                    offset _m128shufps_246, offset _m128shufps_247, offset _m128shufps_248, offset _m128shufps_249, offset _m128shufps_250, offset _m128shufps_251, \
-                                    offset _m128shufps_252, offset _m128shufps_253, offset _m128shufps_254, offset _m128shufps_255
+    _m128shufpsjmptable label size_t
+    isize_t _m128shufps_0, _m128shufps_1, _m128shufps_2, _m128shufps_3, _m128shufps_4, _m128shufps_5, _m128shufps_6, _m128shufps_7
+    isize_t _m128shufps_8, _m128shufps_9, _m128shufps_10, _m128shufps_11, _m128shufps_12, _m128shufps_13, _m128shufps_14, _m128shufps_15
+    isize_t _m128shufps_16, _m128shufps_17, _m128shufps_18, _m128shufps_19, _m128shufps_20, _m128shufps_21, _m128shufps_22, _m128shufps_23
+    isize_t _m128shufps_24, _m128shufps_25, _m128shufps_26, _m128shufps_27, _m128shufps_28, _m128shufps_29, _m128shufps_30, _m128shufps_31
+    isize_t _m128shufps_32, _m128shufps_33, _m128shufps_34, _m128shufps_35, _m128shufps_36, _m128shufps_37, _m128shufps_38, _m128shufps_39
+    isize_t _m128shufps_40, _m128shufps_41, _m128shufps_42, _m128shufps_43, _m128shufps_44, _m128shufps_45, _m128shufps_46, _m128shufps_47
+    isize_t _m128shufps_48, _m128shufps_49, _m128shufps_50, _m128shufps_51, _m128shufps_52, _m128shufps_53, _m128shufps_54, _m128shufps_55
+    isize_t _m128shufps_56, _m128shufps_57, _m128shufps_58, _m128shufps_59, _m128shufps_60, _m128shufps_61, _m128shufps_62, _m128shufps_63
+    isize_t _m128shufps_64, _m128shufps_65, _m128shufps_66, _m128shufps_67, _m128shufps_68, _m128shufps_69, _m128shufps_70, _m128shufps_71
+    isize_t _m128shufps_72, _m128shufps_73, _m128shufps_74, _m128shufps_75, _m128shufps_76, _m128shufps_77, _m128shufps_78, _m128shufps_79
+    isize_t _m128shufps_80, _m128shufps_81, _m128shufps_82, _m128shufps_83, _m128shufps_84, _m128shufps_85, _m128shufps_86, _m128shufps_87
+    isize_t _m128shufps_88, _m128shufps_89, _m128shufps_90, _m128shufps_91, _m128shufps_92, _m128shufps_93, _m128shufps_94, _m128shufps_95
+    isize_t _m128shufps_96, _m128shufps_97, _m128shufps_98, _m128shufps_99, _m128shufps_100, _m128shufps_101, _m128shufps_102, _m128shufps_103
+    isize_t _m128shufps_104, _m128shufps_105, _m128shufps_106, _m128shufps_107, _m128shufps_108, _m128shufps_109, _m128shufps_110, _m128shufps_111
+    isize_t _m128shufps_112, _m128shufps_113, _m128shufps_114, _m128shufps_115, _m128shufps_116, _m128shufps_117, _m128shufps_118, _m128shufps_119
+    isize_t _m128shufps_120, _m128shufps_121, _m128shufps_122, _m128shufps_123, _m128shufps_124, _m128shufps_125, _m128shufps_126, _m128shufps_127
+    isize_t _m128shufps_128, _m128shufps_129, _m128shufps_130, _m128shufps_131, _m128shufps_132, _m128shufps_133, _m128shufps_134, _m128shufps_135
+    isize_t _m128shufps_136, _m128shufps_137, _m128shufps_138, _m128shufps_139, _m128shufps_140, _m128shufps_141, _m128shufps_142, _m128shufps_143
+    isize_t _m128shufps_144, _m128shufps_145, _m128shufps_146, _m128shufps_147, _m128shufps_148, _m128shufps_149, _m128shufps_150, _m128shufps_151
+    isize_t _m128shufps_152, _m128shufps_153, _m128shufps_154, _m128shufps_155, _m128shufps_156, _m128shufps_157, _m128shufps_158, _m128shufps_159
+    isize_t _m128shufps_160, _m128shufps_161, _m128shufps_162, _m128shufps_163, _m128shufps_164, _m128shufps_165, _m128shufps_166, _m128shufps_167
+    isize_t _m128shufps_168, _m128shufps_169, _m128shufps_170, _m128shufps_171, _m128shufps_172, _m128shufps_173, _m128shufps_174, _m128shufps_175
+    isize_t _m128shufps_176, _m128shufps_177, _m128shufps_178, _m128shufps_179, _m128shufps_180, _m128shufps_181, _m128shufps_182, _m128shufps_183
+    isize_t _m128shufps_184, _m128shufps_185, _m128shufps_186, _m128shufps_187, _m128shufps_188, _m128shufps_189, _m128shufps_190, _m128shufps_191
+    isize_t _m128shufps_192, _m128shufps_193, _m128shufps_194, _m128shufps_195, _m128shufps_196, _m128shufps_197, _m128shufps_198, _m128shufps_199
+    isize_t _m128shufps_200, _m128shufps_201, _m128shufps_202, _m128shufps_203, _m128shufps_204, _m128shufps_205, _m128shufps_206, _m128shufps_207
+    isize_t _m128shufps_208, _m128shufps_209, _m128shufps_210, _m128shufps_211, _m128shufps_212, _m128shufps_213, _m128shufps_214, _m128shufps_215
+    isize_t _m128shufps_216, _m128shufps_217, _m128shufps_218, _m128shufps_219, _m128shufps_220, _m128shufps_221, _m128shufps_222, _m128shufps_223
+    isize_t _m128shufps_224, _m128shufps_225, _m128shufps_226, _m128shufps_227, _m128shufps_228, _m128shufps_229, _m128shufps_230, _m128shufps_231
+    isize_t _m128shufps_232, _m128shufps_233, _m128shufps_234, _m128shufps_235, _m128shufps_236, _m128shufps_237, _m128shufps_238, _m128shufps_239
+    isize_t _m128shufps_240, _m128shufps_241, _m128shufps_242, _m128shufps_243, _m128shufps_244, _m128shufps_245, _m128shufps_246, _m128shufps_247
+    isize_t _m128shufps_248, _m128shufps_249, _m128shufps_250, _m128shufps_251, _m128shufps_252, _m128shufps_253, _m128shufps_254, _m128shufps_255
 
-    .code
+.code
 
-    callconvopt
-    alignxmmfieldproc
+callconvopt
+alignxmmfieldproc
 
 procstart _uX_mm_shuffle_0000_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
         shufps          xmm0,           xmm1,           0
@@ -1366,15 +1356,15 @@ procstart _uX_mm_shuffle_3333_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword, 
         ret
 procend
 
-procstart _uX_mm_shuffle_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword, _Imm8:dword
+procstart _uX_mm_shuffle_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword, _Imm8:count_t
         push         rbase()
     ifdef __unix32__
-        define rpdisp, ecx, text
-        define bpdisp, cl, text
+        rpdisp textequ <ecx>
+        bpdisp textequ <cl>
         mov     rpdisp,    _Imm8
     else
-        define rpdisp, rp2(), text
-        define bpdisp, bp2(), text
+        rpdisp textequ <rp2()>
+        bpdisp textequ <bp2()>
     endif
     .if((rpdisp < 0) || (rpdisp > 255))
         jmp         _m128shufps_end
@@ -2165,4 +2155,4 @@ procend
 
 endif ;__MIC__
 
-    end
+end

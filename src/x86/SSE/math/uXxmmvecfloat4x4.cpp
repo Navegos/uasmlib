@@ -6,13 +6,17 @@
 #ifdef uX_SSE
 
 // Intel TBB library
-#include "tbb/task_scheduler_init.h"
-using namespace tbb;
+#if defined(uX_XMM_MATH_SUPPORTS_TBB)
+//#include "tbb/task_scheduler_init.h"
 #include "tbb/parallel_for.h"
 #include "tbb/blocked_range.h"
 #include "tbb/blocked_range2d.h"
 #include "tbb/partitioner.h"
 #include "tbb/task_group.h"
+using namespace tbb;
+#endif
+
+//#include <omp.h>
 
 #ifndef uX_XMM_INTRIN_H
 #include "uXxmmintrin.h"
@@ -102,7 +106,7 @@ vecfloat4x4::vecfloat4x4(const float* Inpfloat, uint32_t idxbegin, uint32_t idxe
                      {
                          /*m128_xmm[i] = _uX_mm_loadu_ps(reinterpret_cast<const float*>(Inpfloat + m128_xmm_flt_elements + (i * m128_xmm_ptr_lenght)));*/
                          /*m128_xmm[i] = _uX_mm_loadu_ps(&Inpfloat[m128_xmm_flt_elements+(i*m128_xmm_flt_elements)]);*/
-                         m128_xmm[i] = _uX_mm_loadu_ps(Inpfloat+(i*m128_xmm_flt_elements));
+                         m128_xmm[i] = _uX_mm_loadu_ps(reinterpret_cast<__m128 const* const>(Inpfloat+(i*m128_xmm_flt_elements)));
                      }
                  }, affp, tgctx
     );

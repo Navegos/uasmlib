@@ -3,7 +3,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -303,19 +303,19 @@ uX_PACK_PUSH_XMM
     // Integer blend instructions - select data from 2 sources
     // using constant or variable mask
 
-    extern __m128i uX_ABI _uX_mm_blend_epi16(__m128i Inxmm_A, __m128i Inxmm_B, const count_t Inint_mask);
+    extern __m128i uX_ABI _uX_mm_blend_epi16(__m128i Inxmm_A, __m128i Inxmm_B, count_t const Inint_mask);
     extern __m128i uX_ABI _uX_mm_blendv_epi8(__m128i Inxmm_mask, __m128i Inxmm_A, __m128i Inxmm_B);
 
     // Float single precision blend instructions - select data
     // from 2 sources using constant/variable mask
 
-    extern __m128 uX_ABI _uX_mm_blend_ps(__m128 Inxmm_A, __m128 Inxmm_B, const count_t Inint_mask);
+    extern __m128 uX_ABI _uX_mm_blend_ps(__m128 Inxmm_A, __m128 Inxmm_B, count_t const Inint_mask);
     extern __m128 uX_ABI _uX_mm_blendv_ps(__m128 Inxmm_mask, __m128 Inxmm_A, __m128 Inxmm_B);
 
     // Float double precision blend instructions - select data
     // from 2 sources using constant/variable mask
 
-    extern __m128d uX_ABI _uX_mm_blend_pd(__m128d Inxmm_A, __m128d Inxmm_B, const count_t Inint_mask);
+    extern __m128d uX_ABI _uX_mm_blend_pd(__m128d Inxmm_A, __m128d Inxmm_B, count_t const Inint_mask);
     extern __m128d uX_ABI _uX_mm_blendv_pd(__m128d Inxmm_mask, __m128d Inxmm_A, __m128d Inxmm_B);
 
     extern __m128i uX_ABI _uX_mm_select_si128(__m128i Inxmm_S, __m128i Inxmm_A, __m128i Inxmm_B);
@@ -325,8 +325,8 @@ uX_PACK_PUSH_XMM
     // Dot product instructions with mask-defined summing and zeroing
     // of result's parts
 
-    extern __m128 uX_ABI _uX_mm_dp_ps(__m128 Inxmm_A, __m128 Inxmm_B, const count_t Inint_mask);
-    extern __m128d uX_ABI _uX_mm_dp_pd(__m128d Inxmm_A, __m128d Inxmm_B, const count_t Inint_mask);
+    extern __m128 uX_ABI _uX_mm_dp_ps(__m128 Inxmm_A, __m128 Inxmm_B, count_t const Inint_mask);
+    extern __m128d uX_ABI _uX_mm_dp_pd(__m128d Inxmm_A, __m128d Inxmm_B, count_t const Inint_mask);
 
     // Min/max packed integer instructions
 
@@ -389,31 +389,31 @@ uX_PACK_PUSH_XMM
     // the bits [5-4] define dst index, and bits [3-0] define zeroing
     // mask for dst
 
-    extern __m128 uX_ABI _uX_mm_insert_ps(__m128 dst, __m128 src, const count_t index);
+    extern __m128 uX_ABI _uX_mm_insert_ps(__m128 dst, __m128 src, count_t const index);
 
     // Extract binary representation of single precision float from
     // packed single precision array element selected by index
 
-    extern int uX_ABI _uX_mm_extract_ps(__m128 src, const count_t index);
+    extern int uX_ABI _uX_mm_extract_ps(__m128 src, count_t const index);
 
     // Insert integer into packed integer array element
     // selected by index
 
-    extern __m128i uX_ABI _uX_mm_insert_epi8(__m128i dst, int8_t src, const count_t index);
-    extern __m128i uX_ABI _uX_mm_insert_epi32(__m128i dst, int32_t src, const count_t index);
+    extern __m128i uX_ABI _uX_mm_insert_epi8(__m128i dst, int8_t src, count_t const index);
+    extern __m128i uX_ABI _uX_mm_insert_epi32(__m128i dst, int32_t src, count_t const index);
 
 #if defined(uX_X64)
-    extern __m128i uX_ABI _uX_mm_insert_epi64(__m128i dst, int64_t src, const count_t index);
+    extern __m128i uX_ABI _uX_mm_insert_epi64(__m128i dst, int64_t src, count_t const index);
 #endif  /* defined(uX_X64) */
 
     // Extract integer from packed integer array element
     // selected by index
 
-    extern int8_t uX_ABI _uX_mm_extract_epi8(__m128i src, const count_t index);
-    extern int32_t uX_ABI _uX_mm_extract_epi32(__m128i src, const count_t index);
+    extern int8_t uX_ABI _uX_mm_extract_epi8(__m128i src, count_t const index);
+    extern int32_t uX_ABI _uX_mm_extract_epi32(__m128i src, count_t const index);
 
 #if defined(uX_X64)
-    extern int64_t uX_ABI _uX_mm_extract_epi64(__m128i src, const count_t index);
+    extern int64_t uX_ABI _uX_mm_extract_epi64(__m128i src, count_t const index);
 #endif  /* defined(uX_X64) */
 
     // Horizontal packed word minimum and its index in
@@ -423,13 +423,13 @@ uX_PACK_PUSH_XMM
 
     // Packed/single float double precision rounding
 
-    extern __m128d uX_ABI _uX_mm_round_pd(__m128d val, const count_t iRoundMode);
-    extern __m128d uX_ABI _uX_mm_round_sd(__m128d dst, __m128d val, const count_t iRoundMode);
+    extern __m128d uX_ABI _uX_mm_round_pd(__m128d val, count_t const iRoundMode);
+    extern __m128d uX_ABI _uX_mm_round_sd(__m128d dst, __m128d val, count_t const iRoundMode);
 
     // Packed/single float single precision rounding
 
-    extern __m128 uX_ABI _uX_mm_round_ps(__m128  val, const count_t iRoundMode);
-    extern __m128 uX_ABI _uX_mm_round_ss(__m128 dst, __m128  val, const count_t iRoundMode);
+    extern __m128 uX_ABI _uX_mm_round_ps(__m128  val, count_t const iRoundMode);
+    extern __m128 uX_ABI _uX_mm_round_ss(__m128 dst, __m128  val, count_t const iRoundMode);
 
     /*
     * functions for ceil/floor intrinsics
@@ -477,13 +477,13 @@ uX_PACK_PUSH_XMM
     // integers in operands. Starting offsets within operands are
     // determined by mask
 
-    extern __m128i uX_ABI _uX_mm_mpsadbw_epu8(__m128i s1, __m128i s2, const count_t mask);
+    extern __m128i uX_ABI _uX_mm_mpsadbw_epu8(__m128i s1, __m128i s2, count_t const mask);
 
     /*
      * Load double quadword using non-temporal aligned hint
      */
 
-    extern __m128i uX_ABI _uX_mm_stream_load_si128(const __m128i* Inpxmm_A);
+    extern __m128i uX_ABI _uX_mm_stream_load_si128(__m128i const* const Inpxmm_A);
     
 uX_PACK_POP
 uX_EXTERNC_END

@@ -113,10 +113,36 @@ externdef __m128d_0e_fin:__m128q
 externdef __m128d_0e_qnan:__m128q
 externdef __m128d_0e_abs:__m128q
 
+externdef __m128d_0:__m128d
 externdef __m128d_1:__m128d
 
+externdef __m128d_0e_0:__m128d
 externdef __m128d_0e_1:__m128d
 
+externdef __m128i_dbl_true:__m128q
+externdef __m128i_dbl_false:__m128q
+externdef __m128i_dbl_sign:__m128q
+externdef __m128i_dbl_inf:__m128q
+externdef __m128i_dbl_fin:__m128q
+externdef __m128i_dbl_qnan:__m128q
+externdef __m128i_dbl_abs:__m128q
+    
+externdef __m128i_dbl_0e_true:__m128q
+externdef __m128i_dbl_0e_false:__m128q
+externdef __m128i_dbl_0e_sign:__m128q
+externdef __m128i_dbl_0e_inf:__m128q
+externdef __m128i_dbl_0e_fin:__m128q
+externdef __m128i_dbl_0e_qnan:__m128q
+externdef __m128i_dbl_0e_abs:__m128q
+
+externdef __m128i_dbl_0:__m128q
+externdef __m128d_dbl_1:__m128q
+
+externdef __m128d_dbl_0e_0:__m128q
+externdef __m128d_dbl_0e_1:__m128q
+
+externdef __m128i_dbl_maxi64:__m128q
+    
 externdef __m128i_i8_true:__m128b
 externdef __m128i_i8_false:__m128b
 externdef __m128i_flt_maxu8:__m128b
@@ -142,8 +168,6 @@ externdef __m128i_i64_0:__m128q
 externdef __m128i_i64_1:__m128q
 externdef __m128i_i64_2:__m128q
 
-externdef __m128i_dbl_maxi64:__m128q
-    
 externdef __m128i_i64_0e_true:__m128q
 externdef __m128i_i64_0e_false:__m128q
 externdef __m128i_i64_0e_0:__m128q
@@ -1467,42 +1491,42 @@ procend
 
 procstart _uX_mm_isfinite_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         psllq           xmm0,           1
-        pand            xmm0,           __m128d_fin
+        pand            xmm0,           __m128i_dbl_fin
         .if (__uX_CPUFeatures_SSE41 == true)
-        pcmpeqq         xmm0,           __m128d_fin
+        pcmpeqq         xmm0,           __m128i_dbl_fin
         .else
-        pcmpeqd         xmm0,           __m128d_fin                         ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pcmpeqd         xmm0,           __m128i_dbl_fin                         ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
         pshufd          xmm2,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
         pand            xmm0,           xmm2                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm0,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
         pshufd          xmm0,           xmm0,           shuffle4(3,3,1,1)   ;_mm_shuffle_epi32(teste,0xF5);     // extend sign bit to 64 bits shuffle
         .endif
-        pxor            xmm0,           __m128i_i64_true
+        pxor            xmm0,           __m128i_dbl_true
         ret
 procend
 
 procstart _uX_mm_isfinite_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         psllq           xmm0,           1
-        pand            xmm0,           __m128d_0e_fin
+        pand            xmm0,           __m128i_dbl_0e_fin
         .if (__uX_CPUFeatures_SSE41 == true)
-        pcmpeqq         xmm0,           __m128d_0e_fin
+        pcmpeqq         xmm0,           __m128i_dbl_0e_fin
         .else
-        pcmpeqd         xmm0,           __m128d_0e_fin                      ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pcmpeqd         xmm0,           __m128i_dbl_0e_fin                      ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
         pshufd          xmm2,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
         pand            xmm0,           xmm2                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm0,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
         pshufd          xmm0,           xmm0,           shuffle4(3,3,1,1)   ;_mm_shuffle_epi32(teste,0xF5);     // extend sign bit to 64 bits shuffle
         .endif
-        pxor            xmm0,           __m128i_i64_0e_true
+        pxor            xmm0,           __m128i_dbl_0e_true
         ret
 procend
 
 procstart _uX_mm_isinf_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         psllq           xmm0,           1
         .if (__uX_CPUFeatures_SSE41 == true)
-        pcmpeqq         xmm0,           __m128d_fin
+        pcmpeqq         xmm0,           __m128i_dbl_fin
         .else
-        pcmpeqd         xmm0,           __m128d_fin                         ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pcmpeqd         xmm0,           __m128i_dbl_fin                         ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
         pshufd          xmm2,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
         pand            xmm0,           xmm2                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm0,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
@@ -1514,9 +1538,9 @@ procend
 procstart _uX_mm_isinf_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         psllq           xmm0,           1
         .if (__uX_CPUFeatures_SSE41 == true)
-        pcmpeqq         xmm0,           __m128d_0e_fin
+        pcmpeqq         xmm0,           __m128i_dbl_0e_fin
         .else
-        pcmpeqd         xmm0,           __m128d_0e_fin                      ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pcmpeqd         xmm0,           __m128i_dbl_0e_fin                      ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
         pshufd          xmm2,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
         pand            xmm0,           xmm2                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm0,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
@@ -1538,25 +1562,25 @@ procend
 procstart _uX_mm_issubnormal_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         psllq           xmm0,           1
         movdqa          xmm2,           xmm0
-        movdqa          xmm1,           __m128d_fin
+        movdqa          xmm1,           __m128i_dbl_fin
         pand            xmm0,           xmm1
         pandn           xmm1,           xmm2
         .if (__uX_CPUFeatures_SSE41 == true)
-        pcmpeqq         xmm0,           __m128i_i64_0
-        pcmpeqq         xmm1,           __m128i_i64_0
+        pcmpeqq         xmm0,           __m128i_dbl_0
+        pcmpeqq         xmm1,           __m128i_dbl_0
         .else
-        pcmpeqd         xmm0,           __m128i_i64_0                       ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pcmpeqd         xmm0,           __m128i_dbl_0                       ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
         pshufd          xmm2,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
         pand            xmm0,           xmm2                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm0,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
         pshufd          xmm0,           xmm0,           shuffle4(3,3,1,1)   ;_mm_shuffle_epi32(teste,0xF5);     // extend sign bit to 64 bits shuffle
-        pcmpeqd         xmm1,           __m128i_i64_0                       ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pcmpeqd         xmm1,           __m128i_dbl_0                       ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
         pshufd          xmm2,           xmm1,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
         pand            xmm1,           xmm2                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm1,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
         pshufd          xmm1,           xmm1,           shuffle4(3,3,1,1)   ;_mm_shuffle_epi32(teste,0xF5);     // extend sign bit to 64 bits shuffle
         .endif
-        pxor            xmm1,           __m128i_i64_true
+        pxor            xmm1,           __m128i_dbl_true
         pand            xmm0,           xmm1
         ret
 procend
@@ -1564,35 +1588,35 @@ procend
 procstart _uX_mm_issubnormal_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         psllq           xmm0,           1
         movdqa          xmm2,           xmm0
-        movdqa          xmm1,           __m128d_0e_fin
+        movdqa          xmm1,           __m128i_dbl_0e_fin
         pand            xmm0,           xmm1
         pandn           xmm1,           xmm2
         .if (__uX_CPUFeatures_SSE41 == true)
-        pcmpeqq         xmm0,           __m128i_i64_0e_0
-        pcmpeqq         xmm1,           __m128i_i64_0e_0
+        pcmpeqq         xmm0,           __m128i_dbl_0e_0
+        pcmpeqq         xmm1,           __m128i_dbl_0e_0
         .else
-        pcmpeqd         xmm0,           __m128i_i64_0e_0                    ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pcmpeqd         xmm0,           __m128i_dbl_0e_0                    ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
         pshufd          xmm2,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
         pand            xmm0,           xmm2                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm0,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
         pshufd          xmm0,           xmm0,           shuffle4(3,3,1,1)   ;_mm_shuffle_epi32(teste,0xF5);     // extend sign bit to 64 bits shuffle
-        pcmpeqd         xmm1,           __m128i_i64_0e_0                    ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pcmpeqd         xmm1,           __m128i_dbl_0e_0                    ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
         pshufd          xmm2,           xmm1,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
         pand            xmm1,           xmm2                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm1,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
         pshufd          xmm1,           xmm1,           shuffle4(3,3,1,1)   ;_mm_shuffle_epi32(teste,0xF5);     // extend sign bit to 64 bits shuffle
         .endif
-        pxor            xmm1,           __m128i_i64_0e_true
+        pxor            xmm1,           __m128i_dbl_0e_true
         pand            xmm0,           xmm1
         ret
 procend
 
 procstart _uX_mm_iszeroorsubnormal_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        pand            xmm0,           __m128d_inf
+        pand            xmm0,           __m128i_dbl_inf
         .if (__uX_CPUFeatures_SSE41 == true)
-        pcmpeqq         xmm0,           __m128i_i64_0
+        pcmpeqq         xmm0,           __m128i_dbl_0
         .else
-        pcmpeqd         xmm0,           __m128i_i64_0                       ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pcmpeqd         xmm0,           __m128i_dbl_0                       ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
         pshufd          xmm2,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
         pand            xmm0,           xmm2                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm0,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
@@ -1602,11 +1626,11 @@ procstart _uX_mm_iszeroorsubnormal_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmw
 procend
 
 procstart _uX_mm_iszeroorsubnormal_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        pand            xmm0,           __m128d_0e_inf
+        pand            xmm0,           __m128i_dbl_0e_inf
         .if (__uX_CPUFeatures_SSE41 == true)
-        pcmpeqq         xmm0,           __m128i_i64_0e_0
+        pcmpeqq         xmm0,           __m128i_dbl_0e_0
         .else
-        pcmpeqd         xmm0,           __m128i_i64_0e_0                    ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pcmpeqd         xmm0,           __m128i_dbl_0e_0                    ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
         pshufd          xmm2,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
         pand            xmm0,           xmm2                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm0,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits

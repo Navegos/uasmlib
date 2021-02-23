@@ -108,6 +108,7 @@ inline __m128d& uX_ABI vecdouble4::ref_xmmd_1() uX_noexcept
     return m128_xmmd_1;
 }*/
 
+/*
 inline void uX_ABI vecdouble4::set_xmmd_0(const __m128d Inxmmd) uX_noexcept
 {
     m128_xmmd_0 = Inxmmd;
@@ -116,7 +117,7 @@ inline void uX_ABI vecdouble4::set_xmmd_0(const __m128d Inxmmd) uX_noexcept
 inline void uX_ABI vecdouble4::set_xmmd_1(const __m128d Inxmmd) uX_noexcept
 {
     m128_xmmd_1 = Inxmmd;
-}
+}*/
 
 /*
 inline vecdouble4 uX_ABI vecdouble4::get() const uX_noexcept
@@ -770,7 +771,8 @@ inline vecdouble4& uX_ABI vecdouble4::ref_wzyx() uX_noexcept
     return vecdouble4(_uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0));
 }*/
 
-inline void uX_ABI vecdouble4::set(const vecdouble4 InHxmmd_a) uX_noexcept
+/*
+inline void uX_ABI vecdouble4::set(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = InHxmmd_a.m128_xmmd_0;
     m128_xmmd_1 = InHxmmd_a.m128_xmmd_1;
@@ -792,7 +794,7 @@ inline void uX_ABI vecdouble4::set_xyz(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_1(), m128_xmmd_1, 0, 1);
 }
 
-inline void uX_ABI vecdouble4::set_xyzw(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_xyzw(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = InHxmmd_a.m128_xmmd_0;
     m128_xmmd_1 = InHxmmd_a.m128_xmmd_1;
@@ -804,7 +806,7 @@ inline void uX_ABI vecdouble4::set_xyw(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, InHxmmd_a.get_xmmd_1(), 0, 0);
 }
 
-inline void uX_ABI vecdouble4::set_xywz(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_xywz(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = InHxmmd_a.m128_xmmd_0;
     m128_xmmd_1 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.m128_xmmd_1, 1, 0);
@@ -822,7 +824,7 @@ inline void uX_ABI vecdouble4::set_xzy(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), m128_xmmd_1, 1, 1);
 }
 
-inline void uX_ABI vecdouble4::set_xzyw(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_xzyw(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 0, 0);
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 1, 1);
@@ -834,7 +836,7 @@ inline void uX_ABI vecdouble4::set_xzw(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), InHxmmd_a.get_xmmd_1(), 1, 0);
 }
 
-inline void uX_ABI vecdouble4::set_xzwy(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_xzwy(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 0, 1);
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 1, 0);
@@ -852,7 +854,7 @@ inline void uX_ABI vecdouble4::set_xwy(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, InHxmmd_a.get_xmmd_0(), 0, 1);
 }
 
-inline void uX_ABI vecdouble4::set_xwyz(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_xwyz(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 0, 0);
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 1, 1);
@@ -864,7 +866,7 @@ inline void uX_ABI vecdouble4::set_xwz(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_1(), InHxmmd_a.get_xmmd_0(), 0, 1);
 }
 
-inline void uX_ABI vecdouble4::set_xwzy(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_xwzy(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 0, 1);
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 0, 1);
@@ -886,7 +888,7 @@ inline void uX_ABI vecdouble4::set_yxz(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_1(), m128_xmmd_1, 0, 1);
 }
 
-inline void uX_ABI vecdouble4::set_yxzw(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_yxzw(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.m128_xmmd_0, 1, 0);
     m128_xmmd_1 = InHxmmd_a.m128_xmmd_1;
@@ -898,7 +900,7 @@ inline void uX_ABI vecdouble4::set_yxw(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, InHxmmd_a.get_xmmd_1(), 0, 0);
 }
 
-inline void uX_ABI vecdouble4::set_yxwz(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_yxwz(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.m128_xmmd_0, 1, 0);
     m128_xmmd_1 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.m128_xmmd_1, 1, 0);
@@ -916,7 +918,7 @@ inline void uX_ABI vecdouble4::set_yzx(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), m128_xmmd_1, 1, 1);
 }
 
-inline void uX_ABI vecdouble4::set_yzxw(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_yzxw(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 0, 0);
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 1, 1);
@@ -928,7 +930,7 @@ inline void uX_ABI vecdouble4::set_yzw(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), InHxmmd_a.get_xmmd_1(), 1, 0);
 }
 
-inline void uX_ABI vecdouble4::set_yzwx(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_yzwx(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 1, 0);
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 1, 0);
@@ -946,7 +948,7 @@ inline void uX_ABI vecdouble4::set_ywx(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, InHxmmd_a.get_xmmd_0(), 0, 1);
 }
 
-inline void uX_ABI vecdouble4::set_ywxz(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_ywxz(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 0, 0);
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 1, 1);
@@ -958,7 +960,7 @@ inline void uX_ABI vecdouble4::set_ywz(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_1(), InHxmmd_a.get_xmmd_0(), 0, 1);
 }
 
-inline void uX_ABI vecdouble4::set_ywzx(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_ywzx(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 1, 0);
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 0, 1);
@@ -981,7 +983,7 @@ inline void uX_ABI vecdouble4::set_zxy(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), m128_xmmd_1, 0, 1);
 }
 
-inline void uX_ABI vecdouble4::set_zxyw(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_zxyw(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 1, 0);
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 0, 1);
@@ -993,7 +995,7 @@ inline void uX_ABI vecdouble4::set_zxw(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), InHxmmd_a.get_xmmd_1(), 0, 0);
 }
 
-inline void uX_ABI vecdouble4::set_zxwy(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_zxwy(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 1, 1);
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 0, 0);
@@ -1011,7 +1013,7 @@ inline void uX_ABI vecdouble4::set_zyx(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), m128_xmmd_1, 0, 1);
 }
 
-inline void uX_ABI vecdouble4::set_zyxw(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_zyxw(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 0, 1);
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 0, 1);
@@ -1023,7 +1025,7 @@ inline void uX_ABI vecdouble4::set_zyw(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), InHxmmd_a.get_xmmd_1(), 0, 0);
 }
 
-inline void uX_ABI vecdouble4::set_zywx(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_zywx(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 1, 1);
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 0, 0);
@@ -1040,7 +1042,7 @@ inline void uX_ABI vecdouble4::set_zwx(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = InHxmmd_a.get_xmmd_0();
 }
 
-inline void uX_ABI vecdouble4::set_zwxy(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_zwxy(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.m128_xmmd_1, 0, 1);
     m128_xmmd_1 = InHxmmd_a.get_xmmd_0();
@@ -1052,7 +1054,7 @@ inline void uX_ABI vecdouble4::set_zwy(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = InHxmmd_a.get_xmmd_0();
 }
 
-inline void uX_ABI vecdouble4::set_zwyx(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_zwyx(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.m128_xmmd_1, 1, 0);
     m128_xmmd_1 = InHxmmd_a.get_xmmd_0();
@@ -1075,7 +1077,7 @@ inline void uX_ABI vecdouble4::set_wxy(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, InHxmmd_a.get_xmmd_0(), 0, 0);
 }
 
-inline void uX_ABI vecdouble4::set_wxyz(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_wxyz(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 1, 0);
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 1, 0);
@@ -1087,7 +1089,7 @@ inline void uX_ABI vecdouble4::set_wxz(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_1(), InHxmmd_a.get_xmmd_0(), 0, 0);
 }
 
-inline void uX_ABI vecdouble4::set_wxzy(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_wxzy(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 1, 1);
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 0, 0);
@@ -1105,7 +1107,7 @@ inline void uX_ABI vecdouble4::set_wyx(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, InHxmmd_a.get_xmmd_0(), 0, 0);
 }
 
-inline void uX_ABI vecdouble4::set_wyxz(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_wyxz(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 0, 1);
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 1, 0);
@@ -1117,7 +1119,7 @@ inline void uX_ABI vecdouble4::set_wyz(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_1(), InHxmmd_a.get_xmmd_0(), 0, 0);
 }
 
-inline void uX_ABI vecdouble4::set_wyzx(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_wyzx(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 1, 1);
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 0, 0);
@@ -1134,7 +1136,7 @@ inline void uX_ABI vecdouble4::set_wzx(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.get_xmmd_0(), 1, 0);
 }
 
-inline void uX_ABI vecdouble4::set_wzxy(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_wzxy(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.m128_xmmd_1, 0, 1);
     m128_xmmd_1 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.m128_xmmd_0, 1, 0);
@@ -1146,198 +1148,199 @@ inline void uX_ABI vecdouble4::set_wzy(const vecdouble3 InHxmmd_a) uX_noexcept
     m128_xmmd_1 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.get_xmmd_0(), 1, 0);
 }
 
-inline void uX_ABI vecdouble4::set_wzyx(const vecdouble4 InHxmmd_a) uX_noexcept
+inline void uX_ABI vecdouble4::set_wzyx(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.m128_xmmd_1, 1, 0);
     m128_xmmd_1 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.m128_xmmd_0, 1, 0);
-}
+}*/
 
-inline vecdouble4 uX_ABI andnot(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+/*
+inline vecdouble4 uX_ABI andnot(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_andnot_pd(InHxmmd_b.m128_xmmd_0, InHxmmd_a.m128_xmmd_0), _uX_mm_andnot_pd(InHxmmd_b.m128_xmmd_1, InHxmmd_a.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator&(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator&(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_and_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_and_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator|(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator|(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_or_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_or_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator^(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator^(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_xor_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_xor_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator~(const vecdouble4 InHxmmd_a) uX_noexcept
+inline vecdouble4 uX_ABI operator~(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     return vecdouble4(_uX_mm_not_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_not_pd(InHxmmd_a.m128_xmmd_1));
 }
 
-inline bool_t uX_ABI bandnot(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline bool_t uX_ABI bandnot(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return _uX_mm_iandnot_pd(InHxmmd_b.m128_xmmd_0, InHxmmd_a.m128_xmmd_0) && _uX_mm_iandnot_pd(InHxmmd_b.m128_xmmd_1, InHxmmd_a.m128_xmmd_1);
 }
 
-inline bool_t uX_ABI operator&&(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline bool_t uX_ABI operator&&(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return _uX_mm_iand_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0) && _uX_mm_iand_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1);
 }
 
-inline bool_t uX_ABI operator||(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline bool_t uX_ABI operator||(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return _uX_mm_ior_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0) || _uX_mm_ior_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1);
 }
 
-inline bool_t uX_ABI operator!(const vecdouble4 InHxmmd_a) uX_noexcept
+inline bool_t uX_ABI operator!(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     return _uX_mm_inot_pd(InHxmmd_a.m128_xmmd_0) && _uX_mm_inot_pd(InHxmmd_a.m128_xmmd_1);
 }
 
-inline bool_t uX_ABI horizontal_and(const vecdouble4 InHxmmd_a) uX_noexcept
+inline bool_t uX_ABI horizontal_and(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     return _uX_mm_ihand_pd(InHxmmd_a.m128_xmmd_0) && _uX_mm_ihand_pd(InHxmmd_a.m128_xmmd_1);
 }
 
-inline bool_t uX_ABI horizontal_or(const vecdouble4 InHxmmd_a) uX_noexcept
+inline bool_t uX_ABI horizontal_or(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     return _uX_mm_ihor_pd(InHxmmd_a.m128_xmmd_0) || _uX_mm_ihor_pd(InHxmmd_a.m128_xmmd_1);
 }
 
-inline vecdouble4& uX_ABI operator&=(vecdouble4& InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4& uX_ABI operator&=(vecdouble4& InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return InHxmmd_a = vecdouble4(_uX_mm_and_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_and_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4& uX_ABI operator|=(vecdouble4& InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4& uX_ABI operator|=(vecdouble4& InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return InHxmmd_a = vecdouble4(_uX_mm_or_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_or_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4& uX_ABI operator^=(vecdouble4& InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4& uX_ABI operator^=(vecdouble4& InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return InHxmmd_a = vecdouble4(_uX_mm_xor_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_xor_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator+(const vecdouble4 InHxmmd_a, double Indouble_b) uX_noexcept
+inline vecdouble4 uX_ABI operator+(vecdouble4 const InHxmmd_a, double Indouble_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_add_pd(InHxmmd_a.m128_xmmd_0, _uX_mm_set1_pd(Indouble_b)), _uX_mm_add_pd(InHxmmd_a.m128_xmmd_1, _uX_mm_set1_pd(Indouble_b)));
 }
 
-inline vecdouble4 uX_ABI operator+(double Indouble_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator+(double Indouble_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_add_pd(_uX_mm_set1_pd(Indouble_a), InHxmmd_b.m128_xmmd_0), _uX_mm_add_pd(_uX_mm_set1_pd(Indouble_a), InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator+(const vecdouble4 InHxmmd_a, const __m128d Inxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator+(vecdouble4 const InHxmmd_a, const __m128d Inxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_add_pd(InHxmmd_a.m128_xmmd_0, Inxmmd_b), _uX_mm_add_pd(InHxmmd_a.m128_xmmd_1, Inxmmd_b));
 }
 
-inline vecdouble4 uX_ABI operator+(const __m128d Inxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator+(const __m128d Inxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_add_pd(Inxmmd_a, InHxmmd_b.m128_xmmd_0), _uX_mm_add_pd(Inxmmd_a, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator+(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator+(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_add_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_add_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator-(const vecdouble4 InHxmmd_a, double Indouble_b) uX_noexcept
+inline vecdouble4 uX_ABI operator-(vecdouble4 const InHxmmd_a, double Indouble_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_sub_pd(InHxmmd_a.m128_xmmd_0, _uX_mm_set1_pd(Indouble_b)), _uX_mm_sub_pd(InHxmmd_a.m128_xmmd_1, _uX_mm_set1_pd(Indouble_b)));
 }
 
-inline vecdouble4 uX_ABI operator-(double Indouble_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator-(double Indouble_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_sub_pd(_uX_mm_set1_pd(Indouble_a), InHxmmd_b.m128_xmmd_0), _uX_mm_sub_pd(_uX_mm_set1_pd(Indouble_a), InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator-(const vecdouble4 InHxmmd_a, const __m128d Inxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator-(vecdouble4 const InHxmmd_a, const __m128d Inxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_sub_pd(InHxmmd_a.m128_xmmd_0, Inxmmd_b), _uX_mm_sub_pd(InHxmmd_a.m128_xmmd_1, Inxmmd_b));
 }
 
-inline vecdouble4 uX_ABI operator-(const __m128d Inxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator-(const __m128d Inxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_sub_pd(Inxmmd_a, InHxmmd_b.m128_xmmd_0), _uX_mm_sub_pd(Inxmmd_a, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator-(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator-(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_sub_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_sub_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator*(const vecdouble4 InHxmmd_a, double Indouble_b) uX_noexcept
+inline vecdouble4 uX_ABI operator*(vecdouble4 const InHxmmd_a, double Indouble_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_mul_pd(InHxmmd_a.m128_xmmd_0, _uX_mm_set1_pd(Indouble_b)), _uX_mm_mul_pd(InHxmmd_a.m128_xmmd_1, _uX_mm_set1_pd(Indouble_b)));
 }
 
-inline vecdouble4 uX_ABI operator*(double Indouble_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator*(double Indouble_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_mul_pd(_uX_mm_set1_pd(Indouble_a), InHxmmd_b.m128_xmmd_0), _uX_mm_mul_pd(_uX_mm_set1_pd(Indouble_a), InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator*(const vecdouble4 InHxmmd_a, const __m128d Inxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator*(vecdouble4 const InHxmmd_a, const __m128d Inxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_mul_pd(InHxmmd_a.m128_xmmd_0, Inxmmd_b), _uX_mm_mul_pd(InHxmmd_a.m128_xmmd_1, Inxmmd_b));
 }
 
-inline vecdouble4 uX_ABI operator*(const __m128d Inxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator*(const __m128d Inxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_mul_pd(Inxmmd_a, InHxmmd_b.m128_xmmd_0), _uX_mm_mul_pd(Inxmmd_a, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator*(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator*(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_mul_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_mul_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator/(const vecdouble4 InHxmmd_a, double Indouble_b) uX_noexcept
+inline vecdouble4 uX_ABI operator/(vecdouble4 const InHxmmd_a, double Indouble_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_div_pd(InHxmmd_a.m128_xmmd_0, _uX_mm_set1_pd(Indouble_b)), _uX_mm_div_pd(InHxmmd_a.m128_xmmd_1, _uX_mm_set1_pd(Indouble_b)));
 }
 
-inline vecdouble4 uX_ABI operator/(double Indouble_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator/(double Indouble_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_div_pd(_uX_mm_set1_pd(Indouble_a), InHxmmd_b.m128_xmmd_0), _uX_mm_div_pd(_uX_mm_set1_pd(Indouble_a), InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator/(const vecdouble4 InHxmmd_a, const __m128d Inxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator/(vecdouble4 const InHxmmd_a, const __m128d Inxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_div_pd(InHxmmd_a.m128_xmmd_0, Inxmmd_b), _uX_mm_div_pd(InHxmmd_a.m128_xmmd_1, Inxmmd_b));
 }
 
-inline vecdouble4 uX_ABI operator/(const __m128d Inxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator/(const __m128d Inxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_div_pd(Inxmmd_a, InHxmmd_b.m128_xmmd_0), _uX_mm_div_pd(Inxmmd_a, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator/(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator/(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_div_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_div_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4& uX_ABI operator+=(vecdouble4& InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4& uX_ABI operator+=(vecdouble4& InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return InHxmmd_a = vecdouble4(_uX_mm_add_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_add_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4& uX_ABI operator-=(vecdouble4& InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4& uX_ABI operator-=(vecdouble4& InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return InHxmmd_a = vecdouble4(_uX_mm_sub_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_sub_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4& uX_ABI operator*=(vecdouble4& InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4& uX_ABI operator*=(vecdouble4& InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return InHxmmd_a = vecdouble4(_uX_mm_mul_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_mul_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4& uX_ABI operator/=(vecdouble4& InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4& uX_ABI operator/=(vecdouble4& InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return InHxmmd_a = vecdouble4(_uX_mm_div_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_div_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
@@ -1368,37 +1371,37 @@ inline vecdouble4 uX_ABI operator--(vecdouble4& InHxmmd_a, int) uX_noexcept
     return tmpxmm_a0;
 }
 
-inline vecdouble4 uX_ABI operator-(const vecdouble4 InHxmmd_a) uX_noexcept
+inline vecdouble4 uX_ABI operator-(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     return vecdouble4(_uX_mm_negate_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_negate_pd(InHxmmd_a.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator==(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator==(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_cmpeq_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_cmpeq_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator<(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator<(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_cmplt_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_cmplt_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator<=(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator<=(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_cmple_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_cmple_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator>(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator>(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_cmpgt_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_cmpgt_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator>=(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator>=(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_cmpge_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_cmpge_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI operator!=(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI operator!=(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_cmpneq_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_cmpneq_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
@@ -1417,32 +1420,32 @@ double& uX_ABI vecdouble4::operator[](count_t index) uX_noexcept
 uX_Use_decl_annotations
 inline vecdouble4& uX_ABI vecdouble4::m128_load(uX_InReads(2) const __m128d* Inpdouble) uX_noexcept
 {
-    /*m128_xmmd_0 = _uX_mm_loadu_pd(reinterpret_cast<const double*>(Inpdouble));
-    m128_xmmd_1 = _uX_mm_loadu_pd(reinterpret_cast<const double*>(Inpdouble+1));*/
+    / *m128_xmmd_0 = _uX_mm_loadu_pd(reinterpret_cast<const double*>(Inpdouble));
+    m128_xmmd_1 = _uX_mm_loadu_pd(reinterpret_cast<const double*>(Inpdouble+1));* /
     return vecdouble4(_uX_mm_loadu_pd(reinterpret_cast<const double*>(Inpdouble)), _uX_mm_loadu_pd(reinterpret_cast<const double*>(Inpdouble+1)));
 }
 
 uX_Use_decl_annotations
 inline vecdouble4& uX_ABI vecdouble4::m128_load_a(uX_InReads(2) const __m128d* Inpdouble) uX_noexcept
 {
-    /*m128_xmmd_0 = _uX_mm_load_pd(reinterpret_cast<const double*>(Inpdouble));
-    m128_xmmd_1 = _uX_mm_load_pd(reinterpret_cast<const double*>(Inpdouble+1));*/
+    / *m128_xmmd_0 = _uX_mm_load_pd(reinterpret_cast<const double*>(Inpdouble));
+    m128_xmmd_1 = _uX_mm_load_pd(reinterpret_cast<const double*>(Inpdouble+1));* /
     return vecdouble4(_uX_mm_load_pd(reinterpret_cast<const double*>(Inpdouble)), _uX_mm_load_pd(reinterpret_cast<const double*>(Inpdouble+1)));
 }
 
 uX_Use_decl_annotations
 inline vecdouble4& uX_ABI vecdouble4::load(uX_InReads(4) const double* Inpdouble) uX_noexcept
 {
-    /*m128_xmmd_0 = _uX_mm_loadu_pd(Inpdouble);
-    m128_xmmd_1 = _uX_mm_loadu_pd(Inpdouble+2);*/
+    / *m128_xmmd_0 = _uX_mm_loadu_pd(Inpdouble);
+    m128_xmmd_1 = _uX_mm_loadu_pd(Inpdouble+2);* /
     return vecdouble4(_uX_mm_loadu_pd(Inpdouble), _uX_mm_loadu_pd(Inpdouble+2));
 }
 
 uX_Use_decl_annotations
 inline vecdouble4& uX_ABI vecdouble4::load_a(uX_InReads(4) const double* Inpdouble) uX_noexcept
 {
-    /*m128_xmmd_0 = _uX_mm_load_pd(Inpdouble);
-    m128_xmmd_1 = _uX_mm_load_pd(Inpdouble+2);*/
+    / *m128_xmmd_0 = _uX_mm_load_pd(Inpdouble);
+    m128_xmmd_1 = _uX_mm_load_pd(Inpdouble+2);* /
     return vecdouble4(_uX_mm_load_pd(Inpdouble), _uX_mm_load_pd(Inpdouble+2));
 }
 
@@ -1474,7 +1477,7 @@ inline void uX_ABI vecdouble4::store_a(uX_OutWrites(4) double* Outpdouble) const
     _uX_mm_store_pd(Outpdouble+2, m128_xmmd_1);
 }
 
-inline const vecdouble4 uX_ABI vecdouble4::insert(double value, count_t index) uX_noexcept
+inline vecdouble4 const uX_ABI vecdouble4::insert(double value, count_t index) uX_noexcept
 {
     if (index > 3) return *this;
     if (index > 1) {
@@ -1494,8 +1497,8 @@ inline double uX_ABI vecdouble4::extract(count_t index) const uX_noexcept
 
 inline vecdouble4& uX_ABI vecdouble4::zero() uX_noexcept
 {
-    /*m128_xmmd_0 = _uX_mm_setzero_pd();
-    m128_xmmd_1 = _uX_mm_setzero_pd();*/
+    / *m128_xmmd_0 = _uX_mm_setzero_pd();
+    m128_xmmd_1 = _uX_mm_setzero_pd();* /
     return vecdouble4(_uX_mm_setzero_pd(), _uX_mm_setzero_pd());
 }
 
@@ -1519,144 +1522,144 @@ inline vecdouble4& uX_ABI vecdouble4::cutoff(const count_t indexN) uX_noexcept
     return *this;
 }
 
-inline vecdouble4 uX_ABI flip_sign(const vecdouble4 InHxmmd_a) uX_noexcept
+inline vecdouble4 uX_ABI flip_sign(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     return vecdouble4(_uX_mm_xor_pd(InHxmmd_a.m128_xmmd_0, __m128d_sign), _uX_mm_xor_pd(InHxmmd_a.m128_xmmd_1, __m128d_sign));
 }
 
-inline bool_t uX_ABI is_zero(const vecdouble4 InHxmmd_a) uX_noexcept
+inline bool_t uX_ABI is_zero(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     return _uX_mm_iszero_pd(InHxmmd_a.m128_xmmd_0) && _uX_mm_iszero_pd(InHxmmd_a.m128_xmmd_1);
 }
 
-inline vecdouble4 uX_ABI select(const vecdouble4 InHxmmd_f, const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI select(vecdouble4 const InHxmmd_f, vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_select_pd(InHxmmd_f.m128_xmmd_0, InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_select_pd(InHxmmd_f.m128_xmmd_1, InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI if_add(const vecdouble4 InHxmmd_f, const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI if_add(vecdouble4 const InHxmmd_f, vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return InHxmmd_a + (InHxmmd_f & InHxmmd_b);
 }
 
-inline vecdouble4 uX_ABI if_sub(const vecdouble4 InHxmmd_f, const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI if_sub(vecdouble4 const InHxmmd_f, vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return InHxmmd_a - (InHxmmd_f & InHxmmd_b);
 }
 
-inline vecdouble4 uX_ABI if_mul(const vecdouble4 InHxmmd_f, const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI if_mul(vecdouble4 const InHxmmd_f, vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return InHxmmd_a * select(InHxmmd_f, InHxmmd_b, vecdouble4(__m128d_1));
 }
 
-inline vecdouble4 uX_ABI if_div(const vecdouble4 InHxmmd_f, const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI if_div(vecdouble4 const InHxmmd_f, vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return InHxmmd_a / select(InHxmmd_f, InHxmmd_b, vecdouble4(__m128d_1));
 }
 
-inline vecdouble4 uX_ABI sign_bit(const vecdouble4 InHxmmd_a) uX_noexcept
+inline vecdouble4 uX_ABI sign_bit(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     return vecdouble4(_uX_mm_signbit_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_signbit_pd(InHxmmd_a.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI sign_combine(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI sign_combine(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_signcombine_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_signcombine_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI is_finite(const vecdouble4 InHxmmd_a) uX_noexcept
+inline vecdouble4 uX_ABI is_finite(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     return vecdouble4(_uX_mm_isfinite_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_isfinite_pd(InHxmmd_a.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI is_inf(const vecdouble4 InHxmmd_a) uX_noexcept
+inline vecdouble4 uX_ABI is_inf(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     return vecdouble4(_uX_mm_isinf_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_isinf_pd(InHxmmd_a.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI is_nan(const vecdouble4 InHxmmd_a) uX_noexcept
+inline vecdouble4 uX_ABI is_nan(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     return vecdouble4(_uX_mm_isnan_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_isnan_pd(InHxmmd_a.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI is_subnormal(const vecdouble4 InHxmmd_a) uX_noexcept
+inline vecdouble4 uX_ABI is_subnormal(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     return vecdouble4(_uX_mm_issubnormal_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_issubnormal_pd(InHxmmd_a.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI is_zero_or_subnormal(const vecdouble4 InHxmmd_a) uX_noexcept
+inline vecdouble4 uX_ABI is_zero_or_subnormal(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     return vecdouble4(_uX_mm_iszeroorsubnormal_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_iszeroorsubnormal_pd(InHxmmd_a.m128_xmmd_1));
 }
 
 inline vecdouble4& uX_ABI vecdouble4::infinite() uX_noexcept
 {
-    /*m128_xmmd_0 = _uX_mm_infinite_pd();
-    m128_xmmd_1 = _uX_mm_infinite_pd();*/
+    / *m128_xmmd_0 = _uX_mm_infinite_pd();
+    m128_xmmd_1 = _uX_mm_infinite_pd();* /
     return vecdouble4(_uX_mm_infinite_pd(), _uX_mm_infinite_pd());
 }
 
 inline vecdouble4& uX_ABI vecdouble4::nan() uX_noexcept
 {
-    /*m128_xmmd_0 = _uX_mm_nan_pd();
-    m128_xmmd_1 = _uX_mm_nan_pd();*/
+    / *m128_xmmd_0 = _uX_mm_nan_pd();
+    m128_xmmd_1 = _uX_mm_nan_pd();* /
     return vecdouble4(_uX_mm_nan_pd(), _uX_mm_nan_pd());
 }
 
-inline double uX_ABI horizontal_add(const vecdouble4 InHxmmd_a) uX_noexcept
+inline double uX_ABI horizontal_add(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     return horizontal_add(vecdouble2(_uX_mm_horizontaladd_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_horizontaladd_pd(InHxmmd_a.m128_xmmd_1)));
 }
 
-inline double uX_ABI horizontal_sub(const vecdouble4 InHxmmd_a) uX_noexcept
+inline double uX_ABI horizontal_sub(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     return horizontal_sub(vecdouble2(_uX_mm_horizontalsub_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_horizontalsub_pd(InHxmmd_a.m128_xmmd_1)));
 }
 
-inline double uX_ABI horizontal_mul(const vecdouble4 InHxmmd_a) uX_noexcept
+inline double uX_ABI horizontal_mul(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     return horizontal_mul(vecdouble2(_uX_mm_horizontalmul_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_horizontalmul_pd(InHxmmd_a.m128_xmmd_1)));
 }
 
-inline vecdouble4 uX_ABI max(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI max(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_max_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_max_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI min(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept
+inline vecdouble4 uX_ABI min(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
 {
     return vecdouble4(_uX_mm_min_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_min_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI abs(const vecdouble4 InHxmmd_a) uX_noexcept
+inline vecdouble4 uX_ABI abs(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     return vecdouble4(_uX_mm_abs_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_abs_pd(InHxmmd_a.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI square(const vecdouble4 InHxmmd_a) uX_noexcept
+inline vecdouble4 uX_ABI square(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     return vecdouble4(_uX_mm_square_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_square_pd(InHxmmd_a.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI scale(const vecdouble4 InHxmmd_a, double Indouble_s) uX_noexcept
+inline vecdouble4 uX_ABI scale(vecdouble4 const InHxmmd_a, double Indouble_s) uX_noexcept
 {
     return vecdouble4(_uX_mm_scale_pd(InHxmmd_a.m128_xmmd_0, Indouble_s), _uX_mm_scale_pd(InHxmmd_a.m128_xmmd_1, Indouble_s));
 }
 
-inline vecdouble4 uX_ABI rcp(const vecdouble4 InHxmmd_a) uX_noexcept
+inline vecdouble4 uX_ABI rcp(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     return vecdouble4(_uX_mm_rcp_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_rcp_pd(InHxmmd_a.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI sqrt(const vecdouble4 InHxmmd_a) uX_noexcept
+inline vecdouble4 uX_ABI sqrt(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     return vecdouble4(_uX_mm_sqrt_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_sqrt_pd(InHxmmd_a.m128_xmmd_1));
 }
 
-inline vecdouble4 uX_ABI rsqrt(const vecdouble4 InHxmmd_a) uX_noexcept
+inline vecdouble4 uX_ABI rsqrt(vecdouble4 const InHxmmd_a) uX_noexcept
 {
     return vecdouble4(_uX_mm_rsqrt_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_rsqrt_pd(InHxmmd_a.m128_xmmd_1));
-}
+}*/
 
 // vecdouble4 End
 // // // // // // // // //

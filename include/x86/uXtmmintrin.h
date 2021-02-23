@@ -3,7 +3,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -160,11 +160,11 @@ uX_PACK_PUSH_XMM
     // Packed align and shift right by n*8 bits,
     // {X,}MM2/m{128,64}(b) to {X,}MM1(a).
 
-    extern __m128i uX_ABI _uX_mm_alignr_epi8(__m128i Inxmm_A, __m128i Inxmm_B, const count_t Inint_Count);
+    extern __m128i uX_ABI _uX_mm_alignr_epi8(__m128i Inxmm_A, __m128i Inxmm_B, count_t const Inint_Count);
 
 #if defined(uX_X86)
     uX_PACK_MM
-    extern __m64 uX_ABI _uX_mm_alignr_pi8(__m64 Inmm_A, __m64 Inmm_B, const count_t Inint_Count);
+    extern __m64 uX_ABI _uX_mm_alignr_pi8(__m64 Inmm_A, __m64 Inmm_B, count_t const Inint_Count);
     uX_PACK_XMM
 #endif
 

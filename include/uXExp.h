@@ -26,7 +26,9 @@
 #ifndef uX_EXPORTS_H
 #define uX_EXPORTS_H 1
 
+#ifndef uX_PREPROCESSOR_H
 #include "uXpreprocessor.h"
+#endif  /* uX_PREPROCESSOR_H */
 
 #if defined(_WINDOWS) || defined(_WIN32) || defined(_WIN64) || defined(_M_ARM) || defined(_XBOX_ONE) || defined(_M_PPC)
 

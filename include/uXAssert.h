@@ -26,7 +26,9 @@
 #ifndef uX_ASSERT_H
 #define uX_ASSERT_H 1
 
+#ifndef uX_TYPES_H
 #include "uXtypes.h"
+#endif  /* uX_TYPES_H */
 
 #include "assert.h"
 
@@ -61,8 +63,8 @@ uX_PACK_PUSH_STACK
 \brief Prints the string literally (does not consume % specifier), trying to make sure it's visible to the app
 programmer
 */
-extern uX_API void uX_ABI printString(const char*);
-extern uX_API void uX_ABI asserthandler(const char* Msg, const char* Expr, const char* File, int Line, bool& Ignore);
+extern uX_API void uX_ABI printString(char const* const);
+extern uX_API void uX_ABI asserthandler(char const* const Msg, char const* const Expr, char const* const File, int Line, bool& Ignore);
 
 uX_PACK_POP
 EXTERN_CC_END
@@ -88,8 +90,8 @@ class AssertHandler
 public:
     virtual ~AssertHandler()
     {}
-    virtual void uX_ABI operator()(const char* Msg, const char* Expr, const char* File, int Line, bool& Ignore) = 0;
-    virtual void uX_ABI operator()(const char* Msg, const char* Expr, const char* File, int Line) = 0;
+    virtual void uX_ABI operator()(char const* const Msg, char const* const Expr, char const* const File, int Line, bool& Ignore) = 0;
+    virtual void uX_ABI operator()(char const* const Msg, char const* const Expr, char const* const File, int Line) = 0;
 };
 
 extern uX_API AssertHandler& uX_ABI GetAssertHandler();

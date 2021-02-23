@@ -31,6 +31,7 @@ uX_PACK_PUSH_XMM
 // // // // // // // // //
 // vecdouble2 Start
 
+/*
 inline void uX_ABI vecdouble2::set(const __m128d Inxmm) uX_noexcept
 {
     m128_xmmd = Inxmm;
@@ -500,7 +501,7 @@ inline vecdouble2 uX_ABI sqrt(const vecdouble2 Inxmmd_a) uX_noexcept
 inline vecdouble2 uX_ABI rsqrt(const vecdouble2 Inxmmd_a) uX_noexcept
 {
     return vecdouble2(_uX_mm_rsqrt_pd(Inxmmd_a));
-}
+}*/
 
 // vecdouble4 End
 // // // // // // // // //

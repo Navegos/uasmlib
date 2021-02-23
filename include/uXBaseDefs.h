@@ -26,8 +26,13 @@
 #ifndef uX_BASEDEFS_H
 #define uX_BASEDEFS_H 1
 
+#ifndef uX_PREPROCESSOR_H
 #include "uXpreprocessor.h"
+#endif  /* uX_PREPROCESSOR_H */
+
+#ifndef uX_EXPORTS_H
 #include "uXexp.h"
+#endif  /* uX_EXPORTS_H */
 
 /**
 Calling convention  // currently defined for windows only for (MSVC / Intel ICW) & (GCC compatible compiler / Intel ICU), needs researching for other compilers implementation

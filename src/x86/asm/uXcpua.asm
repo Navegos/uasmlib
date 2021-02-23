@@ -29,14 +29,14 @@ alignstackfieldproc
 
 .data?
     
-    input_datacachelevel                dword ?
+    ;input_datacachelevel                dword ?
     
     cpu_data_layout struct
         ok     dword 2 dup(?)
-        level1 sise_t 1 dup(?)
-        level2 sise_t 1 dup(?)
-        level3 sise_t 1 dup(?)
-        level4 sise_t 1 dup(?)
+        level1 size_t 1 dup(?)
+        level2 size_t 1 dup(?)
+        level3 size_t 1 dup(?)
+        level4 size_t 1 dup(?)
         descriptortable dword 60 dup(?)
     cpu_data_layout ends
 
@@ -50,12 +50,12 @@ alignstackfieldproc
 .data
             ;align 16
             
-    cpu_dataref label ptr sise_t                              ; reference point
+    cpu_dataref label ptr size_t                              ; reference point
         cpu_ok_       dd           0, 0                ; 1 when values are determined
-        cpu_level1_   isise_t      0                   ; level 1 data cache size
-        cpu_level2_   isise_t      0                   ; level 2 data cache size
-        cpu_level3_   isise_t      0                   ; level 3 data cache size
-        cpu_level4_   isise_t      0                   ; level 4 data cache size
+        cpu_level1_   isize_t      0                   ; level 1 data cache size
+        cpu_level2_   isize_t      0                   ; level 2 data cache size
+        cpu_level3_   isize_t      0                   ; level 3 data cache size
+        cpu_level4_   isize_t      0                   ; level 4 data cache size
     cpu_numlevels   equ            4                   ; max level
 
         ; From "Intel Processor Identification and the CPUID Instruction, Application note 485
@@ -344,6 +344,9 @@ alignstackfieldproc
     v1ci __uX_CPUFeatures_infolevel,                    dd, 0
         
     v1ci __uX_CPUFeatures_DataCacheSize,                isize_t, 0
+    v1ci __uX_CPUFeatures_DataCacheSizeL1,              isize_t, 0
+    v1ci __uX_CPUFeatures_DataCacheSizeL2,              isize_t, 0
+    v1ci __uX_CPUFeatures_DataCacheSizeL3,              isize_t, 0
         
     v1ci __uX_CPUFeatures_0H_EBX,                       dd, 0
     v1ci __uX_CPUFeatures_0H_ECX,                       dd, 0
@@ -354,50 +357,52 @@ alignstackfieldproc
     v1ci __uX_CPUFeatures_7H_EDX,                       dd, 0
     v1ci __uX_CPUFeatures_80000001H_ECX,                dd, 0
     v1ci __uX_CPUFeatures_80000001H_EDX,                dd, 0
-    
+
 .const
     
 .code
     
 callconvopt
 ;alignsize_tfieldproc
-    
+
+
 ifndef _CLASS_uXCPUFEATURES
 _CLASS_uXCPUFEATURES equ 1
 
+usesbase textequ <rbase()>
 ; Constructor
-procstart _uX_CPUFeatures_init, callconv, void, < >, uses rbase(), infolevel:dword
+procstart _uX_CPUFeatures_init, callconv, void, < >, uses usesbase, infolevel:dword
     ifdef __x32__
             push                edi
             push                esi
-            define r00ecx, edi, text
-            define r01edx, esi, text
-            define r07ebx, edi, text
-            define r01ecx, esi, text
-            define r07ecx, edi, text
-            define r81ecx, esi, text
-            define r81edx, edi, text
-            define r07edx, esi, text
+            r00ecx textequ <edi>
+            r01edx textequ <esi>
+            r07ebx textequ <edi>
+            r01ecx textequ <esi>
+            r07ecx textequ <edi>
+            r81ecx textequ <esi>
+            r81edx textequ <edi>
+            r07edx textequ <esi>
     endif
     ifdef __x64__
         ifdef __windows__
             push                rdi
             push                rsi
-            define r00ecx, edi, text
+            r00ecx textequ <edi>
         else            
-            define r00ecx, r8d, text
+            r00ecx textequ <r8d>
         endif
             push                r11
             push                r12
             push                r14
             push                r15
-            define r01edx, esi, text
-            define r07ebx, r8d, text
-            define r01ecx, r9d, text
-            define r07ecx, r11d, text
-            define r81ecx, r12d, text
-            define r81edx, r14d, text
-            define r07edx, r15d, text
+            r01edx textequ <esi>
+            r07ebx textequ <r8d>
+            r01ecx textequ <r9d>
+            r07ecx textequ <r11d>
+            r81ecx textequ <r12d>
+            r81edx textequ <r14d>
+            r07edx textequ <r15d>
     endif
     
     ifdef __x32__
@@ -604,12 +609,12 @@ procstart _uX_CPUFeatures_init, callconv, void, < >, uses rbase(), infolevel:dwo
     bvendor:
             .if (__uX_CPUFeatures_infolevel >= 1) ;infolevel >= 1
     ifdef __x32__
-                define efamily, edi, text
-                define emodel, ebx, text
+                efamily textequ <edi>
+                emodel textequ <ebx>
     endif
     ifdef __x64__
-                define efamily, r8d, text
-                define emodel, r9d, text
+                efamily textequ <r8d>
+                emodel textequ <r9d>
     endif
 
                 .if (__uX_CPUFeatures_ntel == true)
@@ -705,7 +710,7 @@ procstart _uX_CPUFeatures_init, callconv, void, < >, uses rbase(), infolevel:dwo
                 push                ecx
                 push                edx
                 push                edi
-                define rdest, edi, text
+                rdest textequ <edi>
     endif
     ifdef __x64__
                 push                rax
@@ -713,7 +718,7 @@ procstart _uX_CPUFeatures_init, callconv, void, < >, uses rbase(), infolevel:dwo
                 push                rcx
                 push                rdx
                 push                rdi
-                define rdest, rdi, text
+                rdest textequ <rdi>
     endif
     
     ifdef __x32__
@@ -725,11 +730,12 @@ procstart _uX_CPUFeatures_init, callconv, void, < >, uses rbase(), infolevel:dwo
 
     ifdef __x32__
                 .if (__uX_CPUFeatures_CPUID == false)
-        ; processor has no CPUID
-                mov     dword ptr [rdest],                  '8038'    ; Write text '80386 or 80486'
+        ; processor has no CPUID                                                ; Write text '80386 or 80486'
+                mov     dword ptr [rdest],                  '8038'
                 mov     dword ptr [rdest+4],                '6 or'
                 mov     dword ptr [rdest+8],                ' 804'
-                mov     dword ptr [rdest+12],               '86'   ; End with 0
+                mov     dword ptr [rdest+12],               '86'
+                                                                                ; End with 0
                 jmp         PNEND
                 .endif
     endif
@@ -779,7 +785,8 @@ get_family_and_model:
                 repne               scasb                  ; find end of text
                 dec                 rdest
         
-                mov     dword ptr [rdest],                  ' Fam'   ; Append text " Family "
+                                                                                ; Append text " Family "
+                mov     dword ptr [rdest],                  ' Fam'
                 mov     dword ptr [rdest+4],                'ily '
                 add                 rdest,                  8
 
@@ -794,7 +801,8 @@ get_family_and_model:
                 add                 eax,                    ecx               ; Family + extended family
                 call                _uX_CPUFeatures_WriteHex               ; Write as hexadecimal
 
-                mov     dword ptr [rdest],                  'H Mo' ; Write text "H Model "
+                                                                                ; Write text "H Model "
+                mov     dword ptr [rdest],                  'H Mo'
                 mov     dword ptr [rdest+4],                'del '
                 add                 rdest,                  8
         
@@ -807,7 +815,8 @@ get_family_and_model:
                 or                  eax,                    ecx               ; Model | extended model
                 call                _uX_CPUFeatures_WriteHex               ; Write as hexadecimal
 
-                mov     dword ptr [rdest],                  'H'       ; Write text "H"
+                                                                                ; Write text "H"
+                mov     dword ptr [rdest],                  'H'
         
     ifdef __x32__
                 pop                 rdest                    ; Restore string address
@@ -885,7 +894,7 @@ PNEND:  ; finished
     
                 ;elevel     textequ     <ebp>
 
-                mov                 ddidx(),              input_datacachelevel              ; level               
+                ;mov                 ddidx(),              input_datacachelevel              ; level
 
         ; check if called before
     ifdef __x32__
@@ -900,15 +909,15 @@ PNEND:  ; finished
         ; find cpu vendor
                 push                0
     ifdef __x32__
-                mov                 eax,                    esp
+                mov                 eax,                esp
                 push                0
                 push                0
                 push                eax
     endif
     ifdef __x64__
-                mov                 rp0(),                rsp
-                xor                 rp1(),            rp1()
-                xor                 rp2(),            rp2()
+                mov                 rp0(),              rsp
+                xor                 rp1(),              rp1()
+                xor                 rp2(),              rp2()
     endif ;__x64__
             
     ; -> The proc arguments conform to vectorcall calling convention: rcx=thisPtr, rdx=vendor, r8=family, r9=model
@@ -945,28 +954,54 @@ Intel:
 AMD:    ; AMD and VIA use same method
 VIA:    
                 call                _uX_CPUFeatures_AMDMethod
-        
+
 D800:   ; cache data known, get desired return value
                 xor                 eax,                    eax
-                cmp                 ddidx(),                  cpu_numlevels
-                ja                  D900
-                cmp                 ddidx(),                  0
-                je                  D820
+                mov                 ddidx(),                cpu_numlevels
+                ;.for (ddidx() = cpu_numlevels: ddidx() > 0: --ddidx())
+fordatacachesize:
+                dec                 ddidx()
+                .if (ddidx() == 3)
+                            mov                 rret(),                 [rsidx()+rdidx()*reg_size]
+                            mov     __uX_CPUFeatures_DataCacheSizeL3,   rret()
+                .elseif (ddidx() == 2)
+                            mov                 rret(),                 [rsidx()+rdidx()*reg_size]
+                            mov     __uX_CPUFeatures_DataCacheSizeL2,   rret()
+                .elseif (ddidx() == 1)
+                            mov                 rret(),                 [rsidx()+rdidx()*reg_size]
+                            mov     __uX_CPUFeatures_DataCacheSizeL1,   rret()
+                .elseif (ddidx() == 0)                                                                  ; level = 0. Get size of largest level cache
+                            mov                 rret(),                 [rsidx() + cpu_data_layout.level3]     ; level3
+                            test                rret(),                 rret()
+                            jnz                 D850
+                            mov                 rret(),                 [rsidx() + cpu_data_layout.level2]     ; level2
+                            test                rret(),                 rret()
+                            jnz                 D850
+                            mov                 rret(),                 [rsidx() + cpu_data_layout.level1]     ; level1
+                            mov     __uX_CPUFeatures_DataCacheSize,     rret()
+                .endif
+                cmp                 ddidx(),            0
+                jne                 fordatacachesize
+                ;.endf
+                ;cmp                 ddidx(),                cpu_numlevels
+                ;ja                  D900
+                ;cmp                 ddidx(),                0
+                ;je                  D820
         ; level = 1 .. numlevels
-                mov                 rret(),                [rsidx() + rdidx()*reg_size]            ; size of selected cache
-                jmp                 D850
-D820:   ; level = 0. Get size of largest level cache
-                mov                 rret(),                [rsidx() + cpu_data_layout.level3]     ; level3
-                test                rret(),                rret()
-                jnz                 D850
-                mov                 rret(),                [rsidx() + cpu_data_layout.level2]     ; level2
-                test                rret(),                rret()
-                jnz                 D850
-                mov                 rret(),                [rsidx() + cpu_data_layout.level1]     ; level1
-D850:       
+                ;mov                 rret(),                [rsidx() + rdidx()*reg_size]            ; size of selected cache
+                ;jmp                 D850
+;D820:   ; level = 0. Get size of largest level cache
+                ;mov                 rret(),                [rsidx() + cpu_data_layout.level3]     ; level3
+                ;test                rret(),                rret()
+                ;jnz                 D850
+                ;mov                 rret(),                [rsidx() + cpu_data_layout.level2]     ; level2
+                ;test                rret(),                rret()
+                ;jnz                 D850
+                ;mov                 rret(),                [rsidx() + cpu_data_layout.level1]     ; level1
+D850:
                 mov     dword ptr [rsidx() + cpu_data_layout.ok],     1     ; remember called, whether success or not
-                mov     __uX_CPUFeatures_DataCacheSize,     rret()
-D900:   
+                ;mov     __uX_CPUFeatures_DataCacheSize,     rret()
+;D900:
 
     ifdef __x32__
                 pop                 esp
@@ -1585,7 +1620,7 @@ TESTPS   EQU 10CH                                                           ; po
             mov     __uX_CPUFeatures_BMI1,              true
             
             ;/* %eax=07H, %ebx */
-            by                  r07ebx,                 8                   ; BMI2 support by microprocessor
+            bt                  r07ebx,                 8                   ; BMI2 support by microprocessor
             jnc                 not_supported
             mov     __uX_CPUFeatures_BMI2,              true
         
@@ -1874,22 +1909,37 @@ procend
 
 ; Destructor
 procstart _uX_CPUFeatures_destroy, callconv, void, < >, < >, < >
-    
             xor             rret(),                    rret()
 
+            mov     __uX_CPUFeatures_80000001H_EDX,         dret()
+            mov     __uX_CPUFeatures_80000001H_ECX,         dret()
+            mov     __uX_CPUFeatures_7H_EDX,                dret()
+            mov     __uX_CPUFeatures_7H_ECX,                dret()
+            mov     __uX_CPUFeatures_7H_EBX,                dret()
+            mov     __uX_CPUFeatures_1H_EDX,                dret()
+            mov     __uX_CPUFeatures_1H_ECX,                dret()
+            mov     __uX_CPUFeatures_0H_ECX,                dret()
+            mov     __uX_CPUFeatures_0H_EBX,                dret()
+
+            mov     __uX_CPUFeatures_DataCacheSizeL3,       rret()
+            mov     __uX_CPUFeatures_DataCacheSizeL2,       rret()
+            mov     __uX_CPUFeatures_DataCacheSizeL1,       rret()
             mov     __uX_CPUFeatures_DataCacheSize,         rret()
+
             mov     __uX_CPUFeatures_infolevel,             dret()
-            mov     __uX_CPUFeatures_ProcessorName,         rret()
+
+            mov     __uX_CPUFeatures_ProcessorName,         bret()
+
             mov     __uX_CPUFeatures_model,                 dret()
             mov     __uX_CPUFeatures_family,                dret()
             mov     __uX_CPUFeatures_vendor,                dret()
+
             mov     __uX_CPUFeatures_inited,                dret()
-            mov     __uX_CPUFeatures_intrinset,             dret()
 
             mov     __uX_CPUFeatures_enabled_ZMM,           dret()
             mov     __uX_CPUFeatures_enabled_YMM,           dret()
             mov     __uX_CPUFeatures_enabled_XMM,           dret()
-            
+
     ;/* %eax=07H, %ecx, %ebx | %eax=01H, %ecx , %edx */
             mov     __uX_CPUFeatures_AVX2_VPCLMULQDQ,       dret()
             mov     __uX_CPUFeatures_AVX2_VAES,             dret()
@@ -2058,6 +2108,8 @@ procstart _uX_CPUFeatures_destroy, callconv, void, < >, < >, < >
     ; /* EFLAGS %eax=00H, %ebx=00H */
             mov     __uX_CPUFeatures_CPUID,                 dret()
 
+            mov     __uX_CPUFeatures_intrinset,             dret()
+
             ret
 procend
 
@@ -2090,21 +2142,21 @@ procstart _uX_CPUFeatures_CpuType, callconv, void, < >, < >, vendor:ptr dword, f
                 mov     eax,     vendor
                 mov     esi,     family
                 mov     edi,     model
-                define evendor, eax, text
-                define efamily, esi, text
-                define emodel, edi, text
+                evendor textequ <eax>
+                efamily textequ <esi>
+                emodel textequ <edi>
         else
-                define evendor, dp0(), text
-                define efamily, dp1(), text
+                evendor textequ <dp0()>
+                efamily textequ <dp1()>
                 push eax
                 mov     eax,     model
-                define emodel, eax, text
+                emodel textequ <eax>
         endif
     endif
     ifdef __x64__
-                define evendor, dp0(), text
-                define efamily, dp1(), text
-                define emodel, dp2(), text
+                evendor textequ <dp0()>
+                efamily textequ <dp1()>
+                emodel textequ <dp2()>
     endif
 
 C300:   ; return r9d = vendor, r10d = family, r11d = model
@@ -2165,17 +2217,24 @@ procend
 procstart _uX_CPUFeatures_DataCacheSize, callconv, size_t, < >, < >, level:dword
     ifdef __x32__
         ifdef __windows__
-            define drlevel, dp0(), text
+            drlevel textequ <dp0()>
         endif
         ifdef __unix__
-            define drlevel, level, text
+            drlevel textequ <level>
         endif
     endif
     ifdef __x64__
-            define drlevel, dp0(), text
+            drlevel textequ <dp0()>
     endif
-            mov     input_datacachelevel,   drlevel
-            mov                 rret(),                    __uX_CPUFeatures_DataCacheSize        ; Pointer to result
+            .if (drlevel == 3)
+                    mov                 rret(),                    __uX_CPUFeatures_DataCacheSizeL3        ; Pointer to result
+            .elseif (drlevel == 2)
+                    mov                 rret(),                    __uX_CPUFeatures_DataCacheSizeL2        ; Pointer to result
+            .elseif (drlevel == 1)
+                    mov                 rret(),                    __uX_CPUFeatures_DataCacheSizeL1        ; Pointer to result
+            .elseif (drlevel == 0)
+                    mov                 rret(),                    __uX_CPUFeatures_DataCacheSize        ; Pointer to result
+            .endif
             ret
 procend
 
@@ -2188,13 +2247,13 @@ procstart _uX_CPUFeatures_WriteHex, callconv, void, < >, < >, < >
             push                eax
             push                ecx
             push                edi
-            define rdest, edi, text
+            rdest textequ <edi>
     endif
     ifdef __x64__
             push                rax
             push                rcx
             push                rdi
-            define rdest, rdi, text
+            rdest textequ <rdi>
     endif
     
             mov                 ecx,                    eax
@@ -2263,17 +2322,17 @@ procstart _uX_CPUFeatures_IntelNewMethod, callconv, void, < >, < >, < >; level:d
     ifdef __x32__
             ;rret()        textequ     <eax>
             ;rsidx()      textequ     <esi>
-            define rbreg, ebx, text
-            define rcreg, ecx, text
+            rbreg textequ <ebx>
+            rcreg textequ <ecx>
     endif
     ifdef __x64__
-            define rbreg, rbx, text
-            define rcreg, rcx, text
+            rbreg textequ <rbx>
+            rcreg textequ <rcx>
             ;rret()        textequ     <rax>
             ;rsidx()      textequ     <rsi>
     endif ;__x64__
 
-            define eloopcount, edi, text
+            eloopcount textequ <edi>
 
             xor                 eax,                    eax
             cpuid                          ; get number of CPUID functions
@@ -2368,18 +2427,18 @@ procstart _uX_CPUFeatures_IntelOldMethod, callconv, void, < >, < >, < >; level:d
     ifdef __x32__
             ;rret()        textequ     <eax>
             ;rsidx()      textequ     <esi>
-            define rbreg, ebx, text
-            define rcreg, ecx, text
-            define rdreg, edx, text
-            define rspreg, esp, text
+            rbreg textequ <ebx>
+            rcreg textequ <ecx>
+            rdreg textequ <edx>
+            rspreg textequ <esp>
     endif
     ifdef __x64__
             ;rret()        textequ     <rax>
             ;rsidx()      textequ     <rsi>
-            define rbreg, rbx, text
-            define rcreg, rcx, text
-            define rdreg, rdx, text
-            define rspreg, rsp, text
+            rbreg textequ <rbx>
+            rcreg textequ <rcx>
+            rdreg textequ <rdx>
+            rspreg textequ <rsp>
     endif ;__x64__
     
             xor                 eax,                    eax
@@ -2479,12 +2538,12 @@ procstart _uX_CPUFeatures_AMDMethod, callconv, void, < >, < >, < >; level:dword
     ifdef __x32__
             ;rret()        textequ     <eax>
             ;rsidx()      textequ     <esi>
-            define rcreg, ecx, text
+            rcreg textequ <ecx>
     endif
     ifdef __x64__
             ;rret()        textequ     <rax>
             ;rsidx()      textequ     <rsi>
-            define rcreg, rcx, text
+            rcreg textequ <rcx>
     endif ;__x64__
 
             mov                 eax,                    80000000H
@@ -3299,4 +3358,4 @@ endif ;_CLASS_uXCPUFEATURES
 
 endif ;__MIC__
 
-    end
+end

@@ -1,3 +1,4 @@
+/*
 
 #include "math/sse/uXxmmvecdouble.h"
 
@@ -16,11 +17,11 @@ namespace_uX
 namespace_XMM
 uX_PACK_PUSH_XMM
 
-/*
+/ *
 vecdouble::vecdouble(const __m128d Inxmmd)
 {
     m128_xmmd = Inxmmd;
-}*/
+}* /
 
 uX_Use_decl_annotations
 vecdouble::vecdouble(const double* Inpdouble)
@@ -33,11 +34,11 @@ vecdouble::operator __m128d(void) const
     return m128_xmmd;
 }
 
-/*
+/ *
 vecdouble::operator double*(void) const
 {
     return _uX_ptr_moveu_mm_pd(m128_xmmd);
-}*/
+}* /
 
 vecdouble& uX_callconv vecdouble::operator=(const __m128d Inxmmd)
 {
@@ -63,4 +64,5 @@ namespace_uX_end
 
 #endif //SSE
 
-#endif /*defined(uX_INTRINSICS_SUPPORT) && defined(uX_X86_OR_X64_CPU) && !defined(uX_NO_INTRINSICS_SUPPORT)*/
+#endif / *defined(uX_INTRINSICS_SUPPORT) && defined(uX_X86_OR_X64_CPU) && !defined(uX_NO_INTRINSICS_SUPPORT)* /
+*/

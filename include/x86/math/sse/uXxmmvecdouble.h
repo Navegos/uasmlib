@@ -3,7 +3,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -22,13 +22,14 @@
 */
 
 #pragma once
+/*
 
 #ifndef uX_XMM_VECDOUBLE_H
 #define uX_XMM_VECDOUBLE_H 1
 
 #ifndef uX_TYPES_H
 #include "uXtypes.h"
-#endif  /* uX_TYPES_H */
+#endif  / * uX_TYPES_H * /
 
 #if defined(uX_INTRINSICS_SUPPORT) && defined(uX_X86_OR_X64_CPU) && !defined(uX_NO_INTRINSICS_SUPPORT) && !defined(uX_MIC)
 
@@ -38,25 +39,25 @@
 
 #ifndef __cplusplus
 #error ERROR: This file is only supported in C++ compilations!
-#endif /* !__cplusplus */
+#endif / * !__cplusplus * /
 
 #ifndef _INCLUDED_MM2
 #include <xmmintrin.h>
-#endif  /* _INCLUDED_MM2 */
+#endif  / * _INCLUDED_MM2 * /
 
 #ifdef uX_SSE2
 #ifndef _INCLUDED_EMM
 #include <emmintrin.h>
-#endif  /* _INCLUDED_EMM */
+#endif  / * _INCLUDED_EMM * /
 #endif // uX_SSE2
 
 #ifndef uX_XMM_INTRIN_H
 #include "uXxmmintrin.h"
-#endif  /* uX_XMM_INTRIN_H */
+#endif  / * uX_XMM_INTRIN_H * /
 
 #ifndef uX_EMM_INTRIN_H
 #include "uXemmintrin.h"
-#endif  /* uX_EMM_INTRIN_H */
+#endif  / * uX_EMM_INTRIN_H * /
 
 namespace_uX
 namespace_XMM
@@ -64,8 +65,8 @@ uX_PACK_PUSH_XMM
 
 // VECTORS'S
 
-/*class vecfloat;*/
-/*
+/ *class vecfloat;* /
+/ *
 class vecfloat1;
 class vecfloat2;
 class vecfloat3;
@@ -90,9 +91,9 @@ class vecdouble4;
 class vecdouble3x3;
 class vecdouble4x3;
 class vecdouble4x4;
-#endif*/
+#endif* /
 
-/*
+/ *
 typedef class uX_API vecdouble
 {
 public:
@@ -172,7 +173,7 @@ private:
     static uX_const uint32_t m128_dbl_ptr_size      = 16;
     static uX_const uint32_t m128_dbl_size          = 8;
 
-}vecdouble_t;*/
+}vecdouble_t;* /
 
 uX_PACK_POP
 namespace_XMM_end
@@ -180,16 +181,17 @@ namespace_uX_end
 
 #ifndef uX_XMM_VECDOUBLE1_H
 #include "uXxmmvecdouble1.h"
-#endif  /* uX_XMM_VECDOUBLE1_H */
+#endif  / * uX_XMM_VECDOUBLE1_H * /
 
 #ifndef uX_XMM_VECDOUBLE2_H
 #include "uXxmmvecdouble2.h"
-#endif  /* uX_XMM_VECDOUBLE2_H */
+#endif  / * uX_XMM_VECDOUBLE2_H * /
 
 #endif // uX_SSE2
 
 #endif // uX_SSE
 
-#endif /*defined(uX_INTRINSICS_SUPPORT) && defined(uX_X86_OR_X64_CPU) && !defined(uX_NO_INTRINSICS_SUPPORT)*/
+#endif / *defined(uX_INTRINSICS_SUPPORT) && defined(uX_X86_OR_X64_CPU) && !defined(uX_NO_INTRINSICS_SUPPORT)* /
 
 #endif // uX_XMM_VECDOUBLE_H
+*/

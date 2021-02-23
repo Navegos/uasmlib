@@ -3,7 +3,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -60,7 +60,7 @@ uX_EXTERNC_BEGIN
 uX_PACK_PUSH_MM
 
 /* General support intrinsics */
-    extern void uX_ABI _uX_m_empty();
+    extern void uX_ABI _uX_m_empty(void);
     extern __m64 uX_ABI _uX_m_from_int(int _I);
     /*extern __m64 uX_ABI _uX_m_from_int64(__int64 _I);*/
     extern int uX_ABI _uX_m_to_int(__m64 _M);
@@ -96,21 +96,21 @@ uX_PACK_PUSH_MM
 
 /* Shift intrinsics */
     extern __m64 uX_ABI _uX_m_psllw(__m64 _M, __m64 _Count);
-    extern __m64 uX_ABI _uX_m_psllwi(__m64 _M, const count_t _Count);
+    extern __m64 uX_ABI _uX_m_psllwi(__m64 _M, count_t const _Count);
     extern __m64 uX_ABI _uX_m_pslld(__m64 _M, __m64 _Count);
-    extern __m64 uX_ABI _uX_m_pslldi(__m64 _M, const count_t _Count);
+    extern __m64 uX_ABI _uX_m_pslldi(__m64 _M, count_t const _Count);
     extern __m64 uX_ABI _uX_m_psllq(__m64 _M, __m64 _Count);
-    extern __m64 uX_ABI _uX_m_psllqi(__m64 _M, const count_t _Count);
+    extern __m64 uX_ABI _uX_m_psllqi(__m64 _M, count_t const _Count);
     extern __m64 uX_ABI _uX_m_psraw(__m64 _M, __m64 _Count);
-    extern __m64 uX_ABI _uX_m_psrawi(__m64 _M, const count_t _Count);
+    extern __m64 uX_ABI _uX_m_psrawi(__m64 _M, count_t const _Count);
     extern __m64 uX_ABI _uX_m_psrad(__m64 _M, __m64 _Count);
-    extern __m64 uX_ABI _uX_m_psradi(__m64 _M, const count_t _Count);
+    extern __m64 uX_ABI _uX_m_psradi(__m64 _M, count_t const _Count);
     extern __m64 uX_ABI _uX_m_psrlw(__m64 _M, __m64 _Count);
-    extern __m64 uX_ABI _uX_m_psrlwi(__m64 _M, const count_t _Count);
+    extern __m64 uX_ABI _uX_m_psrlwi(__m64 _M, count_t const _Count);
     extern __m64 uX_ABI _uX_m_psrld(__m64 _M, __m64 _Count);
-    extern __m64 uX_ABI _uX_m_psrldi(__m64 _M, const count_t _Count);
+    extern __m64 uX_ABI _uX_m_psrldi(__m64 _M, count_t const _Count);
     extern __m64 uX_ABI _uX_m_psrlq(__m64 _M, __m64 _Count);
-    extern __m64 uX_ABI _uX_m_psrlqi(__m64 _M, const count_t _Count);
+    extern __m64 uX_ABI _uX_m_psrlqi(__m64 _M, count_t const _Count);
 
 /* Logical intrinsics */
     extern __m64 uX_ABI _uX_m_pand(__m64 _MM1, __m64 _MM2);
@@ -127,7 +127,7 @@ uX_PACK_PUSH_MM
     extern __m64 uX_ABI _uX_m_pcmpgtd(__m64 _MM1, __m64 _MM2);
 
 /* Utility intrinsics */
-    extern __m64 uX_ABI _uX_m_setzero_si64();
+    extern __m64 uX_ABI _uX_m_setzero_si64(void);
     extern __m64 uX_ABI _uX_m_set_pi32(int _I1, int _I0);
     extern __m64 uX_ABI _uX_m_set_pi16(short _S3, short _S2, short _S1, short _S0);
     extern __m64 uX_ABI _uX_m_set_pi8(char _B7, char _B6, char _B5, char _B4, char _B3, char _B2, char _B1, char _B0);

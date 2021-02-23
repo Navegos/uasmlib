@@ -14,6 +14,7 @@
 #endif
 #endif
 
+/*
 #define _MSC_VER  1912
 
-#define _M_FP_PRECISE
+#define _M_FP_PRECISE*/

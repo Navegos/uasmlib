@@ -3,7 +3,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -67,15 +67,47 @@ class vecfloat3x3;
 class vecfloat4x3;
 class vecfloat4x4;
 #ifdef uX_SSE2
-class vecint8;
-class vecuint8;
-class vecint16;
-class vecuint16;
-class vecint32;
-class vecuint32;
-class vecint64;
-class vecuint64;
-class vecdouble;
+/*class vecint8;*/
+/*class vecuint8;*/
+/*class vecint16;*/
+/*class vecuint16;*/
+/*class vecint32;*/
+/*class vecuint32;*/
+/*class vecint64;*/
+/*class vecuint64;*/
+class vecbyte1;
+class vecubyte1;
+class vecbyte2;
+class vecubyte2;
+class vecbyte3;
+class vecubyte3;
+class vecbyte4;
+class vecubyte4;
+class vecword1;
+class vecuword1;
+class vecword2;
+class vecuword2;
+class vecword3;
+class vecuword3;
+class vecword4;
+class vecuword4;
+class vecdword1;
+class vecudword1;
+class vecdword2;
+class vecudword2;
+class vecdword3;
+class vecudword3;
+class vecdword4;
+class vecudword4;
+class vecqword1;
+class vecuqword1;
+class vecqword2;
+class vecuqword2;
+class vecqword3;
+class vecuqword3;
+class vecqword4;
+class vecuqword4;
+/*class vecdouble;*/
 class vecdouble1;
 class vecdouble2;
 class vecdouble3;

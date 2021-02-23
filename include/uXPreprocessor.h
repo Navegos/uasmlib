@@ -332,9 +332,13 @@ Compiler defines
 #       define uX_MSVC_TYPE_ALIGNMENT 1
 #       define uX_COMPILER_SUPPORTS_TBB 1
 #       define uX_COMPILER_SUPPORTS_PPL 1
+#       define uX_COMPILER_SUPPORTS_OMP 1
+#       define uX_COMPILER_SUPPORTS_PRL 1
 #elif defined(uX_GCC_COMPATIBLE_COMPILER) || defined(uX_IBMC) || defined(uX_APPLECC)
 #       define uX_GNUC_TYPE_ALIGNMENT 1
 #       define uX_COMPILER_SUPPORTS_TBB 1
+#       define uX_COMPILER_SUPPORTS_OMP 1
+#       define uX_COMPILER_SUPPORTS_PRL 1
 #endif
 
 #if defined(__pic__) || defined(__PIC__)
@@ -960,11 +964,15 @@ Platform define
 #if defined(uX_X86_OR_X64_CPU)
 #       define uX_ARCH_SUPPORTS_TBB 1
 #       define uX_ARCH_SUPPORTS_PPL 1
+#       define uX_ARCH_SUPPORTS_OMP 1
+#       define uX_ARCH_SUPPORTS_PRL 1
 # elif defined(uX_A32_OR_A64_CPU)
 #       define uX_ARCH_SUPPORTS_TBB 1
 #       define uX_ARCH_SUPPORTS_PPL 1
+#       define uX_ARCH_SUPPORTS_PRL 1
 #   elif defined(uX_XEON_PHI_SYSTEM)
 #       define uX_ARCH_SUPPORTS_TBB 1
+#       define uX_ARCH_SUPPORTS_PRL 1
 #endif
 
 // Disables all the alignments
@@ -1186,24 +1194,33 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #       define uX_USE_PPL_PRL_FOR_EACH 1
 #  endif
 
-# if defined(uX_NO_PRL)
-#       define uX_MATH_NO_PRL 1
-#       define uX_PRL_MATH_NO_PRL 1
-#       define uX_AMP_MATH_NO_PRL 1
+#if !defined(uX_ARCH_SUPPORTS_PRL) && !defined(uX_COMPILER_SUPPORTS_PRL)
+# define uX_NO_PRL 1
+#else
+# define uX_SUPPORTS_PRL 1
+#endif
 
+#if !defined(uX_ARCH_SUPPORTS_TBB) && !defined(uX_COMPILER_SUPPORTS_TBB)
+# define uX_NO_TBB 1
+#else
+# define uX_SUPPORTS_TBB 1
+#endif
+
+# if defined(uX_NO_PRL)
 #       define uX_FLOATS_NO_PRL 1
+#       define uX_MATH_NO_PRL 1
+
+#       define uX_AMP_NO_PRL 1
 
 #       define uX_NO_TBB_PRL_FOR 1
 #       define uX_NO_TBB_PRL_FOR_EACH 1
 #       define uX_NO_PPL_PRL_FOR 1
 #       define uX_NO_PPL_PRL_FOR_EACH 1
 # else
-
-// #        define uX_MATH_NO_PRL 1
-// #        define uX_PRL_MATH_NO_PRL 1
-// #        define uX_AMP_MATH_NO_PRL 1
-
 // #        define uX_FLOATS_NO_PRL 1
+// #        define uX_MATH_NO_PRL 1
+
+// #        define uX_AMP_NO_PRL 1
 
 // #        define uX_NO_TBB_PRL_FOR 1
 // #        define uX_NO_TBB_PRL_FOR_EACH 1
@@ -1212,21 +1229,40 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 # endif
 
 # if defined(uX_FLOATS_NO_PRL)
-#       define uX_DFLOATS_NO_PRL 1
-#       define uX_HFLOATS_NO_PRL 1
+#       define uX_DEVICE_FLOATS_NO_PRL 1
+#       define uX_HOST_FLOATS_NO_PRL 1
+#       define uX_XMM_FLOATS_NO_PRL 1
+#       define uX_YMM_FLOATS_NO_PRL 1
+#       define uX_ZMM_FLOATS_NO_PRL 1
 # else
-// #        define uX_DFLOATS_NO_PRL 1
-// #        define uX_HFLOATS_NO_PRL 1
+// #       define uX_DEVICE_FLOATS_NO_PRL 1
+// #       define uX_HOST_FLOATS_NO_PRL 1
+// #       define uX_XMM_FLOATS_NO_PRL 1
+// #       define uX_YMM_FLOATS_NO_PRL 1
+// #       define uX_ZMM_FLOATS_NO_PRL 1
 # endif
 
-# if defined(uX_PRL_MATH_NO_PRL)
-#       define uX_DPRL_MATH_NO_PRL 1
-#       define uX_HPRL_MATH_NO_PRL 1
+# if defined(uX_MATH_NO_PRL)
+#       define uX_DEVICE_MATH_NO_PRL 1
+#       define uX_HOST_MATH_NO_PRL 1
+#       define uX_XMM_MATH_NO_PRL 1
+#       define uX_YMM_MATH_NO_PRL 1
+#       define uX_ZMM_MATH_NO_PRL 1
 # else
-// #        define uX_DPRL_MATH_NO_PRL 1
-// #        define uX_HPRL_MATH_NO_PRL 1
+// #       define uX_DEVICE_MATH_NO_PRL 1
+// #       define uX_HOST_MATH_NO_PRL 1
+// #       define uX_XMM_MATH_NO_PRL 1
+// #       define uX_YMM_MATH_NO_PRL 1
+// #       define uX_ZMM_MATH_NO_PRL 1
 # endif
 
+#ifndef uX_XMM_MATH_NO_PRL
+# define uX_XMM_MATH_SUPPORTS_PRL 1
+#endif
+
+#if defined(uX_SUPPORTS_TBB) && defined(uX_XMM_MATH_SUPPORTS_PRL)
+# define uX_XMM_MATH_SUPPORTS_TBB 1
+#endif
 
 #if defined(uX_AMP_SUPPORT)
 // enable std:vector support, as template vector and compiler library powered for AMP

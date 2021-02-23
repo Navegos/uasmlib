@@ -1,7 +1,7 @@
 # uasmlib
-UASM - Macro Assembler library
+UASM - Copyright 2020 (c) Navegos QA - optimized library
 ----
 
-* Requirements
-* [UASM](https://github.com/eXOAMP/UASM/releases)
+: Requirements
+* [UASM](https://github.com/Navegos/UASM/releases)
 ----

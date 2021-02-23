@@ -26,6 +26,7 @@
     <None Include="..\..\..\include\x86\math\sse\inline\uXxmmvecqword4.inl" />
     <None Include="..\..\..\src\x86\AVX256\asm\uXavx256intrin.inc" />
     <None Include="..\..\..\src\x86\AVX256\asm\uXymmconstdata.inc" />
+    <None Include="..\..\..\src\x86\SSE\asm\uXxemmdata.inc" />
     <None Include="..\export\uasmlib-export_X32.def" />
     <UASM Include="..\..\..\src\x86\asm\uXcpuid.asm">
       <FileType>Document</FileType>
@@ -75,7 +76,8 @@
       <FileType>Document</FileType>
     </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXemmarithmetic.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmconstdata.asm">
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXxemmdata.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmdata.asm">
       <FileType>Document</FileType>
     </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmintrin.asm">
@@ -177,7 +179,6 @@
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble2.cpp" />
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble3.cpp" />
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble3x3.cpp" />
-    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble4.cpp" />
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble4x3.cpp" />
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble4x4.cpp" />
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat.cpp" />
@@ -201,7 +202,7 @@
   <ItemGroup>
     <None Include="..\..\..\.gitignore" />
     <None Include="..\..\..\src\x86\asm\uXasm.inc" />
-    <None Include="..\..\..\src\x86\SSE\asm\uXxmmconstdata.inc" />
+    <None Include="..\..\..\src\x86\SSE\asm\uXxmmdata.inc" />
     <None Include="..\export\uasmlib-export_X64.def" />
   </ItemGroup>
   <ItemGroup>
@@ -291,12 +292,13 @@
       <PreprocessorDefinitions>__X32___;WIN32;_WIN32;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_MMX=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <OmitFramePointers />
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../../../include;../../../include/x86;$(LIBRARIES_PATH)/oneTBB/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../include;../../../include/x86;$(LIBRARIES_PATH)/oneTBB/Win32/vc16/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalOptions>/openmp:experimental %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -316,9 +318,9 @@
       <AdditionalIncludeDirectories>../../../include/;$(IntDir)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <PostBuildEvent>
-      <Command>copy $(OutDir)$(TargetName)$(TargetExt) $(UASMLIB_PATH)\bin\Win32\vc14
-copy $(OutDir)$(TargetName).lib $(UASMLIB_PATH)\lib\Win32\vc14
-copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win32\vc14</Command>
+      <Command>copy "$(OutDir)$(TargetName)$(TargetExt)" "$(LIBRARIES_PATH)uasmlib/Win32/vc16/bin"
+copy "$(OutDir)$(TargetName).lib" "$(LIBRARIES_PATH)uasmlib/Win32/vc16/lib"
+copy "$(OutDir)$(TargetName).pdb" "$(LIBRARIES_PATH)uasmlib/Win32/vc16/bin"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -329,12 +331,13 @@ copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win32\vc14</Command>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>__x64__;WIN64;_WIN64;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_MMX=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../../../include;../../../include/x86;$(LIBRARIES_PATH)/oneTBB/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../include;../../../include/x86;$(LIBRARIES_PATH)/oneTBB/Win64/vc16/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalOptions>/openmp:experimental %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -353,9 +356,9 @@ copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win32\vc14</Command>
       <AdditionalIncludeDirectories>../../../include/;$(IntDir)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <PostBuildEvent>
-      <Command>copy $(OutDir)$(TargetName)$(TargetExt) $(UASMLIB_PATH)\bin\Win64\vc14
-copy $(OutDir)$(TargetName).lib $(UASMLIB_PATH)\lib\Win64\vc14
-copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win64\vc14</Command>
+      <Command>copy "$(OutDir)$(TargetName)$(TargetExt)" "$(LIBRARIES_PATH)uasmlib/Win64/vc16/bin"
+copy "$(OutDir)$(TargetName).lib" "$(LIBRARIES_PATH)uasmlib/Win64/vc16/lib"
+copy "$(OutDir)$(TargetName).pdb" "$(LIBRARIES_PATH)uasmlib/Win64/vc16/bin"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -367,7 +370,7 @@ copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win64\vc14</Command>
       <DebugInformationFormat>None</DebugInformationFormat>
       <OmitFramePointers>true</OmitFramePointers>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../../../include;../../../include/x86;$(LIBRARIES_PATH)/oneTBB/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../include;../../../include/x86;$(LIBRARIES_PATH)/oneTBB/Win32/vc16/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
@@ -375,6 +378,7 @@ copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win64\vc14</Command>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalOptions>/openmp:experimental %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -396,8 +400,9 @@ copy $(OutDir)$(TargetName).pdb $(UASMLIB_PATH)\bin\Win64\vc14</Command>
       <AdditionalIncludeDirectories>../../../include/;$(IntDir)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <PostBuildEvent>
-      <Command>copy $(OutDir)$(TargetName)$(TargetExt) $(UASMLIB_PATH)\bin\Win32\vc14
-copy $(OutDir)$(TargetName).lib $(UASMLIB_PATH)\lib\Win32\vc14</Command>
+      <Command>copy "$(OutDir)$(TargetName)$(TargetExt)" "$(LIBRARIES_PATH)uasmlib/Win32/vc16/bin"
+copy "$(OutDir)$(TargetName).lib" "$(LIBRARIES_PATH)uasmlib/Win32/vc16/lib"
+xcopy "..\..\..\include" "$(LIBRARIES_PATH)uasmlib\Win32\vc16\include" /hisery</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -408,7 +413,7 @@ copy $(OutDir)$(TargetName).lib $(UASMLIB_PATH)\lib\Win32\vc14</Command>
       <PreprocessorDefinitions>__x64__;WIN64;_WIN64;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_MMX=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DebugInformationFormat>None</DebugInformationFormat>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../../../include;../../../include/x86;$(LIBRARIES_PATH)/oneTBB/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../include;../../../include/x86;$(LIBRARIES_PATH)/oneTBB/Win64/vc16/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
@@ -417,6 +422,7 @@ copy $(OutDir)$(TargetName).lib $(UASMLIB_PATH)\lib\Win32\vc14</Command>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalOptions>/openmp:experimental %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -437,8 +443,9 @@ copy $(OutDir)$(TargetName).lib $(UASMLIB_PATH)\lib\Win32\vc14</Command>
       <AdditionalIncludeDirectories>../../../include/;$(IntDir)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <PostBuildEvent>
-      <Command>copy $(OutDir)$(TargetName)$(TargetExt) $(UASMLIB_PATH)\bin\Win64\vc14
-copy $(OutDir)$(TargetName).lib $(UASMLIB_PATH)\lib\Win64\vc14</Command>
+      <Command>copy "$(OutDir)$(TargetName)$(TargetExt)" "$(LIBRARIES_PATH)uasmlib/Win64/vc16/bin"
+copy "$(OutDir)$(TargetName).lib" "$(LIBRARIES_PATH)uasmlib/Win64/vc16/lib"
+xcopy "..\..\..\include" "$(LIBRARIES_PATH)uasmlib\Win64\vc16\include" /hisery</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

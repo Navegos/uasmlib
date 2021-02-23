@@ -26,8 +26,8 @@ include macrolib.inc
 ifndef __MIC__
 
 .xmm
-option arch:sse
-option evex:0
+option arch:avx
+option evex:1
 
 alignstackfieldproc
 

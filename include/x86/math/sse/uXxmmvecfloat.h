@@ -3,7 +3,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -75,6 +75,7 @@ uX_PACK_PUSH_XMM
 // VECTORS'S
 
 /*class vecfloat;*/
+/*
 class vecfloat1;
 class vecfloat2;
 class vecfloat3;
@@ -99,7 +100,7 @@ class vecdouble4;
 class vecdouble3x3;
 class vecdouble4x3;
 class vecdouble4x4;
-#endif
+#endif*/
 
 /// <summary>
 ///     short_vector provides metaprogramming definitions which are useful for programming short vectors generically.

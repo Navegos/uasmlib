@@ -347,9 +347,6 @@
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble3x3.cpp">
       <Filter>Source Files\x86\SSE\math</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble4.cpp">
-      <Filter>Source Files\x86\SSE\math</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble4x3.cpp">
       <Filter>Source Files\x86\SSE\math</Filter>
     </ClCompile>
@@ -414,9 +411,6 @@
     <None Include="..\export\uasmlib-export_X32.def">
       <Filter>Def Files</Filter>
     </None>
-    <None Include="..\..\..\src\x86\SSE\asm\uXxmmconstdata.inc">
-      <Filter>Source Files\x86\SSE\asm</Filter>
-    </None>
     <None Include="..\..\..\src\x86\AVX256\asm\uXavx256intrin.inc">
       <Filter>Source Files\x86\AVX256\asm</Filter>
     </None>
@@ -443,6 +437,12 @@
     </None>
     <None Include="..\..\..\include\x86\math\sse\inline\uXxmmvecqword4.inl">
       <Filter>Header Files\x86\math\sse\inline</Filter>
+    </None>
+    <None Include="..\..\..\src\x86\SSE\asm\uXxmmdata.inc">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </None>
+    <None Include="..\..\..\src\x86\SSE\asm\uXxemmdata.inc">
+      <Filter>Source Files\x86\SSE\asm</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -480,9 +480,6 @@
       <Filter>Source Files\x86\SSE\asm</Filter>
     </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXwmmintrin.asm">
-      <Filter>Source Files\x86\SSE\asm</Filter>
-    </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmconstdata.asm">
       <Filter>Source Files\x86\SSE\asm</Filter>
     </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmintrin.asm">
@@ -526,6 +523,12 @@
     </UASM>
     <UASM Include="..\..\..\src\x86\asm\uXmemcpy.asm">
       <Filter>Source Files\x86\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmdata.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXxemmdata.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
     </UASM>
   </ItemGroup>
   <ItemGroup>

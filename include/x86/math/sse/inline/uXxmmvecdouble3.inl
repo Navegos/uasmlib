@@ -31,6 +31,7 @@ uX_PACK_PUSH_XMM
 // // // // // // // // //
 // vecdouble3 Start
 
+/*
 inline void uX_ABI vecdouble3::set_xmmd_0(const __m128d Inxmmd) uX_noexcept
 {
     m128_xmmd_0 = Inxmmd;
@@ -39,8 +40,9 @@ inline void uX_ABI vecdouble3::set_xmmd_0(const __m128d Inxmmd) uX_noexcept
 inline void uX_ABI vecdouble3::set_xmmd_1(const __m128d Inxmmd) uX_noexcept
 {
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(Inxmmd, __m128d_false, 0, 0);
-}
+}*/
 
+/*
 inline void uX_ABI vecdouble3::set(const vecdouble3 InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = InHxmmd_a.m128_xmmd_0;
@@ -131,8 +133,9 @@ inline void uX_ABI vecdouble3::set_zyx(const vecdouble3 InHxmmd_a) uX_noexcept
 {
     m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 0, 1);
     m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, m128_xmmd_1, 0, 1);
-}
+}*/
 
+/*
 inline vecdouble3 uX_ABI andnot(const vecdouble3 InHxmmd_a, const vecdouble3 InHxmmd_b) uX_noexcept
 {
     return vecdouble3(_uX_mm_andnot_pd(InHxmmd_b.m128_xmmd_0, InHxmmd_a.m128_xmmd_0), _uX_mm_andnot_sd(InHxmmd_b.m128_xmmd_1, InHxmmd_a.m128_xmmd_1));
@@ -382,8 +385,9 @@ inline vecdouble3 uX_ABI operator>=(const vecdouble3 InHxmmd_a, const vecdouble3
 inline vecdouble3 uX_ABI operator!=(const vecdouble3 InHxmmd_a, const vecdouble3 InHxmmd_b) uX_noexcept
 {
     return vecdouble3(_uX_mm_cmpneq_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_cmpneq_sd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
-}
+}*/
 
+/*
 uX_Use_decl_annotations
 inline vecdouble3& uX_ABI vecdouble3::load(uX_InReads(3) const double* Inpdouble) uX_noexcept
 {
@@ -412,8 +416,9 @@ inline void uX_ABI vecdouble3::store_a(uX_OutWrites(3) double* Outpdouble) const
 {
     _uX_mm_store_pd(Outpdouble, m128_xmmd_0);
     _uX_mm_storeu_pd(Outpdouble+2, m128_xmmd_1);
-}
+}*/
 
+/*
 inline const vecdouble3 uX_ABI vecdouble3::insert(double value, count_t index) uX_noexcept
 {
     if (index > 2) return *this;
@@ -593,7 +598,7 @@ inline vecdouble3 uX_ABI sqrt(const vecdouble3 InHxmmd_a) uX_noexcept
 inline vecdouble3 uX_ABI rsqrt(const vecdouble3 InHxmmd_a) uX_noexcept
 {
     return vecdouble3(_uX_mm_rsqrt_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_rsqrt_sd(InHxmmd_a.m128_xmmd_1));
-}
+}*/
 
 // vecdouble4 End
 // // // // // // // // //

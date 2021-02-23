@@ -396,7 +396,8 @@ public:
      *
      */
     template <uint64_t i0, uint64_t i1>
-    friend uX_constexpr vecuqword2 uX_ABI constant2ui64() {
+    uX_constexpr vecuqword2 const uX_ABI constant() const
+    {
         return vecuqword2(i0, i1);
     }
 

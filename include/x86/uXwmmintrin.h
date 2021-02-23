@@ -3,7 +3,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -82,7 +82,7 @@ uX_PACK_PUSH_XMM
  * AES cipher key and byte round constant.
  * The second parameter must be a compile time constant.
  */
-    extern __m128i uX_ABI _uX_mm_aeskeygenassist_si128(__m128i ckey, const count_t rcon);
+    extern __m128i uX_ABI _uX_mm_aeskeygenassist_si128(__m128i ckey, count_t const rcon);
 
 /*
  * Performs carry-less integer multiplication of 64-bit halves
@@ -90,7 +90,7 @@ uX_PACK_PUSH_XMM
  * The third parameter indicates which 64-bit haves of the input parameters
  * v1 and v2 should be used. It must be a compile time constant.
  */
-    extern __m128i uX_ABI _uX_mm_clmulepi64_si128(__m128i Inxmm_A, __m128i Inxmm_B, const count_t Inint_Imm);
+    extern __m128i uX_ABI _uX_mm_clmulepi64_si128(__m128i Inxmm_A, __m128i Inxmm_B, count_t const Inint_Imm);
 
     extern __m128i uX_ABI _uX_mm_clmulepi64_si128_0(__m128i Inxmm_A, __m128i Inxmm_B);
     extern __m128i uX_ABI _uX_mm_clmulepi64_si128_1(__m128i Inxmm_A, __m128i Inxmm_B);

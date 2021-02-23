@@ -26,8 +26,13 @@
 #ifndef uX_TYPES_H
 #define uX_TYPES_H 1
 
+#ifndef uX_BASEDEFS_H
 #include "uXbasedefs.h"
+#endif  /* uX_BASEDEFS_H */
+
+#ifndef uX_SAL_PROCESS_H
 #include "uXsalprocess.h"
+#endif  /* uX_SAL_PROCESS_H */
 
 // Define type size_t
 #ifndef _SIZE_T_DEFINED
@@ -189,6 +194,7 @@ class boolean_t<1>
 {
 public:
     using type = booleancv;
+    using type_t = booleancv_t;
     //typedef booleancv type;
 };
 uX_PACK_POP

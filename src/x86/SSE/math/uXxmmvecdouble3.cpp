@@ -6,13 +6,14 @@
 #ifdef uX_SSE
 
 // Intel TBB library
+/*
 #include "tbb/task_scheduler_init.h"
 using namespace tbb;
 #include "tbb/parallel_for.h"
 #include "tbb/blocked_range.h"
 #include "tbb/blocked_range2d.h"
 #include "tbb/partitioner.h"
-#include "tbb/task_group.h"
+#include "tbb/task_group.h"*/
 
 #include "uXxmmintrin.h"
 #include "uXemmintrin.h"
@@ -55,6 +56,7 @@ vecdouble3::vecdouble3(const __m128d* Inpxmmd)
     }
 }*/
 
+/*
 vecdouble3::vecdouble3(const double Indouble_X, const double Indouble_Y, const double Indouble_Z)
 {
     for (int i = 0; i < m128_xmm_ptr_lenght; ++i)
@@ -84,7 +86,7 @@ vecdouble3::vecdouble3(const double* Inpdouble)
 vecdouble3::operator __m128d*(void) const
 {
     return const_cast<__m128d*>(m128_xmmd);
-}
+}*/
 
 /*
 vecdouble3::operator double*(void) const
@@ -92,6 +94,7 @@ vecdouble3::operator double*(void) const
     return const_cast<double*>(m128_d);
 }*/
 
+/*
 uX_Use_decl_annotations
 vecdouble3& uX_callconv vecdouble3::operator=(const __m128d* Inpxmmd)
 {
@@ -116,7 +119,7 @@ vecdouble3& uX_callconv vecdouble3::operator=(const double* Inpdouble)
         }
     }
     return *this;
-}
+}*/
 // vecdouble3 End
 // // // // // // // // //
 

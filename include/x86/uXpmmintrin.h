@@ -3,7 +3,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -74,13 +74,13 @@ uX_PACK_PUSH_XMM
     extern __m128d uX_ABI _uX_mm_addsub_pd(__m128d Inxmm_A, __m128d Inxmm_B);
     extern __m128d uX_ABI _uX_mm_hadd_pd(__m128d Inxmm_A, __m128d Inxmm_B);
     extern __m128d uX_ABI _uX_mm_hsub_pd(__m128d Inxmm_A, __m128d Inxmm_B);
-    extern __m128d uX_ABI _uX_mm_loaddup_pd(const double* InPdouble_B);
+    extern __m128d uX_ABI _uX_mm_loaddup_pd(__m128d const* const InPdouble_B);
     extern __m128d uX_ABI _uX_mm_movedup_pd(__m128d Inxmm_A);
 
 /*
  * New unaligned integer vector load instruction.
  */
-    extern __m128i uX_ABI _uX_mm_lddqu_si128(const __m128i* InPxmm_A);
+    extern __m128i uX_ABI _uX_mm_lddqu_si128(__m128i const* const InPxmm_A);
 
 /*
  * Miscellaneous new instructions.
@@ -88,12 +88,12 @@ uX_PACK_PUSH_XMM
 /*
  * For _uX_mm_monitor p goes in eax, extensions goes in ecx, hints goes in edx.
  */
-    extern void uX_ABI _uX_mm_monitor(const void* InPvoid_A, unsigned Ext_B, unsigned Hints_C);
+    extern void uX_ABI _uX_mm_monitor(void const* const InPvoid_A, uint32_t Ext_B, uint32_t Hints_C);
 
 /*
  * For _uX_mm_mwait, extensions goes in ecx, hints goes in eax.
  */
-    extern void uX_ABI _uX_mm_mwait(unsigned Ext_A, unsigned Hints_C);
+    extern void uX_ABI _uX_mm_mwait(uint32_t Ext_A, uint32_t Hints_C);
 
 uX_PACK_POP
 uX_EXTERNC_END

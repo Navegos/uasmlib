@@ -3,7 +3,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -112,10 +112,10 @@ uX_PACK_PUSH_YMM
     extern __m256 uX_ABI _uX_mm256_hadd_ps(__m256 Inymm_A, __m256 Inymm_B);
     extern __m256 uX_ABI _uX_mm256_hsub_ps(__m256 Inymm_A, __m256 Inymm_B);
 
-    extern __m256 uX_ABI _uX_mm256_dp_ps(__m256 Inymm_A, __m256 Inymm_B, const count_t Inint_mask);
+    extern __m256 uX_ABI _uX_mm256_dp_ps(__m256 Inymm_A, __m256 Inymm_B, count_t const Inint_mask);
 
-    extern __m256 uX_ABI _uX_mm256_round_ps(__m256  val, const count_t iRoundMode);
-    extern __m256 uX_ABI _uX_mm256_round_ss(__m256 dst, __m256  val, const count_t iRoundMode);
+    extern __m256 uX_ABI _uX_mm256_round_ps(__m256  val, count_t const iRoundMode);
+    extern __m256 uX_ABI _uX_mm256_round_ss(__m256 dst, __m256  val, count_t const iRoundMode);
 
     extern __m256 uX_ABI _uX_mm256_floor_ps(__m256 Inymm_A);
     extern __m256 uX_ABI _uX_mm256_ceil_ps(__m256 Inymm_A);
@@ -149,10 +149,10 @@ uX_PACK_PUSH_YMM
     extern __m256d uX_ABI _uX_mm256_hadd_pd(__m256d Inymm_A, __m256d Inymm_B);
     extern __m256d uX_ABI _uX_mm256_hsub_pd(__m256d Inymm_A, __m256d Inymm_B);
 
-    extern __m256d uX_ABI _uX_mm256_dp_pd(__m256d Inymm_A, __m256d Inymm_B, const count_t Inint_mask);
+    extern __m256d uX_ABI _uX_mm256_dp_pd(__m256d Inymm_A, __m256d Inymm_B, count_t const Inint_mask);
 
-    extern __m256d uX_ABI _uX_mm256_round_pd(__m256d val, const count_t iRoundMode);
-    extern __m256d uX_ABI _uX_mm256_round_sd(__m256d dst, __m256d val, const count_t iRoundMode);
+    extern __m256d uX_ABI _uX_mm256_round_pd(__m256d val, count_t const iRoundMode);
+    extern __m256d uX_ABI _uX_mm256_round_sd(__m256d dst, __m256d val, count_t const iRoundMode);
 
     extern __m256d uX_ABI _uX_mm256_floor_pd(__m256d Inymm_A);
     extern __m256d uX_ABI _uX_mm256_ceil_pd(__m256d Inymm_A);
@@ -185,13 +185,13 @@ uX_PACK_XMM
  * FP, comparison
  */
 
-    extern __m128 uX_ABI _uX_mm_cmp_ps(__m128 Inxmm_A, __m128 Inxmm_B, const count_t Inint_CmpMask);
-    extern __m128 uX_ABI _uX_mm_cmp_ss(__m128 Inxmm_A, __m128 Inxmm_B, const count_t Inint_CmpMask);
-    extern intbool_t uX_ABI _uX_mm_comi_ss(__m128 Inxmm_A, __m128 Inxmm_B, const count_t Inint_CmpMask);
+    extern __m128 uX_ABI _uX_mm_cmp_ps(__m128 Inxmm_A, __m128 Inxmm_B, count_t const Inint_CmpMask);
+    extern __m128 uX_ABI _uX_mm_cmp_ss(__m128 Inxmm_A, __m128 Inxmm_B, count_t const Inint_CmpMask);
+    extern intbool_t uX_ABI _uX_mm_comi_ss(__m128 Inxmm_A, __m128 Inxmm_B, count_t const Inint_CmpMask);
 
 uX_PACK_YMM
 
-    extern __m256 uX_ABI _uX_mm256_cmp_ps(__m256 Inymm_A, __m256 Inymm_B, const count_t Inint_CmpMask);
+    extern __m256 uX_ABI _uX_mm256_cmp_ps(__m256 Inymm_A, __m256 Inymm_B, count_t const Inint_CmpMask);
 
 uX_PACK_XMM
 
@@ -199,13 +199,13 @@ uX_PACK_XMM
  * DP, comparison
  */
 
-    extern __m128d uX_ABI _uX_mm_cmp_pd(__m128d Inxmm_A, __m128d, const count_t Inint_CmpMask);
-    extern __m128d uX_ABI _uX_mm_cmp_sd(__m128d Inxmm_A, __m128d, const count_t Inint_CmpMask);
-    extern intbool_t uX_ABI _uX_mm_comi_sd(__m128d Inxmm_A, __m128d Inxmm_B, const count_t Inint_CmpMask);
+    extern __m128d uX_ABI _uX_mm_cmp_pd(__m128d Inxmm_A, __m128d, count_t const Inint_CmpMask);
+    extern __m128d uX_ABI _uX_mm_cmp_sd(__m128d Inxmm_A, __m128d, count_t const Inint_CmpMask);
+    extern intbool_t uX_ABI _uX_mm_comi_sd(__m128d Inxmm_A, __m128d Inxmm_B, count_t const Inint_CmpMask);
 
 uX_PACK_YMM
 
-    extern __m256d uX_ABI _uX_mm256_cmp_pd(__m256d Inymm_A, __m256d Inymm_B, const count_t Inint_CmpMask);
+    extern __m256d uX_ABI _uX_mm256_cmp_pd(__m256d Inymm_A, __m256d Inymm_B, count_t const Inint_CmpMask);
 
 /*
  * FP, conversions
@@ -223,7 +223,7 @@ uX_PACK_YMM
     extern float uX_ABI _uX_mm256_cvt5s_f32(__m256 Inymm_A);
     extern float uX_ABI _uX_mm256_cvt6s_f32(__m256 Inymm_A);
     extern float uX_ABI _uX_mm256_cvt7s_f32(__m256 Inymm_A);
-    extern float uX_ABI _uX_mm256_cvtelts_f32(__m256 Inymm_A, const count_t InInt_BSel);
+    extern float uX_ABI _uX_mm256_cvtelts_f32(__m256 Inymm_A, count_t const InInt_BSel);
 
 /*
  * DP, conversions
@@ -237,7 +237,7 @@ uX_PACK_YMM
     extern double uX_ABI _uX_mm256_cvt1d_f64(__m256d Inymm_A);
     extern double uX_ABI _uX_mm256_cvt2d_f64(__m256d Inymm_A);
     extern double uX_ABI _uX_mm256_cvt3d_f64(__m256d Inymm_A);
-    extern double uX_ABI _uX_mm256_cvteltd_f64(__m256d Inymm_A, const count_t Inint_BSel);
+    extern double uX_ABI _uX_mm256_cvteltd_f64(__m256d Inymm_A, count_t const Inint_BSel);
     
 /*
  * FP, misc
@@ -245,19 +245,19 @@ uX_PACK_YMM
 
     extern __m256 uX_ABI _uX_mm256_unpackhi_ps(__m256 Inymm_A, __m256 Inymm_B);
     extern __m256 uX_ABI _uX_mm256_unpacklo_ps(__m256 Inymm_A, __m256 Inymm_B);
-    extern __m256 uX_ABI _uX_mm256_shuffle_ps(__m256 Inymm_A, __m256 Inymm_B, const count_t Inint_Imm8);
+    extern __m256 uX_ABI _uX_mm256_shuffle_ps(__m256 Inymm_A, __m256 Inymm_B, count_t const Inint_Imm8);
     extern __m256 uX_ABI _uX_mm256_permutevar_ps(__m256  Inxmm_A, __m256i Inymm_mask);
     extern __m128 uX_ABI _uX_mm_permutevar_ps(__m128  Inxmm_A, __m128i Inxmm_mask);
-    extern __m256 uX_ABI _uX_mm256_permute_ps(__m256 Inymm_A, const count_t Inint_Imm8);
-    /*extern __m128 uX_ABI _uX_mm_permute_ps(__m128 Inxmm_A, const count_t Inint_Imm8);*/ /*Already defined in uXemmintrin.h*/
-    extern __m256 uX_ABI _uX_mm256_permute2f128_ps(__m256 Inymm_A, __m256 Inymm_B, const count_t Inint_Imm8);
-    extern __m256 uX_ABI _uX_mm256_blend_ps(__m256 Inymm_A, __m256 Inymm_B, const count_t Inint_mask);
+    extern __m256 uX_ABI _uX_mm256_permute_ps(__m256 Inymm_A, count_t const Inint_Imm8);
+    /*extern __m128 uX_ABI _uX_mm_permute_ps(__m128 Inxmm_A, count_t const Inint_Imm8);*/ /*Already defined in uXemmintrin.h*/
+    extern __m256 uX_ABI _uX_mm256_permute2f128_ps(__m256 Inymm_A, __m256 Inymm_B, count_t const Inint_Imm8);
+    extern __m256 uX_ABI _uX_mm256_blend_ps(__m256 Inymm_A, __m256 Inymm_B, count_t const Inint_mask);
     extern __m256 uX_ABI _uX_mm256_blendv_ps(__m256 Inymm_A, __m256 Inymm_B, __m256 Inymm_mask);
-    extern __m128 uX_ABI _uX_mm256_extractf128_ps(__m256 Inymm_A, const count_t Inint_BSel);
-    extern __m256 uX_ABI _uX_mm256_broadcast_ss(const float* InPfloat_A);
-    extern __m128 uX_ABI _uX_mm_broadcast_ss(const float* InPfloat_A);
-    extern __m256 uX_ABI _uX_mm256_broadcast_ps(const __m128* InPxmm_A);
-    extern __m256 uX_ABI _uX_mm256_insertf128_ps(__m256 Inymm_A, __m128 Inxmm_B, const count_t Inint_BSel);
+    extern __m128 uX_ABI _uX_mm256_extractf128_ps(__m256 Inymm_A, count_t const Inint_BSel);
+    extern __m256 uX_ABI _uX_mm256_broadcast_ss(__m256 const* const InPfloat_A);
+    extern __m128 uX_ABI _uX_mm_broadcast_ss(__m128 const* const InPfloat_A);
+    extern __m256 uX_ABI _uX_mm256_broadcast_ps(__m128 const* const InPxmm_A);
+    extern __m256 uX_ABI _uX_mm256_insertf128_ps(__m256 Inymm_A, __m128 Inxmm_B, count_t const Inint_BSel);
     extern int uX_ABI _uX_mm256_movemask_ps(__m256 Inymm_A);
     extern __m256 uX_ABI _uX_mm256_zextps128_ps256(__m128 Inxmm_A);
 
@@ -274,19 +274,19 @@ uX_PACK_YMM
 
     extern __m256d uX_ABI _uX_mm256_unpackhi_pd(__m256d Inymm_A, __m256d Inymm_B);
     extern __m256d uX_ABI _uX_mm256_unpacklo_pd(__m256d Inymm_A, __m256d Inymm_B);
-    extern __m256d uX_ABI _uX_mm256_shuffle_pd(__m256d Inymm_A, __m256d Inymm_B, const count_t Inint_Imm8);
+    extern __m256d uX_ABI _uX_mm256_shuffle_pd(__m256d Inymm_A, __m256d Inymm_B, count_t const Inint_Imm8);
     extern __m256d uX_ABI _uX_mm256_permutevar_pd(__m256d Inymm_A, __m256i Inymm_mask);
     extern __m128d uX_ABI _uX_mm_permutevar_pd(__m128d Inxmm_A, __m128i Inxmm_mask);
-    extern __m256d uX_ABI _uX_mm256_permute_pd(__m256d Inymm_A, const count_t Inint_Imm8);
-    /*extern __m128d uX_ABI _uX_mm_permute_pd(__m128d Inxmm_A, const count_t Inint_Imm8);*/ /*Already defined in uXemmintrin.h*/
-    extern __m256d uX_ABI _uX_mm256_permute2f128_pd(__m256d Inymm_A, __m256d Inymm_B, const count_t Inint_Imm8);
-    extern __m256d uX_ABI _uX_mm256_blend_pd(__m256d Inymm_A, __m256d Inymm_B, const count_t Inint_mask);
+    extern __m256d uX_ABI _uX_mm256_permute_pd(__m256d Inymm_A, count_t const Inint_Imm8);
+    /*extern __m128d uX_ABI _uX_mm_permute_pd(__m128d Inxmm_A, count_t const Inint_Imm8);*/ /*Already defined in uXemmintrin.h*/
+    extern __m256d uX_ABI _uX_mm256_permute2f128_pd(__m256d Inymm_A, __m256d Inymm_B, count_t const Inint_Imm8);
+    extern __m256d uX_ABI _uX_mm256_blend_pd(__m256d Inymm_A, __m256d Inymm_B, count_t const Inint_mask);
     extern __m256d uX_ABI _uX_mm256_blendv_pd(__m256d Inymm_A, __m256d Inymm_B, __m256d Inymm_mask);
-    extern __m128d uX_ABI _uX_mm256_extractf128_pd(__m256d Inymm_A, const count_t Inint_BSel);
-    extern __m256d uX_ABI _uX_mm256_broadcast_sd(const double* InPdouble_A);
-    extern __m128 uX_ABI _uX_mm_broadcast_sd(const double* InPdouble_A);
-    extern __m256d uX_ABI _uX_mm256_broadcast_pd(const __m128d* InPxmm_A);
-    extern __m256d uX_ABI _uX_mm256_insertf128_pd(__m256d Inymm_A, __m128d Inxmm_B, const count_t Inint_BSel);
+    extern __m128d uX_ABI _uX_mm256_extractf128_pd(__m256d Inymm_A, count_t const Inint_BSel);
+    extern __m256d uX_ABI _uX_mm256_broadcast_sd(__m256d const* const InPdouble_A);
+    extern __m128d uX_ABI _uX_mm_broadcast_sd(__m128d const* const InPdouble_A);
+    extern __m256d uX_ABI _uX_mm256_broadcast_pd(__m128d const* const InPxmm_A);
+    extern __m256d uX_ABI _uX_mm256_insertf128_pd(__m256d Inymm_A, __m128d Inxmm_B, count_t const Inint_BSel);
     extern int uX_ABI _uX_mm256_movemask_pd(__m256d Inymm_A);
     extern __m256d uX_ABI _uX_mm256_zextpd128_pd256(__m128d Inxmm_A);
 
@@ -307,9 +307,9 @@ uX_PACK_YMM
     extern __m256 uX_ABI _uX_mm256_set_ss(float Infloat_A);
     extern __m256 uX_ABI _uX_mm256_set_ps1(float Infloat_A);
     extern __m256 uX_ABI _uX_mm256_set_ps(float Infloat_7, float Infloat_6, float Infloat_5, float Infloat_4, 
-                                                 float Infloat_3, float Infloat_2, float Infloat_1, float Infloat_0);
+                                          float Infloat_3, float Infloat_2, float Infloat_1, float Infloat_0);
     extern __m256 uX_ABI _uX_mm256_setr_ps(float Infloat_0, float Infloat_1, float Infloat_2, float Infloat_3, 
-                                                  float Infloat_4, float Infloat_5, float Infloat_6, float Infloat_7);
+                                           float Infloat_4, float Infloat_5, float Infloat_6, float Infloat_7);
 
     extern __m256 uX_ABI _uX_mm256_setzero_ps();
 
@@ -334,92 +334,92 @@ uX_PACK_YMM
  * FP, loads
  */
 
-    extern __m256 uX_ABI _uX_mm256_load_ss(const float* InPfloat_A);
-    extern __m256 uX_ABI _uX_mm256_load_ps1(const float* InPfloat_A);
-    extern __m256 uX_ABI _uX_mm256_load_ps(const float* InPfloat_A);
-    extern __m256 uX_ABI _uX_mm256_loadr_ps(const float* InPfloat_A);
-    extern __m256 uX_ABI _uX_mm256_loadu_ps(const float* InPfloat_A);
-    extern __m256 uX_ABI _uX_mm256_loadur_ps(const float* InPfloat_A);
-    /*extern __m256 uX_ABI _uX_mm256_loadh_ps(const float* InPfloat_A);
-    extern __m256 uX_ABI _uX_mm256_loadl_ps(const float* InPfloat_A);*/
-    extern __m256 uX_ABI _uX_mm256_load2_m128(const float* InPfloat_A, const float* InPfloat_B);
-    extern __m256 uX_ABI _uX_mm256_loadr2_m128(const float* InPfloat_A, const float* InPfloat_B);
-    extern __m256 uX_ABI _uX_mm256_loadu2_m128(const float* InPfloat_A, const float* InPfloat_B);
-    extern __m256 uX_ABI _uX_mm256_loadur2_m128(const float* InPfloat_A, const float* InPfloat_B);
+    extern __m256 uX_ABI _uX_mm256_load_ss(__m256 const* const InPfloat_A);
+    extern __m256 uX_ABI _uX_mm256_load_ps1(__m256 const* const InPfloat_A);
+    extern __m256 uX_ABI _uX_mm256_load_ps(__m256 const* const InPfloat_A);
+    extern __m256 uX_ABI _uX_mm256_loadr_ps(__m256 const* const InPfloat_A);
+    extern __m256 uX_ABI _uX_mm256_loadu_ps(__m256 const* const InPfloat_A);
+    extern __m256 uX_ABI _uX_mm256_loadur_ps(__m256 const* const InPfloat_A);
+    /*extern __m256 uX_ABI _uX_mm256_loadh_ps(__m256 const* const InPfloat_A);
+    extern __m256 uX_ABI _uX_mm256_loadl_ps(__m256 const* const InPfloat_A);*/
+    /*extern __m256 uX_ABI _uX_mm256_load2_m128(__m256 const* const InPfloat_A, __m128 const* const InPfloat_B);
+    extern __m256 uX_ABI _uX_mm256_loadr2_m128(__m256 const* const InPfloat_A, __m128 const* const InPfloat_B);
+    extern __m256 uX_ABI _uX_mm256_loadu2_m128(__m256 const* const InPfloat_A, __m128 const* const InPfloat_B);
+    extern __m256 uX_ABI _uX_mm256_loadur2_m128(__m256 const* const InPfloat_A, __m128 const* const InPfloat_B);*/
 
-    extern __m256 uX_ABI _uX_mm256_maskload_ps(const float* InPfloat_A, __m256i Inymm_mask);
-    extern __m128 uX_ABI _uX_mm_maskload_ps(const float* InPfloat_A, __m128i Inxmm_mask);
+    extern __m256 uX_ABI _uX_mm256_maskload_ps(__m256 const* const InPfloat_A, __m256i Inymm_mask);
+    extern __m128 uX_ABI _uX_mm_maskload_ps(__m128 const* const InPfloat_A, __m128i Inxmm_mask);
 
 /*
  * DP, loads
  */
 
-    extern __m256d uX_ABI _uX_mm256_load_sd(const double* InPdouble_A);
-    extern __m256d uX_ABI _uX_mm256_load_pd1(const double* InPdouble_A);
-    extern __m256d uX_ABI _uX_mm256_load_pd(const double* InPdouble_A);
-    extern __m256d uX_ABI _uX_mm256_loadr_pd(const double* InPdouble_A);
-    extern __m256d uX_ABI _uX_mm256_loadu_pd(const double* InPdouble_A);
-    extern __m256d uX_ABI _uX_mm256_loadur_pd(const double* InPdouble_A);
-    /*extern __m256d uX_ABI _uX_mm256_loadh_pd(__m256d Inymm_B, const double* InPdouble_B);
-    extern __m256d uX_ABI _uX_mm256_loadl_pd(__m256d Inymm_B, const double* InPdouble_B);*/
-    extern __m256d uX_ABI _uX_mm256_load2_m128d(const double* InPdouble_A, const double* InPdouble_B);
-    extern __m256d uX_ABI _uX_mm256_loadr2_m128d(const double* InPdouble_A, const double* InPdouble_B);
-    extern __m256d uX_ABI _uX_mm256_loadu2_m128d(const double* InPdouble_A, const double* InPdouble_B);
-    extern __m256d uX_ABI _uX_mm256_loadur2_m128d(const double* InPdouble_A, const double* InPdouble_B);
-    extern __m256d uX_ABI _uX_mm256_loaddup_pd(const double* InPdouble_A);
+    extern __m256d uX_ABI _uX_mm256_load_sd(__m256d const* const InPdouble_A);
+    extern __m256d uX_ABI _uX_mm256_load_pd1(__m256d const* const InPdouble_A);
+    extern __m256d uX_ABI _uX_mm256_load_pd(__m256d const* const InPdouble_A);
+    extern __m256d uX_ABI _uX_mm256_loadr_pd(__m256d const* const InPdouble_A);
+    extern __m256d uX_ABI _uX_mm256_loadu_pd(__m256d const* const InPdouble_A);
+    extern __m256d uX_ABI _uX_mm256_loadur_pd(__m256d const* const InPdouble_A);
+    /*extern __m256d uX_ABI _uX_mm256_loadh_pd(__m256d Inymm_B, double const* const InPdouble_B);
+    extern __m256d uX_ABI _uX_mm256_loadl_pd(__m256d Inymm_B, double const* const InPdouble_B);*/
+    /*extern __m256d uX_ABI _uX_mm256_load2_m128d(__m256d const* const InPdouble_A, __m128d const* const InPdouble_B);
+    extern __m256d uX_ABI _uX_mm256_loadr2_m128d(__m256d const* const InPdouble_A, __m128d const* const InPdouble_B);
+    extern __m256d uX_ABI _uX_mm256_loadu2_m128d(__m256d const* const InPdouble_A, __m128d const* const InPdouble_B);
+    extern __m256d uX_ABI _uX_mm256_loadur2_m128d(__m256d const* const InPdouble_A, __m128d const* const InPdouble_B);*/
+    extern __m256d uX_ABI _uX_mm256_loaddup_pd(__m256d const* const InPdouble_A);
 
-    extern __m256d uX_ABI _uX_mm256_maskload_pd(const double* InPdouble_A, __m256i Inymm_mask);
-    extern __m128d uX_ABI _uX_mm_maskload_pd(const double* InPdouble_A, __m128i Inxmm_mask);
+    extern __m256d uX_ABI _uX_mm256_maskload_pd(__m256d const* const InPdouble_A, __m256i Inymm_mask);
+    extern __m128d uX_ABI _uX_mm_maskload_pd(__m128d const* const InPdouble_A, __m128i Inxmm_mask);
 
 /*
  * FP, stores
  */
 
-    extern void uX_ABI _uX_mm256_store_ss(float* Outpfloat_A, __m256 Inymm_B);
-    extern void uX_ABI _uX_mm256_store_ps1(float* Outpfloat_A, __m256 Inymm_B);
-    extern void uX_ABI _uX_mm256_storeu_ps1(float* Outpfloat_A, __m256 Inymm_B);
-    extern void uX_ABI _uX_mm256_store_ps(float* Outpfloat_A, __m256 Inymm_B);
-    extern void uX_ABI _uX_mm256_storeu_ps(float* Outpfloat_A, __m256 Inymm_B);
-    extern void uX_ABI _uX_mm256_storer_ps(float* Outpfloat_A, __m256 Inymm_B);
-    extern void uX_ABI _uX_mm256_storeur_ps(float* Outpfloat_A, __m256 Inymm_B);
+    extern void uX_ABI _uX_mm256_store_ss(__m256* Outpfloat_A, __m256 Inymm_B);
+    extern void uX_ABI _uX_mm256_store_ps1(__m256* Outpfloat_A, __m256 Inymm_B);
+    extern void uX_ABI _uX_mm256_storeu_ps1(__m256* Outpfloat_A, __m256 Inymm_B);
+    extern void uX_ABI _uX_mm256_store_ps(__m256* Outpfloat_A, __m256 Inymm_B);
+    extern void uX_ABI _uX_mm256_storeu_ps(__m256* Outpfloat_A, __m256 Inymm_B);
+    extern void uX_ABI _uX_mm256_storer_ps(__m256* Outpfloat_A, __m256 Inymm_B);
+    extern void uX_ABI _uX_mm256_storeur_ps(__m256* Outpfloat_A, __m256 Inymm_B);
     /*extern void uX_ABI _uX_mm256_storeh_ps(float* Outpfloat_A, __m256 Inymm_B);
     extern void uX_ABI _uX_mm256_storel_ps(float* Outpfloat_A, __m256 Inymm_B);*/
-    extern __m256 uX_ABI _uX_mm256_store2_m128(float* Outpfloat_A, float* Outpfloat_B);
-    extern __m256 uX_ABI _uX_mm256_storer2_m128(float* Outpfloat_A, float* Outpfloat_B);
-    extern __m256 uX_ABI _uX_mm256_storeu2_m128(float* Outpfloat_A, float* Outpfloat_B);
-    extern __m256 uX_ABI _uX_mm256_storeur2_m128(float* Outpfloat_A, float* Outpfloat_B);
+    /*extern __m256 uX_ABI _uX_mm256_store2_m128(__m256* Outpfloat_A, __m128* Outpfloat_B);
+    extern __m256 uX_ABI _uX_mm256_storer2_m128(__m256* Outpfloat_A, __m128* Outpfloat_B);
+    extern __m256 uX_ABI _uX_mm256_storeu2_m128(__m256* Outpfloat_A, __m128* Outpfloat_B);
+    extern __m256 uX_ABI _uX_mm256_storeur2_m128(__m256* Outpfloat_A, __m128* Outpfloat_B);*/
 
-    extern void uX_ABI _uX_mm256_maskstore_ps(float* Outpfloat_A, __m256i Inymm_mask, __m256 Inymm_C);
-    extern void uX_ABI _uX_mm_maskstore_ps(float* Outpfloat_A, __m128i Inxmm_mask, __m128 Inxmm_C);
+    extern void uX_ABI _uX_mm256_maskstore_ps(__m256* Outpfloat_A, __m256i Inymm_mask, __m256 Inymm_C);
+    extern void uX_ABI _uX_mm_maskstore_ps(__m128* Outpfloat_A, __m128i Inxmm_mask, __m128 Inxmm_C);
 
     extern void uX_ABI _uX_mm256_store_mm256_ps(__m256* Outpxmm_A, __m256 Inymm_B);
-    extern void uX_ABI _uX_mm256_store_pfloat_ps(__m256* Outpxmm_A, const float* InPfloat_B);
-    extern void uX_ABI _uX_mm256_storeu_pfloat_ps(__m256* Outpxmm_A, const float* InPfloat_B);
+    extern void uX_ABI _uX_mm256_store_pfloat_ps(__m256* Outpxmm_A, __m256 const* const InPfloat_B);
+    extern void uX_ABI _uX_mm256_storeu_pfloat_ps(__m256* Outpxmm_A, __m256 const* const InPfloat_B);
 
 /*
  * DP, stores
  */
 
-    extern void uX_ABI _uX_mm256_store_sd(double* Outpdouble_A, __m256d Inymm_B);
-    extern void uX_ABI _uX_mm256_store_pd1(double* Outpdouble_A, __m256d Inymm_B);
-    extern void uX_ABI _uX_mm256_storeu_pd1(double* Outpdouble_A, __m256d Inymm_B);
-    extern void uX_ABI _uX_mm256_store_pd(double* Outpdouble_A, __m256d Inymm_B);
-    extern void uX_ABI _uX_mm256_storeu_pd(double* Outpdouble_A, __m256d Inymm_B);
-    extern void uX_ABI _uX_mm256_storer_pd(double* Outpdouble_A, __m256d Inymm_B);
-    extern void uX_ABI _uX_mm256_storeur_pd(double* Outpdouble_A, __m256d Inymm_B);
+    extern void uX_ABI _uX_mm256_store_sd(__m256d* Outpdouble_A, __m256d Inymm_B);
+    extern void uX_ABI _uX_mm256_store_pd1(__m256d* Outpdouble_A, __m256d Inymm_B);
+    extern void uX_ABI _uX_mm256_storeu_pd1(__m256d* Outpdouble_A, __m256d Inymm_B);
+    extern void uX_ABI _uX_mm256_store_pd(__m256d* Outpdouble_A, __m256d Inymm_B);
+    extern void uX_ABI _uX_mm256_storeu_pd(__m256d* Outpdouble_A, __m256d Inymm_B);
+    extern void uX_ABI _uX_mm256_storer_pd(__m256d* Outpdouble_A, __m256d Inymm_B);
+    extern void uX_ABI _uX_mm256_storeur_pd(__m256d* Outpdouble_A, __m256d Inymm_B);
     /*extern void uX_ABI _uX_mm256_storeh_pd(double* Outpdouble_A, __m256d Inymm_B);
     extern void uX_ABI _uX_mm256_storel_pd(double* Outpdouble_A, __m256d Inymm_B);*/
-    extern __m256d uX_ABI _uX_mm256_store2_m128d(double* Outpdouble_A, double* Outpdouble_B);
-    extern __m256d uX_ABI _uX_mm256_storer2_m128d(double* Outpdouble_A, double* Outpdouble_B);
-    extern __m256d uX_ABI _uX_mm256_storeu2_m128d(double* Outpdouble_A, double* Outpdouble_B);
-    extern __m256d uX_ABI _uX_mm256_storeur2_m128d(double* Outpdouble_A, double* Outpdouble_B);
+    /*extern __m256d uX_ABI _uX_mm256_store2_m128d(__m256d* Outpdouble_A, __m128d* Outpdouble_B);
+    extern __m256d uX_ABI _uX_mm256_storer2_m128d(__m256d* Outpdouble_A, __m128d* Outpdouble_B);
+    extern __m256d uX_ABI _uX_mm256_storeu2_m128d(__m256d* Outpdouble_A, __m128d* Outpdouble_B);
+    extern __m256d uX_ABI _uX_mm256_storeur2_m128d(__m256d* Outpdouble_A, __m128d* Outpdouble_B);*/
 
-    extern void uX_ABI _uX_mm256_maskstore_pd(double* Outpdouble_A, __m256i Inymm_mask, __m256d Inymm_C);
-    extern void uX_ABI _uX_mm_maskstore_pd(double* Outpdouble_A, __m128i Inxmm_mask, __m128d Inxmm_C);
+    extern void uX_ABI _uX_mm256_maskstore_pd(__m256d* Outpdouble_A, __m256i Inymm_mask, __m256d Inymm_C);
+    extern void uX_ABI _uX_mm_maskstore_pd(__m128d* Outpdouble_A, __m128i Inxmm_mask, __m128d Inxmm_C);
 
     extern void uX_ABI _uX_mm256_store_mm256_pd(__m256d* Outpxmm_A, __m256d Inymm_B);
-    extern void uX_ABI _uX_mm256_store_pdouble_pd(__m256d* Outpxmm_A, const double* InPdouble_B);
-    extern void uX_ABI _uX_mm256_storeu_pdouble_pd(__m256d* Outpxmm_A, const double* InPdouble_B);
+    extern void uX_ABI _uX_mm256_store_pdouble_pd(__m256d* Outpxmm_A, __m256d const* const InPdouble_B);
+    extern void uX_ABI _uX_mm256_storeu_pdouble_pd(__m256d* Outpxmm_A, __m256d const* const InPdouble_B);
 
 /*
  * FP, moves
@@ -432,14 +432,14 @@ uX_PACK_YMM
     extern __m256 uX_ABI _uX_mm256_movehdup_ps(__m256 Inymm_A);
     extern __m256 uX_ABI _uX_mm256_moveldup_ps(__m256 Inymm_A);
 
-    extern float* uX_ABI _uX_ptr_move_mm256_ss(__m256 Inymm_A, __m256 Inymm_B);
-    extern float* uX_ABI _uX_ptr_move_mm256_ps1(__m256 Inymm_A);
-    extern float* uX_ABI _uX_ptr_move_mm256_ps(__m256 Inymm_A);
-    extern float* uX_ABI _uX_ptr_mover_mm256_ps(__m256 Inymm_A);
-    extern float* uX_ABI _uX_ptr_moveu_mm256_ss(__m256 Inymm_A, __m256 Inymm_B);
-    extern float* uX_ABI _uX_ptr_moveu_mm256_ps1(__m256 Inymm_A);
-    extern float* uX_ABI _uX_ptr_moveu_mm256_ps(__m256 Inymm_A);
-    extern float* uX_ABI _uX_ptr_moveur_mm256_ps(__m256 Inymm_A);
+    extern __m256 const* const uX_ABI _uX_ptr_move_mm256_ss(__m256 Inymm_A, __m256 Inymm_B);
+    extern __m256 const* const uX_ABI _uX_ptr_move_mm256_ps1(__m256 Inymm_A);
+    extern __m256 const* const uX_ABI _uX_ptr_move_mm256_ps(__m256 Inymm_A);
+    extern __m256 const* const uX_ABI _uX_ptr_mover_mm256_ps(__m256 Inymm_A);
+    extern __m256 const* const uX_ABI _uX_ptr_moveu_mm256_ss(__m256 Inymm_A, __m256 Inymm_B);
+    extern __m256 const* const uX_ABI _uX_ptr_moveu_mm256_ps1(__m256 Inymm_A);
+    extern __m256 const* const uX_ABI _uX_ptr_moveu_mm256_ps(__m256 Inymm_A);
+    extern __m256 const* const uX_ABI _uX_ptr_moveur_mm256_ps(__m256 Inymm_A);
 
 /*
  * DP, moves
@@ -451,14 +451,14 @@ uX_PACK_YMM
     extern __m256d uX_ABI _uX_mm256_mover_pd(__m256d Inymm_A);
     extern __m256d uX_ABI _uX_mm256_movedup_pd(__m256d Inymm_A);
 
-    extern double* uX_ABI _uX_ptr_move_mm256_sd(__m256d Inymm_A, __m256d Inymm_B);
-    extern double* uX_ABI _uX_ptr_move_mm256_pd1(__m256d Inymm_A);
-    extern double* uX_ABI _uX_ptr_move_mm256_pd(__m256d Inymm_A);
-    extern double* uX_ABI _uX_ptr_mover_mm256_pd(__m256d Inymm_A);
-    extern double* uX_ABI _uX_ptr_moveu_mm256_sd(__m256d Inymm_A, __m256d Inymm_B);
-    extern double* uX_ABI _uX_ptr_moveu_mm256_pd1(__m256d Inymm_A);
-    extern double* uX_ABI _uX_ptr_moveu_mm256_pd(__m256d Inymm_A);
-    extern double* uX_ABI _uX_ptr_moveur_mm256_pd(__m256d Inymm_A);
+    extern __m256d const* const uX_ABI _uX_ptr_move_mm256_sd(__m256d Inymm_A, __m256d Inymm_B);
+    extern __m256d const* const uX_ABI _uX_ptr_move_mm256_pd1(__m256d Inymm_A);
+    extern __m256d const* const uX_ABI _uX_ptr_move_mm256_pd(__m256d Inymm_A);
+    extern __m256d const* const uX_ABI _uX_ptr_mover_mm256_pd(__m256d Inymm_A);
+    extern __m256d const* const uX_ABI _uX_ptr_moveu_mm256_sd(__m256d Inymm_A, __m256d Inymm_B);
+    extern __m256d const* const uX_ABI _uX_ptr_moveu_mm256_pd1(__m256d Inymm_A);
+    extern __m256d const* const uX_ABI _uX_ptr_moveu_mm256_pd(__m256d Inymm_A);
+    extern __m256d const* const uX_ABI _uX_ptr_moveur_mm256_pd(__m256d Inymm_A);
 
 /*
  * Integer, logicals
@@ -483,22 +483,22 @@ uX_PACK_YMM
  * Integer, misc
  */
 
-    extern __m256i uX_ABI _uX_mm256_permute2f128_si256(__m256i Inymm_A, __m256i, const count_t Inint_Imm);
-    extern int8_t uX_ABI _uX_mm256_extract_epi8(__m256i Inymm_A, const count_t Inint_Imm8);
-    extern int16_t uX_ABI _uX_mm256_extract_epi16(__m256i Inymm_A, const count_t Inint_Imm8);
-    extern int32_t uX_ABI _uX_mm256_extract_epi32(__m256i Inymm_A, const count_t Inint_BSel);
+    extern __m256i uX_ABI _uX_mm256_permute2f128_si256(__m256i Inymm_A, __m256i, count_t const Inint_Imm);
+    extern int8_t uX_ABI _uX_mm256_extract_epi8(__m256i Inymm_A, count_t const Inint_Imm8);
+    extern int16_t uX_ABI _uX_mm256_extract_epi16(__m256i Inymm_A, count_t const Inint_Imm8);
+    extern int32_t uX_ABI _uX_mm256_extract_epi32(__m256i Inymm_A, count_t const Inint_BSel);
 #if defined(uX_X64)
-    extern int64_t uX_ABI _uX_mm256_extract_epi64(__m256i Inymm_A, const count_t Inint_BSel);
+    extern int64_t uX_ABI _uX_mm256_extract_epi64(__m256i Inymm_A, count_t const Inint_BSel);
 #endif  /* defined (uX_X64) */
-    extern __m128i uX_ABI _uX_mm256_extractf128_si256(__m256i Inymm_A, const count_t Inint_BSel);
+    extern __m128i uX_ABI _uX_mm256_extractf128_si256(__m256i Inymm_A, count_t const Inint_BSel);
 
-    extern __m256i uX_ABI _uX_mm256_insert_epi8(__m256i Inymm_A, int8_t Inint_B, const count_t Inint_Imm8);
-    extern __m256i uX_ABI _uX_mm256_insert_epi16(__m256i Inymm_A, int16_t Inint_B, const count_t Inint_Imm8);
-    extern __m256i uX_ABI _uX_mm256_insert_epi32(__m256i Inymm_A, int32_t Inint_B, const count_t Inint_Imm8);
+    extern __m256i uX_ABI _uX_mm256_insert_epi8(__m256i Inymm_A, int8_t Inint_B, count_t const Inint_Imm8);
+    extern __m256i uX_ABI _uX_mm256_insert_epi16(__m256i Inymm_A, int16_t Inint_B, count_t const Inint_Imm8);
+    extern __m256i uX_ABI _uX_mm256_insert_epi32(__m256i Inymm_A, int32_t Inint_B, count_t const Inint_Imm8);
 #if defined(uX_X64)
-    extern __m256i uX_ABI _uX_mm256_insert_epi64(__m256i Inymm_A, int64_t Inint_B, const count_t Inint_Imm8);
+    extern __m256i uX_ABI _uX_mm256_insert_epi64(__m256i Inymm_A, int64_t Inint_B, count_t const Inint_Imm8);
 #endif  /* defined (uX_X64) */
-    extern __m256i uX_ABI _uX_mm256_insertf128_si256(__m256i Inymm_A, __m128i Inxmm_B, const count_t Inint_BSel);
+    extern __m256i uX_ABI _uX_mm256_insertf128_si256(__m256i Inymm_A, __m128i Inxmm_B, count_t const Inint_BSel);
     extern __m256i uX_ABI _uX_mm256_zextsi128_si256(__m128i Inxmm_A);
 
     extern intbool_t uX_ABI _uX_mm256_testz_si256(__m256i Inymm_mask, __m256i Inymm_val);
@@ -512,36 +512,36 @@ uX_PACK_YMM
     extern __m256i uX_ABI _uX_mm256_set_epi64(__m256i Inymm_Q1, __m256i Inymm_Q0);
     extern __m256i uX_ABI _uX_mm256_set_epi64x(int64_t Inint_Q3, int64_t Inint_Q2, int64_t Inint_Q1, int64_t Inint_Q0);
     extern __m256i uX_ABI _uX_mm256_set_epi32(int32_t Inint_D7, int32_t Inint_D6, int32_t Inint_D5, int32_t Inint_D4, 
-                                                   int32_t Inint_D3, int32_t Inint_D2, int32_t Inint_D1, int32_t Inint_D0);
+                                              int32_t Inint_D3, int32_t Inint_D2, int32_t Inint_D1, int32_t Inint_D0);
     extern __m256i uX_ABI _uX_mm256_set_epi16(int16_t Inint_W15, int16_t Inint_W14, int16_t Inint_W13, int16_t Inint_W12,
-                                                   int16_t Inint_W11, int16_t Inint_W10, int16_t Inint_W9, int16_t Inint_W8,
-                                                   int16_t Inint_W7, int16_t Inint_W6, int16_t Inint_W5, int16_t Inint_W4,
-                                                   int16_t Inint_W3, int16_t Inint_W2, int16_t Inint_W1, int16_t Inint_W0);
+                                              int16_t Inint_W11, int16_t Inint_W10, int16_t Inint_W9, int16_t Inint_W8,
+                                              int16_t Inint_W7, int16_t Inint_W6, int16_t Inint_W5, int16_t Inint_W4,
+                                              int16_t Inint_W3, int16_t Inint_W2, int16_t Inint_W1, int16_t Inint_W0);
     extern __m256i uX_ABI _uX_mm256_set_epi8(int8_t Inint_B31, int8_t Inint_B30, int8_t Inint_B29, int8_t Inint_B28,
-                                                  int8_t Inint_B27, int8_t Inint_B26, int8_t Inint_B25, int8_t Inint_B24,
-                                                  int8_t Inint_B23, int8_t Inint_B22, int8_t Inint_B21, int8_t Inint_B20,
-                                                  int8_t Inint_B19, int8_t Inint_B18, int8_t Inint_B17, int8_t Inint_B16,
-                                                  int8_t Inint_B15, int8_t Inint_B14, int8_t Inint_B13, int8_t Inint_B12,
-                                                  int8_t Inint_B11, int8_t Inint_B10, int8_t Inint_B9, int8_t Inint_B8,
-                                                  int8_t Inint_B7, int8_t Inint_B6, int8_t Inint_B5, int8_t Inint_B4,
-                                                  int8_t Inint_B3, int8_t Inint_B2, int8_t Inint_B1, int8_t Inint_B0);
+                                             int8_t Inint_B27, int8_t Inint_B26, int8_t Inint_B25, int8_t Inint_B24,
+                                             int8_t Inint_B23, int8_t Inint_B22, int8_t Inint_B21, int8_t Inint_B20,
+                                             int8_t Inint_B19, int8_t Inint_B18, int8_t Inint_B17, int8_t Inint_B16,
+                                             int8_t Inint_B15, int8_t Inint_B14, int8_t Inint_B13, int8_t Inint_B12,
+                                             int8_t Inint_B11, int8_t Inint_B10, int8_t Inint_B9, int8_t Inint_B8,
+                                             int8_t Inint_B7, int8_t Inint_B6, int8_t Inint_B5, int8_t Inint_B4,
+                                             int8_t Inint_B3, int8_t Inint_B2, int8_t Inint_B1, int8_t Inint_B0);
 
     extern __m256i uX_ABI _uX_mm256_setr_epi64(__m256i Inymm_Q0, __m256i Inymm_Q1);
     extern __m256i uX_ABI _uX_mm256_setr_epi64x(int64_t Inint_Q0, int64_t Inint_Q1, int64_t Inint_Q2, int64_t Inint_Q3);
     extern __m256i uX_ABI _uX_mm256_setr_epi32(int32_t Inint_D0, int32_t Inint_D1, int32_t Inint_D2, int32_t Inint_D3,
-                                                    int32_t Inint_D4, int32_t Inint_D5, int32_t Inint_D6, int32_t Inint_D7);
+                                               int32_t Inint_D4, int32_t Inint_D5, int32_t Inint_D6, int32_t Inint_D7);
     extern __m256i uX_ABI _uX_mm256_setr_epi16(int16_t Inint_W0, int16_t Inint_W1, int16_t Inint_W2, int16_t Inint_W3,
-                                                    int16_t Inint_W4, int16_t Inint_W5, int16_t Inint_W6, int16_t Inint_W7,
-                                                    int16_t Inint_W8, int16_t Inint_W9, int16_t Inint_W10, int16_t Inint_W11,
-                                                    int16_t Inint_W12, int16_t Inint_W13, int16_t Inint_W14, int16_t Inint_W15);
+                                               int16_t Inint_W4, int16_t Inint_W5, int16_t Inint_W6, int16_t Inint_W7,
+                                               int16_t Inint_W8, int16_t Inint_W9, int16_t Inint_W10, int16_t Inint_W11,
+                                               int16_t Inint_W12, int16_t Inint_W13, int16_t Inint_W14, int16_t Inint_W15);
     extern __m256i uX_ABI _uX_mm256_setr_epi8(int8_t Inint_B0, int8_t Inint_B1, int8_t Inint_B2, int8_t Inint_B3,
-                                                   int8_t Inint_B4, int8_t Inint_B5, int8_t Inint_B6, int8_t Inint_B7,
-                                                   int8_t Inint_B8, int8_t Inint_B9, int8_t Inint_B10, int8_t Inint_B11,
-                                                   int8_t Inint_B12, int8_t Inint_B13, int8_t Inint_B14, int8_t Inint_B15,
-                                                   int8_t Inint_B16, int8_t Inint_B17, int8_t Inint_B18, int8_t Inint_B19,
-                                                   int8_t Inint_B20, int8_t Inint_B21, int8_t Inint_B22, int8_t Inint_B23,
-                                                   int8_t Inint_B24, int8_t Inint_B25, int8_t Inint_B126, int8_t Inint_B27,
-                                                   int8_t Inint_B28, int8_t Inint_B29, int8_t Inint_B30, int8_t Inint_B31);
+                                              int8_t Inint_B4, int8_t Inint_B5, int8_t Inint_B6, int8_t Inint_B7,
+                                              int8_t Inint_B8, int8_t Inint_B9, int8_t Inint_B10, int8_t Inint_B11,
+                                              int8_t Inint_B12, int8_t Inint_B13, int8_t Inint_B14, int8_t Inint_B15,
+                                              int8_t Inint_B16, int8_t Inint_B17, int8_t Inint_B18, int8_t Inint_B19,
+                                              int8_t Inint_B20, int8_t Inint_B21, int8_t Inint_B22, int8_t Inint_B23,
+                                              int8_t Inint_B24, int8_t Inint_B25, int8_t Inint_B126, int8_t Inint_B27,
+                                              int8_t Inint_B28, int8_t Inint_B29, int8_t Inint_B30, int8_t Inint_B31);
 
     extern __m256i uX_ABI _uX_mm256_set1_epi64(__m256i Inymm_Q);
     extern __m256i uX_ABI _uX_mm256_set1_epi64x(int64_t Inint_Q);
@@ -560,24 +560,24 @@ uX_PACK_YMM
  * Integer, loads
  */
 
-    extern __m256i uX_ABI _uX_mm256_load1_epi64(const __m256i* InPxmm_A);
-    extern __m256i uX_ABI _uX_mm256_load1_epi32(const __m256i* InPxmm_A);
-    extern __m256i uX_ABI _uX_mm256_load_si256(const __m256i* InPxmm_A);
-    extern __m256i uX_ABI _uX_mm256_loadr_epi64(const __m256i* InPxmm_A);
-    extern __m256i uX_ABI _uX_mm256_loadr_epi32(const __m256i* InPxmm_A);
-    extern __m256i uX_ABI _uX_mm256_loadu_si256(const __m256i* InPxmm_A);
-    extern __m256i uX_ABI _uX_mm256_loadur_epi64(const __m256i* InPxmm_A);
-    extern __m256i uX_ABI _uX_mm256_loadur_epi32(const __m256i* InPxmm_A);
-    extern __m256i uX_ABI _uX_mm256_loadh_epi64(__m256i Inymm_A, const __m256i* InPxmm_B);
-    extern __m256i uX_ABI _uX_mm256_loadl_epi64(__m256i Inymm_A, const __m256i* InPxmm_B);
-    /*extern __m256i uX_ABI _uX_mm256_loadh_epi32(__m256i Inymm_A, const __m256i* InPxmm_B);
-    extern __m256i uX_ABI _uX_mm256_loadl_epi32(__m256i Inymm_A, const __m256i* InPxmm_B);*/
-    extern __m256i uX_ABI _uX_mm256_load2_m128i(const __m128i* InPxmm_A, const __m128i* InPxmm_B);
-    extern __m256i uX_ABI _uX_mm256_loadr_m128i(const __m128i* InPxmm_A, const __m128i* InPxmm_B);
-    extern __m256i uX_ABI _uX_mm256_loadu2_m128i(const __m128i* InPxmm_A, const __m128i* InPxmm_B);
-    extern __m256i uX_ABI _uX_mm256_loadur2_m128i(const __m128i* InPxmm_A, const __m128i* InPxmm_B);
+    extern __m256i uX_ABI _uX_mm256_load1_epi64(__m256i const* const  InPxmm_A);
+    extern __m256i uX_ABI _uX_mm256_load1_epi32(__m256i const* const  InPxmm_A);
+    extern __m256i uX_ABI _uX_mm256_load_si256(__m256i const* const  InPxmm_A);
+    extern __m256i uX_ABI _uX_mm256_loadr_epi64(__m256i const* const  InPxmm_A);
+    extern __m256i uX_ABI _uX_mm256_loadr_epi32(__m256i const* const  InPxmm_A);
+    extern __m256i uX_ABI _uX_mm256_loadu_si256(__m256i const* const  InPxmm_A);
+    extern __m256i uX_ABI _uX_mm256_loadur_epi64(__m256i const* const  InPxmm_A);
+    extern __m256i uX_ABI _uX_mm256_loadur_epi32(__m256i const* const  InPxmm_A);
+    extern __m256i uX_ABI _uX_mm256_loadh_epi64(__m256i Inymm_A, __m256i const* const  InPxmm_B);
+    extern __m256i uX_ABI _uX_mm256_loadl_epi64(__m256i Inymm_A, __m256i const* const  InPxmm_B);
+    /*extern __m256i uX_ABI _uX_mm256_loadh_epi32(__m256i Inymm_A, __m256i const* const  InPxmm_B);
+    extern __m256i uX_ABI _uX_mm256_loadl_epi32(__m256i Inymm_A, __m256i const* const  InPxmm_B);*/
+    /*extern __m256i uX_ABI _uX_mm256_load2_m128i(const __m256i* InPxmm_A, __m128i const* const InPxmm_B);
+    extern __m256i uX_ABI _uX_mm256_loadr_m128i(const __m256i* InPxmm_A, __m128i const* const InPxmm_B);
+    extern __m256i uX_ABI _uX_mm256_loadu2_m128i(const __m256i* InPxmm_A, __m128i const* const InPxmm_B);
+    extern __m256i uX_ABI _uX_mm256_loadur2_m128i(const __m256i* InPxmm_A, __m128i const* const InPxmm_B);*/
 
-    extern __m256i uX_ABI _uX_mm256_lddqu_si256(__m256i const *);
+    extern __m256i uX_ABI _uX_mm256_lddqu_si256(__m256i const* const InPxmm_A);
 
 /*
  * Integer, stores
@@ -595,15 +595,15 @@ uX_PACK_YMM
     extern void uX_ABI _uX_mm256_storel_epi64(__m256i* Outpxmm_A, __m256i Inymm_Q);
     extern void uX_ABI _uX_mm256_storeh_epi32(__m256i* Outpxmm_A, __m256i Inymm_D);
     extern void uX_ABI _uX_mm256_storel_epi32(__m256i* Outpxmm_A, __m256i Inymm_D);*/
-    extern __m256i uX_ABI _uX_mm256_store2_m128i(__m128i* OutPxmm_A, __m128i* OutPxmm_B);
+    /*extern __m256i uX_ABI _uX_mm256_store2_m128i(__m128i* OutPxmm_A, __m128i* OutPxmm_B);
     extern __m256i uX_ABI _uX_mm256_storer_m128i(__m128i* OutPxmm_A, __m128i* OutPxmm_B);
     extern __m256i uX_ABI _uX_mm256_storeu2_m128i(__m128i* OutPxmm_A, __m128i* OutPxmm_B);
-    extern __m256i uX_ABI _uX_mm256_storeur2_m128i(__m128i* OutPxmm_A, __m128i* OutPxmm_B);
+    extern __m256i uX_ABI _uX_mm256_storeur2_m128i(__m128i* OutPxmm_A, __m128i* OutPxmm_B);*/
 
     /*extern void uX_ABI _uX_mm256_maskmoveu_si256(__m256i Inymm_D, __m256i Inymm_N, int8_t* Outpint_P);*/
 
-    extern void uX_ABI _uX_mm256_store_psi256(__m256i* Outpxmm_A, const __m256i* InPxmm_B);
-    extern void uX_ABI _uX_mm256_storeu_psi256(__m256i* Outpxmm_A, const __m256i* InPxmm_B);
+    extern void uX_ABI _uX_mm256_store_psi256(__m256i* Outpxmm_A, __m256i const* const  InPxmm_B);
+    extern void uX_ABI _uX_mm256_storeu_psi256(__m256i* Outpxmm_A, __m256i const* const  InPxmm_B);
 
 /*
  * Integer, moves
@@ -641,8 +641,8 @@ uX_PACK_YMM
  * Cacheability support
  */
 
-    extern void uX_ABI _uX_mm256_stream_ps(float* Outpdouble_A, __m256 Inymm_A);
-    extern void uX_ABI _uX_mm256_stream_pd(double* Outpdouble_A, __m256d Inymm_A);
+    extern void uX_ABI _uX_mm256_stream_ps(__m256* Outpdouble_A, __m256 Inymm_A);
+    extern void uX_ABI _uX_mm256_stream_pd(__m256d* Outpdouble_A, __m256d Inymm_A);
     extern void uX_ABI _uX_mm256_stream_si256(__m256i* Outpxmm_A, __m256i Inymm_A);
     extern void uX_ABI _uX_mm256_stream_si32(int32_t* Outpint_A, int32_t Inint_B);
     extern void uX_ABI _uX_mm256_stream_si64(int64_t* Outpint_A, int64_t Inint_B);
@@ -673,8 +673,8 @@ uX_PACK_YMM
 
     extern __m128 uX_ABI _uX_mm_cvtph_ps(__m128i Inxmm_A);
     extern __m256 uX_ABI _uX_mm256_cvtph_ps(__m128i Inxmm_A);
-    extern __m128i uX_ABI _uX_mm_cvtps_ph(__m128 Inxmm_A, const count_t iRoundMode);
-    extern __m128i uX_ABI _uX_mm256_cvtps_ph(__m256 Inymm_A, const count_t iRoundMode);
+    extern __m128i uX_ABI _uX_mm_cvtps_ph(__m128 Inxmm_A, count_t const iRoundMode);
+    extern __m128i uX_ABI _uX_mm256_cvtps_ph(__m256 Inymm_A, count_t const iRoundMode);
 
 /*
  * Undefined
@@ -736,25 +736,23 @@ uX_PACK_YMM
  * Integer, shifts
  */
 
-    extern __m256i uX_ABI _uX_mm256_slli_si256(__m256i Inymm_A, const count_t Inint_Count);
-#define _uX_mm256_bslli_si256 _uX_mm256_slli_si256
-    extern __m256i uX_ABI _uX_mm256_slli_epi16(__m256i Inymm_A, const count_t Inint_Count);
+    extern __m256i uX_ABI _uX_mm256_slli_si256(__m256i Inymm_A, count_t const Inint_Count);
+    extern __m256i uX_ABI _uX_mm256_slli_epi16(__m256i Inymm_A, count_t const Inint_Count);
     extern __m256i uX_ABI _uX_mm256_sll_epi16(__m256i Inymm_A, __m256i Inymm_Count);
-    extern __m256i uX_ABI _uX_mm256_slli_epi32(__m256i Inymm_A, const count_t Inint_Count);
+    extern __m256i uX_ABI _uX_mm256_slli_epi32(__m256i Inymm_A, count_t const Inint_Count);
     extern __m256i uX_ABI _uX_mm256_sll_epi32(__m256i Inymm_A, __m256i Inymm_Count);
-    extern __m256i uX_ABI _uX_mm256_slli_epi64(__m256i Inymm_A, const count_t Inint_Count);
+    extern __m256i uX_ABI _uX_mm256_slli_epi64(__m256i Inymm_A, count_t const Inint_Count);
     extern __m256i uX_ABI _uX_mm256_sll_epi64(__m256i Inymm_A, __m256i Inymm_Count);
-    extern __m256i uX_ABI _uX_mm256_srai_epi16(__m256i Inymm_A, const count_t Inint_Count);
+    extern __m256i uX_ABI _uX_mm256_srai_epi16(__m256i Inymm_A, count_t const Inint_Count);
     extern __m256i uX_ABI _uX_mm256_sra_epi16(__m256i Inymm_A, __m256i Inymm_Count);
-    extern __m256i uX_ABI _uX_mm256_srai_epi32(__m256i Inymm_A, const count_t Inint_Count);
+    extern __m256i uX_ABI _uX_mm256_srai_epi32(__m256i Inymm_A, count_t const Inint_Count);
     extern __m256i uX_ABI _uX_mm256_sra_epi32(__m256i Inymm_A, __m256i Inymm_Count);
-    extern __m256i uX_ABI _uX_mm256_srli_si256(__m256i Inymm_A, const count_t Inint_Count);
-#define _uX_mm256_bsrli_si256 _uX_mm256_srli_si256
-    extern __m256i uX_ABI _uX_mm256_srli_epi16(__m256i Inymm_A, const count_t Inint_Count);
+    extern __m256i uX_ABI _uX_mm256_srli_si256(__m256i Inymm_A, count_t const Inint_Count);
+    extern __m256i uX_ABI _uX_mm256_srli_epi16(__m256i Inymm_A, count_t const Inint_Count);
     extern __m256i uX_ABI _uX_mm256_srl_epi16(__m256i Inymm_A, __m256i Inymm_Count);
-    extern __m256i uX_ABI _uX_mm256_srli_epi32(__m256i Inymm_A, const count_t Inint_Count);
+    extern __m256i uX_ABI _uX_mm256_srli_epi32(__m256i Inymm_A, count_t const Inint_Count);
     extern __m256i uX_ABI _uX_mm256_srl_epi32(__m256i Inymm_A, __m256i Inymm_Count);
-    extern __m256i uX_ABI _uX_mm256_srli_epi64(__m256i Inymm_A, const count_t Inint_Count);
+    extern __m256i uX_ABI _uX_mm256_srli_epi64(__m256i Inymm_A, count_t const Inint_Count);
     extern __m256i uX_ABI _uX_mm256_srl_epi64(__m256i Inymm_A, __m256i Inymm_Count);
 
 /*
@@ -778,11 +776,11 @@ uX_PACK_YMM
     extern __m256i uX_ABI _uX_mm256_cvtsi32_si256(int32_t Inint_A);
     extern int uX_ABI _uX_mm256_cvtsi256_si32(__m256i Inymm_A);
 
-    extern __m256i uX_ABI _uX_mm256_cvteltsi256_epi64(__m256i Inymm_A, const count_t Inint_BSel);
-    extern int64_t uX_ABI _uX_mm256_cvteltsi256_epi64x(__m256i Inymm_A, const count_t Inint_BSel);
-    extern int32_t uX_ABI _uX_mm256_cvteltsi256_epi32(__m256i Inymm_A, const count_t Inint_BSel);
-    extern int16_t uX_ABI _uX_mm256_cvteltsi256_epi16(__m256i Inymm_A, const count_t Inint_BSel);
-    extern int8_t uX_ABI _uX_mm256_cvteltsi256_epi8(__m256i Inymm_A, const count_t Inint_BSel);
+    extern __m256i uX_ABI _uX_mm256_cvteltsi256_epi64(__m256i Inymm_A, count_t const Inint_BSel);
+    extern int64_t uX_ABI _uX_mm256_cvteltsi256_epi64x(__m256i Inymm_A, count_t const Inint_BSel);
+    extern int32_t uX_ABI _uX_mm256_cvteltsi256_epi32(__m256i Inymm_A, count_t const Inint_BSel);
+    extern int16_t uX_ABI _uX_mm256_cvteltsi256_epi16(__m256i Inymm_A, count_t const Inint_BSel);
+    extern int8_t uX_ABI _uX_mm256_cvteltsi256_epi8(__m256i Inymm_A, count_t const Inint_BSel);
 
 /*
  * Support for 64-bit extension intrinsics
@@ -810,10 +808,10 @@ uX_PACK_YMM
     extern __m256i uX_ABI _uX_mm256_unpacklo_epi32(__m256i Inymm_A, __m256i Inymm_B);
     extern __m256i uX_ABI _uX_mm256_unpacklo_epi64(__m256i Inymm_A, __m256i Inymm_B);
 
-    extern __m256i uX_ABI _uX_mm256_shuffle_epi64(__m256i Inymm_A, const count_t Inint_Imm);
-    extern __m256i uX_ABI _uX_mm256_shuffle_epi32(__m256i Inymm_A, const count_t Inint_Imm);
-    extern __m256i uX_ABI _uX_mm256_shufflehi_epi16(__m256i Inymm_A, const count_t Inint_Imm);
-    extern __m256i uX_ABI _uX_mm256_shufflelo_epi16(__m256i Inymm_A, const count_t Inint_Imm);
+    extern __m256i uX_ABI _uX_mm256_shuffle_epi64(__m256i Inymm_A, count_t const Inint_Imm);
+    extern __m256i uX_ABI _uX_mm256_shuffle_epi32(__m256i Inymm_A, count_t const Inint_Imm);
+    extern __m256i uX_ABI _uX_mm256_shufflehi_epi16(__m256i Inymm_A, count_t const Inint_Imm);
+    extern __m256i uX_ABI _uX_mm256_shufflelo_epi16(__m256i Inymm_A, count_t const Inint_Imm);
 
     extern int uX_ABI _uX_mm256_movemask_epi8(__m256i Inymm_A);
 
@@ -841,6 +839,8 @@ uX_EXTERNC_END
 #include "uXemmintshifts.h"
 #endif
 
+#define _uX_mm256_bslli_si256   _uX_mm256_slli_si256
+#define _uX_mm256_bsrli_si256   _uX_mm256_srli_si256
 #define _uX_mm256_set1_pd       _uX_mm256_set_pd1
 #define _uX_mm256_load1_pd      _uX_mm256_load_pd1
 #define _uX_mm256_store1_pd     _uX_mm256_store_pd1

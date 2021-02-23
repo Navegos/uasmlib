@@ -3,7 +3,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -487,11 +487,11 @@ uX_PACK_PUSH_XMM
     extern double uX_ABI _uX_mm_cvtsd_dbl(__m128d Inxmm_A);
     extern double uX_ABI _uX_mm_cvt0d_dbl(__m128d Inxmm_A);
     extern double uX_ABI _uX_mm_cvt1d_dbl(__m128d Inxmm_A);
-    extern double uX_ABI _uX_mm_cvtpd_dbl(__m128d Inxmm_A, const count_t Inint_BSel);
+    extern double uX_ABI _uX_mm_cvtpd_dbl(__m128d Inxmm_A, count_t const Inint_BSel);
 
     extern __m128d uX_ABI _uX_mm_cvtdbl_0d(__m128d Inxmm_A, double Indouble_B);
     extern __m128d uX_ABI _uX_mm_cvtdbl_1d(__m128d Inxmm_A, double Indouble_B);
-    extern __m128d uX_ABI _uX_mm_cvtdbl_pd(__m128d Inxmm_A, double Indouble_B, const count_t InInt_CSel);
+    extern __m128d uX_ABI _uX_mm_cvtdbl_pd(__m128d Inxmm_A, double Indouble_B, count_t const InInt_CSel);
 
 /*
  * DP, misc
@@ -500,8 +500,8 @@ uX_PACK_PUSH_XMM
     extern __m128d uX_ABI _uX_mm_unpackhi_pd(__m128d Inxmm_A, __m128d Inxmm_B);
     extern __m128d uX_ABI _uX_mm_unpacklo_pd(__m128d Inxmm_A, __m128d Inxmm_B);
     extern int uX_ABI _uX_mm_movemask_pd(__m128d Inxmm_A);
-    extern __m128d uX_ABI _uX_mm_shuffle_pd(__m128d Inxmm_A, __m128d Inxmm_B, const count_t Inint_Imm8);
-    extern __m128d uX_ABI _uX_mm_permute_pd(__m128d Inxmm_A, const count_t Inint_Imm8);
+    extern __m128d uX_ABI _uX_mm_shuffle_pd(__m128d Inxmm_A, __m128d Inxmm_B, count_t const Inint_Imm8);
+    extern __m128d uX_ABI _uX_mm_permute_pd(__m128d Inxmm_A, count_t const Inint_Imm8);
 
 /*
  * DP, sets
@@ -520,32 +520,32 @@ uX_PACK_PUSH_XMM
  * DP, loads
  */
 
-    extern __m128d uX_ABI _uX_mm_load_sd(const double* InPdouble_B);
-    extern __m128d uX_ABI _uX_mm_load_pd1(const double* InPdouble_B);
-    extern __m128d uX_ABI _uX_mm_load_pd(const double* InPdouble_B);
-    extern __m128d uX_ABI _uX_mm_loadr_pd(const double* InPdouble_B);
-    extern __m128d uX_ABI _uX_mm_loadu_pd(const double* InPdouble_B);
-    extern __m128d uX_ABI _uX_mm_loadur_pd(const double* InPdouble_B);
-    extern __m128d uX_ABI _uX_mm_loadh_pd(__m128d Inxmm_B, const double* InPdouble_C);
-    extern __m128d uX_ABI _uX_mm_loadl_pd(__m128d Inxmm_B, const double* InPdouble_C);
+    extern __m128d uX_ABI _uX_mm_load_sd(__m128d const* const InPdouble_B);
+    extern __m128d uX_ABI _uX_mm_load_pd1(__m128d const* const InPdouble_B);
+    extern __m128d uX_ABI _uX_mm_load_pd(__m128d const* const InPdouble_B);
+    extern __m128d uX_ABI _uX_mm_loadr_pd(__m128d const* const InPdouble_B);
+    extern __m128d uX_ABI _uX_mm_loadu_pd(__m128d const* const InPdouble_B);
+    extern __m128d uX_ABI _uX_mm_loadur_pd(__m128d const* const InPdouble_B);
+    extern __m128d uX_ABI _uX_mm_loadh_pd(__m128d Inxmm_B, __m128d const* const InPdouble_C);
+    extern __m128d uX_ABI _uX_mm_loadl_pd(__m128d Inxmm_B, __m128d const* const InPdouble_C);
 
 /*
  * DP, stores
  */
 
-    extern void uX_ABI _uX_mm_store_sd(double* Outpdouble_A, __m128d Inxmm_B);
-    extern void uX_ABI _uX_mm_store_pd1(double* Outpdouble_A, __m128d Inxmm_B);
-    extern void uX_ABI _uX_mm_storeu_pd1(double* Outpdouble_A, __m128d Inxmm_B);
-    extern void uX_ABI _uX_mm_store_pd(double* Outpdouble_A, __m128d Inxmm_B);
-    extern void uX_ABI _uX_mm_storeu_pd(double* Outpdouble_A, __m128d Inxmm_B);
-    extern void uX_ABI _uX_mm_storer_pd(double* Outpdouble_A, __m128d Inxmm_B);
-    extern void uX_ABI _uX_mm_storeur_pd(double* Outpdouble_A, __m128d Inxmm_B);
-    extern void uX_ABI _uX_mm_storeh_pd(double* Outpdouble_A, __m128d Inxmm_B);
-    extern void uX_ABI _uX_mm_storel_pd(double* Outpdouble_A, __m128d Inxmm_B);
+    extern void uX_ABI _uX_mm_store_sd(__m128d* Outpdouble_A, __m128d Inxmm_B);
+    extern void uX_ABI _uX_mm_store_pd1(__m128d* Outpdouble_A, __m128d Inxmm_B);
+    extern void uX_ABI _uX_mm_storeu_pd1(__m128d* Outpdouble_A, __m128d Inxmm_B);
+    extern void uX_ABI _uX_mm_store_pd(__m128d* Outpdouble_A, __m128d Inxmm_B);
+    extern void uX_ABI _uX_mm_storeu_pd(__m128d* Outpdouble_A, __m128d Inxmm_B);
+    extern void uX_ABI _uX_mm_storer_pd(__m128d* Outpdouble_A, __m128d Inxmm_B);
+    extern void uX_ABI _uX_mm_storeur_pd(__m128d* Outpdouble_A, __m128d Inxmm_B);
+    extern void uX_ABI _uX_mm_storeh_pd(__m128d* Outpdouble_A, __m128d Inxmm_B);
+    extern void uX_ABI _uX_mm_storel_pd(__m128d* Outpdouble_A, __m128d Inxmm_B);
 
     extern void uX_ABI _uX_mm_store_mm_pd(__m128d* Outpxmm_A, __m128d Inxmm_B);
-    extern void uX_ABI _uX_mm_store_pdouble_pd(__m128d* Outpxmm_A, const double* Inpdouble_B);
-    extern void uX_ABI _uX_mm_storeu_pdouble_pd(__m128d* Outpxmm_A, const double* Inpdouble_B);
+    extern void uX_ABI _uX_mm_store_pdouble_pd(__m128d* Outpxmm_A, __m128d const* const Inpdouble_B);
+    extern void uX_ABI _uX_mm_storeu_pdouble_pd(__m128d* Outpxmm_A, __m128d const* const Inpdouble_B);
 
 /*
  * DP, moves
@@ -556,14 +556,14 @@ uX_PACK_PUSH_XMM
     extern __m128d uX_ABI _uX_mm_move_pd(__m128d Inxmm_A);
     extern __m128d uX_ABI _uX_mm_mover_pd(__m128d Inxmm_A);
 
-    extern const double* uX_ABI _uX_ptr_move_mm_sd(__m128d Inxmm_A, __m128d Inxmm_B);
-    extern const double* uX_ABI _uX_ptr_move_mm_pd1(__m128d Inxmm_A);
-    extern const double* uX_ABI _uX_ptr_move_mm_pd(__m128d Inxmm_A);
-    extern const double* uX_ABI _uX_ptr_mover_mm_pd(__m128d Inxmm_A);
-    extern const double* uX_ABI _uX_ptr_moveu_mm_sd(__m128d Inxmm_A, __m128d Inxmm_B);
-    extern const double* uX_ABI _uX_ptr_moveu_mm_pd1(__m128d Inxmm_A);
-    extern const double* uX_ABI _uX_ptr_moveu_mm_pd(__m128d Inxmm_A);
-    extern const double* uX_ABI _uX_ptr_moveur_mm_pd(__m128d Inxmm_A);
+    extern __m128d const* const uX_ABI _uX_ptr_move_mm_sd(__m128d Inxmm_A, __m128d Inxmm_B);
+    extern __m128d const* const uX_ABI _uX_ptr_move_mm_pd1(__m128d Inxmm_A);
+    extern __m128d const* const uX_ABI _uX_ptr_move_mm_pd(__m128d Inxmm_A);
+    extern __m128d const* const uX_ABI _uX_ptr_mover_mm_pd(__m128d Inxmm_A);
+    extern __m128d const* const uX_ABI _uX_ptr_moveu_mm_sd(__m128d Inxmm_A, __m128d Inxmm_B);
+    extern __m128d const* const uX_ABI _uX_ptr_moveu_mm_pd1(__m128d Inxmm_A);
+    extern __m128d const* const uX_ABI _uX_ptr_moveu_mm_pd(__m128d Inxmm_A);
+    extern __m128d const* const uX_ABI _uX_ptr_moveur_mm_pd(__m128d Inxmm_A);
 
 /*
  * Integer, arithmetic
@@ -647,25 +647,25 @@ uX_PACK_XMM
  * Integer, shifts
  */
 
-    extern __m128i uX_ABI _uX_mm_slli_si128(__m128i Inxmm_A, const count_t Inint_Count);
-    extern __m128i uX_ABI _uX_mm_slli_epi16(__m128i Inxmm_A, const count_t Inint_Count);
+    extern __m128i uX_ABI _uX_mm_slli_si128(__m128i Inxmm_A, count_t const Inint_Count);
+    extern __m128i uX_ABI _uX_mm_slli_epi16(__m128i Inxmm_A, count_t const Inint_Count);
     extern __m128i uX_ABI _uX_mm_sll_epi16(__m128i Inxmm_A, __m128i Inxmm_Count);
-    extern __m128i uX_ABI _uX_mm_slli_epi32(__m128i Inxmm_A, const count_t Inint_Count);
+    extern __m128i uX_ABI _uX_mm_slli_epi32(__m128i Inxmm_A, count_t const Inint_Count);
     extern __m128i uX_ABI _uX_mm_sll_epi32(__m128i Inxmm_A, __m128i Inxmm_Count);
-    extern __m128i uX_ABI _uX_mm_slli_epi64(__m128i Inxmm_A, const count_t Inint_Count);
+    extern __m128i uX_ABI _uX_mm_slli_epi64(__m128i Inxmm_A, count_t const Inint_Count);
     extern __m128i uX_ABI _uX_mm_sll_epi64(__m128i Inxmm_A, __m128i Inxmm_Count);
-    extern __m128i uX_ABI _uX_mm_srai_epi16(__m128i Inxmm_A, const count_t Inint_Count);
+    extern __m128i uX_ABI _uX_mm_srai_epi16(__m128i Inxmm_A, count_t const Inint_Count);
     extern __m128i uX_ABI _uX_mm_sra_epi16(__m128i Inxmm_A, __m128i Inxmm_Count);
-    extern __m128i uX_ABI _uX_mm_srai_epi32(__m128i Inxmm_A, const count_t Inint_Count);
+    extern __m128i uX_ABI _uX_mm_srai_epi32(__m128i Inxmm_A, count_t const Inint_Count);
     extern __m128i uX_ABI _uX_mm_sra_epi32(__m128i Inxmm_A, __m128i Inxmm_Count);
-    extern __m128i uX_ABI _uX_mm_srai_epi64(__m128i Inxmm_A, const count_t Inint_Count);
+    extern __m128i uX_ABI _uX_mm_srai_epi64(__m128i Inxmm_A, count_t const Inint_Count);
     extern __m128i uX_ABI _uX_mm_sra_epi64(__m128i Inxmm_A, __m128i Inxmm_Count);
-    extern __m128i uX_ABI _uX_mm_srli_si128(__m128i Inxmm_A, const count_t Inint_Count);
-    extern __m128i uX_ABI _uX_mm_srli_epi16(__m128i Inxmm_A, const count_t Inint_Count);
+    extern __m128i uX_ABI _uX_mm_srli_si128(__m128i Inxmm_A, count_t const Inint_Count);
+    extern __m128i uX_ABI _uX_mm_srli_epi16(__m128i Inxmm_A, count_t const Inint_Count);
     extern __m128i uX_ABI _uX_mm_srl_epi16(__m128i Inxmm_A, __m128i Inxmm_Count);
-    extern __m128i uX_ABI _uX_mm_srli_epi32(__m128i Inxmm_A, const count_t Inint_Count);
+    extern __m128i uX_ABI _uX_mm_srli_epi32(__m128i Inxmm_A, count_t const Inint_Count);
     extern __m128i uX_ABI _uX_mm_srl_epi32(__m128i Inxmm_A, __m128i Inxmm_Count);
-    extern __m128i uX_ABI _uX_mm_srli_epi64(__m128i Inxmm_A, const count_t Inint_Count);
+    extern __m128i uX_ABI _uX_mm_srli_epi64(__m128i Inxmm_A, count_t const Inint_Count);
     extern __m128i uX_ABI _uX_mm_srl_epi64(__m128i Inxmm_A, __m128i Inxmm_Count);
 
 /*
@@ -750,27 +750,27 @@ uX_PACK_XMM
     extern __m128i uX_ABI _uX_mm_packs_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
     extern __m128i uX_ABI _uX_mm_packus_epi16(__m128i Inxmm_A, __m128i Inxmm_B);
 
-    extern int16_t uX_ABI _uX_mm_extract_epi16(__m128i Inxmm_A, const count_t Inint_Imm8);
-    extern __m128i uX_ABI _uX_mm_insert_epi16(__m128i Inxmm_A, int16_t Inint_B, const count_t Inint_Imm8);
+    extern int16_t uX_ABI _uX_mm_extract_epi16(__m128i Inxmm_A, count_t const Inint_Imm8);
+    extern __m128i uX_ABI _uX_mm_insert_epi16(__m128i Inxmm_A, int16_t Inint_B, count_t const Inint_Imm8);
 
-    extern __m128i uX_ABI _uX_mm_cvtsi128_epi64(__m128i Inxmm_A, const count_t Inint_BSel);
-    extern int64_t uX_ABI _uX_mm_cvtsi128_epi64x(__m128i Inxmm_A, const count_t Inint_BSel);
-    extern int32_t uX_ABI _uX_mm_cvtsi128_epi32(__m128i Inxmm_A, const count_t Inint_BSel);
-    extern int16_t uX_ABI _uX_mm_cvtsi128_epi16(__m128i Inxmm_A, const count_t Inint_BSel);
-    extern int8_t uX_ABI _uX_mm_cvtsi128_epi8(__m128i Inxmm_A, const count_t Inint_BSel);
+    extern __m128i uX_ABI _uX_mm_cvtsi128_epi64(__m128i Inxmm_A, count_t const Inint_BSel);
+    extern int64_t uX_ABI _uX_mm_cvtsi128_epi64x(__m128i Inxmm_A, count_t const Inint_BSel);
+    extern int32_t uX_ABI _uX_mm_cvtsi128_epi32(__m128i Inxmm_A, count_t const Inint_BSel);
+    extern int16_t uX_ABI _uX_mm_cvtsi128_epi16(__m128i Inxmm_A, count_t const Inint_BSel);
+    extern int8_t uX_ABI _uX_mm_cvtsi128_epi8(__m128i Inxmm_A, count_t const Inint_BSel);
 
-    extern __m128i uX_ABI _uX_mm_cvtepi64_si128(__m128i Inxmm_A, __m128i Inxmm_B, const count_t Inint_BSel);
-    extern __m128i uX_ABI _uX_mm_cvtepi64x_si128(__m128i Inxmm_A, int64_t Inint_Q, const count_t Inint_BSel);
-    extern __m128i uX_ABI _uX_mm_cvtepi32_si128(__m128i Inxmm_A, int32_t Inint_D, const count_t Inint_BSel);
-    extern __m128i uX_ABI _uX_mm_cvtepi16_si128(__m128i Inxmm_A, int16_t Inint_W, const count_t Inint_BSel);
-    extern __m128i uX_ABI _uX_mm_cvtepi8_si128(__m128i Inxmm_A, int8_t Inint_B, const count_t Inint_BSel);
+    extern __m128i uX_ABI _uX_mm_cvtepi64_si128(__m128i Inxmm_A, __m128i Inxmm_B, count_t const Inint_BSel);
+    extern __m128i uX_ABI _uX_mm_cvtepi64x_si128(__m128i Inxmm_A, int64_t Inint_Q, count_t const Inint_BSel);
+    extern __m128i uX_ABI _uX_mm_cvtepi32_si128(__m128i Inxmm_A, int32_t Inint_D, count_t const Inint_BSel);
+    extern __m128i uX_ABI _uX_mm_cvtepi16_si128(__m128i Inxmm_A, int16_t Inint_W, count_t const Inint_BSel);
+    extern __m128i uX_ABI _uX_mm_cvtepi8_si128(__m128i Inxmm_A, int8_t Inint_B, count_t const Inint_BSel);
 
     extern int uX_ABI _uX_mm_movemask_epi8(__m128i Inxmm_A);
 
-    extern __m128i uX_ABI _uX_mm_shuffle_epi64(__m128i Inxmm_A, const count_t Inint_Imm);
-    extern __m128i uX_ABI _uX_mm_shuffle_epi32(__m128i Inxmm_A, const count_t Inint_Imm);
-    extern __m128i uX_ABI _uX_mm_shufflehi_epi16(__m128i Inxmm_A, const count_t Inint_Imm);
-    extern __m128i uX_ABI _uX_mm_shufflelo_epi16(__m128i Inxmm_A, const count_t Inint_Imm);
+    extern __m128i uX_ABI _uX_mm_shuffle_epi64(__m128i Inxmm_A, count_t const Inint_Imm);
+    extern __m128i uX_ABI _uX_mm_shuffle_epi32(__m128i Inxmm_A, count_t const Inint_Imm);
+    extern __m128i uX_ABI _uX_mm_shufflehi_epi16(__m128i Inxmm_A, count_t const Inint_Imm);
+    extern __m128i uX_ABI _uX_mm_shufflelo_epi16(__m128i Inxmm_A, count_t const Inint_Imm);
 
     extern __m128i uX_ABI _uX_mm_unpackhi_epi8(__m128i Inxmm_A, __m128i Inxmm_B);
     extern __m128i uX_ABI _uX_mm_unpackhi_epi16(__m128i Inxmm_A, __m128i Inxmm_B);
@@ -785,18 +785,18 @@ uX_PACK_XMM
  * Integer, loads
  */
 
-    extern __m128i uX_ABI _uX_mm_load1_epi64(const __m128i* Inpqword_A);
-    extern __m128i uX_ABI _uX_mm_load1_epi32(const __m128i* Inpdword_A);
-    extern __m128i uX_ABI _uX_mm_load_si128(const __m128i* InPxmm_A);
-    extern __m128i uX_ABI _uX_mm_loadr_epi64(const __m128i* InPxmm_A);
-    extern __m128i uX_ABI _uX_mm_loadr_epi32(const __m128i* InPxmm_A);
-    extern __m128i uX_ABI _uX_mm_loadu_si128(const __m128i* InPxmm_A);
-    extern __m128i uX_ABI _uX_mm_loadur_epi64(const __m128i* InPxmm_A);
-    extern __m128i uX_ABI _uX_mm_loadur_epi32(const __m128i* InPxmm_A);
-    extern __m128i uX_ABI _uX_mm_loadh_epi64(__m128i Inxmm_A, const __m128i* InPxmm_B);
-    extern __m128i uX_ABI _uX_mm_loadl_epi64(__m128i Inxmm_A, const __m128i* InPxmm_B);
-    extern __m128i uX_ABI _uX_mm_loadh_epi32(__m128i Inxmm_A, const __m128i* InPxmm_B);
-    extern __m128i uX_ABI _uX_mm_loadl_epi32(__m128i Inxmm_A, const __m128i* InPxmm_B);
+    extern __m128i uX_ABI _uX_mm_load1_epi64(__m128i const* const Inpqword_A);
+    extern __m128i uX_ABI _uX_mm_load1_epi32(__m128i const* const Inpdword_A);
+    extern __m128i uX_ABI _uX_mm_load_si128(__m128i const* const InPxmm_A);
+    extern __m128i uX_ABI _uX_mm_loadr_epi64(__m128i const* const InPxmm_A);
+    extern __m128i uX_ABI _uX_mm_loadr_epi32(__m128i const* const InPxmm_A);
+    extern __m128i uX_ABI _uX_mm_loadu_si128(__m128i const* const InPxmm_A);
+    extern __m128i uX_ABI _uX_mm_loadur_epi64(__m128i const* const InPxmm_A);
+    extern __m128i uX_ABI _uX_mm_loadur_epi32(__m128i const* const InPxmm_A);
+    extern __m128i uX_ABI _uX_mm_loadh_epi64(__m128i Inxmm_A, __m128i const* const InPxmm_B);
+    extern __m128i uX_ABI _uX_mm_loadl_epi64(__m128i Inxmm_A, __m128i const* const InPxmm_B);
+    extern __m128i uX_ABI _uX_mm_loadh_epi32(__m128i Inxmm_A, __m128i const* const InPxmm_B);
+    extern __m128i uX_ABI _uX_mm_loadl_epi32(__m128i Inxmm_A, __m128i const* const InPxmm_B);
 
 /*
  * Integer, sets
@@ -862,8 +862,8 @@ uX_PACK_XMM
     extern void uX_ABI _uX_mm_storel_epi32(__m128i* Outpxmm_A, __m128i Inxmm_D);
     extern void uX_ABI _uX_mm_maskmoveu_si128(__m128i Inxmm_D, __m128i Inxmm_N, int8_t* Outpint_P);
 
-    extern void uX_ABI _uX_mm_store_psi128(__m128i* Outpxmm_A, const __m128i* Inpxmm_B);
-    extern void uX_ABI _uX_mm_storeu_psi128(__m128i* Outpxmm_A, const __m128i* Inpxmm_B);
+    extern void uX_ABI _uX_mm_store_psi128(__m128i* Outpxmm_A, __m128i const* const Inpxmm_B);
+    extern void uX_ABI _uX_mm_storeu_psi128(__m128i* Outpxmm_A, __m128i const* const Inpxmm_B);
 
 /*
  * Integer, moves
@@ -891,28 +891,28 @@ uX_PACK_XMM
     extern __m64 uX_ABI _uX_mm_movepi64_pi64(__m128i Inxmm_Q);
 #endif
 
-    extern const __m128i* uX_ABI _uX_ptr_move_mm_epi64(__m128i Inxmm_A, __m128i Inxmm_B);
-    extern const __m128i* uX_ABI _uX_ptr_mover_mm_epi64(__m128i Inxmm_A, __m128i Inxmm_B);
-    extern const __m128i* uX_ABI _uX_ptr_move1_mm_epi64(__m128i Inxmm_A);
-    extern const __m128i* uX_ABI _uX_ptr_moveu_mm_epi64(__m128i Inxmm_A, __m128i Inxmm_B);
-    extern const __m128i* uX_ABI _uX_ptr_moveur_mm_epi64(__m128i Inxmm_A, __m128i Inxmm_B);
-    extern const __m128i* uX_ABI _uX_ptr_moveu1_mm_epi64(__m128i Inxmm_A);
-    extern const __m128i* uX_ABI _uX_ptr_move_mm_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
-    extern const __m128i* uX_ABI _uX_ptr_mover_mm_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
-    extern const __m128i* uX_ABI _uX_ptr_move1_mm_epi32(__m128i Inxmm_A);
-    extern const __m128i* uX_ABI _uX_ptr_moveu_mm_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
-    extern const __m128i* uX_ABI _uX_ptr_moveur_mm_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
-    extern const __m128i* uX_ABI _uX_ptr_moveu1_mm_epi32(__m128i Inxmm_A);
-    extern const __m128i* uX_ABI _uX_ptr_move_mm_si128(__m128i Inxmm_A);
-    extern const __m128i* uX_ABI _uX_ptr_moveu_mm_si128(__m128i Inxmm_A);
+    extern __m128i const* const uX_ABI _uX_ptr_move_mm_epi64(__m128i Inxmm_A, __m128i Inxmm_B);
+    extern __m128i const* const uX_ABI _uX_ptr_mover_mm_epi64(__m128i Inxmm_A, __m128i Inxmm_B);
+    extern __m128i const* const uX_ABI _uX_ptr_move1_mm_epi64(__m128i Inxmm_A);
+    extern __m128i const* const uX_ABI _uX_ptr_moveu_mm_epi64(__m128i Inxmm_A, __m128i Inxmm_B);
+    extern __m128i const* const uX_ABI _uX_ptr_moveur_mm_epi64(__m128i Inxmm_A, __m128i Inxmm_B);
+    extern __m128i const* const uX_ABI _uX_ptr_moveu1_mm_epi64(__m128i Inxmm_A);
+    extern __m128i const* const uX_ABI _uX_ptr_move_mm_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
+    extern __m128i const* const uX_ABI _uX_ptr_mover_mm_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
+    extern __m128i const* const uX_ABI _uX_ptr_move1_mm_epi32(__m128i Inxmm_A);
+    extern __m128i const* const uX_ABI _uX_ptr_moveu_mm_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
+    extern __m128i const* const uX_ABI _uX_ptr_moveur_mm_epi32(__m128i Inxmm_A, __m128i Inxmm_B);
+    extern __m128i const* const uX_ABI _uX_ptr_moveu1_mm_epi32(__m128i Inxmm_A);
+    extern __m128i const* const uX_ABI _uX_ptr_move_mm_si128(__m128i Inxmm_A);
+    extern __m128i const* const uX_ABI _uX_ptr_moveu_mm_si128(__m128i Inxmm_A);
 
 /*
  * Cacheability support
  */
 
-    extern void uX_ABI _uX_mm_stream_pd(double* Outpdouble_A, __m128d Inxmm_A);
+    extern void uX_ABI _uX_mm_stream_pd(__m128d* Outpdouble_A, __m128d Inxmm_A);
     extern void uX_ABI _uX_mm_stream_si128(__m128i* Outpxmm_A, __m128i Inxmm_A);
-    extern void uX_ABI _uX_mm_clflush(const void* _P);
+    extern void uX_ABI _uX_mm_clflush(void const* const _P);
     extern void uX_ABI _uX_mm_lfence();
     extern void uX_ABI _uX_mm_mfence();
     extern void uX_ABI _uX_mm_stream_si32(int32_t* Outpint_A, int32_t Inint_B);

@@ -3,7 +3,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -25,6 +25,12 @@
 
 #ifndef uX_XMM_VECDOUBLE4_H
 #define uX_XMM_VECDOUBLE4_H 1
+
+/**
+ * \defgroup uX_XMM_VECDOUBLE4 4 Double Precision SSE SIMD Vector
+ * \ingroup uX_NAMESPACE_XMM
+ * \file uXxmmvecdouble4.h
+ */
 
 #ifndef uX_TYPES_H
 #include "uXtypes.h"
@@ -56,6 +62,12 @@
 #include "uXemmintrin.h"
 #endif  /* uX_EMM_INTRIN_H */
 
+ /**
+  * \defgroup uX_XMM_VECDOUBLE4_CLASS 4 Double Precision SSE SIMD Vector Class
+  * \ingroup uX_XMM_VECDOUBLE4
+  * To use these class include the header file \p uXxmmvecdouble4.h in your program
+  */
+
 namespace_uX
 namespace_XMM
 EXTERN_CC_BEGIN
@@ -80,14 +92,14 @@ class vecfloat4x4;
 /*class vecuint32;*/
 /*class vecint64;*/
 /*class vecuint64;*/
-class vecchar1;
-class vecuchar1;
-class vecchar2;
-class vecuchar2;
-class vecchar3;
-class vecuchar3;
-class vecchar4;
-class vecuchar4;
+class vecbyte1;
+class vecubyte1;
+class vecbyte2;
+class vecubyte2;
+class vecbyte3;
+class vecubyte3;
+class vecbyte4;
+class vecubyte4;
 class vecword1;
 class vecuword1;
 class vecword2;
@@ -123,14 +135,13 @@ class vecdouble4x4;
 #endif
 
 #ifdef uX_SSE2
-/** \class vecdouble4
-  *
-  * \brief SSE SIMD class with the size of 4 double elements.
-  *
-  * The %vecdouble4 class is an 4 elements wide 64bit double.
-  * It provides interoperability between %vecdouble2, %vecdword4 and %vecudword4.
-  *
-  */
+/**
+ * \ingroup uX_XMM_VECDOUBLE4_CLASS
+ * \class vecdouble4
+ * \brief SSE SIMD class with the size of 4 double elements
+ * \details The \p vecdouble4 class is an 4 elements wide 64bit double element where
+ *  it provides interoperability between \p vecqword4 and \p vecuqword4 class's
+ */
 typedef class vecdouble4
 {
 public:
@@ -142,7 +153,7 @@ public:
      *
      * @param InHxmmd_a value to copy from.
      */
-    uX_constexpr vecdouble4(const vecdouble4& InHxmmd_a) uX_noexcept : m128_xmmd_0(InHxmmd_a.m128_xmmd_0), m128_xmmd_1(InHxmmd_a.m128_xmmd_1) {}
+    uX_constexpr vecdouble4(vecdouble4 const& InHxmmd_a) uX_noexcept : m128_xmmd_0(InHxmmd_a.m128_xmmd_0), m128_xmmd_1(InHxmmd_a.m128_xmmd_1) {}
 
     /**
      * \brief Default constructor initialization from vecdouble4.
@@ -156,7 +167,7 @@ public:
      *
      * \param Inxmmd value to copy from.
      */
-    uX_explicit uX_constexpr vecdouble4(const __m128d Inxmmd) uX_noexcept : m128_xmmd_0(Inxmmd), m128_xmmd_1(Inxmmd) {}
+    uX_explicit uX_constexpr vecdouble4(__m128d const Inxmmd) uX_noexcept : m128_xmmd_0(Inxmmd), m128_xmmd_1(Inxmmd) {}
 
     /**
      * \brief Constructor initialization from 2 type __m128d.
@@ -164,45 +175,52 @@ public:
      * @param Inxmmd_0 value to copy from.
      * @param Inxmmd_1 value to copy from.
      */
-    uX_constexpr vecdouble4(const __m128d Inxmmd_0, const __m128d Inxmmd_1) uX_noexcept : m128_xmmd_0(Inxmmd_0), m128_xmmd_1(Inxmmd_1) {}
+    uX_constexpr vecdouble4(__m128d const Inxmmd_0, __m128d const Inxmmd_1) uX_noexcept : m128_xmmd_0(Inxmmd_0), m128_xmmd_1(Inxmmd_1) {}
 
     /**
      * \brief Constructor initialization from type vecdouble3.
      *
      * \param InHxmmd_a value to copy from.
      */
-    uX_constexpr vecdouble4(const vecdouble3 InHxmmd_a) uX_noexcept
-                           : m128_xmmd_0(InHxmmd_a.get_xmmd_0()), m128_xmmd_1(_uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_1(), m128_xmmd_1, 0, 1)) {}
+    uX_constexpr vecdouble4(vecdouble3 const InHxmmd_a) uX_noexcept : m128_xmmd_0(InHxmmd_a.get_xmmd_0()), m128_xmmd_1(_uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_1(), m128_xmmd_1, 0, 1)) {}
 
     /**
      * \brief Constructor initialization from type vecdouble2.
      *
      * \param Inxmmd_a value to copy from.
      */
-    uX_constexpr vecdouble4(const vecdouble2 Inxmmd_a) uX_noexcept : m128_xmmd_0(Inxmmd_a) {}
+    uX_constexpr vecdouble4(vecdouble2 const Inxmmd_a) uX_noexcept : m128_xmmd_0(Inxmmd_a) {}
 
     /**
      * \brief Constructor initialization from type vecdouble1.
      *
      * \param Inxmmd_a value to copy from.
      */
-    uX_constexpr vecdouble4(const vecdouble1 Inxmmd_a) uX_noexcept : m128_xmmd_0(_uX_mm_move_sd(m128_xmmd_0, Inxmmd_a)) {}
+    uX_constexpr vecdouble4(vecdouble1 const Inxmmd_a) uX_noexcept : m128_xmmd_0(_uX_mm_move_sd(m128_xmmd_0, Inxmmd_a)) {}
+    
+    /**
+     * \fn uX::xmm::vecdouble4::vecdouble4(vecfloat4 const Inxmm_a) uX_noexcept
+     * \brief Constructor initialization from type vecfloat4
+     * \details Constructor converts float _x _y _z _w elements from /p vecfloat4 to _x _y _z _w elements
+     * \param[in] Inxmm_a - vecfloat4 Read only
+     * \warning Converts the value from float to double.
+     * \Note Sets the _x _y _z _w double elements
+     */
+    uX_constexpr vecdouble4(vecfloat4 const Inxmm_a) uX_noexcept : m128_xmmd_0(_uX_mm_cvtps_pd(Inxmm_a)), m128_xmmd_1(_uX_mm_cvtps_pd(Inxmm_a.get_zwxy())) {}
 
     /**
      * \brief Constructor initialization from type vecqword4.
      *
      * @param InHxmmi_a value to copy from.
      */
-    uX_constexpr vecdouble4(const vecqword4 InHxmmi_a) uX_noexcept
-                           : m128_xmmd_0(_uX_mm_castsi128_pd(InHxmmi_a.get_xmmi_0())), m128_xmmd_1(_uX_mm_castsi128_pd(InHxmmi_a.get_xmmi_1())) {}
+    uX_constexpr vecdouble4(vecqword4 const InHxmmi_a) uX_noexcept : m128_xmmd_0(_uX_mm_castsi128_pd(InHxmmi_a.get_xmmi_0())), m128_xmmd_1(_uX_mm_castsi128_pd(InHxmmi_a.get_xmmi_1())) {}
 
     /**
      * \brief Constructor initialization from type vecuqword4.
      *
      * @param InHxmmi_a value to copy from.
      */
-    uX_constexpr vecdouble4(const vecuqword4 InHxmmi_a) uX_noexcept
-                           : m128_xmmd_0(_uX_mm_castsi128_pd(InHxmmi_a.get_xmmi_0())), m128_xmmd_1(_uX_mm_castsi128_pd(InHxmmi_a.get_xmmi_1())) {}
+    uX_constexpr vecdouble4(vecuqword4 const InHxmmi_a) uX_noexcept : m128_xmmd_0(_uX_mm_castsi128_pd(InHxmmi_a.get_xmmi_0())), m128_xmmd_1(_uX_mm_castsi128_pd(InHxmmi_a.get_xmmi_1())) {}
 
     /**
      * \brief Constructor to broadcast the same double value into all elements.
@@ -214,66 +232,62 @@ public:
     /**
      * \brief Constructor initialization from 4 type double.
      *
-     * \param Indouble_X value to copy from.
-     * \param Indouble_Y value to copy from.
-     * \param Indouble_Z value to copy from.
-     * \param Indouble_W value to copy from.
+     * \param Indouble_x value to copy from.
+     * \param Indouble_y value to copy from.
+     * \param Indouble_z value to copy from.
+     * \param Indouble_w value to copy from.
      */
-    uX_constexpr vecdouble4(double Indouble_X, double Indouble_Y, double Indouble_Z, double Indouble_W) uX_noexcept
-                           : m128_xmmd_0(_uX_mm_setr_pd(Indouble_X, Indouble_Y)), m128_xmmd_1(_uX_mm_setr_pd(Indouble_Z, Indouble_W)) {}
+    uX_constexpr vecdouble4(double Indouble_x, double Indouble_y, double Indouble_z, double Indouble_w) uX_noexcept : m128_xmmd_0(_uX_mm_setr_pd(Indouble_x, Indouble_y)), m128_xmmd_1(_uX_mm_setr_pd(Indouble_z, Indouble_w)) {}
 
     /**
      * \brief Constructor to broadcast the same bool value into all elements.
      *
      * \param Inbool_a value to copy from.
      */
-    uX_explicit uX_constexpr vecdouble4(const bool_t Inbool_a) uX_noexcept : m128_xmmd_0(vecdouble2(vecqword2(Inbool_a))), m128_xmmd_1(vecdouble2(vecqword2(Inbool_a))) {}
+    uX_explicit uX_constexpr vecdouble4(bool_t const Inbool_a) uX_noexcept : m128_xmmd_0(vecdouble2(vecqword2(Inbool_a))), m128_xmmd_1(vecdouble2(vecqword2(Inbool_a))) {}
 
     /**
      * \brief Constructor initialization from 4 type bool.
      *
-     * \param Inbool_X value to copy from.
-     * \param Inbool_Y value to copy from.
-     * \param Inbool_Z value to copy from.
-     * \param Inbool_W value to copy from.
+     * \param Inbool_x value to copy from.
+     * \param Inbool_y value to copy from.
+     * \param Inbool_z value to copy from.
+     * \param Inbool_w value to copy from.
      */
-    uX_constexpr vecdouble4(const bool_t Inbool_X, const bool_t Inbool_Y, const bool_t Inbool_Z, const bool_t Inbool_W) uX_noexcept 
-                           : m128_xmmd_0(vecdouble2(vecqword2(Inbool_X, Inbool_Y))), m128_xmmd_1(vecdouble2(vecqword2(Inbool_Z, Inbool_W))) {}
+    uX_constexpr vecdouble4(bool_t const Inbool_x, bool_t const Inbool_y, bool_t const Inbool_z, bool_t const Inbool_w) uX_noexcept : m128_xmmd_0(vecdouble2(vecqword2(Inbool_x, Inbool_y))), m128_xmmd_1(vecdouble2(vecqword2(Inbool_z, Inbool_w))) {}
 
     /**
      * \brief Constructor to broadcast the same bool value into all elements.
      *
      * \param Inbool_a value to copy from.
      */
-    uX_explicit uX_constexpr vecdouble4(const bool Inbool_a) uX_noexcept : m128_xmmd_0(vecdouble2(vecqword2(Inbool_a))), m128_xmmd_1(vecdouble2(vecqword2(Inbool_a))) {}
+    uX_explicit uX_constexpr vecdouble4(bool const Inbool_a) uX_noexcept : m128_xmmd_0(vecdouble2(vecqword2(Inbool_a))), m128_xmmd_1(vecdouble2(vecqword2(Inbool_a))) {}
 
     /**
      * \brief Constructor initialization from 4 type bool.
      *
-     * \param Inbool_X value to copy from.
-     * \param Inbool_Y value to copy from.
-     * \param Inbool_Z value to copy from.
-     * \param Inbool_W value to copy from.
+     * \param Inbool_x value to copy from.
+     * \param Inbool_y value to copy from.
+     * \param Inbool_z value to copy from.
+     * \param Inbool_w value to copy from.
      */
-    uX_constexpr vecdouble4(const bool Inbool_X, const bool Inbool_Y, const bool Inbool_Z, const bool Inbool_W) uX_noexcept
-                           : m128_xmmd_0(vecdouble2(vecqword2(Inbool_X, Inbool_Y))), m128_xmmd_1(vecdouble2(vecqword2(Inbool_Z, Inbool_W))) {}
+    uX_constexpr vecdouble4(bool const Inbool_x, bool const Inbool_y, bool const Inbool_z, bool const Inbool_w) uX_noexcept : m128_xmmd_0(vecdouble2(vecqword2(Inbool_x, Inbool_y))), m128_xmmd_1(vecdouble2(vecqword2(Inbool_z, Inbool_w))) {}
 
     /**
      * \brief Constructor initialization from type __m128d*.
      *
      * \param Inpm128_xmmd pointer value to copy from.
      */
-    uX_explicit uX_constexpr vecdouble4(uX_InReads(2) const __m128d* Inpm128_xmmd) uX_noexcept
-                                       /*: m128_xmmd_0(Inpm128_xmmd[0]), m128_xmmd_1(Inpm128_xmmd[1]) {}*/
-                                       : m128_xmmd_0(_uX_mm_loadu_pd(reinterpret_cast<const double*>(Inpm128_xmmd))), m128_xmmd_1(_uX_mm_loadu_pd(reinterpret_cast<const double*>(Inpm128_xmmd+1))) {}
+    uX_explicit uX_constexpr vecdouble4(uX_InReads(2) __m128d const* const Inpm128_xmmd) uX_noexcept : m128_xmmd_0(_uX_mm_loadu_pd(reinterpret_cast<__m128d const* const>(Inpm128_xmmd))),
+                                                                                                       m128_xmmd_1(_uX_mm_loadu_pd(reinterpret_cast<__m128d const* const>(Inpm128_xmmd+1))) {}
 
     /**
      * \brief Constructor initialization from type double*.
      *
      * \param Inpdouble pointer value to copy from.
      */
-    uX_explicit uX_constexpr vecdouble4(uX_InReads(4) const double* Inpdouble) uX_noexcept
-                                       : m128_xmmd_0(_uX_mm_loadu_pd(Inpdouble)), m128_xmmd_1(_uX_mm_loadu_pd(Inpdouble+2)) {}
+    uX_explicit uX_constexpr vecdouble4(uX_InReads(4) double const* const Inpdouble) uX_noexcept : m128_xmmd_0(_uX_mm_loadu_pd(reinterpret_cast<__m128d const* const>(Inpdouble))),
+                                                                                                   m128_xmmd_1(_uX_mm_loadu_pd(reinterpret_cast<__m128d const* const>(Inpdouble+2))) {}
 
     /** \brief __m128d type cast operator.
      *
@@ -291,7 +305,12 @@ public:
      *
      * \param InHxmmd_a value to copy from.
      */
-    uX_constexpr vecdouble4& uX_ABI operator=(const vecdouble4& InHxmmd_a) uX_noexcept { return vecdouble4(InHxmmd_a); }
+    uX_constexpr vecdouble4& uX_ABI operator=(vecdouble4 const& InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = InHxmmd_a.m128_xmmd_0;
+        m128_xmmd_1 = InHxmmd_a.m128_xmmd_1;
+        return *this;
+    }
 
     /**
      * \brief vecdouble4 default assignment operator.
@@ -300,7 +319,12 @@ public:
      *
      * \param InHxmmd_a value to copy from.
      */
-    uX_constexpr vecdouble4& uX_ABI operator=(vecdouble4&& InHxmmd_a) uX_noexcept { return vecdouble4(InHxmmd_a); }
+    uX_constexpr vecdouble4& uX_ABI operator=(vecdouble4&& InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = InHxmmd_a.m128_xmmd_0;
+        m128_xmmd_1 = InHxmmd_a.m128_xmmd_1;
+        return *this;
+    }
 
     /**
      * \brief __m128d assignment operator.
@@ -309,7 +333,12 @@ public:
      *
      * \param Inxmmd value to copy from.
      */
-    uX_constexpr vecdouble4& uX_ABI operator=(const __m128d Inxmmd) uX_noexcept { return vecdouble4(Inxmmd); }
+    uX_constexpr vecdouble4& uX_ABI operator=(__m128d const Inxmmd) uX_noexcept
+    {
+        m128_xmmd_0 = Inxmmd;
+        m128_xmmd_1 = Inxmmd;
+        return *this;
+    }
 
     /**
      * \brief vecdouble3 assignment operator.
@@ -318,7 +347,12 @@ public:
      *
      * \param Inxmmd_a value to copy from.
      */
-    uX_constexpr vecdouble4& uX_ABI operator=(const vecdouble3 InHxmmd_a) uX_noexcept { return vecdouble4(InHxmmd_a); }
+    uX_constexpr vecdouble4& uX_ABI operator=(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = InHxmmd_a.get_xmmd_0();
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_1(), m128_xmmd_1, 0, 1);
+        return *this;
+    }
 
     /**
      * \brief vecdouble2 assignment operator.
@@ -327,7 +361,11 @@ public:
      *
      * \param Inxmmd_a value to copy from.
      */
-    uX_constexpr vecdouble4& uX_ABI operator=(const vecdouble2 Inxmmd_a) uX_noexcept { return vecdouble4(Inxmmd_a); }
+    uX_constexpr vecdouble4& uX_ABI operator=(vecdouble2 const Inxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = Inxmmd_a;
+        return *this;
+    }
 
     /**
      * \brief vecdouble1 assignment operator.
@@ -336,7 +374,25 @@ public:
      *
      * \param Inxmmd_a value to copy from.
      */
-    uX_constexpr vecdouble4& uX_ABI operator=(const vecdouble1 Inxmmd_a) uX_noexcept { return vecdouble4(Inxmmd_a); }
+    uX_constexpr vecdouble4& uX_ABI operator=(vecdouble1 const Inxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_mm_move_sd(m128_xmmd_0, Inxmmd_a);
+        return *this;
+    }
+
+    /**
+     * \brief vecfloat4 assignment operator.
+     *
+     * To convert from type vecfloat4.
+     *
+     * \param Inxmm_a value to copy from.
+     */
+    uX_constexpr vecdouble4& uX_ABI operator=(vecfloat4 const Inxmm_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_mm_cvtps_pd(Inxmm_a);
+        m128_xmmd_1 = _uX_mm_cvtps_pd(Inxmm_a.get_zwxy());
+        return *this;
+    }
 
     /**
      * \brief vecqword4 assignment operator.
@@ -345,7 +401,12 @@ public:
      *
      * \param Inxmmi_a value to copy from.
      */
-    uX_constexpr vecdouble4& uX_ABI operator=(const vecqword4 InHxmmi_a) uX_noexcept { return vecdouble4(InHxmmi_a); }
+    uX_constexpr vecdouble4& uX_ABI operator=(vecqword4 const InHxmmi_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_mm_castsi128_pd(InHxmmi_a.get_xmmi_0());
+        m128_xmmd_1 = _uX_mm_castsi128_pd(InHxmmi_a.get_xmmi_1());
+        return *this;
+    }
 
     /**
      * \brief vecuqword4 assignment operator.
@@ -354,7 +415,12 @@ public:
      *
      * \param Inxmmi_a value to copy from.
      */
-    uX_constexpr vecdouble4& uX_ABI operator=(const vecuqword4 InHxmmi_a) uX_noexcept { return vecdouble4(InHxmmi_a); }
+    uX_constexpr vecdouble4& uX_ABI operator=(vecuqword4 const InHxmmi_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_mm_castsi128_pd(InHxmmi_a.get_xmmi_0());
+        m128_xmmd_1 = _uX_mm_castsi128_pd(InHxmmi_a.get_xmmi_1());
+        return *this;
+    }
 
     /**
      * \brief double assignment operator
@@ -363,7 +429,12 @@ public:
      *
      * \param Indouble_a double value to copy from.
      */
-    uX_constexpr vecdouble4& uX_ABI operator=(double Indouble_a) uX_noexcept { return vecdouble4(Indouble_a); }
+    uX_constexpr vecdouble4& uX_ABI operator=(double Indouble_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_mm_set1_pd(Indouble_a);
+        m128_xmmd_1 = _uX_mm_set1_pd(Indouble_a);
+        return *this;
+    }
 
     /**
      * \brief bool_t assignment operator.
@@ -372,7 +443,12 @@ public:
      *
      * \param Inbool_a value to copy from.
      */
-    uX_constexpr vecdouble4& uX_ABI operator=(const bool_t Inbool_a) uX_noexcept { return vecdouble4(Inbool_a); }
+    uX_constexpr vecdouble4& uX_ABI operator=(bool_t const Inbool_a) uX_noexcept
+    {
+        m128_xmmd_0 = vecdouble2(vecuqword2(Inbool_a, Inbool_a));
+        m128_xmmd_1 = vecdouble2(vecuqword2(Inbool_a, Inbool_a));
+        return *this;
+    }
 
     /**
      * \brief bool assignment operator.
@@ -381,14 +457,19 @@ public:
      *
      * \param Inbool_a value to copy from.
      */
-    uX_constexpr vecdouble4& uX_ABI operator=(const bool Inbool_a) uX_noexcept { return vecdouble4(Inbool_a); }
+    uX_constexpr vecdouble4& uX_ABI operator=(bool const Inbool_a) uX_noexcept
+    {
+        m128_xmmd_0 = vecdouble2(vecuqword2(Inbool_a, Inbool_a));
+        m128_xmmd_1 = vecdouble2(vecuqword2(Inbool_a, Inbool_a));
+        return *this;
+    }
 
     /**
      * \brief Assignment operator to convert from type double*.
      *
      * \param Inpdouble value to copy from.
      */
-    /*vecdouble4& uX_ABI operator=(uX_InReads(4) const double* Inpdouble) uX_noexcept;*/ //security undesired
+    /*vecdouble4& uX_ABI operator=(uX_InReads(4) double const* const Inpdouble) uX_noexcept;*/ //security undesired
 
     /**
      * \brief Get vector 0.
@@ -396,7 +477,10 @@ public:
      * Gets vector 0.
      * \return vector 0.
      */
-    uX_constexpr __m128d uX_ABI get_xmmd_0() const uX_noexcept { return m128_xmmd_0; }
+    uX_constexpr __m128d uX_ABI get_xmmd_0(void) const uX_noexcept
+    {
+        return m128_xmmd_0;
+    }
 
     /**
      * \brief Get vector 1.
@@ -404,7 +488,10 @@ public:
      * Gets vector 1.
      * \return vector 1.
      */
-    uX_constexpr __m128d uX_ABI get_xmmd_1() const uX_noexcept { return m128_xmmd_1; }
+    uX_constexpr __m128d uX_ABI get_xmmd_1(void) const uX_noexcept
+    {
+        return m128_xmmd_1;
+    }
 
     /**
      * \brief Get reference to vector 0.
@@ -412,7 +499,10 @@ public:
      * Gets reference to vector 0.
      * \return vector 0.
      */
-    uX_constexpr __m128d& uX_ABI ref_xmmd_0() uX_noexcept { return m128_xmmd_0; }
+    uX_constexpr __m128d& uX_ABI ref_xmmd_0(void) uX_noexcept
+    {
+        return m128_xmmd_0;
+    }
 
     /**
      * \brief Get reference to vector 1.
@@ -420,7 +510,10 @@ public:
      * Gets reference to vector 1.
      * \return vector 1.
      */
-    uX_constexpr __m128d& uX_ABI ref_xmmd_1() uX_noexcept { return m128_xmmd_1; }
+    uX_constexpr __m128d& uX_ABI ref_xmmd_1(void) uX_noexcept
+    {
+        return m128_xmmd_1;
+    }
 
     /**
      * \brief Set the vector 0.
@@ -429,7 +522,10 @@ public:
      *
      * \param Inxmmd.
      */
-    void uX_ABI set_xmmd_0(const __m128d Inxmmd) uX_noexcept;
+    uX_constexpr void uX_ABI set_xmmd_0(__m128d const Inxmmd) uX_noexcept
+    {
+        m128_xmmd_0 = Inxmmd;
+    }
 
     /**
      * \brief Set the vector 1.
@@ -438,7 +534,10 @@ public:
      *
      * \param Inxmmd.
      */
-    void uX_ABI set_xmmd_1(const __m128d Inxmmd) uX_noexcept;
+    uX_constexpr void uX_ABI set_xmmd_1(__m128d const Inxmmd) uX_noexcept
+    {
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(Inxmmd, __m128d_false, 0, 0);
+    }
 
     /**
      * \brief Get vector.
@@ -446,7 +545,10 @@ public:
      * Gets vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get() const uX_noexcept { return vecdouble4(m128_xmmd_0, m128_xmmd_1); }
+    uX_constexpr vecdouble4 uX_ABI get(void) const uX_noexcept
+    {
+        return vecdouble4(m128_xmmd_0, m128_xmmd_1);
+    }
 
     /**
      * \brief Get _x.
@@ -454,7 +556,10 @@ public:
      * Gets _x element from vector.
      * \return double.
      */
-    uX_constexpr double uX_ABI get_x() const uX_noexcept { return _x; }
+    uX_constexpr double uX_ABI get_x(void) const uX_noexcept
+    {
+        return _x;
+    }
 
     /**
      * \brief Get _x _y.
@@ -462,7 +567,10 @@ public:
      * Gets _x _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2 uX_ABI get_xy() const uX_noexcept { return vecdouble2(m128_xmmd_0); }
+    uX_constexpr vecdouble2 uX_ABI get_xy(void) const uX_noexcept
+    {
+        return vecdouble2(m128_xmmd_0);
+    }
 
     /**
      * \brief Get _x _y _z.
@@ -470,7 +578,10 @@ public:
      * Gets _x _y _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_xyz() const uX_noexcept { return vecdouble3(m128_xmmd_0, m128_xmmd_1); }
+    uX_constexpr vecdouble3 uX_ABI get_xyz(void) const uX_noexcept
+    {
+        return vecdouble3(m128_xmmd_0, m128_xmmd_1);
+    }
 
     /**
      * \brief Get _x _y _z _w.
@@ -478,7 +589,10 @@ public:
      * Gets _x _y _z _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_xyzw() const uX_noexcept { return vecdouble4(m128_xmmd_0, m128_xmmd_1); }
+    uX_constexpr vecdouble4 uX_ABI get_xyzw(void) const uX_noexcept
+    {
+        return vecdouble4(m128_xmmd_0, m128_xmmd_1);
+    }
 
     /**
      * \brief Get _x _y _w.
@@ -486,7 +600,10 @@ public:
      * Gets _x _y _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_xyw() const uX_noexcept { return vecdouble3(m128_xmmd_0, _uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 1)); }
+    uX_constexpr vecdouble3 uX_ABI get_xyw(void) const uX_noexcept
+    {
+        return vecdouble3(m128_xmmd_0, _uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 1));
+    }
 
     /**
      * \brief Get _x _y _w _z.
@@ -494,7 +611,10 @@ public:
      * Gets _x _y _w _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_xywz() const uX_noexcept { return vecdouble4(m128_xmmd_0, _uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0)); }
+    uX_constexpr vecdouble4 uX_ABI get_xywz(void) const uX_noexcept
+    {
+        return vecdouble4(m128_xmmd_0, _uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0));
+    }
 
     /**
      * \brief Get _x _z.
@@ -502,7 +622,10 @@ public:
      * Gets _x _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2 uX_ABI get_xz() const uX_noexcept { return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 0)); }
+    uX_constexpr vecdouble2 uX_ABI get_xz(void) const uX_noexcept
+    {
+        return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 0));
+    }
 
     /**
      * \brief Get _x _z _y.
@@ -510,7 +633,10 @@ public:
      * Gets _x _z _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_xzy() const uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 1)); }
+    uX_constexpr vecdouble3 uX_ABI get_xzy(void) const uX_noexcept
+    {
+        return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 1));
+    }
 
     /**
      * \brief Get _x _z _y _w.
@@ -518,7 +644,10 @@ public:
      * Gets _x _z _y _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_xzyw() const uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 1)); }
+    uX_constexpr vecdouble4 uX_ABI get_xzyw(void) const uX_noexcept
+    {
+        return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 1));
+    }
 
     /**
      * \brief Get _x _z _w.
@@ -526,7 +655,10 @@ public:
      * Gets _x _z _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_xzw() const uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 0), m128_xmmd_1); }
+    uX_constexpr vecdouble3 uX_ABI get_xzw(void) const uX_noexcept
+    {
+        return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 0), m128_xmmd_1);
+    }
 
     /**
      * \brief Get _x _z _w _y.
@@ -534,7 +666,10 @@ public:
      * Gets _x _z _w _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_xzwy() const uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 1)); }
+    uX_constexpr vecdouble4 uX_ABI get_xzwy(void) const uX_noexcept
+    {
+        return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 1));
+    }
 
     /**
      * \brief Get _x _w.
@@ -542,7 +677,10 @@ public:
      * Gets _x _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2 uX_ABI get_xw() const uX_noexcept { return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 1)); }
+    uX_constexpr vecdouble2 uX_ABI get_xw(void) const uX_noexcept
+    {
+        return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 1));
+    }
 
     /**
      * \brief Get _x _w _y.
@@ -550,7 +688,10 @@ public:
      * Gets _x _w _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_xwy() const uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 1), _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 1)); }
+    uX_constexpr vecdouble3 uX_ABI get_xwy(void) const uX_noexcept
+    {
+        return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 1), _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 1));
+    }
 
     /**
      * \brief Get _x _w _y _z.
@@ -558,7 +699,10 @@ public:
      * Gets _x _w _y _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_xwyz() const uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 0)); }
+    uX_constexpr vecdouble4 uX_ABI get_xwyz(void) const uX_noexcept
+    {
+        return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 0));
+    }
 
     /**
      * \brief Get _x _w _z.
@@ -566,7 +710,10 @@ public:
      * Gets _x _w _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_xwz() const uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 1), m128_xmmd_1); }
+    uX_constexpr vecdouble3 uX_ABI get_xwz(void) const uX_noexcept
+    {
+        return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 1), m128_xmmd_1);
+    }
 
     /**
      * \brief Get _x _w _z _y.
@@ -574,7 +721,10 @@ public:
      * Gets _x _w _z _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_xwzy() const uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 1)); }
+    uX_constexpr vecdouble4 uX_ABI get_xwzy(void) const uX_noexcept
+    {
+        return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 1));
+    }
 
     /**
      * \brief Get _y.
@@ -582,7 +732,10 @@ public:
      * Gets _y element from vector.
      * \return double.
      */
-    uX_constexpr double uX_ABI get_y() const uX_noexcept { return _y; }
+    uX_constexpr double uX_ABI get_y(void) const uX_noexcept
+    {
+        return _y;
+    }
 
     /**
      * \brief Get _y _x.
@@ -590,7 +743,10 @@ public:
      * Gets _y _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2 uX_ABI get_yx() const uX_noexcept { return vecdouble2(_uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0)); }
+    uX_constexpr vecdouble2 uX_ABI get_yx(void) const uX_noexcept
+    {
+        return vecdouble2(_uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0));
+    }
 
     /**
      * \brief Get _y _x _z.
@@ -598,7 +754,10 @@ public:
      * Gets _y _x _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_yxz() const uX_noexcept { return vecdouble3(_uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0), m128_xmmd_1); }
+    uX_constexpr vecdouble3 uX_ABI get_yxz(void) const uX_noexcept
+    {
+        return vecdouble3(_uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0), m128_xmmd_1);
+    }
 
     /**
      * \brief Get _y _x _z _w.
@@ -606,7 +765,10 @@ public:
      * Gets _y _x _z _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_yxzw() const uX_noexcept { return vecdouble4(_uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0), m128_xmmd_1); }
+    uX_constexpr vecdouble4 uX_ABI get_yxzw(void) const uX_noexcept
+    {
+        return vecdouble4(_uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0), m128_xmmd_1);
+    }
 
     /**
      * \brief Get _y _x _w.
@@ -614,7 +776,10 @@ public:
      * Gets _y _x _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_yxw() const uX_noexcept { return vecdouble3(_uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 1)); }
+    uX_constexpr vecdouble3 uX_ABI get_yxw(void) const uX_noexcept
+    {
+        return vecdouble3(_uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 1));
+    }
 
     /**
      * \brief Get _y _x _w _z.
@@ -622,7 +787,10 @@ public:
      * Gets _y _x _w _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_yxwz() const uX_noexcept { return vecdouble4(_uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0)); }
+    uX_constexpr vecdouble4 uX_ABI get_yxwz(void) const uX_noexcept
+    {
+        return vecdouble4(_uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0));
+    }
 
     /**
      * \brief Get _y _z.
@@ -630,7 +798,10 @@ public:
      * Gets _y _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2 uX_ABI get_yz() const uX_noexcept { return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 0)); }
+    uX_constexpr vecdouble2 uX_ABI get_yz(void) const uX_noexcept
+    {
+        return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 0));
+    }
 
     /**
      * \brief Get _y _z _x.
@@ -638,7 +809,10 @@ public:
      * Gets _y _z _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_yzx() const uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 0), m128_xmmd_0); }
+    uX_constexpr vecdouble3 uX_ABI get_yzx(void) const uX_noexcept
+    {
+        return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 0), m128_xmmd_0);
+    }
 
     /**
      * \brief Get _y _z _x _w.
@@ -646,7 +820,10 @@ public:
      * Gets _y _z _x _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_yzxw() const uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 1)); }
+    uX_constexpr vecdouble4 uX_ABI get_yzxw(void) const uX_noexcept
+    {
+        return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 1));
+    }
 
     /**
      * \brief Get _y _z _w.
@@ -654,7 +831,10 @@ public:
      * Gets _y _z _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_yzw() const uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 1)); }
+    uX_constexpr vecdouble3 uX_ABI get_yzw(void) const uX_noexcept
+    {
+        return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 1));
+    }
 
     /**
      * \brief Get _y _z _w _x.
@@ -662,7 +842,10 @@ public:
      * Gets _y _z _w _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_yzwx() const uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 0)); }
+    uX_constexpr vecdouble4 uX_ABI get_yzwx(void) const uX_noexcept
+    {
+        return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 0));
+    }
 
     /**
      * \brief Get _y _w.
@@ -670,7 +853,10 @@ public:
      * Gets _y _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2 uX_ABI get_yw() const uX_noexcept { return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 1)); }
+    uX_constexpr vecdouble2 uX_ABI get_yw(void) const uX_noexcept
+    {
+        return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 1));
+    }
 
     /**
      * \brief Get _y _w _x.
@@ -678,7 +864,10 @@ public:
      * Gets _y _w _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_ywx() const uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 1), m128_xmmd_0); }
+    uX_constexpr vecdouble3 uX_ABI get_ywx(void) const uX_noexcept
+    {
+        return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 1), m128_xmmd_0);
+    }
 
     /**
      * \brief Get _y _w _y _z.
@@ -686,7 +875,10 @@ public:
      * Gets _y _w _y _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_ywxz() const uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 0)); }
+    uX_constexpr vecdouble4 uX_ABI get_ywxz(void) const uX_noexcept
+    {
+        return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 0));
+    }
 
     /**
      * \brief Get _y _w _z.
@@ -694,7 +886,10 @@ public:
      * Gets _y _w _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_ywz() const uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 1), m128_xmmd_1); }
+    uX_constexpr vecdouble3 uX_ABI get_ywz(void) const uX_noexcept
+    {
+        return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 1), m128_xmmd_1);
+    }
 
     /**
      * \brief Get _y _w _z _y.
@@ -702,7 +897,10 @@ public:
      * Gets _y _w _z _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_ywzx() const uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 0)); }
+    uX_constexpr vecdouble4 uX_ABI get_ywzx(void) const uX_noexcept
+    {
+        return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 0));
+    }
 
     /**
      * \brief Get _z.
@@ -710,7 +908,10 @@ public:
      * Gets _z element from vector.
      * \return double.
      */
-    uX_constexpr double uX_ABI get_z() const uX_noexcept { return _z; }
+    uX_constexpr double uX_ABI get_z(void) const uX_noexcept
+    {
+        return _z;
+    }
 
     /**
      * \brief Get _z _x.
@@ -718,7 +919,10 @@ public:
      * Gets _z _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2 uX_ABI get_zx() const uX_noexcept { return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 0)); }
+    uX_constexpr vecdouble2 uX_ABI get_zx(void) const uX_noexcept
+    {
+        return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 0));
+    }
 
     /**
      * \brief Get _z _x _y.
@@ -726,7 +930,10 @@ public:
      * Gets _z _x _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_zxy() const uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 1)); }
+    uX_constexpr vecdouble3 uX_ABI get_zxy(void) const uX_noexcept
+    {
+        return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 1));
+    }
 
     /**
      * \brief Get _z _x _y _w.
@@ -734,7 +941,10 @@ public:
      * Gets _z _x _y _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_zxyw() const uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 1)); }
+    uX_constexpr vecdouble4 uX_ABI get_zxyw(void) const uX_noexcept
+    {
+        return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 1));
+    }
 
     /**
      * \brief Get _z _x _w.
@@ -742,7 +952,10 @@ public:
      * Gets _z _x _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_zxw() const uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 1)); }
+    uX_constexpr vecdouble3 uX_ABI get_zxw(void) const uX_noexcept
+    {
+        return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 1));
+    }
 
     /**
      * \brief Get _z _x _w _y.
@@ -750,7 +963,10 @@ public:
      * Gets _z _x _w _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_zxwy() const uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 1)); }
+    uX_constexpr vecdouble4 uX_ABI get_zxwy(void) const uX_noexcept
+    {
+        return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 1));
+    }
 
     /**
      * \brief Get _z _y.
@@ -758,7 +974,10 @@ public:
      * Gets _z _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2 uX_ABI get_zy() const uX_noexcept { return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 1)); }
+    uX_constexpr vecdouble2 uX_ABI get_zy(void) const uX_noexcept
+    {
+        return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 1));
+    }
 
     /**
      * \brief Get _z _y _x.
@@ -766,7 +985,10 @@ public:
      * Gets _z _y _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_zyx() const uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 1), m128_xmmd_0); }
+    uX_constexpr vecdouble3 uX_ABI get_zyx(void) const uX_noexcept
+    {
+        return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 1), m128_xmmd_0);
+    }
 
     /**
      * \brief Get _z _y _x _w.
@@ -774,7 +996,10 @@ public:
      * Gets _z _y _x _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_zyxw() const uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 1)); }
+    uX_constexpr vecdouble4 uX_ABI get_zyxw(void) const uX_noexcept
+    {
+        return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 1));
+    }
 
     /**
      * \brief Get _z _y _w.
@@ -782,7 +1007,10 @@ public:
      * Gets _z _y _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_zyw() const uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 1), _uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 1)); }
+    uX_constexpr vecdouble3 uX_ABI get_zyw(void) const uX_noexcept
+    {
+        return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 1), _uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 1));
+    }
 
     /**
      * \brief Get _z _y _w _x.
@@ -790,7 +1018,10 @@ public:
      * Gets _z _y _w _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_zywx() const uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 0)); }
+    uX_constexpr vecdouble4 uX_ABI get_zywx(void) const uX_noexcept
+    {
+        return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 0));
+    }
 
     /**
      * \brief Get _z _w.
@@ -798,7 +1029,10 @@ public:
      * Gets _z _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2 uX_ABI get_zw() const uX_noexcept { return vecdouble2(m128_xmmd_1); }
+    uX_constexpr vecdouble2 uX_ABI get_zw(void) const uX_noexcept
+    {
+        return vecdouble2(m128_xmmd_1);
+    }
 
     /**
      * \brief Get _z _w _x.
@@ -806,7 +1040,10 @@ public:
      * Gets _z _w _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_zwx() const uX_noexcept { return vecdouble3(m128_xmmd_1, m128_xmmd_0); }
+    uX_constexpr vecdouble3 uX_ABI get_zwx(void) const uX_noexcept
+    {
+        return vecdouble3(m128_xmmd_1, m128_xmmd_0);
+    }
 
     /**
      * \brief Get _z _w _x _y.
@@ -814,7 +1051,10 @@ public:
      * Gets _z _w _x _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_zwxy() const uX_noexcept { return vecdouble4(m128_xmmd_1, m128_xmmd_0); }
+    uX_constexpr vecdouble4 uX_ABI get_zwxy(void) const uX_noexcept
+    {
+        return vecdouble4(m128_xmmd_1, m128_xmmd_0);
+    }
 
     /**
      * \brief Get _z _w _y.
@@ -822,7 +1062,10 @@ public:
      * Gets _z _w _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_zwy() const uX_noexcept { return vecdouble3(m128_xmmd_1, _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 1)); }
+    uX_constexpr vecdouble3 uX_ABI get_zwy(void) const uX_noexcept
+    {
+        return vecdouble3(m128_xmmd_1, _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 1));
+    }
 
     /**
      * \brief Get _z _w _y _x.
@@ -830,7 +1073,10 @@ public:
      * Gets _z _w _y _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_zwyx() const uX_noexcept { return vecdouble4(m128_xmmd_1, _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0)); }
+    uX_constexpr vecdouble4 uX_ABI get_zwyx(void) const uX_noexcept
+    {
+        return vecdouble4(m128_xmmd_1, _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0));
+    }
 
     /**
      * \brief Get _w.
@@ -838,7 +1084,10 @@ public:
      * Gets _w element from vector.
      * \return double.
      */
-    uX_constexpr double uX_ABI get_w() const uX_noexcept { return _w; }
+    uX_constexpr double uX_ABI get_w(void) const uX_noexcept
+    {
+        return _w;
+    }
 
     /**
      * \brief Get _w _x.
@@ -846,7 +1095,10 @@ public:
      * Gets _w _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2 uX_ABI get_wx() const uX_noexcept { return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 0)); }
+    uX_constexpr vecdouble2 uX_ABI get_wx(void) const uX_noexcept
+    {
+        return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 0));
+    }
 
     /**
      * \brief Get _w _x _y.
@@ -854,7 +1106,10 @@ public:
      * Gets _w _x _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_wxy() const uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 1)); }
+    uX_constexpr vecdouble3 uX_ABI get_wxy(void) const uX_noexcept
+    {
+        return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 1));
+    }
 
     /**
      * \brief Get _w _x _y _z.
@@ -862,7 +1117,10 @@ public:
      * Gets _w _x _y _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_wxyz() const uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 0)); }
+    uX_constexpr vecdouble4 uX_ABI get_wxyz(void) const uX_noexcept
+    {
+        return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 0));
+    }
 
     /**
      * \brief Get _w _x _z.
@@ -870,7 +1128,10 @@ public:
      * Gets _w _x _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_wxz() const uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 0), m128_xmmd_1); }
+    uX_constexpr vecdouble3 uX_ABI get_wxz(void) const uX_noexcept
+    {
+        return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 0), m128_xmmd_1);
+    }
 
     /**
      * \brief Get _w _x _z _y.
@@ -878,7 +1139,10 @@ public:
      * Gets _w _x _z _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_wxzy() const uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 1)); }
+    uX_constexpr vecdouble4 uX_ABI get_wxzy(void) const uX_noexcept
+    {
+        return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 1));
+    }
 
     /**
      * \brief Get _w _y.
@@ -886,7 +1150,10 @@ public:
      * Gets _w _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2 uX_ABI get_wy() const uX_noexcept { return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 1)); }
+    uX_constexpr vecdouble2 uX_ABI get_wy(void) const uX_noexcept
+    {
+        return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 1));
+    }
 
     /**
      * \brief Get _w _y _x.
@@ -894,7 +1161,10 @@ public:
      * Gets _w _y _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_wyx() const uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 1), m128_xmmd_0); }
+    uX_constexpr vecdouble3 uX_ABI get_wyx(void) const uX_noexcept
+    {
+        return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 1), m128_xmmd_0);
+    }
 
     /**
      * \brief Get _w _y _x _z.
@@ -902,7 +1172,10 @@ public:
      * Gets _w _y _x _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_wyxz() const uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 0)); }
+    uX_constexpr vecdouble4 uX_ABI get_wyxz(void) const uX_noexcept
+    {
+        return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 0));
+    }
 
     /**
      * \brief Get _w _y _z.
@@ -910,7 +1183,10 @@ public:
      * Gets _w _y _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_wyz() const uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 1), m128_xmmd_1); }
+    uX_constexpr vecdouble3 uX_ABI get_wyz(void) const uX_noexcept
+    {
+        return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 1), m128_xmmd_1);
+    }
 
     /**
      * \brief Get _w _y _z _x.
@@ -918,7 +1194,10 @@ public:
      * Gets _w _y _z _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_wyzx() const uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 0)); }
+    uX_constexpr vecdouble4 uX_ABI get_wyzx(void) const uX_noexcept
+    {
+        return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 0));
+    }
 
     /**
      * \brief Get _w _z.
@@ -926,7 +1205,10 @@ public:
      * Gets _w _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2 uX_ABI get_wz() const uX_noexcept { return vecdouble2(_uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0)); }
+    uX_constexpr vecdouble2 uX_ABI get_wz(void) const uX_noexcept
+    {
+        return vecdouble2(_uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0));
+    }
 
     /**
      * \brief Get _w _z _x.
@@ -934,7 +1216,10 @@ public:
      * Gets _w _z _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_wzx() const uX_noexcept { return vecdouble3(_uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0), m128_xmmd_0); }
+    uX_constexpr vecdouble3 uX_ABI get_wzx(void) const uX_noexcept
+    {
+        return vecdouble3(_uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0), m128_xmmd_0);
+    }
 
     /**
      * \brief Get _w _z _x _y.
@@ -942,7 +1227,10 @@ public:
      * Gets _w _z _x _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_wzxy() const uX_noexcept { return vecdouble4(_uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0), m128_xmmd_0); }
+    uX_constexpr vecdouble4 uX_ABI get_wzxy(void) const uX_noexcept
+    {
+        return vecdouble4(_uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0), m128_xmmd_0);
+    }
 
     /**
      * \brief Get _w _z _y.
@@ -950,7 +1238,10 @@ public:
      * Gets _w _z _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3 uX_ABI get_wzy() const uX_noexcept { return vecdouble3(_uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 1)); }
+    uX_constexpr vecdouble3 uX_ABI get_wzy(void) const uX_noexcept
+    {
+        return vecdouble3(_uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 1));
+    }
 
     /**
      * \brief Get _w _z _y _x.
@@ -958,7 +1249,10 @@ public:
      * Gets _w _z _y _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4 uX_ABI get_wzyx() const uX_noexcept { return vecdouble4(_uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0)); }
+    uX_constexpr vecdouble4 uX_ABI get_wzyx(void) const uX_noexcept
+    {
+        return vecdouble4(_uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0));
+    }
 
     /**
      * \brief Get reference to vector.
@@ -966,7 +1260,10 @@ public:
      * Gets reference to vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref() uX_noexcept { return vecdouble4(m128_xmmd_0, m128_xmmd_1); }
+    uX_constexpr vecdouble4& uX_ABI ref(void) uX_noexcept
+    {
+        return *this;
+    }
 
     /**
      * \brief Get reference to _x.
@@ -974,7 +1271,10 @@ public:
      * Gets reference to _x element from vector.
      * \return double.
      */
-    uX_constexpr double& uX_ABI ref_x() uX_noexcept { return _x; }
+    uX_constexpr double& uX_ABI ref_x(void) uX_noexcept
+    {
+        return _x;
+    }
 
     /**
      * \brief Get reference to _x _y.
@@ -982,7 +1282,11 @@ public:
      * Gets reference to _x _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2& uX_ABI ref_xy() uX_noexcept { return vecdouble2(m128_xmmd_0); }
+    uX_constexpr vecdouble2& uX_ABI ref_xy(void) uX_noexcept
+    {
+        vecdbl2rettype = get_xy();
+        return vecdbl2rettype;
+    }
 
     /**
      * \brief Get reference to _x _y _z.
@@ -990,7 +1294,11 @@ public:
      * Gets reference to _x _y _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_xyz() uX_noexcept { return vecdouble3(m128_xmmd_0, m128_xmmd_1); }
+    uX_constexpr vecdouble3& uX_ABI ref_xyz(void) uX_noexcept
+    {
+        vecdbl3rettype = get_xyz();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _x _y _z _w.
@@ -998,7 +1306,10 @@ public:
      * Gets reference to _x _y _z _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_xyzw() uX_noexcept { return vecdouble4(m128_xmmd_0, m128_xmmd_1); }
+    uX_constexpr vecdouble4& uX_ABI ref_xyzw(void) uX_noexcept
+    {
+        return *this;
+    }
 
     /**
      * \brief Get reference to _x _y _w.
@@ -1006,7 +1317,11 @@ public:
      * Gets reference too _x _y _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_xyw() uX_noexcept { return vecdouble3(m128_xmmd_0, _uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 1)); }
+    uX_constexpr vecdouble3& uX_ABI ref_xyw(void) uX_noexcept
+    {
+        vecdbl3rettype = get_xyw();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _x _y _w _z.
@@ -1014,7 +1329,11 @@ public:
      * Gets reference to _x _y _w _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_xywz() uX_noexcept { return vecdouble4(m128_xmmd_0, _uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0)); }
+    uX_constexpr vecdouble4& uX_ABI ref_xywz(void) uX_noexcept
+    {
+        *this = get_xywz();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _x _z.
@@ -1022,7 +1341,11 @@ public:
      * Gets reference to _x _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2& uX_ABI ref_xz() uX_noexcept { return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 0)); }
+    uX_constexpr vecdouble2& uX_ABI ref_xz(void) uX_noexcept
+    {
+        vecdbl2rettype = get_xz();
+        return vecdbl2rettype;
+    }
 
     /**
      * \brief Get reference to _x _z _y.
@@ -1030,7 +1353,11 @@ public:
      * Gets reference to _x _z _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_xzy() uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 1)); }
+    uX_constexpr vecdouble3& uX_ABI ref_xzy(void) uX_noexcept
+    {
+        vecdbl3rettype = get_xzy();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _x _z _y _w.
@@ -1038,7 +1365,11 @@ public:
      * Gets reference to _x _z _y _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_xzyw() uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 1)); }
+    uX_constexpr vecdouble4& uX_ABI ref_xzyw(void) uX_noexcept
+    {
+        *this = get_xzyw();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _x _z _w.
@@ -1046,7 +1377,11 @@ public:
      * Gets reference to _x _z _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_xzw() uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 0), m128_xmmd_1); }
+    uX_constexpr vecdouble3& uX_ABI ref_xzw(void) uX_noexcept
+    {
+        vecdbl3rettype = get_xzw();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _x _z _w _y.
@@ -1054,7 +1389,11 @@ public:
      * Gets reference to _x _z _w _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_xzwy() uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 1)); }
+    uX_constexpr vecdouble4& uX_ABI ref_xzwy(void) uX_noexcept
+    {
+        *this = get_xzwy();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _x _w.
@@ -1062,7 +1401,11 @@ public:
      * Gets reference to _x _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2& uX_ABI ref_xw() uX_noexcept { return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 1)); }
+    uX_constexpr vecdouble2& uX_ABI ref_xw(void) uX_noexcept
+    {
+        vecdbl2rettype = get_xw();
+        return vecdbl2rettype;
+    }
 
     /**
      * \brief Get reference to _x _w _y.
@@ -1070,7 +1413,11 @@ public:
      * Gets reference to _x _w _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_xwy() uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 1), _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 1)); }
+    uX_constexpr vecdouble3& uX_ABI ref_xwy(void) uX_noexcept
+    {
+        vecdbl3rettype = get_xwy();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _x _w _y _z.
@@ -1078,7 +1425,11 @@ public:
      * Gets reference to _x _w _y _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_xwyz() uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 0)); }
+    uX_constexpr vecdouble4& uX_ABI ref_xwyz(void) uX_noexcept
+    {
+        *this = get_xwyz();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _x _w _z.
@@ -1086,7 +1437,11 @@ public:
      * Gets reference to _x _w _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_xwz() uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 1), m128_xmmd_1); }
+    uX_constexpr vecdouble3& uX_ABI ref_xwz(void) uX_noexcept
+    {
+        vecdbl3rettype = get_xwz();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _x _w _z _y.
@@ -1094,7 +1449,11 @@ public:
      * Gets reference to _x _w _z _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_xwzy() uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 1)); }
+    uX_constexpr vecdouble4& uX_ABI ref_xwzy(void) uX_noexcept
+    {
+        *this = get_xwzy();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _y.
@@ -1102,7 +1461,10 @@ public:
      * Gets reference to _y elements from vector.
      * \return double.
      */
-    uX_constexpr double& uX_ABI ref_y() uX_noexcept { return _y; }
+    uX_constexpr double& uX_ABI ref_y(void) uX_noexcept
+    {
+        return _y;
+    }
 
     /**
      * \brief Get reference to _y _x.
@@ -1110,7 +1472,11 @@ public:
      * Gets reference to _y _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2& uX_ABI ref_yx() uX_noexcept { return vecdouble2(_uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0)); }
+    uX_constexpr vecdouble2& uX_ABI ref_yx(void) uX_noexcept
+    {
+        vecdbl2rettype = get_yx();
+        return vecdbl2rettype;
+    }
 
     /**
      * \brief Get reference to _y _x _z.
@@ -1118,7 +1484,11 @@ public:
      * Gets reference to _y _x _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_yxz() uX_noexcept { return vecdouble3(_uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0), m128_xmmd_1); }
+    uX_constexpr vecdouble3& uX_ABI ref_yxz(void) uX_noexcept
+    {
+        vecdbl3rettype = get_yxz();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _y _x _z _w.
@@ -1126,7 +1496,11 @@ public:
      * Gets reference to _y _x _z _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_yxzw() uX_noexcept { return vecdouble4(_uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0), m128_xmmd_1); }
+    uX_constexpr vecdouble4& uX_ABI ref_yxzw(void) uX_noexcept
+    {
+        *this = get_yxzw();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _y _x _w.
@@ -1134,7 +1508,11 @@ public:
      * Gets reference to _y _x _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_yxw() uX_noexcept { return vecdouble3(_uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 1)); }
+    uX_constexpr vecdouble3& uX_ABI ref_yxw(void) uX_noexcept
+    {
+        vecdbl3rettype = get_yxw();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _y _x _w _z.
@@ -1142,7 +1520,11 @@ public:
      * Gets reference to _y _x _w _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_yxwz() uX_noexcept { return vecdouble4(_uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0)); }
+    uX_constexpr vecdouble4& uX_ABI ref_yxwz(void) uX_noexcept
+    {
+        *this = get_yxwz();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _y _z.
@@ -1150,7 +1532,11 @@ public:
      * Gets reference to _y _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2& uX_ABI ref_yz() uX_noexcept { return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 0)); }
+    uX_constexpr vecdouble2& uX_ABI ref_yz(void) uX_noexcept
+    {
+        vecdbl2rettype = get_yz();
+        return vecdbl2rettype;
+    }
 
     /**
      * \brief Get reference to _y _z _x.
@@ -1158,7 +1544,11 @@ public:
      * Gets reference to _y _z _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_yzx() uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 0), m128_xmmd_0); }
+    uX_constexpr vecdouble3& uX_ABI ref_yzx(void) uX_noexcept
+    {
+        vecdbl3rettype = get_yzx();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _y _z _x _w.
@@ -1166,7 +1556,11 @@ public:
      * Gets reference to _y _z _x _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_yzxw() uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 1)); }
+    uX_constexpr vecdouble4& uX_ABI ref_yzxw(void) uX_noexcept
+    {
+        *this = get_yzxw();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _y _z _w.
@@ -1174,7 +1568,11 @@ public:
      * Gets reference to _y _z _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_yzw() uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 1)); }
+    uX_constexpr vecdouble3& uX_ABI ref_yzw(void) uX_noexcept
+    {
+        vecdbl3rettype = get_yzw();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _y _z _w _x.
@@ -1182,7 +1580,11 @@ public:
      * Gets reference to _y _z _w _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_yzwx() uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 0)); }
+    uX_constexpr vecdouble4& uX_ABI ref_yzwx(void) uX_noexcept
+    {
+        *this = get_yzwx();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _y _w.
@@ -1190,7 +1592,11 @@ public:
      * Gets reference to _y _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2& uX_ABI ref_yw() uX_noexcept { return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 1)); }
+    uX_constexpr vecdouble2& uX_ABI ref_yw(void) uX_noexcept
+    {
+        vecdbl2rettype = get_yw();
+        return vecdbl2rettype;
+    }
 
     /**
      * \brief Get reference to _y _w _x.
@@ -1198,7 +1604,11 @@ public:
      * Gets reference to _y _w _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_ywx() uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 1), m128_xmmd_0); }
+    uX_constexpr vecdouble3& uX_ABI ref_ywx(void) uX_noexcept
+    {
+        vecdbl3rettype = get_ywx();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _y _w _y _z.
@@ -1206,7 +1616,11 @@ public:
      * Gets reference to _y _w _y _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_ywxz() uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 0)); }
+    uX_constexpr vecdouble4& uX_ABI ref_ywxz(void) uX_noexcept
+    {
+        *this = get_ywxz();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _y _w _z.
@@ -1214,7 +1628,11 @@ public:
      * Gets reference to _y _w _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_ywz() uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 1), m128_xmmd_1); }
+    uX_constexpr vecdouble3& uX_ABI ref_ywz(void) uX_noexcept
+    {
+        vecdbl3rettype = get_ywz();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _y _w _z _y.
@@ -1222,7 +1640,11 @@ public:
      * Gets reference to _y _w _z _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_ywzx() uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 0)); }
+    uX_constexpr vecdouble4& uX_ABI ref_ywzx(void) uX_noexcept
+    {
+        *this = get_ywzx();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _z.
@@ -1230,7 +1652,10 @@ public:
      * Gets reference to _z element from vector.
      * \return double.
      */
-    uX_constexpr double& uX_ABI ref_z() uX_noexcept { return _z; }
+    uX_constexpr double& uX_ABI ref_z(void) uX_noexcept
+    {
+        return _z;
+    }
 
     /**
      * \brief Get reference to _z _x.
@@ -1238,7 +1663,11 @@ public:
      * Gets reference to _z _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2& uX_ABI ref_zx() uX_noexcept { return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 0)); }
+    uX_constexpr vecdouble2& uX_ABI ref_zx(void) uX_noexcept
+    {
+        vecdbl2rettype = get_zx();
+        return vecdbl2rettype;
+    }
 
     /**
      * \brief Get reference to _z _x _y.
@@ -1246,7 +1675,11 @@ public:
      * Gets reference to _z _x _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_zxy() uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 1)); }
+    uX_constexpr vecdouble3& uX_ABI ref_zxy(void) uX_noexcept
+    {
+        vecdbl3rettype = get_zxy();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _z _x _y _w.
@@ -1254,7 +1687,11 @@ public:
      * Gets reference to _z _x _y _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_zxyw() uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 1)); }
+    uX_constexpr vecdouble4& uX_ABI ref_zxyw(void) uX_noexcept
+    {
+        *this = get_zxyw();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _z _x _w.
@@ -1262,7 +1699,11 @@ public:
      * Gets reference to _z _x _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_zxw() uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 1)); }
+    uX_constexpr vecdouble3& uX_ABI ref_zxw(void) uX_noexcept
+    {
+        vecdbl3rettype = get_zxw();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _z _x _w _y.
@@ -1270,7 +1711,11 @@ public:
      * Gets reference to _z _x _w _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_zxwy() uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 1)); }
+    uX_constexpr vecdouble4& uX_ABI ref_zxwy(void) uX_noexcept
+    {
+        *this = get_zxwy();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _z _y.
@@ -1278,7 +1723,11 @@ public:
      * Gets reference to _z _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2& uX_ABI ref_zy() uX_noexcept { return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 1)); }
+    uX_constexpr vecdouble2& uX_ABI ref_zy(void) uX_noexcept
+    {
+        vecdbl2rettype = get_zy();
+        return vecdbl2rettype;
+    }
 
     /**
      * \brief Get reference to _z _y _x.
@@ -1286,7 +1735,11 @@ public:
      * Gets reference to _z _y _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_zyx() uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 1), m128_xmmd_0); }
+    uX_constexpr vecdouble3& uX_ABI ref_zyx(void) uX_noexcept
+    {
+        vecdbl3rettype = get_zyx();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _z _y _x _w.
@@ -1294,7 +1747,11 @@ public:
      * Gets reference to _z _y _x _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_zyxw() uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 1)); }
+    uX_constexpr vecdouble4& uX_ABI ref_zyxw(void) uX_noexcept
+    {
+        *this = get_zyxw();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _z _y _w.
@@ -1302,7 +1759,11 @@ public:
      * Gets reference to _z _y _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_zyw() uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 1), _uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 1)); }
+    uX_constexpr vecdouble3& uX_ABI ref_zyw(void) uX_noexcept
+    {
+        vecdbl3rettype = get_zyw();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _z _y _w _x.
@@ -1310,7 +1771,11 @@ public:
      * Gets reference to _z _y _w _xelements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_zywx() uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 0)); }
+    uX_constexpr vecdouble4& uX_ABI ref_zywx(void) uX_noexcept
+    {
+        *this = get_zywx();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _z _w.
@@ -1318,7 +1783,11 @@ public:
      * Gets reference to _z _w elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2& uX_ABI ref_zw() uX_noexcept { return vecdouble2(m128_xmmd_1); }
+    uX_constexpr vecdouble2& uX_ABI ref_zw(void) uX_noexcept
+    {
+        vecdbl2rettype = get_zw();
+        return vecdbl2rettype;
+    }
 
     /**
      * \brief Get reference to _z _w _x.
@@ -1326,7 +1795,11 @@ public:
      * Gets reference to _z _w _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_zwx() uX_noexcept { return vecdouble3(m128_xmmd_1, m128_xmmd_0); }
+    uX_constexpr vecdouble3& uX_ABI ref_zwx(void) uX_noexcept
+    {
+        vecdbl3rettype = get_zwx();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _z _w _x _y.
@@ -1334,7 +1807,11 @@ public:
      * Gets reference to _z _w _x _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_zwxy() uX_noexcept { return vecdouble4(m128_xmmd_1, m128_xmmd_0); }
+    uX_constexpr vecdouble4& uX_ABI ref_zwxy(void) uX_noexcept
+    {
+        *this = get_zwxy();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _z _w _y.
@@ -1342,7 +1819,11 @@ public:
      * Gets reference to _z _w _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_zwy() uX_noexcept { return vecdouble3(m128_xmmd_1, _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 1)); }
+    uX_constexpr vecdouble3& uX_ABI ref_zwy(void) uX_noexcept
+    {
+        vecdbl3rettype = get_zwy();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _z _w _y _x.
@@ -1350,7 +1831,11 @@ public:
      * Gets reference to _z _w _y _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_zwyx() uX_noexcept { return vecdouble4(m128_xmmd_1, _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0)); }
+    uX_constexpr vecdouble4& uX_ABI ref_zwyx(void) uX_noexcept
+    {
+        *this = get_zwyx();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _w.
@@ -1358,7 +1843,10 @@ public:
      * Gets reference to _w element from vector.
      * \return double.
      */
-    uX_constexpr double& uX_ABI ref_w() uX_noexcept { return _w; }
+    uX_constexpr double& uX_ABI ref_w(void) uX_noexcept
+    {
+        return _w;
+    }
 
     /**
      * \brief Get reference to _w _x.
@@ -1366,7 +1854,11 @@ public:
      * Gets reference to _w _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2& uX_ABI ref_wx() uX_noexcept { return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 0)); }
+    uX_constexpr vecdouble2& uX_ABI ref_wx(void) uX_noexcept
+    {
+        vecdbl2rettype = get_wx();
+        return vecdbl2rettype;
+    }
 
     /**
      * \brief Get reference to _w _x _y.
@@ -1374,7 +1866,11 @@ public:
      * Gets reference to _w _x _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_wxy() uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 1)); }
+    uX_constexpr vecdouble3& uX_ABI ref_wxy(void) uX_noexcept
+    {
+        vecdbl3rettype = get_wxy();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _w _x _y _z.
@@ -1382,7 +1878,11 @@ public:
      * Gets reference to _w _x _y _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_wxyz() uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 1, 0)); }
+    uX_constexpr vecdouble4& uX_ABI ref_wxyz(void) uX_noexcept
+    {
+        *this = get_wxyz();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _w _x _z.
@@ -1390,7 +1890,11 @@ public:
      * Gets reference to _w _x _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_wxz() uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 0), m128_xmmd_1); }
+    uX_constexpr vecdouble3& uX_ABI ref_wxz(void) uX_noexcept
+    {
+        vecdbl3rettype = get_wxz();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _w _x _z _y.
@@ -1398,7 +1902,11 @@ public:
      * Gets reference to _w _x _z _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_wxzy() uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 0), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 1)); }
+    uX_constexpr vecdouble4& uX_ABI ref_wxzy(void) uX_noexcept
+    {
+        *this = get_wxzy();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _w _y.
@@ -1406,7 +1914,11 @@ public:
      * Gets reference to _w _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2& uX_ABI ref_wy() uX_noexcept { return vecdouble2(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 1)); }
+    uX_constexpr vecdouble2& uX_ABI ref_wy(void) uX_noexcept
+    {
+        vecdbl2rettype = get_wy();
+        return vecdbl2rettype;
+    }
 
     /**
      * \brief Get reference to _w _y _x.
@@ -1414,7 +1926,11 @@ public:
      * Gets reference to _w _y _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_wyx() uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 1), m128_xmmd_0); }
+    uX_constexpr vecdouble3& uX_ABI ref_wyx(void) uX_noexcept
+    {
+        vecdbl3rettype = get_wyx();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _w _y _x _z.
@@ -1422,7 +1938,11 @@ public:
      * Gets reference to _w _y _x _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_wyxz() uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, m128_xmmd_1, 0, 0)); }
+    uX_constexpr vecdouble4& uX_ABI ref_wyxz(void) uX_noexcept
+    {
+        *this = get_wyxz();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _w _y _z.
@@ -1430,7 +1950,11 @@ public:
      * Gets reference to _w _y _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_wyz() uX_noexcept { return vecdouble3(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 1), m128_xmmd_1); }
+    uX_constexpr vecdouble3& uX_ABI ref_wyz(void) uX_noexcept
+    {
+        vecdbl3rettype = get_wyz();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _w _y _z _x.
@@ -1438,7 +1962,11 @@ public:
      * Gets reference to _w _y _z _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_wyzx() uX_noexcept { return vecdouble4(_uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 1, 1), _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, m128_xmmd_0, 0, 0)); }
+    uX_constexpr vecdouble4& uX_ABI ref_wyzx(void) uX_noexcept
+    {
+        *this = get_wyzx();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _w _z.
@@ -1446,7 +1974,11 @@ public:
      * Gets reference to _w _z elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble2& uX_ABI ref_wz() uX_noexcept { return vecdouble2(_uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0)); }
+    uX_constexpr vecdouble2& uX_ABI ref_wz(void) uX_noexcept
+    {
+        vecdbl2rettype = get_wz();
+        return vecdbl2rettype;
+    }
 
     /**
      * \brief Get reference to _w _z _x.
@@ -1454,7 +1986,11 @@ public:
      * Gets reference to _w _z _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_wzx() uX_noexcept { return vecdouble3(_uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0), m128_xmmd_0); }
+    uX_constexpr vecdouble3& uX_ABI ref_wzx(void) uX_noexcept
+    {
+        vecdbl3rettype = get_wzx();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _w _z _x _y.
@@ -1462,7 +1998,11 @@ public:
      * Gets reference to _w _z _x _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_wzxy() uX_noexcept { return vecdouble4(_uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0), m128_xmmd_0); }
+    uX_constexpr vecdouble4& uX_ABI ref_wzxy(void) uX_noexcept
+    {
+        *this = get_wzxy();
+        return *this;
+    }
 
     /**
      * \brief Get reference to _w _z _y.
@@ -1470,7 +2010,11 @@ public:
      * Gets reference to _w _z _y elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble3& uX_ABI ref_wzy() uX_noexcept { return vecdouble3(_uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 1)); }
+    uX_constexpr vecdouble3& uX_ABI ref_wzy(void) uX_noexcept
+    {
+        vecdbl3rettype = get_wzy();
+        return vecdbl3rettype;
+    }
 
     /**
      * \brief Get reference to _w _z _y _x
@@ -1478,7 +2022,11 @@ public:
      * Gets reference to _w _z _y _x elements from vector.
      * \return vector.
      */
-    uX_constexpr vecdouble4& uX_ABI ref_wzyx() uX_noexcept { return vecdouble4(_uX_MM_PERMUTER_IM_PD(m128_xmmd_1, 1, 0), _uX_MM_PERMUTER_IM_PD(m128_xmmd_0, 1, 0)); }
+    uX_constexpr vecdouble4& uX_ABI ref_wzyx(void) uX_noexcept
+    {
+        *this = get_wzyx();
+        return *this;
+    }
 
     /**
      * \brief Set the vector.
@@ -1487,7 +2035,11 @@ public:
      *
      * \param InHxmmd_a.
      */
-    void uX_ABI set(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = InHxmmd_a.m128_xmmd_0;
+        m128_xmmd_1 = InHxmmd_a.m128_xmmd_1;
+    }
 
     /**
      * \brief Set the vector _x.
@@ -1496,7 +2048,10 @@ public:
      *
      * \param Indouble_a.
      */
-    void uX_ABI set_x(double Indouble_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_x(double Indouble_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SETDBL_IM_PD(m128_xmmd_0, Indouble_a, 0);
+    }
 
     /**
      * \brief Set the vector _x _y.
@@ -1505,7 +2060,10 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_xy(const vecdouble2 Inxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_xy(vecdouble2 const Inxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = Inxmmd_a;
+    }
 
     /**
      * \brief Set the vector _x _y _z.
@@ -1514,7 +2072,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_xyz(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_xyz(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = InHxmmd_a.get_xmmd_0();
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_1(), m128_xmmd_1, 0, 1);
+    }
 
     /**
      * \brief Set the vector _x _y _z _w.
@@ -1523,7 +2085,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_xyzw(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_xyzw(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = InHxmmd_a.m128_xmmd_0;
+        m128_xmmd_1 = InHxmmd_a.m128_xmmd_1;
+    }
 
     /**
      * \brief Set the vector _x _y _w.
@@ -1532,7 +2098,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_xyw(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_xyw(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = InHxmmd_a.get_xmmd_0();
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, InHxmmd_a.get_xmmd_1(), 0, 0);
+    }
 
     /**
      * \brief Set the vector _x _y _w _z.
@@ -1541,7 +2111,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_xywz(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_xywz(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = InHxmmd_a.m128_xmmd_0;
+        m128_xmmd_1 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.m128_xmmd_1, 1, 0);
+    }
 
     /**
      * \brief Set the vector _x _z.
@@ -1550,7 +2124,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_xz(const vecdouble2 Inxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_xz(vecdouble2 const Inxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(Inxmmd_a, m128_xmmd_0, 0, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(Inxmmd_a, m128_xmmd_1, 1, 1);
+    }
 
     /**
      * \brief Set the vector _x _z _y.
@@ -1559,7 +2137,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_xzy(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_xzy(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), InHxmmd_a.get_xmmd_1(), 0, 0);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), m128_xmmd_1, 1, 1);
+    }
 
     /**
      * \brief Set the vector _x _z _y _w.
@@ -1568,7 +2150,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_xzyw(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_xzyw(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 0, 0);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 1, 1);
+    }
 
     /**
      * \brief Set the vector _x _z _w.
@@ -1577,7 +2163,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_xzw(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_xzw(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), m128_xmmd_0, 0, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), InHxmmd_a.get_xmmd_1(), 1, 0);
+    }
 
     /**
      * \brief Set the vector _x _z _w _y.
@@ -1586,7 +2176,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_xzwy(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_xzwy(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 0, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 1, 0);
+    }
 
     /**
      * \brief Set the vector _x _w.
@@ -1595,7 +2189,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_xw(const vecdouble2 Inxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_xw(vecdouble2 const Inxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(Inxmmd_a, m128_xmmd_0, 0, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, Inxmmd_a, 0, 1);
+    }
 
     /**
      * \brief Set the vector _x _w _y.
@@ -1604,7 +2202,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_xwy(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_xwy(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), InHxmmd_a.get_xmmd_1(), 0, 0);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, InHxmmd_a.get_xmmd_0(), 0, 1);
+    }
 
     /**
      * \brief Set the vector _x _w _y _z.
@@ -1613,7 +2215,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_xwyz(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_xwyz(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 0, 0);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 1, 1);
+    }
 
     /**
      * \brief Set the vector _x _w _z.
@@ -1622,7 +2228,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_xwz(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_xwz(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), m128_xmmd_0, 0, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_1(), InHxmmd_a.get_xmmd_0(), 0, 1);
+    }
 
     /**
      * \brief Set the vector _x _w _z _y.
@@ -1631,7 +2241,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_xwzy(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_xwzy(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 0, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 0, 1);
+    }
 
     /**
      * \brief Set the vector _y.
@@ -1640,7 +2254,10 @@ public:
      *
      * \param Indouble_a.
      */
-    void uX_ABI set_y(double Indouble_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_y(double Indouble_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SETDBL_IM_PD(m128_xmmd_0, Indouble_a, 1);
+    }
 
     /**
      * \brief Set the vector _y _x.
@@ -1649,7 +2266,10 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_yx(const vecdouble2 Inxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_yx(vecdouble2 const Inxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_PERMUTER_IM_PD(Inxmmd_a, 1, 0);
+    }
 
     /**
      * \brief Set the vector _y _x _z.
@@ -1658,7 +2278,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_yxz(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_yxz(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.get_xmmd_0(), 1, 0);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_1(), m128_xmmd_1, 0, 1);
+    }
 
     /**
      * \brief Set the vector _y _x _z _w.
@@ -1667,7 +2291,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_yxzw(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_yxzw(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.m128_xmmd_0, 1, 0);
+        m128_xmmd_1 = InHxmmd_a.m128_xmmd_1;
+    }
 
     /**
      * \brief Set the vector _y _x _w.
@@ -1676,7 +2304,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_yxw(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_yxw(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.get_xmmd_0(), 1, 0);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, InHxmmd_a.get_xmmd_1(), 0, 0);
+    }
 
     /**
      * \brief Set the vector _y _x _w _z.
@@ -1685,7 +2317,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_yxwz(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_yxwz(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.m128_xmmd_0, 1, 0);
+        m128_xmmd_1 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.m128_xmmd_1, 1, 0);
+    }
 
     /**
      * \brief Set the vector _y _z.
@@ -1694,7 +2330,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_yz(const vecdouble2 Inxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_yz(vecdouble2 const Inxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, Inxmmd_a, 0, 0);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(Inxmmd_a, m128_xmmd_1, 1, 1);
+    }
 
     /**
      * \brief Set the vector _y _z _x.
@@ -1703,7 +2343,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_yzx(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_yzx(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_1(), InHxmmd_a.get_xmmd_0(), 0, 0);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), m128_xmmd_1, 1, 1);
+    }
 
     /**
      * \brief Set the vector _y _z _x _w.
@@ -1712,7 +2356,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_yzxw(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_yzxw(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 0, 0);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 1, 1);
+    }
 
     /**
      * \brief Set the vector _y _z _w.
@@ -1721,7 +2369,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_yzw(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_yzw(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, InHxmmd_a.get_xmmd_0(), 0, 0);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), InHxmmd_a.get_xmmd_1(), 1, 0);
+    }
 
     /**
      * \brief Set the vector _y _z _w _x.
@@ -1730,7 +2382,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_yzwx(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_yzwx(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 1, 0);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 1, 0);
+    }
 
     /**
      * \brief Set the vector _y _w.
@@ -1739,7 +2395,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_yw(const vecdouble2 Inxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_yw(vecdouble2 const Inxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, Inxmmd_a, 0, 0);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, Inxmmd_a, 0, 1);
+    }
 
     /**
      * \brief Set the vector _y _w _x.
@@ -1748,7 +2408,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_ywx(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_ywx(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_1(), InHxmmd_a.get_xmmd_0(), 0, 0);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, InHxmmd_a.get_xmmd_0(), 0, 1);
+    }
 
     /**
      * \brief Set the vector _y _w _y _z.
@@ -1757,7 +2421,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_ywxz(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_ywxz(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 0, 0);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 1, 1);
+    }
 
     /**
      * \brief Set the vector _y _w _z.
@@ -1766,7 +2434,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_ywz(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_ywz(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, InHxmmd_a.get_xmmd_0(), 0, 0);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_1(), InHxmmd_a.get_xmmd_0(), 0, 1);
+    }
 
     /**
      * \brief Set the vector _y _w _z _y.
@@ -1775,7 +2447,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_ywzx(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_ywzx(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 1, 0);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 0, 1);
+    }
 
     /**
      * \brief Set the vector _z.
@@ -1784,7 +2460,10 @@ public:
      *
      * \param Indouble_a.
      */
-    void uX_ABI set_z(double Indouble_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_z(double Indouble_a) uX_noexcept
+    {
+        m128_xmmd_1 = _uX_MM_SETDBL_IM_PD(m128_xmmd_1, Indouble_a, 0);
+    }
 
     /**
      * \brief Set the vector _z _x.
@@ -1793,7 +2472,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_zx(const vecdouble2 Inxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_zx(vecdouble2 const Inxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(Inxmmd_a, m128_xmmd_0, 1, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(Inxmmd_a, m128_xmmd_1, 0, 1);
+    }
 
     /**
      * \brief Set the vector _z _x _y.
@@ -1802,7 +2485,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_zxy(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_zxy(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), InHxmmd_a.get_xmmd_1(), 1, 0);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), m128_xmmd_1, 0, 1);
+    }
 
     /**
      * \brief Set the vector _z _x _y _w.
@@ -1811,7 +2498,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_zxyw(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_zxyw(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 1, 0);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 0, 1);
+    }
 
     /**
      * \brief Set the vector _z _x _w.
@@ -1820,7 +2511,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_zxw(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_zxw(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), m128_xmmd_0, 1, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), InHxmmd_a.get_xmmd_1(), 0, 0);
+    }
 
     /**
      * \brief Set the vector _z _x _w _y.
@@ -1829,7 +2524,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_zxwy(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_zxwy(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 1, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 0, 0);
+    }
 
     /**
      * \brief Set the vector _z _y.
@@ -1838,7 +2537,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_zy(const vecdouble2 Inxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_zy(vecdouble2 const Inxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, Inxmmd_a, 0, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(Inxmmd_a, m128_xmmd_1, 0, 1);
+    }
 
     /**
      * \brief Set the vector _z _y _x.
@@ -1847,7 +2550,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_zyx(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_zyx(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_1(), InHxmmd_a.get_xmmd_0(), 0, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), m128_xmmd_1, 0, 1);
+    }
 
     /**
      * \brief Set the vector _z _y _x _w.
@@ -1856,7 +2563,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_zyxw(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_zyxw(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 0, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 0, 1);
+    }
 
     /**
      * \brief Set the vector _z _y _w.
@@ -1865,7 +2576,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_zyw(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_zyw(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, InHxmmd_a.get_xmmd_0(), 0, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), InHxmmd_a.get_xmmd_1(), 0, 0);
+    }
 
     /**
      * \brief Set the vector _z _y _w.
@@ -1874,7 +2589,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_zywx(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_zywx(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 1, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 0, 0);
+    }
 
     /**
      * \brief Set the vector _z _w.
@@ -1883,7 +2602,10 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_zw(const vecdouble2 Inxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_zw(vecdouble2 const Inxmmd_a) uX_noexcept
+    {
+        m128_xmmd_1 = Inxmmd_a;
+    }
 
     /**
      * \brief Set the vector _z _w _x.
@@ -1892,7 +2614,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_zwx(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_zwx(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_1(), m128_xmmd_0, 0, 1);
+        m128_xmmd_1 = InHxmmd_a.get_xmmd_0();
+    }
 
     /**
      * \brief Set the vector _z _w _x _y.
@@ -1901,7 +2627,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_zwxy(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_zwxy(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.m128_xmmd_1, 0, 1);
+        m128_xmmd_1 = InHxmmd_a.get_xmmd_0();
+    }
 
     /**
      * \brief Set the vector _z _w _y.
@@ -1910,7 +2640,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_zwy(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_zwy(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, InHxmmd_a.get_xmmd_1(), 0, 0);
+        m128_xmmd_1 = InHxmmd_a.get_xmmd_0();
+    }
 
     /**
      * \brief Set the vector _z _w _y _x.
@@ -1919,7 +2653,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_zwyx(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_zwyx(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.m128_xmmd_1, 1, 0);
+        m128_xmmd_1 = InHxmmd_a.get_xmmd_0();
+    }
 
     /**
      * \brief Set the vector _w.
@@ -1928,7 +2666,10 @@ public:
      *
      * \param Indouble_a.
      */
-    void uX_ABI set_w(double Indouble_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_w(double Indouble_a) uX_noexcept
+    {
+        m128_xmmd_1 = _uX_MM_SETDBL_IM_PD(m128_xmmd_1, Indouble_a, 1);
+    }
 
     /**
      * \brief Set the vector _w _x.
@@ -1937,7 +2678,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_wx(const vecdouble2 Inxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_wx(vecdouble2 const Inxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(Inxmmd_a, m128_xmmd_0, 1, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, Inxmmd_a, 0, 0);
+    }
 
     /**
      * \brief Set the vector _w _x _y.
@@ -1946,7 +2691,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_wxy(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_wxy(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), InHxmmd_a.get_xmmd_1(), 1, 0);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, InHxmmd_a.get_xmmd_0(), 0, 0);
+    }
 
     /**
      * \brief Set the vector _w _x _y _z.
@@ -1955,7 +2704,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_wxyz(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_wxyz(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 1, 0);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 1, 0);
+    }
 
     /**
      * \brief Set the vector _w _x _z.
@@ -1964,7 +2717,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_wxz(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_wxz(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_0(), m128_xmmd_0, 1, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_1(), InHxmmd_a.get_xmmd_0(), 0, 0);
+    }
 
     /**
      * \brief Set the vector _w _x _z _y.
@@ -1973,7 +2730,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_wxzy(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_wxzy(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_0, InHxmmd_a.m128_xmmd_1, 1, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 0, 0);
+    }
 
     /**
      * \brief Set the vector _w _y.
@@ -1982,7 +2743,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_wy(const vecdouble2 Inxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_wy(vecdouble2 const Inxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, Inxmmd_a, 0, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, Inxmmd_a, 0, 0);
+    }
 
     /**
      * \brief Set the vector _w _y _x.
@@ -1991,7 +2756,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_wyx(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_wyx(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_1(), InHxmmd_a.get_xmmd_0(), 0, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, InHxmmd_a.get_xmmd_0(), 0, 0);
+    }
 
     /**
      * \brief Set the vector _w _y _x _z.
@@ -2000,7 +2769,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_wyxz(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_wyxz(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 0, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 1, 0);
+    }
 
     /**
      * \brief Set the vector _w _y _z.
@@ -2009,7 +2782,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_wyz(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_wyz(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, InHxmmd_a.get_xmmd_0(), 0, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_1(), InHxmmd_a.get_xmmd_0(), 0, 0);
+    }
 
     /**
      * \brief Set the vector _w _y _z _x.
@@ -2018,7 +2795,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_wyzx(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_wyzx(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 1, 1);
+        m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.m128_xmmd_1, InHxmmd_a.m128_xmmd_0, 0, 0);
+    }
 
     /**
      * \brief Set the vector _w _z.
@@ -2027,7 +2808,10 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_wz(const vecdouble2 Inxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_wz(vecdouble2 const Inxmmd_a) uX_noexcept
+    {
+        m128_xmmd_1 = _uX_MM_PERMUTER_IM_PD(Inxmmd_a, 1, 0);
+    }
 
     /**
      * \brief Set the vector _w _z _x.
@@ -2036,7 +2820,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_wzx(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_wzx(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(InHxmmd_a.get_xmmd_1(), m128_xmmd_0, 0, 1);
+        m128_xmmd_1 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.get_xmmd_0(), 1, 0);
+    }
 
     /**
      * \brief Set the vector _w _z _x _y.
@@ -2045,7 +2833,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_wzxy(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_wzxy(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.m128_xmmd_1, 0, 1);
+        m128_xmmd_1 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.m128_xmmd_0, 1, 0);
+    }
 
     /**
      * \brief Set the vector _w _z _y.
@@ -2054,7 +2846,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_wzy(const vecdouble3 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_wzy(vecdouble3 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, InHxmmd_a.get_xmmd_1(), 0, 0);
+        m128_xmmd_1 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.get_xmmd_0(), 1, 0);
+    }
 
     /**
      * \brief Set the vector _w _z _y _x.
@@ -2063,7 +2859,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    void uX_ABI set_wzyx(const vecdouble4 InHxmmd_a) uX_noexcept;
+    uX_constexpr void uX_ABI set_wzyx(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.m128_xmmd_1, 1, 0);
+        m128_xmmd_1 = _uX_MM_PERMUTER_IM_PD(InHxmmd_a.m128_xmmd_0, 1, 0);
+    }
 
     /* Bitwise Operators */
 
@@ -2075,7 +2875,10 @@ public:
      * \param Inxmmd_a.
      * \param Inxmmd_b.
      */
-    friend vecdouble4 uX_ABI andnot(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI andnot(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_andnot_pd(InHxmmd_b.m128_xmmd_0, InHxmmd_a.m128_xmmd_0), _uX_mm_andnot_pd(InHxmmd_b.m128_xmmd_1, InHxmmd_a.m128_xmmd_1));
+    }
 
     /**
      * \brief Bitwise operator AND.
@@ -2085,7 +2888,10 @@ public:
      * \param Inxmmd_a.
      * \param Inxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator&(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator&(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_and_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_and_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Bitwise operator OR.
@@ -2095,7 +2901,10 @@ public:
      * \param Inxmmd_a.
      * \param Inxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator|(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator|(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_or_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_or_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Bitwise operator XOR.
@@ -2105,7 +2914,10 @@ public:
      * \param Inxmmd_a.
      * \param Inxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator^(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator^(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_xor_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_xor_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Bitwise operator NOT.
@@ -2115,7 +2927,10 @@ public:
      * \param Inxmmd_a.
      * \param Inxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator~(const vecdouble4 InHxmmd_a) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator~(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_not_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_not_pd(InHxmmd_a.m128_xmmd_1));
+    }
 
     /* Logical Operators */
 
@@ -2128,7 +2943,10 @@ public:
      * \param Inxmmd_b.
      * \return boolean integer.
      */
-    friend bool_t uX_ABI bandnot(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr bool_t uX_ABI bandnot(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return _uX_mm_iandnot_pd(InHxmmd_b.m128_xmmd_0, InHxmmd_a.m128_xmmd_0) && _uX_mm_iandnot_pd(InHxmmd_b.m128_xmmd_1, InHxmmd_a.m128_xmmd_1);
+    }
 
     /**
      * \brief Logical operator AND.
@@ -2139,7 +2957,10 @@ public:
      * \param Inxmmd_b.
      * \return boolean integer.
      */
-    friend bool_t uX_ABI operator&&(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr bool_t uX_ABI operator&&(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return _uX_mm_iand_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0) && _uX_mm_iand_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1);
+    }
 
     /**
      * \brief Logical operator OR.
@@ -2150,7 +2971,10 @@ public:
      * \param Inxmmd_b.
      * \return boolean integer.
      */
-    friend bool_t uX_ABI operator||(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr bool_t uX_ABI operator||(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return _uX_mm_ior_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0) || _uX_mm_ior_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1);
+    }
 
     /**
      * \brief Logical operator NOT.
@@ -2160,7 +2984,10 @@ public:
      * \param Inxmmd_a.
      * \return boolean integer.
      */
-    friend bool_t uX_ABI operator!(const vecdouble4 InHxmmd_a) uX_noexcept;
+    friend uX_constexpr bool_t uX_ABI operator!(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        return _uX_mm_inot_pd(InHxmmd_a.m128_xmmd_0) && _uX_mm_inot_pd(InHxmmd_a.m128_xmmd_1);
+    }
 
     /**
      * \brief Logical function HORIZONTAL AND.
@@ -2170,7 +2997,10 @@ public:
      * \param Inxmmd_a.
      * \return boolean integer.
      */
-    friend bool_t uX_ABI horizontal_and(const vecdouble4 InHxmmd_a) uX_noexcept;
+    friend uX_constexpr bool_t uX_ABI horizontal_and(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        return _uX_mm_ihand_pd(InHxmmd_a.m128_xmmd_0) && _uX_mm_ihand_pd(InHxmmd_a.m128_xmmd_1);
+    }
 
     /**
      * \brief Logical function HORIZONTAL OR.
@@ -2180,7 +3010,10 @@ public:
      * \param Inxmmd_a.
      * \return boolean integer.
      */
-    friend bool_t uX_ABI horizontal_or(const vecdouble4 InHxmmd_a) uX_noexcept;
+    friend uX_constexpr bool_t uX_ABI horizontal_or(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        return _uX_mm_ihor_pd(InHxmmd_a.m128_xmmd_0) || _uX_mm_ihor_pd(InHxmmd_a.m128_xmmd_1);
+    }
 
     /**
      * \brief Logical operator assignment AND.
@@ -2190,7 +3023,10 @@ public:
      * \param Inxmmd_a.
      * \param Inxmmd_b.
      */
-    friend vecdouble4& uX_ABI operator&=(vecdouble4& InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4& uX_ABI operator&=(vecdouble4& InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return InHxmmd_a = vecdouble4(_uX_mm_and_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_and_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Logical operator assignment OR.
@@ -2200,7 +3036,10 @@ public:
      * \param Inxmmd_a.
      * \param Inxmmd_b.
      */
-    friend vecdouble4& uX_ABI operator|=(vecdouble4& InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4& uX_ABI operator|=(vecdouble4& InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return InHxmmd_a = vecdouble4(_uX_mm_or_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_or_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Logical operator assignment XOR.
@@ -2210,7 +3049,10 @@ public:
      * \param Inxmmd_a.
      * \param Inxmmd_b.
      */
-    friend vecdouble4& uX_ABI operator^=(vecdouble4& InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4& uX_ABI operator^=(vecdouble4& InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return InHxmmd_a = vecdouble4(_uX_mm_xor_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_xor_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /* Arithmetic Operators */
 
@@ -2222,7 +3064,10 @@ public:
      * \param InHxmmd_a.
      * \param Indouble_b, broadcast same value to all elements.
      */
-    friend vecdouble4 uX_ABI operator+(const vecdouble4 InHxmmd_a, double Indouble_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator+(vecdouble4 const InHxmmd_a, double Indouble_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_add_pd(InHxmmd_a.m128_xmmd_0, _uX_mm_set1_pd(Indouble_b)), _uX_mm_add_pd(InHxmmd_a.m128_xmmd_1, _uX_mm_set1_pd(Indouble_b)));
+    }
 
     /**
      * \brief Arithmetic operator addition.
@@ -2232,7 +3077,10 @@ public:
      * \param Indouble_a, broadcast same value to all elements.
      * \param InHxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator+(double Indouble_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator+(double Indouble_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_add_pd(_uX_mm_set1_pd(Indouble_a), InHxmmd_b.m128_xmmd_0), _uX_mm_add_pd(_uX_mm_set1_pd(Indouble_a), InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Arithmetic operator addition.
@@ -2242,7 +3090,10 @@ public:
      * \param InHxmmd_a.
      * \param Inxmmd_b, broadcast same value to all elements.
      */
-    friend vecdouble4 uX_ABI operator+(const vecdouble4 InHxmmd_a, const __m128d Inxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator+(vecdouble4 const InHxmmd_a, __m128d const Inxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_add_pd(InHxmmd_a.m128_xmmd_0, Inxmmd_b), _uX_mm_add_pd(InHxmmd_a.m128_xmmd_1, Inxmmd_b));
+    }
 
     /**
      * \brief Arithmetic operator addition.
@@ -2252,7 +3103,10 @@ public:
      * \param Inxmmd_a, broadcast same value to all elements.
      * \param InHxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator+(const __m128d Inxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator+(__m128d const Inxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_add_pd(Inxmmd_a, InHxmmd_b.m128_xmmd_0), _uX_mm_add_pd(Inxmmd_a, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Arithmetic operator addition.
@@ -2262,7 +3116,10 @@ public:
      * \param InHxmmd_a.
      * \param InHxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator+(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator+(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_add_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_add_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Arithmetic operator subtraction.
@@ -2272,7 +3129,10 @@ public:
      * \param InHxmmd_a.
      * \param Indouble_b, broadcast same value to all elements.
      */
-    friend vecdouble4 uX_ABI operator-(const vecdouble4 InHxmmd_a, double Indouble_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator-(vecdouble4 const InHxmmd_a, double Indouble_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_sub_pd(InHxmmd_a.m128_xmmd_0, _uX_mm_set1_pd(Indouble_b)), _uX_mm_sub_pd(InHxmmd_a.m128_xmmd_1, _uX_mm_set1_pd(Indouble_b)));
+    }
 
     /**
      * \brief Arithmetic operator subtraction.
@@ -2282,7 +3142,10 @@ public:
      * \param Indouble_a, broadcast same value to all elements.
      * \param InHxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator-(double Indouble_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator-(double Indouble_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_sub_pd(_uX_mm_set1_pd(Indouble_a), InHxmmd_b.m128_xmmd_0), _uX_mm_sub_pd(_uX_mm_set1_pd(Indouble_a), InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Arithmetic operator subtraction.
@@ -2292,7 +3155,10 @@ public:
      * \param InHxmmd_a.
      * \param Inxmmd_b, broadcast same value to all elements.
      */
-    friend vecdouble4 uX_ABI operator-(const vecdouble4 InHxmmd_a, const __m128d Inxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator-(vecdouble4 const InHxmmd_a, __m128d const Inxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_sub_pd(InHxmmd_a.m128_xmmd_0, Inxmmd_b), _uX_mm_sub_pd(InHxmmd_a.m128_xmmd_1, Inxmmd_b));
+    }
 
     /**
      * \brief Arithmetic operator subtraction.
@@ -2302,7 +3168,10 @@ public:
      * \param Inxmmd_a, broadcast same value to all elements.
      * \param InHxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator-(const __m128d Inxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator-(__m128d const Inxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_sub_pd(Inxmmd_a, InHxmmd_b.m128_xmmd_0), _uX_mm_sub_pd(Inxmmd_a, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Arithmetic operator subtraction.
@@ -2312,7 +3181,10 @@ public:
      * \param Inxmmd_a.
      * \param Inxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator-(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator-(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_sub_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_sub_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Arithmetic operator multiplication.
@@ -2322,7 +3194,10 @@ public:
      * \param InHxmmd_a.
      * \param Indouble_b, broadcast same value to all elements.
      */
-    friend vecdouble4 uX_ABI operator*(const vecdouble4 InHxmmd_a, double Indouble_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator*(vecdouble4 const InHxmmd_a, double Indouble_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_mul_pd(InHxmmd_a.m128_xmmd_0, _uX_mm_set1_pd(Indouble_b)), _uX_mm_mul_pd(InHxmmd_a.m128_xmmd_1, _uX_mm_set1_pd(Indouble_b)));
+    }
 
     /**
      * \brief Arithmetic operator multiplication.
@@ -2332,7 +3207,10 @@ public:
      * \param Indouble_a, broadcast same value to all elements.
      * \param InHxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator*(double Indouble_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator*(double Indouble_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_mul_pd(_uX_mm_set1_pd(Indouble_a), InHxmmd_b.m128_xmmd_0), _uX_mm_mul_pd(_uX_mm_set1_pd(Indouble_a), InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Arithmetic operator multiplication.
@@ -2342,7 +3220,10 @@ public:
      * \param InHxmmd_a.
      * \param Inxmmd_b, broadcast same value to all elements.
      */
-    friend vecdouble4 uX_ABI operator*(const vecdouble4 InHxmmd_a, const __m128d Inxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator*(vecdouble4 const InHxmmd_a, __m128d const Inxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_mul_pd(InHxmmd_a.m128_xmmd_0, Inxmmd_b), _uX_mm_mul_pd(InHxmmd_a.m128_xmmd_1, Inxmmd_b));
+    }
 
     /**
      * \brief Arithmetic operator multiplication.
@@ -2352,7 +3233,10 @@ public:
      * \param Inxmmd_a, broadcast same value to all elements.
      * \param InHxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator*(const __m128d Inxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator*(__m128d const Inxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_mul_pd(Inxmmd_a, InHxmmd_b.m128_xmmd_0), _uX_mm_mul_pd(Inxmmd_a, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Arithmetic operator multiplication.
@@ -2362,7 +3246,10 @@ public:
      * \param Inxmmd_a.
      * \param Inxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator*(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator*(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_mul_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_mul_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Arithmetic operator division.
@@ -2372,7 +3259,10 @@ public:
      * \param InHxmmd_a.
      * \param Indouble_b, broadcast same value to all elements.
      */
-    friend vecdouble4 uX_ABI operator/(const vecdouble4 InHxmmd_a, double Indouble_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator/(vecdouble4 const InHxmmd_a, double Indouble_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_div_pd(InHxmmd_a.m128_xmmd_0, _uX_mm_set1_pd(Indouble_b)), _uX_mm_div_pd(InHxmmd_a.m128_xmmd_1, _uX_mm_set1_pd(Indouble_b)));
+    }
 
     /**
      * \brief Arithmetic operator division.
@@ -2382,7 +3272,10 @@ public:
      * \param Indouble_a, broadcast same value to all elements.
      * \param InHxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator/(double Indouble_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator/(double Indouble_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_div_pd(_uX_mm_set1_pd(Indouble_a), InHxmmd_b.m128_xmmd_0), _uX_mm_div_pd(_uX_mm_set1_pd(Indouble_a), InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Arithmetic operator division.
@@ -2392,7 +3285,10 @@ public:
      * \param InHxmmd_a.
      * \param Inxmmd_b, broadcast same value to all elements.
      */
-    friend vecdouble4 uX_ABI operator/(const vecdouble4 InHxmmd_a, const __m128d Inxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator/(vecdouble4 const InHxmmd_a, __m128d const Inxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_div_pd(InHxmmd_a.m128_xmmd_0, Inxmmd_b), _uX_mm_div_pd(InHxmmd_a.m128_xmmd_1, Inxmmd_b));
+    }
 
     /**
      * \brief Arithmetic operator division.
@@ -2402,7 +3298,10 @@ public:
      * \param Inxmmd_a, broadcast same value to all elements.
      * \param InHxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator/(const __m128d Inxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator/(__m128d const Inxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_div_pd(Inxmmd_a, InHxmmd_b.m128_xmmd_0), _uX_mm_div_pd(Inxmmd_a, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Arithmetic operator division.
@@ -2412,7 +3311,10 @@ public:
      * \param Inxmmd_a.
      * \param Inxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator/(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator/(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_div_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_div_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Arithmetic operator addition.
@@ -2422,7 +3324,10 @@ public:
      * \param Inxmmd_a.
      * \param Inxmmd_b.
      */
-    friend vecdouble4& uX_ABI operator+=(vecdouble4& InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4& uX_ABI operator+=(vecdouble4& InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return InHxmmd_a = vecdouble4(_uX_mm_add_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_add_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Arithmetic operator subtraction.
@@ -2432,7 +3337,10 @@ public:
      * \param Inxmmd_a.
      * \param Inxmmd_b.
      */
-    friend vecdouble4& uX_ABI operator-=(vecdouble4& InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4& uX_ABI operator-=(vecdouble4& InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return InHxmmd_a = vecdouble4(_uX_mm_sub_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_sub_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Arithmetic operator multiplication.
@@ -2442,7 +3350,10 @@ public:
      * \param Inxmmd_a.
      * \param Inxmmd_b.
      */
-    friend vecdouble4& uX_ABI operator*=(vecdouble4& InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4& uX_ABI operator*=(vecdouble4& InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return InHxmmd_a = vecdouble4(_uX_mm_mul_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_mul_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Arithmetic operator division.
@@ -2452,7 +3363,10 @@ public:
      * \param Inxmmd_a.
      * \param Inxmmd_b.
      */
-    friend vecdouble4& uX_ABI operator/=(vecdouble4& InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4& uX_ABI operator/=(vecdouble4& InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return InHxmmd_a = vecdouble4(_uX_mm_div_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_div_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /* Unary Operators */
 
@@ -2463,7 +3377,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    friend vecdouble4& uX_ABI operator++(vecdouble4& InHxmmd_a) uX_noexcept;
+    friend uX_constexpr vecdouble4& uX_ABI operator++(vecdouble4& InHxmmd_a) uX_noexcept
+    {
+        InHxmmd_a = InHxmmd_a + __m128d_1;
+        return InHxmmd_a;
+    }
 
     /**
      * \brief Unary prefix decrement operator.
@@ -2472,7 +3390,11 @@ public:
      *
      * \param Inxmmd_a.
      */
-    friend vecdouble4& uX_ABI operator--(vecdouble4& InHxmmd_a) uX_noexcept;
+    friend uX_constexpr vecdouble4& uX_ABI operator--(vecdouble4& InHxmmd_a) uX_noexcept
+    {
+        InHxmmd_a = InHxmmd_a - __m128d_1;
+        return InHxmmd_a;
+    }
 
     /**
      * \brief Unary postfix increment operator.
@@ -2481,7 +3403,12 @@ public:
      *
      * \param Inxmmd_a.
      */
-    friend vecdouble4 uX_ABI operator++(vecdouble4& InHxmmd_a, int) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator++(vecdouble4& InHxmmd_a, int) uX_noexcept
+    {
+        vecdouble4 tmpxmm_a0 = InHxmmd_a;
+        InHxmmd_a = InHxmmd_a + __m128d_1;
+        return tmpxmm_a0;
+    }
 
     /**
      * \brief Unary postfix decrement operator.
@@ -2490,7 +3417,12 @@ public:
      *
      * \param Inxmmd_a.
      */
-    friend vecdouble4 uX_ABI operator--(vecdouble4& InHxmmd_a, int) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator--(vecdouble4& InHxmmd_a, int) uX_noexcept
+    {
+        vecdouble4 tmpxmm_a0 = InHxmmd_a;
+        InHxmmd_a = InHxmmd_a - __m128d_1;
+        return tmpxmm_a0;
+    }
 
     /**
      * \brief Unary minus operator.
@@ -2499,7 +3431,10 @@ public:
      *
      * \param Inxmmd_a.
      */
-    friend vecdouble4 uX_ABI operator-(const vecdouble4 InHxmmd_a) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator-(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_negate_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_negate_pd(InHxmmd_a.m128_xmmd_1));
+    }
 
     /* Comparison Operators */
 
@@ -2511,7 +3446,10 @@ public:
      * \param Inxmmd_a.
      * \param Inxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator==(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator==(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_cmpeq_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_cmpeq_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Comparison operator less than.
@@ -2521,7 +3459,10 @@ public:
      * \param Inxmmd_a.
      * \param Inxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator<(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator<(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_cmplt_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_cmplt_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Comparison operator less than or equal.
@@ -2531,7 +3472,10 @@ public:
      * \param Inxmmd_a.
      * \param Inxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator<=(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator<=(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_cmple_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_cmple_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Comparison operator greater than.
@@ -2541,7 +3485,10 @@ public:
      * \param Inxmmd_a.
      * \param Inxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator>(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator>(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_cmpgt_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_cmpgt_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Comparison operator greater than or equal.
@@ -2551,7 +3498,10 @@ public:
      * \param Inxmmd_a.
      * \param Inxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator>=(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator>=(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_cmpge_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_cmpge_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Comparison operator not equal.
@@ -2561,7 +3511,10 @@ public:
      * \param Inxmmd_a.
      * \param Inxmmd_b.
      */
-    friend vecdouble4 uX_ABI operator!=(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI operator!=(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_cmpneq_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_cmpneq_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Index operator.
@@ -2571,7 +3524,10 @@ public:
      * \param index element to get.
      * \return double
      */
-    const double& uX_ABI operator[](count_t index) const uX_noexcept;
+    uX_constexpr double const& uX_ABI operator[](count_t index) const uX_noexcept
+    {
+        return extract(index);
+    }
 
     /**
      * \brief Index operator.
@@ -2581,7 +3537,11 @@ public:
      * \param index element to get.
      * \return double
      */
-    double& uX_ABI operator[](count_t index) uX_noexcept;
+    uX_constexpr double& uX_ABI operator[](count_t index) uX_noexcept
+    {
+        dblrettype = extract(index);
+        return dblrettype;
+    }
 
     /**
      * \brief Load unaligned.
@@ -2590,7 +3550,12 @@ public:
      *
      * \param Inpdouble pointer value to copy from.
      */
-    vecdouble4& uX_ABI m128_load(uX_InReads(2) const __m128d* Inpdouble) uX_noexcept;
+    uX_constexpr vecdouble4& uX_ABI m128_load(uX_InReads(2) __m128d const* const Inpdouble) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_mm_loadu_pd(Inpdouble);
+        m128_xmmd_1 = _uX_mm_loadu_pd(Inpdouble+1);
+        return *this;
+    }
 
     /**
      * \brief Load aligned.
@@ -2601,7 +3566,12 @@ public:
      *
      * \param Inpdouble pointer value to copy from.
      */
-    vecdouble4& uX_ABI m128_load_a(uX_InReads(2) const __m128d* Inpdouble) uX_noexcept;
+    uX_constexpr vecdouble4& uX_ABI m128_load_a(uX_InReads(2) __m128d const* const Inpdouble) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_mm_load_pd(Inpdouble);
+        m128_xmmd_1 = _uX_mm_load_pd(Inpdouble+1);
+        return *this;
+    }
 
     /**
      * \brief Load unaligned.
@@ -2610,7 +3580,12 @@ public:
      *
      * \param Inpdouble pointer value to copy from.
      */
-    vecdouble4& uX_ABI load(uX_InReads(4) const double* Inpdouble) uX_noexcept;
+    uX_constexpr vecdouble4& uX_ABI load(uX_InReads(4) double const* const Inpdouble) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_mm_loadu_pd(reinterpret_cast<__m128d const* const>(Inpdouble));
+        m128_xmmd_1 = _uX_mm_loadu_pd(reinterpret_cast<__m128d const* const>(Inpdouble+2));
+        return *this;
+    }
 
     /**
      * \brief Load aligned.
@@ -2621,8 +3596,13 @@ public:
      *
      * \param Inpdouble pointer value to copy from.
      */
-    vecdouble4& uX_ABI load_a(uX_InReads(4) const double* Inpdouble) uX_noexcept;
-    
+    uX_constexpr vecdouble4& uX_ABI load_a(uX_InReads(4) double const* const Inpdouble) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_mm_load_pd(reinterpret_cast<__m128d const* const>(Inpdouble));
+        m128_xmmd_1 = _uX_mm_load_pd(reinterpret_cast<__m128d const* const>(Inpdouble+2));
+        return *this;
+    }
+
     /**
      * \brief Store function unaligned.
      *
@@ -2630,7 +3610,11 @@ public:
      *
      * \param Outpdouble pointer value to store to.
      */
-    void uX_ABI m128_store(uX_OutWrites(2) __m128d* Outpdouble) const uX_noexcept;
+    uX_constexpr void uX_ABI m128_store(uX_OutWrites(2) __m128d* Outpdouble) const uX_noexcept
+    {
+        _uX_mm_storeu_pd(Outpdouble, m128_xmmd_0);
+        _uX_mm_storeu_pd(Outpdouble+1, m128_xmmd_1);
+    }
 
     /**
      * \brief Store function aligned.
@@ -2641,7 +3625,11 @@ public:
      *
      * \param Outpdouble pointer value to store to.
      */
-    void uX_ABI m128_store_a(uX_OutWrites(2) __m128d* Outpdouble) const uX_noexcept;
+    uX_constexpr void uX_ABI m128_store_a(uX_OutWrites(2) __m128d* Outpdouble) const uX_noexcept
+    {
+        _uX_mm_store_pd(Outpdouble, m128_xmmd_0);
+        _uX_mm_store_pd(Outpdouble+1, m128_xmmd_1);
+    }
 
     /**
      * \brief Store function unaligned.
@@ -2650,7 +3638,11 @@ public:
      *
      * \param Outpdouble pointer value to store to.
      */
-    void uX_ABI store(uX_OutWrites(4) double* Outpdouble) const uX_noexcept;
+    uX_constexpr void uX_ABI store(uX_OutWrites(4) double* Outpdouble) const uX_noexcept
+    {
+        _uX_mm_storeu_pd(reinterpret_cast<__m128d*>(Outpdouble), m128_xmmd_0);
+        _uX_mm_storeu_pd(reinterpret_cast<__m128d*>(Outpdouble+2), m128_xmmd_1);
+    }
 
     /**
      * \brief Store function aligned.
@@ -2661,7 +3653,11 @@ public:
      *
      * \param Outpdouble pointer value to store to.
      */
-    void uX_ABI store_a(uX_OutWrites(4) double* Outpdouble) const uX_noexcept;
+    uX_constexpr void uX_ABI store_a(uX_OutWrites(4) double* Outpdouble) const uX_noexcept
+    {
+        _uX_mm_store_pd(reinterpret_cast<__m128d*>(Outpdouble), m128_xmmd_0);
+        _uX_mm_store_pd(reinterpret_cast<__m128d*>(Outpdouble+2), m128_xmmd_1);
+    }
 
     /**
      * \brief Insert function.
@@ -2672,7 +3668,19 @@ public:
      * \param index element to set.
      * \return vector
      */
-    const vecdouble4 uX_ABI insert(double value, count_t index) uX_noexcept;
+    uX_constexpr vecdouble4 const uX_ABI insert(double value, count_t index) uX_noexcept
+    {
+        if (index > 3) return *this;
+        if (index > 1)
+        {
+            m128_xmmd_1 = _uX_mm_setelts_pd(m128_xmmd_1, value, index-2);
+        }
+        else
+        {
+            m128_xmmd_0 = _uX_mm_setelts_pd(m128_xmmd_0, value, index);
+        }
+        return *this;
+    }
 
     /**
      * \brief Extract function.
@@ -2682,12 +3690,21 @@ public:
      * \param index element to get.
      * \return double
      */
-    double uX_ABI extract(count_t index) const uX_noexcept;
+    uX_constexpr double uX_ABI extract(count_t index) const uX_noexcept
+    {
+        if (index > 3) return 0.0;
+        return index > 1 ? _uX_mm_cvtelts_dbl(m128_xmmd_1, index - 2) : _uX_mm_cvtelts_dbl(m128_xmmd_0, index);
+    }
 
     /**
      * \brief Set all elements to zero.
      */
-    vecdouble4& uX_ABI zero() uX_noexcept;
+    uX_constexpr vecdouble4& uX_ABI zero(void) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_mm_setzero_pd();
+        m128_xmmd_1 = _uX_mm_setzero_pd();
+        return *this;
+    }
 
     /**
      * \brief Cut off vector to n elements.
@@ -2697,7 +3714,25 @@ public:
      *
      * \param indexN element's to cut.
      */
-    vecdouble4& uX_ABI cutoff(count_t indexN) uX_noexcept;
+    uX_constexpr vecdouble4& uX_ABI cutoff(count_t indexN) uX_noexcept
+    {
+        switch (indexN)
+        {
+            case 1:
+                m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, __m128d_0, 0, 1);
+                m128_xmmd_1 = __m128d_0;
+                break;
+            case 2:
+                m128_xmmd_1 = __m128d_0;
+                break;
+            case 3:
+                m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, __m128d_0, 0, 1);
+                break;
+            default:
+                break;
+        }
+        return *this;
+    }
 
     /**
      * \brief Flip Sign function.
@@ -2707,7 +3742,10 @@ public:
      * \param Inxmmd_a the vector to flip sign.
      * \return vector.
      */
-    friend vecdouble4 uX_ABI flip_sign(const vecdouble4 InHxmmd_a) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI flip_sign(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_xor_pd(InHxmmd_a.m128_xmmd_0, __m128d_sign), _uX_mm_xor_pd(InHxmmd_a.m128_xmmd_1, __m128d_sign));
+    }
 
     /**
      * \brief Test if all elements if is zero.
@@ -2717,7 +3755,10 @@ public:
      * \param Inxmmd_a the vector to test.
      * \return boolean integer.
      */
-    friend bool_t uX_ABI is_zero(const vecdouble4 InHxmmd_a) uX_noexcept;
+    friend uX_constexpr bool_t uX_ABI is_zero(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        return _uX_mm_iszero_pd(InHxmmd_a.m128_xmmd_0) && _uX_mm_iszero_pd(InHxmmd_a.m128_xmmd_1);
+    }
 
     /**
      * \brief Select between two operands.
@@ -2732,7 +3773,10 @@ public:
      * \param Inxmmd_b the b vector to select.
      * \return the selected vector elements.
      */
-    friend vecdouble4 uX_ABI select(const vecdouble4 InHxmmd_f, const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI select(vecdouble4 const InHxmmd_f, vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_select_pd(InHxmmd_f.m128_xmmd_0, InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_select_pd(InHxmmd_f.m128_xmmd_1, InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Conditional add.
@@ -2746,7 +3790,10 @@ public:
      * \param Inxmmd_b the b vector to add.
      * \return the selected vector addition.
      */
-    friend vecdouble4 uX_ABI if_add(const vecdouble4 InHxmmd_f, const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI if_add(vecdouble4 const InHxmmd_f, vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return InHxmmd_a + (InHxmmd_f & InHxmmd_b);
+    }
 
     /**
      * \brief Conditional subtract.
@@ -2760,7 +3807,10 @@ public:
      * \param Inxmmd_b the b vector to subtract.
      * \return the selected vector subtraction.
      */
-    friend vecdouble4 uX_ABI if_sub(const vecdouble4 InHxmmd_f, const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI if_sub(vecdouble4 const InHxmmd_f, vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return InHxmmd_a - (InHxmmd_f & InHxmmd_b);
+    }
 
     /**
      * \brief Conditional multiply.
@@ -2774,7 +3824,10 @@ public:
      * \param Inxmmd_b the b vector to multiply.
      * \return the selected vector multiplication.
      */
-    friend vecdouble4 uX_ABI if_mul(const vecdouble4 InHxmmd_f, const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI if_mul(vecdouble4 const InHxmmd_f, vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return InHxmmd_a * select(InHxmmd_f, InHxmmd_b, vecdouble4(__m128d_1));
+    }
 
     /**
      * \brief Conditional multiply.
@@ -2788,7 +3841,10 @@ public:
      * \param Inxmmd_b the b vector to divide.
      * \return the selected vector division.
      */
-    friend vecdouble4 uX_ABI if_div(const vecdouble4 InHxmmd_f, const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI if_div(vecdouble4 const InHxmmd_f, vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return InHxmmd_a / select(InHxmmd_f, InHxmmd_b, vecdouble4(__m128d_1));
+    }
 
     /**
      * \brief Change signs on vector at compile time.
@@ -2800,9 +3856,10 @@ public:
      *
      */
     template <int i0, int i1, int i2, int i3>
-    friend uX_constexpr vecdouble4 uX_ABI change_sign(const vecdouble4 InHxmmd_a) uX_noexcept {
+    friend uX_constexpr vecdouble4 uX_ABI change_sign(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
         if ((i0 | i1 | i2 | i3) == 0) return InHxmmd_a;
-        return InHxmmd_a ^ vecdouble4(constant4ui64<i0 ? 0x8000000000000000 : 0, i1 ? 0x8000000000000000 : 0, i2 ? 0x8000000000000000 : 0, i3 ? 0x8000000000000000 : 0>());
+        return InHxmmd_a ^ vecdouble4(vecuqword4::constant<i0 ? 0x8000000000000000 : 0, i1 ? 0x8000000000000000 : 0, i2 ? 0x8000000000000000 : 0, i3 ? 0x8000000000000000 : 0>());
     }
 
     /**
@@ -2814,7 +3871,10 @@ public:
      * \param Inxmmd_a the a vector.
      * \return vector.
      */
-    friend vecdouble4 uX_ABI sign_bit(const vecdouble4 InHxmmd_a) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI sign_bit(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_signbit_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_signbit_pd(InHxmmd_a.m128_xmmd_1));
+    }
 
     /**
      * \brief Sign combine.
@@ -2826,7 +3886,10 @@ public:
      * \param Inxmmd_b the b vector.
      * \return vector.
      */
-    friend vecdouble4 uX_ABI sign_combine(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI sign_combine(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_signcombine_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_signcombine_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Is finite.
@@ -2836,7 +3899,10 @@ public:
      * \param Inxmmd_a the a vector.
      * \return vector.
      */
-    friend vecdouble4 uX_ABI is_finite(const vecdouble4 InHxmmd_a) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI is_finite(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_isfinite_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_isfinite_pd(InHxmmd_a.m128_xmmd_1));
+    }
 
     /**
      * \brief Is inf.
@@ -2846,7 +3912,10 @@ public:
      * \param Inxmmd_a the a vector.
      * \return vector.
      */
-    friend vecdouble4 uX_ABI is_inf(const vecdouble4 InHxmmd_a) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI is_inf(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_isinf_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_isinf_pd(InHxmmd_a.m128_xmmd_1));
+    }
 
     /**
      * \brief Is nan.
@@ -2856,7 +3925,10 @@ public:
      * \param Inxmmd_a the a vector.
      * \return vector.
      */
-    friend vecdouble4 uX_ABI is_nan(const vecdouble4 InHxmmd_a) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI is_nan(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_isnan_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_isnan_pd(InHxmmd_a.m128_xmmd_1));
+    }
 
     /**
      * \brief Is subnormal.
@@ -2866,7 +3938,10 @@ public:
      * \param Inxmmd_a the a vector.
      * \return vector.
      */
-    friend vecdouble4 uX_ABI is_subnormal(const vecdouble4 InHxmmd_a) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI is_subnormal(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_issubnormal_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_issubnormal_pd(InHxmmd_a.m128_xmmd_1));
+    }
 
     /**
      * \brief Is zero or subnormal.
@@ -2876,21 +3951,34 @@ public:
      * \param Inxmmd_a the a vector.
      * \return vector.
      */
-    friend vecdouble4 uX_ABI is_zero_or_subnormal(const vecdouble4 InHxmmd_a) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI is_zero_or_subnormal(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_iszeroorsubnormal_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_iszeroorsubnormal_pd(InHxmmd_a.m128_xmmd_1));
+    }
 
     /**
      * \brief Infinite.
      *
      * \return a vector where all elements are +INF.
      */
-    vecdouble4& uX_ABI infinite() uX_noexcept;
+    uX_constexpr vecdouble4& uX_ABI infinite(void) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_mm_infinite_pd();
+        m128_xmmd_1 = _uX_mm_infinite_pd();
+        return *this;
+    }
 
     /**
      * \brief Nan.
      *
      * \return a vector where all elements are NAN (quiet).
      */
-    vecdouble4& uX_ABI nan() uX_noexcept;
+    uX_constexpr vecdouble4& uX_ABI nan(void) uX_noexcept
+    {
+        m128_xmmd_0 = _uX_mm_nan_pd();
+        m128_xmmd_1 = _uX_mm_nan_pd();
+        return *this;
+    }
 
     /**
      * \brief Is Horizontal add.
@@ -2900,8 +3988,11 @@ public:
      * \param Inxmmd_a the a vector.
      * \return double.
      */
-    friend double uX_ABI horizontal_add(const vecdouble4 InHxmmd_a) uX_noexcept;
-    
+    friend uX_constexpr double uX_ABI horizontal_add(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        return horizontal_add(vecdouble2(_uX_mm_horizontaladd_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_horizontaladd_pd(InHxmmd_a.m128_xmmd_1)));
+    }
+
     /**
      * \brief Horizontal sub.
      *
@@ -2910,7 +4001,10 @@ public:
      * \param Inxmmd_a the a vector.
      * \return double.
      */
-    friend double uX_ABI horizontal_sub(const vecdouble4 InHxmmd_a) uX_noexcept;
+    friend uX_constexpr double uX_ABI horizontal_sub(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        return horizontal_sub(vecdouble2(_uX_mm_horizontalsub_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_horizontalsub_pd(InHxmmd_a.m128_xmmd_1)));
+    }
 
     /**
      * \brief Horizontal mull.
@@ -2920,7 +4014,10 @@ public:
      * \param Inxmmd_a the a vector.
      * \return double.
      */
-    friend double uX_ABI horizontal_mul(const vecdouble4 InHxmmd_a) uX_noexcept;
+    friend uX_constexpr double uX_ABI horizontal_mul(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        return horizontal_mul(vecdouble2(_uX_mm_horizontalmul_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_horizontalmul_pd(InHxmmd_a.m128_xmmd_1)));
+    }
 
     /**
      * \brief Max.
@@ -2931,7 +4028,10 @@ public:
      * \param Inxmmd_b the b vector.
      * \return vector.
      */
-    friend vecdouble4 uX_ABI max(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI max(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_max_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_max_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Min.
@@ -2942,7 +4042,10 @@ public:
      * \param Inxmmd_b the b vector.
      * \return vector.
      */
-    friend vecdouble4 uX_ABI min(const vecdouble4 InHxmmd_a, const vecdouble4 InHxmmd_b) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI min(vecdouble4 const InHxmmd_a, vecdouble4 const InHxmmd_b) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_min_pd(InHxmmd_a.m128_xmmd_0, InHxmmd_b.m128_xmmd_0), _uX_mm_min_pd(InHxmmd_a.m128_xmmd_1, InHxmmd_b.m128_xmmd_1));
+    }
 
     /**
      * \brief Abs.
@@ -2952,7 +4055,10 @@ public:
      * \param Inxmmd_a the a vector..
      * \return vector.
      */
-    friend vecdouble4 uX_ABI abs(const vecdouble4 InHxmmd_a) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI abs(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_abs_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_abs_pd(InHxmmd_a.m128_xmmd_1));
+    }
 
     /**
      * \brief Square.
@@ -2962,7 +4068,10 @@ public:
      * \param Inxmmd_a the a vector.
      * \return vector.
      */
-    friend vecdouble4 uX_ABI square(const vecdouble4 InHxmmd_a) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI square(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_square_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_square_pd(InHxmmd_a.m128_xmmd_1));
+    }
 
     /**
      * \brief Scale.
@@ -2973,7 +4082,10 @@ public:
      * \param Indouble_s the double scale factor.
      * \return vector.
      */
-    friend vecdouble4 uX_ABI scale(const vecdouble4 InHxmmd_a, double Indouble_s) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI scale(vecdouble4 const InHxmmd_a, double Indouble_s) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_scale_pd(InHxmmd_a.m128_xmmd_0, Indouble_s), _uX_mm_scale_pd(InHxmmd_a.m128_xmmd_1, Indouble_s));
+    }
 
     /**
      * \brief rcp.
@@ -2983,7 +4095,10 @@ public:
      * \param Inxmmd_a the a vector.
      * \return vector.
      */
-    friend vecdouble4 uX_ABI rcp(const vecdouble4 InHxmmd_a) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI rcp(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_rcp_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_rcp_pd(InHxmmd_a.m128_xmmd_1));
+    }
 
     /**
      * \brief sqrt.
@@ -2993,7 +4108,10 @@ public:
      * \param Inxmmd_a the a vector.
      * \return vector.
      */
-    friend vecdouble4 uX_ABI sqrt(const vecdouble4 InHxmmd_a) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI sqrt(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_sqrt_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_sqrt_pd(InHxmmd_a.m128_xmmd_1));
+    }
 
     /**
      * \brief rsqrt.
@@ -3003,7 +4121,10 @@ public:
      * \param Inxmmd_a the a vector.
      * \return vector.
      */
-    friend vecdouble4 uX_ABI rsqrt(const vecdouble4 InHxmmd_a) uX_noexcept;
+    friend uX_constexpr vecdouble4 uX_ABI rsqrt(vecdouble4 const InHxmmd_a) uX_noexcept
+    {
+        return vecdouble4(_uX_mm_rsqrt_pd(InHxmmd_a.m128_xmmd_0), _uX_mm_rsqrt_pd(InHxmmd_a.m128_xmmd_1));
+    }
 
 protected:
 
@@ -3022,15 +4143,98 @@ private:
         __m128d        m128_xmmd[2];
         double            m128_d[4];
     };
+    vecdouble3       vecdbl3rettype;
+    vecdouble2       vecdbl2rettype;
+    double               dblrettype;
 
 public:
-    uX_const uint32_t uX_ABI m128_xmm_ptr_lenght    () const uX_noexcept { return  2; }
-    uX_const uint32_t uX_ABI m128_xmm_ptr_size      () const uX_noexcept { return 32; }
-    uX_const uint32_t uX_ABI m128_xmm_size          () const uX_noexcept { return 16; }
-    uX_const uint32_t uX_ABI m128_xmm_dbl_elements  () const uX_noexcept { return  2; }
-    uX_const uint32_t uX_ABI m128_dbl_ptr_lenght    () const uX_noexcept { return  4; }
-    uX_const uint32_t uX_ABI m128_dbl_ptr_size      () const uX_noexcept { return 32; }
-    uX_const uint32_t uX_ABI m128_dbl_size          () const uX_noexcept { return  8; }
+    /**
+     * \brief xmm size
+     * \details Gets the xmm vector size
+     * \returns count_t
+     * \retval the xmm size
+     */
+    uX_constexpr count_t const uX_ABI xmm_size(void) const uX_noexcept
+    {
+        return 16;
+    }
+
+    /**
+     * \brief xmm double elements
+     * \details Gets the quantity of xmm vector double elements
+     * \returns count_t
+     * \retval the quantity of xmm double elements
+     */
+    uX_constexpr count_t const uX_ABI xmm_dbl_elements(void) const uX_noexcept
+    {
+        return 2;
+    }
+
+    /**
+     * \brief double size
+     * \details Gets the double size
+     * \returns count_t
+     * \retval the xmm double size
+     */
+    uX_constexpr count_t const uX_ABI dbl_size(void) const uX_noexcept
+    {
+        return 8;
+    }
+
+    /**
+     * \brief double elements
+     * \details Gets the quantity of double elements
+     * \returns count_t
+     * \retval the quantity of double elements
+     */
+    uX_constexpr count_t const uX_ABI dbl_elements(void) const uX_noexcept
+    {
+        return 4;
+    }
+
+    /**
+     * \brief __m128d pointer length
+     * \details Gets the length of __m128d pointer
+     * \returns count_t
+     * \retval the length of __m128d pointer
+     */
+    uX_constexpr count_t const uX_ABI xmm_ptr_lenght(void) const uX_noexcept
+    {
+        return 2;
+    }
+
+    /**
+     * \brief __m128d pointer size
+     * \details Gets the size of __m128d pointer
+     * \returns count_t
+     * \retval the size of __m128d pointer
+     */
+    uX_constexpr count_t const uX_ABI xmm_ptr_size(void) const uX_noexcept
+    {
+        return 32;
+    }
+
+    /**
+     * \brief double pointer length
+     * \details Gets the length of double pointer
+     * \returns count_t
+     * \retval the length of double pointer
+     */
+    uX_constexpr count_t const uX_ABI dbl_ptr_lenght(void) const uX_noexcept
+    {
+        return 4;
+    }
+
+    /**
+     * \brief double pointer size
+     * \details Gets the size of double pointer
+     * \returns count_t
+     * \retval the size of double pointer
+     */
+    uX_constexpr count_t const uX_ABI dbl_ptr_size(void) const uX_noexcept
+    {
+        return 32;
+    }
 
 }vecdouble4_t;
 

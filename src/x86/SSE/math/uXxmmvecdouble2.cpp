@@ -6,13 +6,16 @@
 #ifdef uX_SSE
 
 // Intel TBB library
-#include "tbb/task_scheduler_init.h"
-using namespace tbb;
+/*
+#if defined(uX_XMM_MATH_SUPPORTS_TBB)
+//#include "tbb/task_scheduler_init.h"
 #include "tbb/parallel_for.h"
 #include "tbb/blocked_range.h"
 #include "tbb/blocked_range2d.h"
 #include "tbb/partitioner.h"
 #include "tbb/task_group.h"
+using namespace tbb;
+#endif*/
 
 #include "uXxmmintrin.h"
 #include "uXemmintrin.h"
@@ -35,6 +38,7 @@ vecdouble2::vecdouble2(const __m128d Inxmmd)
     m128_xmmd = Inxmmd;
 }*/
 
+/*
 vecdouble2::vecdouble2(const double Indouble_X, const double Indouble_Y)
 {
     m128_xmmd = _uX_mm_set_pd(Indouble_Y, Indouble_X);
@@ -49,7 +53,7 @@ vecdouble2::vecdouble2(const double* Inpdouble)
 vecdouble2::operator __m128d(void) const
 {
     return m128_xmmd;
-}
+}*/
 
 /*
 vecdouble2::operator double*(void) const
@@ -58,6 +62,7 @@ vecdouble2::operator double*(void) const
 }
 */
 
+/*
 vecdouble2& uX_callconv vecdouble2::operator=(const __m128d Inxmmd)
 {
     m128_xmmd = Inxmmd;
@@ -69,7 +74,7 @@ vecdouble2& uX_callconv vecdouble2::operator=(const double* Inpdouble)
 {
     m128_xmmd = _uX_mm_loadu_pd(Inpdouble);
     return *this;
-}
+}*/
 
 #endif // uX_SSE2
 
