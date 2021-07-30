@@ -361,6 +361,18 @@ public:
      */
     void uX_ABI set(const __m128i Inxmmi) uX_noexcept;
 
+    /**
+     * \brief Generate a constant vector of 3 32bits unsigned integer at compile time.
+     *
+     * Generate a constant vector of 3 32bits unsigned integer at compile time stored in memory.
+     *
+     */
+    template <uint32_t i0, uint32_t i1, uint32_t i2>
+    uX_constexpr vecudword3 const uX_ABI constant(void) const uX_noexcept
+    {
+        return vecudword3(i0, i1, i2);
+    }
+
 protected:
 
 private:

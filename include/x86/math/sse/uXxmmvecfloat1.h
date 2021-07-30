@@ -139,9 +139,9 @@ class vecdouble4x4;
  * \class vecfloat1
  * \brief SSE SIMD class with the size of 1 float element
  * \details The \p vecfloat1 class is an 1 element wide 32bit float element where
-    it provides interoperability between \p vecdword1 and \p vecudword1 class's
+    it provides interoperability between \p vecdword1 \p vecudword1 \p vecdouble1 class's
  */
-typedef class uX_API vecfloat1
+typedef class vecfloat1
 {
 public:
     vecfloat1()uX_default;
@@ -250,7 +250,7 @@ public:
      * \param[in] Inbool - bool_t Read only
      * \Note Sets the _x  float element
      */
-    uX_constexpr vecfloat1(bool_t const Inbool) uX_noexcept : m128_xmm(vecfloat1(vecdword1(Inbool))) {}
+    uX_constexpr vecfloat1(bool_t const Inbool) uX_noexcept : m128_xmm(vecfloat1(vecudword1(Inbool))) {}
 
     /**
      * \fn uX::xmm::vecfloat1::vecfloat1(bool const Inbool) uX_noexcept
@@ -259,7 +259,7 @@ public:
      * \param[in] Inbool - bool Read only
      * \Note Sets the _x  float element
      */
-    uX_constexpr vecfloat1(bool const Inbool) uX_noexcept : m128_xmm(vecfloat1(vecdword1(Inbool))) {}
+    uX_constexpr vecfloat1(bool const Inbool) uX_noexcept : m128_xmm(vecfloat1(vecudword1(Inbool))) {}
 
     /**
      * \brief __m128 type cast operator
@@ -306,7 +306,7 @@ public:
      */
     uX_constexpr vecfloat1& uX_ABI operator=(__m128 const Inxmm) uX_noexcept
     {
-        m128_xmm = _uX_mm_move_ss(__m128_false, Inxmm);
+        m128_xmm = vecfloat1(Inxmm);
         return *this;
     }
 
@@ -440,8 +440,8 @@ public:
 
     /**
      * \brief Get reference to vector
-     * \details Gets reference to __m128d vector
-     * \returns __m128d
+     * \details Gets reference to __m128 vector
+     * \returns __m128
      */
     uX_constexpr __m128& uX_ABI ref() uX_noexcept
     {
@@ -466,7 +466,7 @@ public:
      */
     uX_constexpr void uX_ABI set(__m128 const Inxmm) uX_noexcept
     {
-        m128_xmm = _uX_mm_move_ss(__m128_false, Inxmm);
+        m128_xmm = vecfloat1(Inxmm);
     }
 
     /**
@@ -477,7 +477,1036 @@ public:
      */
     uX_constexpr void uX_ABI set_x(float Infloat_a) uX_noexcept
     {
-        m128_xmm = _uX_MM_SETFLT_IM_PS(__m128_false, Infloat_a, 0);
+        m128_xmm = _uX_MM_SETFLT_IM_PS(m128_xmm, Infloat_a, 0);
+    }
+
+    /* Bitwise Operators */
+
+    /**
+     * \brief Bitwise function ANDNOT
+     * \details Performs the compute and not from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a andnot \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI andnot(vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_andnot_ss(Inxmm_b, Inxmm_a));
+    }
+
+    /**
+     * \brief Bitwise operator AND
+     * \details Performs the compute and from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a and \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator&(vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_and_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Bitwise operator OR
+     * \details Performs the compute or from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a or \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator|(vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_or_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Bitwise operator XOR
+     * \details Performs the compute xor from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a xor \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator^(vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_xor_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Bitwise operator NOT
+     * \details Performs the compute not from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a not \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator~(vecfloat1 const Inxmm_a) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_not_ss(Inxmm_a));
+    }
+
+    /* Logical Operators */
+
+    /**
+     * \brief Logical function ANDNOT
+     * \details Performs the compute and not from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns bool_t
+     * \retval the computed boolean \p Inxmm_a andnot \p Inxmm_b
+     */
+    friend uX_constexpr bool_t uX_ABI bandnot(vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return _uX_mm_iandnot_ss(Inxmm_b, Inxmm_a);
+    }
+
+    /**
+     * \brief Logical operator AND
+     * \details Performs the compute and from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns bool_t
+     * \retval the computed boolean \p Inxmm_a && \p Inxmm_b
+     */
+    friend uX_constexpr bool_t uX_ABI operator&&(vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return _uX_mm_iand_ss(Inxmm_a, Inxmm_b);
+    }
+
+    /**
+     * \brief Logical operator OR
+     * \details Performs the compute OR from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns bool_t
+     * \retval the computed boolean \p Inxmm_a || \p Inxmm_b
+     */
+    friend uX_constexpr bool_t uX_ABI operator||(vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return _uX_mm_ior_ss(Inxmm_a, Inxmm_b);
+    }
+
+    /**
+     * \brief Logical operator NOT
+     * \details Performs the compute not from the 1 parameter
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \returns bool_t
+     * \retval the computed boolean not \p Inxmm_a
+     */
+    friend uX_constexpr bool_t uX_ABI operator!(vecfloat1 const Inxmm_a) uX_noexcept
+    {
+        return _uX_mm_inot_ss(Inxmm_a);
+    }
+
+    /**
+     * \brief Logical operator assignment AND
+     * \details Performs the compute and from the 2 parameters, and assigns to the first parameter
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a &= \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1& uX_ABI operator&=(vecfloat1& Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return Inxmm_a = vecfloat1(_uX_mm_and_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Logical operator assignment OR
+     * \details Performs the compute or from the 2 parameters, and assigns to the first parameter
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a |= \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1& uX_ABI operator|=(vecfloat1& Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return Inxmm_a = vecfloat1(_uX_mm_or_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Logical operator assignment XOR
+     * \details Performs the compute xor from the 2 parameters, and assigns to the first parameter
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a ^= \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1& uX_ABI operator^=(vecfloat1& Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return Inxmm_a = vecfloat1(_uX_mm_xor_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /* Arithmetic Operators */
+
+    /**
+     * \brief Arithmetic operator addition
+     * \details Performs the compute addition from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Infloat_b - float broadcast same value to all elements
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a + \p Infloat_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator+(vecfloat1 const Inxmm_a, float Infloat_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_add_ss(Inxmm_a, _uX_mm_set_ss(Infloat_b)));
+    }
+
+    /**
+     * \brief Arithmetic operator addition
+     * \details Performs the compute addition from the 2 parameters
+     * \param[in] Infloat_a - float broadcast same value to all elements
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Infloat_a + \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator+(float Infloat_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_add_ss(_uX_mm_set_ss(Infloat_a), Inxmm_b));
+    }
+
+    /**
+     * \brief Arithmetic operator addition
+     * \details Performs the compute addition from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - __m128 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a + \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator+(vecfloat1 const Inxmm_a, __m128 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_add_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Arithmetic operator addition
+     * \details Performs the compute addition from the 2 parameters
+     * \param[in] Inxmm_a - __m128 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a + \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator+(__m128 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_add_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Arithmetic operator addition
+     * \details Performs the compute addition from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a + \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator+(vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_add_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Arithmetic operator subtraction
+     * \details Performs the compute subtraction from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Infloat_b - float broadcast same value to all elements
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a - \p Infloat_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator-(vecfloat1 const Inxmm_a, float Infloat_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_sub_ss(Inxmm_a, _uX_mm_set_ss(Infloat_b)));
+    }
+
+    /**
+     * \brief Arithmetic operator subtraction
+     * \details Performs the compute subtraction from the 2 parameters
+     * \param[in] Infloat_a - float broadcast same value to all elements
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Infloat_a - \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator-(float Infloat_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_sub_ss(_uX_mm_set_ss(Infloat_a), Inxmm_b));
+    }
+    /**
+     * \brief Arithmetic operator subtraction
+     * \details Performs the compute subtraction from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - __m128 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a - \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator-(vecfloat1 const Inxmm_a, __m128 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_sub_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Arithmetic operator subtraction
+     * \details Performs the compute subtraction from the 2 parameters
+     * \param[in] Inxmm_a - __m128 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a - \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator-(__m128 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_sub_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Arithmetic operator subtraction
+     * \details Performs the compute subtraction from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a - \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator-(vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_sub_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Arithmetic operator multiplication
+     * \details Performs the compute multiplication from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Infloat_b - float broadcast same value to all elements
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a * \p Infloat_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator*(vecfloat1 const Inxmm_a, float Infloat_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_mul_ss(Inxmm_a, _uX_mm_set_ss(Infloat_b)));
+    }
+
+    /**
+     * \brief Arithmetic operator multiplication
+     * \details Performs the compute multiplication from the 2 parameters
+     * \param[in] Infloat_a - float broadcast same value to all elements
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Infloat_a * \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator*(float Infloat_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_mul_ss(_uX_mm_set_ss(Infloat_a), Inxmm_b));
+    }
+
+    /**
+     * \brief Arithmetic operator multiplication
+     * \details Performs the compute multiplication from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - __m128 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a * \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator*(vecfloat1 const Inxmm_a, __m128 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_mul_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Arithmetic operator multiplication
+     * \details Performs the compute multiplication from the 2 parameters
+     * \param[in] Inxmm_a - __m128 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a * \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator*(__m128 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_mul_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Arithmetic operator multiplication
+     * \details Performs the compute multiplication from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a * \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator*(vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_mul_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Arithmetic operator division
+     * \details Performs the compute division from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Infloat_b - float broadcast same value to all elements
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a / \p Infloat_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator/(vecfloat1 const Inxmm_a, float Infloat_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_div_ss(Inxmm_a, _uX_mm_set_ss(Infloat_b)));
+    }
+
+    /**
+     * \brief Arithmetic operator division
+     * \details Performs the compute division from the 2 parameters
+     * \param[in] Infloat_a - float broadcast same value to all elements
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Infloat_a / \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator/(float Infloat_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_div_ss(_uX_mm_set_ss(Infloat_a), Inxmm_b));
+    }
+
+    /**
+     * \brief Arithmetic operator division
+     * \details Performs the compute division from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - __m128 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a / \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator/(vecfloat1 const Inxmm_a, __m128 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_div_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Arithmetic operator division
+     * \details Performs the compute division from the 2 parameters
+     * \param[in] Inxmm_a - __m128 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a / \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator/(__m128 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_div_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Arithmetic operator division
+     * \details Performs the compute division from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a / \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator/(vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_div_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Arithmetic operator assignment addition
+     * \details Performs the compute addition from the 2 parameters, and assigns to the first parameter
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a += \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1& uX_ABI operator+=(vecfloat1& Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return Inxmm_a = vecfloat1(_uX_mm_add_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Arithmetic operator assignment subtraction
+     * \details Performs the compute subtraction from the 2 parameters, and assigns to the first parameter
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a -= \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1& uX_ABI operator-=(vecfloat1& Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return Inxmm_a = vecfloat1(_uX_mm_sub_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Arithmetic operator assignment multiplication
+     * \details Performs the compute multiplication from the 2 parameters, and assigns to the first parameter
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a *= \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1& uX_ABI operator*=(vecfloat1& Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return Inxmm_a = vecfloat1(_uX_mm_mul_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Arithmetic operator assignment division
+     * \details Performs the compute division from the 2 parameters, and assigns to the first parameter
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a /= \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1& uX_ABI operator/=(vecfloat1& Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return Inxmm_a = vecfloat1(_uX_mm_div_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /* Unary Operators */
+
+    /**
+     * \brief Unary prefix increment operator
+     * \details Performs the compute prefix increment
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed prefix increment \p Inxmm_a
+     */
+    friend uX_constexpr vecfloat1& uX_ABI operator++(vecfloat1& Inxmm_a) uX_noexcept
+    {
+        Inxmm_a = Inxmm_a + __m128_0e_1;
+        return Inxmm_a;
+    }
+
+    /**
+     * \brief Unary prefix decrement operator
+     * \details Performs the compute prefix decrement
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed prefix decrement \p Inxmm_a
+     */
+    friend uX_constexpr vecfloat1& uX_ABI operator--(vecfloat1& Inxmm_a) uX_noexcept
+    {
+        Inxmm_a = Inxmm_a - __m128_0e_1;
+        return Inxmm_a;
+    }
+
+    /**
+     * \brief Unary postfix increment operator
+     * \details Performs the compute postfix increment
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed postfix increment \p Inxmm_a
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator++(vecfloat1& Inxmm_a, int) uX_noexcept
+    {
+        vecfloat1 tmpxmm_a0 = Inxmm_a;
+        Inxmm_a = Inxmm_a + __m128_0e_1;
+        return tmpxmm_a0;
+    }
+
+    /**
+     * \brief Unary postfix decrement operator
+     * \details Performs the compute postfix decrement
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed postfix decrement \p Inxmm_a
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator--(vecfloat1& Inxmm_a, int) uX_noexcept
+    {
+        vecfloat1 tmpxmm_a0 = Inxmm_a;
+        Inxmm_a = Inxmm_a - __m128_0e_1;
+        return tmpxmm_a0;
+    }
+
+    /**
+     * \brief Unary minus operator
+     * \details Performs the compute minus change sign bit, even for 0, INF and NAN
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed minus \p Inxmm_a
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator-(vecfloat1 const Inxmm_a) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_negate_ss(Inxmm_a));
+    }
+
+    /* Comparison Operators */
+
+    /**
+     * \brief Comparison operator equal
+     * \details Performs the compute equality from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a == \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator==(vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_cmpeq_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Comparison operator less than
+     * \details Performs the compute less than from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a < \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator<(vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_cmplt_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Comparison operator less than or equal
+     * \details Performs the compute less than or equal from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a <= \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator<=(vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_cmple_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Comparison operator greater than
+     * \details Performs the compute greater than from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a > \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator>(vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_cmpgt_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Comparison operator greater than or equal
+     * \details Performs the compute greater than or equal from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a >= \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator>=(vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_cmpge_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Comparison operator not equal
+     * \details Performs the compute not equal from the 2 parameters
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a != \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI operator!=(vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_cmpneq_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Index operator
+     * \details Element Access Only, no modifications to elements
+     * \param[in] index element to get
+     * \returns float
+     * \retval the float index element
+     */
+    uX_constexpr float const& uX_ABI operator[](count_t index) const uX_noexcept
+    {
+        return extract(index);
+    }
+
+    /**
+     * \brief Index operator
+     * \details Element Access and Modification
+     * \param[in] index element to get
+     * \returns float
+     * \retval the float index element
+     */
+    uX_constexpr float& uX_ABI operator[](count_t index) uX_noexcept
+    {
+        fltrettype = extract(index);
+        return fltrettype;
+    }
+
+    /**
+     * \brief Insert function.
+     * \details Performs insert from type float on the mask index
+     * \param[in] value float to copy from
+     * \param[in] index element to set
+     * \returns vecfloat1
+     * \retval the vecfloat1
+     */
+    uX_constexpr vecfloat1 const uX_ABI insert(float value, count_t index) uX_noexcept
+    {
+        if (index > 0) return *this;
+        m128_xmm = _uX_mm_move_ss(__m128_false, _uX_mm_set_ss(value));
+        return *this;
+    }
+
+    /**
+     * \brief Extract function.
+     * \details Performs extract element from mask index.
+     * \param[in] index element to get
+     * \returns float
+     * \retval the float index element
+     */
+    uX_constexpr float uX_ABI extract(count_t index) const uX_noexcept
+    {
+        if (index > 0) return 0.0f;
+        return _uX_mm_cvtss_flt(m128_xmm);
+    }
+
+    /**
+     * \brief Set all elements to zero
+     * \details Performs the compute xor from the object vector member
+     * \returns vecfloat1
+     * \retval the computed \p object ^ \p object
+     */
+    uX_constexpr vecfloat1& uX_ABI zero(void) uX_noexcept
+    {
+        m128_xmm = _uX_mm_setzero_ps();
+        return *this;
+    }
+
+    /**
+     * \brief Flip Sign function
+     * \details Performs the flip sign off vector on all elements
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a ^ \p m128d_sign
+     */
+    friend uX_constexpr vecfloat1 uX_ABI flip_sign(vecfloat1 const Inxmm_a) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_xor_ss(Inxmm_a, __m128_sign));
+    }
+
+    /**
+     * \brief Test if all elements if is zero
+     * \details Performs the test if all elements are zero
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a == 0.0
+     */
+    friend uX_constexpr vecfloat1 uX_ABI is_zero(vecfloat1 const Inxmm_a) uX_noexcept
+    {
+        return _uX_mm_cmpeq_ss(Inxmm_a, __m128_0e_0);
+    }
+
+    /**
+     * \brief Test if all elements if is zero
+     * \details Performs the test if all elements are zero
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \returns bool_t
+     * \retval the computed boolean \p Inxmm_a == 0.0
+     */
+    friend uX_constexpr bool_t uX_ABI bis_zero(vecfloat1 const Inxmm_a) uX_noexcept
+    {
+        return _uX_mm_iszero_ss(Inxmm_a);
+    }
+
+    /**
+     * \brief Select between two operands
+     * \details Performs the selection between two operands
+        The first vector is boolean vector mask that chooses between the elements of the second and the third vector
+        Corresponds to this pseudo code:
+         for (int i () { return 0; i < 4; i++) result[i] () { return s[i] ? a[i] : b[i];
+     * \param[in] Inxmm_f - vecfloat1 Read only the boolean vector mask
+     * \param[in] Inxmm_a - vecfloat1 Read only the a vector
+     * \param[in] Inxmm_b - vecfloat1 Read only the b vector
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_f ? \p Inxmm_a : \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI select(vecfloat1 const Inxmm_f, vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_select_ps(Inxmm_f, Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Conditional add
+     * \details Performs the conditional add in all elements selected by the first boolean vector mask on the second and third vector elements
+        Corresponds to this pseudo code:
+         for (int i () { return 0; i < 4; i++) result[i] () { return f[i] ? (a[i] + b[i]) : a[i]
+     * \param[in] Inxmm_f - vecfloat1 Read only the boolean vector mask
+     * \param[in] Inxmm_a - vecfloat1 Read only the a vector
+     * \param[in] Inxmm_b - vecfloat1 Read only the b vector
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_f ? \p Inxmm_a + Inxmm_b: \p Inxmm_a
+     */
+    friend uX_constexpr vecfloat1 uX_ABI if_add(vecfloat1 const Inxmm_f, vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return Inxmm_a + (Inxmm_f & Inxmm_b);
+    }
+
+    /**
+     * \brief Conditional subtract
+     * \details Performs the conditional subtract in all elements selected by the first boolean vector mask on the second and third vector elements
+        Corresponds to this pseudo code:
+         for (int i () { return 0; i < 4; i++) result[i] () { return f[i] ? (a[i] - b[i]) : a[i]
+     * \param[in] Inxmm_f - vecfloat1 Read only the boolean vector mask
+     * \param[in] Inxmm_a - vecfloat1 Read only the a vector
+     * \param[in] Inxmm_b - vecfloat1 Read only the b vector
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_f ? \p Inxmm_a - Inxmm_b: \p Inxmm_a
+     */
+    friend uX_constexpr vecfloat1 uX_ABI if_sub(vecfloat1 const Inxmm_f, vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return Inxmm_a - (Inxmm_f & Inxmm_b);
+    }
+
+    /**
+     * \brief Conditional multiply
+     * \details Performs the conditional multiply in all elements selected by the first boolean vector mask on the second and third vector elements
+        Corresponds to this pseudo code:
+         for (int i () { return 0; i < 4; i++) result[i] () { return f[i] ? (a[i] * b[i]) : a[i]
+     * \param[in] Inxmm_f - vecfloat1 Read only the boolean vector mask
+     * \param[in] Inxmm_a - vecfloat1 Read only the a vector
+     * \param[in] Inxmm_b - vecfloat1 Read only the b vector
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_f ? \p Inxmm_a * Inxmm_b: \p Inxmm_a
+     */
+    friend uX_constexpr vecfloat1 uX_ABI if_mul(vecfloat1 const Inxmm_f, vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return Inxmm_a * select(Inxmm_f, Inxmm_b, vecfloat1(__m128_0e_1));
+    }
+
+    /**
+     * \brief Conditional division
+     * \details Performs the conditional divide in all elements selected by the first boolean vector mask on the second and third vector elements
+        Corresponds to this pseudo code:
+         for (int i () { return 0; i < 4; i++) result[i] () { return f[i] ? (a[i] / b[i]) : a[i]
+     * \param[in] Inxmm_f - vecfloat1 Read only the boolean vector mask
+     * \param[in] Inxmm_a - vecfloat1 Read only the a vector
+     * \param[in] Inxmm_b - vecfloat1 Read only the b vector
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_f ? \p Inxmm_a / Inxmm_b: \p Inxmm_a
+     */
+    friend uX_constexpr vecfloat1 uX_ABI if_div(vecfloat1 const Inxmm_f, vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return Inxmm_a / select(Inxmm_f, Inxmm_b, vecfloat1(__m128_0e_1));
+    }
+
+    /**
+     * \brief Change signs on vector at compile time
+     * \details Generate a constant vector at compile time stored in memory, and changes the sign of parameter
+        Each index i0 is 1 for changing sign on the corresponding element, 0 for no change
+     * \param[in] i0 - int
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p i0 ? \p Inxmm_a ^ 0x8000000000000000: \p Inxmm_a
+     *
+     */
+    template <int i0>
+    friend uX_constexpr vecfloat1 uX_ABI change_sign(vecfloat1 const Inxmm_a) uX_noexcept
+    {
+        if (i0 == 0) return Inxmm_a;
+        return Inxmm_a ^ vecfloat1(vecudword1::constant<i0 ? 0x80000000 : 0>);
+    }
+
+    /**
+     * \brief Sign bit
+     * \details Gives true for elements that have the sign bit set even for -0.0, -INF and -NAN
+        Note that sign_bit(vecfloat1(-00f)) gives true, while vecfloat1(-00f) < vecfloat1(00f) gives false
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed sign_bit(Inxmm_a)
+     */
+    friend uX_constexpr vecfloat1 uX_ABI sign_bit(vecfloat1 const Inxmm_a) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_signbit_ss(Inxmm_a));
+    }
+
+    /**
+     * \brief Sign combine
+     * \details Changes the sign of a when b has the sign bit set
+        Same as select(sign_bit(b), -a, a)
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p sign_bit(Inxmm_b) ? \p -Inxmm_a: \p Inxmm_a
+     */
+    friend uX_constexpr vecfloat1 uX_ABI sign_combine(vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_signcombine_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Is finite
+     * \details Gives true for elements that are normal, denormal or zero, false for INF and NAN
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed isfinite \p Inxmm_a
+     */
+    friend uX_constexpr vecfloat1 uX_ABI is_finite(vecfloat1 const Inxmm_a) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_isfinite_ss(Inxmm_a));
+    }
+
+    /**
+     * \brief Is inf
+     * \details Gives true for elements that are +INF or -INF, false for finite numbers and NAN
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed isinf \p Inxmm_a
+     */
+    friend uX_constexpr vecfloat1 uX_ABI is_inf(vecfloat1 const Inxmm_a) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_isinf_ss(Inxmm_a));
+    }
+
+    /**
+     * \brief Is nan
+     * \details Gives true for elements that are +NAN or -NAN, false for finite numbers and +/-INF
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed isnan \p Inxmm_a
+     */
+    friend uX_constexpr vecfloat1 uX_ABI is_nan(vecfloat1 const Inxmm_a) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_isnan_ss(Inxmm_a));
+    }
+
+    /**
+     * \brief Is subnormal
+     * \details Gives true for elements that are denormal (subnormal), false for finite numbers, zero, NAN and INF
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed issubnormal \p Inxmm_a
+     */
+    friend uX_constexpr vecfloat1 uX_ABI is_subnormal(vecfloat1 const Inxmm_a) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_issubnormal_ss(Inxmm_a));
+    }
+
+    /**
+     * \brief Is zero or subnormal
+     * \details Gives true for elements that are zero or subnormal (denormal), false for finite numbers, NAN and INF
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed iszeroorsubnormal \p Inxmm_a
+     */
+    friend uX_constexpr vecfloat1 uX_ABI is_zero_or_subnormal(vecfloat1 const Inxmm_a) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_iszeroorsubnormal_ss(Inxmm_a));
+    }
+
+    /**
+     * \brief Infinite vector
+     * \details A vector where all elements are +INF
+     * \returns vecfloat1
+     * \retval +INF
+     */
+    uX_constexpr vecfloat1& uX_ABI infinite(void) uX_noexcept
+    {
+        m128_xmm = _uX_mm_infinite_ss();
+        return *this;
+    }
+
+    /**
+     * \brief Nan vector
+     * \details A vector where all elements are NAN (quiet)
+     * \returns vecfloat1
+     * \retval NAN (quiet)
+     */
+    uX_constexpr vecfloat1& uX_ABI nan(void) uX_noexcept
+    {
+        m128_xmm = _uX_mm_nan_ss();
+        return *this;
+    }
+
+    /**
+     * \brief Max vector
+     * \details Computes the max a > b ? a : b
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed max \p Inxmm_a > Inxmm_b ? \p Inxmm_a: \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI max(vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_max_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Min vector
+     * \details Computes the min a < b ? a : b
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Inxmm_b - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed min \p Inxmm_a < Inxmm_b ? \p Inxmm_a: \p Inxmm_b
+     */
+    friend uX_constexpr vecfloat1 uX_ABI min(vecfloat1 const Inxmm_a, vecfloat1 const Inxmm_b) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_min_ss(Inxmm_a, Inxmm_b));
+    }
+
+    /**
+     * \brief Abs vector
+     * \details Computes the absolute value
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed abs \p Inxmm_a
+     */
+    friend uX_constexpr vecfloat1 uX_ABI abs(vecfloat1 const Inxmm_a) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_abs_ss(Inxmm_a));
+    }
+
+    /**
+     * \brief Square vector
+     * \details Computes the a * a
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a * \p Inxmm_a
+     */
+    friend uX_constexpr vecfloat1 uX_ABI square(vecfloat1 const Inxmm_a) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_square_ss(Inxmm_a));
+    }
+
+    /**
+     * \brief Scale vector
+     * \details Computes the a * s
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \param[in] Infloat_s - float Read only
+     * \returns vecfloat1
+     * \retval the computed \p Inxmm_a * \p Infloat_s
+     */
+    friend uX_constexpr vecfloat1 uX_ABI scale(vecfloat1 const Inxmm_a, float Infloat_s) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_scale_ss(Inxmm_a, Infloat_s));
+    }
+
+    /**
+     * \brief rcp vector
+     * \details Computes the reciprocal
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed rcp \p Inxmm_a
+     */
+    friend uX_constexpr vecfloat1 uX_ABI rcp(vecfloat1 const Inxmm_a) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_rcp_ss(Inxmm_a));
+    }
+
+    /**
+     * \brief sqrt vector
+     * \details Computes the square root
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed sqrt \p Inxmm_a
+     */
+    friend uX_constexpr vecfloat1 uX_ABI sqrt(vecfloat1 const Inxmm_a) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_sqrt_ss(Inxmm_a));
+    }
+
+    /**
+     * \brief rsqrt vector
+     * \details Computes the reciprocal square root
+     * \param[in] Inxmm_a - vecfloat1 Read only
+     * \returns vecfloat1
+     * \retval the computed rsqrt \p Inxmm_a
+     */
+    friend uX_constexpr vecfloat1 uX_ABI rsqrt(vecfloat1 const Inxmm_a) uX_noexcept
+    {
+        return vecfloat1(_uX_mm_rsqrt_ss(Inxmm_a));
     }
 
 protected:
@@ -485,14 +1514,56 @@ protected:
 private:
     union
     {
-        __m128 m128_xmm;
-        float        _x;
+        __m128             m128_xmm;
+        float                    _x;
     };
+    float                fltrettype;
 
 public:
-    uX_const uint32_t uX_ABI m128_xmm_size          () const uX_noexcept { return 16; }
-    uX_const uint32_t uX_ABI m128_xmm_flt_elements  () const uX_noexcept { return 4; }
-    uX_const uint32_t uX_ABI m128_flt_size          () const uX_noexcept { return 4; }
+
+    /**
+     * \brief xmm size
+     * \details Gets the xmm vector size
+     * \returns count_t
+     * \retval the xmm size
+     */
+    uX_constexpr count_t const uX_ABI xmm_size(void) const uX_noexcept
+    {
+        return 16;
+    }
+
+    /**
+     * \brief xmm float elements
+     * \details Gets the quantity of xmm vector float elements
+     * \returns count_t
+     * \retval the quantity of xmm float elements
+     */
+    uX_constexpr count_t const uX_ABI xmm_flt_elements(void) const uX_noexcept
+    {
+        return 4;
+    }
+
+    /**
+     * \brief float size
+     * \details Gets the float size
+     * \returns count_t
+     * \retval the xmm float size
+     */
+    uX_constexpr count_t const uX_ABI flt_size(void) const uX_noexcept
+    {
+        return 4;
+    }
+
+    /**
+     * \brief float elements
+     * \details Gets the quantity of float elements
+     * \returns count_t
+     * \retval the quantity of float elements
+     */
+    uX_constexpr count_t const uX_ABI flt_elements(void) const uX_noexcept
+    {
+        return 1;
+    }
 
 }vecfloat1_t;
 
@@ -512,6 +1583,10 @@ namespace_uX_end
 #ifndef uX_XMM_VECFLOAT2_H
 #include "uXxmmvecfloat2.h"
 #endif  /* uX_XMM_VECFLOAT2_H */
+
+#ifndef uX_XMM_VECDOUBLE1_H
+#include "uXxmmvecdouble1.h"
+#endif  /* uX_XMM_VECDOUBLE1_H */
 
 #ifndef uX_XMM_VECDWORD1_H
 #include "uXxmmvecdword1.h"

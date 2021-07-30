@@ -2,7 +2,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -19,77 +19,76 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
-    OPTION CASEMAP:NONE
-    include macrolib.inc
-    
+option casemap:none
+include macrolib.inc
+include uXasm.inc
+
 ifndef __MIC__
 
-    include uXasm.inc
+.xmm
+option arch:sse
+option evex:0
 
-    .xmm
-    option arch:sse
-    option evex:0
+alignstackfieldproc
 
-    .data?
+.data?
 
-    .data
+.data
 
-    .const
+.const
 
-        alignsize_t
-        _m128iextepi16jmptable isize_t offset _m128iextepi16_0, offset _m128iextepi16_1, offset _m128iextepi16_2, offset _m128iextepi16_3, offset _m128iextepi16_4, offset _m128iextepi16_5, \
-                                       offset _m128iextepi16_6, offset _m128iextepi16_7
+    _m128iextepi16jmptable label size_t
+    isize_t offset _m128iextepi16_0, offset _m128iextepi16_1, offset _m128iextepi16_2, offset _m128iextepi16_3
+    isize_t offset _m128iextepi16_4, offset _m128iextepi16_5, offset _m128iextepi16_6, offset _m128iextepi16_7
 
-        alignsize_t
-        _m128iinsepi16jmptable isize_t offset _m128iinsepi16_0, offset _m128iinsepi16_1, offset _m128iinsepi16_2, offset _m128iinsepi16_3, offset _m128iinsepi16_4, offset _m128iinsepi16_5, \
-                                       offset _m128iinsepi16_6, offset _m128iinsepi16_7
+    _m128iinsepi16jmptable label size_t
+    isize_t offset _m128iinsepi16_0, offset _m128iinsepi16_1, offset _m128iinsepi16_2, offset _m128iinsepi16_3
+    isize_t offset _m128iinsepi16_4, offset _m128iinsepi16_5, offset _m128iinsepi16_6, offset _m128iinsepi16_7
 
-        alignsize_t
-        _m128icvtelts128epi64jmptable isize_t offset _m128icvtelts128epi64_0, offset _m128icvtelts128epi64_1
+    _m128icvtelts128epi64jmptable label size_t
+    isize_t offset _m128icvtelts128epi64_0, offset _m128icvtelts128epi64_1
 
-        alignsize_t
-        _m128icvtelts128epi64xjmptable isize_t offset _m128icvtelts128epi64x_0, offset _m128icvtelts128epi64x_1
+    _m128icvtelts128epi64xjmptable label size_t
+    isize_t offset _m128icvtelts128epi64x_0, offset _m128icvtelts128epi64x_1
 
-        alignsize_t
-        _m128icvtelts128epi32jmptable isize_t offset _m128icvtelts128epi32_0, offset _m128icvtelts128epi32_1, offset _m128icvtelts128epi32_2, offset _m128icvtelts128epi32_3
+    _m128icvtelts128epi32jmptable label size_t
+    isize_t offset _m128icvtelts128epi32_0, offset _m128icvtelts128epi32_1, offset _m128icvtelts128epi32_2, offset _m128icvtelts128epi32_3
 
-        alignsize_t
-        _m128icvtelts128epi16jmptable isize_t offset _m128icvtelts128epi16_0, offset _m128icvtelts128epi16_1, offset _m128icvtelts128epi16_2, offset _m128icvtelts128epi16_3, offset _m128icvtelts128epi16_4, \
-                                              offset _m128icvtelts128epi16_5, offset _m128icvtelts128epi16_6, offset _m128icvtelts128epi16_7
+    _m128icvtelts128epi16jmptable label size_t
+    isize_t offset _m128icvtelts128epi16_0, offset _m128icvtelts128epi16_1, offset _m128icvtelts128epi16_2, offset _m128icvtelts128epi16_3
+    isize_t offset _m128icvtelts128epi16_4, offset _m128icvtelts128epi16_5, offset _m128icvtelts128epi16_6, offset _m128icvtelts128epi16_7
 
-        alignsize_t
-        _m128icvtelts128epi8jmptable isize_t offset _m128icvtelts128epi8_0, offset _m128icvtelts128epi8_1, offset _m128icvtelts128epi8_2, offset _m128icvtelts128epi8_3, offset _m128icvtelts128epi8_4, \
-                                             offset _m128icvtelts128epi8_5, offset _m128icvtelts128epi8_6, offset _m128icvtelts128epi8_7, offset _m128icvtelts128epi8_8, offset _m128icvtelts128epi8_9, \
-                                             offset _m128icvtelts128epi8_10, offset _m128icvtelts128epi8_11, offset _m128icvtelts128epi8_12, offset _m128icvtelts128epi8_13, offset _m128icvtelts128epi8_14, \
-                                             offset _m128icvtelts128epi8_15
+    _m128icvtelts128epi8jmptable label size_t
+    isize_t offset _m128icvtelts128epi8_0, offset _m128icvtelts128epi8_1, offset _m128icvtelts128epi8_2, offset _m128icvtelts128epi8_3
+    isize_t offset _m128icvtelts128epi8_4, offset _m128icvtelts128epi8_5, offset _m128icvtelts128epi8_6, offset _m128icvtelts128epi8_7
+    isize_t offset _m128icvtelts128epi8_8, offset _m128icvtelts128epi8_9, offset _m128icvtelts128epi8_10, offset _m128icvtelts128epi8_11
+    isize_t offset _m128icvtelts128epi8_12, offset _m128icvtelts128epi8_13, offset _m128icvtelts128epi8_14, offset _m128icvtelts128epi8_15
 
-        alignsize_t
-        _m128icvteltsepi64s128jmptable isize_t offset _m128icvteltsepi64s128_0, offset _m128icvteltsepi64s128_1
+    _m128icvteltsepi64s128jmptable label size_t
+    isize_t offset _m128icvteltsepi64s128_0, offset _m128icvteltsepi64s128_1
 
-        alignsize_t
-        _m128icvteltsepi64xs128jmptable isize_t offset _m128icvteltsepi64xs128_0, offset _m128icvteltsepi64xs128_1
+    _m128icvteltsepi64xs128jmptable label size_t
+    isize_t offset _m128icvteltsepi64xs128_0, offset _m128icvteltsepi64xs128_1
 
-        alignsize_t
-        _m128icvteltsepi32s128jmptable isize_t offset _m128icvteltsepi32s128_0, offset _m128icvteltsepi32s128_1, offset _m128icvteltsepi32s128_2, offset _m128icvteltsepi32s128_3
+    _m128icvteltsepi32s128jmptable label size_t
+    isize_t offset _m128icvteltsepi32s128_0, offset _m128icvteltsepi32s128_1, offset _m128icvteltsepi32s128_2, offset _m128icvteltsepi32s128_3
 
-        alignsize_t
-        _m128icvteltsepi16s128jmptable isize_t offset _m128icvteltsepi16s128_0, offset _m128icvteltsepi16s128_1, offset _m128icvteltsepi16s128_2, offset _m128icvteltsepi16s128_3, \
-                                               offset _m128icvteltsepi16s128_4, offset _m128icvteltsepi16s128_5, offset _m128icvteltsepi16s128_6, offset _m128icvteltsepi16s128_7
+    _m128icvteltsepi16s128jmptable label size_t
+    isize_t offset _m128icvteltsepi16s128_0, offset _m128icvteltsepi16s128_1, offset _m128icvteltsepi16s128_2, offset _m128icvteltsepi16s128_3
+    isize_t offset _m128icvteltsepi16s128_4, offset _m128icvteltsepi16s128_5, offset _m128icvteltsepi16s128_6, offset _m128icvteltsepi16s128_7
 
-        alignsize_t
-        _m128icvteltsepi8s128jmptable isize_t offset _m128icvteltsepi8s128_0, offset _m128icvteltsepi8s128_1, offset _m128icvteltsepi8s128_2, offset _m128icvteltsepi8s128_3, offset _m128icvteltsepi8s128_4, \
-                                             offset _m128icvteltsepi8s128_5, offset _m128icvteltsepi8s128_6, offset _m128icvteltsepi8s128_7, offset _m128icvteltsepi8s128_8, offset _m128icvteltsepi8s128_9, \
-                                             offset _m128icvteltsepi8s128_10, offset _m128icvteltsepi8s128_11, offset _m128icvteltsepi8s128_12, offset _m128icvteltsepi8s128_13, offset _m128icvteltsepi8s128_14, \
-                                             offset _m128icvteltsepi8s128_15
+    _m128icvteltsepi8s128jmptable label size_t
+    isize_t offset _m128icvteltsepi8s128_0, offset _m128icvteltsepi8s128_1, offset _m128icvteltsepi8s128_2, offset _m128icvteltsepi8s128_3 
+    isize_t offset _m128icvteltsepi8s128_4, offset _m128icvteltsepi8s128_5, offset _m128icvteltsepi8s128_6, offset _m128icvteltsepi8s128_7
+    isize_t offset _m128icvteltsepi8s128_8, offset _m128icvteltsepi8s128_9, offset _m128icvteltsepi8s128_10, offset _m128icvteltsepi8s128_11
+    isize_t offset _m128icvteltsepi8s128_12, offset _m128icvteltsepi8s128_13, offset _m128icvteltsepi8s128_14, offset _m128icvteltsepi8s128_15
 
-    externdef __uX_CPUFeatures_SSE41:dword
+externdef __uX_CPUFeatures_SSE41:dword
 
-    .code
+.code
 
-    _uX_CPUFeatures_has_SSE41 proto callconv (dword)
-
-    callconvopt
-    alignxmmfieldproc
+callconvopt
+alignxmmfieldproc
 
 procstart _uX_mm_extract_epi16_0, callconv, dword, < >, < >, Inxmm_A:xmmword
         pextrw       dret(),         xmm0,        0
@@ -376,8 +375,7 @@ procstart _uX_mm_cvtsi128_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, _
 procend
 
 procstart _uX_mm_cvtsi128_epi64x_0, callconv, qword, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrq       rret(),         xmm0,        0
     .else
 ifdef __x64__
@@ -390,8 +388,7 @@ endif
 procend
 
 procstart _uX_mm_cvtsi128_epi64x_1, callconv, qword, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrq       rret(),         xmm0,        1
     .else
         pshufd       xmm0,         xmm0,         shuffler4(2,3,0,1)
@@ -414,8 +411,7 @@ procstart _uX_mm_cvtsi128_epi64x, callconv, qword, < >, < >, Inxmm_A:xmmword, _I
         jmp          rbase()
 
         _m128icvtelts128epi64x_0 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrq       rret(),         xmm0,        0
     .else
 ifdef __x64__
@@ -426,8 +422,7 @@ endif
     .endif
         jmp        _m128icvtelts128epi64x_end
         _m128icvtelts128epi64x_1 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrq       rret(),         xmm0,        1
     .else
         pshufd       xmm0,         xmm0,         shuffler4(2,3,0,1)
@@ -445,8 +440,7 @@ endif
 procend
 
 procstart _uX_mm_cvtsi128_epi32_0, callconv, dword, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrd       dret(),         xmm0,        0
     .else
         movd         dret(),         xmm0
@@ -455,8 +449,7 @@ procstart _uX_mm_cvtsi128_epi32_0, callconv, dword, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_cvtsi128_epi32_1, callconv, dword, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrd       dret(),         xmm0,        1
     .else
         pshufd       xmm0,         xmm0,         shuffler4(1,0,2,3)
@@ -466,8 +459,7 @@ procstart _uX_mm_cvtsi128_epi32_1, callconv, dword, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_cvtsi128_epi32_2, callconv, dword, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrd       dret(),         xmm0,        2
     .else
         pshufd       xmm0,         xmm0,         shuffler4(2,1,0,3)
@@ -477,8 +469,7 @@ procstart _uX_mm_cvtsi128_epi32_2, callconv, dword, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_cvtsi128_epi32_3, callconv, dword, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrd       dret(),         xmm0,        3
     .else
         pshufd       xmm0,         xmm0,         shuffler4(3,1,2,0)
@@ -503,16 +494,14 @@ procstart _uX_mm_cvtsi128_epi32, callconv, dword, < >, < >, Inxmm_A:xmmword, _Im
     endif
 
         _m128icvtelts128epi32_0 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrd       dret(),         xmm0,        0
     .else
         movd         dret(),         xmm0
     .endif
         jmp        _m128icvtelts128epi32_end
         _m128icvtelts128epi32_1 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrd       dret(),         xmm0,        1
     .else
         pshufd       xmm0,         xmm0,         shuffler4(1,0,2,3)
@@ -520,8 +509,7 @@ procstart _uX_mm_cvtsi128_epi32, callconv, dword, < >, < >, Inxmm_A:xmmword, _Im
     .endif
         jmp        _m128icvtelts128epi32_end
         _m128icvtelts128epi32_2 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrd       dret(),         xmm0,        2
     .else
         pshufd       xmm0,         xmm0,         shuffler4(2,1,0,3)
@@ -529,8 +517,7 @@ procstart _uX_mm_cvtsi128_epi32, callconv, dword, < >, < >, Inxmm_A:xmmword, _Im
     .endif
         jmp        _m128icvtelts128epi32_end
         _m128icvtelts128epi32_3 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrd       dret(),         xmm0,        3
     .else
         pshufd       xmm0,         xmm0,         shuffler4(3,1,2,0)
@@ -629,8 +616,7 @@ procstart _uX_mm_cvtsi128_epi16, callconv, word, < >, < >, Inxmm_A:xmmword, Inin
 procend
 
 procstart _uX_mm_cvtsi128_epi8_0, callconv, byte, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        0
     .else
         movd         dret(),         xmm0
@@ -639,8 +625,7 @@ procstart _uX_mm_cvtsi128_epi8_0, callconv, byte, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_cvtsi128_epi8_1, callconv, byte, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        1
     .else
         psrldq       xmm0,         1
@@ -650,8 +635,7 @@ procstart _uX_mm_cvtsi128_epi8_1, callconv, byte, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_cvtsi128_epi8_2, callconv, byte, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        2
     .else
         psrldq       xmm0,         2
@@ -661,8 +645,7 @@ procstart _uX_mm_cvtsi128_epi8_2, callconv, byte, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_cvtsi128_epi8_3, callconv, byte, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        3
     .else
         psrldq       xmm0,         3
@@ -672,8 +655,7 @@ procstart _uX_mm_cvtsi128_epi8_3, callconv, byte, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_cvtsi128_epi8_4, callconv, byte, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        4
     .else
         psrldq       xmm0,         4
@@ -683,8 +665,7 @@ procstart _uX_mm_cvtsi128_epi8_4, callconv, byte, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_cvtsi128_epi8_5, callconv, byte, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        5
     .else
         psrldq       xmm0,         5
@@ -694,8 +675,7 @@ procstart _uX_mm_cvtsi128_epi8_5, callconv, byte, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_cvtsi128_epi8_6, callconv, byte, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        6
     .else
         psrldq       xmm0,         6
@@ -705,8 +685,7 @@ procstart _uX_mm_cvtsi128_epi8_6, callconv, byte, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_cvtsi128_epi8_7, callconv, byte, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        7
     .else
         psrldq       xmm0,         7
@@ -716,8 +695,7 @@ procstart _uX_mm_cvtsi128_epi8_7, callconv, byte, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_cvtsi128_epi8_8, callconv, byte, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        8
     .else
         psrldq       xmm0,         8
@@ -727,8 +705,7 @@ procstart _uX_mm_cvtsi128_epi8_8, callconv, byte, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_cvtsi128_epi8_9, callconv, byte, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        9
     .else
         psrldq       xmm0,         9
@@ -738,8 +715,7 @@ procstart _uX_mm_cvtsi128_epi8_9, callconv, byte, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_cvtsi128_epi8_10, callconv, byte, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        10
     .else
         psrldq       xmm0,         10
@@ -749,8 +725,7 @@ procstart _uX_mm_cvtsi128_epi8_10, callconv, byte, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_cvtsi128_epi8_11, callconv, byte, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        11
     .else
         psrldq       xmm0,         11
@@ -760,8 +735,7 @@ procstart _uX_mm_cvtsi128_epi8_11, callconv, byte, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_cvtsi128_epi8_12, callconv, byte, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        12
     .else
         psrldq       xmm0,         12
@@ -771,8 +745,7 @@ procstart _uX_mm_cvtsi128_epi8_12, callconv, byte, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_cvtsi128_epi8_13, callconv, byte, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        13
     .else
         psrldq       xmm0,         13
@@ -782,8 +755,7 @@ procstart _uX_mm_cvtsi128_epi8_13, callconv, byte, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_cvtsi128_epi8_14, callconv, byte, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        14
     .else
         psrldq       xmm0,         14
@@ -793,8 +765,7 @@ procstart _uX_mm_cvtsi128_epi8_14, callconv, byte, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_cvtsi128_epi8_15, callconv, byte, < >, < >, Inxmm_A:xmmword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        15
     .else
         psrldq       xmm0,         15
@@ -819,16 +790,14 @@ procstart _uX_mm_cvtsi128_epi8, callconv, byte, < >, < >, Inxmm_A:xmmword, Inint
     endif
 
         _m128icvtelts128epi8_0 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        0
     .else
         movd         dret(),         xmm0
     .endif
         jmp        _m128icvtelts128epi8_end
         _m128icvtelts128epi8_1 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        1
     .else
         psrldq       xmm0,         1
@@ -836,8 +805,7 @@ procstart _uX_mm_cvtsi128_epi8, callconv, byte, < >, < >, Inxmm_A:xmmword, Inint
     .endif
         jmp        _m128icvtelts128epi8_end
         _m128icvtelts128epi8_2 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        2
     .else
         psrldq       xmm0,         2
@@ -845,8 +813,7 @@ procstart _uX_mm_cvtsi128_epi8, callconv, byte, < >, < >, Inxmm_A:xmmword, Inint
     .endif
         jmp        _m128icvtelts128epi8_end
         _m128icvtelts128epi8_3 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        3
     .else
         psrldq       xmm0,         3
@@ -854,8 +821,7 @@ procstart _uX_mm_cvtsi128_epi8, callconv, byte, < >, < >, Inxmm_A:xmmword, Inint
     .endif
         jmp        _m128icvtelts128epi8_end
         _m128icvtelts128epi8_4 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        4
     .else
         psrldq       xmm0,         4
@@ -863,8 +829,7 @@ procstart _uX_mm_cvtsi128_epi8, callconv, byte, < >, < >, Inxmm_A:xmmword, Inint
     .endif
         jmp        _m128icvtelts128epi8_end
         _m128icvtelts128epi8_5 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        5
     .else
         psrldq       xmm0,         5
@@ -872,8 +837,7 @@ procstart _uX_mm_cvtsi128_epi8, callconv, byte, < >, < >, Inxmm_A:xmmword, Inint
     .endif
         jmp        _m128icvtelts128epi8_end
         _m128icvtelts128epi8_6 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        6
     .else
         psrldq       xmm0,         6
@@ -881,8 +845,7 @@ procstart _uX_mm_cvtsi128_epi8, callconv, byte, < >, < >, Inxmm_A:xmmword, Inint
     .endif
         jmp        _m128icvtelts128epi8_end
         _m128icvtelts128epi8_7 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        7
     .else
         psrldq       xmm0,         7
@@ -890,8 +853,7 @@ procstart _uX_mm_cvtsi128_epi8, callconv, byte, < >, < >, Inxmm_A:xmmword, Inint
     .endif
         jmp        _m128icvtelts128epi8_end
         _m128icvtelts128epi8_8 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        8
     .else
         psrldq       xmm0,         8
@@ -899,8 +861,7 @@ procstart _uX_mm_cvtsi128_epi8, callconv, byte, < >, < >, Inxmm_A:xmmword, Inint
     .endif
         jmp        _m128icvtelts128epi8_end
         _m128icvtelts128epi8_9 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        9
     .else
         psrldq       xmm0,         9
@@ -908,8 +869,7 @@ procstart _uX_mm_cvtsi128_epi8, callconv, byte, < >, < >, Inxmm_A:xmmword, Inint
     .endif
         jmp        _m128icvtelts128epi8_end
         _m128icvtelts128epi8_10 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        10
     .else
         psrldq       xmm0,         10
@@ -917,8 +877,7 @@ procstart _uX_mm_cvtsi128_epi8, callconv, byte, < >, < >, Inxmm_A:xmmword, Inint
     .endif
         jmp        _m128icvtelts128epi8_end
         _m128icvtelts128epi8_11 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        11
     .else
         psrldq       xmm0,         11
@@ -926,8 +885,7 @@ procstart _uX_mm_cvtsi128_epi8, callconv, byte, < >, < >, Inxmm_A:xmmword, Inint
     .endif
         jmp        _m128icvtelts128epi8_end
         _m128icvtelts128epi8_12 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        12
     .else
         psrldq       xmm0,         12
@@ -935,8 +893,7 @@ procstart _uX_mm_cvtsi128_epi8, callconv, byte, < >, < >, Inxmm_A:xmmword, Inint
     .endif
         jmp        _m128icvtelts128epi8_end
         _m128icvtelts128epi8_13 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        13
     .else
         psrldq       xmm0,         13
@@ -944,8 +901,7 @@ procstart _uX_mm_cvtsi128_epi8, callconv, byte, < >, < >, Inxmm_A:xmmword, Inint
     .endif
         jmp        _m128icvtelts128epi8_end
         _m128icvtelts128epi8_14 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        14
     .else
         psrldq       xmm0,         14
@@ -953,8 +909,7 @@ procstart _uX_mm_cvtsi128_epi8, callconv, byte, < >, < >, Inxmm_A:xmmword, Inint
     .endif
         jmp        _m128icvtelts128epi8_end
         _m128icvtelts128epi8_15 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pextrb       dret(),         xmm0,        15
     .else
         psrldq       xmm0,         15
@@ -1009,8 +964,7 @@ procstart _uX_mm_cvtepi64_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, I
 procend
 
 procstart _uX_mm_cvtepi64x_si128_0, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_Q:qword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrq       xmm0,         rp1(),        0
     .else
 ifdef __x64__
@@ -1024,8 +978,7 @@ endif
 procend
 
 procstart _uX_mm_cvtepi64x_si128_1, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_Q:qword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrq       xmm0,         rp1(),        1
     .else
 ifdef __x64__
@@ -1056,8 +1009,7 @@ procstart _uX_mm_cvtepi64x_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, 
     endif
 
         _m128icvteltsepi64xs128_0 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrq       xmm0,         rp1(),        0
     .else
 ifdef __x64__
@@ -1069,8 +1021,7 @@ endif
     .endif
         jmp       _m128icvteltsepi64xs128_end
         _m128icvteltsepi64xs128_1 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrq       xmm0,         rp1(),        1
     .else
 ifdef __x64__
@@ -1090,8 +1041,7 @@ endif
 procend
 
 procstart _uX_mm_cvtepi32_si128_0, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_D:dword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrd       xmm0,         dp1(),        0
     .else
         movd         xmm1,         dp1()
@@ -1101,8 +1051,7 @@ procstart _uX_mm_cvtepi32_si128_0, callconv, xmmword, < >, < >, Inxmm_A:xmmword,
 procend
 
 procstart _uX_mm_cvtepi32_si128_1, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_D:dword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrd       xmm0,         dp1(),        1
     .else
         movd         xmm1,         dp1()
@@ -1114,8 +1063,7 @@ procstart _uX_mm_cvtepi32_si128_1, callconv, xmmword, < >, < >, Inxmm_A:xmmword,
 procend
 
 procstart _uX_mm_cvtepi32_si128_2, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_D:dword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrd       xmm0,         dp1(),        2
     .else
         movd         xmm1,         dp1()
@@ -1127,8 +1075,7 @@ procstart _uX_mm_cvtepi32_si128_2, callconv, xmmword, < >, < >, Inxmm_A:xmmword,
 procend
 
 procstart _uX_mm_cvtepi32_si128_3, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_D:dword
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrd       xmm0,         dp1(),        3
     .else
         movd         xmm1,         dp1()
@@ -1155,8 +1102,7 @@ procstart _uX_mm_cvtepi32_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, I
     endif
 
         _m128icvteltsepi32s128_0 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrd       xmm0,         dp1(),        0
     .else
         movd         xmm1,         dp1()
@@ -1164,8 +1110,7 @@ procstart _uX_mm_cvtepi32_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, I
     .endif
         jmp       _m128icvteltsepi32s128_end
         _m128icvteltsepi32s128_1 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrd       xmm0,         dp1(),        1
     .else
         movd         xmm1,         dp1()
@@ -1175,8 +1120,7 @@ procstart _uX_mm_cvtepi32_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, I
     .endif
         jmp       _m128icvteltsepi32s128_end
         _m128icvteltsepi32s128_2 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrd       xmm0,         dp1(),        2
     .else
         movd         xmm1,         dp1()
@@ -1186,8 +1130,7 @@ procstart _uX_mm_cvtepi32_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, I
     .endif
         jmp       _m128icvteltsepi32s128_end
         _m128icvteltsepi32s128_3 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrd       xmm0,         dp1(),        3
     .else
         movd         xmm1,         dp1()
@@ -1288,8 +1231,7 @@ procstart _uX_mm_cvtepi16_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, I
 procend
 
 procstart _uX_mm_cvtepi8_si128_0, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_B:byte
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        0
     .else
         movzx        dp1(),      bp1()
@@ -1299,8 +1241,7 @@ procstart _uX_mm_cvtepi8_si128_0, callconv, xmmword, < >, < >, Inxmm_A:xmmword, 
 procend
 
 procstart _uX_mm_cvtepi8_si128_1, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_B:byte
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        1
     .else
         movzx        dp1(),      bp1()
@@ -1311,8 +1252,7 @@ procstart _uX_mm_cvtepi8_si128_1, callconv, xmmword, < >, < >, Inxmm_A:xmmword, 
 procend
 
 procstart _uX_mm_cvtepi8_si128_2, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_B:byte
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        2
     .else
         movzx        dp1(),      bp1()
@@ -1323,8 +1263,7 @@ procstart _uX_mm_cvtepi8_si128_2, callconv, xmmword, < >, < >, Inxmm_A:xmmword, 
 procend
 
 procstart _uX_mm_cvtepi8_si128_3, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_B:byte
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        3
     .else
         movzx        dp1(),      bp1()
@@ -1335,8 +1274,7 @@ procstart _uX_mm_cvtepi8_si128_3, callconv, xmmword, < >, < >, Inxmm_A:xmmword, 
 procend
 
 procstart _uX_mm_cvtepi8_si128_4, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_B:byte
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        4
     .else
         movzx        dp1(),      bp1()
@@ -1347,8 +1285,7 @@ procstart _uX_mm_cvtepi8_si128_4, callconv, xmmword, < >, < >, Inxmm_A:xmmword, 
 procend
 
 procstart _uX_mm_cvtepi8_si128_5, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_B:byte
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        5
     .else
         movzx        dp1(),      bp1()
@@ -1359,8 +1296,7 @@ procstart _uX_mm_cvtepi8_si128_5, callconv, xmmword, < >, < >, Inxmm_A:xmmword, 
 procend
 
 procstart _uX_mm_cvtepi8_si128_6, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_B:byte
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        6
     .else
         movzx        dp1(),      bp1()
@@ -1371,8 +1307,7 @@ procstart _uX_mm_cvtepi8_si128_6, callconv, xmmword, < >, < >, Inxmm_A:xmmword, 
 procend
 
 procstart _uX_mm_cvtepi8_si128_7, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_B:byte
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        7
     .else
         movzx        dp1(),      bp1()
@@ -1383,8 +1318,7 @@ procstart _uX_mm_cvtepi8_si128_7, callconv, xmmword, < >, < >, Inxmm_A:xmmword, 
 procend
 
 procstart _uX_mm_cvtepi8_si128_8, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_B:byte
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        8
     .else
         movzx        dp1(),      bp1()
@@ -1395,8 +1329,7 @@ procstart _uX_mm_cvtepi8_si128_8, callconv, xmmword, < >, < >, Inxmm_A:xmmword, 
 procend
 
 procstart _uX_mm_cvtepi8_si128_9, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_B:byte
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        9
     .else
         movzx        dp1(),      bp1()
@@ -1407,8 +1340,7 @@ procstart _uX_mm_cvtepi8_si128_9, callconv, xmmword, < >, < >, Inxmm_A:xmmword, 
 procend
 
 procstart _uX_mm_cvtepi8_si128_10, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_B:byte
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        10
     .else
         movzx        dp1(),      bp1()
@@ -1419,8 +1351,7 @@ procstart _uX_mm_cvtepi8_si128_10, callconv, xmmword, < >, < >, Inxmm_A:xmmword,
 procend
 
 procstart _uX_mm_cvtepi8_si128_11, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_B:byte
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        11
     .else
         movzx        dp1(),      bp1()
@@ -1431,8 +1362,7 @@ procstart _uX_mm_cvtepi8_si128_11, callconv, xmmword, < >, < >, Inxmm_A:xmmword,
 procend
 
 procstart _uX_mm_cvtepi8_si128_12, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_B:byte
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        12
     .else
         movzx        dp1(),      bp1()
@@ -1443,8 +1373,7 @@ procstart _uX_mm_cvtepi8_si128_12, callconv, xmmword, < >, < >, Inxmm_A:xmmword,
 procend
 
 procstart _uX_mm_cvtepi8_si128_13, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_B:byte
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        13
     .else
         movzx        dp1(),      bp1()
@@ -1455,8 +1384,7 @@ procstart _uX_mm_cvtepi8_si128_13, callconv, xmmword, < >, < >, Inxmm_A:xmmword,
 procend
 
 procstart _uX_mm_cvtepi8_si128_14, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_B:byte
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        14
     .else
         movzx        dp1(),      bp1()
@@ -1467,8 +1395,7 @@ procstart _uX_mm_cvtepi8_si128_14, callconv, xmmword, < >, < >, Inxmm_A:xmmword,
 procend
 
 procstart _uX_mm_cvtepi8_si128_15, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_B:byte
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        15
     .else
         movzx        dp1(),      bp1()
@@ -1494,8 +1421,7 @@ procstart _uX_mm_cvtepi8_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, In
     endif
 
         _m128icvteltsepi8s128_0 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        0
     .else
         movzx        dp1(),   bp1()
@@ -1503,8 +1429,7 @@ procstart _uX_mm_cvtepi8_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, In
     .endif
         jmp        _m128icvteltsepi8s128_end
         _m128icvteltsepi8s128_1 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        1
     .else
         movzx        dp1(),   bp1()
@@ -1513,8 +1438,7 @@ procstart _uX_mm_cvtepi8_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, In
     .endif
         jmp        _m128icvteltsepi8s128_end
         _m128icvteltsepi8s128_2 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        2
     .else
         movzx        dp1(),   bp1()
@@ -1523,8 +1447,7 @@ procstart _uX_mm_cvtepi8_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, In
     .endif
         jmp        _m128icvteltsepi8s128_end
         _m128icvteltsepi8s128_3 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        3
     .else
         movzx        dp1(),   bp1()
@@ -1533,8 +1456,7 @@ procstart _uX_mm_cvtepi8_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, In
     .endif
         jmp        _m128icvteltsepi8s128_end
         _m128icvteltsepi8s128_4 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        4
     .else
         movzx        dp1(),   bp1()
@@ -1543,8 +1465,7 @@ procstart _uX_mm_cvtepi8_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, In
     .endif
         jmp        _m128icvteltsepi8s128_end
         _m128icvteltsepi8s128_5 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        5
     .else
         movzx        dp1(),   bp1()
@@ -1553,8 +1474,7 @@ procstart _uX_mm_cvtepi8_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, In
     .endif
         jmp        _m128icvteltsepi8s128_end
         _m128icvteltsepi8s128_6 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        6
     .else
         movzx        dp1(),   bp1()
@@ -1563,8 +1483,7 @@ procstart _uX_mm_cvtepi8_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, In
     .endif
         jmp        _m128icvteltsepi8s128_end
         _m128icvteltsepi8s128_7 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        7
     .else
         movzx        dp1(),   bp1()
@@ -1573,8 +1492,7 @@ procstart _uX_mm_cvtepi8_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, In
     .endif
         jmp        _m128icvteltsepi8s128_end
         _m128icvteltsepi8s128_8 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        8
     .else
         movzx        dp1(),   bp1()
@@ -1583,8 +1501,7 @@ procstart _uX_mm_cvtepi8_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, In
     .endif
         jmp        _m128icvteltsepi8s128_end
         _m128icvteltsepi8s128_9 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        9
     .else
         movzx        dp1(),   bp1()
@@ -1593,8 +1510,7 @@ procstart _uX_mm_cvtepi8_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, In
     .endif
         jmp        _m128icvteltsepi8s128_end
         _m128icvteltsepi8s128_10 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        10
     .else
         movzx        dp1(),   bp1()
@@ -1603,8 +1519,7 @@ procstart _uX_mm_cvtepi8_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, In
     .endif
         jmp        _m128icvteltsepi8s128_end
         _m128icvteltsepi8s128_11 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        11
     .else
         movzx        dp1(),   bp1()
@@ -1613,8 +1528,7 @@ procstart _uX_mm_cvtepi8_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, In
     .endif
         jmp        _m128icvteltsepi8s128_end
         _m128icvteltsepi8s128_12 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        12
     .else
         movzx        dp1(),   bp1()
@@ -1623,8 +1537,7 @@ procstart _uX_mm_cvtepi8_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, In
     .endif
         jmp        _m128icvteltsepi8s128_end
         _m128icvteltsepi8s128_13 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        13
     .else
         movzx        dp1(),   bp1()
@@ -1633,8 +1546,7 @@ procstart _uX_mm_cvtepi8_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, In
     .endif
         jmp        _m128icvteltsepi8s128_end
         _m128icvteltsepi8s128_14 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        14
     .else
         movzx        dp1(),   bp1()
@@ -1643,8 +1555,7 @@ procstart _uX_mm_cvtepi8_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, In
     .endif
         jmp        _m128icvteltsepi8s128_end
         _m128icvteltsepi8s128_15 label size_t
-        mov         rret(),         __uX_CPUFeatures_SSE41
-    .if(rret() == true)
+    .if(__uX_CPUFeatures_SSE41 == true)
         pinsrb       xmm0,         dp1(),        15
     .else
         movzx        dp1(),   bp1()

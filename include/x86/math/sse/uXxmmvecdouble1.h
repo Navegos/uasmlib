@@ -3,7 +3,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -217,7 +217,7 @@ public:
     /**
      * \fn uX::xmm::vecdouble1::vecdouble1(vecfloat1 const Inxmm_a) uX_noexcept
      * \brief Constructor initialization from type vecfloat1
-     * \details Constructor converts low float _x element from /p vecfloat1 to low _x element
+     * \details Constructor converts low float _x element from /p vecfloat1 to low double _x element
      * \param[in] Inxmm_a - vecfloat1 Read only
      * \warning Converts the value from float to double
      * \Note Sets the _x  double element
@@ -281,7 +281,7 @@ public:
      * \param[in] Inbool - bool_t Read only
      * \Note Sets the _x  double element
      */
-    uX_constexpr vecdouble1(bool_t const Inbool) uX_noexcept : m128_xmmd(vecdouble1(vecqword1(Inbool))) {}
+    uX_constexpr vecdouble1(bool_t const Inbool) uX_noexcept : m128_xmmd(vecdouble1(vecuqword1(Inbool))) {}
 
     /**
      * \fn uX::xmm::vecdouble1::vecdouble1(bool const Inbool) uX_noexcept
@@ -290,7 +290,7 @@ public:
      * \param[in] Inbool - bool Read only
      * \Note Sets the _x  double element
      */
-    uX_constexpr vecdouble1(bool const Inbool) uX_noexcept : m128_xmmd(vecdouble1(vecqword1(Inbool))) {}
+    uX_constexpr vecdouble1(bool const Inbool) uX_noexcept : m128_xmmd(vecdouble1(vecuqword1(Inbool))) {}
 
     /**
      * \brief __m128d type cast operator
@@ -533,7 +533,7 @@ public:
      */
     uX_constexpr void uX_ABI set(__m128d const Inxmmd) uX_noexcept
     {
-        m128_xmmd = _uX_mm_move_sd(__m128d_false, Inxmmd);
+        m128_xmmd = vecdouble1(Inxmmd);
     }
 
     /**
@@ -1367,7 +1367,7 @@ public:
     friend uX_constexpr vecdouble1 uX_ABI change_sign(vecdouble1 const Inxmmd_a) uX_noexcept
     {
         if (i0 == 0) return Inxmmd_a;
-        return Inxmmd_a ^ vecdouble1(vecuqword1::constant<0x8000000000000000>);
+        return Inxmmd_a ^ vecdouble1(vecuqword1::constant<i0 ? 0x8000000000000000 : 0>);
     }
 
     /**

@@ -3,7 +3,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -84,8 +84,10 @@ Calling convention  // currently defined for windows only for (MSVC / Intel ICW)
 #       define uX_regcall
 #   endif //uX_X86_OR_X64_CPU
 #elif defined(uX_GCC_COMPATIBLE_COMPILER)
-#  if defined(uX_X86_OR_X64_CPU)
-#   if defined(uX_WINDOWS)
+#  if defined(uX_X86_OR_X64_CPU) && defined(uX_WINDOWS)
+#       define uX_cdecl __attribute__((cdecl))
+#       define uX_fastcall __attribute__((fastcall))
+#       define uX_stdcall  __attribute__((stdcall))
 #    ifndef uX_callconv
 #      if defined(uX_VECTORCALL_SUPPORT)
 #        if defined(uX_CLANG) || defined(uX_ICC)
@@ -114,7 +116,7 @@ Calling convention  // currently defined for windows only for (MSVC / Intel ICW)
 #    endif //uX_veccall
 #    ifndef uX_regcall
 #      if defined(uX_REGCALL_SUPPORT)
-#        if defined(uX_CLANG) || defined(uX_ICC) && !defined(uX_VC)
+#        if defined(uX_CLANG) || defined(uX_ICC)
 #           define uX_regcall __attribute__((regcall))
 #        else
 #           define uX_regcall
@@ -123,40 +125,45 @@ Calling convention  // currently defined for windows only for (MSVC / Intel ICW)
 #           define uX_regcall
 #      endif
 #    endif //uX_regcall
-/*
-# if defined(uX_ICREGCALL)
-#   define uX_callconv(T) __attribute__((regcall)) T
-#   define uX_veccall(T) __attribute__((regcall)) T
-#else*/
-#  if defined(uX_X86_OR_X64_CPU) && !defined(uX_MIC)
+#  elif defined(uX_X86_OR_X64_CPU) && !defined(uX_MIC)
+#       define uX_cdecl
+#       define uX_fastcall
+#       define uX_stdcall
+#       define uX_veccall
+#   ifndef uX_callconv
 #   define uX_callconv __attribute__((sysv_abi))
-#   define uX_veccall __attribute__((sysv_abi))
+#   endif
+#   ifndef uX_regcall
+#      if defined(uX_REGCALL_SUPPORT)
+#        if defined(uX_CLANG) || defined(uX_ICC)
+#           define uX_regcall __attribute__((regcall))
 #  else
-#   define uX_callconv
-#   define uX_veccall
+#           define uX_regcall
+#        endif
+#      else
+#           define uX_regcall
 #  endif
-/*# endif*/
-#   if defined(uX_X86_OR_X64_CPU) && !defined(uX_MIC)
-#   define uX_cdecl __attribute__((cdecl))
-#   define uX_fastcall __attribute__((fastcall))
-#   define uX_stdcall  __attribute__((stdcall))
+#   endif //uX_regcall
 # else
 #   define uX_cdecl
-#   define uX_fastcall
-#   define uX_stdcall
+#       define uX_stdcall
+#       define uX_fastcall
+#       define uX_callconv
+#       define uX_veccall
+#       define uX_regcall
 # endif
-#    endif //uX_WINDOWS
-#   endif //uX_X86_OR_X64_CPU
 #else
-#   define uX_callconv
-#   define uX_veccall
-#   define uX_cdecl
-#   define uX_stdcall
-#   define uX_fastcall
+#       define uX_cdecl
+#       define uX_stdcall
+#       define uX_fastcall
+#       define uX_callconv
+#       define uX_veccall
+#       define uX_regcall
 #endif
 
 #if defined(uX_X86_OR_X64_ABI) && (defined(uX_MSVC_COMPATIBLE_COMPILER))
 #   define uX_ABI uX_callconv
+//#   define uX_ABI 
 #elif defined(uX_X86_OR_X64_ABI) && (defined(uX_GCC_COMPATIBLE_COMPILER))
 #   define uX_ABI uX_callconv
 #else

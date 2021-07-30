@@ -3,7 +3,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -45,10 +45,10 @@ uX_PACK_PUSH_XMM
  * DP, misc
  */
 
-    extern __m128d uX_ABI _uX_mm_shuffle_00_pd(__m128d Inxmm_A, __m128d Inxmm_B);
-    extern __m128d uX_ABI _uX_mm_shuffle_01_pd(__m128d Inxmm_A, __m128d Inxmm_B);
-    extern __m128d uX_ABI _uX_mm_shuffle_10_pd(__m128d Inxmm_A, __m128d Inxmm_B);
-    extern __m128d uX_ABI _uX_mm_shuffle_11_pd(__m128d Inxmm_A, __m128d Inxmm_B);
+extern __m128d uX_ABI _uX_mm_shuffle_00_pd(__m128d /*Inxmm_A*/, __m128d /*Inxmm_B*/);
+extern __m128d uX_ABI _uX_mm_shuffle_01_pd(__m128d /*Inxmm_A*/, __m128d /*Inxmm_B*/);
+extern __m128d uX_ABI _uX_mm_shuffle_10_pd(__m128d /*Inxmm_A*/, __m128d /*Inxmm_B*/);
+extern __m128d uX_ABI _uX_mm_shuffle_11_pd(__m128d /*Inxmm_A*/, __m128d /*Inxmm_B*/);
 
 uX_PACK_POP
 uX_EXTERNC_END

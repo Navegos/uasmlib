@@ -26,6 +26,12 @@
 #ifndef uX_XMM_VECFLOAT4_H
 #define uX_XMM_VECFLOAT4_H 1
 
+/**
+ * \defgroup uX_XMM_VECFLOAT4 4 Single Precision SSE SIMD Vector
+ * \ingroup uX_NAMESPACE_XMM
+ * \file uXxmmvecfloat4.h
+ */
+
 #ifndef uX_TYPES_H
 #include "uXtypes.h"
 #endif  /* uX_TYPES_H */
@@ -55,6 +61,12 @@
 #ifndef uX_EMM_INTRIN_H
 #include "uXemmintrin.h"
 #endif  /* uX_EMM_INTRIN_H */
+
+ /**
+  * \defgroup uX_XMM_VECFLOAT4_CLASS 4 Single Precision SSE SIMD Vector Class
+  * \ingroup uX_XMM_VECFLOAT4
+  * To use these class include the header file \p uXxmmvecfloat4.h in your program
+  */
 
 namespace_uX
 namespace_XMM
@@ -122,25 +134,34 @@ class vecdouble4x3;
 class vecdouble4x4;
 #endif
 
-/** \class vecfloat4
-  *
-  * \brief SSE SIMD class with the size of 4 float elements.
-  *
-  * The %vecfloat4 class is an 4 elements wide 32bit float.
-  * It provides interoperability between %vecdouble2, %vecdword4 and %vecudword4.
-  *
-  */
-typedef class uX_API vecfloat4
+/**
+ * \ingroup uX_XMM_VECFLOAT4_CLASS
+ * \class vecfloat4
+ * \brief SSE SIMD class with the size of 4 float elements
+ * \details The \p vecfloat4 class is an 4 elements wide 32bit float element where
+    it provides interoperability between \p vecdword4 \p vecudword4 \p vecqword2 \p vecuqword2 \p vecdouble2 \p vecdouble4 class's
+ */
+typedef class vecfloat4
 {
 public:
     vecfloat4()uX_default;
     ~vecfloat4()uX_default;
 
-    vecfloat4(const vecfloat4&)uX_default;
-    vecfloat4& uX_ABI operator=(const vecfloat4&)uX_default;
+    /**
+     * \fn uX::xmm::vecfloat4::vecfloat4(vecfloat4 const& Inxmm_a) uX_noexcept
+     * \brief Default constructor initialization from vecfloat4
+     * \details Default constructor copies /p vecfloat4
+     * \param[in] Inxmm_a - vecfloat4 Read only
+     */
+    uX_constexpr vecfloat4(vecfloat4 const& Inxmm_a) uX_noexcept : m128_xmm(Inxmm_a.m128_xmm) {}
 
-    vecfloat4(vecfloat4&&)uX_default;
-    vecfloat4& uX_ABI operator=(vecfloat4&&)uX_default;
+    /**
+     * \fn uX::xmm::vecfloat4::vecfloat4(vecfloat4&& Inxmm_a) uX_noexcept
+     * \brief Default constructor initialization from vecfloat4
+     * \details Default constructor copies /p vecfloat4
+     * \param[in] Inxmm_a - vecfloat4 Read only
+     */
+    uX_constexpr vecfloat4(vecfloat4&& Inxmm_a) uX_noexcept : m128_xmm(Inxmm_a.m128_xmm) {}
 
     /**
      * \brief Constructor initialization from type __m128.
@@ -176,6 +197,16 @@ public:
      * \param Inxmmd_a value to copy from.
      */
     uX_constexpr vecfloat4(const vecdouble2 Inxmmd_a) uX_noexcept : m128_xmm(_uX_mm_castpd_ps(Inxmmd_a)) {}
+
+    /**
+     * \fn uX::xmm::vecfloat4::vecfloat4(vecdouble4 const InHxmmd_a) uX_noexcept
+     * \brief Constructor initialization from type vecdouble4
+     * \details Constructor converts double _x _y _z _w elements from /p vecdouble4 to float _x _y _z _w elements
+     * \param[in] InHxmmd_a - vecdouble4 Read only
+     * \warning Converts the value from double to float
+     * \Note Sets the _x _y _z _w float elements
+     */
+    uX_constexpr vecfloat4(vecdouble4 const InHxmmd_a) uX_noexcept : m128_xmm(_uX_MM_SHUFFLER_IM_PS(_uX_mm_cvtpd_ps(InHxmmd_a.get_xmmd_0()), _uX_mm_cvtpd_ps(InHxmmd_a.get_xmmd_1()), 0, 1, 2, 3)) {}
 
     /**
      * \brief Constructor initialization from type vecdword4.
@@ -215,64 +246,91 @@ public:
     /**
      * \brief Constructor initialization from 4 type float.
      *
-     * \param Infloat_X value to copy from.
-     * \param Infloat_Y value to copy from.
-     * \param Infloat_Z value to copy from.
-     * \param Infloat_W value to copy from.
+     * \param Infloat_x value to copy from.
+     * \param Infloat_y value to copy from.
+     * \param Infloat_z value to copy from.
+     * \param Infloat_w value to copy from.
      */
-    uX_constexpr vecfloat4(float Infloat_X, float Infloat_Y, float Infloat_Z, float Infloat_W) uX_noexcept : m128_xmm(_uX_mm_set_ps(Infloat_W, Infloat_Z, Infloat_Y, Infloat_X)) {}
+    uX_constexpr vecfloat4(float Infloat_x, float Infloat_y, float Infloat_z, float Infloat_w) uX_noexcept : m128_xmm(_uX_mm_set_ps(Infloat_w, Infloat_z, Infloat_y, Infloat_x)) {}
 
     /**
      * \brief Constructor to broadcast the same bool value into all elements.
      *
      * \param Inbool_a value to copy from.
      */
-    uX_explicit uX_constexpr vecfloat4(const bool_t Inbool_a) uX_noexcept : m128_xmm(vecfloat4(vecdword4(Inbool_a))) {}
+    uX_explicit uX_constexpr vecfloat4(const bool_t Inbool_a) uX_noexcept : m128_xmm(vecfloat4(vecudword4(Inbool_a))) {}
 
     /**
      * \brief Constructor initialization from 4 type bool.
      *
-     * \param Inbool_X value to copy from.
-     * \param Inbool_Y value to copy from.
-     * \param Inbool_Z value to copy from.
-     * \param Inbool_W value to copy from.
+     * \param Inbool_x value to copy from.
+     * \param Inbool_y value to copy from.
+     * \param Inbool_z value to copy from.
+     * \param Inbool_w value to copy from.
      */
-    uX_constexpr vecfloat4(const bool_t Inbool_X, const bool_t Inbool_Y, const bool_t Inbool_Z, const bool_t Inbool_W) uX_noexcept 
-                          : m128_xmm(vecfloat4(vecdword4(Inbool_X, Inbool_Y, Inbool_Z, Inbool_W))) {}
+    uX_constexpr vecfloat4(const bool_t Inbool_x, const bool_t Inbool_y, const bool_t Inbool_z, const bool_t Inbool_w) uX_noexcept : m128_xmm(vecfloat4(vecudword4(Inbool_x, Inbool_y, Inbool_z, Inbool_w))) {}
 
     /**
      * \brief Constructor to broadcast the same bool value into all elements.
      *
      * \param Inbool_a value to copy from.
      */
-    uX_explicit uX_constexpr vecfloat4(const bool Inbool_a) uX_noexcept : m128_xmm(vecfloat4(vecdword4(Inbool_a))) {}
+    uX_explicit uX_constexpr vecfloat4(const bool Inbool_a) uX_noexcept : m128_xmm(vecfloat4(vecudword4(Inbool_a))) {}
 
     /**
      * \brief Constructor initialization from 4 type bool.
      *
-     * \param Inbool_X value to copy from.
-     * \param Inbool_Y value to copy from.
-     * \param Inbool_Z value to copy from.
-     * \param Inbool_W value to copy from.
+     * \param Inbool_x value to copy from.
+     * \param Inbool_y value to copy from.
+     * \param Inbool_z value to copy from.
+     * \param Inbool_w value to copy from.
      */
-    uX_constexpr vecfloat4(const bool Inbool_X, const bool Inbool_Y, const bool Inbool_Z, const bool Inbool_W) uX_noexcept
-                          : m128_xmm(vecfloat4(vecdword4(Inbool_X, Inbool_Y, Inbool_Z, Inbool_W))) {}
+    uX_constexpr vecfloat4(const bool Inbool_x, const bool Inbool_y, const bool Inbool_z, const bool Inbool_w) uX_noexcept : m128_xmm(vecfloat4(vecudword4(Inbool_x, Inbool_y, Inbool_z, Inbool_w))) {}
 
     /**
      * \brief Constructor initialization from type float*.
      *
      * \param Inpfloat pointer value to copy from.
      */
-    uX_explicit uX_constexpr vecfloat4(uX_InReads(4) const float* Inpfloat) uX_noexcept : m128_xmm(_uX_mm_loadu_ps(Inpfloat)) {}
+    uX_explicit uX_constexpr vecfloat4(uX_InReads(4) const float* Inpfloat) uX_noexcept : m128_xmm(_uX_mm_loadu_ps(reinterpret_cast<__m128 const* const>(Inpfloat))) {}
 
     /** \brief __m128 type cast operator.
      *
      * To convert to __m128.
      */
-    uX_constexpr operator __m128() const uX_noexcept { return m128_xmm; }
+    uX_constexpr operator __m128() const uX_noexcept
+    {
+        return m128_xmm;
+    }
 
     /** Type cast operator to convert to float*. */
     /*operator float*() const uX_noexcept;*/ //security undesired
+
+    /**
+     * \brief vecfloat4 default assignment operator.
+     *
+     * To convert from type vecfloat4.
+     *
+     * \param Inxmmd_a value to copy from.
+     */
+    uX_constexpr vecfloat4& uX_ABI operator=(vecfloat4 const& Inxmm_a) uX_noexcept
+    {
+        m128_xmm = Inxmm_a;
+        return *this;
+    }
+
+    /**
+     * \brief vecfloat4 default assignment operator.
+     *
+     * To convert from type vecfloat4.
+     *
+     * \param Inxmmd_a value to copy from.
+     */
+    uX_constexpr vecfloat4& uX_ABI operator=(vecfloat4&& Inxmm_a) uX_noexcept
+    {
+        m128_xmm = Inxmm_a;
+        return *this;
+    }
 
     /**
      * \brief __m128 assignment operator.
@@ -281,7 +339,11 @@ public:
      *
      * \param Inxmm value to copy from.
      */
-    vecfloat4& uX_ABI operator=(const __m128 Inxmm) uX_noexcept;
+    vecfloat4& uX_ABI operator=(const __m128 Inxmm) uX_noexcept
+    {
+        m128_xmm = Inxmm;
+        return *this;
+    }
 
     /**
      * \brief vecfloat3 assignment operator.
@@ -290,7 +352,11 @@ public:
      *
      * \param Inxmm_a value to copy from.
      */
-    vecfloat4& uX_ABI operator=(const vecfloat3 Inxmm_a) uX_noexcept;
+    vecfloat4& uX_ABI operator=(const vecfloat3 Inxmm_a) uX_noexcept
+    {
+        m128_xmm = vecfloat4(Inxmm_a);
+        return *this;
+    }
 
     /**
      * \brief vecfloat2 assignment operator.
@@ -299,7 +365,11 @@ public:
      *
      * \param Inxmm_a value to copy from.
      */
-    vecfloat4& uX_ABI operator=(const vecfloat2 Inxmm_a) uX_noexcept;
+    vecfloat4& uX_ABI operator=(const vecfloat2 Inxmm_a) uX_noexcept
+    {
+        m128_xmm = vecfloat4(Inxmm_a);
+        return *this;
+    }
 
     /**
      * \brief vecfloat1 assignment operator.
@@ -308,7 +378,11 @@ public:
      *
      * \param Inxmm_a value to copy from.
      */
-    vecfloat4& uX_ABI operator=(const vecfloat1 Inxmm_a) uX_noexcept;
+    vecfloat4& uX_ABI operator=(const vecfloat1 Inxmm_a) uX_noexcept
+    {
+        m128_xmm = vecfloat4(Inxmm_a);
+        return *this;
+    }
 
     /**
      * \brief vecdouble2 assignment operator.
@@ -317,7 +391,24 @@ public:
      *
      * \param Inxmmd_a value to copy from.
      */
-    vecfloat4& uX_ABI operator=(const vecdouble2 Inxmmd_a) uX_noexcept;
+    vecfloat4& uX_ABI operator=(const vecdouble2 Inxmmd_a) uX_noexcept
+    {
+        m128_xmm = vecfloat4(Inxmmd_a);
+        return *this;
+    }
+
+    /**
+     * \brief vecdouble4 assignment operator.
+     *
+     * To convert from type vecdouble4.
+     *
+     * \param Inxmmd_a value to convert from.
+     */
+    vecfloat4& uX_ABI operator=(const vecdouble4 Inxmmd_a) uX_noexcept
+    {
+        m128_xmm = vecfloat4(Inxmmd_a);
+        return *this;
+    }
 
     /**
      * \brief vecdword4 assignment operator.
@@ -326,7 +417,11 @@ public:
      *
      * \param Inxmmi_a value to copy from.
      */
-    vecfloat4& uX_ABI operator=(const vecdword4 Inxmmi_a) uX_noexcept;
+    vecfloat4& uX_ABI operator=(const vecdword4 Inxmmi_a) uX_noexcept
+    {
+        m128_xmm = vecfloat4(Inxmmi_a);
+        return *this;
+    }
 
     /**
      * \brief vecudword4 assignment operator.
@@ -335,7 +430,11 @@ public:
      *
      * \param Inxmmi_a value to copy from.
      */
-    vecfloat4& uX_ABI operator=(const vecudword4 Inxmmi_a) uX_noexcept;
+    vecfloat4& uX_ABI operator=(const vecudword4 Inxmmi_a) uX_noexcept
+    {
+        m128_xmm = vecfloat4(Inxmmi_a);
+        return *this;
+    }
 
     /**
      * \brief vecqword2 assignment operator.
@@ -344,7 +443,11 @@ public:
      *
      * \param Inxmmi_a value to copy from.
      */
-    vecfloat4& uX_ABI operator=(const vecqword2 Inxmmi_a) uX_noexcept;
+    vecfloat4& uX_ABI operator=(const vecqword2 Inxmmi_a) uX_noexcept
+    {
+        m128_xmm = vecfloat4(Inxmmi_a);
+        return *this;
+    }
 
     /**
      * \brief vecuqword2 assignment operator.
@@ -353,7 +456,11 @@ public:
      *
      * \param Inxmmi_a value to copy from.
      */
-    vecfloat4& uX_ABI operator=(const vecuqword2 Inxmmi_a) uX_noexcept;
+    vecfloat4& uX_ABI operator=(const vecuqword2 Inxmmi_a) uX_noexcept
+    {
+        m128_xmm = vecfloat4(Inxmmi_a);
+        return *this;
+    }
 
     /**
      * \brief float assignment operator
@@ -362,7 +469,11 @@ public:
      *
      * \param Infloat_a float value to copy from.
      */
-    vecfloat4& uX_ABI operator=(float Infloat_a) uX_noexcept;
+    vecfloat4& uX_ABI operator=(float Infloat_a) uX_noexcept
+    {
+        m128_xmm = vecfloat4(Infloat_a);
+        return *this;
+    }
 
     /**
      * \brief bool_t assignment operator.
@@ -371,7 +482,11 @@ public:
      *
      * \param Inbool_a value to copy from.
      */
-    vecfloat4& uX_ABI operator=(const bool_t Inbool_a) uX_noexcept;
+    vecfloat4& uX_ABI operator=(const bool_t Inbool_a) uX_noexcept
+    {
+        m128_xmm = vecfloat4(Inbool_a);
+        return *this;
+    }
 
     /**
      * \brief bool assignment operator.
@@ -380,7 +495,11 @@ public:
      *
      * \param Inbool_a value to copy from.
      */
-    vecfloat4& uX_ABI operator=(const bool Inbool_a) uX_noexcept;
+    vecfloat4& uX_ABI operator=(const bool Inbool_a) uX_noexcept
+    {
+        m128_xmm = vecfloat4(Inbool_a);
+        return *this;
+    }
 
     /**
      * \brief Assignment operator to convert from type float*.
@@ -395,7 +514,10 @@ public:
      * Gets vector.
      * \return vector.
      */
-    __m128 uX_ABI get() const uX_noexcept;
+    __m128 uX_ABI get() const uX_noexcept
+    {
+        return m128_xmm;
+    }
 
     /**
      * \brief Get _x.
@@ -403,7 +525,10 @@ public:
      * Gets _x element from vector.
      * \return float.
      */
-    float uX_ABI get_x() const uX_noexcept;
+    float uX_ABI get_x() const uX_noexcept
+    {
+        return _x;
+    }
 
     /**
      * \brief Get _x _y.
@@ -411,7 +536,10 @@ public:
      * Gets _x _y elements from vector.
      * \return vector.
      */
-    vecfloat2 uX_ABI get_xy() const uX_noexcept;
+    vecfloat2 uX_ABI get_xy() const uX_noexcept
+    {
+        return vecfloat2(m128_xmm);
+    }
 
     /**
      * \brief Get _x _y _z.
@@ -419,7 +547,10 @@ public:
      * Gets _x _y _z elements from vector.
      * \return vector.
      */
-    vecfloat3 uX_ABI get_xyz() const uX_noexcept;
+    vecfloat3 uX_ABI get_xyz() const uX_noexcept
+    {
+        return vecfloat3(m128_xmm);
+    }
 
     /**
      * \brief Get _x _y _z _w.
@@ -427,7 +558,10 @@ public:
      * Gets _x _y _z _w elements from vector.
      * \return vector.
      */
-    vecfloat4 uX_ABI get_xyzw() const uX_noexcept;
+    vecfloat4 uX_ABI get_xyzw() const uX_noexcept
+    {
+        return vecfloat4(m128_xmm);
+    }
 
     /**
      * \brief Get _x _y _w.
@@ -435,7 +569,10 @@ public:
      * Gets _x _y _w elements from vector.
      * \return vector.
      */
-    vecfloat3 uX_ABI get_xyw() const uX_noexcept;
+    vecfloat3 uX_ABI get_xyw() const uX_noexcept
+    {
+        return vecfloat3(_uX_MM_PERMUTER_IM_PS(m128_xmm, 0, 1, 3, 3));
+    }
 
     /**
      * \brief Get _x _y _w _z.
@@ -443,7 +580,10 @@ public:
      * Gets _x _y _w _z elements from vector.
      * \return vector.
      */
-    vecfloat4 uX_ABI get_xywz() const uX_noexcept;
+    vecfloat4 uX_ABI get_xywz() const uX_noexcept
+    {
+        return vecfloat4(_uX_MM_PERMUTER_IM_PS(m128_xmm, 0, 1, 3, 2));
+    }
 
     /**
      * \brief Get _x _z.
@@ -451,7 +591,10 @@ public:
      * Gets _x _z elements from vector.
      * \return vector.
      */
-    vecfloat2 uX_ABI get_xz() const uX_noexcept;
+    vecfloat2 uX_ABI get_xz() const uX_noexcept
+    {
+        return vecfloat2(_uX_MM_PERMUTER_IM_PS(m128_xmm, 0, 2, 2, 3));
+    }
 
     /**
      * \brief Get _x _z _y.
@@ -459,7 +602,10 @@ public:
      * Gets _x _z _y elements from vector.
      * \return vector.
      */
-    vecfloat3 uX_ABI get_xzy() const uX_noexcept;
+    vecfloat3 uX_ABI get_xzy() const uX_noexcept
+    {
+        return vecfloat3(_uX_MM_PERMUTER_IM_PS(m128_xmm, 0, 2, 1, 3));
+    }
 
     /**
      * \brief Get _x _z _y _w.
@@ -467,7 +613,10 @@ public:
      * Gets _x _z _y _w elements from vector.
      * \return vector.
      */
-    vecfloat4 uX_ABI get_xzyw() const uX_noexcept;
+    vecfloat4 uX_ABI get_xzyw() const uX_noexcept
+    {
+        return vecfloat4(_uX_MM_PERMUTER_IM_PS(m128_xmm, 0, 2, 1, 3));
+    }
 
     /**
      * \brief Get _x _z _w.
@@ -475,7 +624,10 @@ public:
      * Gets _x _z _w elements from vector.
      * \return vector.
      */
-    vecfloat3 uX_ABI get_xzw() const uX_noexcept;
+    vecfloat3 uX_ABI get_xzw() const uX_noexcept
+    {
+        return vecfloat3(_uX_MM_PERMUTER_IM_PS(m128_xmm, 0, 2, 3, 3));
+    }
 
     /**
      * \brief Get _x _z _w _y.
@@ -483,7 +635,10 @@ public:
      * Gets _x _z _w _y elements from vector.
      * \return vector.
      */
-    vecfloat4 uX_ABI get_xzwy() const uX_noexcept;
+    vecfloat4 uX_ABI get_xzwy() const uX_noexcept
+    {
+        return vecfloat4(_uX_MM_PERMUTER_IM_PS(m128_xmm, 0, 2, 3, 1));
+    }
 
     /**
      * \brief Get _x _w.
@@ -491,7 +646,10 @@ public:
      * Gets _x _w elements from vector.
      * \return vector.
      */
-    vecfloat2 uX_ABI get_xw() const uX_noexcept;
+    vecfloat2 uX_ABI get_xw() const uX_noexcept
+    {
+        return vecfloat2(_uX_MM_PERMUTER_IM_PS(m128_xmm, 0, 3, 2, 3));
+    }
 
     /**
      * \brief Get _x _w _y.
@@ -499,7 +657,10 @@ public:
      * Gets _x _w _y elements from vector.
      * \return vector.
      */
-    vecfloat3 uX_ABI get_xwy() const uX_noexcept;
+    vecfloat3 uX_ABI get_xwy() const uX_noexcept
+    {
+        return vecfloat3(_uX_MM_PERMUTER_IM_PS(m128_xmm, 0, 3, 1, 3));
+    }
 
     /**
      * \brief Get _x _w _y _z.
@@ -507,7 +668,10 @@ public:
      * Gets _x _w _y _z elements from vector.
      * \return vector.
      */
-    vecfloat4 uX_ABI get_xwyz() const uX_noexcept;
+    vecfloat4 uX_ABI get_xwyz() const uX_noexcept
+    {
+        return vecfloat4(_uX_MM_PERMUTER_IM_PS(m128_xmm, 0, 3, 1, 2));
+    }
 
     /**
      * \brief Get _x _w _z.
@@ -515,7 +679,10 @@ public:
      * Gets _x _w _z elements from vector.
      * \return vector.
      */
-    vecfloat3 uX_ABI get_xwz() const uX_noexcept;
+    vecfloat3 uX_ABI get_xwz() const uX_noexcept
+    {
+        return vecfloat3(_uX_MM_PERMUTER_IM_PS(m128_xmm, 0, 3, 2, 3));
+    }
 
     /**
      * \brief Get _x _w _z _y.
@@ -523,7 +690,10 @@ public:
      * Gets _x _w _z _y elements from vector.
      * \return vector.
      */
-    vecfloat4 uX_ABI get_xwzy() const uX_noexcept;
+    vecfloat4 uX_ABI get_xwzy() const uX_noexcept
+    {
+        return vecfloat4(_uX_MM_PERMUTER_IM_PS(m128_xmm, 0, 3, 2, 1));
+    }
 
     /**
      * \brief Get _y.
@@ -531,7 +701,10 @@ public:
      * Gets _y element from vector.
      * \return float.
      */
-    float uX_ABI get_y() const uX_noexcept;
+    float uX_ABI get_y() const uX_noexcept
+    {
+        return _y;
+    }
 
     /**
      * \brief Get _y _x.
@@ -539,7 +712,10 @@ public:
      * Gets _y _x elements from vector.
      * \return vector.
      */
-    vecfloat2 uX_ABI get_yx() const uX_noexcept;
+    vecfloat2 uX_ABI get_yx() const uX_noexcept
+    {
+        return vecfloat2(_uX_MM_PERMUTER_IM_PS(m128_xmm, 1, 0, 2, 3));
+    }
 
     /**
      * \brief Get _y _x _z.
@@ -547,7 +723,10 @@ public:
      * Gets _y _x _z elements from vector.
      * \return vector.
      */
-    vecfloat3 uX_ABI get_yxz() const uX_noexcept;
+    vecfloat3 uX_ABI get_yxz() const uX_noexcept
+    {
+        return vecfloat3(_uX_MM_PERMUTER_IM_PS(m128_xmm, 1, 0, 2, 3));
+    }
 
     /**
      * \brief Get _y _x _z _w.
@@ -555,7 +734,10 @@ public:
      * Gets _y _x _z _w elements from vector.
      * \return vector.
      */
-    vecfloat4 uX_ABI get_yxzw() const uX_noexcept;
+    vecfloat4 uX_ABI get_yxzw() const uX_noexcept
+    {
+        return vecfloat4(_uX_MM_PERMUTER_IM_PS(m128_xmm, 1, 0, 2, 3));
+    }
 
     /**
      * \brief Get _y _x _w.
@@ -563,7 +745,10 @@ public:
      * Gets _y _x _w elements from vector.
      * \return vector.
      */
-    vecfloat3 uX_ABI get_yxw() const uX_noexcept;
+    vecfloat3 uX_ABI get_yxw() const uX_noexcept
+    {
+        return vecfloat3(_uX_MM_PERMUTER_IM_PS(m128_xmm, 1, 0, 3, 3));
+    }
 
     /**
      * \brief Get _y _x _w _z.
@@ -571,7 +756,10 @@ public:
      * Gets _y _x _w _z elements from vector.
      * \return vector.
      */
-    vecfloat4 uX_ABI get_yxwz() const uX_noexcept;
+    vecfloat4 uX_ABI get_yxwz() const uX_noexcept
+    {
+        return vecfloat4(_uX_MM_PERMUTER_IM_PS(m128_xmm, 1, 0, 3, 2));
+    }
 
     /**
      * \brief Get _y _z.
@@ -2024,7 +2212,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4 uX_ABI andnot(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI andnot(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Bitwise operator AND.
@@ -2034,7 +2222,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4 uX_ABI operator&(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI operator&(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Bitwise operator OR.
@@ -2044,7 +2232,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4 uX_ABI operator|(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI operator|(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Bitwise operator XOR.
@@ -2054,7 +2242,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4 uX_ABI operator^(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI operator^(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Bitwise operator NOT.
@@ -2064,7 +2252,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4 uX_ABI operator~(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend vecfloat4 uX_ABI operator~(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /* Logical Operators */
 
@@ -2077,7 +2265,7 @@ public:
      * \param Inxmm_b.
      * \return boolean integer.
      */
-    friend uX_API bool_t uX_ABI bandnot(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend bool_t uX_ABI bandnot(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Logical operator AND.
@@ -2088,7 +2276,7 @@ public:
      * \param Inxmm_b.
      * \return boolean integer.
      */
-    friend uX_API bool_t uX_ABI operator&&(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend bool_t uX_ABI operator&&(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Logical operator OR.
@@ -2099,7 +2287,7 @@ public:
      * \param Inxmm_b.
      * \return boolean integer.
      */
-    friend uX_API bool_t uX_ABI operator||(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend bool_t uX_ABI operator||(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Logical operator NOT.
@@ -2109,7 +2297,7 @@ public:
      * \param Inxmm_a.
      * \return boolean integer.
      */
-    friend uX_API bool_t uX_ABI operator!(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend bool_t uX_ABI operator!(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /**
      * \brief Logical function HORIZONTAL AND.
@@ -2119,7 +2307,7 @@ public:
      * \param Inxmm_a.
      * \return boolean integer.
      */
-    friend uX_API bool_t uX_ABI horizontal_and(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend bool_t uX_ABI horizontal_and(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /**
      * \brief Logical function HORIZONTAL OR.
@@ -2129,7 +2317,7 @@ public:
      * \param Inxmm_a.
      * \return boolean integer.
      */
-    friend uX_API bool_t uX_ABI horizontal_or(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend bool_t uX_ABI horizontal_or(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /**
      * \brief Logical operator assignment AND.
@@ -2139,7 +2327,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4& uX_ABI operator&=(vecfloat4& Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4& uX_ABI operator&=(vecfloat4& Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Logical operator assignment OR.
@@ -2149,7 +2337,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4& uX_ABI operator|=(vecfloat4& Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4& uX_ABI operator|=(vecfloat4& Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Logical operator assignment XOR.
@@ -2159,7 +2347,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4& uX_ABI operator^=(vecfloat4& Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4& uX_ABI operator^=(vecfloat4& Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /* Arithmetic Operators */
 
@@ -2171,7 +2359,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4 uX_ABI operator+(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI operator+(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Arithmetic operator subtraction.
@@ -2181,7 +2369,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4 uX_ABI operator-(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI operator-(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Arithmetic operator multiplication.
@@ -2191,7 +2379,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4 uX_ABI operator*(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI operator*(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Arithmetic operator division.
@@ -2201,7 +2389,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4 uX_ABI operator/(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI operator/(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Arithmetic operator addition.
@@ -2211,7 +2399,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4& uX_ABI operator+=(vecfloat4& Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4& uX_ABI operator+=(vecfloat4& Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Arithmetic operator subtraction.
@@ -2221,7 +2409,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4& uX_ABI operator-=(vecfloat4& Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4& uX_ABI operator-=(vecfloat4& Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Arithmetic operator multiplication.
@@ -2231,7 +2419,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4& uX_ABI operator*=(vecfloat4& Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4& uX_ABI operator*=(vecfloat4& Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Arithmetic operator division.
@@ -2241,7 +2429,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4& uX_ABI operator/=(vecfloat4& Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4& uX_ABI operator/=(vecfloat4& Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /* Unary Operators */
 
@@ -2252,7 +2440,7 @@ public:
      *
      * \param Inxmm_a.
      */
-    friend uX_API vecfloat4& uX_ABI operator++(vecfloat4& Inxmm_a) uX_noexcept;
+    friend vecfloat4& uX_ABI operator++(vecfloat4& Inxmm_a) uX_noexcept;
 
     /**
      * \brief Unary prefix decrement operator.
@@ -2261,7 +2449,7 @@ public:
      *
      * \param Inxmm_a.
      */
-    friend uX_API vecfloat4& uX_ABI operator--(vecfloat4& Inxmm_a) uX_noexcept;
+    friend vecfloat4& uX_ABI operator--(vecfloat4& Inxmm_a) uX_noexcept;
 
     /**
      * \brief Unary postfix increment operator.
@@ -2270,7 +2458,7 @@ public:
      *
      * \param Inxmm_a.
      */
-    friend uX_API vecfloat4 uX_ABI operator++(vecfloat4& Inxmm_a, int) uX_noexcept;
+    friend vecfloat4 uX_ABI operator++(vecfloat4& Inxmm_a, int) uX_noexcept;
 
     /**
      * \brief Unary postfix decrement operator.
@@ -2279,7 +2467,7 @@ public:
      *
      * \param Inxmm_a.
      */
-    friend uX_API vecfloat4 uX_ABI operator--(vecfloat4& Inxmm_a, int) uX_noexcept;
+    friend vecfloat4 uX_ABI operator--(vecfloat4& Inxmm_a, int) uX_noexcept;
 
     /**
      * \brief Unary minus operator.
@@ -2288,7 +2476,7 @@ public:
      *
      * \param Inxmm_a.
      */
-    friend uX_API vecfloat4 uX_ABI operator-(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend vecfloat4 uX_ABI operator-(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /* Comparison Operators */
 
@@ -2300,7 +2488,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4 uX_ABI operator==(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI operator==(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Comparison operator less than.
@@ -2310,7 +2498,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4 uX_ABI operator<(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI operator<(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Comparison operator less than or equal.
@@ -2320,7 +2508,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4 uX_ABI operator<=(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI operator<=(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Comparison operator greater than.
@@ -2330,7 +2518,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4 uX_ABI operator>(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI operator>(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Comparison operator greater than or equal.
@@ -2340,7 +2528,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4 uX_ABI operator>=(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI operator>=(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Comparison operator not equal.
@@ -2350,7 +2538,7 @@ public:
      * \param Inxmm_a.
      * \param Inxmm_b.
      */
-    friend uX_API vecfloat4 uX_ABI operator!=(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI operator!=(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Load unaligned.
@@ -2436,7 +2624,7 @@ public:
      * \param Inxmm_a the vector to flip sign.
      * \return vector.
      */
-    friend uX_API vecfloat4 uX_ABI flip_sign(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend vecfloat4 uX_ABI flip_sign(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /**
      * \brief Test if all elements if is zero.
@@ -2446,7 +2634,7 @@ public:
      * \param Inxmm_a the vector to test.
      * \return boolean integer.
      */
-    friend uX_API bool_t uX_ABI is_zero(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend bool_t uX_ABI is_zero(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /**
      * \brief Select between two operands.
@@ -2461,7 +2649,7 @@ public:
      * \param Inxmm_b the b vector to select.
      * \return the selected vector elements.
      */
-    friend uX_API vecfloat4 uX_ABI select(const vecfloat4 Inxmm_f, const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI select(const vecfloat4 Inxmm_f, const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Conditional add.
@@ -2475,7 +2663,7 @@ public:
      * \param Inxmm_b the b vector to add.
      * \return the selected vector addition.
      */
-    friend uX_API vecfloat4 uX_ABI if_add(const vecfloat4 Inxmm_f, const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI if_add(const vecfloat4 Inxmm_f, const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Conditional subtract.
@@ -2489,7 +2677,7 @@ public:
      * \param Inxmm_b the b vector to subtract.
      * \return the selected vector subtraction.
      */
-    friend uX_API vecfloat4 uX_ABI if_sub(const vecfloat4 Inxmm_f, const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI if_sub(const vecfloat4 Inxmm_f, const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Conditional multiply.
@@ -2503,7 +2691,7 @@ public:
      * \param Inxmm_b the b vector to multiply.
      * \return the selected vector multiplication.
      */
-    friend uX_API vecfloat4 uX_ABI if_mul(const vecfloat4 Inxmm_f, const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI if_mul(const vecfloat4 Inxmm_f, const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Conditional multiply.
@@ -2517,7 +2705,7 @@ public:
      * \param Inxmm_b the b vector to divide.
      * \return the selected vector division.
      */
-    friend uX_API vecfloat4 uX_ABI if_div(const vecfloat4 Inxmm_f, const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI if_div(const vecfloat4 Inxmm_f, const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Sign bit.
@@ -2528,7 +2716,7 @@ public:
      * \param Inxmm_a the a vector.
      * \return vector.
      */
-    friend uX_API vecfloat4 uX_ABI sign_bit(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend vecfloat4 uX_ABI sign_bit(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /**
      * \brief Sign combine.
@@ -2540,7 +2728,7 @@ public:
      * \param Inxmm_b the b vector.
      * \return vector.
      */
-    friend uX_API vecfloat4 uX_ABI sign_combine(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI sign_combine(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Is finite.
@@ -2550,7 +2738,7 @@ public:
      * \param Inxmm_a the a vector.
      * \return vector.
      */
-    friend uX_API vecfloat4 uX_ABI is_finite(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend vecfloat4 uX_ABI is_finite(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /**
      * \brief Is inf.
@@ -2560,7 +2748,7 @@ public:
      * \param Inxmm_a the a vector.
      * \return vector.
      */
-    friend uX_API vecfloat4 uX_ABI is_inf(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend vecfloat4 uX_ABI is_inf(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /**
      * \brief Is nan.
@@ -2570,7 +2758,7 @@ public:
      * \param Inxmm_a the a vector.
      * \return vector.
      */
-    friend uX_API vecfloat4 uX_ABI is_nan(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend vecfloat4 uX_ABI is_nan(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /**
      * \brief Is subnormal.
@@ -2580,7 +2768,7 @@ public:
      * \param Inxmm_a the a vector.
      * \return vector.
      */
-    friend uX_API vecfloat4 uX_ABI is_subnormal(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend vecfloat4 uX_ABI is_subnormal(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /**
      * \brief Is zero or subnormal.
@@ -2590,7 +2778,7 @@ public:
      * \param Inxmm_a the a vector.
      * \return vector.
      */
-    friend uX_API vecfloat4 uX_ABI is_zero_or_subnormal(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend vecfloat4 uX_ABI is_zero_or_subnormal(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /**
      * \brief Infinite.
@@ -2614,7 +2802,7 @@ public:
      * \param Inxmm_a the a vector.
      * \return float.
      */
-    friend uX_API float uX_ABI horizontal_add(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend float uX_ABI horizontal_add(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /**
      * \brief Horizontal mull.
@@ -2624,7 +2812,7 @@ public:
      * \param Inxmm_a the a vector.
      * \return float.
      */
-    friend uX_API float uX_ABI horizontal_mul(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend float uX_ABI horizontal_mul(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /**
      * \brief Max.
@@ -2635,7 +2823,7 @@ public:
      * \param Inxmm_b the b vector.
      * \return vector.
      */
-    friend uX_API vecfloat4 uX_ABI max(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI max(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Min.
@@ -2646,7 +2834,7 @@ public:
      * \param Inxmm_b the b vector.
      * \return vector.
      */
-    friend uX_API vecfloat4 uX_ABI min(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
+    friend vecfloat4 uX_ABI min(const vecfloat4 Inxmm_a, const vecfloat4 Inxmm_b) uX_noexcept;
 
     /**
      * \brief Abs.
@@ -2656,7 +2844,7 @@ public:
      * \param Inxmm_a the a vector..
      * \return vector.
      */
-    friend uX_API vecfloat4 uX_ABI abs(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend vecfloat4 uX_ABI abs(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /**
      * \brief Square.
@@ -2666,7 +2854,7 @@ public:
      * \param Inxmm_a the a vector.
      * \return vector.
      */
-    friend uX_API vecfloat4 uX_ABI square(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend vecfloat4 uX_ABI square(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /**
      * \brief Scale.
@@ -2677,7 +2865,7 @@ public:
      * \param Infloat_s the float scale factor.
      * \return vector.
      */
-    friend uX_API vecfloat4 uX_ABI scale(const vecfloat4 Inxmm_a, float Infloat_s) uX_noexcept;
+    friend vecfloat4 uX_ABI scale(const vecfloat4 Inxmm_a, float Infloat_s) uX_noexcept;
 
     /**
      * \brief rcpest.
@@ -2687,7 +2875,7 @@ public:
      * \param Inxmm_a the a vector.
      * \return vector.
      */
-    friend uX_API vecfloat4 uX_ABI rcpest(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend vecfloat4 uX_ABI rcpest(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /**
      * \brief rcp.
@@ -2697,7 +2885,7 @@ public:
      * \param Inxmm_a the a vector.
      * \return vector.
      */
-    friend uX_API vecfloat4 uX_ABI rcp(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend vecfloat4 uX_ABI rcp(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /**
      * \brief sqrtest.
@@ -2707,7 +2895,7 @@ public:
      * \param Inxmm_a the a vector.
      * \return vector.
      */
-    friend uX_API vecfloat4 uX_ABI sqrtest(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend vecfloat4 uX_ABI sqrtest(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /**
      * \brief sqrt.
@@ -2717,7 +2905,7 @@ public:
      * \param Inxmm_a the a vector.
      * \return vector.
      */
-    friend uX_API vecfloat4 uX_ABI sqrt(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend vecfloat4 uX_ABI sqrt(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /**
      * \brief rsqrtest.
@@ -2727,7 +2915,7 @@ public:
      * \param Inxmm_a the a vector.
      * \return vector.
      */
-    friend uX_API vecfloat4 uX_ABI rsqrtest(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend vecfloat4 uX_ABI rsqrtest(const vecfloat4 Inxmm_a) uX_noexcept;
 
     /**
      * \brief rsqrt.
@@ -2737,7 +2925,7 @@ public:
      * \param Inxmm_a the a vector.
      * \return vector.
      */
-    friend uX_API vecfloat4 uX_ABI rsqrt(const vecfloat4 Inxmm_a) uX_noexcept;
+    friend vecfloat4 uX_ABI rsqrt(const vecfloat4 Inxmm_a) uX_noexcept;
 
 protected:
 

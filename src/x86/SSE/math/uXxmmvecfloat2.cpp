@@ -58,6 +58,7 @@ vecfloat2::operator float*(void) const uX_noexcept
     return _uX_ptr_moveu_mm_ps(m128_xmm);
 }*/
 
+/*
 vecfloat2& uX_ABI vecfloat2::operator=(const __m128 Inxmm) uX_noexcept
 {
     m128_xmm = vecfloat2(Inxmm);
@@ -92,7 +93,7 @@ vecfloat2& uX_ABI vecfloat2::operator=(const bool_t Inbool_a) uX_noexcept
 {
     m128_xmm = vecfloat2(Inbool_a);
     return *this;
-}
+}*/
 
 /*
 uX_Use_decl_annotations
@@ -102,6 +103,7 @@ vecfloat2& uX_ABI vecfloat2::operator=(uX_InReads(2) const float* Inpfloat) uX_n
     return *this;
 }*/
 
+/*
 __m128 uX_ABI vecfloat2::get() const uX_noexcept
 {
     return m128_xmm;
@@ -175,7 +177,7 @@ void uX_ABI vecfloat2::set_y(float Infloat_a) uX_noexcept
 void uX_ABI vecfloat2::set_yx(const vecfloat2 Inxmm_a) uX_noexcept
 {
     m128_xmm = _uX_MM_SHUFFLER_IM_PS(Inxmm_a, m128_xmm, 1, 0, 2, 3);
-}
+}*/
 
 // vecfloat2 End
 // // // // // // // // //

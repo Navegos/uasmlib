@@ -3,7 +3,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -22,14 +22,13 @@
 */
 
 #pragma once
-/*
 
 #ifndef uX_XMM_VECDOUBLE_H
 #define uX_XMM_VECDOUBLE_H 1
 
 #ifndef uX_TYPES_H
 #include "uXtypes.h"
-#endif  / * uX_TYPES_H * /
+#endif  /* uX_TYPES_H */
 
 #if defined(uX_INTRINSICS_SUPPORT) && defined(uX_X86_OR_X64_CPU) && !defined(uX_NO_INTRINSICS_SUPPORT) && !defined(uX_MIC)
 
@@ -39,25 +38,25 @@
 
 #ifndef __cplusplus
 #error ERROR: This file is only supported in C++ compilations!
-#endif / * !__cplusplus * /
+#endif /* !__cplusplus */
 
 #ifndef _INCLUDED_MM2
 #include <xmmintrin.h>
-#endif  / * _INCLUDED_MM2 * /
+#endif  /* _INCLUDED_MM2 */
 
 #ifdef uX_SSE2
 #ifndef _INCLUDED_EMM
 #include <emmintrin.h>
-#endif  / * _INCLUDED_EMM * /
+#endif  /* _INCLUDED_EMM */
 #endif // uX_SSE2
 
 #ifndef uX_XMM_INTRIN_H
 #include "uXxmmintrin.h"
-#endif  / * uX_XMM_INTRIN_H * /
+#endif  /* uX_XMM_INTRIN_H */
 
 #ifndef uX_EMM_INTRIN_H
 #include "uXemmintrin.h"
-#endif  / * uX_EMM_INTRIN_H * /
+#endif  /* uX_EMM_INTRIN_H */
 
 namespace_uX
 namespace_XMM
@@ -65,8 +64,8 @@ uX_PACK_PUSH_XMM
 
 // VECTORS'S
 
-/ *class vecfloat;* /
-/ *
+/*class vecfloat;*/
+/*
 class vecfloat1;
 class vecfloat2;
 class vecfloat3;
@@ -91,9 +90,9 @@ class vecdouble4;
 class vecdouble3x3;
 class vecdouble4x3;
 class vecdouble4x4;
-#endif* /
+#endif*/
 
-/ *
+/*
 typedef class uX_API vecdouble
 {
 public:
@@ -173,7 +172,7 @@ private:
     static uX_const uint32_t m128_dbl_ptr_size      = 16;
     static uX_const uint32_t m128_dbl_size          = 8;
 
-}vecdouble_t;* /
+}vecdouble_t;*/
 
 uX_PACK_POP
 namespace_XMM_end
@@ -181,17 +180,114 @@ namespace_uX_end
 
 #ifndef uX_XMM_VECDOUBLE1_H
 #include "uXxmmvecdouble1.h"
-#endif  / * uX_XMM_VECDOUBLE1_H * /
+#endif  /* uX_XMM_VECDOUBLE1_H */
 
 #ifndef uX_XMM_VECDOUBLE2_H
 #include "uXxmmvecdouble2.h"
-#endif  / * uX_XMM_VECDOUBLE2_H * /
+#endif  /* uX_XMM_VECDOUBLE2_H */
+
+#ifndef uX_XMM_VECDOUBLE3_H
+#include "uXxmmvecdouble3.h"
+#endif  /* uX_XMM_VECDOUBLE3_H */
+
+#ifndef uX_XMM_VECDOUBLE4_H
+#include "uXxmmvecdouble4.h"
+#endif  /* uX_XMM_VECDOUBLE4_H */
+
+namespace_uX
+namespace_XMM
+uX_PACK_PUSH_XMM
+
+template<int _size> class vecdouble
+{
+    vecdouble()
+    {
+        static_assert(false, "vecdouble is not supported for this length (_size)");
+    }
+};
+
+template<>
+class vecdouble<1>
+{
+public:
+    using type = vecdouble1;
+    using type_t = vecdouble1_t;
+};
+
+template<>
+class vecdouble<2>
+{
+public:
+    using type = vecdouble2;
+    using type_t = vecdouble2_t;
+};
+
+template<>
+class vecdouble<3>
+{
+public:
+    using type = vecdouble3;
+    using type_t = vecdouble3_t;
+};
+
+template<>
+class vecdouble<4>
+{
+public:
+    using type = vecdouble4;
+    using type_t = vecdouble4_t;
+};
+
+using double1 = vecdouble<1>::type;
+using double2 = vecdouble<2>::type;
+using double3 = vecdouble<3>::type;
+using double4 = vecdouble<4>::type;
+
+template<int _row, int _col> class matrixdouble
+{
+    matrixdouble()
+    {
+        static_assert(false, "matrixdouble is not supported for this rows (_row) and columns (_col) ");
+    }
+};
+
+template<>
+class matrixdouble<3,3>
+{
+public:
+    using type = vecdouble3x3;
+    using type_t = vecdouble3x3_t;
+};
+
+template<>
+class matrixdouble<4, 3>
+{
+public:
+    using type = vecdouble4x3;
+    using type_t = vecdouble4x3_t;
+};
+
+template<>
+class matrixdouble<4, 4>
+{
+public:
+    using type = vecdouble4x4;
+    using type_t = vecdouble4x4_t;
+};
+
+using double3x3 = matrixdouble<3,3>::type;
+using double4x3 = matrixdouble<4,3>::type;
+using double4x4 = matrixdouble<4,4>::type;
+
+uX_PACK_POP
+namespace_XMM_end
+namespace_uX_end
 
 #endif // uX_SSE2
 
 #endif // uX_SSE
 
-#endif / *defined(uX_INTRINSICS_SUPPORT) && defined(uX_X86_OR_X64_CPU) && !defined(uX_NO_INTRINSICS_SUPPORT)* /
+#endif /*defined(uX_INTRINSICS_SUPPORT) && defined(uX_X86_OR_X64_CPU) && !defined(uX_NO_INTRINSICS_SUPPORT)*/
 
 #endif // uX_XMM_VECDOUBLE_H
-*/
+

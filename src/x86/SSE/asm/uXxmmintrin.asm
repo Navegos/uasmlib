@@ -2,7 +2,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -20,8 +20,8 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
 option casemap:none
-include uXasm.inc
 include macrolib.inc
+include uXasm.inc
 
 ifndef __MIC__
 
@@ -118,6 +118,17 @@ procend
 
 procstart _uX_mm_div_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
         divps           xmm0,           xmm1
+        ret
+procend
+
+procstart _uX_mm_scale_ss, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inreal8_B:real8
+        mulss          xmm0,           xmm1
+        ret
+procend
+
+procstart _uX_mm_scale_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inreal8_B:real8
+        shufps         xmm1,           xmm1,           0
+        mulps          xmm0,           xmm1
         ret
 procend
 

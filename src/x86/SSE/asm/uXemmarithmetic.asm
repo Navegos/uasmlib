@@ -2,7 +2,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -20,8 +20,8 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
 option casemap:none
-include uXasm.inc
 include macrolib.inc
+include uXasm.inc
 
 ifndef __MIC__
 
@@ -35,7 +35,7 @@ alignstackfieldproc
 
 .data
 
-;alignxmmfieldproc
+alignxmmfieldproc
 
     v4ci m128_sincostmpps_x1,                  __m128f, flt_false
     v4ci m128_sincostmpps_xa,                  __m128f, flt_false
@@ -226,7 +226,7 @@ procstart _uX_mm_div_epi8, callconv, xmmword, < >, <uses xmm11 xmm13 xmm14 xmm15
         psrad           xmm13,          18h
         psrad           xmm11,          18h
         psrad           xmm5,           18h
-        movups          xmm2,           __m128i_flt_bytevtbl
+        movaps          xmm2,           __m128i_flt_bytevtbl
         cvtdq2ps        xmm0,           xmm0
         cvtdq2ps        xmm13,          xmm13
         cvtdq2ps        xmm11,          xmm11
@@ -251,7 +251,7 @@ procstart _uX_mm_div_epi8, callconv, xmmword, < >, <uses xmm11 xmm13 xmm14 xmm15
         cvttps2dq       xmm0,           xmm0
         cvttps2dq       xmm11,          xmm11
         cvttps2dq       xmm5,           xmm5
-        movdqu          xmm1,           __m128i_flt_maxu8
+        movdqa          xmm1,           __m128i_flt_maxu8
         pslld           xmm5,           18h
         pand            xmm13,          xmm1
         pand            xmm0,           xmm1
@@ -308,42 +308,50 @@ procstart _uX_mm_signbit_ss, callconv, xmmword, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_signcombine_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        andps           xmm1,           __m128_sign
+        movaps          xmm2,           __m128_sign
+        andps           xmm1,           xmm2
         xorps           xmm0,           xmm1
         ret
 procend
 
 procstart _uX_mm_signcombine_ss, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        andps           xmm1,           __m128_0e_sign
+        movaps          xmm2,           __m128_0e_sign
+        andps           xmm1,           xmm2
         xorps           xmm0,           xmm1
         ret
 procend
 
 procstart _uX_mm_isfinite_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         pslld           xmm0,           1
-        pand            xmm0,           __m128_fin
-        pcmpeqd         xmm0,           __m128_fin
-        pxor            xmm0,           __m128i_i32_true
+        movdqa          xmm1,           __m128_fin
+        pand            xmm0,           xmm1
+        pcmpeqd         xmm0,           xmm1
+        movdqa          xmm1,           __m128i_i32_true
+        pxor            xmm0,           xmm1
         ret
 procend
 
 procstart _uX_mm_isfinite_ss, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         pslld           xmm0,           1
-        pand            xmm0,           __m128_0e_fin
-        pcmpeqd         xmm0,           __m128_0e_fin
-        pxor            xmm0,           __m128i_i32_0e_true
+        movdqa          xmm1,           __m128_0e_fin
+        pand            xmm0,           xmm1
+        pcmpeqd         xmm0,           xmm1
+        movdqa          xmm1,           __m128i_i32_0e_true
+        pxor            xmm0,           xmm1
         ret
 procend
 
 procstart _uX_mm_isinf_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         pslld           xmm0,           1
-        pcmpeqd         xmm0,           __m128_fin
+        movdqa          xmm1,           __m128_fin
+        pcmpeqd         xmm0,           xmm1
         ret
 procend
 
 procstart _uX_mm_isinf_ss, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         pslld           xmm0,           1
-        pcmpeqd         xmm0,           __m128_0e_fin
+        movdqa          xmm1,           __m128_0e_fin
+        pcmpeqd         xmm0,           xmm1
         ret
 procend
 
@@ -363,9 +371,11 @@ procstart _uX_mm_issubnormal_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         movdqa          xmm1,           __m128_fin
         pand            xmm0,           xmm1
         pandn           xmm1,           xmm2
-        pcmpeqd         xmm0,           __m128i_i32_0
-        pcmpeqd         xmm1,           __m128i_i32_0
-        pxor            xmm1,           __m128i_i32_true
+        movdqa          xmm3,           __m128i_i32_0
+        pcmpeqd         xmm0,           xmm3
+        pcmpeqd         xmm1,           xmm3
+        movdqa          xmm3,           __m128i_i32_true
+        pxor            xmm1,           xmm3
         pand            xmm0,           xmm1
         ret
 procend
@@ -376,22 +386,28 @@ procstart _uX_mm_issubnormal_ss, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         movdqa          xmm1,           __m128_0e_fin
         pand            xmm0,           xmm1
         pandn           xmm1,           xmm2
-        pcmpeqd         xmm0,           __m128i_i32_0e_0
-        pcmpeqd         xmm1,           __m128i_i32_0e_0
-        pxor            xmm1,           __m128i_i32_0e_true
+        movdqa          xmm3,           __m128i_i32_0e_0
+        pcmpeqd         xmm0,           xmm3
+        pcmpeqd         xmm1,           xmm3
+        movdqa          xmm3,           __m128i_i32_0e_true
+        pxor            xmm1,           xmm3
         pand            xmm0,           xmm1
         ret
 procend
 
 procstart _uX_mm_iszeroorsubnormal_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        pand            xmm0,           __m128_inf
-        pcmpeqd         xmm0,           __m128i_i32_0
+        movdqa          xmm1,           __m128_inf
+        pand            xmm0,           xmm1
+        movdqa          xmm1,           __m128i_i32_0
+        pcmpeqd         xmm0,           xmm1
         ret
 procend
 
 procstart _uX_mm_iszeroorsubnormal_ss, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        pand            xmm0,           __m128_0e_inf
-        pcmpeqd         xmm0,           __m128i_i32_0e_0
+        movdqa          xmm1,           __m128_0e_inf
+        pand            xmm0,           xmm1
+        movdqa          xmm1,           __m128i_i32_0e_0
+        pcmpeqd         xmm0,           xmm1
         ret
 procend
 
@@ -416,12 +432,14 @@ procstart _uX_mm_nan_ss, callconv, xmmword, < >, < >, < >
 procend
 
 procstart _uX_mm_abs_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        andps           xmm0,           __m128_abs
+        movaps          xmm1,           __m128_abs
+        andps           xmm0,           xmm1
         ret
 procend
 
 procstart _uX_mm_abs_ss, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        andps           xmm0,           __m128_0e_abs
+        movaps          xmm1,           __m128_0e_abs
+        andps           xmm0,           xmm1
         ret
 procend
 
@@ -773,7 +791,8 @@ procstart _uX_mm_svml_round_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         cvtps2dq        xmm3,           xmm0                     ; convert to integer
         cvtdq2ps        xmm1,           xmm3                     ; convert back to float
         movaps          xmm0,           xmm3
-        cmpps           xmm0,           __m128_sign,           CMPP_NEQ
+        movaps          xmm4,           __m128_sign
+        cmpps           xmm0,           xmm4,           CMPP_NEQ
         movaps          xmm3,           xmm0
         andnps          xmm3,           xmm2
         andps           xmm0,           xmm1
@@ -790,7 +809,8 @@ procstart _uX_mm_svml_floor_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         cvtps2dq        xmm3,           xmm0                     ; convert to integer
         cvtdq2ps        xmm1,           xmm3                     ; convert back to float
         movaps          xmm0,           xmm3
-        cmpps           xmm0,           __m128_sign,           CMPP_NEQ
+        movaps          xmm4,           __m128_sign
+        cmpps           xmm0,           xmm4,           CMPP_NEQ
         movaps          xmm3,           xmm0
         andnps          xmm3,           xmm2
         andps           xmm0,           xmm1
@@ -812,7 +832,8 @@ procstart _uX_mm_svml_ceil_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         cvtps2dq        xmm3,           xmm0                     ; convert to integer
         cvtdq2ps        xmm1,           xmm3                     ; convert back to float
         movaps          xmm0,           xmm3
-        cmpps           xmm0,           __m128_sign,           CMPP_NEQ
+        movaps          xmm4,           __m128_sign
+        cmpps           xmm0,           xmm4,           CMPP_NEQ
         movaps          xmm3,           xmm0
         andnps          xmm3,           xmm2
         andps           xmm0,           xmm1
@@ -834,7 +855,8 @@ procstart _uX_mm_svml_trunc_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         cvttps2dq       xmm3,           xmm0                     ; convert to integer
         cvtdq2ps        xmm1,           xmm3                     ; convert back to float
         movaps          xmm0,           xmm3
-        cmpps           xmm0,           __m128_sign,           CMPP_NEQ
+        movaps          xmm4,           __m128_sign
+        cmpps           xmm0,           xmm4,           CMPP_NEQ
         movaps          xmm3,           xmm0
         andnps          xmm3,           xmm2
         andps           xmm0,           xmm1
@@ -956,7 +978,8 @@ procstart _uX_mm_nmadd_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B
         vfnmadd213ps    xmm0,           xmm1,           xmm2
         .else
         mulps           xmm0,           xmm1
-        xorps           xmm0,           __m128_sign
+        movaps          xmm3,           __m128_sign
+        xorps           xmm0,           xmm3
         addps           xmm0,           xmm2
         .endif
         ret
@@ -967,7 +990,8 @@ procstart _uX_mm_nmsub_ps, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B
         vfnmsub213ps    xmm0,           xmm1,           xmm2
         .else
         mulps           xmm0,           xmm1
-        xorps           xmm0,           __m128_sign
+        movaps          xmm3,           __m128_sign
+        xorps           xmm0,           xmm3
         subps           xmm0,           xmm2
         .endif
         ret
@@ -998,7 +1022,8 @@ procstart _uX_mm_nmadd_ss, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B
         vfnmadd213ss    xmm0,           xmm1,           xmm2
         .else
         mulss           xmm0,           xmm1
-        xorps           xmm0,           __m128_0e_sign
+        movaps          xmm3,           __m128_0e_sign
+        xorps           xmm0,           xmm3
         addss           xmm0,           xmm2
         .endif
         ret
@@ -1009,7 +1034,8 @@ procstart _uX_mm_nmsub_ss, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B
         vfnmsub213ss    xmm0,           xmm1,           xmm2
         .else
         mulss           xmm0,           xmm1
-        xorps           xmm0,           __m128_0e_sign
+        movaps          xmm3,           __m128_0e_sign
+        xorps           xmm0,           xmm3
         subss           xmm0,           xmm2
         .endif
         ret
@@ -1052,10 +1078,12 @@ procend
 procstart _uX_mm_sincostemplate_ps, callconv, xmmword, < >, < >, OutPxmm_A:ptr xmmword, Inxmm_B:xmmword, Intint_SC:dword
         movaps    m128_sincostmpps_x1,  xmm1
         movaps          xmm0,           xmm1
-        andps           xmm0,           __m128_abs
+        movaps          xmm4,           __m128_abs
+        andps           xmm0,           xmm4
         movaps    m128_sincostmpps_xa,  xmm0                ; xa
         ;// Find quadrant
-        mulps           xmm0,           __m128_2divpi                ; // quadrant, as float
+        movaps          xmm4,           __m128_2divpi
+        mulps           xmm0,           xmm4                ; // quadrant, as float
         .if (__uX_CPUFeatures_SSE41 == true)
         roundps         xmm0,           xmm0,        8
         .else
@@ -1063,7 +1091,8 @@ procstart _uX_mm_sincostemplate_ps, callconv, xmmword, < >, < >, OutPxmm_A:ptr x
         cvtps2dq        xmm3,           xmm0                ; convert to integer
         cvtdq2ps        xmm1,           xmm3                ; convert back to float
         movaps          xmm0,           xmm3
-        cmpps           xmm0,           __m128_sign,           CMPP_NEQ
+        movaps          xmm4,           __m128_sign
+        cmpps           xmm0,           xmm4,           CMPP_NEQ
         movaps          xmm3,           xmm0
         andnps          xmm3,           xmm2
         andps           xmm0,           xmm1
@@ -1077,19 +1106,25 @@ procstart _uX_mm_sincostemplate_ps, callconv, xmmword, < >, < >, OutPxmm_A:ptr x
         movaps          xmm1,           m128_sincostmpps_y
         movaps          xmm0,           m128_sincostmpps_xa
         .if (__uX_CPUFeatures_FMA == true)
-        vfmsub231ps     xmm0,           xmm1,           __m128_DP1F
+        movaps          xmm4,           __m128_DP1F
+        vfmsub231ps     xmm0,           xmm1,           xmm4
         movaps          xmm1,           m128_sincostmpps_y
-        vfmsub231ps     xmm0,           xmm1,           __m128_DP2F
+        movaps          xmm4,           __m128_DP2F
+        vfmsub231ps     xmm0,           xmm1,           xmm4
         movaps          xmm0,           m128_sincostmpps_y
-        vfmsub231ps     xmm0,           xmm1,           __m128_DP3F
+        movaps          xmm4,           __m128_DP3F
+        vfmsub231ps     xmm0,           xmm1,           xmm4
         .else
-        mulps           xmm1,           __m128_DP1F
+        movaps          xmm4,           __m128_DP1F
+        mulps           xmm1,           xmm4
         subps           xmm0,           xmm1
         movaps          xmm1,           m128_sincostmpps_y
-        mulps           xmm1,           __m128_DP2F
+        movaps          xmm4,           __m128_DP2F
+        mulps           xmm1,           xmm4
         subps           xmm0,           xmm1
         movaps          xmm0,           m128_sincostmpps_y
-        mulps           xmm1,           __m128_DP3F
+        movaps          xmm4,           __m128_DP3F
+        mulps           xmm1,           xmm4
         subps           xmm0,           xmm1
         .endif
         movaps          xmm3,           xmm0            ;    x
@@ -1102,13 +1137,18 @@ procstart _uX_mm_sincostemplate_ps, callconv, xmmword, < >, < >, OutPxmm_A:ptr x
         mulps           xmm2,           xmm3
         .if (__uX_CPUFeatures_FMA == true)
         movaps          xmm4,           __m128_P1sinf
-        vfmadd213ps     xmm0,           xmm4,           __m128_P0sinf
-        vfmadd231ps     xmm0,           xmm1,           __m128_P2sinf
+        movaps          xmm5,           __m128_P0sinf
+        movaps          xmm6,           __m128_P2sinf
+        vfmadd213ps     xmm0,           xmm4,           xmm5
+        vfmadd231ps     xmm0,           xmm1,           xmm6
         vfmadd213ps     xmm0,           xmm2,           xmm3
         .else
-        mulps           xmm0,           __m128_P1sinf
-        addps           xmm0,           __m128_P0sinf
-        mulps           xmm1,           __m128_P2sinf
+        movaps          xmm4,           __m128_P1sinf
+        movaps          xmm5,           __m128_P0sinf
+        movaps          xmm6,           __m128_P2sinf
+        mulps           xmm0,           xmm4
+        addps           xmm0,           xmm5
+        mulps           xmm1,           xmm6
         addps           xmm0,           xmm1
         mulps           xmm0,           xmm2
         addps           xmm0,           xmm3
@@ -1122,36 +1162,50 @@ procstart _uX_mm_sincostemplate_ps, callconv, xmmword, < >, < >, OutPxmm_A:ptr x
         mulps           xmm2,           xmm2
         .if (__uX_CPUFeatures_FMA == true)
         movaps          xmm4,           __m128_P1cosf
-        vfmadd213ps     xmm0,           xmm4,           __m128_P0cosf
-        vfmadd231ps     xmm0,           xmm1,           __m128_P2cosf
+        movaps          xmm5,           __m128_P0cosf
+        movaps          xmm6,           __m128_P2cosf
+        movaps          xmm4,           xmm4
+        vfmadd213ps     xmm0,           xmm4,           xmm5
+        vfmadd231ps     xmm0,           xmm1,           xmm6
         movaps          xmm5,           __m128_0d5
-        vfmsub213ps     xmm3,           xmm5,           __m128_1
+        movaps          xmm6,           __m128_1
+        vfmsub213ps     xmm3,           xmm5,           xmm6
         vfmadd213ps     xmm0,           xmm2,           xmm3
         .else
-        mulps           xmm0,           __m128_P1cosf
-        addps           xmm0,           __m128_P0cosf
-        mulps           xmm1,           __m128_P2cosf
+        movaps          xmm4,           __m128_P1cosf
+        movaps          xmm5,           __m128_P0cosf
+        movaps          xmm6,           __m128_P2cosf
+        mulps           xmm0,           xmm4
+        addps           xmm0,           xmm5
+        mulps           xmm1,           xmm6
         addps           xmm0,           xmm1
-        mulps           xmm3,           __m128_0d5
-        subps           xmm3,           __m128_1
+        movaps          xmm5,           __m128_0d5
+        movaps          xmm6,           __m128_1
+        mulps           xmm3,           xmm5
+        subps           xmm3,           xmm6
         mulps           xmm0,           xmm2
         addps           xmm0,           xmm3
         .endif
         movaps   m128_sincostmpps_c,    xmm0
         ;// swap sin and cos if odd quadrant
         movdqa          xmm0,           m128_sincostmpps_q
-        pand            xmm0,           __m128i_i32_1
-        pcmpeqd         xmm0,           __m128i_i32_0
-        pxor            xmm0,           __m128i_i32_true
+        movdqa          xmm4,           __m128i_i32_1
+        movdqa          xmm5,           __m128i_i32_0
+        movdqa          xmm6,           __m128i_i32_true
+        pand            xmm0,           xmm4
+        pcmpeqd         xmm0,           xmm5
+        pxor            xmm0,           xmm6
         movaps   m128_sincostmpps_swap, xmm0
         ;// check for overflow
         movdqa          xmm0,           m128_sincostmpps_q
-        pcmpgtd         xmm0,           __m128i_flt_bigoverflow        
+        movdqa          xmm4,           __m128i_flt_bigoverflow
+        pcmpgtd         xmm0,           xmm4
         movdqa          xmm1,           m128_sincostmpps_xa
         pslld           xmm1,           1
-        pand            xmm1,           __m128_fin
-        pcmpeqd         xmm1,           __m128_fin
-        pxor            xmm1,           __m128i_i32_true
+        movaps          xmm4,           __m128_fin
+        pand            xmm1,           xmm4
+        pcmpeqd         xmm1,           xmm4
+        pxor            xmm1,           xmm6
         pand            xmm0,           xmm1
         movaps  m128_sincostmpps_overflow,    xmm0
         movaps          xmm2,           m128_sincostmpps_s
@@ -1197,8 +1251,8 @@ procstart _uX_mm_sincostemplate_ps, callconv, xmmword, < >, < >, OutPxmm_A:ptr x
         movdqa          xmm1,           m128_sincostmpps_x1
         pslld           xmm2,           30
         pxor            xmm2,           xmm1
-        movaps          xmm2,           xmm2
-        andps           xmm2,           __m128_sign
+        movaps          xmm4,           __m128_sign
+        andps           xmm2,           xmm4
         xorps           xmm0,           xmm2
         movaps   m128_sincostmpps_sin1, xmm0
         .endif
@@ -1217,8 +1271,10 @@ procstart _uX_mm_sincostemplate_ps, callconv, xmmword, < >, < >, OutPxmm_A:ptr x
         orps            xmm0,           xmm3
         .endif
         movdqa          xmm2,           m128_sincostmpps_q
-        paddd           xmm2,           __m128i_i32_1
-        pand            xmm2,           __m128i_i32_2
+        movdqa          xmm4,           __m128i_i32_1
+        movdqa          xmm5,           __m128i_i32_2
+        paddd           xmm2,           xmm4
+        pand            xmm2,           xmm5
         pslld           xmm2,           30
         xorps           xmm0,           xmm2
         movaps   m128_sincostmpps_cos1, xmm0
@@ -1231,7 +1287,8 @@ procstart _uX_mm_sincostemplate_ps, callconv, xmmword, < >, < >, OutPxmm_A:ptr x
         jmp     _uX_mm_sincostemplate_ps_end
         .elseif (rp2() == 3)
         movaps          xmm0,           m128_sincostmpps_sin1
-        movups  xmmword ptr [rp0()],  m128_sincostmpps_cos1
+        movaps          xmm4,           m128_sincostmpps_cos1
+        movups  xmmword ptr [rp0()],    xmm4
         jmp     _uX_mm_sincostemplate_ps_end
         .else
         movaps          xmm0,           m128_sincostmpps_sin1
@@ -1258,10 +1315,12 @@ procend
 procstart _uX_mm_sincostemplate_ss, callconv, xmmword, < >, < >, OutPxmm_A:ptr xmmword, Inxmm_B:xmmword, Intint_SC:dword
         movaps    m128_sincostmpps_x1,  xmm1
         movss           xmm0,           xmm1
-        andps           xmm0,           __m128_0e_abs
+        movaps          xmm4,           __m128_0e_abs
+        andps           xmm0,           xmm4
         movaps    m128_sincostmpps_xa,  xmm0                ; xa
         ;// Find quadrant
-        mulss           xmm0,           __m128_0e_2divpi                ; // quadrant, as float
+        movaps          xmm4,           __m128_0e_2divpi
+        mulss           xmm0,           xmm4                ; // quadrant, as float
         .if (__uX_CPUFeatures_SSE41 == true)
         roundss         xmm0,           xmm0,        8
         .else
@@ -1284,19 +1343,25 @@ procstart _uX_mm_sincostemplate_ss, callconv, xmmword, < >, < >, OutPxmm_A:ptr x
         movaps          xmm1,           m128_sincostmpps_y
         movaps          xmm0,           m128_sincostmpps_xa
         .if (__uX_CPUFeatures_FMA == true)
-        vfmsub231ss     xmm0,           xmm1,           __m128_0e_DP1F
+        movaps          xmm4,           __m128_0e_DP1F
+        vfmsub231ss     xmm0,           xmm1,           xmm4
         movaps          xmm1,           m128_sincostmpps_y
-        vfmsub231ss     xmm0,           xmm1,           __m128_0e_DP2F
+        movaps          xmm4,           __m128_0e_DP2F
+        vfmsub231ss     xmm0,           xmm1,           xmm4
         movaps          xmm0,           m128_sincostmpps_y
-        vfmsub231ss     xmm0,           xmm1,           __m128_0e_DP3F
+        movaps          xmm4,           __m128_0e_DP3F
+        vfmsub231ss     xmm0,           xmm1,           xmm4
         .else
-        mulss           xmm1,           __m128_0e_DP1F
+        movaps          xmm4,           __m128_0e_DP1F
+        mulss           xmm1,           xmm4
         subss           xmm0,           xmm1
         movaps          xmm1,           m128_sincostmpps_y
-        mulss           xmm1,           __m128_0e_DP2F
+        movaps          xmm4,           __m128_0e_DP2F
+        mulss           xmm1,           xmm4
         subss           xmm0,           xmm1
         movaps          xmm0,           m128_sincostmpps_y
-        mulss           xmm1,           __m128_0e_DP3F
+        movaps          xmm4,           __m128_0e_DP3F
+        mulss           xmm1,           xmm4
         subss           xmm0,           xmm1
         .endif
         movss           xmm3,           xmm0            ;    x
@@ -1309,13 +1374,18 @@ procstart _uX_mm_sincostemplate_ss, callconv, xmmword, < >, < >, OutPxmm_A:ptr x
         mulss           xmm2,           xmm3
         .if (__uX_CPUFeatures_FMA == true)
         movaps          xmm4,           __m128_0e_P1sinf
-        vfmadd213ss     xmm0,           xmm4,           __m128_0e_P0sinf
-        vfmadd231ss     xmm0,           xmm1,           __m128_0e_P2sinf
+        movaps          xmm5,           __m128_0e_P0sinf
+        vfmadd213ss     xmm0,           xmm4,           xmm5
+        movaps          xmm5,           __m128_0e_P2sinf
+        vfmadd231ss     xmm0,           xmm1,           xmm5
         vfmadd213ss     xmm0,           xmm2,           xmm3
         .else
-        mulss           xmm0,           __m128_0e_P1sinf
-        addss           xmm0,           __m128_0e_P0sinf
-        mulss           xmm1,           __m128_0e_P2sinf
+        movaps          xmm4,           __m128_0e_P1sinf
+        movaps          xmm5,           __m128_0e_P0sinf
+        movaps          xmm6,           __m128_0e_P2sinf
+        mulss           xmm0,           xmm4
+        addss           xmm0,           xmm5
+        mulss           xmm1,           xmm6
         addss           xmm0,           xmm1
         mulss           xmm0,           xmm2
         addss           xmm0,           xmm3
@@ -1329,36 +1399,49 @@ procstart _uX_mm_sincostemplate_ss, callconv, xmmword, < >, < >, OutPxmm_A:ptr x
         mulss           xmm2,           xmm2
         .if (__uX_CPUFeatures_FMA == true)
         movaps          xmm4,           __m128_0e_P1cosf
-        vfmadd213ss     xmm0,           xmm4,           __m128_0e_P0cosf
-        vfmadd231ss     xmm0,           xmm1,           __m128_0e_P2cosf
+        movaps          xmm5,           __m128_0e_P0cosf
+        vfmadd213ss     xmm0,           xmm4,           xmm5
+        movaps          xmm5,           __m128_0e_P2cosf
+        vfmadd231ss     xmm0,           xmm1,           xmm5
         movaps          xmm5,           __m128_0e_0d5
-        vfmsub213ss     xmm3,           xmm5,           __m128_0e_1
+        movaps          xmm4,           __m128_0e_1
+        vfmsub213ss     xmm3,           xmm5,           xmm4
         vfmadd213ss     xmm0,           xmm2,           xmm3
         .else
-        mulss           xmm0,           __m128_0e_P1cosf
-        addss           xmm0,           __m128_0e_P0cosf
-        mulss           xmm1,           __m128_0e_P2cosf
+        movaps          xmm4,           __m128_0e_P1cosf
+        movaps          xmm5,           __m128_0e_P0cosf
+        movaps          xmm6,           __m128_0e_P2cosf
+        mulss           xmm0,           xmm4
+        addss           xmm0,           xmm5
+        mulss           xmm1,           xmm6
         addss           xmm0,           xmm1
-        mulss           xmm3,           __m128_0e_0d5
-        subss           xmm3,           __m128_0e_1
+        movaps          xmm4,           __m128_0e_0d5
+        movaps          xmm5,           __m128_0e_1
+        mulss           xmm3,           xmm4
+        subss           xmm3,           xmm5
         mulss           xmm0,           xmm2
         addss           xmm0,           xmm3
         .endif
         movaps   m128_sincostmpps_c,    xmm0
         ;// swap sin and cos if odd quadrant
         movdqa          xmm0,           m128_sincostmpps_q
-        pand            xmm0,           __m128i_i32_0e_1
-        pcmpeqd         xmm0,           __m128i_i32_0e_0
-        pxor            xmm0,           __m128i_i32_0e_true
+        movdqa          xmm4,           __m128i_i32_0e_1
+        movdqa          xmm5,           __m128i_i32_0e_0
+        movdqa          xmm6,           __m128i_i32_0e_true
+        pand            xmm0,           xmm4
+        pcmpeqd         xmm0,           xmm5
+        pxor            xmm0,           xmm6
         movaps   m128_sincostmpps_swap, xmm0
         ;// check for overflow
         movdqa          xmm0,           m128_sincostmpps_q
-        pcmpgtd         xmm0,           __m128i_flt_0e_bigoverflow
+        movdqa          xmm4,           __m128i_flt_0e_bigoverflow
+        pcmpgtd         xmm0,           xmm4
         movdqa          xmm1,           m128_sincostmpps_xa
         pslld           xmm1,           1
-        pand            xmm1,           __m128_0e_fin
-        pcmpeqd         xmm1,           __m128_0e_fin
-        pxor            xmm1,           __m128i_i32_0e_true
+        movdqa          xmm4,           __m128_0e_fin
+        pand            xmm1,           xmm4
+        pcmpeqd         xmm1,           xmm4
+        pxor            xmm1,           xmm6
         pand            xmm0,           xmm1
         movaps  m128_sincostmpps_overflow,    xmm0
         movaps          xmm2,           m128_sincostmpps_s
@@ -1405,7 +1488,8 @@ procstart _uX_mm_sincostemplate_ss, callconv, xmmword, < >, < >, OutPxmm_A:ptr x
         pslld           xmm2,           30
         pxor            xmm2,           xmm1
         movaps          xmm2,           xmm2
-        andps           xmm2,           __m128_0e_sign
+        movaps          xmm4,           __m128_0e_sign
+        andps           xmm2,           xmm4
         xorps           xmm0,           xmm2
         movaps   m128_sincostmpps_sin1, xmm0
         .endif
@@ -1424,8 +1508,10 @@ procstart _uX_mm_sincostemplate_ss, callconv, xmmword, < >, < >, OutPxmm_A:ptr x
         orps            xmm0,           xmm3
         .endif
         movdqa          xmm2,           m128_sincostmpps_q
-        paddd           xmm2,           __m128i_i32_0e_1
-        pand            xmm2,           __m128i_i32_0e_2
+        movdqa          xmm4,           __m128i_i32_0e_1
+        movdqa          xmm5,           __m128i_i32_0e_2
+        paddd           xmm2,           xmm4
+        pand            xmm2,           xmm5
         pslld           xmm2,           30
         xorps           xmm0,           xmm2
         movaps   m128_sincostmpps_cos1, xmm0
@@ -1438,7 +1524,8 @@ procstart _uX_mm_sincostemplate_ss, callconv, xmmword, < >, < >, OutPxmm_A:ptr x
         jmp     _uX_mm_sincostemplate_ss_end
         .elseif (rp2() == 3)
         movaps          xmm0,           m128_sincostmpps_sin1
-        movups  xmmword ptr [rp0()],  m128_sincostmpps_cos1
+        movaps          xmm4,           m128_sincostmpps_cos1
+        movups  xmmword ptr [rp0()],    xmm4
         jmp     _uX_mm_sincostemplate_ss_end
         .else
         movaps          xmm0,           m128_sincostmpps_sin1
@@ -1478,57 +1565,64 @@ procstart _uX_mm_signbit_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_signcombine_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        andpd           xmm1,           __m128d_sign
+        movapd          xmm2,           __m128d_sign
+        andpd           xmm1,           xmm2
         xorpd           xmm0,           xmm1
         ret
 procend
 
 procstart _uX_mm_signcombine_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
-        andpd           xmm1,           __m128d_0e_sign
+        movapd          xmm2,           __m128d_0e_sign
+        andpd           xmm1,           xmm2
         xorpd           xmm0,           xmm1
         ret
 procend
 
 procstart _uX_mm_isfinite_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         psllq           xmm0,           1
-        pand            xmm0,           __m128i_dbl_fin
+        movdqa          xmm2,           __m128i_dbl_fin
+        pand            xmm0,           xmm2
         .if (__uX_CPUFeatures_SSE41 == true)
-        pcmpeqq         xmm0,           __m128i_dbl_fin
+        pcmpeqq         xmm0,           xmm2
         .else
-        pcmpeqd         xmm0,           __m128i_dbl_fin                         ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
-        pshufd          xmm2,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
-        pand            xmm0,           xmm2                                ;_mm_and_si128(com32,com32s);       // low & high
+        pcmpeqd         xmm0,           xmm2                                ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pshufd          xmm1,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
+        pand            xmm0,           xmm1                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm0,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
         pshufd          xmm0,           xmm0,           shuffle4(3,3,1,1)   ;_mm_shuffle_epi32(teste,0xF5);     // extend sign bit to 64 bits shuffle
         .endif
-        pxor            xmm0,           __m128i_dbl_true
+        movdqa          xmm2,           __m128i_dbl_true
+        pxor            xmm0,           xmm2
         ret
 procend
 
 procstart _uX_mm_isfinite_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         psllq           xmm0,           1
-        pand            xmm0,           __m128i_dbl_0e_fin
+        movdqa          xmm2,           __m128i_dbl_0e_fin
+        pand            xmm0,           xmm2
         .if (__uX_CPUFeatures_SSE41 == true)
-        pcmpeqq         xmm0,           __m128i_dbl_0e_fin
+        pcmpeqq         xmm0,           xmm2
         .else
-        pcmpeqd         xmm0,           __m128i_dbl_0e_fin                      ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
-        pshufd          xmm2,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
-        pand            xmm0,           xmm2                                ;_mm_and_si128(com32,com32s);       // low & high
+        pcmpeqd         xmm0,           xmm2                                ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pshufd          xmm1,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
+        pand            xmm0,           xmm1                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm0,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
         pshufd          xmm0,           xmm0,           shuffle4(3,3,1,1)   ;_mm_shuffle_epi32(teste,0xF5);     // extend sign bit to 64 bits shuffle
         .endif
-        pxor            xmm0,           __m128i_dbl_0e_true
+        movdqa          xmm2,           __m128i_dbl_0e_true
+        pxor            xmm0,           xmm2
         ret
 procend
 
 procstart _uX_mm_isinf_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         psllq           xmm0,           1
+        movdqa          xmm2,           __m128i_dbl_fin
         .if (__uX_CPUFeatures_SSE41 == true)
-        pcmpeqq         xmm0,           __m128i_dbl_fin
+        pcmpeqq         xmm0,           xmm2
         .else
-        pcmpeqd         xmm0,           __m128i_dbl_fin                         ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
-        pshufd          xmm2,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
-        pand            xmm0,           xmm2                                ;_mm_and_si128(com32,com32s);       // low & high
+        pcmpeqd         xmm0,           xmm2                                ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pshufd          xmm1,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
+        pand            xmm0,           xmm1                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm0,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
         pshufd          xmm0,           xmm0,           shuffle4(3,3,1,1)   ;_mm_shuffle_epi32(teste,0xF5);     // extend sign bit to 64 bits shuffle
         .endif
@@ -1537,12 +1631,13 @@ procend
 
 procstart _uX_mm_isinf_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         psllq           xmm0,           1
+        movdqa          xmm2,           __m128i_dbl_0e_fin
         .if (__uX_CPUFeatures_SSE41 == true)
-        pcmpeqq         xmm0,           __m128i_dbl_0e_fin
+        pcmpeqq         xmm0,           xmm2
         .else
-        pcmpeqd         xmm0,           __m128i_dbl_0e_fin                      ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
-        pshufd          xmm2,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
-        pand            xmm0,           xmm2                                ;_mm_and_si128(com32,com32s);       // low & high
+        pcmpeqd         xmm0,           xmm2                                ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pshufd          xmm1,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
+        pand            xmm0,           xmm1                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm0,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
         pshufd          xmm0,           xmm0,           shuffle4(3,3,1,1)   ;_mm_shuffle_epi32(teste,0xF5);     // extend sign bit to 64 bits shuffle
         .endif
@@ -1565,22 +1660,24 @@ procstart _uX_mm_issubnormal_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         movdqa          xmm1,           __m128i_dbl_fin
         pand            xmm0,           xmm1
         pandn           xmm1,           xmm2
+        movdqa          xmm3,           __m128i_dbl_0
         .if (__uX_CPUFeatures_SSE41 == true)
-        pcmpeqq         xmm0,           __m128i_dbl_0
-        pcmpeqq         xmm1,           __m128i_dbl_0
+        pcmpeqq         xmm0,           xmm3
+        pcmpeqq         xmm1,           xmm3
         .else
-        pcmpeqd         xmm0,           __m128i_dbl_0                       ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pcmpeqd         xmm0,           xmm3                                ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
         pshufd          xmm2,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
         pand            xmm0,           xmm2                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm0,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
         pshufd          xmm0,           xmm0,           shuffle4(3,3,1,1)   ;_mm_shuffle_epi32(teste,0xF5);     // extend sign bit to 64 bits shuffle
-        pcmpeqd         xmm1,           __m128i_dbl_0                       ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pcmpeqd         xmm1,           xmm3                                ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
         pshufd          xmm2,           xmm1,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
         pand            xmm1,           xmm2                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm1,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
         pshufd          xmm1,           xmm1,           shuffle4(3,3,1,1)   ;_mm_shuffle_epi32(teste,0xF5);     // extend sign bit to 64 bits shuffle
         .endif
-        pxor            xmm1,           __m128i_dbl_true
+        movdqa          xmm2,           __m128i_dbl_true
+        pxor            xmm1,           xmm2
         pand            xmm0,           xmm1
         ret
 procend
@@ -1591,34 +1688,38 @@ procstart _uX_mm_issubnormal_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         movdqa          xmm1,           __m128i_dbl_0e_fin
         pand            xmm0,           xmm1
         pandn           xmm1,           xmm2
+        movdqa          xmm3,           __m128i_dbl_0e_0
         .if (__uX_CPUFeatures_SSE41 == true)
-        pcmpeqq         xmm0,           __m128i_dbl_0e_0
-        pcmpeqq         xmm1,           __m128i_dbl_0e_0
+        pcmpeqq         xmm0,           xmm3
+        pcmpeqq         xmm1,           xmm3
         .else
-        pcmpeqd         xmm0,           __m128i_dbl_0e_0                    ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pcmpeqd         xmm0,           xmm3                                ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
         pshufd          xmm2,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
         pand            xmm0,           xmm2                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm0,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
         pshufd          xmm0,           xmm0,           shuffle4(3,3,1,1)   ;_mm_shuffle_epi32(teste,0xF5);     // extend sign bit to 64 bits shuffle
-        pcmpeqd         xmm1,           __m128i_dbl_0e_0                    ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pcmpeqd         xmm1,           xmm3                                ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
         pshufd          xmm2,           xmm1,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
         pand            xmm1,           xmm2                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm1,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
         pshufd          xmm1,           xmm1,           shuffle4(3,3,1,1)   ;_mm_shuffle_epi32(teste,0xF5);     // extend sign bit to 64 bits shuffle
         .endif
-        pxor            xmm1,           __m128i_dbl_0e_true
+        movdqa          xmm2,           __m128i_dbl_0e_true
+        pxor            xmm1,           xmm2
         pand            xmm0,           xmm1
         ret
 procend
 
 procstart _uX_mm_iszeroorsubnormal_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        pand            xmm0,           __m128i_dbl_inf
+        movdqa          xmm2,           __m128i_dbl_inf
+        pand            xmm0,           xmm2
+        movdqa          xmm2,           __m128i_dbl_0
         .if (__uX_CPUFeatures_SSE41 == true)
-        pcmpeqq         xmm0,           __m128i_dbl_0
+        pcmpeqq         xmm0,           xmm2
         .else
-        pcmpeqd         xmm0,           __m128i_dbl_0                       ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
-        pshufd          xmm2,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
-        pand            xmm0,           xmm2                                ;_mm_and_si128(com32,com32s);       // low & high
+        pcmpeqd         xmm0,           xmm2                       ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pshufd          xmm1,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
+        pand            xmm0,           xmm1                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm0,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
         pshufd          xmm0,           xmm0,           shuffle4(3,3,1,1)   ;_mm_shuffle_epi32(teste,0xF5);     // extend sign bit to 64 bits shuffle
         .endif
@@ -1626,13 +1727,15 @@ procstart _uX_mm_iszeroorsubnormal_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmw
 procend
 
 procstart _uX_mm_iszeroorsubnormal_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        pand            xmm0,           __m128i_dbl_0e_inf
+        movdqa          xmm2,           __m128i_dbl_0
+        pand            xmm0,           xmm2
+        movdqa          xmm2,           __m128i_dbl_0e_0
         .if (__uX_CPUFeatures_SSE41 == true)
-        pcmpeqq         xmm0,           __m128i_dbl_0e_0
+        pcmpeqq         xmm0,           xmm2
         .else
-        pcmpeqd         xmm0,           __m128i_dbl_0e_0                    ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
-        pshufd          xmm2,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
-        pand            xmm0,           xmm2                                ;_mm_and_si128(com32,com32s);       // low & high
+        pcmpeqd         xmm0,           xmm2                    ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pshufd          xmm1,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
+        pand            xmm0,           xmm1                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm0,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
         pshufd          xmm0,           xmm0,           shuffle4(3,3,1,1)   ;_mm_shuffle_epi32(teste,0xF5);     // extend sign bit to 64 bits shuffle
         .endif
@@ -1660,12 +1763,14 @@ procstart _uX_mm_nan_sd, callconv, xmmword, < >, < >, < >
 procend
 
 procstart _uX_mm_abs_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        andpd           xmm0,           __m128d_abs
+        movapd          xmm1,           __m128d_abs
+        andpd           xmm0,           xmm1
         ret
 procend
 
 procstart _uX_mm_abs_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        andpd           xmm0,           __m128d_0e_abs
+        movapd          xmm1,           __m128d_0e_abs
+        andpd           xmm0,           xmm1
         ret
 procend
 

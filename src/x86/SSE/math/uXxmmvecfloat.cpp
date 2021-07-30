@@ -6,13 +6,14 @@
 #ifdef uX_SSE
 
 // Intel TBB library
+/*
 #include "tbb/task_scheduler_init.h"
 using namespace tbb;
 #include "tbb/parallel_for.h"
 #include "tbb/blocked_range.h"
 #include "tbb/blocked_range2d.h"
 #include "tbb/partitioner.h"
-#include "tbb/task_group.h"
+#include "tbb/task_group.h"*/
 
 #ifndef uX_XMM_INTRIN_H
 #include "uXxmmintrin.h"
@@ -35,6 +36,7 @@ uX_PACK_PUSH_XMM
 // // // // // // // // //
 // vecfloat Start
 
+/*
 vecfloat::vecfloat(float Infloat_a) uX_noexcept
 {
     m128_xmm = _uX_mm_set_ps1(Infloat_a);
@@ -54,7 +56,7 @@ vecfloat::vecfloat(uX_InReads(4) const float* Inpfloat) uX_noexcept
 vecfloat::operator __m128() const uX_noexcept
 {
     return m128_xmm;
-}
+}*/
 
 /*
 vecfloat::operator float*() const uX_noexcept
@@ -62,6 +64,7 @@ vecfloat::operator float*() const uX_noexcept
     return _uX_ptr_moveu_mm_ps(m128_xmm);
 }*/
 
+/*
 vecfloat& uX_ABI vecfloat::operator=(const __m128 Inxmm) uX_noexcept
 {
     m128_xmm = Inxmm;
@@ -90,7 +93,7 @@ vecfloat& uX_ABI vecfloat::operator=(const vecfloat1 Inxmm) uX_noexcept
 {
     m128_xmm = Inxmm.get();
     return *this;
-}
+}*/
 
 /*
 uX_Use_decl_annotations
@@ -100,6 +103,7 @@ vecfloat& uX_ABI vecfloat::operator=(uX_InReads(4) const float* Inpfloat) uX_noe
     return *this;
 }*/
 
+/*
 vecfloat uX_ABI andnot(const vecfloat Inxmm_a, const vecfloat Inxmm_b) uX_noexcept
 {
     return _uX_mm_andnot_ps(Inxmm_a.m128_xmm, Inxmm_b.m128_xmm);
@@ -556,7 +560,7 @@ vecfloat uX_ABI rsqrtest(const vecfloat Inxmm_a) uX_noexcept
 vecfloat uX_ABI rsqrt(const vecfloat Inxmm_a) uX_noexcept
 {
     return _uX_mm_div_ps(__m128_1, _uX_mm_sqrt_ps(Inxmm_a.m128_xmm));
-}
+}*/
 
 // vecfloat End
 // // // // // // // // //

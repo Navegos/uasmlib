@@ -45,6 +45,7 @@ vecfloat1::operator float(void) const uX_noexcept
     return _uX_mm_cvtss_flt(m128_xmm);
 }*/
 
+/*
 vecfloat1& uX_ABI vecfloat1::operator=(const __m128 Inxmm) uX_noexcept
 {
     m128_xmm = vecfloat1(Inxmm);
@@ -109,7 +110,7 @@ void uX_ABI vecfloat1::set(const __m128 Inxmm) uX_noexcept
 void uX_ABI vecfloat1::set_x(float Infloat_a) uX_noexcept
 {
     m128_xmm = _uX_MM_SETFLT_IM_PS(m128_xmm, Infloat_a, 0);
-}
+}*/
 
 // vecfloat1 End
 // // // // // // // // //

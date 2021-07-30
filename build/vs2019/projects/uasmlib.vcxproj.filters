@@ -368,9 +368,6 @@
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat3x3.cpp">
       <Filter>Source Files\x86\SSE\math</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat4.cpp">
-      <Filter>Source Files\x86\SSE\math</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat4x3.cpp">
       <Filter>Source Files\x86\SSE\math</Filter>
     </ClCompile>

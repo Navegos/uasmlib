@@ -186,7 +186,6 @@
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat2.cpp" />
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat3.cpp" />
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat3x3.cpp" />
-    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat4.cpp" />
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat4x3.cpp" />
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat4x4.cpp" />
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecint16.cpp" />

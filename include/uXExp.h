@@ -3,7 +3,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -44,21 +44,8 @@
 #endif
 #ifndef STRICT
 #define STRICT
-#endif
 
 
-#if defined(_WINDOWS) && !defined(_WINDOWS_)
-# pragma warning( push )
-#if __INTEL_COMPILER
-# pragma warning( disable: 271 310 )
-#elif _MSC_VER
-#pragma warning(disable : 4005)
-#endif
-#pragma pack(push)
-#pragma pack(8)
-# include <windows.h>
-#pragma pack (pop)
-# pragma warning( pop )
 #endif
 
 // If app hasn't choosen, set to work with Windows 8 and beyond
@@ -164,11 +151,15 @@ EXTERN_CC_END
 #endif
 #endif
 
-#ifdef __GNUC__
-#define _LIB
-#define LIB_STATIC
+#ifdef uX_GCC_COMPATIBLE_COMPILER
+#define _LIB  1
+#define LIB_STATIC 1
+#elif defined(uX_MSVC_COMPATIBLE_COMPILER) && (!defined(_DLL) && !defined(_USRDLL) && !defined(_WINDLL) && !defined(LIB_DYNAMIC))
+#define _LIB  1
+#define LIB_STATIC 1
 #endif
-#if (defined(LIB_STATIC) || defined(uX_LIB_STATIC)) && defined(_LIB) && !(defined(_DLL) && defined(_USRDLL) && defined(_WINDLL) && defined(LIB_DYNAMIC) && defined( uX_LIB_DLL))
+
+#if (defined(LIB_STATIC) || defined(_LIB))
 #ifndef uX_LIB_DLL
 #ifndef uX_LIB_STATIC
 #define uX_LIB_STATIC 1
@@ -176,19 +167,7 @@ EXTERN_CC_END
 #endif
 #endif
 
-#ifdef uX_LIB_STATIC
-#define uX_LINK_TYPE ""
-#define uX_LINK_PREFIX "_"
-#define uX_LINK_TYPE_STR "static"
-#define uX_LIB_TYPE ".lib"
-#else
-#define uX_LINK_TYPE ""
-#define uX_LINK_PREFIX ""
-#define uX_LINK_TYPE_STR "dynamic"
-#define uX_LIB_TYPE ".dll"
-#endif
-
-#if (defined(_DLL) || defined(_USRDLL) || defined(_WINDLL) || defined(LIB_DYNAMIC) || defined(uX_LIB_DLL)) && !defined(_LIB) && !defined(uX_LIB_STATIC)
+#if (defined(_DLL) || defined(_USRDLL) || defined(_WINDLL) || defined(LIB_DYNAMIC) || defined(uX_LIB_DLL)) && !defined(uX_LIB_STATIC)
 #ifndef uX_LIB_STATIC
 #ifndef uX_LIB_DLL
 #define uX_LIB_DLL 1
@@ -196,8 +175,20 @@ EXTERN_CC_END
 #endif
 #endif
 
+#ifdef uX_LIB_STATIC
+#define uX_LINK_TYPE ""
+#define uX_LINK_PREFIX ""
+#define uX_LINK_TYPE_STR "static"
+#define uX_LIB_TYPE ".exe"
+#else
+#define uX_LINK_TYPE ""
+#define uX_LINK_PREFIX ""
+#define uX_LINK_TYPE_STR "dynamic"
+#define uX_LIB_TYPE ".exe"
+#endif
+
 #if !defined( uX_LIB_DLL) && !defined( uX_LIB_STATIC)
-# error ("!!!Your uXOAPMath lib type static or dll aren't defined")
+# error ("!!!Your uamslib lib type static or dll aren't defined")
 #endif
 
 #if defined(uX_LINUX_OS)
@@ -254,7 +245,7 @@ EXTERN_CC_END
 #error "Visibility symbols are not defined"
 #endif
 
-/* If building or using uXOAMP lib as a DLL, define uX_LIB_DLL.
+/* If building or using uasmlib as a DLL, define uX_LIB_DLL.
 * This is not mandatory, but it offers a little performance increase.
 */
 
@@ -291,12 +282,12 @@ EXTERN_CC_END
 //#define DXSTDAPI                  EXTERN_C HRESULT STDAPICALLTYPE
 //#define DXSTDAPI_(type)           EXTERN_C type STDAPICALLTYPE
 
-#   define uX_LIB_NAME /*uX_COMPILER_STR*/ "uasmlib" /*uX_LINK_TYPE_STR uX_FAMILY_STR uX_ARCH_STR*/ uX_LINK_PREFIX uX_LINK_TYPE uX_BUILD_PREFIX uX_BUILD_TYPE
+#   define uX_LIB_NAME /*uX_COMPILER_STR*/ "uasmlib" /*uX_LINK_TYPE_STR uX_FAMILY_STR uX_ARCH_STR*/ uX_LINK_PREFIX uX_LINK_TYPE uX_BUILD_PREFIX
 
-#   define uX_LIB_NAME_STR uX_COMPILER_STR "uasmlib" uX_LINK_TYPE_STR uX_FAMILY_STR uX_ARCH_STR uX_BUILD_PREFIX uX_BUILD_TYPE
+#   define uX_LIB_NAME_STR uX_COMPILER_STR "uasmlib" uX_LINK_TYPE_STR uX_FAMILY_STR uX_ARCH_STR uX_BUILD_PREFIX
 
 #ifdef uX_LIB_IMPORTS
-#   pragma comment( lib, uX_LIB_NAME ".lib")
+#   //pragma comment( lib, uX_LIB_NAME ".lib")
 #endif
 
 #endif /*uX_EXPORTS_H*/

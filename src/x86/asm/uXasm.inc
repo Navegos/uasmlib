@@ -2,7 +2,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -25,21 +25,22 @@ endm
 
 ;include uXmacros.inc
 
-ifdef _x32_
+ifdef __x32__
     .686p
-    .model flat,c
-    ;option frame:auto
-    ;option stackbase:ebp        ; RSP or RBP are supported options for the stackbase.
+    .model flat, c
 endif
-ifdef _x64_
+ifdef __x64__
+    ifdef __windows__
     .x64p
-    ifdef _windows_
+    ;.win64
     option stackbase:rsp        ; RSP or RBP are supported options for the stackbase.
-    option frame:auto
+    option frame:auto           ; Default
     option win64:15             ; 11-15 for RSP and 1-7 for RBP.
     else
-    option stackbase:rbp        ; RSP or RBP are supported options for the stackbase.
-    option frame:auto
-    option sysv64:7              ; 11-15 for RSP and 1-7 for RBP.
+    .x64p
+    ;.sysv64
+    option stackbase:rbp        ; Default and the only possible for SYSV64
+    option frame:auto           ; Default
+    option sysv64:7             ; The max possible for SYSV64
     endif
 endif

@@ -244,7 +244,7 @@ public:
      *
      * \param Inbool_a value to copy from.
      */
-    uX_explicit uX_constexpr vecdouble4(bool_t const Inbool_a) uX_noexcept : m128_xmmd_0(vecdouble2(vecqword2(Inbool_a))), m128_xmmd_1(vecdouble2(vecqword2(Inbool_a))) {}
+    uX_explicit uX_constexpr vecdouble4(bool_t const Inbool_a) uX_noexcept : m128_xmmd_0(vecdouble2(vecuqword2(Inbool_a))), m128_xmmd_1(vecdouble2(vecuqword2(Inbool_a))) {}
 
     /**
      * \brief Constructor initialization from 4 type bool.
@@ -254,14 +254,14 @@ public:
      * \param Inbool_z value to copy from.
      * \param Inbool_w value to copy from.
      */
-    uX_constexpr vecdouble4(bool_t const Inbool_x, bool_t const Inbool_y, bool_t const Inbool_z, bool_t const Inbool_w) uX_noexcept : m128_xmmd_0(vecdouble2(vecqword2(Inbool_x, Inbool_y))), m128_xmmd_1(vecdouble2(vecqword2(Inbool_z, Inbool_w))) {}
+    uX_constexpr vecdouble4(bool_t const Inbool_x, bool_t const Inbool_y, bool_t const Inbool_z, bool_t const Inbool_w) uX_noexcept : m128_xmmd_0(vecdouble2(vecuqword2(Inbool_x, Inbool_y))), m128_xmmd_1(vecdouble2(vecuqword2(Inbool_z, Inbool_w))) {}
 
     /**
      * \brief Constructor to broadcast the same bool value into all elements.
      *
      * \param Inbool_a value to copy from.
      */
-    uX_explicit uX_constexpr vecdouble4(bool const Inbool_a) uX_noexcept : m128_xmmd_0(vecdouble2(vecqword2(Inbool_a))), m128_xmmd_1(vecdouble2(vecqword2(Inbool_a))) {}
+    uX_explicit uX_constexpr vecdouble4(bool const Inbool_a) uX_noexcept : m128_xmmd_0(vecdouble2(vecuqword2(Inbool_a))), m128_xmmd_1(vecdouble2(vecuqword2(Inbool_a))) {}
 
     /**
      * \brief Constructor initialization from 4 type bool.
@@ -271,7 +271,7 @@ public:
      * \param Inbool_z value to copy from.
      * \param Inbool_w value to copy from.
      */
-    uX_constexpr vecdouble4(bool const Inbool_x, bool const Inbool_y, bool const Inbool_z, bool const Inbool_w) uX_noexcept : m128_xmmd_0(vecdouble2(vecqword2(Inbool_x, Inbool_y))), m128_xmmd_1(vecdouble2(vecqword2(Inbool_z, Inbool_w))) {}
+    uX_constexpr vecdouble4(bool const Inbool_x, bool const Inbool_y, bool const Inbool_z, bool const Inbool_w) uX_noexcept : m128_xmmd_0(vecdouble2(vecuqword2(Inbool_x, Inbool_y))), m128_xmmd_1(vecdouble2(vecuqword2(Inbool_z, Inbool_w))) {}
 
     /**
      * \brief Constructor initialization from type __m128d*.
@@ -547,7 +547,7 @@ public:
      */
     uX_constexpr vecdouble4 uX_ABI get(void) const uX_noexcept
     {
-        return vecdouble4(m128_xmmd_0, m128_xmmd_1);
+        return *this;
     }
 
     /**
@@ -3718,15 +3718,19 @@ public:
     {
         switch (indexN)
         {
-            case 1:
-                m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, __m128d_0, 0, 1);
-                m128_xmmd_1 = __m128d_0;
+            case 3:
+                m128_xmmd_1 = _uX_mm_move_sd(__m128d_0, m128_xmmd_1);
                 break;
             case 2:
                 m128_xmmd_1 = __m128d_0;
                 break;
-            case 3:
-                m128_xmmd_1 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_1, __m128d_0, 0, 1);
+            case 1:
+                m128_xmmd_0 = _uX_mm_move_sd(__m128d_0, m128_xmmd_0);
+                m128_xmmd_1 = __m128d_0;
+                break;
+            case 0:
+                m128_xmmd_0 = __m128d_0;
+                m128_xmmd_1 = __m128d_0;
                 break;
             default:
                 break;

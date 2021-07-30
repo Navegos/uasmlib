@@ -3,7 +3,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -34,9 +34,8 @@
 #include "uXsalprocess.h"
 #endif  /* uX_SAL_PROCESS_H */
 
-// Define type size_t
-#ifndef _SIZE_T_DEFINED
-#include "stddef.h"
+#ifndef _STDINT
+#include "stdint.h"
 #endif
 
 uX_EXTERNC_BEGIN
@@ -65,10 +64,12 @@ typedef unsigned int        count_t;
 typedef unsigned __int64    size_t;
 typedef __int64             ptrdiff_t;
 typedef __int64             intptr_t;
+typedef unsigned __int64    uintptr_t;
 # else
 typedef unsigned int        size_t;
 typedef int                 ptrdiff_t;
 typedef int                 intptr_t;
+typedef unsigned int        uintptr_t;
 # endif
 #endif
 uX_EXTERNC_END
@@ -82,8 +83,8 @@ public:
     booleancv() uX_default;
     ~booleancv() uX_default;
 
-    booleancv(const booleancv&) uX_default;
-    booleancv& uX_ABI operator=(const booleancv&) uX_default;
+    booleancv(booleancv const&) uX_default;
+    booleancv& uX_ABI operator=(booleancv const&) uX_default;
 
     booleancv(booleancv&&) uX_default;
     booleancv& uX_ABI operator=(booleancv&&) uX_default;

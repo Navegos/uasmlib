@@ -802,8 +802,8 @@ uX_PACK_PUSH_STACK
 
 /* Initiate the CPUFeatures
  * Parameter int initiate the output info: 0 basic info, 1 extra info*/
-    extern void uX_ABI _uX_CPUFeatures_init(int /*info*/);
-    extern void uX_ABI _uX_CPUFeatures_destroy(void);
+extern void uX_ABI _uX_CPUFeatures_Init(int /*info*/);
+extern void uX_ABI _uX_CPUFeatures_Fin(void);
 
 /* Basic info functions*/
 
@@ -829,196 +829,205 @@ uX_PACK_SIZE_T
 ;62  or above = AVX512BW
 ;63  or above = AVX512VL
 ;*/
-    extern count_t const uX_ABI _uX_CPUFeatures_intrinset(void);
+extern count_t const uX_ABI _uX_CPUFeatures_IntrinSet(void);
+
+/* EFLAGS %eax=00H, %ebx=00H */
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_CPUID(void);
 
 /* %eax=00H, %ecx */
-    extern intbool_t const uX_ABI _uX_CPUFeatures_is_Intel(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_is_AMD(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_is_Intel(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_is_AMD(void);
 
 /* %eax=01H, %ecx */
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE3(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_PCLMULQDQ(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_MONITOR(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSSE3(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_FMA(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_CMPXCHG16B(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE41(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE42(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_MOVBE(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_POPCNT(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AES(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_XSAVE(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_OSXSAVE(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_F16C(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_RDRAND(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE3(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_PCLMULQDQ(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_MONITOR(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSSE3(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_FMA(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_CMPXCHG16B(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE41(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE42(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_MOVBE(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_POPCNT(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AES(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_XSAVE(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_OSXSAVE(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_F16C(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_RDRAND(void);
 
 /* %eax=01H, %edx */
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_FPU(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_TSC(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_MSR(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_CMPXCHG8B(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SEP(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_CMOV(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_CLFSH(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_MMX(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_FXSR(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE2(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_FPU(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_TSC(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_MSR(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_CMPXCHG8B(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SEP(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_CMOV(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_CLFSH(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_MMX(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_FXSR(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE2(void);
 
 /* %eax=07H, %ebx */
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_FSGSBASE(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SGX(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_BMI1(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_HLE(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX2(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SMEP(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_BMI2(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_ERMS(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_INVPCID(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_RTM(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_MPX(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512F(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_RDSEED(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_ADX(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SMAP(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_IFMA(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_CLFLUSHOPT(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_CLWB(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512PF(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512ER(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512CD(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SHA(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512VL(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_FSGSBASE(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SGX(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_BMI1(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_HLE(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX2(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SMEP(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_BMI2(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_ERMS(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_INVPCID(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_RTM(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_MPX(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512F(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_RDSEED(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_ADX(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SMAP(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_IFMA(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_CLFLUSHOPT(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_CLWB(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512PF(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512ER(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512CD(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SHA(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512VL(void);
 
 /* %eax=07H, %ecx */
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_PREFETCHWT1(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VBMI(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_UMIP(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_PKU(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_OSPKE(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VBMI2(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_GFNI(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_VAES(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_VPCLMULQDQ(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VNNI(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_BITALG(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VPOPCNTDQ(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_RDPID(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_PREFETCHWT1(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VBMI(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_UMIP(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_PKU(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_OSPKE(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VBMI2(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_GFNI(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_VAES(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_VPCLMULQDQ(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VNNI(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_BITALG(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VPOPCNTDQ(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_RDPID(void);
 
 /* %eax=07H, %edx */
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_4VNNIW(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_4FMAPS(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_4VNNIW(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_4FMAPS(void);
 
 /* %eax=80000001H, %ecx */
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_LAHF(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_LZCNT(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_ABM(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE4a(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_PREFETCHW(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_XOP(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_LWP(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_FMA4(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_TBM(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_MWAITX(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_LAHF(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_LZCNT(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_ABM(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE4a(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_PREFETCHW(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_XOP(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_LWP(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_FMA4(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_TBM(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_MWAITX(void);
 
 /* %eax=80000001H, %edx */
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SYSCALL(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_MMXEXT(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_RDTSCP(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_3DNOWEXT(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_3DNOW(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SYSCALL(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_MMXEXT(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_RDTSCP(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_3DNOWEXT(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_3DNOW(void);
 
 /* %eax=07H, %ebx, %ecx */
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_GFNI(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_GFNI_VL(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VAES(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VAES_VL(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VPCLMULQDQ(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VPCLMULQDQ_VL(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_GFNI(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_GFNI_VL(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VAES(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VAES_VL(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VPCLMULQDQ(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VPCLMULQDQ_VL(void);
 
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_IFMA_VL(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VBMI_VL(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VBMI2_VL(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VNNI_VL(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_BITALG_VL(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VPOPCNTDQ_VL(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_IFMA_VL(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VBMI_VL(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VBMI2_VL(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VNNI_VL(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_BITALG_VL(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512_VPOPCNTDQ_VL(void);
 
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW_GFNI(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW_GFNI_VL(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW_VAES(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW_VAES_VL(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW_VPCLMULQDQ(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW_VPCLMULQDQ_VL(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW_VL(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW_GFNI(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW_GFNI_VL(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW_VAES(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW_VAES_VL(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW_VPCLMULQDQ(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW_VPCLMULQDQ_VL(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512BW_VL(void);
 
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ_GFNI(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ_GFNI_VL(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ_VAES(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ_VAES_VL(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ_VPCLMULQDQ(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ_VPCLMULQDQ_VL(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ_VL(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ_GFNI(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ_GFNI_VL(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ_VAES(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ_VAES_VL(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ_VPCLMULQDQ(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ_VPCLMULQDQ_VL(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512DQ_VL(void);
 
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512CD_VL(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX512CD_VL(void);
 
 /* %eax=07H, %ecx, %ebx | %eax=01H, %ecx , %edx */
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE_AES(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE_GFNI(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE_PCLMULQDQ(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE_AES(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE_GFNI(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE_PCLMULQDQ(void);
 
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE2_AES(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE2_GFNI(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE2_PCLMULQDQ(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE2_AES(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE2_GFNI(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE2_PCLMULQDQ(void);
 
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE3_AES(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE3_GFNI(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE3_PCLMULQDQ(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE3_AES(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE3_GFNI(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE3_PCLMULQDQ(void);
 
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSSE3_AES(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSSE3_GFNI(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSSE3_PCLMULQDQ(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSSE3_AES(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSSE3_GFNI(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSSE3_PCLMULQDQ(void);
 
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE41_AES(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE41_GFNI(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE41_PCLMULQDQ(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE41_AES(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE41_GFNI(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE41_PCLMULQDQ(void);
 
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE42_AES(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE42_GFNI(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE42_PCLMULQDQ(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE42_AES(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE42_GFNI(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_SSE42_PCLMULQDQ(void);
 
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX_AES(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX_GFNI(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX_PCLMULQDQ(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX_VAES(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX_VPCLMULQDQ(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX_AES(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX_GFNI(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX_PCLMULQDQ(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX_VAES(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX_VPCLMULQDQ(void);
 
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX2_AES(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX2_GFNI(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX2_PCLMULQDQ(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX2_VAES(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX2_VPCLMULQDQ(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX2_AES(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX2_GFNI(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX2_PCLMULQDQ(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX2_VAES(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_AVX2_VPCLMULQDQ(void);
 
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_enabled_XMM(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_enabled_YMM(void);
-    extern intbool_t const uX_ABI _uX_CPUFeatures_has_enabled_ZMM(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_enabled_XMM(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_enabled_YMM(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_has_enabled_ZMM(void);
 
 /* Check if CPUFeatures is initiated */
-    extern intbool_t const uX_ABI _uX_CPUFeatures_is_inited(void);
+extern intbool_t const uX_ABI _uX_CPUFeatures_is_Inited(void);
 
 /* Extra info functions*/
 
 uX_PACK_STACK
 
-    extern void const uX_ABI _uX_CPUFeatures_CpuType(int* /*vendor*/, int* /*family*/, int* /*model*/);
+extern void const uX_ABI _uX_CPUFeatures_CpuType(int* /*vendor*/, int* /*family*/, int* /*model*/);
 
-    extern char const* const uX_ABI _uX_CPUFeatures_ProcessorName(void);
+extern char const* const uX_ABI _uX_CPUFeatures_ProcessorName(void);
 
 uX_PACK_SIZE_T
 
-    extern size_t const uX_ABI _uX_CPUFeatures_DataCacheSize(int /*level*/);
+extern size_t const uX_ABI _uX_CPUFeatures_DataCacheSize(int /*level*/);
+extern size_t const uX_ABI _uX_CPUFeatures_L1DataCacheSize(void);
+extern size_t const uX_ABI _uX_CPUFeatures_L2DataCacheSize(void);
+extern size_t const uX_ABI _uX_CPUFeatures_L3DataCacheSize(void);
+
+extern count_t const uX_ABI _uX_CPUFeatures_UnalignedIsFaster(void);
+extern count_t const uX_ABI _uX_CPUFeatures_Store256BitIsFaster(void);
 
 uX_PACK_POP
 uX_EXTERNC_END
@@ -1035,11 +1044,11 @@ typedef class CPUFeatures
 {
 public:
     /* Initiate the CPUFeatures
-     * Parameter int initiate the output info: 0 basic info, 1 extra info
+     * Parameter int initiate the output info: 0 basic info, 1 extra info, 2 additional extra info
      */
-    CPUFeatures(int infolevel) { if (!_uX_CPUFeatures_is_inited()) {_uX_CPUFeatures_init(infolevel);} }
+    CPUFeatures(int infolevel) { if (!_uX_CPUFeatures_is_Inited()) {_uX_CPUFeatures_Init(infolevel);} }
     /* Destroy the CPUFeatures */
-    ~CPUFeatures(void) { if (_uX_CPUFeatures_is_inited()) {_uX_CPUFeatures_destroy();} }
+    ~CPUFeatures(void) { if (_uX_CPUFeatures_is_Inited()) {_uX_CPUFeatures_Fin();} }
 
 uX_PACK_SIZE_T
     /* find supported instruction set
@@ -1062,7 +1071,10 @@ uX_PACK_SIZE_T
     62  or above = AVX512BW
     63  or above = AVX512VL
     */
-    uX_constexpr count_t const uX_ABI intrinset(void) const { return _uX_CPUFeatures_intrinset(); }
+    uX_constexpr count_t const uX_ABI IntrinSet(void) const { return _uX_CPUFeatures_IntrinSet(); }
+
+    /* EFLAGS %eax=00H, %ebx=00H */
+    uX_constexpr bool_t const uX_ABI has_CPUID(void) const { return _uX_CPUFeatures_has_CPUID(); }
 
     /* %eax=00H, %ecx */
     uX_constexpr bool_t const uX_ABI is_Intel(void) const { return _uX_CPUFeatures_is_Intel(); }
@@ -1232,7 +1244,7 @@ uX_PACK_SIZE_T
     uX_constexpr bool_t const uX_ABI has_enabled_ZMM(void) const { return _uX_CPUFeatures_has_enabled_ZMM(); }
 
     /* Check if CPUFeatures is initiated */
-    uX_constexpr bool_t const uX_ABI is_inited(void) const { return _uX_CPUFeatures_is_inited(); }
+    uX_constexpr bool_t const uX_ABI is_Inited(void) const { return _uX_CPUFeatures_is_Inited(); }
 
     uX_PACK_STACK
 
@@ -1243,10 +1255,16 @@ uX_PACK_SIZE_T
 uX_PACK_SIZE_T
 
     uX_constexpr size_t const uX_ABI DataCacheSize(int level) const { return _uX_CPUFeatures_DataCacheSize(level); }
+    uX_constexpr size_t const uX_ABI L1DataCacheSize(void) const { return _uX_CPUFeatures_L1DataCacheSize(); }
+    uX_constexpr size_t const uX_ABI L2DataCacheSize(void) const { return _uX_CPUFeatures_L2DataCacheSize(); }
+    uX_constexpr size_t const uX_ABI L3DataCacheSize(void) const { return _uX_CPUFeatures_L3DataCacheSize(); }
+    
+    uX_constexpr count_t const uX_ABI UnalignedIsFaster(void) const { return _uX_CPUFeatures_UnalignedIsFaster(); }
+    uX_constexpr count_t const uX_ABI Store256BitIsFaster(void) const { return _uX_CPUFeatures_Store256BitIsFaster(); }
 
 } CPUFeatures_t;
 
-    typedef CPUFeatures* pCPUFeatures_t;
+typedef CPUFeatures* pCPUFeatures_t;
 uX_PACK_POP
 uX_EXTERNCC_END
 namespace_internal_end
@@ -1262,9 +1280,15 @@ static _internal::CPUFeatures const CPU_Rep0(0);
 
 uX_PACK_SIZE_T
 
-count_t const uX_ABI intrinset(void)
+count_t const uX_ABI IntrinSet(void)
 {
-    return CPU_Rep0.intrinset();
+    return CPU_Rep0.IntrinSet();
+}
+
+/* EFLAGS %eax=00H, %ebx=00H */
+bool_t const uX_ABI has_CPUID(void)
+{
+    return CPU_Rep0.has_CPUID();
 }
 
 /* %eax=00H, %ecx */
@@ -1987,9 +2011,9 @@ bool_t const uX_ABI has_enabled_ZMM(void)
     return CPU_Rep0.has_enabled_ZMM();
 }
 
-bool_t const uX_ABI CPUFeatures_is_inited(void)
+bool_t const uX_ABI CPUFeatures_is_Inited(void)
 {
-    return CPU_Rep0.is_inited();
+    return CPU_Rep0.is_Inited();
 }
 
 uX_PACK_STACK
@@ -2008,9 +2032,36 @@ char const* const uX_ABI ProcessorName(void)
 
 uX_PACK_SIZE_T
 
-size_t const  uX_ABI DataCacheSize(int level)
+size_t const uX_ABI DataCacheSize(int level)
 {
     return CPU_Rep1.DataCacheSize(level);
+}
+
+size_t const uX_ABI L1DataCacheSize(void)
+{
+    return CPU_Rep1.L1DataCacheSize();
+}
+
+size_t const uX_ABI L2DataCacheSize(void)
+{
+    return CPU_Rep1.L2DataCacheSize();
+}
+
+size_t const uX_ABI L3DataCacheSize(void)
+{
+    return CPU_Rep1.L3DataCacheSize();
+}
+
+static _internal::CPUFeatures const CPU_Rep2(2);
+
+count_t const uX_ABI UnalignedIsFaster(void)
+{
+    return CPU_Rep2.UnalignedIsFaster();
+}
+
+count_t const uX_ABI Store256BitIsFaster(void)
+{
+    return CPU_Rep2.Store256BitIsFaster();
 }
 
 /*

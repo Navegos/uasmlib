@@ -3,7 +3,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -144,45 +144,45 @@ uX_PACK_PUSH_XMM
 /*
  * Intrinsics for text/string processing.
  */
-    extern __m128i uX_ABI _uX_mm_cmpistrm(__m128i Inxmm_A, __m128i Inxmm_B, count_t const Inint_Control);
-    extern int uX_ABI _uX_mm_cmpistri(__m128i Inxmm_A, __m128i Inxmm_B, count_t const Inint_Control);
+extern __m128i uX_ABI _uX_mm_cmpistrm(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/, count_t const /*Inint_Control*/);
+extern int uX_ABI _uX_mm_cmpistri(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/, count_t const /*Inint_Control*/);
 
-    extern __m128i uX_ABI _uX_mm_cmpestrm(__m128i Inxmm_A, int Inint_LA, __m128i Inxmm_B, int Inint_LB, count_t const Inint_Control);
-    extern int uX_ABI _uX_mm_cmpestri(__m128i Inxmm_A, int Inint_LA, __m128i Inxmm_B, int Inint_LB, count_t const Inint_Control);
+extern __m128i uX_ABI _uX_mm_cmpestrm(__m128i /*Inxmm_A*/, int /*Inint_LA*/, __m128i /*Inxmm_B*/, int /*Inint_LB*/, count_t const /*Inint_Control*/);
+extern int uX_ABI _uX_mm_cmpestri(__m128i /*Inxmm_A*/, int /*Inint_LA*/, __m128i /*Inxmm_B*/, int /*Inint_LB*/, count_t const /*Inint_Control*/);
 
 /*
  * Intrinsics for text/string processing and reading values of EFlags.
  */
-    extern int uX_ABI _uX_mm_cmpistrz(__m128i Inxmm_A, __m128i Inxmm_B, count_t const Inint_Control);
-    extern int uX_ABI _uX_mm_cmpistrc(__m128i Inxmm_A, __m128i Inxmm_B, count_t const Inint_Control);
-    extern int uX_ABI _uX_mm_cmpistrs(__m128i Inxmm_A, __m128i Inxmm_B, count_t const Inint_Control);
-    extern int uX_ABI _uX_mm_cmpistro(__m128i Inxmm_A, __m128i Inxmm_B, count_t const Inint_Control);
-    extern int uX_ABI _uX_mm_cmpistra(__m128i Inxmm_A, __m128i Inxmm_B, count_t const Inint_Control);
+extern int uX_ABI _uX_mm_cmpistrz(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/, count_t const /*Inint_Control*/);
+extern int uX_ABI _uX_mm_cmpistrc(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/, count_t const /*Inint_Control*/);
+extern int uX_ABI _uX_mm_cmpistrs(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/, count_t const /*Inint_Control*/);
+extern int uX_ABI _uX_mm_cmpistro(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/, count_t const /*Inint_Control*/);
+extern int uX_ABI _uX_mm_cmpistra(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/, count_t const /*Inint_Control*/);
 
-    extern int uX_ABI _uX_mm_cmpestrz(__m128i Inxmm_A, int Inint_LA, __m128i Inxmm_B, int Inint_LB, count_t const Inint_Control);
-    extern int uX_ABI _uX_mm_cmpestrc(__m128i Inxmm_A, int Inint_LA, __m128i Inxmm_B, int Inint_LB, count_t const Inint_Control);
-    extern int uX_ABI _uX_mm_cmpestrs(__m128i Inxmm_A, int Inint_LA, __m128i Inxmm_B, int Inint_LB, count_t const Inint_Control);
-    extern int uX_ABI _uX_mm_cmpestro(__m128i Inxmm_A, int Inint_LA, __m128i Inxmm_B, int Inint_LB, count_t const Inint_Control);
-    extern int uX_ABI _uX_mm_cmpestra(__m128i Inxmm_A, int Inint_LA, __m128i Inxmm_B, int Inint_LB, count_t const Inint_Control);
+extern int uX_ABI _uX_mm_cmpestrz(__m128i /*Inxmm_A*/, int /*Inint_LA*/, __m128i /*Inxmm_B*/, int /*Inint_LB*/, count_t const /*Inint_Control*/);
+extern int uX_ABI _uX_mm_cmpestrc(__m128i /*Inxmm_A*/, int /*Inint_LA*/, __m128i /*Inxmm_B*/, int /*Inint_LB*/, count_t const /*Inint_Control*/);
+extern int uX_ABI _uX_mm_cmpestrs(__m128i /*Inxmm_A*/, int /*Inint_LA*/, __m128i /*Inxmm_B*/, int /*Inint_LB*/, count_t const /*Inint_Control*/);
+extern int uX_ABI _uX_mm_cmpestro(__m128i /*Inxmm_A*/, int /*Inint_LA*/, __m128i /*Inxmm_B*/, int /*Inint_LB*/, count_t const /*Inint_Control*/);
+extern int uX_ABI _uX_mm_cmpestra(__m128i /*Inxmm_A*/, int /*Inint_LA*/, __m128i /*Inxmm_B*/, int /*Inint_LB*/, count_t const /*Inint_Control*/);
 
 /*
  * Calculate a number of bits set to 1
  */
-    extern int32_t uX_ABI _uX_mm_popcnt_u32(uint32_t Inint_A);
+extern int32_t uX_ABI _uX_mm_popcnt_u32(uint32_t /*Inint_A*/);
 
 #if defined(uX_X64)
-    extern int64_t uX_ABI _uX_mm_popcnt_u64(uint64_t Inint_A);
+extern int64_t uX_ABI _uX_mm_popcnt_u64(uint64_t /*Inint_A*/);
 #endif // uX_X64
 
 /*
  * Accumulate CRC32(polynomial 0x11EDC6F41) value
  */
-    extern uint32_t uX_ABI _uX_mm_crc32_u8(uint32_t Inint_A, uint8_t Inint_B);
-    extern uint32_t uX_ABI _uX_mm_crc32_u16(uint32_t Inint_A, uint16_t Inint_B);
-    extern uint32_t uX_ABI _uX_mm_crc32_u32(uint32_t Inint_A, uint32_t Inint_B);
+extern uint32_t uX_ABI _uX_mm_crc32_u8(uint32_t /*Inint_A*/, uint8_t /*Inint_B*/);
+extern uint32_t uX_ABI _uX_mm_crc32_u16(uint32_t /*Inint_A*/, uint16_t /*Inint_B*/);
+extern uint32_t uX_ABI _uX_mm_crc32_u32(uint32_t /*Inint_A*/, uint32_t /*Inint_B*/);
 
 #if defined(uX_X64)
-    extern uint64_t uX_ABI _uX_mm_crc32_u64(uint64_t Inint_A, uint64_t Inint_B);
+extern uint64_t uX_ABI _uX_mm_crc32_u64(uint64_t /*Inint_A*/, uint64_t /*Inint_B*/);
 #endif // uX_X64
 
 uX_PACK_POP

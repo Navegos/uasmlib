@@ -3,7 +3,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -44,7 +44,7 @@
 /**
 Compiler defines
 */
-#if defined(_MSC_VER) && (!defined(__INTEL_COMPILER) && !defined(__clang__) && !defined(uX_ICW) && !defined(uX_ICU) && !defined(__CUDA_ARCH__) && !defined(__CUDACC__))
+#if defined(_MSC_VER) && !defined(__INTEL_COMPILER) && !defined(__clang__) && !defined(__CUDA_ARCH__) && !defined(__CUDACC__)
 #ifndef uX_VC
 #       define uX_VC 1  /* MSVC Compiler */
 #endif
@@ -125,6 +125,9 @@ Compiler defines
 #   elif defined(_MSC_VER) && (_MSC_VER == 1928)
 #       define uX_VC14_28 1
 #       define uX_COMPILER "Microsoft Visual C++ 16.2.8"
+#   elif defined(_MSC_VER) && (_MSC_VER == 1929)
+#       define uX_VC14_29 1
+#       define uX_COMPILER "Microsoft Visual C++ 16.2.9"
 #   else
 #error ERROR: add your vc compiler version
 #   endif
@@ -365,8 +368,10 @@ Compiler defines
 /* CUDA targets must be detected first as nvcc also predefined gcc macros for CPU architecture */
 #if defined(__CUDA_ARCH__) || defined(__CUDACC__)
 #       define uX_CUDA_GPU 1
-#elif (defined(_M_IX86) || defined(_WIN32) || defined(__i386__) || defined(i386) || defined(__i386) || defined(_X86_) || defined(__X86__) \
-    || defined(__I86__) || defined(__INTEL__) || defined(__THW_INTEL__))  && !defined(_WIN64) && ! defined(_M_ARM) && !defined(_ARM) && !defined(__KNC__) && !defined(__MIC__)
+#elif ((defined(_M_IX86) || defined(_WIN32) || defined(__i386__) || defined(i386) || defined(__i386) || defined(_X86_) || defined(__X86__) \
+        || defined(__I86__) || defined(__INTEL__) || defined(__THW_INTEL__)) && !defined(_M_X64) && !defined(_M_AMD64) && !defined(_WIN64) \
+        && !defined(__amd64__) || defined(__amd64) && !defined(__x86_64) && !defined(__x86_64__) && !defined(_LP64) && !defined(__LP64__) \
+        && !defined(__ORBIS__) && !defined(_XBOX_ONE) && !defined(_M_ARM) && !defined(_ARM) && !defined(__KNC__) && !defined(__MIC__))
 #       define uX_X86 1
 #       define uX_X86_CPU 1
 #       define uX_X86_ABI 1
@@ -383,7 +388,8 @@ Compiler defines
 #       define uX_ARCH_STR "x86"
 #undef uX_ARCH
 #       define uX_ARCH 1
-# elif defined(_M_X64) || defined(_M_AMD64) || defined(_WIN64) || defined(__amd64__) || defined(__amd64) || defined(__x86_64) || defined(__x86_64__) || defined(_LP64) || defined(__LP64__) && !defined(__KNC__) && !defined(__MIC__)
+#elif ((defined(_M_X64) || defined(_M_AMD64) || defined(_WIN64) || defined(__amd64__) || defined(__amd64) || defined(__x86_64) || defined(__x86_64__) || defined(_LP64) || defined(__LP64__) \
+        || defined(__ORBIS__) || defined(_XBOX_ONE)) && !defined(__KNC__) && !defined(__MIC__))
 #       define uX_X64 1
 #       define uX_X64_CPU 1
 #       define uX_X64_ABI 1
@@ -422,10 +428,10 @@ Compiler defines
 #       define uX_MIC_ARCH 1 /* Intel MIC or Xeon Phi architecture */
 #       define uX_PLATFORM_MIC 1
 #       define uX_PLATFORM_IS_CPU_ACCELARATOR 1
-# if defined(_M_IX86) /*|| defined(_WIN32)*/ || defined(__i386__) || defined(i386) || defined(__i386) || defined(_X86_) || defined(__X86__) || defined(__I86__)
-# error ERROR: Unavailable for Intel Intel® Xeon Phi™ builds.
-# error ERROR: Solutions/projects targeting the Intel® Xeon Phi™ coprocessor are limited to using the x64 Debug | Release configuration.
-# error ERROR: Please change your build enviroment to X64 builds.
+#  if defined(_M_IX86) /*|| defined(_WIN32)*/ || defined(__i386__) || defined(i386) || defined(__i386) || defined(_X86_) || defined(__X86__) || defined(__I86__)
+#  error ERROR: Unavailable for Intel Intel® Xeon Phi™ builds.
+#  error ERROR: Solutions/projects targeting the Intel® Xeon Phi™ coprocessor are limited to using the x64 Debug | Release configuration.
+#  error ERROR: Please change your build enviroment to X64 builds.
 /*
 #       define uX_X86 1
 #       define uX_X86_ABI 1
@@ -441,7 +447,7 @@ Compiler defines
 #       define uX_ARCH_STR "x86"
 #undef uX_ARCH
 #       define uX_ARCH 1*/
-# elif defined(_M_X64) || defined(_M_AMD64) || defined(_WIN64) || defined(__amd64__) || defined(__amd64) || defined(__x86_64) || defined(__x86_64__) || defined(__LP64__)
+#  elif defined(_M_X64) || defined(_M_AMD64) || defined(_WIN64) || defined(__amd64__) || defined(__amd64) || defined(__x86_64) || defined(__x86_64__) || defined(__LP64__)
 #       define uX_X64 1
 #       define uX_X64_CPU 1
 #       define uX_X64_ABI 1
@@ -459,7 +465,7 @@ Compiler defines
 #       define uX_PLATFORM_X64 1
 #undef uX_ARCH
 #       define uX_ARCH 2
-# endif
+#  endif
 #elif defined(_M_IA64) || defined(__itanium__) || defined(__ia64) || defined(__ia64__) || defined(_IA64) || defined(__IA64__)
 #       define uX_IA64 1
 #       define uX_ARCH_IA64 1
@@ -759,13 +765,12 @@ Compiler defines
 #endif
 #pragma pack(push)
 #pragma pack(8)
-# include <windows.h>
+//# include <windows.h>
 #pragma pack (pop)
 # pragma warning( pop )
 //#include "Runtime/Core/Public/Windows/HideWindowsPlatformTypes.h"
-#endif
-
-#endif
+#endif // _WINDOWS_
+#endif // _WIN32
 
 /**
 Platform define
@@ -817,14 +822,16 @@ Platform define
 #       define uX_FAMILY_STR ""
 #       define uX_WINDOWS_FAMILY 1
 # endif
-#elif (defined(_MSC_VER) && (defined(__INTEL_COMPILER) || defined(__clang__) || defined(__GCC__))) && (defined(_WIN32) || defined(_WIN64) || defined(_WINDOWS)) || (defined(__KNC__) || defined(__MIC__))) && !defined(uX_XBOXONE)
+/*
+#elif (defined(_MSC_VER) && (defined(__INTEL_COMPILER) || defined(__clang__) || defined(__GCC__))) \
+        && (defined(_WIN32) || defined(_WIN64) || defined(_WINDOWS) || defined(_XBOX_ONE) || defined(__KNC__) || defined(__MIC__)) && !defined(uX_XBOXONE)
 # if defined(__KNC__) || defined(__MIC__) || defined(uX_MIC)
 #       define uX_UNIX 1
 #       define uX_UNIX_OS 1
 # else
 #       define uX_WINDOWS 1
 #       define uX_WINDOWS_OS 1
-# endif
+# endif*/
 #elif defined(__APPLE_CC__)
 #   include <TargetConditionals.h> // Specific to the current SDK, in usr\include
 #       define uX_APPLE 1
@@ -890,8 +897,9 @@ Platform define
 /*#         define uX_ARCH "IOS"*/
 #           define uX_APPLE_FAMILY 1
 #   endif
-#elif (defined(__INTEL_COMPILER) && defined(__GNUC__)) || (defined(__GNUC__) || defined(__GCC__)) && (defined(__unix__) || defined(__linux__) || defined(__linux) \
-    || defined(linux) || defined(__CYGWIN__) || defined(ANDROID_NDK) || defined(ANDROID) || defined(NDK) || defined(__ANDROID_API__) || defined(__ANDROID__))
+#elif defined(uX_GCC_COMPATIBLE_COMPILER) && (defined(__linux__) || defined(__linux) || defined(linux) || defined(unix) || defined(__unix__) || defined(__unix) || defined(__ORBIS__) \
+                || defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__bsdi__) || defined(__DragonFly__) || defined(__bg__) \
+                || defined(__CYGWIN__) || defined(ANDROID_NDK) || defined(ANDROID) || defined(NDK) || defined(__ANDROID_API__) || defined(__ANDROID__))
 #   if defined(ANDROID_NDK) || defined(ANDROID) || defined(NDK) || defined(__ANDROID_API__) || defined(__ANDROID__)
 #       define uX_ANDROID 1
 #       define uX_ANDROID_OS 1
@@ -901,8 +909,12 @@ Platform define
 #       define uX_PLATFORM_IS_CONSOLE 1
 #       define uX_UNIX 1
 #       define uX_UNIX_FAMILY 1
-#  elif defined(__linux__) || defined(__linux) || defined(linux) || defined(unix) || defined(__unix__) || defined(__unix) || defined(__bg__)
-#    if defined(__linux__) || defined(__linux) || defined(linux)
+#  elif defined(__linux__) || defined(__linux) || defined(linux) || defined(unix) || defined(__unix__) || defined(__unix) || defined(__ORBIS__) \
+                || defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__bsdi__) || defined(__DragonFly__) || defined(__bg__)
+#    if defined(__ORBIS__) || defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__bsdi__) || defined(__DragonFly__)
+#       define uX_UNIX 1
+#       define uX_BSD_OS
+#    elif defined(__linux__) || defined(__linux) || defined(linux)
 #       define uX_LINUX 1
 #       define uX_LINUX_OS
 #    elif defined(__gnu_linux__)
@@ -1290,6 +1302,34 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 
 #if defined(uX_AMP_SUPPORT) && (_MSC_VER <= 1700)
 #error ERROR: Implemented AMP computing not supported in target compiler
+#endif
+
+#ifndef INTRIN_VERSION
+#define INTRIN_VERSION 60
+#endif
+
+#ifndef INTEL_INTRIN
+#define INTEL_INTRIN 1
+#endif
+
+#ifndef AMD_INTRIN
+#define AMD_INTRIN 1
+#endif
+
+#ifndef INTRIN_MMX
+#define INTRIN_MMX 1
+#endif
+
+#ifndef INTRIN_SSE
+#define INTRIN_SSE 1
+#endif
+
+#ifndef INTRIN_AVX256
+#define INTRIN_AVX256 1
+#endif
+
+#ifndef INTRIN_AVX512
+#define INTRIN_AVX512 1
 #endif
 
 #if defined(uX_MSVC_COMPATIBLE_COMPILER) && defined(uX_X86_OR_X64_CPU) && !defined(uX_ARM) && !defined(_MANAGED) && !defined(_M_CEE) && (!defined(_M_IX86_FP) || (_M_IX86_FP > 1)) \
@@ -2076,7 +2116,7 @@ namespace ccr = Concurrency; / * Concurrency namespace short name * /
 #    endif
 #   endif
 # elif !defined(uX_NO_INTRINSICS)
-# error ERROR: eXOAMP does not support this intrinsics target or is not implemented yet
+# error ERROR: UASM does not support this intrinsics target or is not implemented yet
 # endif
 #endif // !uX_ARM_NEON_INTRINSICS_ && !uX_SSE_INTRINSICS_ && !uX_VMX128_INTRINSICS_ && !uX_NO_INTRINSICS_
 
@@ -3548,11 +3588,11 @@ Assert macro
 #endif
 
 #ifdef uX_DEBUG
-#       define uX_BUILD_TYPE  "debug"
-#       define uX_BUILD_PREFIX  "_"
+#       define uX_BUILD_PREFIX  "d"
+#       define uX_BUILD_TYPE  "ebug"
 #else
-#       define uX_BUILD_TYPE  ""
 #       define uX_BUILD_PREFIX  ""
+#       define uX_BUILD_TYPE  ""
 #endif
 
 #if defined(uX_ARM) && !defined(uX_PHONE_APP)

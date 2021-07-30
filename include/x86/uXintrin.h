@@ -3,7 +3,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - optimized library                 / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -35,13 +35,13 @@
 uX_EXTERNC_BEGIN
 uX_PACK_PUSH_PTR
 
-    extern void uX_ABI _uX_cpuidex(int32_t* CPUInfo, int32_t CPUInfoType, int32_t ECXValue);
-    extern void uX_ABI _uX_cpuid(int32_t* CPUInfo, int32_t CPUInfoType);
+extern void uX_ABI _uX_cpuidex(int32_t* /*CPUInfo*/, int32_t /*CPUInfoType*/, int32_t /*ECXValue*/);
+extern void uX_ABI _uX_cpuid(int32_t* /*CPUInfo*/, int32_t /*CPUInfoType*/);
 
 uX_PACK_8
 
-    extern uint64_t uX_ABI _uX_xgetbv(uint32_t EXCR);
-    extern void uX_ABI _uX_xsetbv(uint32_t EXCR, uint64_t EXCRSet);
+extern uint64_t uX_ABI _uX_xgetbv(uint32_t /*EXCR*/);
+extern void uX_ABI _uX_xsetbv(uint32_t /*EXCR*/, uint64_t /*EXCRSet*/);
 
 uX_PACK_POP
 uX_EXTERNC_END

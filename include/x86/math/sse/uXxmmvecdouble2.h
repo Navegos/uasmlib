@@ -265,7 +265,7 @@ public:
      * \brief Constructor initialization from type double
      * \details Constructor to broadcast the same double value into all elements
      * \param[in] Indouble - double Read only
-     * \warning Broadcasts same value to all elements
+     * \warning Broadcasts same float value to all elements
      * \Note Sets the _x _y double elements
      */
     uX_explicit uX_constexpr vecdouble2(double Indouble) uX_noexcept : m128_xmmd(_uX_mm_set1_pd(Indouble)) {}
@@ -288,7 +288,7 @@ public:
      * \warning Broadcasts same value to all elements
      * \Note Sets the _x _y double elements
      */
-    uX_explicit uX_constexpr vecdouble2(bool_t const Inbool) uX_noexcept : m128_xmmd(vecdouble2(vecqword2(Inbool))) {}
+    uX_explicit uX_constexpr vecdouble2(bool_t const Inbool) uX_noexcept : m128_xmmd(vecdouble2(vecuqword2(Inbool))) {}
 
     /**
      * \fn uX::xmm::vecdouble2::vecdouble2(bool_t const Inbool_x, bool_t const Inbool_y) uX_noexcept
@@ -298,7 +298,7 @@ public:
      * \param[in] Inbool_y - bool_t Read only
      * \Note Sets the _x _y double elements
      */
-    uX_constexpr vecdouble2(bool_t const Inbool_x, bool_t const Inbool_y) uX_noexcept : m128_xmmd(vecdouble2(vecqword2(Inbool_x, Inbool_y))) {}
+    uX_constexpr vecdouble2(bool_t const Inbool_x, bool_t const Inbool_y) uX_noexcept : m128_xmmd(vecdouble2(vecuqword2(Inbool_x, Inbool_y))) {}
 
     /**
      * \fn uX::xmm::vecdouble2::vecdouble2(bool const Inbool) uX_noexcept
@@ -308,7 +308,7 @@ public:
      * \warning Broadcasts same value to all elements
      * \Note Sets the _x _y double elements
      */
-    uX_explicit uX_constexpr vecdouble2(bool const Inbool) uX_noexcept : m128_xmmd(vecdouble2(vecqword2(Inbool))) {}
+    uX_explicit uX_constexpr vecdouble2(bool const Inbool) uX_noexcept : m128_xmmd(vecdouble2(vecuqword2(Inbool))) {}
 
     /**
      * \fn uX::xmm::vecdouble2::vecdouble2(bool const Inbool_x, bool const Inbool_y) uX_noexcept
@@ -318,7 +318,7 @@ public:
      * \param[in] Inbool_y - bool Read only
      * \Note Sets the _x _y double elements
      */
-    uX_constexpr vecdouble2(bool const Inbool_x, bool const Inbool_y) uX_noexcept : m128_xmmd(vecdouble2(vecqword2(Inbool_x, Inbool_y))) {}
+    uX_constexpr vecdouble2(bool const Inbool_x, bool const Inbool_y) uX_noexcept : m128_xmmd(vecdouble2(vecuqword2(Inbool_x, Inbool_y))) {}
 
     /**
      * \fn uX::xmm::vecdouble2::vecdouble2(double const* const Inpdouble) uX_noexcept
@@ -1501,6 +1501,9 @@ public:
         {
             case 1:
                 m128_xmmd = _uX_MM_SHUFFLER_IM_PD(m128_xmmd, __m128d_0, 0, 1);
+                break;
+            case 0:
+                m128_xmmd = __m128d_0;
                 break;
             default:
                 break;

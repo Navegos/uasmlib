@@ -142,7 +142,7 @@ class vecdouble4x4;
  * \details The \p vecdouble3 class is an 3 elements wide 64bit double element where
     it provides interoperability between \p vecqword3, \p vecuqword3 class's
  */
-typedef class uX_API vecdouble3
+typedef class vecdouble3
 {
 public:
     vecdouble3()uX_default;
@@ -284,7 +284,7 @@ public:
      * @param Inpdouble value to copy from.
      */
     uX_explicit uX_constexpr vecdouble3(uX_InReads(3) double const* const Inpdouble) uX_noexcept : m128_xmmd_0(_uX_mm_loadu_pd(reinterpret_cast<__m128d const* const>(Inpdouble))),
-                                                                                                   m128_xmmd_1(_uX_MM_SHUFFLER_IM_PD(_uX_mm_loadu_pd(reinterpret_cast<__m128d const* const>(Inpdouble+2)), __m128d_false, 0, 0)) {}
+                                                                                                   m128_xmmd_1(_uX_mm_load_sd(Inpdouble+2)) {}
 
     /** \brief __m128d type cast operator.
      *
@@ -544,7 +544,7 @@ public:
      */
     uX_constexpr vecdouble3 uX_ABI get(void) const uX_noexcept
     {
-        return vecdouble3(m128_xmmd_0, m128_xmmd_1);
+        return *this;
     }
 
     /**
@@ -1897,11 +1897,15 @@ public:
     {
         switch (indexN)
         {
+            break;
+            case 2:
+                m128_xmmd_1 = __m128d_0;
+                break;
             case 1:
                 m128_xmmd_0 = _uX_MM_SHUFFLER_IM_PD(m128_xmmd_0, __m128d_0, 0, 1);
                 m128_xmmd_1 = __m128d_0;
-                break;
-            case 2:
+            case 0:
+                m128_xmmd_0 = __m128d_0;
                 m128_xmmd_1 = __m128d_0;
                 break;
             default:
