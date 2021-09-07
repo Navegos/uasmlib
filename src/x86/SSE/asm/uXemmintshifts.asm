@@ -2,7 +2,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -19,147 +19,149 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
-    OPTION CASEMAP:NONE
-    include macrolib.inc
-    
+option casemap:none
+include macrolib.inc
+include uXasm.inc
+
 ifndef __MIC__
 
-    include uXasm.inc
+.xmm
+option arch:sse
+option evex:0
 
-    .xmm
-    option arch:sse
-    option evex:0
-    
-    .data?
+alignstackfieldproc
 
-    .data
+.data?
 
-    .const
-    
-        alignsize_t
-        _m128isllisi128jmptable isize_t  offset _m128isllisi128_0, offset _m128isllisi128_1, offset _m128isllisi128_2, offset _m128isllisi128_3, offset _m128isllisi128_4, \
-                                         offset _m128isllisi128_5, offset _m128isllisi128_6, offset _m128isllisi128_7, offset _m128isllisi128_8, offset _m128isllisi128_9, \
-                                         offset _m128isllisi128_10, offset _m128isllisi128_11, offset _m128isllisi128_12, offset _m128isllisi128_13, offset _m128isllisi128_14, \
-                                         offset _m128isllisi128_15
+.data
 
-        ;alignsize_t
-        ;_m128islliepi8jmptable isize_t offset _m128islliepi8_0, offset _m128islliepi8_1, offset _m128islliepi8_2, offset _m128islliepi8_3, offset _m128islliepi8_4, \
-        ;                                offset _m128islliepi8_5, offset _m128islliepi8_6, offset _m128islliepi8_7
+.const
 
-        alignsize_t
-        _m128islliepi16jmptable isize_t offset _m128islliepi16_0, offset _m128islliepi16_1, offset _m128islliepi16_2, offset _m128islliepi16_3, offset _m128islliepi16_4, \
-                                        offset _m128islliepi16_5, offset _m128islliepi16_6, offset _m128islliepi16_7, offset _m128islliepi16_8, offset _m128islliepi16_9, \
-                                        offset _m128islliepi16_10, offset _m128islliepi16_11, offset _m128islliepi16_12, offset _m128islliepi16_13, offset _m128islliepi16_14, \
-                                        offset _m128islliepi16_15
+    _m128isllisi128jmptable label size_t
+    isize_t _m128isllisi128_0, _m128isllisi128_1, _m128isllisi128_2, _m128isllisi128_3
+    isize_t _m128isllisi128_4, _m128isllisi128_5, _m128isllisi128_6, _m128isllisi128_7
+    isize_t _m128isllisi128_8, _m128isllisi128_9, _m128isllisi128_10, _m128isllisi128_11
+    isize_t _m128isllisi128_12, _m128isllisi128_13, _m128isllisi128_14, _m128isllisi128_15
 
-        alignsize_t
-        _m128islliepi32jmptable isize_t offset _m128islliepi32_0, offset _m128islliepi32_1, offset _m128islliepi32_2, offset _m128islliepi32_3, offset _m128islliepi32_4, \
-                                        offset _m128islliepi32_5, offset _m128islliepi32_6, offset _m128islliepi32_7, offset _m128islliepi32_8, offset _m128islliepi32_9, \
-                                        offset _m128islliepi32_10, offset _m128islliepi32_11, offset _m128islliepi32_12, offset _m128islliepi32_13, offset _m128islliepi32_14, \
-                                        offset _m128islliepi32_15, offset _m128islliepi32_16, offset _m128islliepi32_17, offset _m128islliepi32_18, offset _m128islliepi32_19, \
-                                        offset _m128islliepi32_20, offset _m128islliepi32_21, offset _m128islliepi32_22, offset _m128islliepi32_23, offset _m128islliepi32_24, \
-                                        offset _m128islliepi32_25, offset _m128islliepi32_26, offset _m128islliepi32_27, offset _m128islliepi32_28, offset _m128islliepi32_29, \
-                                        offset _m128islliepi32_30, offset _m128islliepi32_31
+    _m128islliepi16jmptable label size_t
+    isize_t _m128islliepi16_0, _m128islliepi16_1, _m128islliepi16_2, _m128islliepi16_3
+    isize_t _m128islliepi16_4, _m128islliepi16_5, _m128islliepi16_6, _m128islliepi16_7
+    isize_t _m128islliepi16_8, _m128islliepi16_9, _m128islliepi16_10, _m128islliepi16_11
+    isize_t _m128islliepi16_12, _m128islliepi16_13, _m128islliepi16_14, _m128islliepi16_15
 
-        alignsize_t
-        _m128islliepi64jmptable isize_t offset _m128islliepi64_0, offset _m128islliepi64_1, offset _m128islliepi64_2, offset _m128islliepi64_3, offset _m128islliepi64_4, \
-                                        offset _m128islliepi64_5, offset _m128islliepi64_6, offset _m128islliepi64_7, offset _m128islliepi64_8, offset _m128islliepi64_9, \
-                                        offset _m128islliepi64_10, offset _m128islliepi64_11, offset _m128islliepi64_12, offset _m128islliepi64_13, offset _m128islliepi64_14, \
-                                        offset _m128islliepi64_15, offset _m128islliepi64_16, offset _m128islliepi64_17, offset _m128islliepi64_18, offset _m128islliepi64_19, \
-                                        offset _m128islliepi64_20, offset _m128islliepi64_21, offset _m128islliepi64_22, offset _m128islliepi64_23, offset _m128islliepi64_24, \
-                                        offset _m128islliepi64_25, offset _m128islliepi64_26, offset _m128islliepi64_27, offset _m128islliepi64_28, offset _m128islliepi64_29, \
-                                        offset _m128islliepi64_30, offset _m128islliepi64_31, offset _m128islliepi64_32, offset _m128islliepi64_33, offset _m128islliepi64_34, \
-                                        offset _m128islliepi64_35, offset _m128islliepi64_36, offset _m128islliepi64_37, offset _m128islliepi64_38, offset _m128islliepi64_39, \
-                                        offset _m128islliepi64_40, offset _m128islliepi64_41, offset _m128islliepi64_42, offset _m128islliepi64_43, offset _m128islliepi64_44, \
-                                        offset _m128islliepi64_45, offset _m128islliepi64_46, offset _m128islliepi64_47, offset _m128islliepi64_48, offset _m128islliepi64_49, \
-                                        offset _m128islliepi64_50, offset _m128islliepi64_51, offset _m128islliepi64_52, offset _m128islliepi64_53, offset _m128islliepi64_54, \
-                                        offset _m128islliepi64_55, offset _m128islliepi64_56, offset _m128islliepi64_57, offset _m128islliepi64_58, offset _m128islliepi64_59, \
-                                        offset _m128islliepi64_60, offset _m128islliepi64_61, offset _m128islliepi64_62, offset _m128islliepi64_63
+    _m128islliepi32jmptable label size_t
+    isize_t _m128islliepi32_0, _m128islliepi32_1, _m128islliepi32_2, _m128islliepi32_3
+    isize_t _m128islliepi32_4, _m128islliepi32_5, _m128islliepi32_6, _m128islliepi32_7
+    isize_t _m128islliepi32_8, _m128islliepi32_9, _m128islliepi32_10, _m128islliepi32_11
+    isize_t _m128islliepi32_12, _m128islliepi32_13, _m128islliepi32_14, _m128islliepi32_15
+    isize_t _m128islliepi32_16, _m128islliepi32_17, _m128islliepi32_18, _m128islliepi32_19
+    isize_t _m128islliepi32_20, _m128islliepi32_21, _m128islliepi32_22, _m128islliepi32_23
+    isize_t _m128islliepi32_24, _m128islliepi32_25, _m128islliepi32_26, _m128islliepi32_27
+    isize_t _m128islliepi32_28, _m128islliepi32_29, _m128islliepi32_30, _m128islliepi32_31
 
-        ;alignsize_t
-        ;_m128israiepi8jmptable isize_t offset _m128israiepi8_0, offset _m128israiepi8_1, offset _m128israiepi8_2, offset _m128israiepi8_3, offset _m128israiepi8_4, \
-        ;                                offset _m128israiepi8_5, offset _m128israiepi8_6, offset _m128israiepi8_7
+    _m128islliepi64jmptable label size_t
+    isize_t _m128islliepi64_0, _m128islliepi64_1, _m128islliepi64_2, _m128islliepi64_3
+    isize_t _m128islliepi64_4, _m128islliepi64_5, _m128islliepi64_6, _m128islliepi64_7
+    isize_t _m128islliepi64_8, _m128islliepi64_9, _m128islliepi64_10, _m128islliepi64_11
+    isize_t _m128islliepi64_12, _m128islliepi64_13, _m128islliepi64_14, _m128islliepi64_15
+    isize_t _m128islliepi64_16, _m128islliepi64_17, _m128islliepi64_18, _m128islliepi64_19
+    isize_t _m128islliepi64_20, _m128islliepi64_21, _m128islliepi64_22, _m128islliepi64_23
+    isize_t _m128islliepi64_24, _m128islliepi64_25, _m128islliepi64_26, _m128islliepi64_27
+    isize_t _m128islliepi64_28, _m128islliepi64_29, _m128islliepi64_30, _m128islliepi64_31
+    isize_t _m128islliepi64_32, _m128islliepi64_33, _m128islliepi64_34, _m128islliepi64_35
+    isize_t _m128islliepi64_36, _m128islliepi64_37, _m128islliepi64_38, _m128islliepi64_39
+    isize_t _m128islliepi64_40, _m128islliepi64_41, _m128islliepi64_42, _m128islliepi64_43
+    isize_t _m128islliepi64_44, _m128islliepi64_45, _m128islliepi64_46, _m128islliepi64_47
+    isize_t _m128islliepi64_48, _m128islliepi64_49, _m128islliepi64_50, _m128islliepi64_51
+    isize_t _m128islliepi64_52, _m128islliepi64_53, _m128islliepi64_54, _m128islliepi64_55
+    isize_t _m128islliepi64_56, _m128islliepi64_57, _m128islliepi64_58, _m128islliepi64_59
+    isize_t _m128islliepi64_60, _m128islliepi64_61, _m128islliepi64_62, _m128islliepi64_63
 
-        alignsize_t
-        _m128israiepi16jmptable isize_t offset _m128israiepi16_0, offset _m128israiepi16_1, offset _m128israiepi16_2, offset _m128israiepi16_3, offset _m128israiepi16_4, \
-                                        offset _m128israiepi16_5, offset _m128israiepi16_6, offset _m128israiepi16_7, offset _m128israiepi16_8, offset _m128israiepi16_9, \
-                                        offset _m128israiepi16_10, offset _m128israiepi16_11, offset _m128israiepi16_12, offset _m128israiepi16_13, offset _m128israiepi16_14, \
-                                        offset _m128israiepi16_15
+    _m128israiepi16jmptable label size_t
+    isize_t _m128israiepi16_0, _m128israiepi16_1, _m128israiepi16_2, _m128israiepi16_3
+    isize_t _m128israiepi16_4, _m128israiepi16_5, _m128israiepi16_6, _m128israiepi16_7
+    isize_t _m128israiepi16_8, _m128israiepi16_9, _m128israiepi16_10, _m128israiepi16_11
+    isize_t _m128israiepi16_12, _m128israiepi16_13, _m128israiepi16_14, _m128israiepi16_15
 
-        alignsize_t
-        _m128israiepi32jmptable isize_t offset _m128israiepi32_0, offset _m128israiepi32_1, offset _m128israiepi32_2, offset _m128israiepi32_3, offset _m128israiepi32_4, \
-                                        offset _m128israiepi32_5, offset _m128israiepi32_6, offset _m128israiepi32_7, offset _m128israiepi32_8, offset _m128israiepi32_9, \
-                                        offset _m128israiepi32_10, offset _m128israiepi32_11, offset _m128israiepi32_12, offset _m128israiepi32_13, offset _m128israiepi32_14, \
-                                        offset _m128israiepi32_15, offset _m128israiepi32_16, offset _m128israiepi32_17, offset _m128israiepi32_18, offset _m128israiepi32_19, \
-                                        offset _m128israiepi32_20, offset _m128israiepi32_21, offset _m128israiepi32_22, offset _m128israiepi32_23, offset _m128israiepi32_24, \
-                                        offset _m128israiepi32_25, offset _m128israiepi32_26, offset _m128israiepi32_27, offset _m128israiepi32_28, offset _m128israiepi32_29, \
-                                        offset _m128israiepi32_30, offset _m128israiepi32_31
+    _m128israiepi32jmptable label size_t
+    isize_t _m128israiepi32_0, _m128israiepi32_1, _m128israiepi32_2, _m128israiepi32_3
+    isize_t _m128israiepi32_4, _m128israiepi32_5, _m128israiepi32_6, _m128israiepi32_7
+    isize_t _m128israiepi32_8, _m128israiepi32_9, _m128israiepi32_10, _m128israiepi32_11
+    isize_t _m128israiepi32_12, _m128israiepi32_13, _m128israiepi32_14, _m128israiepi32_15
+    isize_t _m128israiepi32_16, _m128israiepi32_17, _m128israiepi32_18, _m128israiepi32_19
+    isize_t _m128israiepi32_20, _m128israiepi32_21, _m128israiepi32_22, _m128israiepi32_23
+    isize_t _m128israiepi32_24, _m128israiepi32_25, _m128israiepi32_26, _m128israiepi32_27
+    isize_t _m128israiepi32_28, _m128israiepi32_29, _m128israiepi32_30, _m128israiepi32_31
 
-        alignsize_t
-        _m128israiepi64jmptable isize_t offset _m128israiepi64_0, offset _m128israiepi64_1, offset _m128israiepi64_2, offset _m128israiepi64_3, offset _m128israiepi64_4, \
-                                        offset _m128israiepi64_5, offset _m128israiepi64_6, offset _m128israiepi64_7, offset _m128israiepi64_8, offset _m128israiepi64_9, \
-                                        offset _m128israiepi64_10, offset _m128israiepi64_11, offset _m128israiepi64_12, offset _m128israiepi64_13, offset _m128israiepi64_14, \
-                                        offset _m128israiepi64_15, offset _m128israiepi64_16, offset _m128israiepi64_17, offset _m128israiepi64_18, offset _m128israiepi64_19, \
-                                        offset _m128israiepi64_20, offset _m128israiepi64_21, offset _m128israiepi64_22, offset _m128israiepi64_23, offset _m128israiepi64_24, \
-                                        offset _m128israiepi64_25, offset _m128israiepi64_26, offset _m128israiepi64_27, offset _m128israiepi64_28, offset _m128israiepi64_29, \
-                                        offset _m128israiepi64_30, offset _m128israiepi64_31, offset _m128israiepi64_32, offset _m128israiepi64_33, offset _m128israiepi64_34, \
-                                        offset _m128israiepi64_35, offset _m128israiepi64_36, offset _m128israiepi64_37, offset _m128israiepi64_38, offset _m128israiepi64_39, \
-                                        offset _m128israiepi64_40, offset _m128israiepi64_41, offset _m128israiepi64_42, offset _m128israiepi64_43, offset _m128israiepi64_44, \
-                                        offset _m128israiepi64_45, offset _m128israiepi64_46, offset _m128israiepi64_47, offset _m128israiepi64_48, offset _m128israiepi64_49, \
-                                        offset _m128israiepi64_50, offset _m128israiepi64_51, offset _m128israiepi64_52, offset _m128israiepi64_53, offset _m128israiepi64_54, \
-                                        offset _m128israiepi64_55, offset _m128israiepi64_56, offset _m128israiepi64_57, offset _m128israiepi64_58, offset _m128israiepi64_59, \
-                                        offset _m128israiepi64_60, offset _m128israiepi64_61, offset _m128israiepi64_62, offset _m128israiepi64_63
+    _m128israiepi64jmptable label size_t
+    isize_t _m128israiepi64_0, _m128israiepi64_1, _m128israiepi64_2, _m128israiepi64_3
+    isize_t _m128israiepi64_4, _m128israiepi64_5, _m128israiepi64_6, _m128israiepi64_7
+    isize_t _m128israiepi64_8, _m128israiepi64_9, _m128israiepi64_10, _m128israiepi64_11
+    isize_t _m128israiepi64_12, _m128israiepi64_13, _m128israiepi64_14, _m128israiepi64_15
+    isize_t _m128israiepi64_16, _m128israiepi64_17, _m128israiepi64_18, _m128israiepi64_19
+    isize_t _m128israiepi64_20, _m128israiepi64_21, _m128israiepi64_22, _m128israiepi64_23
+    isize_t _m128israiepi64_24, _m128israiepi64_25, _m128israiepi64_26, _m128israiepi64_27
+    isize_t _m128israiepi64_28, _m128israiepi64_29, _m128israiepi64_30, _m128israiepi64_31
+    isize_t _m128israiepi64_32, _m128israiepi64_33, _m128israiepi64_34, _m128israiepi64_35
+    isize_t _m128israiepi64_36, _m128israiepi64_37, _m128israiepi64_38, _m128israiepi64_39
+    isize_t _m128israiepi64_40, _m128israiepi64_41, _m128israiepi64_42, _m128israiepi64_43
+    isize_t _m128israiepi64_44, _m128israiepi64_45, _m128israiepi64_46, _m128israiepi64_47
+    isize_t _m128israiepi64_48, _m128israiepi64_49, _m128israiepi64_50, _m128israiepi64_51
+    isize_t _m128israiepi64_52, _m128israiepi64_53, _m128israiepi64_54, _m128israiepi64_55
+    isize_t _m128israiepi64_56, _m128israiepi64_57, _m128israiepi64_58, _m128israiepi64_59
+    isize_t _m128israiepi64_60, _m128israiepi64_61, _m128israiepi64_62, _m128israiepi64_63
 
-        alignsize_t
-        _m128isrlisi128jmptable isize_t offset _m128isrlisi128_0, offset _m128isrlisi128_1, offset _m128isrlisi128_2, offset _m128isrlisi128_3, offset _m128isrlisi128_4, \
-                                        offset _m128isrlisi128_5, offset _m128isrlisi128_6, offset _m128isrlisi128_7, offset _m128isrlisi128_8, offset _m128isrlisi128_9, \
-                                        offset _m128isrlisi128_10, offset _m128isrlisi128_11, offset _m128isrlisi128_12, offset _m128isrlisi128_13, offset _m128isrlisi128_14, \
-                                        offset _m128isrlisi128_15
+    _m128isrlisi128jmptable label size_t
+    isize_t _m128isrlisi128_0, _m128isrlisi128_1, _m128isrlisi128_2, _m128isrlisi128_3
+    isize_t _m128isrlisi128_4, _m128isrlisi128_5, _m128isrlisi128_6, _m128isrlisi128_7
+    isize_t _m128isrlisi128_8, _m128isrlisi128_9, _m128isrlisi128_10, _m128isrlisi128_11
+    isize_t _m128isrlisi128_12, _m128isrlisi128_13, _m128isrlisi128_14, _m128isrlisi128_15
 
-        ;alignsize_t
-        ;_m128isrliepi8jmptable isize_t offset _m128isrliepi8_0, offset _m128isrliepi8_1, offset _m128isrliepi8_2, offset _m128isrliepi8_3, offset _m128isrliepi8_4, \
-        ;                                offset _m128isrliepi8_5, offset _m128isrliepi8_6, offset _m128isrliepi8_7
+    _m128isrliepi16jmptable label size_t
+    isize_t _m128isrliepi16_0, _m128isrliepi16_1, _m128isrliepi16_2, _m128isrliepi16_3
+    isize_t _m128isrliepi16_4, _m128isrliepi16_5, _m128isrliepi16_6, _m128isrliepi16_7
+    isize_t _m128isrliepi16_8, _m128isrliepi16_9, _m128isrliepi16_10, _m128isrliepi16_11
+    isize_t _m128isrliepi16_12, _m128isrliepi16_13, _m128isrliepi16_14, _m128isrliepi16_15
 
-        alignsize_t
-        _m128isrliepi16jmptable isize_t offset _m128isrliepi16_0, offset _m128isrliepi16_1, offset _m128isrliepi16_2, offset _m128isrliepi16_3, offset _m128isrliepi16_4, \
-                                        offset _m128isrliepi16_5, offset _m128isrliepi16_6, offset _m128isrliepi16_7, offset _m128isrliepi16_8, offset _m128isrliepi16_9, \
-                                        offset _m128isrliepi16_10, offset _m128isrliepi16_11, offset _m128isrliepi16_12, offset _m128isrliepi16_13, offset _m128isrliepi16_14, \
-                                        offset _m128isrliepi16_15
+    _m128isrliepi32jmptable label size_t
+    isize_t _m128isrliepi32_0, _m128isrliepi32_1, _m128isrliepi32_2, _m128isrliepi32_3
+    isize_t _m128isrliepi32_4, _m128isrliepi32_5, _m128isrliepi32_6, _m128isrliepi32_7
+    isize_t _m128isrliepi32_8, _m128isrliepi32_9, _m128isrliepi32_10, _m128isrliepi32_11
+    isize_t _m128isrliepi32_12, _m128isrliepi32_13, _m128isrliepi32_14, _m128isrliepi32_15
+    isize_t _m128isrliepi32_16, _m128isrliepi32_17, _m128isrliepi32_18, _m128isrliepi32_19
+    isize_t _m128isrliepi32_20, _m128isrliepi32_21, _m128isrliepi32_22, _m128isrliepi32_23
+    isize_t _m128isrliepi32_24, _m128isrliepi32_25, _m128isrliepi32_26, _m128isrliepi32_27
+    isize_t _m128isrliepi32_28, _m128isrliepi32_29, _m128isrliepi32_30, _m128isrliepi32_31
 
-        alignsize_t
-        _m128isrliepi32jmptable isize_t offset _m128isrliepi32_0, offset _m128isrliepi32_1, offset _m128isrliepi32_2, offset _m128isrliepi32_3, offset _m128isrliepi32_4, \
-                                        offset _m128isrliepi32_5, offset _m128isrliepi32_6, offset _m128isrliepi32_7, offset _m128isrliepi32_8, offset _m128isrliepi32_9, \
-                                        offset _m128isrliepi32_10, offset _m128isrliepi32_11, offset _m128isrliepi32_12, offset _m128isrliepi32_13, offset _m128isrliepi32_14, \
-                                        offset _m128isrliepi32_15, offset _m128isrliepi32_16, offset _m128isrliepi32_17, offset _m128isrliepi32_18, offset _m128isrliepi32_19, \
-                                        offset _m128isrliepi32_20, offset _m128isrliepi32_21, offset _m128isrliepi32_22, offset _m128isrliepi32_23, offset _m128isrliepi32_24, \
-                                        offset _m128isrliepi32_25, offset _m128isrliepi32_26, offset _m128isrliepi32_27, offset _m128isrliepi32_28, offset _m128isrliepi32_29, \
-                                        offset _m128isrliepi32_30, offset _m128isrliepi32_31
+    _m128isrliepi64jmptable label size_t
+    isize_t _m128isrliepi64_0, _m128isrliepi64_1, _m128isrliepi64_2, _m128isrliepi64_3
+    isize_t _m128isrliepi64_4, _m128isrliepi64_5, _m128isrliepi64_6, _m128isrliepi64_7
+    isize_t _m128isrliepi64_8, _m128isrliepi64_9, _m128isrliepi64_10, _m128isrliepi64_11
+    isize_t _m128isrliepi64_12, _m128isrliepi64_13, _m128isrliepi64_14, _m128isrliepi64_15
+    isize_t _m128isrliepi64_16, _m128isrliepi64_17, _m128isrliepi64_18, _m128isrliepi64_19
+    isize_t _m128isrliepi64_20, _m128isrliepi64_21, _m128isrliepi64_22, _m128isrliepi64_23
+    isize_t _m128isrliepi64_24, _m128isrliepi64_25, _m128isrliepi64_26, _m128isrliepi64_27
+    isize_t _m128isrliepi64_28, _m128isrliepi64_29, _m128isrliepi64_30, _m128isrliepi64_31
+    isize_t _m128isrliepi64_32, _m128isrliepi64_33, _m128isrliepi64_34, _m128isrliepi64_35
+    isize_t _m128isrliepi64_36, _m128isrliepi64_37, _m128isrliepi64_38, _m128isrliepi64_39
+    isize_t _m128isrliepi64_40, _m128isrliepi64_41, _m128isrliepi64_42, _m128isrliepi64_43
+    isize_t _m128isrliepi64_44, _m128isrliepi64_45, _m128isrliepi64_46, _m128isrliepi64_47
+    isize_t _m128isrliepi64_48, _m128isrliepi64_49, _m128isrliepi64_50, _m128isrliepi64_51
+    isize_t _m128isrliepi64_52, _m128isrliepi64_53, _m128isrliepi64_54, _m128isrliepi64_55
+    isize_t _m128isrliepi64_56, _m128isrliepi64_57, _m128isrliepi64_58, _m128isrliepi64_59
+    isize_t _m128isrliepi64_60, _m128isrliepi64_61, _m128isrliepi64_62, _m128isrliepi64_63
 
-        alignsize_t
-        _m128isrliepi64jmptable isize_t offset _m128isrliepi64_0, offset _m128isrliepi64_1, offset _m128isrliepi64_2, offset _m128isrliepi64_3, offset _m128isrliepi64_4, \
-                                        offset _m128isrliepi64_5, offset _m128isrliepi64_6, offset _m128isrliepi64_7, offset _m128isrliepi64_8, offset _m128isrliepi64_9, \
-                                        offset _m128isrliepi64_10, offset _m128isrliepi64_11, offset _m128isrliepi64_12, offset _m128isrliepi64_13, offset _m128isrliepi64_14, \
-                                        offset _m128isrliepi64_15, offset _m128isrliepi64_16, offset _m128isrliepi64_17, offset _m128isrliepi64_18, offset _m128isrliepi64_19, \
-                                        offset _m128isrliepi64_20, offset _m128isrliepi64_21, offset _m128isrliepi64_22, offset _m128isrliepi64_23, offset _m128isrliepi64_24, \
-                                        offset _m128isrliepi64_25, offset _m128isrliepi64_26, offset _m128isrliepi64_27, offset _m128isrliepi64_28, offset _m128isrliepi64_29, \
-                                        offset _m128isrliepi64_30, offset _m128isrliepi64_31, offset _m128isrliepi64_32, offset _m128isrliepi64_33, offset _m128isrliepi64_34, \
-                                        offset _m128isrliepi64_35, offset _m128isrliepi64_36, offset _m128isrliepi64_37, offset _m128isrliepi64_38, offset _m128isrliepi64_39, \
-                                        offset _m128isrliepi64_40, offset _m128isrliepi64_41, offset _m128isrliepi64_42, offset _m128isrliepi64_43, offset _m128isrliepi64_44, \
-                                        offset _m128isrliepi64_45, offset _m128isrliepi64_46, offset _m128isrliepi64_47, offset _m128isrliepi64_48, offset _m128isrliepi64_49, \
-                                        offset _m128isrliepi64_50, offset _m128isrliepi64_51, offset _m128isrliepi64_52, offset _m128isrliepi64_53, offset _m128isrliepi64_54, \
-                                        offset _m128isrliepi64_55, offset _m128isrliepi64_56, offset _m128isrliepi64_57, offset _m128isrliepi64_58, offset _m128isrliepi64_59, \
-                                        offset _m128isrliepi64_60, offset _m128isrliepi64_61, offset _m128isrliepi64_62, offset _m128isrliepi64_63
+externdef __uX_CPUFeatures_SSE41:dword
+externdef __uX_CPUFeatures_AVX512VL:dword
 
-    externdef __uX_CPUFeatures_SSE41:dword
-    externdef __uX_CPUFeatures_AVX512VL:dword
+externdef __m128i_flt_byte_even:__m128i
+externdef __m128i_flt_select0101:__m128i
+externdef __m128i_i32_select0101:__m128i
 
-    externdef __m128i_flt_byte_even:__m128i
-    externdef __m128i_flt_select0101:__m128i
+.code
 
-    .code
-    
-    callconvopt
-    alignxmmfieldproc
+callconvopt
+alignxmmfieldproc
 
 procstart _uX_mm_slli_si128_0, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         pslldq          xmm0,           0
@@ -243,23 +245,15 @@ procend
 
 procstart _uX_mm_slli_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_Imm:dword
         push         rbase()
-    ifdef __unix32__
-        rpdisp textequ <ecx>
-        bpdisp textequ <cl>
-        mov     rpdisp,     Inint_Imm
-    else
-        rpdisp textequ <rp1()>
-        bpdisp textequ <bp1()>
-    endif
-    .if(rpdisp < 0)
+    .if(rp1() < 0)
         jmp         _m128isllisi128_end
     .endif
-    .if(rpdisp > 15)
+    .if(rp1() > 15)
         pxor          xmm0,           xmm0
         jmp         _m128isllisi128_end
     .endif
     ifdef __x32__
-        movzx           rbase(),        bpdisp
+        movzx           rbase(),        bp1()
         jmp     dword ptr [_m128isllisi128jmptable+rbase()*size_t_size]
     endif
     ifdef __x64__
@@ -323,9 +317,8 @@ procstart _uX_mm_slli_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint
 procend
 
 procstart _uX_mm_slli_epi8_0, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        mov         edx,        0
-        mov         ecx,        edx
-        movd        xmm1,       edx
+        mov         ecx,        0
+        movd        xmm1,       ecx
         mov         eax,        0FFh
         shr         eax,        cl
         movsx       eax,        al
@@ -333,16 +326,14 @@ procstart _uX_mm_slli_epi8_0, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         punpcklbw   xmm2,       xmm2
         punpcklwd   xmm2,       xmm2
         pshufd      xmm2,       xmm2,       0
-        pand        xmm2,       xmm0
-        psllw       xmm2,       xmm1
-        movdqa      xmm0,       xmm2
+        pand        xmm0,       xmm2
+        psllw       xmm0,       xmm1
         ret
 procend
 
 procstart _uX_mm_slli_epi8_1, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        mov         edx,        1
-        mov         ecx,        edx
-        movd        xmm1,       edx
+        mov         ecx,        1
+        movd        xmm1,       ecx
         mov         eax,        0FFh
         shr         eax,        cl
         movsx       eax,        al
@@ -350,16 +341,14 @@ procstart _uX_mm_slli_epi8_1, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         punpcklbw   xmm2,       xmm2
         punpcklwd   xmm2,       xmm2
         pshufd      xmm2,       xmm2,       0
-        pand        xmm2,       xmm0
-        psllw       xmm2,       xmm1
-        movdqa      xmm0,       xmm2
+        pand        xmm0,       xmm2
+        psllw       xmm0,       xmm1
         ret
 procend
 
 procstart _uX_mm_slli_epi8_2, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        mov         edx,        2
-        mov         ecx,        edx
-        movd        xmm1,       edx
+        mov         ecx,        2
+        movd        xmm1,       ecx
         mov         eax,        0FFh
         shr         eax,        cl
         movsx       eax,        al
@@ -367,16 +356,14 @@ procstart _uX_mm_slli_epi8_2, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         punpcklbw   xmm2,       xmm2
         punpcklwd   xmm2,       xmm2
         pshufd      xmm2,       xmm2,       0
-        pand        xmm2,       xmm0
-        psllw       xmm2,       xmm1
-        movdqa      xmm0,       xmm2
+        pand        xmm0,       xmm2
+        psllw       xmm0,       xmm1
         ret
 procend
 
 procstart _uX_mm_slli_epi8_3, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        mov         edx,        3
-        mov         ecx,        edx
-        movd        xmm1,       edx
+        mov         ecx,        3
+        movd        xmm1,       ecx
         mov         eax,        0FFh
         shr         eax,        cl
         movsx       eax,        al
@@ -384,16 +371,14 @@ procstart _uX_mm_slli_epi8_3, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         punpcklbw   xmm2,       xmm2
         punpcklwd   xmm2,       xmm2
         pshufd      xmm2,       xmm2,       0
-        pand        xmm2,       xmm0
-        psllw       xmm2,       xmm1
-        movdqa      xmm0,       xmm2
+        pand        xmm0,       xmm2
+        psllw       xmm0,       xmm1
         ret
 procend
 
 procstart _uX_mm_slli_epi8_4, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        mov         edx,        4
-        mov         ecx,        edx
-        movd        xmm1,       edx
+        mov         ecx,        4
+        movd        xmm1,       ecx
         mov         eax,        0FFh
         shr         eax,        cl
         movsx       eax,        al
@@ -401,16 +386,14 @@ procstart _uX_mm_slli_epi8_4, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         punpcklbw   xmm2,       xmm2
         punpcklwd   xmm2,       xmm2
         pshufd      xmm2,       xmm2,       0
-        pand        xmm2,       xmm0
-        psllw       xmm2,       xmm1
-        movdqa      xmm0,       xmm2
+        pand        xmm0,       xmm2
+        psllw       xmm0,       xmm1
         ret
 procend
 
 procstart _uX_mm_slli_epi8_5, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        mov         edx,        5
-        mov         ecx,        edx
-        movd        xmm1,       edx
+        mov         ecx,        5
+        movd        xmm1,       ecx
         mov         eax,        0FFh
         shr         eax,        cl
         movsx       eax,        al
@@ -418,16 +401,14 @@ procstart _uX_mm_slli_epi8_5, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         punpcklbw   xmm2,       xmm2
         punpcklwd   xmm2,       xmm2
         pshufd      xmm2,       xmm2,       0
-        pand        xmm2,       xmm0
-        psllw       xmm2,       xmm1
-        movdqa      xmm0,       xmm2
+        pand        xmm0,       xmm2
+        psllw       xmm0,       xmm1
         ret
 procend
 
 procstart _uX_mm_slli_epi8_6, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        mov         edx,        6
-        mov         ecx,        edx
-        movd        xmm1,       edx
+        mov         ecx,        6
+        movd        xmm1,       ecx
         mov         eax,        0FFh
         shr         eax,        cl
         movsx       eax,        al
@@ -435,16 +416,14 @@ procstart _uX_mm_slli_epi8_6, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         punpcklbw   xmm2,       xmm2
         punpcklwd   xmm2,       xmm2
         pshufd      xmm2,       xmm2,       0
-        pand        xmm2,       xmm0
-        psllw       xmm2,       xmm1
-        movdqa      xmm0,       xmm2
+        pand        xmm0,       xmm2
+        psllw       xmm0,       xmm1
         ret
 procend
 
 procstart _uX_mm_slli_epi8_7, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        mov         edx,        7
-        mov         ecx,        edx
-        movd        xmm1,       edx
+        mov         ecx,        7
+        movd        xmm1,       ecx
         mov         eax,        0FFh
         shr         eax,        cl
         movsx       eax,        al
@@ -452,28 +431,21 @@ procstart _uX_mm_slli_epi8_7, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         punpcklbw   xmm2,       xmm2
         punpcklwd   xmm2,       xmm2
         pshufd      xmm2,       xmm2,       0
-        pand        xmm2,       xmm0
-        psllw       xmm2,       xmm1
-        movdqa      xmm0,       xmm2
+        pand        xmm0,       xmm2
+        psllw       xmm0,       xmm1
         ret
 procend
 
 procstart _uX_mm_slli_epi8, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_Imm:dword
-    ifdef __unix32__
-        rpdisp textequ <edx>
-        mov     rpdisp,     Inint_Imm
-    else
-        rpdisp textequ <dp1()>
-    endif
-    .if(rpdisp < 0)
+        .if(dp1() < 0)
         jmp         _m128islliepi8_end
-    .endif
-    .if(rpdisp > 7)
+        .endif
+        .if(dp1() > 7)
         pxor          xmm0,           xmm0
         jmp         _m128islliepi8_end
-    .endif
-        mov         ecx,        rpdisp
-        movd        xmm1,       rpdisp
+        .endif
+        mov         ecx,        dp1()
+        movd        xmm1,       dp1()
         mov         eax,        0FFh
         shr         eax,        cl
         movsx       eax,        al
@@ -481,10 +453,8 @@ procstart _uX_mm_slli_epi8, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_
         punpcklbw   xmm2,       xmm2
         punpcklwd   xmm2,       xmm2
         pshufd      xmm2,       xmm2,       0
-        pand        xmm2,       xmm0
-        psllw       xmm2,       xmm1
-        movdqa      xmm0,       xmm2
-
+        pand        xmm0,       xmm2
+        psllw       xmm0,       xmm1
         _m128islliepi8_end:
         ret
 procend
@@ -571,23 +541,15 @@ procend
 
 procstart _uX_mm_slli_epi16, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_Imm:dword
         push         rbase()
-    ifdef __unix32__
-        rpdisp textequ <ecx>
-        bpdisp textequ <cl>
-        mov     rpdisp,     Inint_Imm
-    else
-        rpdisp textequ <rp1()>
-        bpdisp textequ <bp1()>
-    endif
-    .if(rpdisp < 0)
+    .if(rp1() < 0)
         jmp         _m128islliepi16_end
     .endif
-    .if(rpdisp > 15)
+    .if(rp1() > 15)
         pxor          xmm0,           xmm0
         jmp         _m128islliepi16_end
     .endif
     ifdef __x32__
-        movzx           rbase(),        bpdisp
+        movzx           rbase(),        bp1()
         jmp     dword ptr [_m128islliepi16jmptable+rbase()*size_t_size]
     endif
     ifdef __x64__
@@ -812,23 +774,15 @@ procend
 
 procstart _uX_mm_slli_epi32, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_Imm:dword
         push         rbase()
-    ifdef __unix32__
-        rpdisp textequ <ecx>
-        bpdisp textequ <cl>
-        mov     rpdisp,     Inint_Imm
-    else
-        rpdisp textequ <rp1()>
-        bpdisp textequ <bp1()>
-    endif
-    .if(rpdisp < 0)
+    .if(rp1() < 0)
         jmp         _m128islliepi32_end
     .endif
-    .if(rpdisp > 31)
+    .if(rp1() > 31)
         pxor          xmm0,           xmm0
         jmp         _m128islliepi32_end
     .endif
     ifdef __x32__
-        movzx           rbase(),        bpdisp
+        movzx           rbase(),        bp1()
         jmp     dword ptr [_m128islliepi32jmptable+rbase()*size_t_size]
     endif
     ifdef __x64__
@@ -1261,23 +1215,15 @@ procend
 
 procstart _uX_mm_slli_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_Imm:dword
         push         rbase()
-    ifdef __unix32__
-        rpdisp textequ <ecx>
-        bpdisp textequ <cl>
-        mov     rpdisp,     Inint_Imm
-    else
-        rpdisp textequ <rp1()>
-        bpdisp textequ <bp1()>
-    endif
-    .if(rpdisp < 0)
+    .if(rp1() < 0)
         jmp         _m128islliepi64_end
     .endif
-    .if(rpdisp > 63)
+    .if(rp1() > 63)
         pxor          xmm0,           xmm0
         jmp         _m128islliepi64_end
     .endif
     ifdef __x32__
-        movzx           rbase(),        bpdisp
+        movzx           rbase(),        bp1()
         jmp     dword ptr [_m128islliepi64jmptable+rbase()*size_t_size]
     endif
     ifdef __x64__
@@ -1485,226 +1431,224 @@ procstart _uX_mm_slli_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint
 procend
 
 procstart _uX_mm_srai_epi8_0, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-    ifdef __unix32__
-        rpdisp textequ <edx>
-        epdisp textequ <edx>
-    else
-        rpdisp textequ <rdx>
-        epdisp textequ <edx>
-    endif
-        mov         edx,        0
-        movdqa      xmm2,       __m128i_flt_byte_even
-        lea         eax,        [rpdisp+8]
+        mov        rp0(),       0
+        mov          eax,       rp0()
+        add          eax,       8
+        movdqa      xmm1,       xmm0
+        movd        xmm3,       eax
+        psllw       xmm0,       8
+        psraw       xmm0,       xmm3
+        movd        xmm3,       dp0()
+        psraw       xmm1,       xmm3
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_flt_byte_even
+        .if (__uX_CPUFeatures_SSE41 == true)
+        pblendvb    xmm2,       xmm1,       xmm0
+        movdqa      xmm0,       xmm2
+        .else
         movdqa      xmm3,       xmm0
-        movd        xmm1,       eax
-        psllw       xmm3,       8
-        psraw       xmm3,       xmm1
-        movd        xmm1,       epdisp
-        psraw       xmm0,       xmm1
-        pand        xmm3,       xmm2
-        pandn       xmm2,       xmm0
-        por         xmm3,       xmm2
-        movdqa      xmm0,       xmm3
+        pandn       xmm3,       xmm1
+        pand        xmm0,       xmm2
+        por         xmm0,       xmm3
+        .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi8_1, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-    ifdef __unix32__
-        rpdisp textequ <edx>
-        epdisp textequ <edx>
-    else
-        rpdisp textequ <rdx>
-        epdisp textequ <edx>
-    endif
-        mov         edx,        1
-        movdqa      xmm2,       __m128i_flt_byte_even
-        lea         eax,        [rpdisp+8]
+        mov        rp0(),       1
+        mov          eax,       rp0()
+        add          eax,       8
+        movdqa      xmm1,       xmm0
+        movd        xmm3,       eax
+        psllw       xmm0,       8
+        psraw       xmm0,       xmm3
+        movd        xmm3,       dp0()
+        psraw       xmm1,       xmm3
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_flt_byte_even
+        .if (__uX_CPUFeatures_SSE41 == true)
+        pblendvb    xmm2,       xmm1,       xmm0
+        movdqa      xmm0,       xmm2
+        .else
         movdqa      xmm3,       xmm0
-        movd        xmm1,       eax
-        psllw       xmm3,       8
-        psraw       xmm3,       xmm1
-        movd        xmm1,       epdisp
-        psraw       xmm0,       xmm1
-        pand        xmm3,       xmm2
-        pandn       xmm2,       xmm0
-        por         xmm3,       xmm2
-        movdqa      xmm0,       xmm3
+        pandn       xmm3,       xmm1
+        pand        xmm0,       xmm2
+        por         xmm0,       xmm3
+        .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi8_2, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-    ifdef __unix32__
-        rpdisp textequ <edx>
-        epdisp textequ <edx>
-    else
-        rpdisp textequ <rdx>
-        epdisp textequ <edx>
-    endif
-        mov         edx,        2
-        movdqa      xmm2,       __m128i_flt_byte_even
-        lea         eax,        [rpdisp+8]
+        mov        rp0(),       2
+        mov          eax,       rp0()
+        add          eax,       8
+        movdqa      xmm1,       xmm0
+        movd        xmm3,       eax
+        psllw       xmm0,       8
+        psraw       xmm0,       xmm3
+        movd        xmm3,       dp0()
+        psraw       xmm1,       xmm3
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_flt_byte_even
+        .if (__uX_CPUFeatures_SSE41 == true)
+        pblendvb    xmm2,       xmm1,       xmm0
+        movdqa      xmm0,       xmm2
+        .else
         movdqa      xmm3,       xmm0
-        movd        xmm1,       eax
-        psllw       xmm3,       8
-        psraw       xmm3,       xmm1
-        movd        xmm1,       epdisp
-        psraw       xmm0,       xmm1
-        pand        xmm3,       xmm2
-        pandn       xmm2,       xmm0
-        por         xmm3,       xmm2
-        movdqa      xmm0,       xmm3
+        pandn       xmm3,       xmm1
+        pand        xmm0,       xmm2
+        por         xmm0,       xmm3
+        .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi8_3, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-    ifdef __unix32__
-        rpdisp textequ <edx>
-        epdisp textequ <edx>
-    else
-        rpdisp textequ <rdx>
-        epdisp textequ <edx>
-    endif
-        mov         edx,        3
-        movdqa      xmm2,       __m128i_flt_byte_even
-        lea         eax,        [rpdisp+8]
+        mov        rp0(),       3
+        mov          eax,       rp0()
+        add          eax,       8
+        movdqa      xmm1,       xmm0
+        movd        xmm3,       eax
+        psllw       xmm0,       8
+        psraw       xmm0,       xmm3
+        movd        xmm3,       dp0()
+        psraw       xmm1,       xmm3
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_flt_byte_even
+        .if (__uX_CPUFeatures_SSE41 == true)
+        pblendvb    xmm2,       xmm1,       xmm0
+        movdqa      xmm0,       xmm2
+        .else
         movdqa      xmm3,       xmm0
-        movd        xmm1,       eax
-        psllw       xmm3,       8
-        psraw       xmm3,       xmm1
-        movd        xmm1,       epdisp
-        psraw       xmm0,       xmm1
-        pand        xmm3,       xmm2
-        pandn       xmm2,       xmm0
-        por         xmm3,       xmm2
-        movdqa      xmm0,       xmm3
+        pandn       xmm3,       xmm1
+        pand        xmm0,       xmm2
+        por         xmm0,       xmm3
+        .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi8_4, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-    ifdef __unix32__
-        rpdisp textequ <edx>
-        epdisp textequ <edx>
-    else
-        rpdisp textequ <rdx>
-        epdisp textequ <edx>
-    endif
-        mov         edx,        4
-        movdqa      xmm2,       __m128i_flt_byte_even
-        lea         eax,        [rpdisp+8]
+        mov        rp0(),       4
+        mov          eax,       rp0()
+        add          eax,       8
+        movdqa      xmm1,       xmm0
+        movd        xmm3,       eax
+        psllw       xmm0,       8
+        psraw       xmm0,       xmm3
+        movd        xmm3,       dp0()
+        psraw       xmm1,       xmm3
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_flt_byte_even
+        .if (__uX_CPUFeatures_SSE41 == true)
+        pblendvb    xmm2,       xmm1,       xmm0
+        movdqa      xmm0,       xmm2
+        .else
         movdqa      xmm3,       xmm0
-        movd        xmm1,       eax
-        psllw       xmm3,       8
-        psraw       xmm3,       xmm1
-        movd        xmm1,       epdisp
-        psraw       xmm0,       xmm1
-        pand        xmm3,       xmm2
-        pandn       xmm2,       xmm0
-        por         xmm3,       xmm2
-        movdqa      xmm0,       xmm3
+        pandn       xmm3,       xmm1
+        pand        xmm0,       xmm2
+        por         xmm0,       xmm3
+        .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi8_5, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-    ifdef __unix32__
-        rpdisp textequ <edx>
-        epdisp textequ <edx>
-    else
-        rpdisp textequ <rdx>
-        epdisp textequ <edx>
-    endif
-        mov         edx,        5
-        movdqa      xmm2,       __m128i_flt_byte_even
-        lea         eax,        [rpdisp+8]
+        mov        rp0(),       5
+        mov          eax,       rp0()
+        add          eax,       8
+        movdqa      xmm1,       xmm0
+        movd        xmm3,       eax
+        psllw       xmm0,       8
+        psraw       xmm0,       xmm3
+        movd        xmm3,       dp0()
+        psraw       xmm1,       xmm3
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_flt_byte_even
+        .if (__uX_CPUFeatures_SSE41 == true)
+        pblendvb    xmm2,       xmm1,       xmm0
+        movdqa      xmm0,       xmm2
+        .else
         movdqa      xmm3,       xmm0
-        movd        xmm1,       eax
-        psllw       xmm3,       8
-        psraw       xmm3,       xmm1
-        movd        xmm1,       epdisp
-        psraw       xmm0,       xmm1
-        pand        xmm3,       xmm2
-        pandn       xmm2,       xmm0
-        por         xmm3,       xmm2
-        movdqa      xmm0,       xmm3
+        pandn       xmm3,       xmm1
+        pand        xmm0,       xmm2
+        por         xmm0,       xmm3
+        .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi8_6, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-    ifdef __unix32__
-        rpdisp textequ <edx>
-        epdisp textequ <edx>
-    else
-        rpdisp textequ <rdx>
-        epdisp textequ <edx>
-    endif
-        mov         edx,        6
-        movdqa      xmm2,       __m128i_flt_byte_even
-        lea         eax,        [rpdisp+8]
+        mov        rp0(),       6
+        mov          eax,       rp0()
+        add          eax,       8
+        movdqa      xmm1,       xmm0
+        movd        xmm3,       eax
+        psllw       xmm0,       8
+        psraw       xmm0,       xmm3
+        movd        xmm3,       dp0()
+        psraw       xmm1,       xmm3
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_flt_byte_even
+        .if (__uX_CPUFeatures_SSE41 == true)
+        pblendvb    xmm2,       xmm1,       xmm0
+        movdqa      xmm0,       xmm2
+        .else
         movdqa      xmm3,       xmm0
-        movd        xmm1,       eax
-        psllw       xmm3,       8
-        psraw       xmm3,       xmm1
-        movd        xmm1,       epdisp
-        psraw       xmm0,       xmm1
-        pand        xmm3,       xmm2
-        pandn       xmm2,       xmm0
-        por         xmm3,       xmm2
-        movdqa      xmm0,       xmm3
+        pandn       xmm3,       xmm1
+        pand        xmm0,       xmm2
+        por         xmm0,       xmm3
+        .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi8_7, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-    ifdef __unix32__
-        rpdisp textequ <edx>
-        epdisp textequ <edx>
-    else
-        rpdisp textequ <rdx>
-        epdisp textequ <edx>
-    endif
-        mov         edx,        7
-        movdqa      xmm2,       __m128i_flt_byte_even
-        lea         eax,        [rpdisp+8]
+        mov        rp0(),       7
+        mov          eax,       rp0()
+        add          eax,       8
+        movdqa      xmm1,       xmm0
+        movd        xmm3,       eax
+        psllw       xmm0,       8
+        psraw       xmm0,       xmm3
+        movd        xmm3,       dp0()
+        psraw       xmm1,       xmm3
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_flt_byte_even
+        .if (__uX_CPUFeatures_SSE41 == true)
+        pblendvb    xmm2,       xmm1,       xmm0
+        movdqa      xmm0,       xmm2
+        .else
         movdqa      xmm3,       xmm0
-        movd        xmm1,       eax
-        psllw       xmm3,       8
-        psraw       xmm3,       xmm1
-        movd        xmm1,       epdisp
-        psraw       xmm0,       xmm1
-        pand        xmm3,       xmm2
-        pandn       xmm2,       xmm0
-        por         xmm3,       xmm2
-        movdqa      xmm0,       xmm3
+        pandn       xmm3,       xmm1
+        pand        xmm0,       xmm2
+        por         xmm0,       xmm3
+        .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi8, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_Imm:dword
-    ifdef __unix32__
-        rpdisp textequ <edx>
-        epdisp textequ <edx>
-        mov     rpdisp,     Inint_Imm
-    else
-        rpdisp textequ <rp1()>
-        epdisp textequ <edx>
-    endif
-    .if(rpdisp < 0)
+        .if(rp1() < 0)
         jmp         _m128israiepi8_end
-    .endif
-    .if(rpdisp > 7)
+        .endif
+        .if(rp1() > 7)
         pxor          xmm0,           xmm0
         jmp         _m128israiepi8_end
-    .endif
-        movdqa      xmm2,       __m128i_flt_byte_even
-        lea         eax,        [rpdisp+8]
+        .endif
+        mov          eax,       rp1()
+        add          eax,       8
+        movdqa      xmm1,       xmm0
+        movd        xmm3,       eax
+        psllw       xmm0,       8
+        psraw       xmm0,       xmm3
+        movd        xmm3,       dp1()
+        psraw       xmm1,       xmm3
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_flt_byte_even
+        .if (__uX_CPUFeatures_SSE41 == true)
+        pblendvb    xmm2,       xmm1,       xmm0
+        movdqa      xmm0,       xmm2
+        .else
         movdqa      xmm3,       xmm0
-        movd        xmm1,       eax
-        psllw       xmm3,       8
-        psraw       xmm3,       xmm1
-        movd        xmm1,       epdisp
-        psraw       xmm0,       xmm1
-        pand        xmm3,       xmm2
-        pandn       xmm2,       xmm0
-        por         xmm3,       xmm2
-        movdqa      xmm0,       xmm3
-
+        pandn       xmm3,       xmm1
+        pand        xmm0,       xmm2
+        por         xmm0,       xmm3
+        .endif
         _m128israiepi8_end:
         ret
 procend
@@ -1791,23 +1735,15 @@ procend
 
 procstart _uX_mm_srai_epi16, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_Imm:dword
         push         rbase()
-    ifdef __unix32__
-        rpdisp textequ <ecx>
-        bpdisp textequ <cl>
-        mov     rpdisp,     Inint_Imm
-    else
-        rpdisp textequ <rp1()>
-        bpdisp textequ <bp1()>
-    endif
-    .if(rpdisp < 0)
+    .if(rp1() < 0)
         jmp         _m128israiepi16_end
     .endif
-    .if(rpdisp > 15)
+    .if(rp1() > 15)
         psraw           xmm0,           15
         jmp         _m128israiepi16_end
     .endif
     ifdef __x32__
-        movzx           rbase(),        bpdisp
+        movzx           rbase(),        bp1()
         jmp     dword ptr [_m128israiepi16jmptable+rbase()*size_t_size]
     endif
     ifdef __x64__
@@ -2032,23 +1968,15 @@ procend
 
 procstart _uX_mm_srai_epi32, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_Imm:dword
         push         rbase()
-    ifdef __unix32__
-        rpdisp textequ <ecx>
-        bpdisp textequ <cl>
-        mov     rpdisp,     Inint_Imm
-    else
-        rpdisp textequ <rp1()>
-        bpdisp textequ <bp1()>
-    endif
-    .if(rpdisp < 0)
+    .if(rp1() < 0)
         jmp         _m128israiepi32_end
     .endif
-    .if(rpdisp > 31)
+    .if(rp1() > 31)
         psrad           xmm0,           31
         jmp         _m128israiepi32_end
     .endif
     ifdef __x32__
-        movzx           rbase(),        bpdisp
+        movzx           rbase(),        bp1()
         jmp     dword ptr [_m128israiepi32jmptable+rbase()*size_t_size]
     endif
     ifdef __x64__
@@ -2160,547 +2088,1315 @@ procstart _uX_mm_srai_epi32, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint
 procend
 
 procstart _uX_mm_srai_epi64_0, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           0
+        mov        rp1(),       0
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_1, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           1
+        mov        rp1(),       1
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_2, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           2
+        mov        rp1(),       2
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_3, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           3
+        mov        rp1(),       3
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_4, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           4
+        mov        rp1(),       4
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_5, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           5
+        mov        rp1(),       5
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_6, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           6
+        mov        rp1(),       6
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_7, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           7
+        mov        rp1(),       7
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_8, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           8
+        mov        rp1(),       8
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_9, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           9
+        mov        rp1(),       9
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_10, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           10
+        mov        rp1(),       10
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_11, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           11
+        mov        rp1(),       11
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_12, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           12
+        mov        rp1(),       12
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_13, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           13
+        mov        rp1(),       13
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_14, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           14
+        mov        rp1(),       14
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_15, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           15
+        mov        rp1(),       15
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_16, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           16
+        mov        rp1(),       16
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_17, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           17
+        mov        rp1(),       17
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_18, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           18
+        mov        rp1(),       18
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_19, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           19
+        mov        rp1(),       19
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_20, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           20
+        mov        rp1(),       20
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_21, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           21
+        mov        rp1(),       21
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_22, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           22
+        mov        rp1(),       22
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_23, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           23
+        mov        rp1(),       23
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_24, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           24
+        mov        rp1(),       24
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_25, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           25
+        mov        rp1(),       25
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_26, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           26
+        mov        rp1(),       26
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_27, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           27
+        mov        rp1(),       27
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_28, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           28
+        mov        rp1(),       28
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_29, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           29
+        mov        rp1(),       29
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_30, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           30
+        mov        rp1(),       30
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_31, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           31
+        mov        rp1(),       31
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_32, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           32
+        mov        rp1(),       32
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_33, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           33
+        mov        rp1(),       33
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_34, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           34
+        mov        rp1(),       34
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_35, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           35
+        mov        rp1(),       35
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_36, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           36
+        mov        rp1(),       36
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_37, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           37
+        mov        rp1(),       37
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_38, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           38
+        mov        rp1(),       38
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_39, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           39
+        mov        rp1(),       39
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_40, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           40
+        mov        rp1(),       40
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_41, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           41
+        mov        rp1(),       41
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_42, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           42
+        mov        rp1(),       42
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_43, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           43
+        mov        rp1(),       43
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_44, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           44
+        mov        rp1(),       44
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_45, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           45
+        mov        rp1(),       45
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_46, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           46
+        mov        rp1(),       46
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_47, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           47
+        mov        rp1(),       47
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_48, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           48
+        mov        rp1(),       48
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_49, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           49
+        mov        rp1(),       49
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_50, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           50
+        mov        rp1(),       50
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_51, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           51
+        mov        rp1(),       51
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_52, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           52
+        mov        rp1(),       52
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_53, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           53
+        mov        rp1(),       53
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_54, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           54
+        mov        rp1(),       54
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_55, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           55
+        mov        rp1(),       55
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_56, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           56
+        mov        rp1(),       56
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_57, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           57
+        mov        rp1(),       57
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_58, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           58
+        mov        rp1(),       58
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_59, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           59
+        mov        rp1(),       59
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_60, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           60
+        mov        rp1(),       60
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_61, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           61
+        mov        rp1(),       61
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_62, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           62
+        mov        rp1(),       62
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64_63, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        psraq           xmm0,           63
+        mov        rp1(),       63
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
         ret
 procend
 
 procstart _uX_mm_srai_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_Imm:dword
-        push         rbase()
-    ifdef __unix32__
-        rpdisp textequ <ecx>
-        bpdisp textequ <cl>
-        mov     rpdisp,     Inint_Imm
-    else
-        rpdisp textequ <rp1()>
-        bpdisp textequ <bp1()>
-    endif
-    .if(rpdisp < 0)
+    .if(rp1() < 0)
         jmp         _m128israiepi64_end
     .endif
-    .if(rpdisp > 63)
-        pxor          xmm0,           xmm0
+    .if(rp1() > 63)
+        pxor        xmm0,       xmm0
         jmp         _m128israiepi64_end
     .endif
-    ifdef __x32__
-        movzx           rbase(),        bpdisp
-        jmp     dword ptr [_m128israiepi64jmptable+rbase()*size_t_size]
-    endif
-    ifdef __x64__
-        lea             rbase(),    qword ptr [_m128israiepi64jmptable]
-        mov             rbase(),    qword ptr [rbase()+rp1()*size_t_size]
-        jmp             rbx
-    endif
-
-        _m128israiepi64_0 label size_t
-        psraq           xmm0,           0
-        jmp         _m128israiepi64_end
-        _m128israiepi64_1 label size_t
-        psraq           xmm0,           1
-        jmp         _m128israiepi64_end
-        _m128israiepi64_2 label size_t
-        psraq           xmm0,           2
-        jmp         _m128israiepi64_end
-        _m128israiepi64_3 label size_t
-        psraq           xmm0,           3
-        jmp         _m128israiepi64_end
-        _m128israiepi64_4 label size_t
-        psraq           xmm0,           4
-        jmp         _m128israiepi64_end
-        _m128israiepi64_5 label size_t
-        psraq           xmm0,           5
-        jmp         _m128israiepi64_end
-        _m128israiepi64_6 label size_t
-        psraq           xmm0,           6
-        jmp         _m128israiepi64_end
-        _m128israiepi64_7 label size_t
-        psraq           xmm0,           7
-        jmp         _m128israiepi64_end
-        _m128israiepi64_8 label size_t
-        psraq           xmm0,           8
-        jmp         _m128israiepi64_end
-        _m128israiepi64_9 label size_t
-        psraq           xmm0,           9
-        jmp         _m128israiepi64_end
-        _m128israiepi64_10 label size_t
-        psraq           xmm0,           10
-        jmp         _m128israiepi64_end
-        _m128israiepi64_11 label size_t
-        psraq           xmm0,           11
-        jmp         _m128israiepi64_end
-        _m128israiepi64_12 label size_t
-        psraq           xmm0,           12
-        jmp         _m128israiepi64_end
-        _m128israiepi64_13 label size_t
-        psraq           xmm0,           13
-        jmp         _m128israiepi64_end
-        _m128israiepi64_14 label size_t
-        psraq           xmm0,           14
-        jmp         _m128israiepi64_end
-        _m128israiepi64_15 label size_t
-        psraq           xmm0,           15
-        jmp         _m128israiepi64_end
-        _m128israiepi64_16 label size_t
-        psraq           xmm0,           16
-        jmp         _m128israiepi64_end
-        _m128israiepi64_17 label size_t
-        psraq           xmm0,           17
-        jmp         _m128israiepi64_end
-        _m128israiepi64_18 label size_t
-        psraq           xmm0,           18
-        jmp         _m128israiepi64_end
-        _m128israiepi64_19 label size_t
-        psraq           xmm0,           19
-        jmp         _m128israiepi64_end
-        _m128israiepi64_20 label size_t
-        psraq           xmm0,           20
-        jmp         _m128israiepi64_end
-        _m128israiepi64_21 label size_t
-        psraq           xmm0,           21
-        jmp         _m128israiepi64_end
-        _m128israiepi64_22 label size_t
-        psraq           xmm0,           22
-        jmp         _m128israiepi64_end
-        _m128israiepi64_23 label size_t
-        psraq           xmm0,           23
-        jmp         _m128israiepi64_end
-        _m128israiepi64_24 label size_t
-        psraq           xmm0,           24
-        jmp         _m128israiepi64_end
-        _m128israiepi64_25 label size_t
-        psraq           xmm0,           25
-        jmp         _m128israiepi64_end
-        _m128israiepi64_26 label size_t
-        psraq           xmm0,           26
-        jmp         _m128israiepi64_end
-        _m128israiepi64_27 label size_t
-        psraq           xmm0,           27
-        jmp         _m128israiepi64_end
-        _m128israiepi64_28 label size_t
-        psraq           xmm0,           28
-        jmp         _m128israiepi64_end
-        _m128israiepi64_29 label size_t
-        psraq           xmm0,           29
-        jmp         _m128israiepi64_end
-        _m128israiepi64_30 label size_t
-        psraq           xmm0,           30
-        jmp         _m128israiepi64_end
-        _m128israiepi64_31 label size_t
-        psraq           xmm0,           31
-        jmp         _m128israiepi64_end
-        _m128israiepi64_32 label size_t
-        psraq           xmm0,           32
-        jmp         _m128israiepi64_end
-        _m128israiepi64_33 label size_t
-        psraq           xmm0,           33
-        jmp         _m128israiepi64_end
-        _m128israiepi64_34 label size_t
-        psraq           xmm0,           34
-        jmp         _m128israiepi64_end
-        _m128israiepi64_35 label size_t
-        psraq           xmm0,           35
-        jmp         _m128israiepi64_end
-        _m128israiepi64_36 label size_t
-        psraq           xmm0,           36
-        jmp         _m128israiepi64_end
-        _m128israiepi64_37 label size_t
-        psraq           xmm0,           37
-        jmp         _m128israiepi64_end
-        _m128israiepi64_38 label size_t
-        psraq           xmm0,           38
-        jmp         _m128israiepi64_end
-        _m128israiepi64_39 label size_t
-        psraq           xmm0,           39
-        jmp         _m128israiepi64_end
-        _m128israiepi64_40 label size_t
-        psraq           xmm0,           40
-        jmp         _m128israiepi64_end
-        _m128israiepi64_41 label size_t
-        psraq           xmm0,           41
-        jmp         _m128israiepi64_end
-        _m128israiepi64_42 label size_t
-        psraq           xmm0,           42
-        jmp         _m128israiepi64_end
-        _m128israiepi64_43 label size_t
-        psraq           xmm0,           43
-        jmp         _m128israiepi64_end
-        _m128israiepi64_44 label size_t
-        psraq           xmm0,           44
-        jmp         _m128israiepi64_end
-        _m128israiepi64_45 label size_t
-        psraq           xmm0,           45
-        jmp         _m128israiepi64_end
-        _m128israiepi64_46 label size_t
-        psraq           xmm0,           46
-        jmp         _m128israiepi64_end
-        _m128israiepi64_47 label size_t
-        psraq           xmm0,           47
-        jmp         _m128israiepi64_end
-        _m128israiepi64_48 label size_t
-        psraq           xmm0,           48
-        jmp         _m128israiepi64_end
-        _m128israiepi64_49 label size_t
-        psraq           xmm0,           49
-        jmp         _m128israiepi64_end
-        _m128israiepi64_50 label size_t
-        psraq           xmm0,           50
-        jmp         _m128israiepi64_end
-        _m128israiepi64_51 label size_t
-        psraq           xmm0,           51
-        jmp         _m128israiepi64_end
-        _m128israiepi64_52 label size_t
-        psraq           xmm0,           52
-        jmp         _m128israiepi64_end
-        _m128israiepi64_53 label size_t
-        psraq           xmm0,           53
-        jmp         _m128israiepi64_end
-        _m128israiepi64_54 label size_t
-        psraq           xmm0,           54
-        jmp         _m128israiepi64_end
-        _m128israiepi64_55 label size_t
-        psraq           xmm0,           55
-        jmp         _m128israiepi64_end
-        _m128israiepi64_56 label size_t
-        psraq           xmm0,           56
-        jmp         _m128israiepi64_end
-        _m128israiepi64_57 label size_t
-        psraq           xmm0,           57
-        jmp         _m128israiepi64_end
-        _m128israiepi64_58 label size_t
-        psraq           xmm0,           58
-        jmp         _m128israiepi64_end
-        _m128israiepi64_59 label size_t
-        psraq           xmm0,           59
-        jmp         _m128israiepi64_end
-        _m128israiepi64_60 label size_t
-        psraq           xmm0,           60
-        jmp         _m128israiepi64_end
-        _m128israiepi64_61 label size_t
-        psraq           xmm0,           61
-        jmp         _m128israiepi64_end
-        _m128israiepi64_62 label size_t
-        psraq           xmm0,           62
-        jmp         _m128israiepi64_end
-        _m128israiepi64_63 label size_t
-        psraq           xmm0,           63
-        ;jmp         _m128israiepi64_end
-
-        _m128israiepi64_end:
-        pop         rbase()
+    .if(rp1() <= 32)
+        movdqa      xmm1,       xmm0
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b);               // b
+        psrad       xmm1,       xmm2        ;shi = _mm_sra_epi32(a, bb);              // a >> b signed dwords
+        psrlq       xmm0,       xmm2        ;slo = _mm_srl_epi64(a, bb);              // a >> b unsigned qwords
+    .else
+        movdqa      xmm1,       xmm0
+        sub        rp1(),       32
+        movd        xmm2,       rp1()       ;bb = _mm_cvtsi32_si128(b - 32);          // b - 32
+        psrad       xmm1,       31          ;shi = _mm_srai_epi32(a, 31);             // sign of a
+        psrad       xmm0,       xmm2        ;sra2 = _mm_sra_epi32(a, bb);             // a >> (b-32) signed dwords
+        psrlq       xmm0,       32          ;slo = _mm_srli_epi64(sra2, 32);          // a >> (b-32) >> 32 (second shift unsigned qword)
+    .endif
+    .if(__uX_CPUFeatures_SSE41 == true)
+        pblendw     xmm0,       xmm1,       0xcc
+    .else
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_i32_select0101
+        movdqa      xmm3,       __m128i_i32_select0101
+        pandn       xmm3,       xmm2
+        pand        xmm0,       xmm1
+        por         xmm0,       xmm3
+    .endif
+    _m128israiepi64_end:
         ret
 procend
 
@@ -2786,23 +3482,15 @@ procend
 
 procstart _uX_mm_srli_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_Imm:dword
         push         rbase()
-    ifdef __unix32__
-        rpdisp textequ <ecx>
-        bpdisp textequ <cl>
-        mov     rpdisp,     Inint_Imm
-    else
-        rpdisp textequ <rp1()>
-        bpdisp textequ <bp1()>
-    endif
-    .if(rpdisp < 0)
+    .if(rp1() < 0)
         jmp         _m128isrlisi128_end
     .endif
-    .if(rpdisp > 15)
+    .if(rp1() > 15)
         pxor          xmm0,           xmm0
         jmp         _m128isrlisi128_end
     .endif
     ifdef __x32__
-        movzx           rbase(),        bpdisp
+        movzx           rbase(),        bp1()
         jmp     dword ptr [_m128isrlisi128jmptable+rbase()*size_t_size]
     endif
     ifdef __x64__
@@ -2866,226 +3554,224 @@ procstart _uX_mm_srli_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint
 procend
 
 procstart _uX_mm_srli_epi8_0, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-    ifdef __unix32__
-        rpdisp textequ <edx>
-        epdisp textequ <edx>
-    else
-        rpdisp textequ <rdx>
-        epdisp textequ <edx>
-    endif
-        mov         edx,        0
-        movdqa      xmm2,       __m128i_flt_byte_even
-        lea         eax,        [rpdisp+8]
+        mov         rp0(),      0
+        mov          eax,       dp0()
+        add          eax,       8
+        movdqa      xmm1,       xmm0
+        movd        xmm3,       eax
+        psllw       xmm0,       8
+        psrlw       xmm0,       xmm3
+        movd        xmm3,       dp0()
+        psrlw       xmm1,       xmm3
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_flt_byte_even
+        .if (__uX_CPUFeatures_SSE41 == true)
+        pblendvb    xmm2,       xmm1,       xmm0
+        movdqa      xmm0,       xmm2
+        .else
         movdqa      xmm3,       xmm0
-        movd        xmm1,       eax
-        psllw       xmm3,       8
-        psrlw       xmm3,       xmm1
-        movd        xmm1,       epdisp
-        psrlw       xmm0,       xmm1
-        pand        xmm3,       xmm2
-        pandn       xmm2,       xmm0
-        por         xmm3,       xmm2
-        movdqa      xmm0,       xmm3
+        pandn       xmm3,       xmm1
+        pand        xmm0,       xmm2
+        por         xmm0,       xmm3
+        .endif
         ret
 procend
 
 procstart _uX_mm_srli_epi8_1, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-    ifdef __unix32__
-        rpdisp textequ <edx>
-        epdisp textequ <edx>
-    else
-        rpdisp textequ <rdx>
-        epdisp textequ <edx>
-    endif
-        mov         edx,        1
-        movdqa      xmm2,       __m128i_flt_byte_even
-        lea         eax,        [rpdisp+8]
+        mov         rp0(),      1
+        mov          eax,       dp0()
+        add          eax,       8
+        movdqa      xmm1,       xmm0
+        movd        xmm3,       eax
+        psllw       xmm0,       8
+        psrlw       xmm0,       xmm3
+        movd        xmm3,       dp0()
+        psrlw       xmm1,       xmm3
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_flt_byte_even
+        .if (__uX_CPUFeatures_SSE41 == true)
+        pblendvb    xmm2,       xmm1,       xmm0
+        movdqa      xmm0,       xmm2
+        .else
         movdqa      xmm3,       xmm0
-        movd        xmm1,       eax
-        psllw       xmm3,       8
-        psrlw       xmm3,       xmm1
-        movd        xmm1,       epdisp
-        psrlw       xmm0,       xmm1
-        pand        xmm3,       xmm2
-        pandn       xmm2,       xmm0
-        por         xmm3,       xmm2
-        movdqa      xmm0,       xmm3
+        pandn       xmm3,       xmm1
+        pand        xmm0,       xmm2
+        por         xmm0,       xmm3
+        .endif
         ret
 procend
 
 procstart _uX_mm_srli_epi8_2, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-    ifdef __unix32__
-        rpdisp textequ <edx>
-        epdisp textequ <edx>
-    else
-        rpdisp textequ <rdx>
-        epdisp textequ <edx>
-    endif
-        mov         edx,        2
-        movdqa      xmm2,       __m128i_flt_byte_even
-        lea         eax,        [rpdisp+8]
+        mov         rp0(),      2
+        mov          eax,       dp0()
+        add          eax,       8
+        movdqa      xmm1,       xmm0
+        movd        xmm3,       eax
+        psllw       xmm0,       8
+        psrlw       xmm0,       xmm3
+        movd        xmm3,       dp0()
+        psrlw       xmm1,       xmm3
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_flt_byte_even
+        .if (__uX_CPUFeatures_SSE41 == true)
+        pblendvb    xmm2,       xmm1,       xmm0
+        movdqa      xmm0,       xmm2
+        .else
         movdqa      xmm3,       xmm0
-        movd        xmm1,       eax
-        psllw       xmm3,       8
-        psrlw       xmm3,       xmm1
-        movd        xmm1,       epdisp
-        psrlw       xmm0,       xmm1
-        pand        xmm3,       xmm2
-        pandn       xmm2,       xmm0
-        por         xmm3,       xmm2
-        movdqa      xmm0,       xmm3
+        pandn       xmm3,       xmm1
+        pand        xmm0,       xmm2
+        por         xmm0,       xmm3
+        .endif
         ret
 procend
 
 procstart _uX_mm_srli_epi8_3, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-    ifdef __unix32__
-        rpdisp textequ <edx>
-        epdisp textequ <edx>
-    else
-        rpdisp textequ <rdx>
-        epdisp textequ <edx>
-    endif
-        mov         edx,        3
-        movdqa      xmm2,       __m128i_flt_byte_even
-        lea         eax,        [rpdisp+8]
+        mov         rp0(),      3
+        mov          eax,       dp0()
+        add          eax,       8
+        movdqa      xmm1,       xmm0
+        movd        xmm3,       eax
+        psllw       xmm0,       8
+        psrlw       xmm0,       xmm3
+        movd        xmm3,       dp0()
+        psrlw       xmm1,       xmm3
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_flt_byte_even
+        .if (__uX_CPUFeatures_SSE41 == true)
+        pblendvb    xmm2,       xmm1,       xmm0
+        movdqa      xmm0,       xmm2
+        .else
         movdqa      xmm3,       xmm0
-        movd        xmm1,       eax
-        psllw       xmm3,       8
-        psrlw       xmm3,       xmm1
-        movd        xmm1,       epdisp
-        psrlw       xmm0,       xmm1
-        pand        xmm3,       xmm2
-        pandn       xmm2,       xmm0
-        por         xmm3,       xmm2
-        movdqa      xmm0,       xmm3
+        pandn       xmm3,       xmm1
+        pand        xmm0,       xmm2
+        por         xmm0,       xmm3
+        .endif
         ret
 procend
 
 procstart _uX_mm_srli_epi8_4, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-    ifdef __unix32__
-        rpdisp textequ <edx>
-        epdisp textequ <edx>
-    else
-        rpdisp textequ <rdx>
-        epdisp textequ <edx>
-    endif
-        mov         edx,        4
-        movdqa      xmm2,       __m128i_flt_byte_even
-        lea         eax,        [rpdisp+8]
+        mov         rp0(),      4
+        mov          eax,       dp0()
+        add          eax,       8
+        movdqa      xmm1,       xmm0
+        movd        xmm3,       eax
+        psllw       xmm0,       8
+        psrlw       xmm0,       xmm3
+        movd        xmm3,       dp0()
+        psrlw       xmm1,       xmm3
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_flt_byte_even
+        .if (__uX_CPUFeatures_SSE41 == true)
+        pblendvb    xmm2,       xmm1,       xmm0
+        movdqa      xmm0,       xmm2
+        .else
         movdqa      xmm3,       xmm0
-        movd        xmm1,       eax
-        psllw       xmm3,       8
-        psrlw       xmm3,       xmm1
-        movd        xmm1,       epdisp
-        psrlw       xmm0,       xmm1
-        pand        xmm3,       xmm2
-        pandn       xmm2,       xmm0
-        por         xmm3,       xmm2
-        movdqa      xmm0,       xmm3
+        pandn       xmm3,       xmm1
+        pand        xmm0,       xmm2
+        por         xmm0,       xmm3
+        .endif
         ret
 procend
 
 procstart _uX_mm_srli_epi8_5, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-    ifdef __unix32__
-        rpdisp textequ <edx>
-        epdisp textequ <edx>
-    else
-        rpdisp textequ <rdx>
-        epdisp textequ <edx>
-    endif
-        mov         edx,        5
-        movdqa      xmm2,       __m128i_flt_byte_even
-        lea         eax,        [rpdisp+8]
+        mov         rp0(),      5
+        mov          eax,       dp0()
+        add          eax,       8
+        movdqa      xmm1,       xmm0
+        movd        xmm3,       eax
+        psllw       xmm0,       8
+        psrlw       xmm0,       xmm3
+        movd        xmm3,       dp0()
+        psrlw       xmm1,       xmm3
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_flt_byte_even
+        .if (__uX_CPUFeatures_SSE41 == true)
+        pblendvb    xmm2,       xmm1,       xmm0
+        movdqa      xmm0,       xmm2
+        .else
         movdqa      xmm3,       xmm0
-        movd        xmm1,       eax
-        psllw       xmm3,       8
-        psrlw       xmm3,       xmm1
-        movd        xmm1,       epdisp
-        psrlw       xmm0,       xmm1
-        pand        xmm3,       xmm2
-        pandn       xmm2,       xmm0
-        por         xmm3,       xmm2
-        movdqa      xmm0,       xmm3
+        pandn       xmm3,       xmm1
+        pand        xmm0,       xmm2
+        por         xmm0,       xmm3
+        .endif
         ret
 procend
 
 procstart _uX_mm_srli_epi8_6, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-    ifdef __unix32__
-        rpdisp textequ <edx>
-        epdisp textequ <edx>
-    else
-        rpdisp textequ <rdx>
-        epdisp textequ <edx>
-    endif
-        mov         edx,        6
-        movdqa      xmm2,       __m128i_flt_byte_even
-        lea         eax,        [rpdisp+8]
+        mov         rp0(),      6
+        mov          eax,       dp0()
+        add          eax,       8
+        movdqa      xmm1,       xmm0
+        movd        xmm3,       eax
+        psllw       xmm0,       8
+        psrlw       xmm0,       xmm3
+        movd        xmm3,       dp0()
+        psrlw       xmm1,       xmm3
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_flt_byte_even
+        .if (__uX_CPUFeatures_SSE41 == true)
+        pblendvb    xmm2,       xmm1,       xmm0
+        movdqa      xmm0,       xmm2
+        .else
         movdqa      xmm3,       xmm0
-        movd        xmm1,       eax
-        psllw       xmm3,       8
-        psrlw       xmm3,       xmm1
-        movd        xmm1,       epdisp
-        psrlw       xmm0,       xmm1
-        pand        xmm3,       xmm2
-        pandn       xmm2,       xmm0
-        por         xmm3,       xmm2
-        movdqa      xmm0,       xmm3
+        pandn       xmm3,       xmm1
+        pand        xmm0,       xmm2
+        por         xmm0,       xmm3
+        .endif
         ret
 procend
 
 procstart _uX_mm_srli_epi8_7, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-    ifdef __unix32__
-        rpdisp textequ <edx>
-        epdisp textequ <edx>
-    else
-        rpdisp textequ <rdx>
-        epdisp textequ <edx>
-    endif
-        mov         edx,        7
-        movdqa      xmm2,       __m128i_flt_byte_even
-        lea         eax,        [rpdisp+8]
+        mov         rp0(),      7
+        mov          eax,       dp0()
+        add          eax,       8
+        movdqa      xmm1,       xmm0
+        movd        xmm3,       eax
+        psllw       xmm0,       8
+        psrlw       xmm0,       xmm3
+        movd        xmm3,       dp0()
+        psrlw       xmm1,       xmm3
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_flt_byte_even
+        .if (__uX_CPUFeatures_SSE41 == true)
+        pblendvb    xmm2,       xmm1,       xmm0
+        movdqa      xmm0,       xmm2
+        .else
         movdqa      xmm3,       xmm0
-        movd        xmm1,       eax
-        psllw       xmm3,       8
-        psrlw       xmm3,       xmm1
-        movd        xmm1,       epdisp
-        psrlw       xmm0,       xmm1
-        pand        xmm3,       xmm2
-        pandn       xmm2,       xmm0
-        por         xmm3,       xmm2
-        movdqa      xmm0,       xmm3
+        pandn       xmm3,       xmm1
+        pand        xmm0,       xmm2
+        por         xmm0,       xmm3
+        .endif
         ret
 procend
 
 procstart _uX_mm_srli_epi8, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_Imm:dword
-    ifdef __unix32__
-        rpdisp textequ <edx>
-        epdisp textequ <edx>
-        mov     rpdisp,     Inint_Imm
-    else
-        rpdisp textequ <rp1()>
-        epdisp textequ <edx>
-    endif
-    .if(rpdisp < 0)
+    .if(rp1() < 0)
         jmp         _m128isrliepi8_end
     .endif
-    .if(rpdisp > 7)
+    .if(rp1() > 7)
         pxor          xmm0,           xmm0
         jmp         _m128isrliepi8_end
     .endif
-        movdqa      xmm2,       __m128i_flt_byte_even
-        lea         eax,        [rpdisp+8]
+        mov          eax,       dp1()
+        add          eax,       8
+        movdqa      xmm1,       xmm0
+        movd        xmm3,       eax
+        psllw       xmm0,       8
+        psrlw       xmm0,       xmm3
+        movd        xmm3,       dp1()
+        psrlw       xmm1,       xmm3
+        movdqa      xmm2,       xmm0
+        movdqa      xmm0,       __m128i_flt_byte_even
+        .if (__uX_CPUFeatures_SSE41 == true)
+        pblendvb    xmm2,       xmm1,       xmm0
+        movdqa      xmm0,       xmm2
+        .else
         movdqa      xmm3,       xmm0
-        movd        xmm1,       eax
-        psllw       xmm3,       8
-        psrlw       xmm3,       xmm1
-        movd        xmm1,       epdisp
-        psrlw       xmm0,       xmm1
-        pand        xmm3,       xmm2
-        pandn       xmm2,       xmm0
-        por         xmm3,       xmm2
-        movdqa      xmm0,       xmm3
-
+        pandn       xmm3,       xmm1
+        pand        xmm0,       xmm2
+        por         xmm0,       xmm3
+        .endif
         _m128isrliepi8_end:
         ret
 procend
@@ -3172,23 +3858,15 @@ procend
 
 procstart _uX_mm_srli_epi16, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_Imm:dword
         push         rbase()
-    ifdef __unix32__
-        rpdisp textequ <ecx>
-        bpdisp textequ <cl>
-        mov     rpdisp,     Inint_Imm
-    else
-        rpdisp textequ <rp1()>
-        bpdisp textequ <bp1()>
-    endif
-    .if(rpdisp < 0)
+    .if(rp1() < 0)
         jmp         _m128isrliepi16_end
     .endif
-    .if(rpdisp > 15)
+    .if(rp1() > 15)
         pxor          xmm0,           xmm0
         jmp         _m128isrliepi16_end
     .endif
     ifdef __x32__
-        movzx           rbase(),        bpdisp
+        movzx           rbase(),        bp1()
         jmp     dword ptr [_m128isrliepi16jmptable+rbase()*size_t_size]
     endif
     ifdef __x64__
@@ -3413,23 +4091,15 @@ procend
 
 procstart _uX_mm_srli_epi32, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_Imm:dword
         push         rbase()
-    ifdef __unix32__
-        rpdisp textequ <ecx>
-        bpdisp textequ <cl>
-        mov     rpdisp,     Inint_Imm
-    else
-        rpdisp textequ <rp1()>
-        bpdisp textequ <bp1()>
-    endif
-    .if(rpdisp < 0)
+    .if(rp1() < 0)
         jmp         _m128isrliepi32_end
     .endif
-    .if(rpdisp > 31)
+    .if(rp1() > 31)
         pxor          xmm0,           xmm0
         jmp         _m128isrliepi32_end
     .endif
     ifdef __x32__
-        movzx           rbase(),        bpdisp
+        movzx           rbase(),        bp1()
         jmp     dword ptr [_m128isrliepi32jmptable+rbase()*size_t_size]
     endif
     ifdef __x64__
@@ -3862,23 +4532,15 @@ procend
 
 procstart _uX_mm_srli_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_Imm:dword
         push         rbase()
-    ifdef __unix32__
-        rpdisp textequ <ecx>
-        bpdisp textequ <cl>
-        mov     rpdisp,     Inint_Imm
-    else
-        rpdisp textequ <rp1()>
-        bpdisp textequ <bp1()>
-    endif
-    .if(rpdisp < 0)
+    .if(rp1() < 0)
         jmp         _m128isrliepi64_end
     .endif
-    .if(rpdisp > 63)
+    .if(rp1() > 63)
         pxor          xmm0,           xmm0
         jmp         _m128isrliepi64_end
     .endif
     ifdef __x32__
-        movzx           rbase(),        bpdisp
+        movzx           rbase(),        bp1()
         jmp     dword ptr [_m128isrliepi64jmptable+rbase()*size_t_size]
     endif
     ifdef __x64__
@@ -4087,4 +4749,4 @@ procend
 
 endif ;__MIC__
 
-    end
+end

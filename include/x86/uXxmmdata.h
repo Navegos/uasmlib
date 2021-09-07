@@ -1,22 +1,21 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-; / /                                                                               / /
-; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
-; / /                                                                               / /
-; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
-; / /    you may not use this file except in compliance with the License.           / /
-; / /    You may obtain a copy of the License at                                    / /
-; / /                                                                               / /
-; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
-; / /                                                                               / /
-; / /    Unless required by applicable law or agreed to in writing, software        / /
-; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
-; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
-; / /    See the License for the specific language governing permissions and        / /
-; / /    limitations under the License.                                             / /
-; / /                                                                               / /
+; / /																				/ /
+; / /			Copyright 2021 (c) Navegos QA - optimized library					/ /
+; / /																				/ /
+; / /	Licensed under the Apache License, Version 2.0 (the "License");				/ /
+; / /	you may not use this file except in compliance with the License.			/ /
+; / /	You may obtain a copy of the License at										/ /
+; / /																				/ /
+; / /		http://www.apache.org/licenses/LICENSE-2.0								/ /
+; / /																				/ /
+; / /	Unless required by applicable law or agreed to in writing, software			/ /
+; / /	distributed under the License is distributed on an "AS IS" BASIS,			/ /
+; / /	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.	/ /
+; / /	See the License for the specific language governing permissions and			/ /
+; / /	limitations under the License.												/ /
+; / /																				/ /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 */
@@ -44,7 +43,7 @@ uX_PACK_PUSH_XMM
 	//;;float;;
 
 	//;             sincos template, single precision
-extern __m128 const __m128_DP1F; //              __m128f; // (0.78515625 * 2.0)
+	extern __m128 const __m128_DP1F; //              __m128f; // (0.78515625 * 2.0)
 extern __m128 const __m128_DP2F; //              __m128f; // (2.4187564849853515625e-4 * 2.0)
 extern __m128 const __m128_DP3F; //              __m128f; // (3.77489497744594108e-8 * 2.0)
 
@@ -758,7 +757,7 @@ extern __m128 const __m128_moongravity; //          __m128f; // flt_moongravity
 extern __m128 const __m128_plutogravity; //             __m128f; // flt_plutogravity
 
 extern __m128 const __m128_kmtoinch; //                 __m128f; // flt_kmtoinch
-extern __m128 const __m128_kmtofeet; //                 __m128f; // flt_kmtofeet 
+extern __m128 const __m128_kmtofeet; //                 __m128f; // flt_kmtofeet
 extern __m128 const __m128_kmtoyards; //                __m128f; // flt_kmtoyards
 extern __m128 const __m128_kmtomiles; //                __m128f; // flt_kmtomiles
 
@@ -914,7 +913,6 @@ extern __m128 const __m128_logest5; //              __m128f; // flt_logest5
 extern __m128 const __m128_logest6; //              __m128f; // flt_logest6
 extern __m128 const __m128_logest7; //              __m128f; // flt_logest7
 
-
 	//;;DirectX Math constants;;
 
 extern __m128 const __m128_sincoefficients0; //                 __m128f; // (-0.16666667); // (+0.0083333310); // (-0.00019840874); // (+2.7525562e-06)
@@ -1010,7 +1008,7 @@ extern __m128 const __m128_select0101; //                 __m128i; flt_false, fl
 extern __m128 const __m128_select1010; //                 __m128i; flt_true, flt_false, flt_true, flt_false
 extern __m128 const __m128_onehalfminusepsilon; //          __m128i; // flt_halfminuseps_msk; // flt_halfminuseps_msk; // flt_halfminuseps_msk; // flt_halfminuseps_msk
 extern __m128 const __m128_fixupy16; //                         __m128f; // flt_1; // 0.0000152587890625; // flt_0; // flt_0
-extern __m128 const __m128_fixupy16w16; //                  __m128f; // flt_1; // flt_1; // 0.0000152587890625; // 0.0000152587890625   
+extern __m128 const __m128_fixupy16w16; //                  __m128f; // flt_1; // flt_1; // 0.0000152587890625; // 0.0000152587890625
 extern __m128 const __m128_flipy; //                            __m128i; // flt_false; // flt_flip32_msk; // flt_false; // flt_false
 extern __m128 const __m128_flipz; //                            __m128i; // flt_false; // flt_false; // flt_flip32_msk; // flt_false
 extern __m128 const __m128_flipw; //                            __m128i; // flt_false; // flt_false; // flt_false; // flt_flip32_msk
@@ -1021,7 +1019,7 @@ extern __m128 const __m128_maskdec4; //                         __m128i; // 0x00
 extern __m128 const __m128_xordec4; //                      __m128i; // 0x00000200; // 0x00080000; // 0x20000000; // 0x00000000
 extern __m128 const __m128_addudec4; //                         __m128f; // flt_0; // flt_0; // flt_0; // flt_2147483648
 extern __m128 const __m128_addec4; //                       __m128f; // flt_neg512; // (-524288.0); // (-536870912.0); // flt_0
-extern __m128 const __m128_muldec4; //                      __m128f; // flt_1; // 0.0009765625; // 0.00000095367431640625; // 0.000000000931322574615478515625  
+extern __m128 const __m128_muldec4; //                      __m128f; // flt_1; // 0.0009765625; // 0.00000095367431640625; // 0.000000000931322574615478515625
 extern __m128 const __m128_maskbyte4; //                        __m128i; // 0x000000ff; // 0x0000ff00; // 0x00ff0000; // 0xff000000
 extern __m128 const __m128_xorbyte4; //                         __m128i; // 0x00000080; // 0x00008000; // 0x00800000; // 0x00000000
 extern __m128 const __m128_addbyte4; //                         __m128f; // flt_neg128; // flt_neg32768; // flt_mini8xu16; // flt_0
@@ -2642,7 +2640,7 @@ extern __m128 uX_ABI _uX_mm_const_moongravity_ps(void); //          __m128f_ps(v
 extern __m128 uX_ABI _uX_mm_const_plutogravity_ps(void); //             __m128f_ps(void); // flt_plutogravity
 
 extern __m128 uX_ABI _uX_mm_const_kmtoinch_ps(void); //                 __m128f_ps(void); // flt_kmtoinch
-extern __m128 uX_ABI _uX_mm_const_kmtofeet_ps(void); //                 __m128f_ps(void); // flt_kmtofeet 
+extern __m128 uX_ABI _uX_mm_const_kmtofeet_ps(void); //                 __m128f_ps(void); // flt_kmtofeet
 extern __m128 uX_ABI _uX_mm_const_kmtoyards_ps(void); //                __m128f_ps(void); // flt_kmtoyards
 extern __m128 uX_ABI _uX_mm_const_kmtomiles_ps(void); //                __m128f_ps(void); // flt_kmtomiles
 
@@ -2798,7 +2796,6 @@ extern __m128 uX_ABI _uX_mm_const_logest5_ps(void); //              __m128f_ps(v
 extern __m128 uX_ABI _uX_mm_const_logest6_ps(void); //              __m128f_ps(void); // flt_logest6
 extern __m128 uX_ABI _uX_mm_const_logest7_ps(void); //              __m128f_ps(void); // flt_logest7
 
-
 	//;;DirectX Math constants;;
 
 extern __m128 uX_ABI _uX_mm_const_sincoefficients0_ps(void); //                 __m128f_ps(void); // (-0.16666667)_ps(void); // (+0.0083333310)_ps(void); // (-0.00019840874)_ps(void); // (+2.7525562e-06)
@@ -2894,7 +2891,7 @@ extern __m128 uX_ABI _uX_mm_const_select0101_ps(void); //                 __m128
 extern __m128 uX_ABI _uX_mm_const_select1010_ps(void); //                 __m128i; flt_true, flt_false, flt_true, flt_false
 extern __m128 uX_ABI _uX_mm_const_onehalfminusepsilon_ps(void); //          __m128i_ps(void); // flt_halfminuseps_msk_ps(void); // flt_halfminuseps_msk_ps(void); // flt_halfminuseps_msk_ps(void); // flt_halfminuseps_msk
 extern __m128 uX_ABI _uX_mm_const_fixupy16_ps(void); //                         __m128f_ps(void); // flt_1_ps(void); // 0.0000152587890625_ps(void); // flt_0_ps(void); // flt_0
-extern __m128 uX_ABI _uX_mm_const_fixupy16w16_ps(void); //                  __m128f_ps(void); // flt_1_ps(void); // flt_1_ps(void); // 0.0000152587890625_ps(void); // 0.0000152587890625   
+extern __m128 uX_ABI _uX_mm_const_fixupy16w16_ps(void); //                  __m128f_ps(void); // flt_1_ps(void); // flt_1_ps(void); // 0.0000152587890625_ps(void); // 0.0000152587890625
 extern __m128 uX_ABI _uX_mm_const_flipy_ps(void); //                            __m128i_ps(void); // flt_false_ps(void); // flt_flip32_msk_ps(void); // flt_false_ps(void); // flt_false
 extern __m128 uX_ABI _uX_mm_const_flipz_ps(void); //                            __m128i_ps(void); // flt_false_ps(void); // flt_false_ps(void); // flt_flip32_msk_ps(void); // flt_false
 extern __m128 uX_ABI _uX_mm_const_flipw_ps(void); //                            __m128i_ps(void); // flt_false_ps(void); // flt_false_ps(void); // flt_false_ps(void); // flt_flip32_msk
@@ -2905,7 +2902,7 @@ extern __m128 uX_ABI _uX_mm_const_maskdec4_ps(void); //                         
 extern __m128 uX_ABI _uX_mm_const_xordec4_ps(void); //                      __m128i_ps(void); // 0x00000200_ps(void); // 0x00080000_ps(void); // 0x20000000_ps(void); // 0x00000000
 extern __m128 uX_ABI _uX_mm_const_addudec4_ps(void); //                         __m128f_ps(void); // flt_0_ps(void); // flt_0_ps(void); // flt_0_ps(void); // flt_2147483648
 extern __m128 uX_ABI _uX_mm_const_addec4_ps(void); //                       __m128f_ps(void); // flt_neg512_ps(void); // (-524288.0)_ps(void); // (-536870912.0)_ps(void); // flt_0
-extern __m128 uX_ABI _uX_mm_const_muldec4_ps(void); //                      __m128f_ps(void); // flt_1_ps(void); // 0.0009765625_ps(void); // 0.00000095367431640625_ps(void); // 0.000000000931322574615478515625  
+extern __m128 uX_ABI _uX_mm_const_muldec4_ps(void); //                      __m128f_ps(void); // flt_1_ps(void); // 0.0009765625_ps(void); // 0.00000095367431640625_ps(void); // 0.000000000931322574615478515625
 extern __m128 uX_ABI _uX_mm_const_maskbyte4_ps(void); //                        __m128i_ps(void); // 0x000000ff_ps(void); // 0x0000ff00_ps(void); // 0x00ff0000_ps(void); // 0xff000000
 extern __m128 uX_ABI _uX_mm_const_xorbyte4_ps(void); //                         __m128i_ps(void); // 0x00000080_ps(void); // 0x00008000_ps(void); // 0x00800000_ps(void); // 0x00000000
 extern __m128 uX_ABI _uX_mm_const_addbyte4_ps(void); //                         __m128f_ps(void); // flt_neg128_ps(void); // flt_neg32768_ps(void); // flt_mini8xu16_ps(void); // flt_0

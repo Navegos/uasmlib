@@ -1,22 +1,21 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-; / /                                                                               / /
-; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
-; / /                                                                               / /
-; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
-; / /    you may not use this file except in compliance with the License.           / /
-; / /    You may obtain a copy of the License at                                    / /
-; / /                                                                               / /
-; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
-; / /                                                                               / /
-; / /    Unless required by applicable law or agreed to in writing, software        / /
-; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
-; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
-; / /    See the License for the specific language governing permissions and        / /
-; / /    limitations under the License.                                             / /
-; / /                                                                               / /
+; / /																				/ /
+; / /			Copyright 2021 (c) Navegos QA - optimized library					/ /
+; / /																				/ /
+; / /	Licensed under the Apache License, Version 2.0 (the "License");				/ /
+; / /	you may not use this file except in compliance with the License.			/ /
+; / /	You may obtain a copy of the License at										/ /
+; / /																				/ /
+; / /		http://www.apache.org/licenses/LICENSE-2.0								/ /
+; / /																				/ /
+; / /	Unless required by applicable law or agreed to in writing, software			/ /
+; / /	distributed under the License is distributed on an "AS IS" BASIS,			/ /
+; / /	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.	/ /
+; / /	See the License for the specific language governing permissions and			/ /
+; / /	limitations under the License.												/ /
+; / /																				/ /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 */
@@ -45,7 +44,7 @@ uX_PACK_PUSH_XMM
  * legacy FP, compare
  */
 
-extern __m128 uX_ABI _uX_mm_cmpeqoq_ps(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*/);
+	extern __m128 uX_ABI _uX_mm_cmpeqoq_ps(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*/);
 extern __m128 uX_ABI _uX_mm_cmpltos_ps(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*/);
 extern __m128 uX_ABI _uX_mm_cmpleos_ps(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*/);
 extern __m128 uX_ABI _uX_mm_cmpunordq_ps(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*/);
@@ -110,7 +109,7 @@ extern __m128 uX_ABI _uX_mm_cmpneqos_ss(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*/);
 extern __m128 uX_ABI _uX_mm_cmpgeoq_ss(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*/);
 extern __m128 uX_ABI _uX_mm_cmpgtoq_ss(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*/);
 extern __m128 uX_ABI _uX_mm_cmptrueus_ss(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*/);
-    
+
 /*
  * legacy FP, compare return int
  */
@@ -147,7 +146,7 @@ extern intbool_t uX_ABI _uX_mm_comineqos_ss(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B
 extern intbool_t uX_ABI _uX_mm_comigeoq_ss(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*/);
 extern intbool_t uX_ABI _uX_mm_comigtoq_ss(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*/);
 extern intbool_t uX_ABI _uX_mm_comitrueus_ss(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*/);
-    
+
 /*
  * legacy DP, compare
  */
@@ -217,7 +216,7 @@ extern __m128d uX_ABI _uX_mm_cmpneqos_sd(__m128d /*Inxmm_A*/, __m128d /*Inxmm_B*
 extern __m128d uX_ABI _uX_mm_cmpgeoq_sd(__m128d /*Inxmm_A*/, __m128d /*Inxmm_B*/);
 extern __m128d uX_ABI _uX_mm_cmpgtoq_sd(__m128d /*Inxmm_A*/, __m128d /*Inxmm_B*/);
 extern __m128d uX_ABI _uX_mm_cmptrueus_sd(__m128d /*Inxmm_A*/, __m128d /*Inxmm_B*/);
-    
+
 /*
  * legacy DP, compare return int
  */
@@ -261,7 +260,7 @@ uX_PACK_YMM
  * FP, compare
  */
 
-extern __m256 uX_ABI _uX_mm256_cmpeqoq_ps(__m256 /*Inymm_A*/, __m256 /*Inymm_B*/);
+	extern __m256 uX_ABI _uX_mm256_cmpeqoq_ps(__m256 /*Inymm_A*/, __m256 /*Inymm_B*/);
 extern __m256 uX_ABI _uX_mm256_cmpltos_ps(__m256 /*Inymm_A*/, __m256 /*Inymm_B*/);
 extern __m256 uX_ABI _uX_mm256_cmpleos_ps(__m256 /*Inymm_A*/, __m256 /*Inymm_B*/);
 extern __m256 uX_ABI _uX_mm256_cmpunordq_ps(__m256 /*Inymm_A*/, __m256 /*Inymm_B*/);

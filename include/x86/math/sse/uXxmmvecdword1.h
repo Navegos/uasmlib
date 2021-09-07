@@ -1,4 +1,3 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -134,228 +133,227 @@ class vecdouble4x4;
 typedef class uX_API vecdword1
 {
 public:
-    vecdword1()uX_default;
-    ~vecdword1()uX_default;
+	vecdword1()uX_default;
+	~vecdword1()uX_default;
 
-    vecdword1(const vecdword1&)uX_default;
-    vecdword1& uX_ABI operator=(const vecdword1&)uX_default;
+	vecdword1(const vecdword1&)uX_default;
+	vecdword1& uX_ABI operator=(const vecdword1&)uX_default;
 
-    vecdword1(vecdword1&&)uX_default;
-    vecdword1& uX_ABI operator=(vecdword1&&)uX_default;
+	vecdword1(vecdword1&&)uX_default;
+	vecdword1& uX_ABI operator=(vecdword1&&)uX_default;
 
-    /**
-     * \brief Constructor initialization from type __m128i.
-     *
-     * @param Inxmmi value to copy from.
-     */
-    uX_constexpr vecdword1(const __m128i Inxmmi) uX_noexcept : m128_xmmi(_uX_mm_select_si128(__m128i_i32_select1000, Inxmmi, __m128i_i32_false)) {}
+	/**
+	 * \brief Constructor initialization from type __m128i.
+	 *
+	 * @param Inxmmi value to copy from.
+	 */
+	uX_constexpr vecdword1(const __m128i Inxmmi) uX_noexcept : m128_xmmi(_uX_mm_select_si128(__m128i_i32_select1000, Inxmmi, __m128i_i32_false)) {}
 
-    /**
-     * \brief Constructor initialization from type vecdword4.
-     *
-     * @param Inxmmi_a value to copy from.
-     */
-    uX_constexpr vecdword1(const vecdword4 Inxmmi_a) uX_noexcept : m128_xmmi(_uX_mm_select_si128(__m128i_i32_select1000, Inxmmi_a, __m128i_i32_false)) {}
+	/**
+	 * \brief Constructor initialization from type vecdword4.
+	 *
+	 * @param Inxmmi_a value to copy from.
+	 */
+	uX_constexpr vecdword1(const vecdword4 Inxmmi_a) uX_noexcept : m128_xmmi(_uX_mm_select_si128(__m128i_i32_select1000, Inxmmi_a, __m128i_i32_false)) {}
 
-    /**
-     * \brief Constructor initialization from type vecdword3.
-     *
-     * @param Inxmmi_a value to copy from.
-     */
-    uX_constexpr vecdword1(const vecdword3 Inxmmi_a) uX_noexcept : m128_xmmi(_uX_mm_select_si128(__m128i_i32_select1000, Inxmmi_a, __m128i_i32_false)) {}
+	/**
+	 * \brief Constructor initialization from type vecdword3.
+	 *
+	 * @param Inxmmi_a value to copy from.
+	 */
+	uX_constexpr vecdword1(const vecdword3 Inxmmi_a) uX_noexcept : m128_xmmi(_uX_mm_select_si128(__m128i_i32_select1000, Inxmmi_a, __m128i_i32_false)) {}
 
-    /**
-     * \brief Constructor initialization from type vecdword2.
-     *
-     * @param Inxmmi_a value to copy from.
-     */
-    uX_constexpr vecdword1(const vecdword2 Inxmmi_a) uX_noexcept : m128_xmmi(_uX_mm_select_si128(__m128i_i32_select1000, Inxmmi_a, __m128i_i32_false)) {}
+	/**
+	 * \brief Constructor initialization from type vecdword2.
+	 *
+	 * @param Inxmmi_a value to copy from.
+	 */
+	uX_constexpr vecdword1(const vecdword2 Inxmmi_a) uX_noexcept : m128_xmmi(_uX_mm_select_si128(__m128i_i32_select1000, Inxmmi_a, __m128i_i32_false)) {}
 
-    /**
-     * \brief Constructor initialization from type vecudword1.
-     *
-     * @param Inxmmi_a value to copy from.
-     */
-    uX_constexpr vecdword1(const vecudword1 Inxmmi_a) uX_noexcept : m128_xmmi(Inxmmi_a) {}
+	/**
+	 * \brief Constructor initialization from type vecudword1.
+	 *
+	 * @param Inxmmi_a value to copy from.
+	 */
+	uX_constexpr vecdword1(const vecudword1 Inxmmi_a) uX_noexcept : m128_xmmi(Inxmmi_a) {}
 
-    /**
-     * \brief Constructor initialization from type vecfloat1.
-     *
-     * @param Inxmm_a value to copy from.
-     */
-    uX_constexpr vecdword1(const vecfloat1 Inxmm_a) uX_noexcept : m128_xmmi(_uX_mm_castps_si128(Inxmm_a)) {}
+	/**
+	 * \brief Constructor initialization from type vecfloat1.
+	 *
+	 * @param Inxmm_a value to copy from.
+	 */
+	uX_constexpr vecdword1(const vecfloat1 Inxmm_a) uX_noexcept : m128_xmmi(_uX_mm_castps_si128(Inxmm_a)) {}
 
-    /**
-     * \brief Constructor initialization from 1 type int32_t.
-     *
-     * \param Inint_X value to copy from.
-     */
-    uX_constexpr vecdword1(const int32_t Inint_X) uX_noexcept : m128_xmmi(_uX_mm_setr_epi32(Inint_X, 0, 0, 0)) {}
+	/**
+	 * \brief Constructor initialization from 1 type int32_t.
+	 *
+	 * \param Inint_X value to copy from.
+	 */
+	uX_constexpr vecdword1(const int32_t Inint_X) uX_noexcept : m128_xmmi(_uX_mm_setr_epi32(Inint_X, 0, 0, 0)) {}
 
-    /**
-     * \brief Constructor initialization from 1 type bool_t.
-     *
-     * \param Inbool_X value to copy from.
-     */
-    uX_constexpr vecdword1(const bool_t Inbool_X) uX_noexcept : m128_xmmi(_uX_mm_setr_epi32(Inbool_X.to_trueint(), 0, 0, 0)) {}
+	/**
+	 * \brief Constructor initialization from 1 type bool_t.
+	 *
+	 * \param Inbool_X value to copy from.
+	 */
+	uX_constexpr vecdword1(const bool_t Inbool_X) uX_noexcept : m128_xmmi(_uX_mm_setr_epi32(Inbool_X.to_trueint(), 0, 0, 0)) {}
 
-    /**
-     * \brief Constructor initialization from 1 type bool.
-     *
-     * \param Inbool_X value to copy from.
-     */
-    uX_constexpr vecdword1(const bool Inbool_X) uX_noexcept : m128_xmmi(vecdword1(bool_t(Inbool_X))) {}
+	/**
+	 * \brief Constructor initialization from 1 type bool.
+	 *
+	 * \param Inbool_X value to copy from.
+	 */
+	uX_constexpr vecdword1(const bool Inbool_X) uX_noexcept : m128_xmmi(vecdword1(bool_t(Inbool_X))) {}
 
-    /** \brief __m128i type cast operator.
-     *
-     * To convert to __m128i.
-     */
-    uX_constexpr operator __m128i() const uX_noexcept { return m128_xmmi; }
+	/** \brief __m128i type cast operator.
+	 *
+	 * To convert to __m128i.
+	 */
+	uX_constexpr operator __m128i() const uX_noexcept { return m128_xmmi; }
 
-    /**
-     * \brief Assignment operator to convert from type __m128i.
-     *
-     * @param Inxmmi value to copy from.
-     */
-    vecdword1& uX_ABI operator=(const __m128i Inxmmi) uX_noexcept;
+	/**
+	 * \brief Assignment operator to convert from type __m128i.
+	 *
+	 * @param Inxmmi value to copy from.
+	 */
+	vecdword1& uX_ABI operator=(const __m128i Inxmmi) uX_noexcept;
 
-    /**
-     * \brief vecdword4 assignment operator.
-     *
-     * To convert from type vecdword4.
-     *
-     * \param Inxmmi_a value to copy from.
-     */
-    vecdword1& uX_ABI operator=(const vecdword4 Inxmmi_a) uX_noexcept;
+	/**
+	 * \brief vecdword4 assignment operator.
+	 *
+	 * To convert from type vecdword4.
+	 *
+	 * \param Inxmmi_a value to copy from.
+	 */
+	vecdword1& uX_ABI operator=(const vecdword4 Inxmmi_a) uX_noexcept;
 
-    /**
-     * \brief vecdword3 assignment operator.
-     *
-     * To convert from type vecdword3.
-     *
-     * \param Inxmmi_a value to copy from.
-     */
-    vecdword1& uX_ABI operator=(const vecdword3 Inxmmi_a) uX_noexcept;
+	/**
+	 * \brief vecdword3 assignment operator.
+	 *
+	 * To convert from type vecdword3.
+	 *
+	 * \param Inxmmi_a value to copy from.
+	 */
+	vecdword1& uX_ABI operator=(const vecdword3 Inxmmi_a) uX_noexcept;
 
-    /**
-     * \brief vecdword2 assignment operator.
-     *
-     * To convert from type vecdword2.
-     *
-     * \param Inxmmi_a value to copy from.
-     */
-    vecdword1& uX_ABI operator=(const vecdword2 Inxmmi_a) uX_noexcept;
+	/**
+	 * \brief vecdword2 assignment operator.
+	 *
+	 * To convert from type vecdword2.
+	 *
+	 * \param Inxmmi_a value to copy from.
+	 */
+	vecdword1& uX_ABI operator=(const vecdword2 Inxmmi_a) uX_noexcept;
 
-    /**
-     * \brief vecudword1 assignment operator.
-     *
-     * To convert from type vecudword1.
-     *
-     * \param Inxmmi_a value to copy from.
-     */
-    vecdword1& uX_ABI operator=(const vecudword1 Inxmmi_a) uX_noexcept;
+	/**
+	 * \brief vecudword1 assignment operator.
+	 *
+	 * To convert from type vecudword1.
+	 *
+	 * \param Inxmmi_a value to copy from.
+	 */
+	vecdword1& uX_ABI operator=(const vecudword1 Inxmmi_a) uX_noexcept;
 
-    /**
-     * \brief vecfloat1 assignment operator.
-     *
-     * To convert from type vecfloat1.
-     *
-     * \param Inxmm_a value to copy from.
-     */
-    vecdword1& uX_ABI operator=(const vecfloat1 Inxmm_a) uX_noexcept;
+	/**
+	 * \brief vecfloat1 assignment operator.
+	 *
+	 * To convert from type vecfloat1.
+	 *
+	 * \param Inxmm_a value to copy from.
+	 */
+	vecdword1& uX_ABI operator=(const vecfloat1 Inxmm_a) uX_noexcept;
 
-    /**
-     * \brief int32_t assignment operator
-     *
-     * To convert from type int32_t.
-     *
-     * \param Inint_a int32_t value to copy from.
-     */
-    vecdword1& uX_ABI operator=(const int32_t Inint_a) uX_noexcept;
+	/**
+	 * \brief int32_t assignment operator
+	 *
+	 * To convert from type int32_t.
+	 *
+	 * \param Inint_a int32_t value to copy from.
+	 */
+	vecdword1& uX_ABI operator=(const int32_t Inint_a) uX_noexcept;
 
-    /**
-     * \brief bool_t assignment operator.
-     *
-     * To convert from type bool_t.
-     *
-     * \param Inbool_a value to copy from.
-     */
-    vecdword1& uX_ABI operator=(const bool_t Inbool_a) uX_noexcept;
+	/**
+	 * \brief bool_t assignment operator.
+	 *
+	 * To convert from type bool_t.
+	 *
+	 * \param Inbool_a value to copy from.
+	 */
+	vecdword1& uX_ABI operator=(const bool_t Inbool_a) uX_noexcept;
 
-    /**
-     * \brief bool assignment operator.
-     *
-     * To convert from type bool.
-     *
-     * \param Inbool_a value to copy from.
-     */
-    vecdword1& uX_ABI operator=(const bool Inbool_a) uX_noexcept;
+	/**
+	 * \brief bool assignment operator.
+	 *
+	 * To convert from type bool.
+	 *
+	 * \param Inbool_a value to copy from.
+	 */
+	vecdword1& uX_ABI operator=(const bool Inbool_a) uX_noexcept;
 
-    /**
-     * \brief Get vector.
-     *
-     * Gets vector.
-     * \return vector.
-     */
-    __m128i uX_ABI get() const uX_noexcept;
+	/**
+	 * \brief Get vector.
+	 *
+	 * Gets vector.
+	 * \return vector.
+	 */
+	__m128i uX_ABI get() const uX_noexcept;
 
-    /**
-     * \brief Get reference to vector.
-     *
-     * Gets reference to vector.
-     * \return vector.
-     */
-    __m128i& uX_ABI ref() uX_noexcept;
+	/**
+	 * \brief Get reference to vector.
+	 *
+	 * Gets reference to vector.
+	 * \return vector.
+	 */
+	__m128i& uX_ABI ref() uX_noexcept;
 
-    /**
-     * \brief Set the vector.
-     *
-     * Sets all vector elements.
-     *
-     * \param Inxmmi.
-     */
-    void uX_ABI set(const __m128i Inxmmi) uX_noexcept;
+	/**
+	 * \brief Set the vector.
+	 *
+	 * Sets all vector elements.
+	 *
+	 * \param Inxmmi.
+	 */
+	void uX_ABI set(const __m128i Inxmmi) uX_noexcept;
 
 protected:
 
 private:
-    union
-    {
-        __m128i         m128_xmmi;
-        struct
-        {
-            int32_t     _dw_x;
-        };
-        struct
-        {
-            int16_t     _w_0, _w_1;
-        };
-        struct
-        {
-            int8_t      _b_0, _b_1, _b_2, _b_3;
-        };
-        int32_t         m128_dw[1];
-        int16_t          m128_w[2];
-        int8_t           m128_b[4];
-    };
+	union
+	{
+		__m128i         m128_xmmi;
+		struct
+		{
+			int32_t     _dw_x;
+		};
+		struct
+		{
+			int16_t     _w_0, _w_1;
+		};
+		struct
+		{
+			int8_t      _b_0, _b_1, _b_2, _b_3;
+		};
+		int32_t         m128_dw[1];
+		int16_t          m128_w[2];
+		int8_t           m128_b[4];
+	};
 
 public:
-    uX_const uint32_t uX_ABI m128_xmm_size           () const uX_noexcept { return 16; }
-    uX_const uint32_t uX_ABI m128_xmm_i64_elements   () const uX_noexcept { return 2; }
-    uX_const uint32_t uX_ABI m128_xmm_i32_elements   () const uX_noexcept { return 4; }
-    uX_const uint32_t uX_ABI m128_xmm_i16_elements   () const uX_noexcept { return 8; }
-    uX_const uint32_t uX_ABI m128_xmm_i8_elements    () const uX_noexcept { return 16; }
-    uX_const uint32_t uX_ABI m128_i32_ptr_lenght     () const uX_noexcept { return 1; }
-    uX_const uint32_t uX_ABI m128_i16_ptr_lenght     () const uX_noexcept { return 2; }
-    uX_const uint32_t uX_ABI m128_i8_ptr_lenght      () const uX_noexcept { return 4; }
-    uX_const uint32_t uX_ABI m128_i32_ptr_size       () const uX_noexcept { return 4; }
-    uX_const uint32_t uX_ABI m128_i16_ptr_size       () const uX_noexcept { return 4; }
-    uX_const uint32_t uX_ABI m128_i8_ptr_size        () const uX_noexcept { return 4; }
-    uX_const uint32_t uX_ABI m128_i64_size           () const uX_noexcept { return 8; }
-    uX_const uint32_t uX_ABI m128_i32_size           () const uX_noexcept { return 4; }
-    uX_const uint32_t uX_ABI m128_i16_size           () const uX_noexcept { return 2; }
-    uX_const uint32_t uX_ABI m128_i8_size            () const uX_noexcept { return 1; }
-
+	uX_const uint32_t uX_ABI m128_xmm_size() const uX_noexcept { return 16; }
+	uX_const uint32_t uX_ABI m128_xmm_i64_elements() const uX_noexcept { return 2; }
+	uX_const uint32_t uX_ABI m128_xmm_i32_elements() const uX_noexcept { return 4; }
+	uX_const uint32_t uX_ABI m128_xmm_i16_elements() const uX_noexcept { return 8; }
+	uX_const uint32_t uX_ABI m128_xmm_i8_elements() const uX_noexcept { return 16; }
+	uX_const uint32_t uX_ABI m128_i32_ptr_length() const uX_noexcept { return 1; }
+	uX_const uint32_t uX_ABI m128_i16_ptr_length() const uX_noexcept { return 2; }
+	uX_const uint32_t uX_ABI m128_i8_ptr_length() const uX_noexcept { return 4; }
+	uX_const uint32_t uX_ABI m128_i32_ptr_size() const uX_noexcept { return 4; }
+	uX_const uint32_t uX_ABI m128_i16_ptr_size() const uX_noexcept { return 4; }
+	uX_const uint32_t uX_ABI m128_i8_ptr_size() const uX_noexcept { return 4; }
+	uX_const uint32_t uX_ABI m128_i64_size() const uX_noexcept { return 8; }
+	uX_const uint32_t uX_ABI m128_i32_size() const uX_noexcept { return 4; }
+	uX_const uint32_t uX_ABI m128_i16_size() const uX_noexcept { return 2; }
+	uX_const uint32_t uX_ABI m128_i8_size() const uX_noexcept { return 1; }
 }vecdword1_t;
 #endif // uX_SSE2
 

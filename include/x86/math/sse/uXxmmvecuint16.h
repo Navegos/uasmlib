@@ -1,4 +1,3 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -89,75 +88,74 @@ class vecdouble4x4;
 typedef class uX_API vecuint16
 {
 public:
-    vecuint16()uX_default;
-    ~vecuint16()uX_default;
+	vecuint16()uX_default;
+	~vecuint16()uX_default;
 
 #ifdef uX_DEFAULT_CTOR_SUPPORT
-    vecuint16(const vecuint16&)uX_default;
-    vecuint16& uX_callconv operator=(const vecuint16&)uX_default;
+	vecuint16(const vecuint16&)uX_default;
+	vecuint16& uX_callconv operator=(const vecuint16&)uX_default;
 
-    vecuint16(vecuint16&&)uX_default;
-    vecuint16& uX_callconv operator=(vecuint16&&)uX_default;
+	vecuint16(vecuint16&&)uX_default;
+	vecuint16& uX_callconv operator=(vecuint16&&)uX_default;
 #else
-    vecuint16(const vecuint16& Invecuint16);
-    vecuint16& uX_callconv operator=(const vecuint16& Invecuint16);
+	vecuint16(const vecuint16& Invecuint16);
+	vecuint16& uX_callconv operator=(const vecuint16& Invecuint16);
 
-    vecuint16(vecuint16&& Invecuint16);
-    vecuint16& uX_callconv operator=(vecuint16&& Invecuint16);
+	vecuint16(vecuint16&& Invecuint16);
+	vecuint16& uX_callconv operator=(vecuint16&& Invecuint16);
 #endif
-    /**
-     * Constructor initialization from type __m128i.
-     *
-     * @param Inxmmi value to copy from.
-     */
-    uX_constexpr vecuint16(const __m128i Inxmmi) : m128_xmmi{Inxmmi} {}
+	/**
+	 * Constructor initialization from type __m128i.
+	 *
+	 * @param Inxmmi value to copy from.
+	 */
+	uX_constexpr vecuint16(const __m128i Inxmmi) : m128_xmmi{Inxmmi} {}
 
-    /**
-     * Constructor initialization from type unsigned __int16*.
-     *
-     * @param Inpint16 value to copy from.
-     */
-    uX_explicit vecuint16(uX_InReads(8) const unsigned __int16* Inpint16);
+	/**
+	 * Constructor initialization from type unsigned __int16*.
+	 *
+	 * @param Inpint16 value to copy from.
+	 */
+	uX_explicit vecuint16(uX_InReads(8) const unsigned __int16* Inpint16);
 
-    /** Type cast operator to convert to __m128i. */
-    operator __m128i() const;
+	/** Type cast operator to convert to __m128i. */
+	operator __m128i() const;
 
-    /** Type cast operator to convert to unsigned __int16*. */
-    /*operator unsigned __int16*() const;*/
+	/** Type cast operator to convert to unsigned __int16*. */
+	/*operator unsigned __int16*() const;*/
 
-    /**
-     * Assignment operator to convert from type __m128i.
-     *
-     * @param Inxmmi value to copy from.
-     */
-    vecuint16& uX_callconv operator=(const __m128i Inxmmi);
+	/**
+	 * Assignment operator to convert from type __m128i.
+	 *
+	 * @param Inxmmi value to copy from.
+	 */
+	vecuint16& uX_callconv operator=(const __m128i Inxmmi);
 
-    /**
-     * Assignment operator to convert from type unsigned __int16*.
-     *
-     * @param Inpint16 value to copy from.
-     */
-    vecuint16& uX_callconv operator=(uX_InReads(8) const unsigned __int16* Inpint16);
+	/**
+	 * Assignment operator to convert from type unsigned __int16*.
+	 *
+	 * @param Inpint16 value to copy from.
+	 */
+	vecuint16& uX_callconv operator=(uX_InReads(8) const unsigned __int16* Inpint16);
 
 protected:
 
 private:
-    union
-    {
-        __m128i                   m128_xmmi;
-        struct
-        {
-            unsigned __int16 _0, _1, _2, _3,
-                             _4, _5, _6, _7;
-        };
-        unsigned __int16         m128_uw[8];
-    };
+	union
+	{
+		__m128i                   m128_xmmi;
+		struct
+		{
+			unsigned __int16 _0, _1, _2, _3,
+				_4, _5, _6, _7;
+		};
+		unsigned __int16         m128_uw[8];
+	};
 
-    static uX_const uint32_t m128_xmm_size = 16;
-    static uX_const uint32_t m128_ui16_ptr_lenght = 8;
-    static uX_const uint32_t m128_ui16_ptr_size = 16;
-    static uX_const uint32_t m128_ui16_size = 2;
-
+	static uX_const uint32_t m128_xmm_size = 16;
+	static uX_const uint32_t m128_ui16_ptr_length = 8;
+	static uX_const uint32_t m128_ui16_ptr_size = 16;
+	static uX_const uint32_t m128_ui16_size = 2;
 }vecuint16_t;
 #endif // uX_SSE2
 

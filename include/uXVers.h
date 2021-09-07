@@ -1,22 +1,21 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-; / /                                                                               / /
-; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
-; / /                                                                               / /
-; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
-; / /    you may not use this file except in compliance with the License.           / /
-; / /    You may obtain a copy of the License at                                    / /
-; / /                                                                               / /
-; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
-; / /                                                                               / /
-; / /    Unless required by applicable law or agreed to in writing, software        / /
-; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
-; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
-; / /    See the License for the specific language governing permissions and        / /
-; / /    limitations under the License.                                             / /
-; / /                                                                               / /
+; / /																				/ /
+; / /			Copyright 2021 (c) Navegos QA - optimized library					/ /
+; / /																				/ /
+; / /	Licensed under the Apache License, Version 2.0 (the "License");				/ /
+; / /	you may not use this file except in compliance with the License.			/ /
+; / /	You may obtain a copy of the License at										/ /
+; / /																				/ /
+; / /		http://www.apache.org/licenses/LICENSE-2.0								/ /
+; / /																				/ /
+; / /	Unless required by applicable law or agreed to in writing, software			/ /
+; / /	distributed under the License is distributed on an "AS IS" BASIS,			/ /
+; / /	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.	/ /
+; / /	See the License for the specific language governing permissions and			/ /
+; / /	limitations under the License.												/ /
+; / /																				/ /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 */
@@ -51,16 +50,14 @@
 
 #define uX_VERSION_CST uX_VERSION_MAJOR , uX_VERSION_MINOR , uX_VERSION_REVISION, uX_VERSION_SUBREVISION
 
-
 #define uX_VERSION_STR uX_Stringer(uX_VERSION_MAJOR) "." uX_Stringer(uX_VERSION_MINOR) "." uX_Stringer(uX_VERSION_REVISION) "." uX_Stringer(uX_VERSION_SUBREVISION)
 
-#define uX_VERSION_MAJOR_STR       uX_Stringer(uX_VERSION_MAJOR)
-#define uX_VERSION_MINOR_STR       uX_Stringer(uX_VERSION_MINOR)
-#define uX_VERSION_PATCH_STR       uX_Stringer(uX_VERSION_REVISION)
-#define uX_VERSION_BUILD_STR       uX_Stringer(uX_VERSION_SUBREVISION)
+#define uX_VERSION_MAJOR_STR		uX_Stringer(uX_VERSION_MAJOR)
+#define uX_VERSION_MINOR_STR		uX_Stringer(uX_VERSION_MINOR)
+#define uX_VERSION_PATCH_STR		uX_Stringer(uX_VERSION_REVISION)
+#define uX_VERSION_BUILD_STR		uX_Stringer(uX_VERSION_SUBREVISION)
 
-#define uX_FULL_VERSION_STR     uX_VERSION_MAJOR_STR "." uX_VERSION_MINOR_STR "." uX_VERSION_PATCH_STR "." uX_VERSION_BUILD_STR " (" uX_RELEASE_NAME ")"
-
+#define uX_FULL_VERSION_STR			uX_VERSION_MAJOR_STR "." uX_VERSION_MINOR_STR "." uX_VERSION_PATCH_STR "." uX_VERSION_BUILD_STR " (" uX_RELEASE_NAME ")"
 
 // The constant uX_VERSION_ALT is used when creating certain uasmlib module objects
 // This is to ensure that the application is using the same header version as the library was built with
@@ -73,17 +70,17 @@
 
 // Finally, define strings.
 #ifdef uX_DEBUG
-#define uX_LIBRARY   uX_LINK_TYPE_STR " " uX_BUILD_PREFIX uX_BUILD_TYPE " console application "
+#define uX_LIBRARY		uX_LINK_TYPE_STR " " uX_BUILD_PREFIX uX_BUILD_TYPE " console application "
 #else
-#define uX_LIBRARY   uX_LINK_TYPE_STR " console application "
+#define uX_LIBRARY		uX_LINK_TYPE_STR " console application "
 #endif
-#define uX_COPYRIGHT "Copyright (C) Navegos (R) 2021. All rights reserved. Optimized Library."
-#define uX_COMPANY "(C) Navegos (R) 2021. Optimized Library."
+#define uX_COPYRIGHT	"Copyright (C) Navegos (R) 2021. All rights reserved. Optimized Library."
+#define uX_COMPANY		"(C) Navegos (R) 2021. Optimized Library."
 
-#define uX_VERSION_MAGIC_STR   "\x00@(#) "
-#define uX_VERSION_MAGIC_LEN   6                // Length of uX_VERSION_MAGIC_STR.
-#define uX_VERSION_PREF_STR    "(C) Navegos (R) uasmlib"
-#define uX_VERSION_PREFIX      uX_VERSION_MAGIC_STR uX_VERSION_PREF_STR
+#define uX_VERSION_MAGIC_STR	"\x00@(#) "
+#define uX_VERSION_MAGIC_LEN	6				// Length of uX_VERSION_MAGIC_STR.
+#define uX_VERSION_PREF_STR		"(C) Navegos (R) uasmlib"
+#define uX_VERSION_PREFIX		uX_VERSION_MAGIC_STR uX_VERSION_PREF_STR
 
 #define uX_FILE_DESCRIPTION uX_VERSION_PREF_STR " " uX_FULL_VERSION_STR " " uX_FAMILY_STR "" uX_ARCH_STR " " uX_COMPILER " " uX_LIBRARY "of " uX_BUILD_DATE "\0"
 #define uX_PRODUCT_NAME uX_VERSION_PREF_STR " " uX_FAMILY_STR "" uX_ARCH_STR " " uX_LIBRARY "\0"

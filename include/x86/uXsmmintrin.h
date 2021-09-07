@@ -1,22 +1,21 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-; / /                                                                               / /
-; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
-; / /                                                                               / /
-; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
-; / /    you may not use this file except in compliance with the License.           / /
-; / /    You may obtain a copy of the License at                                    / /
-; / /                                                                               / /
-; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
-; / /                                                                               / /
-; / /    Unless required by applicable law or agreed to in writing, software        / /
-; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
-; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
-; / /    See the License for the specific language governing permissions and        / /
-; / /    limitations under the License.                                             / /
-; / /                                                                               / /
+; / /																				/ /
+; / /			Copyright 2021 (c) Navegos QA - optimized library					/ /
+; / /																				/ /
+; / /	Licensed under the Apache License, Version 2.0 (the "License");				/ /
+; / /	you may not use this file except in compliance with the License.			/ /
+; / /	You may obtain a copy of the License at										/ /
+; / /																				/ /
+; / /		http://www.apache.org/licenses/LICENSE-2.0								/ /
+; / /																				/ /
+; / /	Unless required by applicable law or agreed to in writing, software			/ /
+; / /	distributed under the License is distributed on an "AS IS" BASIS,			/ /
+; / /	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.	/ /
+; / /	See the License for the specific language governing permissions and			/ /
+; / /	limitations under the License.												/ /
+; / /																				/ /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 */
@@ -94,10 +93,10 @@
 /* from argument "a" of _uX_mm_blend_****_epi16 that will be     */
 /* places in pi1 of result. pi0 is the same for pi0 of */
 /* result                                              */
-/* const __m128 temp = _uX_MM_BLENDR_IM_EPI16(Inxmm_A, Inxmm_B, 0, 1, 2, 3, 4, 5, 6, 7); */
+/* const __m128 temp = _uX_MM_BLENDR_EPI16_IM(Inxmm_A, Inxmm_B, 0, 1, 2, 3, 4, 5, 6, 7); */
 /*******************************************************/
-#define _uX_MM_BLEND_IM_EPI16(VA,VB,pi7,pi6,pi5,pi4,pi3,pi2,pi1,pi0) _uX_mm_blend_##pi7##pi6##pi5##pi4##pi3##pi2##pi1##pi0##_epi16(VA,VB)
-#define _uX_MM_BLENDR_IM_EPI16(VA,VB,pi0,pi1,pi2,pi3,pi4,pi5,pi6,pi7) _uX_mm_blend_##pi7##pi6##pi5##pi4##pi3##pi2##pi1##pi0##_epi16(VA,VB)
+#define _uX_MM_BLEND_EPI16_IM(VA,VB,pi7,pi6,pi5,pi4,pi3,pi2,pi1,pi0) _uX_mm_blend_##pi7##pi6##pi5##pi4##pi3##pi2##pi1##pi0##_epi16(VA,VB)
+#define _uX_MM_BLENDR_EPI16_IM(VA,VB,pi0,pi1,pi2,pi3,pi4,pi5,pi6,pi7) _uX_mm_blend_##pi7##pi6##pi5##pi4##pi3##pi2##pi1##pi0##_epi16(VA,VB)
 
 /*******************************************************/
 /* MACRO for use _uX_mm_blend_****_ps().                */
@@ -108,10 +107,10 @@
 /* from argument "a" of _uX_mm_blend_****_ps that will be     */
 /* places in fp1 of result. fp0 is the same for fp0 of */
 /* result                                              */
-/* const __m128 temp = _uX_MM_BLENDR_IM_PS(Inxmm_A, Inxmm_B, 0, 1, 2, 3); */
+/* const __m128 temp = _uX_MM_BLENDR_PS_IM(Inxmm_A, Inxmm_B, 0, 1, 2, 3); */
 /*******************************************************/
-#define _uX_MM_BLEND_IM_PS(VA,VB,fp3,fp2,fp1,fp0) _uX_mm_blend_##fp3##fp2##fp1##fp0##_ps(VA,VB)
-#define _uX_MM_BLENDR_IM_PS(VA,VB,fp0,fp1,fp2,fp3) _uX_mm_blend_##fp3##fp2##fp1##fp0##_ps(VA,VB)
+#define _uX_MM_BLEND_PS_IM(VA,VB,fp3,fp2,fp1,fp0) _uX_mm_blend_##fp3##fp2##fp1##fp0##_ps(VA,VB)
+#define _uX_MM_BLENDR_PS_IM(VA,VB,fp0,fp1,fp2,fp3) _uX_mm_blend_##fp3##fp2##fp1##fp0##_ps(VA,VB)
 
 /*******************************************************/
 /* MACRO for use _uX_mm_blend_****_pd().                */
@@ -122,10 +121,10 @@
 /* from argument "a" of _uX_mm_blend_****_pd that will be     */
 /* places in fp1 of result. fp0 is the same for fp0 of */
 /* result                                              */
-/* const __m128 temp = _uX_MM_BLENDR_IM_PD(Inxmm_A, Inxmm_B, 0, 1); */
+/* const __m128 temp = _uX_MM_BLENDR_PD_IM(Inxmm_A, Inxmm_B, 0, 1); */
 /*******************************************************/
-#define _uX_MM_BLEND_IM_PD(VA,VB,fp3,fp2,fp1,fp0) _uX_mm_blend_##fp3##fp2##fp1##fp0##_pd(VA,VB)
-#define _uX_MM_BLENDR_IM_PD(VA,VB,fp0,fp1,fp2,fp3) _uX_mm_blend_##fp3##fp2##fp1##fp0##_pd(VA,VB)
+#define _uX_MM_BLEND_PD_IM(VA,VB,fp3,fp2,fp1,fp0) _uX_mm_blend_##fp3##fp2##fp1##fp0##_pd(VA,VB)
+#define _uX_MM_BLENDR_PD_IM(VA,VB,fp0,fp1,fp2,fp3) _uX_mm_blend_##fp3##fp2##fp1##fp0##_pd(VA,VB)
 
 /*******************************************************/
 /* MACRO for use _uX_mm_dp_ps_*().                  */
@@ -466,7 +465,6 @@ extern __m128i uX_ABI _uX_mm_cvtepu8_epi64(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_cvtepu32_epi64(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_cvtepu16_epi64(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_cvtepu8_epi16(__m128i /*Inxmm_A*/);
-
 
 // Pack 8 double words from 2 operands into 8 words of result
 // with unsigned saturation

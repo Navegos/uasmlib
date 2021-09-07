@@ -1,88 +1,112 @@
 
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / /                                                                               / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
+; / /                                                                               / /
+; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
+; / /    you may not use this file except in compliance with the License.           / /
+; / /    You may obtain a copy of the License at                                    / /
+; / /                                                                               / /
+; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
+; / /                                                                               / /
+; / /    Unless required by applicable law or agreed to in writing, software        / /
+; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
+; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
+; / /    See the License for the specific language governing permissions and        / /
+; / /    limitations under the License.                                             / /
+; / /                                                                               / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
+option casemap:none
+include macrolib.inc
+include uXasm.inc
+
 ifndef __MIC__
 
-    include uXx86asm.inc
+.xmm
+option arch:sse
+option evex:0
 
-    .xmm
-    option arch:sse
-    option evex:0
+alignstackfieldproc
 
-    .data?
+.data?
 
-    .data
+.data
 
-    .const
+.const
 
-    alignsize_t
-    _m128iaeskeygenassistsi128jmptable isize_t  offset _m128iaeskeygenassistsi128_0, offset _m128iaeskeygenassistsi128_1, offset _m128iaeskeygenassistsi128_2, offset _m128iaeskeygenassistsi128_3, \
-                                                offset _m128iaeskeygenassistsi128_4, offset _m128iaeskeygenassistsi128_5, offset _m128iaeskeygenassistsi128_6, offset _m128iaeskeygenassistsi128_7, \
-                                                offset _m128iaeskeygenassistsi128_8, offset _m128iaeskeygenassistsi128_9, offset _m128iaeskeygenassistsi128_10, offset _m128iaeskeygenassistsi128_11, \
-                                                offset _m128iaeskeygenassistsi128_12, offset _m128iaeskeygenassistsi128_13, offset _m128iaeskeygenassistsi128_14, offset _m128iaeskeygenassistsi128_15, \
-                                                offset _m128iaeskeygenassistsi128_16, offset _m128iaeskeygenassistsi128_17, offset _m128iaeskeygenassistsi128_18, offset _m128iaeskeygenassistsi128_19, \
-                                                offset _m128iaeskeygenassistsi128_20, offset _m128iaeskeygenassistsi128_21, offset _m128iaeskeygenassistsi128_22, offset _m128iaeskeygenassistsi128_23, \
-                                                offset _m128iaeskeygenassistsi128_24, offset _m128iaeskeygenassistsi128_25, offset _m128iaeskeygenassistsi128_26, offset _m128iaeskeygenassistsi128_27, \
-                                                offset _m128iaeskeygenassistsi128_28, offset _m128iaeskeygenassistsi128_29, offset _m128iaeskeygenassistsi128_30, offset _m128iaeskeygenassistsi128_31, \
-                                                offset _m128iaeskeygenassistsi128_32, offset _m128iaeskeygenassistsi128_33, offset _m128iaeskeygenassistsi128_34, offset _m128iaeskeygenassistsi128_35, \
-                                                offset _m128iaeskeygenassistsi128_36, offset _m128iaeskeygenassistsi128_37, offset _m128iaeskeygenassistsi128_38, offset _m128iaeskeygenassistsi128_39, \
-                                                offset _m128iaeskeygenassistsi128_40, offset _m128iaeskeygenassistsi128_41, offset _m128iaeskeygenassistsi128_42, offset _m128iaeskeygenassistsi128_43, \
-                                                offset _m128iaeskeygenassistsi128_44, offset _m128iaeskeygenassistsi128_45, offset _m128iaeskeygenassistsi128_46, offset _m128iaeskeygenassistsi128_47, \
-                                                offset _m128iaeskeygenassistsi128_48, offset _m128iaeskeygenassistsi128_49, offset _m128iaeskeygenassistsi128_50, offset _m128iaeskeygenassistsi128_51, \
-                                                offset _m128iaeskeygenassistsi128_52, offset _m128iaeskeygenassistsi128_53, offset _m128iaeskeygenassistsi128_54, offset _m128iaeskeygenassistsi128_55, \
-                                                offset _m128iaeskeygenassistsi128_56, offset _m128iaeskeygenassistsi128_57, offset _m128iaeskeygenassistsi128_58, offset _m128iaeskeygenassistsi128_59, \
-                                                offset _m128iaeskeygenassistsi128_60, offset _m128iaeskeygenassistsi128_61, offset _m128iaeskeygenassistsi128_62, offset _m128iaeskeygenassistsi128_63, \
-                                                offset _m128iaeskeygenassistsi128_64, offset _m128iaeskeygenassistsi128_65, offset _m128iaeskeygenassistsi128_66, offset _m128iaeskeygenassistsi128_67, \
-                                                offset _m128iaeskeygenassistsi128_68, offset _m128iaeskeygenassistsi128_69, offset _m128iaeskeygenassistsi128_70, offset _m128iaeskeygenassistsi128_71, \
-                                                offset _m128iaeskeygenassistsi128_72, offset _m128iaeskeygenassistsi128_73, offset _m128iaeskeygenassistsi128_74, offset _m128iaeskeygenassistsi128_75, \
-                                                offset _m128iaeskeygenassistsi128_76, offset _m128iaeskeygenassistsi128_77, offset _m128iaeskeygenassistsi128_78, offset _m128iaeskeygenassistsi128_79, \
-                                                offset _m128iaeskeygenassistsi128_80, offset _m128iaeskeygenassistsi128_81, offset _m128iaeskeygenassistsi128_82, offset _m128iaeskeygenassistsi128_83, \
-                                                offset _m128iaeskeygenassistsi128_84, offset _m128iaeskeygenassistsi128_85, offset _m128iaeskeygenassistsi128_86, offset _m128iaeskeygenassistsi128_87, \
-                                                offset _m128iaeskeygenassistsi128_88, offset _m128iaeskeygenassistsi128_89, offset _m128iaeskeygenassistsi128_90, offset _m128iaeskeygenassistsi128_91, \
-                                                offset _m128iaeskeygenassistsi128_92, offset _m128iaeskeygenassistsi128_93, offset _m128iaeskeygenassistsi128_94, offset _m128iaeskeygenassistsi128_95, \
-                                                offset _m128iaeskeygenassistsi128_96, offset _m128iaeskeygenassistsi128_97, offset _m128iaeskeygenassistsi128_98, offset _m128iaeskeygenassistsi128_99, \
-                                                offset _m128iaeskeygenassistsi128_100, offset _m128iaeskeygenassistsi128_101, offset _m128iaeskeygenassistsi128_102, offset _m128iaeskeygenassistsi128_103, \
-                                                offset _m128iaeskeygenassistsi128_104, offset _m128iaeskeygenassistsi128_105, offset _m128iaeskeygenassistsi128_106, offset _m128iaeskeygenassistsi128_107, \
-                                                offset _m128iaeskeygenassistsi128_108, offset _m128iaeskeygenassistsi128_109, offset _m128iaeskeygenassistsi128_110, offset _m128iaeskeygenassistsi128_111, \
-                                                offset _m128iaeskeygenassistsi128_112, offset _m128iaeskeygenassistsi128_113, offset _m128iaeskeygenassistsi128_114, offset _m128iaeskeygenassistsi128_115, \
-                                                offset _m128iaeskeygenassistsi128_116, offset _m128iaeskeygenassistsi128_117, offset _m128iaeskeygenassistsi128_118, offset _m128iaeskeygenassistsi128_119, \
-                                                offset _m128iaeskeygenassistsi128_120, offset _m128iaeskeygenassistsi128_121, offset _m128iaeskeygenassistsi128_122, offset _m128iaeskeygenassistsi128_123, \
-                                                offset _m128iaeskeygenassistsi128_124, offset _m128iaeskeygenassistsi128_125, offset _m128iaeskeygenassistsi128_126, offset _m128iaeskeygenassistsi128_127, \
-                                                offset _m128iaeskeygenassistsi128_128, offset _m128iaeskeygenassistsi128_129, offset _m128iaeskeygenassistsi128_130, offset _m128iaeskeygenassistsi128_131, \
-                                                offset _m128iaeskeygenassistsi128_132, offset _m128iaeskeygenassistsi128_133, offset _m128iaeskeygenassistsi128_134, offset _m128iaeskeygenassistsi128_135, \
-                                                offset _m128iaeskeygenassistsi128_136, offset _m128iaeskeygenassistsi128_137, offset _m128iaeskeygenassistsi128_138, offset _m128iaeskeygenassistsi128_139, \
-                                                offset _m128iaeskeygenassistsi128_140, offset _m128iaeskeygenassistsi128_141, offset _m128iaeskeygenassistsi128_142, offset _m128iaeskeygenassistsi128_143, \
-                                                offset _m128iaeskeygenassistsi128_144, offset _m128iaeskeygenassistsi128_145, offset _m128iaeskeygenassistsi128_146, offset _m128iaeskeygenassistsi128_147, \
-                                                offset _m128iaeskeygenassistsi128_148, offset _m128iaeskeygenassistsi128_149, offset _m128iaeskeygenassistsi128_150, offset _m128iaeskeygenassistsi128_151, \
-                                                offset _m128iaeskeygenassistsi128_152, offset _m128iaeskeygenassistsi128_153, offset _m128iaeskeygenassistsi128_154, offset _m128iaeskeygenassistsi128_155, \
-                                                offset _m128iaeskeygenassistsi128_156, offset _m128iaeskeygenassistsi128_157, offset _m128iaeskeygenassistsi128_158, offset _m128iaeskeygenassistsi128_159, \
-                                                offset _m128iaeskeygenassistsi128_160, offset _m128iaeskeygenassistsi128_161, offset _m128iaeskeygenassistsi128_162, offset _m128iaeskeygenassistsi128_163, \
-                                                offset _m128iaeskeygenassistsi128_164, offset _m128iaeskeygenassistsi128_165, offset _m128iaeskeygenassistsi128_166, offset _m128iaeskeygenassistsi128_167, \
-                                                offset _m128iaeskeygenassistsi128_168, offset _m128iaeskeygenassistsi128_169, offset _m128iaeskeygenassistsi128_170, offset _m128iaeskeygenassistsi128_171, \
-                                                offset _m128iaeskeygenassistsi128_172, offset _m128iaeskeygenassistsi128_173, offset _m128iaeskeygenassistsi128_174, offset _m128iaeskeygenassistsi128_175, \
-                                                offset _m128iaeskeygenassistsi128_176, offset _m128iaeskeygenassistsi128_177, offset _m128iaeskeygenassistsi128_178, offset _m128iaeskeygenassistsi128_179, \
-                                                offset _m128iaeskeygenassistsi128_180, offset _m128iaeskeygenassistsi128_181, offset _m128iaeskeygenassistsi128_182, offset _m128iaeskeygenassistsi128_183, \
-                                                offset _m128iaeskeygenassistsi128_184, offset _m128iaeskeygenassistsi128_185, offset _m128iaeskeygenassistsi128_186, offset _m128iaeskeygenassistsi128_187, \
-                                                offset _m128iaeskeygenassistsi128_188, offset _m128iaeskeygenassistsi128_189, offset _m128iaeskeygenassistsi128_190, offset _m128iaeskeygenassistsi128_191, \
-                                                offset _m128iaeskeygenassistsi128_192, offset _m128iaeskeygenassistsi128_193, offset _m128iaeskeygenassistsi128_194, offset _m128iaeskeygenassistsi128_195, \
-                                                offset _m128iaeskeygenassistsi128_196, offset _m128iaeskeygenassistsi128_197, offset _m128iaeskeygenassistsi128_198, offset _m128iaeskeygenassistsi128_199, \
-                                                offset _m128iaeskeygenassistsi128_200, offset _m128iaeskeygenassistsi128_201, offset _m128iaeskeygenassistsi128_202, offset _m128iaeskeygenassistsi128_203, \
-                                                offset _m128iaeskeygenassistsi128_204, offset _m128iaeskeygenassistsi128_205, offset _m128iaeskeygenassistsi128_206, offset _m128iaeskeygenassistsi128_207, \
-                                                offset _m128iaeskeygenassistsi128_208, offset _m128iaeskeygenassistsi128_209, offset _m128iaeskeygenassistsi128_210, offset _m128iaeskeygenassistsi128_211, \
-                                                offset _m128iaeskeygenassistsi128_212, offset _m128iaeskeygenassistsi128_213, offset _m128iaeskeygenassistsi128_214, offset _m128iaeskeygenassistsi128_215, \
-                                                offset _m128iaeskeygenassistsi128_216, offset _m128iaeskeygenassistsi128_217, offset _m128iaeskeygenassistsi128_218, offset _m128iaeskeygenassistsi128_219, \
-                                                offset _m128iaeskeygenassistsi128_220, offset _m128iaeskeygenassistsi128_221, offset _m128iaeskeygenassistsi128_222, offset _m128iaeskeygenassistsi128_223, \
-                                                offset _m128iaeskeygenassistsi128_224, offset _m128iaeskeygenassistsi128_225, offset _m128iaeskeygenassistsi128_226, offset _m128iaeskeygenassistsi128_227, \
-                                                offset _m128iaeskeygenassistsi128_228, offset _m128iaeskeygenassistsi128_229, offset _m128iaeskeygenassistsi128_230, offset _m128iaeskeygenassistsi128_231, \
-                                                offset _m128iaeskeygenassistsi128_232, offset _m128iaeskeygenassistsi128_233, offset _m128iaeskeygenassistsi128_234, offset _m128iaeskeygenassistsi128_235, \
-                                                offset _m128iaeskeygenassistsi128_236, offset _m128iaeskeygenassistsi128_237, offset _m128iaeskeygenassistsi128_238, offset _m128iaeskeygenassistsi128_239, \
-                                                offset _m128iaeskeygenassistsi128_240, offset _m128iaeskeygenassistsi128_241, offset _m128iaeskeygenassistsi128_242, offset _m128iaeskeygenassistsi128_243, \
-                                                offset _m128iaeskeygenassistsi128_244, offset _m128iaeskeygenassistsi128_245, offset _m128iaeskeygenassistsi128_246, offset _m128iaeskeygenassistsi128_247, \
-                                                offset _m128iaeskeygenassistsi128_248, offset _m128iaeskeygenassistsi128_249, offset _m128iaeskeygenassistsi128_250, offset _m128iaeskeygenassistsi128_251, \
-                                                offset _m128iaeskeygenassistsi128_252, offset _m128iaeskeygenassistsi128_253, offset _m128iaeskeygenassistsi128_254, offset _m128iaeskeygenassistsi128_255
+    _m128iaeskeygenassistsi128jmptable label size_t
+    isize_t _m128iaeskeygenassistsi128_0, _m128iaeskeygenassistsi128_1, _m128iaeskeygenassistsi128_2, _m128iaeskeygenassistsi128_3
+    isize_t _m128iaeskeygenassistsi128_4, _m128iaeskeygenassistsi128_5, _m128iaeskeygenassistsi128_6, _m128iaeskeygenassistsi128_7
+    isize_t _m128iaeskeygenassistsi128_8, _m128iaeskeygenassistsi128_9, _m128iaeskeygenassistsi128_10, _m128iaeskeygenassistsi128_11
+    isize_t _m128iaeskeygenassistsi128_12, _m128iaeskeygenassistsi128_13, _m128iaeskeygenassistsi128_14, _m128iaeskeygenassistsi128_15
+    isize_t _m128iaeskeygenassistsi128_16, _m128iaeskeygenassistsi128_17, _m128iaeskeygenassistsi128_18, _m128iaeskeygenassistsi128_19
+    isize_t _m128iaeskeygenassistsi128_20, _m128iaeskeygenassistsi128_21, _m128iaeskeygenassistsi128_22, _m128iaeskeygenassistsi128_23
+    isize_t _m128iaeskeygenassistsi128_24, _m128iaeskeygenassistsi128_25, _m128iaeskeygenassistsi128_26, _m128iaeskeygenassistsi128_27
+    isize_t _m128iaeskeygenassistsi128_28, _m128iaeskeygenassistsi128_29, _m128iaeskeygenassistsi128_30, _m128iaeskeygenassistsi128_31
+    isize_t _m128iaeskeygenassistsi128_32, _m128iaeskeygenassistsi128_33, _m128iaeskeygenassistsi128_34, _m128iaeskeygenassistsi128_35
+    isize_t _m128iaeskeygenassistsi128_36, _m128iaeskeygenassistsi128_37, _m128iaeskeygenassistsi128_38, _m128iaeskeygenassistsi128_39
+    isize_t _m128iaeskeygenassistsi128_40, _m128iaeskeygenassistsi128_41, _m128iaeskeygenassistsi128_42, _m128iaeskeygenassistsi128_43
+    isize_t _m128iaeskeygenassistsi128_44, _m128iaeskeygenassistsi128_45, _m128iaeskeygenassistsi128_46, _m128iaeskeygenassistsi128_47
+    isize_t _m128iaeskeygenassistsi128_48, _m128iaeskeygenassistsi128_49, _m128iaeskeygenassistsi128_50, _m128iaeskeygenassistsi128_51
+    isize_t _m128iaeskeygenassistsi128_52, _m128iaeskeygenassistsi128_53, _m128iaeskeygenassistsi128_54, _m128iaeskeygenassistsi128_55
+    isize_t _m128iaeskeygenassistsi128_56, _m128iaeskeygenassistsi128_57, _m128iaeskeygenassistsi128_58, _m128iaeskeygenassistsi128_59
+    isize_t _m128iaeskeygenassistsi128_60, _m128iaeskeygenassistsi128_61, _m128iaeskeygenassistsi128_62, _m128iaeskeygenassistsi128_63
+    isize_t _m128iaeskeygenassistsi128_64, _m128iaeskeygenassistsi128_65, _m128iaeskeygenassistsi128_66, _m128iaeskeygenassistsi128_67
+    isize_t _m128iaeskeygenassistsi128_68, _m128iaeskeygenassistsi128_69, _m128iaeskeygenassistsi128_70, _m128iaeskeygenassistsi128_71
+    isize_t _m128iaeskeygenassistsi128_72, _m128iaeskeygenassistsi128_73, _m128iaeskeygenassistsi128_74, _m128iaeskeygenassistsi128_75
+    isize_t _m128iaeskeygenassistsi128_76, _m128iaeskeygenassistsi128_77, _m128iaeskeygenassistsi128_78, _m128iaeskeygenassistsi128_79
+    isize_t _m128iaeskeygenassistsi128_80, _m128iaeskeygenassistsi128_81, _m128iaeskeygenassistsi128_82, _m128iaeskeygenassistsi128_83
+    isize_t _m128iaeskeygenassistsi128_84, _m128iaeskeygenassistsi128_85, _m128iaeskeygenassistsi128_86, _m128iaeskeygenassistsi128_87
+    isize_t _m128iaeskeygenassistsi128_88, _m128iaeskeygenassistsi128_89, _m128iaeskeygenassistsi128_90, _m128iaeskeygenassistsi128_91
+    isize_t _m128iaeskeygenassistsi128_92, _m128iaeskeygenassistsi128_93, _m128iaeskeygenassistsi128_94, _m128iaeskeygenassistsi128_95
+    isize_t _m128iaeskeygenassistsi128_96, _m128iaeskeygenassistsi128_97, _m128iaeskeygenassistsi128_98, _m128iaeskeygenassistsi128_99
+    isize_t _m128iaeskeygenassistsi128_100, _m128iaeskeygenassistsi128_101, _m128iaeskeygenassistsi128_102, _m128iaeskeygenassistsi128_103
+    isize_t _m128iaeskeygenassistsi128_104, _m128iaeskeygenassistsi128_105, _m128iaeskeygenassistsi128_106, _m128iaeskeygenassistsi128_107
+    isize_t _m128iaeskeygenassistsi128_108, _m128iaeskeygenassistsi128_109, _m128iaeskeygenassistsi128_110, _m128iaeskeygenassistsi128_111
+    isize_t _m128iaeskeygenassistsi128_112, _m128iaeskeygenassistsi128_113, _m128iaeskeygenassistsi128_114, _m128iaeskeygenassistsi128_115
+    isize_t _m128iaeskeygenassistsi128_116, _m128iaeskeygenassistsi128_117, _m128iaeskeygenassistsi128_118, _m128iaeskeygenassistsi128_119
+    isize_t _m128iaeskeygenassistsi128_120, _m128iaeskeygenassistsi128_121, _m128iaeskeygenassistsi128_122, _m128iaeskeygenassistsi128_123
+    isize_t _m128iaeskeygenassistsi128_124, _m128iaeskeygenassistsi128_125, _m128iaeskeygenassistsi128_126, _m128iaeskeygenassistsi128_127
+    isize_t _m128iaeskeygenassistsi128_128, _m128iaeskeygenassistsi128_129, _m128iaeskeygenassistsi128_130, _m128iaeskeygenassistsi128_131
+    isize_t _m128iaeskeygenassistsi128_132, _m128iaeskeygenassistsi128_133, _m128iaeskeygenassistsi128_134, _m128iaeskeygenassistsi128_135
+    isize_t _m128iaeskeygenassistsi128_136, _m128iaeskeygenassistsi128_137, _m128iaeskeygenassistsi128_138, _m128iaeskeygenassistsi128_139
+    isize_t _m128iaeskeygenassistsi128_140, _m128iaeskeygenassistsi128_141, _m128iaeskeygenassistsi128_142, _m128iaeskeygenassistsi128_143
+    isize_t _m128iaeskeygenassistsi128_144, _m128iaeskeygenassistsi128_145, _m128iaeskeygenassistsi128_146, _m128iaeskeygenassistsi128_147
+    isize_t _m128iaeskeygenassistsi128_148, _m128iaeskeygenassistsi128_149, _m128iaeskeygenassistsi128_150, _m128iaeskeygenassistsi128_151
+    isize_t _m128iaeskeygenassistsi128_152, _m128iaeskeygenassistsi128_153, _m128iaeskeygenassistsi128_154, _m128iaeskeygenassistsi128_155
+    isize_t _m128iaeskeygenassistsi128_156, _m128iaeskeygenassistsi128_157, _m128iaeskeygenassistsi128_158, _m128iaeskeygenassistsi128_159
+    isize_t _m128iaeskeygenassistsi128_160, _m128iaeskeygenassistsi128_161, _m128iaeskeygenassistsi128_162, _m128iaeskeygenassistsi128_163
+    isize_t _m128iaeskeygenassistsi128_164, _m128iaeskeygenassistsi128_165, _m128iaeskeygenassistsi128_166, _m128iaeskeygenassistsi128_167
+    isize_t _m128iaeskeygenassistsi128_168, _m128iaeskeygenassistsi128_169, _m128iaeskeygenassistsi128_170, _m128iaeskeygenassistsi128_171
+    isize_t _m128iaeskeygenassistsi128_172, _m128iaeskeygenassistsi128_173, _m128iaeskeygenassistsi128_174, _m128iaeskeygenassistsi128_175
+    isize_t _m128iaeskeygenassistsi128_176, _m128iaeskeygenassistsi128_177, _m128iaeskeygenassistsi128_178, _m128iaeskeygenassistsi128_179
+    isize_t _m128iaeskeygenassistsi128_180, _m128iaeskeygenassistsi128_181, _m128iaeskeygenassistsi128_182, _m128iaeskeygenassistsi128_183
+    isize_t _m128iaeskeygenassistsi128_184, _m128iaeskeygenassistsi128_185, _m128iaeskeygenassistsi128_186, _m128iaeskeygenassistsi128_187
+    isize_t _m128iaeskeygenassistsi128_188, _m128iaeskeygenassistsi128_189, _m128iaeskeygenassistsi128_190, _m128iaeskeygenassistsi128_191
+    isize_t _m128iaeskeygenassistsi128_192, _m128iaeskeygenassistsi128_193, _m128iaeskeygenassistsi128_194, _m128iaeskeygenassistsi128_195
+    isize_t _m128iaeskeygenassistsi128_196, _m128iaeskeygenassistsi128_197, _m128iaeskeygenassistsi128_198, _m128iaeskeygenassistsi128_199
+    isize_t _m128iaeskeygenassistsi128_200, _m128iaeskeygenassistsi128_201, _m128iaeskeygenassistsi128_202, _m128iaeskeygenassistsi128_203
+    isize_t _m128iaeskeygenassistsi128_204, _m128iaeskeygenassistsi128_205, _m128iaeskeygenassistsi128_206, _m128iaeskeygenassistsi128_207
+    isize_t _m128iaeskeygenassistsi128_208, _m128iaeskeygenassistsi128_209, _m128iaeskeygenassistsi128_210, _m128iaeskeygenassistsi128_211
+    isize_t _m128iaeskeygenassistsi128_212, _m128iaeskeygenassistsi128_213, _m128iaeskeygenassistsi128_214, _m128iaeskeygenassistsi128_215
+    isize_t _m128iaeskeygenassistsi128_216, _m128iaeskeygenassistsi128_217, _m128iaeskeygenassistsi128_218, _m128iaeskeygenassistsi128_219
+    isize_t _m128iaeskeygenassistsi128_220, _m128iaeskeygenassistsi128_221, _m128iaeskeygenassistsi128_222, _m128iaeskeygenassistsi128_223
+    isize_t _m128iaeskeygenassistsi128_224, _m128iaeskeygenassistsi128_225, _m128iaeskeygenassistsi128_226, _m128iaeskeygenassistsi128_227
+    isize_t _m128iaeskeygenassistsi128_228, _m128iaeskeygenassistsi128_229, _m128iaeskeygenassistsi128_230, _m128iaeskeygenassistsi128_231
+    isize_t _m128iaeskeygenassistsi128_232, _m128iaeskeygenassistsi128_233, _m128iaeskeygenassistsi128_234, _m128iaeskeygenassistsi128_235
+    isize_t _m128iaeskeygenassistsi128_236, _m128iaeskeygenassistsi128_237, _m128iaeskeygenassistsi128_238, _m128iaeskeygenassistsi128_239
+    isize_t _m128iaeskeygenassistsi128_240, _m128iaeskeygenassistsi128_241, _m128iaeskeygenassistsi128_242, _m128iaeskeygenassistsi128_243
+    isize_t _m128iaeskeygenassistsi128_244, _m128iaeskeygenassistsi128_245, _m128iaeskeygenassistsi128_246, _m128iaeskeygenassistsi128_247
+    isize_t _m128iaeskeygenassistsi128_248, _m128iaeskeygenassistsi128_249, _m128iaeskeygenassistsi128_250, _m128iaeskeygenassistsi128_251
+    isize_t _m128iaeskeygenassistsi128_252, _m128iaeskeygenassistsi128_253, _m128iaeskeygenassistsi128_254, _m128iaeskeygenassistsi128_255
 
-    .code
+.code
 
-    callconvopt
-    alignxmmfieldproc
+callconvopt
+alignxmmfieldproc
 
 ;************************************
 ; AES instructions.
@@ -1393,17 +1417,17 @@ procstart _uX_mm_aeskeygenassist_si128_255, callconv, xmmword, < >, < >, Inxmm_A
 procend
 
 procstart _uX_mm_aeskeygenassist_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, _Imm8:dword
-        push         rbase
-        .if((rparam1 < 0) || (rparam1 > 255))
+        push         rbase()
+        .if((rp1() < 0) || (rp1() > 255))
         jmp         _m128iaeskeygenassistsi128_end
         .endif
 
         ifdef __X32__
-        movzx           rbase,    byte ptr [rparam1]
-        jmp     dword ptr [_m128iaeskeygenassistsi128jmptable+rbase*size_t_size]
+        movzx           rbase(),    byte ptr [rp1()]
+        jmp     dword ptr [_m128iaeskeygenassistsi128jmptable+rbase()*size_t_size]
         else
-        lea             rbase,    qword ptr [_m128iaeskeygenassistsi128jmptable]
-        mov             rbase,    qword ptr [rbase+rparam1*size_t_size]
+        lea             rbase(),    qword ptr [_m128iaeskeygenassistsi128jmptable]
+        mov             rbase(),    qword ptr [rbase()+rp1()*size_t_size]
         jmp             rbx
         endif
 
@@ -2177,7 +2201,7 @@ procstart _uX_mm_aeskeygenassist_si128, callconv, xmmword, < >, < >, Inxmm_A:xmm
         ;jmp         _m128iaeskeygenassistsi128_end
 
         _m128iaeskeygenassistsi128_end:
-        pop         rbase
+        pop         rbase()
         ret
 procend
 
@@ -2203,7 +2227,7 @@ procend
 
     option switchstyle:asmstyle
 procstart _uX_mm_clmulepi64_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword, Inint_Imm:dword
-        .switch rparam2
+        .switch rp2()
         .case 0h
         pclmulqdq           xmm0,           xmm1,           0h
         .case 1h
@@ -2238,4 +2262,4 @@ procend
 
 endif ;__MIC__
 
-    end
+end

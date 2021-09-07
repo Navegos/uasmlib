@@ -1,4 +1,3 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -89,74 +88,73 @@ class vecdouble4x4;
 typedef class uX_API vecint64
 {
 public:
-    vecint64()uX_default;
-    ~vecint64()uX_default;
+	vecint64()uX_default;
+	~vecint64()uX_default;
 
 #ifdef uX_DEFAULT_CTOR_SUPPORT
-    vecint64(const vecint64&)uX_default;
-    vecint64& uX_callconv operator=(const vecint64&)uX_default;
+	vecint64(const vecint64&)uX_default;
+	vecint64& uX_callconv operator=(const vecint64&)uX_default;
 
-    vecint64(vecint64&&)uX_default;
-    vecint64& uX_callconv operator=(vecint64&&)uX_default;
+	vecint64(vecint64&&)uX_default;
+	vecint64& uX_callconv operator=(vecint64&&)uX_default;
 #else
-    vecint64(const vecint64& Invecint64);
-    vecint64& uX_callconv operator=(const vecint64& Invecint64);
+	vecint64(const vecint64& Invecint64);
+	vecint64& uX_callconv operator=(const vecint64& Invecint64);
 
-    vecint64(vecint64&& Invecint64);
-    vecint64& uX_callconv operator=(vecint64&& Invecint64);
+	vecint64(vecint64&& Invecint64);
+	vecint64& uX_callconv operator=(vecint64&& Invecint64);
 #endif
-    /**
-     * Constructor initialization from type __m128i.
-     *
-     * @param Inxmmi value to copy from.
-     */
-    uX_constexpr vecint64(const __m128i Inxmmi) : m128_xmmi{Inxmmi} {}
+	/**
+	 * Constructor initialization from type __m128i.
+	 *
+	 * @param Inxmmi value to copy from.
+	 */
+	uX_constexpr vecint64(const __m128i Inxmmi) : m128_xmmi{Inxmmi} {}
 
-    /**
-     * Constructor initialization from type __int64*.
-     *
-     * @param Inpint64 value to copy from.
-     */
-    uX_explicit vecint64(uX_InReads(2) const __int64* Inpint64);
+	/**
+	 * Constructor initialization from type __int64*.
+	 *
+	 * @param Inpint64 value to copy from.
+	 */
+	uX_explicit vecint64(uX_InReads(2) const __int64* Inpint64);
 
-    /** Type cast operator to convert to __m128i. */
-    operator __m128i() const;
+	/** Type cast operator to convert to __m128i. */
+	operator __m128i() const;
 
-    /** Type cast operator to convert to __int64*. */
-    /*operator __int64*() const;*/
+	/** Type cast operator to convert to __int64*. */
+	/*operator __int64*() const;*/
 
-    /**
-     * Assignment operator to convert from type __m128i.
-     *
-     * @param Inxmmi value to copy from.
-     */
-    vecint64& uX_callconv operator=(const __m128i Inxmmi);
+	/**
+	 * Assignment operator to convert from type __m128i.
+	 *
+	 * @param Inxmmi value to copy from.
+	 */
+	vecint64& uX_callconv operator=(const __m128i Inxmmi);
 
-    /**
-     * Assignment operator to convert from type __int64*.
-     *
-     * @param Inpint64 value to copy from.
-     */
-    vecint64& uX_callconv operator=(uX_InReads(2) const __int64* Inpint64);
+	/**
+	 * Assignment operator to convert from type __int64*.
+	 *
+	 * @param Inpint64 value to copy from.
+	 */
+	vecint64& uX_callconv operator=(uX_InReads(2) const __int64* Inpint64);
 
 protected:
 
 private:
-    union
-    {
-        __m128i  m128_xmmi;
-        struct
-        {
-            __int64 _0, _1;
-        };
-        __int64 m128_iq[2];
-    };
+	union
+	{
+		__m128i  m128_xmmi;
+		struct
+		{
+			__int64 _0, _1;
+		};
+		__int64 m128_iq[2];
+	};
 
-    static uX_const uint32_t m128_xmm_size = 16;
-    static uX_const uint32_t m128_i64_ptr_lenght = 2;
-    static uX_const uint32_t m128_i64_ptr_size = 16;
-    static uX_const uint32_t m128_i64_size = 8;
-
+	static uX_const uint32_t m128_xmm_size = 16;
+	static uX_const uint32_t m128_i64_ptr_length = 2;
+	static uX_const uint32_t m128_i64_ptr_size = 16;
+	static uX_const uint32_t m128_i64_size = 8;
 }vecint64_t;
 #endif // uX_SSE2
 

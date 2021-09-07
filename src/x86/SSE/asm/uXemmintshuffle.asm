@@ -1,187 +1,211 @@
 
-ifndef __MIC__  
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / /                                                                               / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
+; / /                                                                               / /
+; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
+; / /    you may not use this file except in compliance with the License.           / /
+; / /    You may obtain a copy of the License at                                    / /
+; / /                                                                               / /
+; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
+; / /                                                                               / /
+; / /    Unless required by applicable law or agreed to in writing, software        / /
+; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
+; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
+; / /    See the License for the specific language governing permissions and        / /
+; / /    limitations under the License.                                             / /
+; / /                                                                               / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
-    include uXx86asm.inc
+option casemap:none
+include macrolib.inc
+include uXasm.inc
 
-    .xmm
-    option arch:sse
-    option evex:0
+ifndef __MIC__
 
-    .data?
+.xmm
+option arch:sse
+option evex:0
 
-    .data
+alignstackfieldproc
 
-    .const
-            
-        alignsize_t
-        _m128ishufepi64jmptable isize_t offset _m128ishufepi64_0, offset _m128ishufepi64_1, offset _m128ishufepi64_2, offset _m128ishufepi64_3
+.data?
 
-        alignsize_t
-        _m128ishufepi32jmptable isize_t offset _m128ishufepi32_0, offset _m128ishufepi32_1, offset _m128ishufepi32_2, offset _m128ishufepi32_3, offset _m128ishufepi32_4, \
-                                        offset _m128ishufepi32_5, offset _m128ishufepi32_6, offset _m128ishufepi32_7, offset _m128ishufepi32_8, offset _m128ishufepi32_9, \
-                                        offset _m128ishufepi32_10, offset _m128ishufepi32_11, offset _m128ishufepi32_12, offset _m128ishufepi32_13, offset _m128ishufepi32_14, \
-                                        offset _m128ishufepi32_15, offset _m128ishufepi32_16, offset _m128ishufepi32_17, offset _m128ishufepi32_18, offset _m128ishufepi32_19, \
-                                        offset _m128ishufepi32_20, offset _m128ishufepi32_21, offset _m128ishufepi32_22, offset _m128ishufepi32_23, offset _m128ishufepi32_24, \
-                                        offset _m128ishufepi32_25, offset _m128ishufepi32_26, offset _m128ishufepi32_27, offset _m128ishufepi32_28, offset _m128ishufepi32_29, \
-                                        offset _m128ishufepi32_30, offset _m128ishufepi32_31, offset _m128ishufepi32_32, offset _m128ishufepi32_33, offset _m128ishufepi32_34, \
-                                        offset _m128ishufepi32_35, offset _m128ishufepi32_36, offset _m128ishufepi32_37, offset _m128ishufepi32_38, offset _m128ishufepi32_39, \
-                                        offset _m128ishufepi32_40, offset _m128ishufepi32_41, offset _m128ishufepi32_42, offset _m128ishufepi32_43, offset _m128ishufepi32_44, \
-                                        offset _m128ishufepi32_45, offset _m128ishufepi32_46, offset _m128ishufepi32_47, offset _m128ishufepi32_48, offset _m128ishufepi32_49, \
-                                        offset _m128ishufepi32_50, offset _m128ishufepi32_51, offset _m128ishufepi32_52, offset _m128ishufepi32_53, offset _m128ishufepi32_54, \
-                                        offset _m128ishufepi32_55, offset _m128ishufepi32_56, offset _m128ishufepi32_57, offset _m128ishufepi32_58, offset _m128ishufepi32_59, \
-                                        offset _m128ishufepi32_60, offset _m128ishufepi32_61, offset _m128ishufepi32_62, offset _m128ishufepi32_63, offset _m128ishufepi32_64, \
-                                        offset _m128ishufepi32_65, offset _m128ishufepi32_66, offset _m128ishufepi32_67, offset _m128ishufepi32_68, offset _m128ishufepi32_69, \
-                                        offset _m128ishufepi32_70, offset _m128ishufepi32_71, offset _m128ishufepi32_72, offset _m128ishufepi32_73, offset _m128ishufepi32_74, \
-                                        offset _m128ishufepi32_75, offset _m128ishufepi32_76, offset _m128ishufepi32_77, offset _m128ishufepi32_78, offset _m128ishufepi32_79, \
-                                        offset _m128ishufepi32_80, offset _m128ishufepi32_81, offset _m128ishufepi32_82, offset _m128ishufepi32_83, offset _m128ishufepi32_84, \
-                                        offset _m128ishufepi32_85, offset _m128ishufepi32_86, offset _m128ishufepi32_87, offset _m128ishufepi32_88, offset _m128ishufepi32_89, \
-                                        offset _m128ishufepi32_90, offset _m128ishufepi32_91, offset _m128ishufepi32_92, offset _m128ishufepi32_93, offset _m128ishufepi32_94, \
-                                        offset _m128ishufepi32_95, offset _m128ishufepi32_96, offset _m128ishufepi32_97, offset _m128ishufepi32_98, offset _m128ishufepi32_99, \
-                                        offset _m128ishufepi32_100, offset _m128ishufepi32_101, offset _m128ishufepi32_102, offset _m128ishufepi32_103, offset _m128ishufepi32_104, \
-                                        offset _m128ishufepi32_105, offset _m128ishufepi32_106, offset _m128ishufepi32_107, offset _m128ishufepi32_108, offset _m128ishufepi32_109, \
-                                        offset _m128ishufepi32_110, offset _m128ishufepi32_111, offset _m128ishufepi32_112, offset _m128ishufepi32_113, offset _m128ishufepi32_114, \
-                                        offset _m128ishufepi32_115, offset _m128ishufepi32_116, offset _m128ishufepi32_117, offset _m128ishufepi32_118, offset _m128ishufepi32_119, \
-                                        offset _m128ishufepi32_120, offset _m128ishufepi32_121, offset _m128ishufepi32_122, offset _m128ishufepi32_123, offset _m128ishufepi32_124, \
-                                        offset _m128ishufepi32_125, offset _m128ishufepi32_126, offset _m128ishufepi32_127, offset _m128ishufepi32_128, offset _m128ishufepi32_129, \
-                                        offset _m128ishufepi32_130, offset _m128ishufepi32_131, offset _m128ishufepi32_132, offset _m128ishufepi32_133, offset _m128ishufepi32_134, \
-                                        offset _m128ishufepi32_135, offset _m128ishufepi32_136, offset _m128ishufepi32_137, offset _m128ishufepi32_138, offset _m128ishufepi32_139, \
-                                        offset _m128ishufepi32_140, offset _m128ishufepi32_141, offset _m128ishufepi32_142, offset _m128ishufepi32_143, offset _m128ishufepi32_144, \
-                                        offset _m128ishufepi32_145, offset _m128ishufepi32_146, offset _m128ishufepi32_147, offset _m128ishufepi32_148, offset _m128ishufepi32_149, \
-                                        offset _m128ishufepi32_150, offset _m128ishufepi32_151, offset _m128ishufepi32_152, offset _m128ishufepi32_153, offset _m128ishufepi32_154, \
-                                        offset _m128ishufepi32_155, offset _m128ishufepi32_156, offset _m128ishufepi32_157, offset _m128ishufepi32_158, offset _m128ishufepi32_159, \
-                                        offset _m128ishufepi32_160, offset _m128ishufepi32_161, offset _m128ishufepi32_162, offset _m128ishufepi32_163, offset _m128ishufepi32_164, \
-                                        offset _m128ishufepi32_165, offset _m128ishufepi32_166, offset _m128ishufepi32_167, offset _m128ishufepi32_168, offset _m128ishufepi32_169, \
-                                        offset _m128ishufepi32_170, offset _m128ishufepi32_171, offset _m128ishufepi32_172, offset _m128ishufepi32_173, offset _m128ishufepi32_174, \
-                                        offset _m128ishufepi32_175, offset _m128ishufepi32_176, offset _m128ishufepi32_177, offset _m128ishufepi32_178, offset _m128ishufepi32_179, \
-                                        offset _m128ishufepi32_180, offset _m128ishufepi32_181, offset _m128ishufepi32_182, offset _m128ishufepi32_183, offset _m128ishufepi32_184, \
-                                        offset _m128ishufepi32_185, offset _m128ishufepi32_186, offset _m128ishufepi32_187, offset _m128ishufepi32_188, offset _m128ishufepi32_189, \
-                                        offset _m128ishufepi32_190, offset _m128ishufepi32_191, offset _m128ishufepi32_192, offset _m128ishufepi32_193, offset _m128ishufepi32_194, \
-                                        offset _m128ishufepi32_195, offset _m128ishufepi32_196, offset _m128ishufepi32_197, offset _m128ishufepi32_198, offset _m128ishufepi32_199, \
-                                        offset _m128ishufepi32_200, offset _m128ishufepi32_201, offset _m128ishufepi32_202, offset _m128ishufepi32_203, offset _m128ishufepi32_204, \
-                                        offset _m128ishufepi32_205, offset _m128ishufepi32_206, offset _m128ishufepi32_207, offset _m128ishufepi32_208, offset _m128ishufepi32_209, \
-                                        offset _m128ishufepi32_210, offset _m128ishufepi32_211, offset _m128ishufepi32_212, offset _m128ishufepi32_213, offset _m128ishufepi32_214, \
-                                        offset _m128ishufepi32_215, offset _m128ishufepi32_216, offset _m128ishufepi32_217, offset _m128ishufepi32_218, offset _m128ishufepi32_219, \
-                                        offset _m128ishufepi32_220, offset _m128ishufepi32_221, offset _m128ishufepi32_222, offset _m128ishufepi32_223, offset _m128ishufepi32_224, \
-                                        offset _m128ishufepi32_225, offset _m128ishufepi32_226, offset _m128ishufepi32_227, offset _m128ishufepi32_228, offset _m128ishufepi32_229, \
-                                        offset _m128ishufepi32_230, offset _m128ishufepi32_231, offset _m128ishufepi32_232, offset _m128ishufepi32_233, offset _m128ishufepi32_234, \
-                                        offset _m128ishufepi32_235, offset _m128ishufepi32_236, offset _m128ishufepi32_237, offset _m128ishufepi32_238, offset _m128ishufepi32_239, \
-                                        offset _m128ishufepi32_240, offset _m128ishufepi32_241, offset _m128ishufepi32_242, offset _m128ishufepi32_243, offset _m128ishufepi32_244, \
-                                        offset _m128ishufepi32_245, offset _m128ishufepi32_246, offset _m128ishufepi32_247, offset _m128ishufepi32_248, offset _m128ishufepi32_249, \
-                                        offset _m128ishufepi32_250, offset _m128ishufepi32_251, offset _m128ishufepi32_252, offset _m128ishufepi32_253, offset _m128ishufepi32_254, \
-                                        offset _m128ishufepi32_255
-                    
-        alignsize_t                 
-        _m128ishufhiepi16jmptable isize_t offset _m128ishufhiepi16_0, offset _m128ishufhiepi16_1, offset _m128ishufhiepi16_2, offset _m128ishufhiepi16_3, offset _m128ishufhiepi16_4, \
-                                        offset _m128ishufhiepi16_5, offset _m128ishufhiepi16_6, offset _m128ishufhiepi16_7, offset _m128ishufhiepi16_8, offset _m128ishufhiepi16_9, \
-                                        offset _m128ishufhiepi16_10, offset _m128ishufhiepi16_11, offset _m128ishufhiepi16_12, offset _m128ishufhiepi16_13, offset _m128ishufhiepi16_14, \
-                                        offset _m128ishufhiepi16_15, offset _m128ishufhiepi16_16, offset _m128ishufhiepi16_17, offset _m128ishufhiepi16_18, offset _m128ishufhiepi16_19, \
-                                        offset _m128ishufhiepi16_20, offset _m128ishufhiepi16_21, offset _m128ishufhiepi16_22, offset _m128ishufhiepi16_23, offset _m128ishufhiepi16_24, \
-                                        offset _m128ishufhiepi16_25, offset _m128ishufhiepi16_26, offset _m128ishufhiepi16_27, offset _m128ishufhiepi16_28, offset _m128ishufhiepi16_29, \
-                                        offset _m128ishufhiepi16_30, offset _m128ishufhiepi16_31, offset _m128ishufhiepi16_32, offset _m128ishufhiepi16_33, offset _m128ishufhiepi16_34, \
-                                        offset _m128ishufhiepi16_35, offset _m128ishufhiepi16_36, offset _m128ishufhiepi16_37, offset _m128ishufhiepi16_38, offset _m128ishufhiepi16_39, \
-                                        offset _m128ishufhiepi16_40, offset _m128ishufhiepi16_41, offset _m128ishufhiepi16_42, offset _m128ishufhiepi16_43, offset _m128ishufhiepi16_44, \
-                                        offset _m128ishufhiepi16_45, offset _m128ishufhiepi16_46, offset _m128ishufhiepi16_47, offset _m128ishufhiepi16_48, offset _m128ishufhiepi16_49, \
-                                        offset _m128ishufhiepi16_50, offset _m128ishufhiepi16_51, offset _m128ishufhiepi16_52, offset _m128ishufhiepi16_53, offset _m128ishufhiepi16_54, \
-                                        offset _m128ishufhiepi16_55, offset _m128ishufhiepi16_56, offset _m128ishufhiepi16_57, offset _m128ishufhiepi16_58, offset _m128ishufhiepi16_59, \
-                                        offset _m128ishufhiepi16_60, offset _m128ishufhiepi16_61, offset _m128ishufhiepi16_62, offset _m128ishufhiepi16_63, offset _m128ishufhiepi16_64, \
-                                        offset _m128ishufhiepi16_65, offset _m128ishufhiepi16_66, offset _m128ishufhiepi16_67, offset _m128ishufhiepi16_68, offset _m128ishufhiepi16_69, \
-                                        offset _m128ishufhiepi16_70, offset _m128ishufhiepi16_71, offset _m128ishufhiepi16_72, offset _m128ishufhiepi16_73, offset _m128ishufhiepi16_74, \
-                                        offset _m128ishufhiepi16_75, offset _m128ishufhiepi16_76, offset _m128ishufhiepi16_77, offset _m128ishufhiepi16_78, offset _m128ishufhiepi16_79, \
-                                        offset _m128ishufhiepi16_80, offset _m128ishufhiepi16_81, offset _m128ishufhiepi16_82, offset _m128ishufhiepi16_83, offset _m128ishufhiepi16_84, \
-                                        offset _m128ishufhiepi16_85, offset _m128ishufhiepi16_86, offset _m128ishufhiepi16_87, offset _m128ishufhiepi16_88, offset _m128ishufhiepi16_89, \
-                                        offset _m128ishufhiepi16_90, offset _m128ishufhiepi16_91, offset _m128ishufhiepi16_92, offset _m128ishufhiepi16_93, offset _m128ishufhiepi16_94, \
-                                        offset _m128ishufhiepi16_95, offset _m128ishufhiepi16_96, offset _m128ishufhiepi16_97, offset _m128ishufhiepi16_98, offset _m128ishufhiepi16_99, \
-                                        offset _m128ishufhiepi16_100, offset _m128ishufhiepi16_101, offset _m128ishufhiepi16_102, offset _m128ishufhiepi16_103, offset _m128ishufhiepi16_104, \
-                                        offset _m128ishufhiepi16_105, offset _m128ishufhiepi16_106, offset _m128ishufhiepi16_107, offset _m128ishufhiepi16_108, offset _m128ishufhiepi16_109, \
-                                        offset _m128ishufhiepi16_110, offset _m128ishufhiepi16_111, offset _m128ishufhiepi16_112, offset _m128ishufhiepi16_113, offset _m128ishufhiepi16_114, \
-                                        offset _m128ishufhiepi16_115, offset _m128ishufhiepi16_116, offset _m128ishufhiepi16_117, offset _m128ishufhiepi16_118, offset _m128ishufhiepi16_119, \
-                                        offset _m128ishufhiepi16_120, offset _m128ishufhiepi16_121, offset _m128ishufhiepi16_122, offset _m128ishufhiepi16_123, offset _m128ishufhiepi16_124, \
-                                        offset _m128ishufhiepi16_125, offset _m128ishufhiepi16_126, offset _m128ishufhiepi16_127, offset _m128ishufhiepi16_128, offset _m128ishufhiepi16_129, \
-                                        offset _m128ishufhiepi16_130, offset _m128ishufhiepi16_131, offset _m128ishufhiepi16_132, offset _m128ishufhiepi16_133, offset _m128ishufhiepi16_134, \
-                                        offset _m128ishufhiepi16_135, offset _m128ishufhiepi16_136, offset _m128ishufhiepi16_137, offset _m128ishufhiepi16_138, offset _m128ishufhiepi16_139, \
-                                        offset _m128ishufhiepi16_140, offset _m128ishufhiepi16_141, offset _m128ishufhiepi16_142, offset _m128ishufhiepi16_143, offset _m128ishufhiepi16_144, \
-                                        offset _m128ishufhiepi16_145, offset _m128ishufhiepi16_146, offset _m128ishufhiepi16_147, offset _m128ishufhiepi16_148, offset _m128ishufhiepi16_149, \
-                                        offset _m128ishufhiepi16_150, offset _m128ishufhiepi16_151, offset _m128ishufhiepi16_152, offset _m128ishufhiepi16_153, offset _m128ishufhiepi16_154, \
-                                        offset _m128ishufhiepi16_155, offset _m128ishufhiepi16_156, offset _m128ishufhiepi16_157, offset _m128ishufhiepi16_158, offset _m128ishufhiepi16_159, \
-                                        offset _m128ishufhiepi16_160, offset _m128ishufhiepi16_161, offset _m128ishufhiepi16_162, offset _m128ishufhiepi16_163, offset _m128ishufhiepi16_164, \
-                                        offset _m128ishufhiepi16_165, offset _m128ishufhiepi16_166, offset _m128ishufhiepi16_167, offset _m128ishufhiepi16_168, offset _m128ishufhiepi16_169, \
-                                        offset _m128ishufhiepi16_170, offset _m128ishufhiepi16_171, offset _m128ishufhiepi16_172, offset _m128ishufhiepi16_173, offset _m128ishufhiepi16_174, \
-                                        offset _m128ishufhiepi16_175, offset _m128ishufhiepi16_176, offset _m128ishufhiepi16_177, offset _m128ishufhiepi16_178, offset _m128ishufhiepi16_179, \
-                                        offset _m128ishufhiepi16_180, offset _m128ishufhiepi16_181, offset _m128ishufhiepi16_182, offset _m128ishufhiepi16_183, offset _m128ishufhiepi16_184, \
-                                        offset _m128ishufhiepi16_185, offset _m128ishufhiepi16_186, offset _m128ishufhiepi16_187, offset _m128ishufhiepi16_188, offset _m128ishufhiepi16_189, \
-                                        offset _m128ishufhiepi16_190, offset _m128ishufhiepi16_191, offset _m128ishufhiepi16_192, offset _m128ishufhiepi16_193, offset _m128ishufhiepi16_194, \
-                                        offset _m128ishufhiepi16_195, offset _m128ishufhiepi16_196, offset _m128ishufhiepi16_197, offset _m128ishufhiepi16_198, offset _m128ishufhiepi16_199, \
-                                        offset _m128ishufhiepi16_200, offset _m128ishufhiepi16_201, offset _m128ishufhiepi16_202, offset _m128ishufhiepi16_203, offset _m128ishufhiepi16_204, \
-                                        offset _m128ishufhiepi16_205, offset _m128ishufhiepi16_206, offset _m128ishufhiepi16_207, offset _m128ishufhiepi16_208, offset _m128ishufhiepi16_209, \
-                                        offset _m128ishufhiepi16_210, offset _m128ishufhiepi16_211, offset _m128ishufhiepi16_212, offset _m128ishufhiepi16_213, offset _m128ishufhiepi16_214, \
-                                        offset _m128ishufhiepi16_215, offset _m128ishufhiepi16_216, offset _m128ishufhiepi16_217, offset _m128ishufhiepi16_218, offset _m128ishufhiepi16_219, \
-                                        offset _m128ishufhiepi16_220, offset _m128ishufhiepi16_221, offset _m128ishufhiepi16_222, offset _m128ishufhiepi16_223, offset _m128ishufhiepi16_224, \
-                                        offset _m128ishufhiepi16_225, offset _m128ishufhiepi16_226, offset _m128ishufhiepi16_227, offset _m128ishufhiepi16_228, offset _m128ishufhiepi16_229, \
-                                        offset _m128ishufhiepi16_230, offset _m128ishufhiepi16_231, offset _m128ishufhiepi16_232, offset _m128ishufhiepi16_233, offset _m128ishufhiepi16_234, \
-                                        offset _m128ishufhiepi16_235, offset _m128ishufhiepi16_236, offset _m128ishufhiepi16_237, offset _m128ishufhiepi16_238, offset _m128ishufhiepi16_239, \
-                                        offset _m128ishufhiepi16_240, offset _m128ishufhiepi16_241, offset _m128ishufhiepi16_242, offset _m128ishufhiepi16_243, offset _m128ishufhiepi16_244, \
-                                        offset _m128ishufhiepi16_245, offset _m128ishufhiepi16_246, offset _m128ishufhiepi16_247, offset _m128ishufhiepi16_248, offset _m128ishufhiepi16_249, \
-                                        offset _m128ishufhiepi16_250, offset _m128ishufhiepi16_251, offset _m128ishufhiepi16_252, offset _m128ishufhiepi16_253, offset _m128ishufhiepi16_254, \
-                                        offset _m128ishufhiepi16_255
-            
-        alignsize_t                         
-        _m128ishufloepi16jmptable isize_t offset _m128ishufloepi16_0, offset _m128ishufloepi16_1, offset _m128ishufloepi16_2, offset _m128ishufloepi16_3, offset _m128ishufloepi16_4, \
-                                        offset _m128ishufloepi16_5, offset _m128ishufloepi16_6, offset _m128ishufloepi16_7, offset _m128ishufloepi16_8, offset _m128ishufloepi16_9, \
-                                        offset _m128ishufloepi16_10, offset _m128ishufloepi16_11, offset _m128ishufloepi16_12, offset _m128ishufloepi16_13, offset _m128ishufloepi16_14, \
-                                        offset _m128ishufloepi16_15, offset _m128ishufloepi16_16, offset _m128ishufloepi16_17, offset _m128ishufloepi16_18, offset _m128ishufloepi16_19, \
-                                        offset _m128ishufloepi16_20, offset _m128ishufloepi16_21, offset _m128ishufloepi16_22, offset _m128ishufloepi16_23, offset _m128ishufloepi16_24, \
-                                        offset _m128ishufloepi16_25, offset _m128ishufloepi16_26, offset _m128ishufloepi16_27, offset _m128ishufloepi16_28, offset _m128ishufloepi16_29, \
-                                        offset _m128ishufloepi16_30, offset _m128ishufloepi16_31, offset _m128ishufloepi16_32, offset _m128ishufloepi16_33, offset _m128ishufloepi16_34, \
-                                        offset _m128ishufloepi16_35, offset _m128ishufloepi16_36, offset _m128ishufloepi16_37, offset _m128ishufloepi16_38, offset _m128ishufloepi16_39, \
-                                        offset _m128ishufloepi16_40, offset _m128ishufloepi16_41, offset _m128ishufloepi16_42, offset _m128ishufloepi16_43, offset _m128ishufloepi16_44, \
-                                        offset _m128ishufloepi16_45, offset _m128ishufloepi16_46, offset _m128ishufloepi16_47, offset _m128ishufloepi16_48, offset _m128ishufloepi16_49, \
-                                        offset _m128ishufloepi16_50, offset _m128ishufloepi16_51, offset _m128ishufloepi16_52, offset _m128ishufloepi16_53, offset _m128ishufloepi16_54, \
-                                        offset _m128ishufloepi16_55, offset _m128ishufloepi16_56, offset _m128ishufloepi16_57, offset _m128ishufloepi16_58, offset _m128ishufloepi16_59, \
-                                        offset _m128ishufloepi16_60, offset _m128ishufloepi16_61, offset _m128ishufloepi16_62, offset _m128ishufloepi16_63, offset _m128ishufloepi16_64, \
-                                        offset _m128ishufloepi16_65, offset _m128ishufloepi16_66, offset _m128ishufloepi16_67, offset _m128ishufloepi16_68, offset _m128ishufloepi16_69, \
-                                        offset _m128ishufloepi16_70, offset _m128ishufloepi16_71, offset _m128ishufloepi16_72, offset _m128ishufloepi16_73, offset _m128ishufloepi16_74, \
-                                        offset _m128ishufloepi16_75, offset _m128ishufloepi16_76, offset _m128ishufloepi16_77, offset _m128ishufloepi16_78, offset _m128ishufloepi16_79, \
-                                        offset _m128ishufloepi16_80, offset _m128ishufloepi16_81, offset _m128ishufloepi16_82, offset _m128ishufloepi16_83, offset _m128ishufloepi16_84, \
-                                        offset _m128ishufloepi16_85, offset _m128ishufloepi16_86, offset _m128ishufloepi16_87, offset _m128ishufloepi16_88, offset _m128ishufloepi16_89, \
-                                        offset _m128ishufloepi16_90, offset _m128ishufloepi16_91, offset _m128ishufloepi16_92, offset _m128ishufloepi16_93, offset _m128ishufloepi16_94, \
-                                        offset _m128ishufloepi16_95, offset _m128ishufloepi16_96, offset _m128ishufloepi16_97, offset _m128ishufloepi16_98, offset _m128ishufloepi16_99, \
-                                        offset _m128ishufloepi16_100, offset _m128ishufloepi16_101, offset _m128ishufloepi16_102, offset _m128ishufloepi16_103, offset _m128ishufloepi16_104, \
-                                        offset _m128ishufloepi16_105, offset _m128ishufloepi16_106, offset _m128ishufloepi16_107, offset _m128ishufloepi16_108, offset _m128ishufloepi16_109, \
-                                        offset _m128ishufloepi16_110, offset _m128ishufloepi16_111, offset _m128ishufloepi16_112, offset _m128ishufloepi16_113, offset _m128ishufloepi16_114, \
-                                        offset _m128ishufloepi16_115, offset _m128ishufloepi16_116, offset _m128ishufloepi16_117, offset _m128ishufloepi16_118, offset _m128ishufloepi16_119, \
-                                        offset _m128ishufloepi16_120, offset _m128ishufloepi16_121, offset _m128ishufloepi16_122, offset _m128ishufloepi16_123, offset _m128ishufloepi16_124, \
-                                        offset _m128ishufloepi16_125, offset _m128ishufloepi16_126, offset _m128ishufloepi16_127, offset _m128ishufloepi16_128, offset _m128ishufloepi16_129, \
-                                        offset _m128ishufloepi16_130, offset _m128ishufloepi16_131, offset _m128ishufloepi16_132, offset _m128ishufloepi16_133, offset _m128ishufloepi16_134, \
-                                        offset _m128ishufloepi16_135, offset _m128ishufloepi16_136, offset _m128ishufloepi16_137, offset _m128ishufloepi16_138, offset _m128ishufloepi16_139, \
-                                        offset _m128ishufloepi16_140, offset _m128ishufloepi16_141, offset _m128ishufloepi16_142, offset _m128ishufloepi16_143, offset _m128ishufloepi16_144, \
-                                        offset _m128ishufloepi16_145, offset _m128ishufloepi16_146, offset _m128ishufloepi16_147, offset _m128ishufloepi16_148, offset _m128ishufloepi16_149, \
-                                        offset _m128ishufloepi16_150, offset _m128ishufloepi16_151, offset _m128ishufloepi16_152, offset _m128ishufloepi16_153, offset _m128ishufloepi16_154, \
-                                        offset _m128ishufloepi16_155, offset _m128ishufloepi16_156, offset _m128ishufloepi16_157, offset _m128ishufloepi16_158, offset _m128ishufloepi16_159, \
-                                        offset _m128ishufloepi16_160, offset _m128ishufloepi16_161, offset _m128ishufloepi16_162, offset _m128ishufloepi16_163, offset _m128ishufloepi16_164, \
-                                        offset _m128ishufloepi16_165, offset _m128ishufloepi16_166, offset _m128ishufloepi16_167, offset _m128ishufloepi16_168, offset _m128ishufloepi16_169, \
-                                        offset _m128ishufloepi16_170, offset _m128ishufloepi16_171, offset _m128ishufloepi16_172, offset _m128ishufloepi16_173, offset _m128ishufloepi16_174, \
-                                        offset _m128ishufloepi16_175, offset _m128ishufloepi16_176, offset _m128ishufloepi16_177, offset _m128ishufloepi16_178, offset _m128ishufloepi16_179, \
-                                        offset _m128ishufloepi16_180, offset _m128ishufloepi16_181, offset _m128ishufloepi16_182, offset _m128ishufloepi16_183, offset _m128ishufloepi16_184, \
-                                        offset _m128ishufloepi16_185, offset _m128ishufloepi16_186, offset _m128ishufloepi16_187, offset _m128ishufloepi16_188, offset _m128ishufloepi16_189, \
-                                        offset _m128ishufloepi16_190, offset _m128ishufloepi16_191, offset _m128ishufloepi16_192, offset _m128ishufloepi16_193, offset _m128ishufloepi16_194, \
-                                        offset _m128ishufloepi16_195, offset _m128ishufloepi16_196, offset _m128ishufloepi16_197, offset _m128ishufloepi16_198, offset _m128ishufloepi16_199, \
-                                        offset _m128ishufloepi16_200, offset _m128ishufloepi16_201, offset _m128ishufloepi16_202, offset _m128ishufloepi16_203, offset _m128ishufloepi16_204, \
-                                        offset _m128ishufloepi16_205, offset _m128ishufloepi16_206, offset _m128ishufloepi16_207, offset _m128ishufloepi16_208, offset _m128ishufloepi16_209, \
-                                        offset _m128ishufloepi16_210, offset _m128ishufloepi16_211, offset _m128ishufloepi16_212, offset _m128ishufloepi16_213, offset _m128ishufloepi16_214, \
-                                        offset _m128ishufloepi16_215, offset _m128ishufloepi16_216, offset _m128ishufloepi16_217, offset _m128ishufloepi16_218, offset _m128ishufloepi16_219, \
-                                        offset _m128ishufloepi16_220, offset _m128ishufloepi16_221, offset _m128ishufloepi16_222, offset _m128ishufloepi16_223, offset _m128ishufloepi16_224, \
-                                        offset _m128ishufloepi16_225, offset _m128ishufloepi16_226, offset _m128ishufloepi16_227, offset _m128ishufloepi16_228, offset _m128ishufloepi16_229, \
-                                        offset _m128ishufloepi16_230, offset _m128ishufloepi16_231, offset _m128ishufloepi16_232, offset _m128ishufloepi16_233, offset _m128ishufloepi16_234, \
-                                        offset _m128ishufloepi16_235, offset _m128ishufloepi16_236, offset _m128ishufloepi16_237, offset _m128ishufloepi16_238, offset _m128ishufloepi16_239, \
-                                        offset _m128ishufloepi16_240, offset _m128ishufloepi16_241, offset _m128ishufloepi16_242, offset _m128ishufloepi16_243, offset _m128ishufloepi16_244, \
-                                        offset _m128ishufloepi16_245, offset _m128ishufloepi16_246, offset _m128ishufloepi16_247, offset _m128ishufloepi16_248, offset _m128ishufloepi16_249, \
-                                        offset _m128ishufloepi16_250, offset _m128ishufloepi16_251, offset _m128ishufloepi16_252, offset _m128ishufloepi16_253, offset _m128ishufloepi16_254, \
-                                        offset _m128ishufloepi16_255
+.data
 
-    .code
+.const
 
-    callconvopt
-    alignxmmfieldproc
+    _m128ishufepi64jmptable label size_t
+    isize_t _m128ishufepi64_0, _m128ishufepi64_1, _m128ishufepi64_2, _m128ishufepi64_3
+
+    _m128ishufepi32jmptable label size_t
+    isize_t _m128ishufepi32_0, _m128ishufepi32_1, _m128ishufepi32_2, _m128ishufepi32_3, _m128ishufepi32_4
+    isize_t _m128ishufepi32_5, _m128ishufepi32_6, _m128ishufepi32_7, _m128ishufepi32_8, _m128ishufepi32_9
+    isize_t _m128ishufepi32_10, _m128ishufepi32_11, _m128ishufepi32_12, _m128ishufepi32_13, _m128ishufepi32_14
+    isize_t _m128ishufepi32_15, _m128ishufepi32_16, _m128ishufepi32_17, _m128ishufepi32_18, _m128ishufepi32_19
+    isize_t _m128ishufepi32_20, _m128ishufepi32_21, _m128ishufepi32_22, _m128ishufepi32_23, _m128ishufepi32_24
+    isize_t _m128ishufepi32_25, _m128ishufepi32_26, _m128ishufepi32_27, _m128ishufepi32_28, _m128ishufepi32_29
+    isize_t _m128ishufepi32_30, _m128ishufepi32_31, _m128ishufepi32_32, _m128ishufepi32_33, _m128ishufepi32_34
+    isize_t _m128ishufepi32_35, _m128ishufepi32_36, _m128ishufepi32_37, _m128ishufepi32_38, _m128ishufepi32_39
+    isize_t _m128ishufepi32_40, _m128ishufepi32_41, _m128ishufepi32_42, _m128ishufepi32_43, _m128ishufepi32_44
+    isize_t _m128ishufepi32_45, _m128ishufepi32_46, _m128ishufepi32_47, _m128ishufepi32_48, _m128ishufepi32_49
+    isize_t _m128ishufepi32_50, _m128ishufepi32_51, _m128ishufepi32_52, _m128ishufepi32_53, _m128ishufepi32_54
+    isize_t _m128ishufepi32_55, _m128ishufepi32_56, _m128ishufepi32_57, _m128ishufepi32_58, _m128ishufepi32_59
+    isize_t _m128ishufepi32_60, _m128ishufepi32_61, _m128ishufepi32_62, _m128ishufepi32_63, _m128ishufepi32_64
+    isize_t _m128ishufepi32_65, _m128ishufepi32_66, _m128ishufepi32_67, _m128ishufepi32_68, _m128ishufepi32_69
+    isize_t _m128ishufepi32_70, _m128ishufepi32_71, _m128ishufepi32_72, _m128ishufepi32_73, _m128ishufepi32_74
+    isize_t _m128ishufepi32_75, _m128ishufepi32_76, _m128ishufepi32_77, _m128ishufepi32_78, _m128ishufepi32_79
+    isize_t _m128ishufepi32_80, _m128ishufepi32_81, _m128ishufepi32_82, _m128ishufepi32_83, _m128ishufepi32_84
+    isize_t _m128ishufepi32_85, _m128ishufepi32_86, _m128ishufepi32_87, _m128ishufepi32_88, _m128ishufepi32_89
+    isize_t _m128ishufepi32_90, _m128ishufepi32_91, _m128ishufepi32_92, _m128ishufepi32_93, _m128ishufepi32_94
+    isize_t _m128ishufepi32_95, _m128ishufepi32_96, _m128ishufepi32_97, _m128ishufepi32_98, _m128ishufepi32_99
+    isize_t _m128ishufepi32_100, _m128ishufepi32_101, _m128ishufepi32_102, _m128ishufepi32_103, _m128ishufepi32_104
+    isize_t _m128ishufepi32_105, _m128ishufepi32_106, _m128ishufepi32_107, _m128ishufepi32_108, _m128ishufepi32_109
+    isize_t _m128ishufepi32_110, _m128ishufepi32_111, _m128ishufepi32_112, _m128ishufepi32_113, _m128ishufepi32_114
+    isize_t _m128ishufepi32_115, _m128ishufepi32_116, _m128ishufepi32_117, _m128ishufepi32_118, _m128ishufepi32_119
+    isize_t _m128ishufepi32_120, _m128ishufepi32_121, _m128ishufepi32_122, _m128ishufepi32_123, _m128ishufepi32_124
+    isize_t _m128ishufepi32_125, _m128ishufepi32_126, _m128ishufepi32_127, _m128ishufepi32_128, _m128ishufepi32_129
+    isize_t _m128ishufepi32_130, _m128ishufepi32_131, _m128ishufepi32_132, _m128ishufepi32_133, _m128ishufepi32_134
+    isize_t _m128ishufepi32_135, _m128ishufepi32_136, _m128ishufepi32_137, _m128ishufepi32_138, _m128ishufepi32_139
+    isize_t _m128ishufepi32_140, _m128ishufepi32_141, _m128ishufepi32_142, _m128ishufepi32_143, _m128ishufepi32_144
+    isize_t _m128ishufepi32_145, _m128ishufepi32_146, _m128ishufepi32_147, _m128ishufepi32_148, _m128ishufepi32_149
+    isize_t _m128ishufepi32_150, _m128ishufepi32_151, _m128ishufepi32_152, _m128ishufepi32_153, _m128ishufepi32_154
+    isize_t _m128ishufepi32_155, _m128ishufepi32_156, _m128ishufepi32_157, _m128ishufepi32_158, _m128ishufepi32_159
+    isize_t _m128ishufepi32_160, _m128ishufepi32_161, _m128ishufepi32_162, _m128ishufepi32_163, _m128ishufepi32_164
+    isize_t _m128ishufepi32_165, _m128ishufepi32_166, _m128ishufepi32_167, _m128ishufepi32_168, _m128ishufepi32_169
+    isize_t _m128ishufepi32_170, _m128ishufepi32_171, _m128ishufepi32_172, _m128ishufepi32_173, _m128ishufepi32_174
+    isize_t _m128ishufepi32_175, _m128ishufepi32_176, _m128ishufepi32_177, _m128ishufepi32_178, _m128ishufepi32_179
+    isize_t _m128ishufepi32_180, _m128ishufepi32_181, _m128ishufepi32_182, _m128ishufepi32_183, _m128ishufepi32_184
+    isize_t _m128ishufepi32_185, _m128ishufepi32_186, _m128ishufepi32_187, _m128ishufepi32_188, _m128ishufepi32_189
+    isize_t _m128ishufepi32_190, _m128ishufepi32_191, _m128ishufepi32_192, _m128ishufepi32_193, _m128ishufepi32_194
+    isize_t _m128ishufepi32_195, _m128ishufepi32_196, _m128ishufepi32_197, _m128ishufepi32_198, _m128ishufepi32_199
+    isize_t _m128ishufepi32_200, _m128ishufepi32_201, _m128ishufepi32_202, _m128ishufepi32_203, _m128ishufepi32_204
+    isize_t _m128ishufepi32_205, _m128ishufepi32_206, _m128ishufepi32_207, _m128ishufepi32_208, _m128ishufepi32_209
+    isize_t _m128ishufepi32_210, _m128ishufepi32_211, _m128ishufepi32_212, _m128ishufepi32_213, _m128ishufepi32_214
+    isize_t _m128ishufepi32_215, _m128ishufepi32_216, _m128ishufepi32_217, _m128ishufepi32_218, _m128ishufepi32_219
+    isize_t _m128ishufepi32_220, _m128ishufepi32_221, _m128ishufepi32_222, _m128ishufepi32_223, _m128ishufepi32_224
+    isize_t _m128ishufepi32_225, _m128ishufepi32_226, _m128ishufepi32_227, _m128ishufepi32_228, _m128ishufepi32_229
+    isize_t _m128ishufepi32_230, _m128ishufepi32_231, _m128ishufepi32_232, _m128ishufepi32_233, _m128ishufepi32_234
+    isize_t _m128ishufepi32_235, _m128ishufepi32_236, _m128ishufepi32_237, _m128ishufepi32_238, _m128ishufepi32_239
+    isize_t _m128ishufepi32_240, _m128ishufepi32_241, _m128ishufepi32_242, _m128ishufepi32_243, _m128ishufepi32_244
+    isize_t _m128ishufepi32_245, _m128ishufepi32_246, _m128ishufepi32_247, _m128ishufepi32_248, _m128ishufepi32_249
+    isize_t _m128ishufepi32_250, _m128ishufepi32_251, _m128ishufepi32_252, _m128ishufepi32_253, _m128ishufepi32_254
+    isize_t _m128ishufepi32_255
+
+    _m128ishufhiepi16jmptable label size_t
+    isize_t _m128ishufhiepi16_0, _m128ishufhiepi16_1, _m128ishufhiepi16_2, _m128ishufhiepi16_3, _m128ishufhiepi16_4
+    isize_t _m128ishufhiepi16_5, _m128ishufhiepi16_6, _m128ishufhiepi16_7, _m128ishufhiepi16_8, _m128ishufhiepi16_9
+    isize_t _m128ishufhiepi16_10, _m128ishufhiepi16_11, _m128ishufhiepi16_12, _m128ishufhiepi16_13, _m128ishufhiepi16_14
+    isize_t _m128ishufhiepi16_15, _m128ishufhiepi16_16, _m128ishufhiepi16_17, _m128ishufhiepi16_18, _m128ishufhiepi16_19
+    isize_t _m128ishufhiepi16_20, _m128ishufhiepi16_21, _m128ishufhiepi16_22, _m128ishufhiepi16_23, _m128ishufhiepi16_24
+    isize_t _m128ishufhiepi16_25, _m128ishufhiepi16_26, _m128ishufhiepi16_27, _m128ishufhiepi16_28, _m128ishufhiepi16_29
+    isize_t _m128ishufhiepi16_30, _m128ishufhiepi16_31, _m128ishufhiepi16_32, _m128ishufhiepi16_33, _m128ishufhiepi16_34
+    isize_t _m128ishufhiepi16_35, _m128ishufhiepi16_36, _m128ishufhiepi16_37, _m128ishufhiepi16_38, _m128ishufhiepi16_39
+    isize_t _m128ishufhiepi16_40, _m128ishufhiepi16_41, _m128ishufhiepi16_42, _m128ishufhiepi16_43, _m128ishufhiepi16_44
+    isize_t _m128ishufhiepi16_45, _m128ishufhiepi16_46, _m128ishufhiepi16_47, _m128ishufhiepi16_48, _m128ishufhiepi16_49
+    isize_t _m128ishufhiepi16_50, _m128ishufhiepi16_51, _m128ishufhiepi16_52, _m128ishufhiepi16_53, _m128ishufhiepi16_54
+    isize_t _m128ishufhiepi16_55, _m128ishufhiepi16_56, _m128ishufhiepi16_57, _m128ishufhiepi16_58, _m128ishufhiepi16_59
+    isize_t _m128ishufhiepi16_60, _m128ishufhiepi16_61, _m128ishufhiepi16_62, _m128ishufhiepi16_63, _m128ishufhiepi16_64
+    isize_t _m128ishufhiepi16_65, _m128ishufhiepi16_66, _m128ishufhiepi16_67, _m128ishufhiepi16_68, _m128ishufhiepi16_69
+    isize_t _m128ishufhiepi16_70, _m128ishufhiepi16_71, _m128ishufhiepi16_72, _m128ishufhiepi16_73, _m128ishufhiepi16_74
+    isize_t _m128ishufhiepi16_75, _m128ishufhiepi16_76, _m128ishufhiepi16_77, _m128ishufhiepi16_78, _m128ishufhiepi16_79
+    isize_t _m128ishufhiepi16_80, _m128ishufhiepi16_81, _m128ishufhiepi16_82, _m128ishufhiepi16_83, _m128ishufhiepi16_84
+    isize_t _m128ishufhiepi16_85, _m128ishufhiepi16_86, _m128ishufhiepi16_87, _m128ishufhiepi16_88, _m128ishufhiepi16_89
+    isize_t _m128ishufhiepi16_90, _m128ishufhiepi16_91, _m128ishufhiepi16_92, _m128ishufhiepi16_93, _m128ishufhiepi16_94
+    isize_t _m128ishufhiepi16_95, _m128ishufhiepi16_96, _m128ishufhiepi16_97, _m128ishufhiepi16_98, _m128ishufhiepi16_99
+    isize_t _m128ishufhiepi16_100, _m128ishufhiepi16_101, _m128ishufhiepi16_102, _m128ishufhiepi16_103, _m128ishufhiepi16_104
+    isize_t _m128ishufhiepi16_105, _m128ishufhiepi16_106, _m128ishufhiepi16_107, _m128ishufhiepi16_108, _m128ishufhiepi16_109
+    isize_t _m128ishufhiepi16_110, _m128ishufhiepi16_111, _m128ishufhiepi16_112, _m128ishufhiepi16_113, _m128ishufhiepi16_114
+    isize_t _m128ishufhiepi16_115, _m128ishufhiepi16_116, _m128ishufhiepi16_117, _m128ishufhiepi16_118, _m128ishufhiepi16_119
+    isize_t _m128ishufhiepi16_120, _m128ishufhiepi16_121, _m128ishufhiepi16_122, _m128ishufhiepi16_123, _m128ishufhiepi16_124
+    isize_t _m128ishufhiepi16_125, _m128ishufhiepi16_126, _m128ishufhiepi16_127, _m128ishufhiepi16_128, _m128ishufhiepi16_129
+    isize_t _m128ishufhiepi16_130, _m128ishufhiepi16_131, _m128ishufhiepi16_132, _m128ishufhiepi16_133, _m128ishufhiepi16_134
+    isize_t _m128ishufhiepi16_135, _m128ishufhiepi16_136, _m128ishufhiepi16_137, _m128ishufhiepi16_138, _m128ishufhiepi16_139
+    isize_t _m128ishufhiepi16_140, _m128ishufhiepi16_141, _m128ishufhiepi16_142, _m128ishufhiepi16_143, _m128ishufhiepi16_144
+    isize_t _m128ishufhiepi16_145, _m128ishufhiepi16_146, _m128ishufhiepi16_147, _m128ishufhiepi16_148, _m128ishufhiepi16_149
+    isize_t _m128ishufhiepi16_150, _m128ishufhiepi16_151, _m128ishufhiepi16_152, _m128ishufhiepi16_153, _m128ishufhiepi16_154
+    isize_t _m128ishufhiepi16_155, _m128ishufhiepi16_156, _m128ishufhiepi16_157, _m128ishufhiepi16_158, _m128ishufhiepi16_159
+    isize_t _m128ishufhiepi16_160, _m128ishufhiepi16_161, _m128ishufhiepi16_162, _m128ishufhiepi16_163, _m128ishufhiepi16_164
+    isize_t _m128ishufhiepi16_165, _m128ishufhiepi16_166, _m128ishufhiepi16_167, _m128ishufhiepi16_168, _m128ishufhiepi16_169
+    isize_t _m128ishufhiepi16_170, _m128ishufhiepi16_171, _m128ishufhiepi16_172, _m128ishufhiepi16_173, _m128ishufhiepi16_174
+    isize_t _m128ishufhiepi16_175, _m128ishufhiepi16_176, _m128ishufhiepi16_177, _m128ishufhiepi16_178, _m128ishufhiepi16_179
+    isize_t _m128ishufhiepi16_180, _m128ishufhiepi16_181, _m128ishufhiepi16_182, _m128ishufhiepi16_183, _m128ishufhiepi16_184
+    isize_t _m128ishufhiepi16_185, _m128ishufhiepi16_186, _m128ishufhiepi16_187, _m128ishufhiepi16_188, _m128ishufhiepi16_189
+    isize_t _m128ishufhiepi16_190, _m128ishufhiepi16_191, _m128ishufhiepi16_192, _m128ishufhiepi16_193, _m128ishufhiepi16_194
+    isize_t _m128ishufhiepi16_195, _m128ishufhiepi16_196, _m128ishufhiepi16_197, _m128ishufhiepi16_198, _m128ishufhiepi16_199
+    isize_t _m128ishufhiepi16_200, _m128ishufhiepi16_201, _m128ishufhiepi16_202, _m128ishufhiepi16_203, _m128ishufhiepi16_204
+    isize_t _m128ishufhiepi16_205, _m128ishufhiepi16_206, _m128ishufhiepi16_207, _m128ishufhiepi16_208, _m128ishufhiepi16_209
+    isize_t _m128ishufhiepi16_210, _m128ishufhiepi16_211, _m128ishufhiepi16_212, _m128ishufhiepi16_213, _m128ishufhiepi16_214
+    isize_t _m128ishufhiepi16_215, _m128ishufhiepi16_216, _m128ishufhiepi16_217, _m128ishufhiepi16_218, _m128ishufhiepi16_219
+    isize_t _m128ishufhiepi16_220, _m128ishufhiepi16_221, _m128ishufhiepi16_222, _m128ishufhiepi16_223, _m128ishufhiepi16_224
+    isize_t _m128ishufhiepi16_225, _m128ishufhiepi16_226, _m128ishufhiepi16_227, _m128ishufhiepi16_228, _m128ishufhiepi16_229
+    isize_t _m128ishufhiepi16_230, _m128ishufhiepi16_231, _m128ishufhiepi16_232, _m128ishufhiepi16_233, _m128ishufhiepi16_234
+    isize_t _m128ishufhiepi16_235, _m128ishufhiepi16_236, _m128ishufhiepi16_237, _m128ishufhiepi16_238, _m128ishufhiepi16_239
+    isize_t _m128ishufhiepi16_240, _m128ishufhiepi16_241, _m128ishufhiepi16_242, _m128ishufhiepi16_243, _m128ishufhiepi16_244
+    isize_t _m128ishufhiepi16_245, _m128ishufhiepi16_246, _m128ishufhiepi16_247, _m128ishufhiepi16_248, _m128ishufhiepi16_249
+    isize_t _m128ishufhiepi16_250, _m128ishufhiepi16_251, _m128ishufhiepi16_252, _m128ishufhiepi16_253, _m128ishufhiepi16_254
+    isize_t _m128ishufhiepi16_255
+
+    _m128ishufloepi16jmptable label size_t
+    isize_t _m128ishufloepi16_0, _m128ishufloepi16_1, _m128ishufloepi16_2, _m128ishufloepi16_3, _m128ishufloepi16_4
+    isize_t _m128ishufloepi16_5, _m128ishufloepi16_6, _m128ishufloepi16_7, _m128ishufloepi16_8, _m128ishufloepi16_9
+    isize_t _m128ishufloepi16_10, _m128ishufloepi16_11, _m128ishufloepi16_12, _m128ishufloepi16_13, _m128ishufloepi16_14
+    isize_t _m128ishufloepi16_15, _m128ishufloepi16_16, _m128ishufloepi16_17, _m128ishufloepi16_18, _m128ishufloepi16_19
+    isize_t _m128ishufloepi16_20, _m128ishufloepi16_21, _m128ishufloepi16_22, _m128ishufloepi16_23, _m128ishufloepi16_24
+    isize_t _m128ishufloepi16_25, _m128ishufloepi16_26, _m128ishufloepi16_27, _m128ishufloepi16_28, _m128ishufloepi16_29
+    isize_t _m128ishufloepi16_30, _m128ishufloepi16_31, _m128ishufloepi16_32, _m128ishufloepi16_33, _m128ishufloepi16_34
+    isize_t _m128ishufloepi16_35, _m128ishufloepi16_36, _m128ishufloepi16_37, _m128ishufloepi16_38, _m128ishufloepi16_39
+    isize_t _m128ishufloepi16_40, _m128ishufloepi16_41, _m128ishufloepi16_42, _m128ishufloepi16_43, _m128ishufloepi16_44
+    isize_t _m128ishufloepi16_45, _m128ishufloepi16_46, _m128ishufloepi16_47, _m128ishufloepi16_48, _m128ishufloepi16_49
+    isize_t _m128ishufloepi16_50, _m128ishufloepi16_51, _m128ishufloepi16_52, _m128ishufloepi16_53, _m128ishufloepi16_54
+    isize_t _m128ishufloepi16_55, _m128ishufloepi16_56, _m128ishufloepi16_57, _m128ishufloepi16_58, _m128ishufloepi16_59
+    isize_t _m128ishufloepi16_60, _m128ishufloepi16_61, _m128ishufloepi16_62, _m128ishufloepi16_63, _m128ishufloepi16_64
+    isize_t _m128ishufloepi16_65, _m128ishufloepi16_66, _m128ishufloepi16_67, _m128ishufloepi16_68, _m128ishufloepi16_69
+    isize_t _m128ishufloepi16_70, _m128ishufloepi16_71, _m128ishufloepi16_72, _m128ishufloepi16_73, _m128ishufloepi16_74
+    isize_t _m128ishufloepi16_75, _m128ishufloepi16_76, _m128ishufloepi16_77, _m128ishufloepi16_78, _m128ishufloepi16_79
+    isize_t _m128ishufloepi16_80, _m128ishufloepi16_81, _m128ishufloepi16_82, _m128ishufloepi16_83, _m128ishufloepi16_84
+    isize_t _m128ishufloepi16_85, _m128ishufloepi16_86, _m128ishufloepi16_87, _m128ishufloepi16_88, _m128ishufloepi16_89
+    isize_t _m128ishufloepi16_90, _m128ishufloepi16_91, _m128ishufloepi16_92, _m128ishufloepi16_93, _m128ishufloepi16_94
+    isize_t _m128ishufloepi16_95, _m128ishufloepi16_96, _m128ishufloepi16_97, _m128ishufloepi16_98, _m128ishufloepi16_99
+    isize_t _m128ishufloepi16_100, _m128ishufloepi16_101, _m128ishufloepi16_102, _m128ishufloepi16_103, _m128ishufloepi16_104
+    isize_t _m128ishufloepi16_105, _m128ishufloepi16_106, _m128ishufloepi16_107, _m128ishufloepi16_108, _m128ishufloepi16_109
+    isize_t _m128ishufloepi16_110, _m128ishufloepi16_111, _m128ishufloepi16_112, _m128ishufloepi16_113, _m128ishufloepi16_114
+    isize_t _m128ishufloepi16_115, _m128ishufloepi16_116, _m128ishufloepi16_117, _m128ishufloepi16_118, _m128ishufloepi16_119
+    isize_t _m128ishufloepi16_120, _m128ishufloepi16_121, _m128ishufloepi16_122, _m128ishufloepi16_123, _m128ishufloepi16_124
+    isize_t _m128ishufloepi16_125, _m128ishufloepi16_126, _m128ishufloepi16_127, _m128ishufloepi16_128, _m128ishufloepi16_129
+    isize_t _m128ishufloepi16_130, _m128ishufloepi16_131, _m128ishufloepi16_132, _m128ishufloepi16_133, _m128ishufloepi16_134
+    isize_t _m128ishufloepi16_135, _m128ishufloepi16_136, _m128ishufloepi16_137, _m128ishufloepi16_138, _m128ishufloepi16_139
+    isize_t _m128ishufloepi16_140, _m128ishufloepi16_141, _m128ishufloepi16_142, _m128ishufloepi16_143, _m128ishufloepi16_144
+    isize_t _m128ishufloepi16_145, _m128ishufloepi16_146, _m128ishufloepi16_147, _m128ishufloepi16_148, _m128ishufloepi16_149
+    isize_t _m128ishufloepi16_150, _m128ishufloepi16_151, _m128ishufloepi16_152, _m128ishufloepi16_153, _m128ishufloepi16_154
+    isize_t _m128ishufloepi16_155, _m128ishufloepi16_156, _m128ishufloepi16_157, _m128ishufloepi16_158, _m128ishufloepi16_159
+    isize_t _m128ishufloepi16_160, _m128ishufloepi16_161, _m128ishufloepi16_162, _m128ishufloepi16_163, _m128ishufloepi16_164
+    isize_t _m128ishufloepi16_165, _m128ishufloepi16_166, _m128ishufloepi16_167, _m128ishufloepi16_168, _m128ishufloepi16_169
+    isize_t _m128ishufloepi16_170, _m128ishufloepi16_171, _m128ishufloepi16_172, _m128ishufloepi16_173, _m128ishufloepi16_174
+    isize_t _m128ishufloepi16_175, _m128ishufloepi16_176, _m128ishufloepi16_177, _m128ishufloepi16_178, _m128ishufloepi16_179
+    isize_t _m128ishufloepi16_180, _m128ishufloepi16_181, _m128ishufloepi16_182, _m128ishufloepi16_183, _m128ishufloepi16_184
+    isize_t _m128ishufloepi16_185, _m128ishufloepi16_186, _m128ishufloepi16_187, _m128ishufloepi16_188, _m128ishufloepi16_189
+    isize_t _m128ishufloepi16_190, _m128ishufloepi16_191, _m128ishufloepi16_192, _m128ishufloepi16_193, _m128ishufloepi16_194
+    isize_t _m128ishufloepi16_195, _m128ishufloepi16_196, _m128ishufloepi16_197, _m128ishufloepi16_198, _m128ishufloepi16_199
+    isize_t _m128ishufloepi16_200, _m128ishufloepi16_201, _m128ishufloepi16_202, _m128ishufloepi16_203, _m128ishufloepi16_204
+    isize_t _m128ishufloepi16_205, _m128ishufloepi16_206, _m128ishufloepi16_207, _m128ishufloepi16_208, _m128ishufloepi16_209
+    isize_t _m128ishufloepi16_210, _m128ishufloepi16_211, _m128ishufloepi16_212, _m128ishufloepi16_213, _m128ishufloepi16_214
+    isize_t _m128ishufloepi16_215, _m128ishufloepi16_216, _m128ishufloepi16_217, _m128ishufloepi16_218, _m128ishufloepi16_219
+    isize_t _m128ishufloepi16_220, _m128ishufloepi16_221, _m128ishufloepi16_222, _m128ishufloepi16_223, _m128ishufloepi16_224
+    isize_t _m128ishufloepi16_225, _m128ishufloepi16_226, _m128ishufloepi16_227, _m128ishufloepi16_228, _m128ishufloepi16_229
+    isize_t _m128ishufloepi16_230, _m128ishufloepi16_231, _m128ishufloepi16_232, _m128ishufloepi16_233, _m128ishufloepi16_234
+    isize_t _m128ishufloepi16_235, _m128ishufloepi16_236, _m128ishufloepi16_237, _m128ishufloepi16_238, _m128ishufloepi16_239
+    isize_t _m128ishufloepi16_240, _m128ishufloepi16_241, _m128ishufloepi16_242, _m128ishufloepi16_243, _m128ishufloepi16_244
+    isize_t _m128ishufloepi16_245, _m128ishufloepi16_246, _m128ishufloepi16_247, _m128ishufloepi16_248, _m128ishufloepi16_249
+    isize_t _m128ishufloepi16_250, _m128ishufloepi16_251, _m128ishufloepi16_252, _m128ishufloepi16_253, _m128ishufloepi16_254
+    isize_t _m128ishufloepi16_255
+
+.code
+
+callconvopt
+alignxmmfieldproc
 
 procstart _uX_mm_shuffle_epi64_00, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         pshufd              xmm0,           xmm0,           shuffler4(0,1,0,1)
@@ -189,12 +213,12 @@ procstart _uX_mm_shuffle_epi64_00, callconv, xmmword, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_shuffle_epi64_01, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        pshufd              xmm0,           xmm0,           shuffler4(0,1,2,3)
+        pshufd              xmm0,           xmm0,           shuffler4(2,3,0,1)
         ret
 procend
 
 procstart _uX_mm_shuffle_epi64_10, callconv, xmmword, < >, < >, Inxmm_A:xmmword
-        pshufd              xmm0,           xmm0,           shuffler4(2,3,0,1)
+        pshufd              xmm0,           xmm0,           shuffler4(0,1,2,3)
         ret
 procend
 
@@ -204,17 +228,17 @@ procstart _uX_mm_shuffle_epi64_11, callconv, xmmword, < >, < >, Inxmm_A:xmmword
 procend
 
 procstart _uX_mm_shuffle_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_Imm:dword
-        push         rbase
-        .if((rparam1 < 0) || (rparam1 > 3))
+        push         rbase()
+        .if((rp1() < 0) || (rp1() > 3))
         jmp         _m128ishufepi64_end
         .endif
 
         ifdef __X32__
-        movzx           rbase,    byte ptr [rparam1]
-        jmp     dword ptr [_m128ishufepi64jmptable+rbase*size_t_size]
+        movzx           rbase(),    byte ptr [rp1()]
+        jmp     dword ptr [_m128ishufepi64jmptable+rbase()*size_t_size]
         else
-        lea             rbase,    qword ptr [_m128ishufepi64jmptable]
-        mov             rbase,    qword ptr [rbase+rparam1*size_t_size]
+        lea             rbase(),    qword ptr [_m128ishufepi64jmptable]
+        mov             rbase(),    qword ptr [rbase()+rp1()*size_t_size]
         jmp             rbx
         endif
 
@@ -232,7 +256,7 @@ procstart _uX_mm_shuffle_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, In
         ;jmp         _m128ishufepi64_end
 
         _m128ishufepi64_end:
-        pop         rbase
+        pop         rbase()
         ret
 procend
 
@@ -1517,17 +1541,17 @@ procstart _uX_mm_shuffle_epi32_3333, callconv, xmmword, < >, < >, Inxmm_A:xmmwor
 procend
 
 procstart _uX_mm_shuffle_epi32, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_Imm:dword
-        push         rbase
-        .if((rparam1 < 0) || (rparam1 > 255))
+        push         rbase()
+        .if((rp1() < 0) || (rp1() > 255))
         jmp         _m128ishufepi32_end
         .endif
 
         ifdef __X32__
-        movzx           rbase,    byte ptr [rparam1]
-        jmp     dword ptr [_m128ishufepi32jmptable+rbase*size_t_size]
+        movzx           rbase(),    byte ptr [rp1()]
+        jmp     dword ptr [_m128ishufepi32jmptable+rbase()*size_t_size]
         else
-        lea             rbase,    qword ptr [_m128ishufepi32jmptable]
-        mov             rbase,    qword ptr [rbase+rparam1*size_t_size]
+        lea             rbase(),    qword ptr [_m128ishufepi32jmptable]
+        mov             rbase(),    qword ptr [rbase()+rp1()*size_t_size]
         jmp             rbx
         endif
 
@@ -2301,7 +2325,7 @@ procstart _uX_mm_shuffle_epi32, callconv, xmmword, < >, < >, Inxmm_A:xmmword, In
         ;jmp         _m128ishufepi32_end
 
         _m128ishufepi32_end:
-        pop         rbase
+        pop         rbase()
         ret
 procend
 
@@ -3586,17 +3610,17 @@ procstart _uX_mm_shufflehi_epi16_3333, callconv, xmmword, < >, < >, Inxmm_A:xmmw
 procend
 
 procstart _uX_mm_shufflehi_epi16, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_Imm:dword
-        push         rbase
-        .if((rparam1 < 0) || (rparam1 > 255))
+        push         rbase()
+        .if((rp1() < 0) || (rp1() > 255))
         jmp         _m128ishufhiepi16_end
         .endif
 
         ifdef __X32__
-        movzx           rbase,    byte ptr [rparam1]
-        jmp     dword ptr [_m128ishufhiepi16jmptable+rbase*size_t_size]
+        movzx           rbase(),    byte ptr [rp1()]
+        jmp     dword ptr [_m128ishufhiepi16jmptable+rbase()*size_t_size]
         else
-        lea             rbase,    qword ptr [_m128ishufhiepi16jmptable]
-        mov             rbase,    qword ptr [rbase+rparam1*size_t_size]
+        lea             rbase(),    qword ptr [_m128ishufhiepi16jmptable]
+        mov             rbase(),    qword ptr [rbase()+rp1()*size_t_size]
         jmp             rbx
         endif
         
@@ -4370,7 +4394,7 @@ procstart _uX_mm_shufflehi_epi16, callconv, xmmword, < >, < >, Inxmm_A:xmmword, 
         ;jmp         _m128ishufhiepi16_end
 
         _m128ishufhiepi16_end:
-        pop         rbase
+        pop         rbase()
         ret
 procend
 
@@ -5655,17 +5679,17 @@ procstart _uX_mm_shufflelo_epi16_3333, callconv, xmmword, < >, < >, Inxmm_A:xmmw
 procend
 
 procstart _uX_mm_shufflelo_epi16, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_Imm:dword
-        push         rbase
-        .if((rparam1 < 0) || (rparam1 > 255))
+        push         rbase()
+        .if((rp1() < 0) || (rp1() > 255))
         jmp         _m128ishufloepi16_end
         .endif
 
         ifdef __X32__
-        movzx           rbase,    byte ptr [rparam1]
-        jmp     dword ptr [_m128ishufloepi16jmptable+rbase*size_t_size]
+        movzx           rbase(),    byte ptr [rp1()]
+        jmp     dword ptr [_m128ishufloepi16jmptable+rbase()*size_t_size]
         else
-        lea             rbase,    qword ptr [_m128ishufloepi16jmptable]
-        mov             rbase,    qword ptr [rbase+rparam1*size_t_size]
+        lea             rbase(),    qword ptr [_m128ishufloepi16jmptable]
+        mov             rbase(),    qword ptr [rbase()+rp1()*size_t_size]
         jmp             rbx
         endif
 
@@ -6439,10 +6463,10 @@ procstart _uX_mm_shufflelo_epi16, callconv, xmmword, < >, < >, Inxmm_A:xmmword, 
         ;jmp         _m128ishufloepi16_end
 
         _m128ishufloepi16_end:
-        pop         rbase
+        pop         rbase()
         ret
 procend
 
 endif ;__MIC__
 
-    end
+end

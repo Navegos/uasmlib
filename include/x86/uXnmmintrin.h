@@ -1,22 +1,21 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-; / /                                                                               / /
-; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
-; / /                                                                               / /
-; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
-; / /    you may not use this file except in compliance with the License.           / /
-; / /    You may obtain a copy of the License at                                    / /
-; / /                                                                               / /
-; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
-; / /                                                                               / /
-; / /    Unless required by applicable law or agreed to in writing, software        / /
-; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
-; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
-; / /    See the License for the specific language governing permissions and        / /
-; / /    limitations under the License.                                             / /
-; / /                                                                               / /
+; / /																				/ /
+; / /			Copyright 2021 (c) Navegos QA - optimized library					/ /
+; / /																				/ /
+; / /	Licensed under the Apache License, Version 2.0 (the "License");				/ /
+; / /	you may not use this file except in compliance with the License.			/ /
+; / /	You may obtain a copy of the License at										/ /
+; / /																				/ /
+; / /		http://www.apache.org/licenses/LICENSE-2.0								/ /
+; / /																				/ /
+; / /	Unless required by applicable law or agreed to in writing, software			/ /
+; / /	distributed under the License is distributed on an "AS IS" BASIS,			/ /
+; / /	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.	/ /
+; / /	See the License for the specific language governing permissions and			/ /
+; / /	limitations under the License.												/ /
+; / /																				/ /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 */
@@ -144,7 +143,7 @@ uX_PACK_PUSH_XMM
 /*
  * Intrinsics for text/string processing.
  */
-extern __m128i uX_ABI _uX_mm_cmpistrm(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/, count_t const /*Inint_Control*/);
+	extern __m128i uX_ABI _uX_mm_cmpistrm(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/, count_t const /*Inint_Control*/);
 extern int uX_ABI _uX_mm_cmpistri(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/, count_t const /*Inint_Control*/);
 
 extern __m128i uX_ABI _uX_mm_cmpestrm(__m128i /*Inxmm_A*/, int /*Inint_LA*/, __m128i /*Inxmm_B*/, int /*Inint_LB*/, count_t const /*Inint_Control*/);

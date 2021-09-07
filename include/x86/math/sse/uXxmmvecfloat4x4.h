@@ -1,4 +1,3 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -92,124 +91,123 @@ class vecdouble4x4;
 typedef class uX_API vecfloat4x4
 {
 public:
-    vecfloat4x4() uX_default;
-    ~vecfloat4x4() uX_default;
+	vecfloat4x4() uX_default;
+	~vecfloat4x4() uX_default;
 
-    vecfloat4x4(const vecfloat4x4&) uX_default;
-    vecfloat4x4& uX_callconv operator=(const vecfloat4x4&) uX_default;
+	vecfloat4x4(const vecfloat4x4&) uX_default;
+	vecfloat4x4& uX_callconv operator=(const vecfloat4x4&) uX_default;
 
-    vecfloat4x4(vecfloat4x4&&) uX_default;
-    vecfloat4x4& uX_callconv operator=(vecfloat4x4&&) uX_default;
+	vecfloat4x4(vecfloat4x4&&) uX_default;
+	vecfloat4x4& uX_callconv operator=(vecfloat4x4&&) uX_default;
 
-    /**
-     * Constructor initialization from 4 type __m128.
-     *
-     * @param Inxmm_0 value to copy from.
-     * @param Inxmm_1 value to copy from.
-     * @param Inxmm_2 value to copy from.
-     * @param Inxmm_3 value to copy from.
-     */
-    vecfloat4x4(const __m128 Inxmm_0, const __m128 Inxmm_1, const __m128 Inxmm_2, const __m128 Inxmm_3) uX_noexcept;
+	/**
+	 * Constructor initialization from 4 type __m128.
+	 *
+	 * @param Inxmm_0 value to copy from.
+	 * @param Inxmm_1 value to copy from.
+	 * @param Inxmm_2 value to copy from.
+	 * @param Inxmm_3 value to copy from.
+	 */
+	vecfloat4x4(const __m128 Inxmm_0, const __m128 Inxmm_1, const __m128 Inxmm_2, const __m128 Inxmm_3) uX_noexcept;
 
-    /**
-     * Constructor initialization from type __m128*.
-     *
-     * @param Inpxmm value to copy from.
-     * @param idxbegin pointer start index.
-     * @param idxend pointer end index.
-     * @warning No internall checks. Inpxmmd assumes 1*1 __m128 in the max range off 1*4.
-     */
-    uX_explicit vecfloat4x4(const __m128* Inpxmm, uint32_t idxbegin = 0, uint32_t idxend = m128_xmm_ptr_lenght) uX_noexcept;
+	/**
+	 * Constructor initialization from type __m128*.
+	 *
+	 * @param Inpxmm value to copy from.
+	 * @param idxbegin pointer start index.
+	 * @param idxend pointer end index.
+	 * @warning No internall checks. Inpxmmd assumes 1*1 __m128 in the max range off 1*4.
+	 */
+	uX_explicit vecfloat4x4(const __m128* Inpxmm, uint32_t idxbegin = 0, uint32_t idxend = m128_xmm_ptr_length) uX_noexcept;
 
-    /**
-     * Constructor initialization from 4x4 type floats.
-     *
-     * @param Infloat_X0 value to copy from.
-     * @param Infloat_X1 value to copy from.
-     * @param Infloat_X2 value to copy from.
-     * @param Infloat_X3 value to copy from.
-     * @param Infloat_Y0 value to copy from.
-     * @param Infloat_Y1 value to copy from.
-     * @param Infloat_Y2 value to copy from.
-     * @param Infloat_Y3 value to copy from.
-     * @param Infloat_Z0 value to copy from.
-     * @param Infloat_Z1 value to copy from.
-     * @param Infloat_Z2 value to copy from.
-     * @param Infloat_Z3 value to copy from.
-     * @param Infloat_W0 value to copy from.
-     * @param Infloat_W1 value to copy from.
-     * @param Infloat_W2 value to copy from.
-     * @param Infloat_W3 value to copy from.
-     */
-    vecfloat4x4(float Infloat_X0, float Infloat_X1, float Infloat_X2, float Infloat_X3,
-                float Infloat_Y0, float Infloat_Y1, float Infloat_Y2, float Infloat_Y3,
-                float Infloat_Z0, float Infloat_Z1, float Infloat_Z2, float Infloat_Z3,
-                float Infloat_W0, float Infloat_W1, float Infloat_W2, float Infloat_W3) uX_noexcept;
+	/**
+	 * Constructor initialization from 4x4 type floats.
+	 *
+	 * @param Infloat_X0 value to copy from.
+	 * @param Infloat_X1 value to copy from.
+	 * @param Infloat_X2 value to copy from.
+	 * @param Infloat_X3 value to copy from.
+	 * @param Infloat_Y0 value to copy from.
+	 * @param Infloat_Y1 value to copy from.
+	 * @param Infloat_Y2 value to copy from.
+	 * @param Infloat_Y3 value to copy from.
+	 * @param Infloat_Z0 value to copy from.
+	 * @param Infloat_Z1 value to copy from.
+	 * @param Infloat_Z2 value to copy from.
+	 * @param Infloat_Z3 value to copy from.
+	 * @param Infloat_W0 value to copy from.
+	 * @param Infloat_W1 value to copy from.
+	 * @param Infloat_W2 value to copy from.
+	 * @param Infloat_W3 value to copy from.
+	 */
+	vecfloat4x4(float Infloat_X0, float Infloat_X1, float Infloat_X2, float Infloat_X3,
+				float Infloat_Y0, float Infloat_Y1, float Infloat_Y2, float Infloat_Y3,
+				float Infloat_Z0, float Infloat_Z1, float Infloat_Z2, float Infloat_Z3,
+				float Infloat_W0, float Infloat_W1, float Infloat_W2, float Infloat_W3) uX_noexcept;
 
-    /**
-     * Constructor initialization from type float*.
-     *
-     * @param Inpfloat value to copy from.
-     * @param idxbegin pointer start index.
-     * @param idxend pointer end index.
-     * @warning No internall checks. Inpdouble assumes multiples off float in the max range off 4*4.
-     */
-    uX_explicit vecfloat4x4(const float* Inpfloat, uint32_t idxbegin = 0, uint32_t idxend = m128_xmm_ptr_lenght) uX_noexcept;
+	/**
+	 * Constructor initialization from type float*.
+	 *
+	 * @param Inpfloat value to copy from.
+	 * @param idxbegin pointer start index.
+	 * @param idxend pointer end index.
+	 * @warning No internall checks. Inpdouble assumes multiples off float in the max range off 4*4.
+	 */
+	uX_explicit vecfloat4x4(const float* Inpfloat, uint32_t idxbegin = 0, uint32_t idxend = m128_xmm_ptr_length) uX_noexcept;
 
-    /** Type cast operator to convert to __m128*. */
-    /*operator __m128*() const;*/ //security undesired
+	/** Type cast operator to convert to __m128*. */
+	/*operator __m128*() const;*/ //security undesired
 
-    /** Type cast operator to convert to float*. */
-    /*operator float*() const;*/ //security undesired
+	/** Type cast operator to convert to float*. */
+	/*operator float*() const;*/ //security undesired
 
-    /**
-     * Assignment operator to convert from type __m128*.
-     *
-     * @param Inpxmm value to copy from.
-     */
-    /*vecfloat4x4& uX_callconv operator=(const __m128* Inpxmm);*/ //security undesired
+	/**
+	 * Assignment operator to convert from type __m128*.
+	 *
+	 * @param Inpxmm value to copy from.
+	 */
+	/*vecfloat4x4& uX_callconv operator=(const __m128* Inpxmm);*/ //security undesired
 
-    /**
-     * Assignment operator to convert from type float*.
-     *
-     * @param Inpfloat value to copy from.
-     */
-    /*vecfloat4x4& uX_callconv operator=(const float* Inpfloat);*/ //security undesired
+	/**
+	 * Assignment operator to convert from type float*.
+	 *
+	 * @param Inpfloat value to copy from.
+	 */
+	/*vecfloat4x4& uX_callconv operator=(const float* Inpfloat);*/ //security undesired
 
 protected:
 
 private:
-    union
-    {
-        struct
-        {
-            __m128              m128_xmm_0;
-            __m128              m128_xmm_1;
-            __m128              m128_xmm_2;
-            __m128              m128_xmm_3;
-        };
-        __m128                 m128_xmm[4];
-        struct
-        {
-            float       _11, _12, _13, _14;
-            float       _21, _22, _23, _24;
-            float       _31, _32, _33, _34;
-            float       _41, _42, _43, _44;
-        };
-        float                m128_fm[4][4];
-        float                   m128_f[16];
-    };
+	union
+	{
+		struct
+		{
+			__m128              m128_xmm_0;
+			__m128              m128_xmm_1;
+			__m128              m128_xmm_2;
+			__m128              m128_xmm_3;
+		};
+		__m128                 m128_xmm[4];
+		struct
+		{
+			float       _11, _12, _13, _14;
+			float       _21, _22, _23, _24;
+			float       _31, _32, _33, _34;
+			float       _41, _42, _43, _44;
+		};
+		float                m128_fm[4][4];
+		float                   m128_f[16];
+	};
 
-    static uX_const uint32_t m128_xmm_ptr_lenght    = 4;
-    static uX_const uint32_t m128_xmm_ptr_size      = 64;
-    static uX_const uint32_t m128_xmm_size          = 16;
-    static uX_const uint32_t m128_xmm_flt_elements  = 4;
-    static uX_const uint32_t m128_row_lenght        = 4;
-    static uX_const uint32_t m128_column_lenght     = 4;
-    static uX_const uint32_t m128_flt_ptr_lenght    = 16;
-    static uX_const uint32_t m128_flt_ptr_size      = 64;
-    static uX_const uint32_t m128_flt_size          = 4;
-
+	static uX_const uint32_t m128_xmm_ptr_length = 4;
+	static uX_const uint32_t m128_xmm_ptr_size = 64;
+	static uX_const uint32_t m128_xmm_size = 16;
+	static uX_const uint32_t m128_xmm_flt_elements = 4;
+	static uX_const uint32_t m128_row_length = 4;
+	static uX_const uint32_t m128_column_length = 4;
+	static uX_const uint32_t m128_flt_ptr_length = 16;
+	static uX_const uint32_t m128_flt_ptr_size = 64;
+	static uX_const uint32_t m128_flt_size = 4;
 }vecfloat4x4_t;
 
 uX_PACK_POP

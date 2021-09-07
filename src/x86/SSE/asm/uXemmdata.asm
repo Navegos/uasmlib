@@ -185,6 +185,7 @@ alignxmmfieldproc
     v2ci __m128i_i64_1,                 __m128q, i64_1
     v2ci __m128i_i64_neg0,              __m128q, i64_neg0
     v2ci __m128i_i64_neg1,              __m128q, i64_neg1
+    v2ci __m128i_i64_rolmax,            __m128q, 0x3f
 
     v2ci2 __m128i_i64_select00,         __m128q, i64_false, i64_false
     v2ci2 __m128i_i64_select01,         __m128q, i64_false, i64_true
@@ -208,6 +209,7 @@ alignxmmfieldproc
     v2ci2 __m128i_i64_0e_1,             __m128q, i64_1, i64_false
     v2ci2 __m128i_i64_0e_neg0,          __m128q, i64_neg0, i64_false
     v2ci2 __m128i_i64_0e_neg1,          __m128q, i64_neg1, i64_false
+    v2ci2 __m128i_i64_0e_rolmax,        __m128q, 0x3f, i64_false
 
     ;;float mask;;
 
@@ -3648,6 +3650,11 @@ procstart _uX_mm_const_i64_neg1_si128, callconv, xmmword, < >, < >, < >
         ret
 procend
 
+procstart _uX_mm_const_i64_rolmax_si128, callconv, xmmword, < >, < >, < >
+        movdqa          xmm0,           __m128i_i64_rolmax
+        ret
+procend
+
 procstart _uX_mm_const_i64_select00_si128, callconv, xmmword, < >, < >, < >
         movdqa          xmm0,           __m128i_i64_select00
         ret
@@ -3742,6 +3749,11 @@ procend
 
 procstart _uX_mm_const_i64_0e_neg1_si128, callconv, xmmword, < >, < >, < >
         movdqa          xmm0,           __m128i_i64_0e_neg1
+        ret
+procend
+
+procstart _uX_mm_const_i64_0e_rolmax_si128, callconv, xmmword, < >, < >, < >
+        movdqa          xmm0,           __m128i_i64_0e_rolmax
         ret
 procend
 

@@ -1,22 +1,46 @@
 
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / /                                                                               / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
+; / /                                                                               / /
+; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
+; / /    you may not use this file except in compliance with the License.           / /
+; / /    You may obtain a copy of the License at                                    / /
+; / /                                                                               / /
+; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
+; / /                                                                               / /
+; / /    Unless required by applicable law or agreed to in writing, software        / /
+; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
+; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
+; / /    See the License for the specific language governing permissions and        / /
+; / /    limitations under the License.                                             / /
+; / /                                                                               / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
+option casemap:none
+include macrolib.inc
+include uXasm.inc
+
 ifndef __MIC__
 
-    include uXx86asm.inc
+.xmm
+option arch:sse
+option evex:0
 
-    .xmm
-    option arch:sse
-    option evex:0
+alignstackfieldproc
 
-    .data?
+.data?
 
-    .data
+.data
 
-    .const
+.const
 
-    .code
+.code
 
-    callconvopt
-    alignxmmfieldproc
+callconvopt
+alignxmmfieldproc
 
 ;************************************
 ; New Single precision vector instructions.
@@ -65,7 +89,7 @@ procstart _uX_mm_hsub_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:
 procend
 
 procstart _uX_mm_loaddup_pd, callconv, xmmword, < >, < >, InPreal8_A:ptr real8
-        movddup         xmm0,       real8 ptr [rparam0]
+        movddup         xmm0,       real8 ptr [rp0()]
         ret
 procend
 
@@ -78,7 +102,7 @@ procend
 ; New unaligned integer vector load instruction.
 ;************************************
 procstart _uX_mm_lddqu_si128, callconv, xmmword, < >, < >, InPxmm_A:ptr xmmword
-        lddqu           xmm0,       xmmword ptr[rparam0]
+        lddqu           xmm0,       xmmword ptr[rp0()]
         ret
 procend
 
@@ -87,9 +111,9 @@ procend
 ;************************************
 
 procstart _uX_mm_monitor, voidarg, < >, < >, InPvoid_A:ptr, Ext_B:dword, Hints_C:dword
-        mov         rreturn,        rparam0
-        mov         ecx,        dparam1
-        mov         edx,        dparam2
+        mov         rret(),        rp0()
+        mov         ecx,        dp1()
+        mov         edx,        dp2()
     ifdef __X32__
         monitor     eax,        ecx,        edx
     else
@@ -99,8 +123,8 @@ procstart _uX_mm_monitor, voidarg, < >, < >, InPvoid_A:ptr, Ext_B:dword, Hints_C
 procend
 
 procstart _uX_mm_mwait, voidarg, < >, < >, Ext_A:dword, Hints_C:dword
-        mov         ecx,        dparam0
-        mov         eax,        dparam1
+        mov         ecx,        dp0()
+        mov         eax,        dp1()
     ifdef __X32__
         mwait       eax,        ecx
     else
@@ -111,4 +135,4 @@ procend
 
 endif ;__MIC__
 
-    end
+end

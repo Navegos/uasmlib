@@ -38,50 +38,50 @@ alignstackfieldproc
 .const
 
     _m128iextepi16jmptable label size_t
-    isize_t offset _m128iextepi16_0, offset _m128iextepi16_1, offset _m128iextepi16_2, offset _m128iextepi16_3
-    isize_t offset _m128iextepi16_4, offset _m128iextepi16_5, offset _m128iextepi16_6, offset _m128iextepi16_7
+    isize_t _m128iextepi16_0, _m128iextepi16_1, _m128iextepi16_2, _m128iextepi16_3
+    isize_t _m128iextepi16_4, _m128iextepi16_5, _m128iextepi16_6, _m128iextepi16_7
 
     _m128iinsepi16jmptable label size_t
-    isize_t offset _m128iinsepi16_0, offset _m128iinsepi16_1, offset _m128iinsepi16_2, offset _m128iinsepi16_3
-    isize_t offset _m128iinsepi16_4, offset _m128iinsepi16_5, offset _m128iinsepi16_6, offset _m128iinsepi16_7
+    isize_t _m128iinsepi16_0, _m128iinsepi16_1, _m128iinsepi16_2, _m128iinsepi16_3
+    isize_t _m128iinsepi16_4, _m128iinsepi16_5, _m128iinsepi16_6, _m128iinsepi16_7
 
     _m128icvtelts128epi64jmptable label size_t
-    isize_t offset _m128icvtelts128epi64_0, offset _m128icvtelts128epi64_1
+    isize_t _m128icvtelts128epi64_0, _m128icvtelts128epi64_1
 
     _m128icvtelts128epi64xjmptable label size_t
-    isize_t offset _m128icvtelts128epi64x_0, offset _m128icvtelts128epi64x_1
+    isize_t _m128icvtelts128epi64x_0, _m128icvtelts128epi64x_1
 
     _m128icvtelts128epi32jmptable label size_t
-    isize_t offset _m128icvtelts128epi32_0, offset _m128icvtelts128epi32_1, offset _m128icvtelts128epi32_2, offset _m128icvtelts128epi32_3
+    isize_t _m128icvtelts128epi32_0, _m128icvtelts128epi32_1, _m128icvtelts128epi32_2, _m128icvtelts128epi32_3
 
     _m128icvtelts128epi16jmptable label size_t
-    isize_t offset _m128icvtelts128epi16_0, offset _m128icvtelts128epi16_1, offset _m128icvtelts128epi16_2, offset _m128icvtelts128epi16_3
-    isize_t offset _m128icvtelts128epi16_4, offset _m128icvtelts128epi16_5, offset _m128icvtelts128epi16_6, offset _m128icvtelts128epi16_7
+    isize_t _m128icvtelts128epi16_0, _m128icvtelts128epi16_1, _m128icvtelts128epi16_2, _m128icvtelts128epi16_3
+    isize_t _m128icvtelts128epi16_4, _m128icvtelts128epi16_5, _m128icvtelts128epi16_6, _m128icvtelts128epi16_7
 
     _m128icvtelts128epi8jmptable label size_t
-    isize_t offset _m128icvtelts128epi8_0, offset _m128icvtelts128epi8_1, offset _m128icvtelts128epi8_2, offset _m128icvtelts128epi8_3
-    isize_t offset _m128icvtelts128epi8_4, offset _m128icvtelts128epi8_5, offset _m128icvtelts128epi8_6, offset _m128icvtelts128epi8_7
-    isize_t offset _m128icvtelts128epi8_8, offset _m128icvtelts128epi8_9, offset _m128icvtelts128epi8_10, offset _m128icvtelts128epi8_11
-    isize_t offset _m128icvtelts128epi8_12, offset _m128icvtelts128epi8_13, offset _m128icvtelts128epi8_14, offset _m128icvtelts128epi8_15
+    isize_t _m128icvtelts128epi8_0, _m128icvtelts128epi8_1, _m128icvtelts128epi8_2, _m128icvtelts128epi8_3
+    isize_t _m128icvtelts128epi8_4, _m128icvtelts128epi8_5, _m128icvtelts128epi8_6, _m128icvtelts128epi8_7
+    isize_t _m128icvtelts128epi8_8, _m128icvtelts128epi8_9, _m128icvtelts128epi8_10, _m128icvtelts128epi8_11
+    isize_t _m128icvtelts128epi8_12, _m128icvtelts128epi8_13, _m128icvtelts128epi8_14, _m128icvtelts128epi8_15
 
     _m128icvteltsepi64s128jmptable label size_t
-    isize_t offset _m128icvteltsepi64s128_0, offset _m128icvteltsepi64s128_1
+    isize_t _m128icvteltsepi64s128_0, _m128icvteltsepi64s128_1
 
     _m128icvteltsepi64xs128jmptable label size_t
-    isize_t offset _m128icvteltsepi64xs128_0, offset _m128icvteltsepi64xs128_1
+    isize_t _m128icvteltsepi64xs128_0, _m128icvteltsepi64xs128_1
 
     _m128icvteltsepi32s128jmptable label size_t
-    isize_t offset _m128icvteltsepi32s128_0, offset _m128icvteltsepi32s128_1, offset _m128icvteltsepi32s128_2, offset _m128icvteltsepi32s128_3
+    isize_t _m128icvteltsepi32s128_0, _m128icvteltsepi32s128_1, _m128icvteltsepi32s128_2, _m128icvteltsepi32s128_3
 
     _m128icvteltsepi16s128jmptable label size_t
-    isize_t offset _m128icvteltsepi16s128_0, offset _m128icvteltsepi16s128_1, offset _m128icvteltsepi16s128_2, offset _m128icvteltsepi16s128_3
-    isize_t offset _m128icvteltsepi16s128_4, offset _m128icvteltsepi16s128_5, offset _m128icvteltsepi16s128_6, offset _m128icvteltsepi16s128_7
+    isize_t _m128icvteltsepi16s128_0, _m128icvteltsepi16s128_1, _m128icvteltsepi16s128_2, _m128icvteltsepi16s128_3
+    isize_t _m128icvteltsepi16s128_4, _m128icvteltsepi16s128_5, _m128icvteltsepi16s128_6, _m128icvteltsepi16s128_7
 
     _m128icvteltsepi8s128jmptable label size_t
-    isize_t offset _m128icvteltsepi8s128_0, offset _m128icvteltsepi8s128_1, offset _m128icvteltsepi8s128_2, offset _m128icvteltsepi8s128_3 
-    isize_t offset _m128icvteltsepi8s128_4, offset _m128icvteltsepi8s128_5, offset _m128icvteltsepi8s128_6, offset _m128icvteltsepi8s128_7
-    isize_t offset _m128icvteltsepi8s128_8, offset _m128icvteltsepi8s128_9, offset _m128icvteltsepi8s128_10, offset _m128icvteltsepi8s128_11
-    isize_t offset _m128icvteltsepi8s128_12, offset _m128icvteltsepi8s128_13, offset _m128icvteltsepi8s128_14, offset _m128icvteltsepi8s128_15
+    isize_t _m128icvteltsepi8s128_0, _m128icvteltsepi8s128_1, _m128icvteltsepi8s128_2, _m128icvteltsepi8s128_3 
+    isize_t _m128icvteltsepi8s128_4, _m128icvteltsepi8s128_5, _m128icvteltsepi8s128_6, _m128icvteltsepi8s128_7
+    isize_t _m128icvteltsepi8s128_8, _m128icvteltsepi8s128_9, _m128icvteltsepi8s128_10, _m128icvteltsepi8s128_11
+    isize_t _m128icvteltsepi8s128_12, _m128icvteltsepi8s128_13, _m128icvteltsepi8s128_14, _m128icvteltsepi8s128_15
 
 externdef __uX_CPUFeatures_SSE41:dword
 
@@ -374,15 +374,12 @@ procstart _uX_mm_cvtsi128_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, _
         ret
 procend
 
+ifdef __x64__
 procstart _uX_mm_cvtsi128_epi64x_0, callconv, qword, < >, < >, Inxmm_A:xmmword
     .if(__uX_CPUFeatures_SSE41 == true)
         pextrq       rret(),         xmm0,        0
     .else
-ifdef __x64__
         movq         rret(),         xmm0
-else
-        movq    qword ptr [rret()],         xmm0
-endif
     .endif
         ret
 procend
@@ -392,11 +389,7 @@ procstart _uX_mm_cvtsi128_epi64x_1, callconv, qword, < >, < >, Inxmm_A:xmmword
         pextrq       rret(),         xmm0,        1
     .else
         pshufd       xmm0,         xmm0,         shuffler4(2,3,0,1)
-ifdef __x64__
         movq         rret(),         xmm0
-else
-        movq    qword ptr [rret()],         xmm0
-endif
     .endif
         ret
 procend
@@ -414,11 +407,7 @@ procstart _uX_mm_cvtsi128_epi64x, callconv, qword, < >, < >, Inxmm_A:xmmword, _I
     .if(__uX_CPUFeatures_SSE41 == true)
         pextrq       rret(),         xmm0,        0
     .else
-ifdef __x64__
         movq         rret(),         xmm0
-else
-        movq    qword ptr [rret()],         xmm0
-endif
     .endif
         jmp        _m128icvtelts128epi64x_end
         _m128icvtelts128epi64x_1 label size_t
@@ -426,11 +415,7 @@ endif
         pextrq       rret(),         xmm0,        1
     .else
         pshufd       xmm0,         xmm0,         shuffler4(2,3,0,1)
-ifdef __x64__
         movq         rret(),         xmm0
-else
-        movq    qword ptr [rret()],         xmm0
-endif
     .endif
         ;jmp        _m128icvtelts128epi64x_end
 
@@ -438,6 +423,7 @@ endif
         pop         rbase()
         ret
 procend
+endif
 
 procstart _uX_mm_cvtsi128_epi32_0, callconv, dword, < >, < >, Inxmm_A:xmmword
     .if(__uX_CPUFeatures_SSE41 == true)
@@ -963,15 +949,12 @@ procstart _uX_mm_cvtepi64_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, I
         ret
 procend
 
+ifdef __x64__
 procstart _uX_mm_cvtepi64x_si128_0, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_Q:qword
     .if(__uX_CPUFeatures_SSE41 == true)
         pinsrq       xmm0,         rp1(),        0
     .else
-ifdef __x64__
         movq         xmm1,         rp1()
-else
-        movq         xmm1,    qword ptr [rp1()]
-endif
         movsd        xmm0,         xmm1
     .endif
         ret
@@ -981,11 +964,7 @@ procstart _uX_mm_cvtepi64x_si128_1, callconv, xmmword, < >, < >, Inxmm_A:xmmword
     .if(__uX_CPUFeatures_SSE41 == true)
         pinsrq       xmm0,         rp1(),        1
     .else
-ifdef __x64__
         movq         xmm1,         rp1()
-else
-        movq         xmm1,    qword ptr [rp1()]
-endif
         pshufd       xmm0,         xmm0,         shuffler4(0,1,0,1)
         movsd        xmm0,         xmm1
         pshufd       xmm0,         xmm0,         shuffler4(2,3,0,1)
@@ -1012,11 +991,7 @@ procstart _uX_mm_cvtepi64x_si128, callconv, xmmword, < >, < >, Inxmm_A:xmmword, 
     .if(__uX_CPUFeatures_SSE41 == true)
         pinsrq       xmm0,         rp1(),        0
     .else
-ifdef __x64__
         movq         xmm1,         rp1()
-else
-        movq         xmm1,    qword ptr [rp1()]
-endif
         movsd        xmm0,         xmm1
     .endif
         jmp       _m128icvteltsepi64xs128_end
@@ -1024,11 +999,7 @@ endif
     .if(__uX_CPUFeatures_SSE41 == true)
         pinsrq       xmm0,         rp1(),        1
     .else
-ifdef __x64__
         movq         xmm1,         rp1()
-else
-        movq         xmm1,    qword ptr [rp1()]
-endif
         pshufd       xmm0,         xmm0,         shuffler4(0,1,0,1)
         movsd        xmm0,         xmm1
         pshufd       xmm0,         xmm0,         shuffler4(2,3,0,1)
@@ -1039,6 +1010,7 @@ endif
         pop         rbase()
         ret
 procend
+endif
 
 procstart _uX_mm_cvtepi32_si128_0, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_D:dword
     .if(__uX_CPUFeatures_SSE41 == true)
@@ -1571,4 +1543,4 @@ procend
 
 endif ;__MIC__
 
-    end
+end

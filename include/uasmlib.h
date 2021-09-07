@@ -1,22 +1,21 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-; / /                                                                               / /
-; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
-; / /                                                                               / /
-; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
-; / /    you may not use this file except in compliance with the License.           / /
-; / /    You may obtain a copy of the License at                                    / /
-; / /                                                                               / /
-; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
-; / /                                                                               / /
-; / /    Unless required by applicable law or agreed to in writing, software        / /
-; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
-; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
-; / /    See the License for the specific language governing permissions and        / /
-; / /    limitations under the License.                                             / /
-; / /                                                                               / /
+; / /																				/ /
+; / /			Copyright 2021 (c) Navegos QA - optimized library					/ /
+; / /																				/ /
+; / /	Licensed under the Apache License, Version 2.0 (the "License");				/ /
+; / /	you may not use this file except in compliance with the License.			/ /
+; / /	You may obtain a copy of the License at										/ /
+; / /																				/ /
+; / /		http://www.apache.org/licenses/LICENSE-2.0								/ /
+; / /																				/ /
+; / /	Unless required by applicable law or agreed to in writing, software			/ /
+; / /	distributed under the License is distributed on an "AS IS" BASIS,			/ /
+; / /	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.	/ /
+; / /	See the License for the specific language governing permissions and			/ /
+; / /	limitations under the License.												/ /
+; / /																				/ /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 */
@@ -30,7 +29,7 @@
  * \defgroup UASMLIB optimized library
  * To use these functions and types include the header file \p uasmlib.h in your program
  */
- 
+
 /**
  * \ingroup UASMLIB
  * \file uasmlib.h
@@ -80,40 +79,40 @@ namespace_uX
  * \details The namespace \p uX::xmm provides specialized SSE SIMD vector intrinsics
  *
  */
-namespace_XMM
-namespace_XMM_end
+	namespace_XMM
+	namespace_XMM_end
 
-/**
- * \ingroup uX_NAMESPACE_YMM
- * \namespace uX::ymm
- * \brief Namespace \p uX::ymm AVX SIMD vector intrinsics
- * \details The namespace \p uX::ymm provides specialized AVX SIMD vector intrinsics
- *
- */
-namespace_YMM
-namespace_YMM_end
+	/**
+	 * \ingroup uX_NAMESPACE_YMM
+	 * \namespace uX::ymm
+	 * \brief Namespace \p uX::ymm AVX SIMD vector intrinsics
+	 * \details The namespace \p uX::ymm provides specialized AVX SIMD vector intrinsics
+	 *
+	 */
+	namespace_YMM
+	namespace_YMM_end
 
-/**
- * \ingroup uX_NAMESPACE_ZMM
- * \namespace uX::zmm
- * \brief Namespace \p uX::zmm AVX512 SIMD vector intrinsics
- * \details The namespace \p uX::zmm provides specialized AVX512 SIMD vector intrinsics
- *
- */
-namespace_ZMM
-namespace_ZMM_end
+	/**
+	 * \ingroup uX_NAMESPACE_ZMM
+	 * \namespace uX::zmm
+	 * \brief Namespace \p uX::zmm AVX512 SIMD vector intrinsics
+	 * \details The namespace \p uX::zmm provides specialized AVX512 SIMD vector intrinsics
+	 *
+	 */
+	namespace_ZMM
+	namespace_ZMM_end
 
-namespace_uX_end
+	namespace_uX_end
 
-uX_EXTERNC_BEGIN
+	uX_EXTERNC_BEGIN
 
-uX_PACK_PUSH_STACK
+	uX_PACK_PUSH_STACK
 
-//extern int DllMain(void*, unsigned int, void*);
+	//extern int DllMain(void*, unsigned int, void*);
 
-uX_PACK_POP
+	uX_PACK_POP
 
-uX_EXTERNC_END
+	uX_EXTERNC_END
 
 #ifdef uX_X86_OR_X64_CPU
 #include "x86/uXcpu.h"

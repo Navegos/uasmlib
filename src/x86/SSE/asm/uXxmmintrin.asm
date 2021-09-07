@@ -759,7 +759,7 @@ endif ;__X64__
 ;******************
 ; FP, misc
 ;******************
-procstart _uX_mm_transpose4_ps, callconv, void, < >, < >, Inxmm_row0:xmmword, Inxmm_row1:xmmword, Inxmm_row2:xmmword, Inxmm_row3:xmmword
+procstart _uX_mm_transpose4_ps, callconv, void, < >, < >, Inxmm_row0:ptr xmmword, Inxmm_row1:ptr xmmword, Inxmm_row2:ptr xmmword, Inxmm_row3:ptr xmmword
     ;ifdef __unix32__
     ;    define rpdisprow0, ecx, text
     ;    define rpdisprow1, edx, text
@@ -777,10 +777,10 @@ procstart _uX_mm_transpose4_ps, callconv, void, < >, < >, Inxmm_row0:xmmword, In
     ;    define rpdisprow2, rp2(), text
     ;    define rpdisprow3, rp0(), text
     ;endif
-        ;movaps          xmm0,           xmmword ptr [rpdisprow0()]
-        ;movaps          xmm1,           xmmword ptr [rpdisprow1()]
-        ;movaps          xmm2,           xmmword ptr [rpdisprow2()]
-        ;movaps          xmm3,           xmmword ptr [rpdisprow3()]
+        movups          xmm0,           xmmword ptr [rp0()]
+        movups          xmm1,           xmmword ptr [rp1()]
+        movups          xmm2,           xmmword ptr [rp2()]
+        movups          xmm3,           xmmword ptr [rp3()]
 
         movaps          xmm4,           xmm0
         movaps          xmm5,           xmm2
@@ -796,10 +796,10 @@ procstart _uX_mm_transpose4_ps, callconv, void, < >, < >, Inxmm_row0:xmmword, In
         shufps          xmm3,           xmm5,           shuffler4(1,3,1,3) ; 0ddh
         movaps          xmm2,           xmm4
 
-    ;    movaps          xmmword ptr [rpdisprow0()],           xmm0
-    ;    movaps          xmmword ptr [rpdisprow1()],           xmm1
-    ;    movaps          xmmword ptr [rpdisprow2()],           xmm2
-    ;    movaps          xmmword ptr [rpdisprow3()],           xmm3
+        movups          xmmword ptr [rp0()],           xmm0
+        movups          xmmword ptr [rp1()],           xmm1
+        movups          xmmword ptr [rp2()],           xmm2
+        movups          xmmword ptr [rp3()],           xmm3
     ;ifdef __unix32__
     ;    mov             Inxmm_row3,     rpdisprow3
     ;    mov             Inxmm_row2,     rpdisprow2

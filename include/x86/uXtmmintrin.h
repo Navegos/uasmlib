@@ -1,22 +1,21 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-; / /                                                                               / /
-; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
-; / /                                                                               / /
-; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
-; / /    you may not use this file except in compliance with the License.           / /
-; / /    You may obtain a copy of the License at                                    / /
-; / /                                                                               / /
-; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
-; / /                                                                               / /
-; / /    Unless required by applicable law or agreed to in writing, software        / /
-; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
-; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
-; / /    See the License for the specific language governing permissions and        / /
-; / /    limitations under the License.                                             / /
-; / /                                                                               / /
+; / /																				/ /
+; / /			Copyright 2021 (c) Navegos QA - optimized library					/ /
+; / /																				/ /
+; / /	Licensed under the Apache License, Version 2.0 (the "License");				/ /
+; / /	you may not use this file except in compliance with the License.			/ /
+; / /	You may obtain a copy of the License at										/ /
+; / /																				/ /
+; / /		http://www.apache.org/licenses/LICENSE-2.0								/ /
+; / /																				/ /
+; / /	Unless required by applicable law or agreed to in writing, software			/ /
+; / /	distributed under the License is distributed on an "AS IS" BASIS,			/ /
+; / /	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.	/ /
+; / /	See the License for the specific language governing permissions and			/ /
+; / /	limitations under the License.												/ /
+; / /																				/ /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 */
@@ -64,123 +63,123 @@
 uX_EXTERNC_BEGIN
 uX_PACK_PUSH_XMM
 
-    // Horizontal Add: add pairs of adjacent words or double words.
-    // Each field in the result is the sum of two adjacent fields
-    // from the arguments, with the lower result fields coming from
-    // the first argument and the upper result fields coming from
-    // the second argument. The "hadds" forms saturate the signed
-    // addition rather than wrapping.
+	// Horizontal Add: add pairs of adjacent words or double words.
+	// Each field in the result is the sum of two adjacent fields
+	// from the arguments, with the lower result fields coming from
+	// the first argument and the upper result fields coming from
+	// the second argument. The "hadds" forms saturate the signed
+	// addition rather than wrapping.
 
-extern __m128i uX_ABI _uX_mm_hadd_epi16(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
+	extern __m128i uX_ABI _uX_mm_hadd_epi16(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_hadd_epi32(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_hadds_epi16(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 
 #if defined(uX_X86)
-    uX_PACK_MM
+uX_PACK_MM
 extern __m64 uX_ABI _uX_mm_hadd_pi16(__m64 /*Inmm_A*/, __m64 /*Inmm_B*/);
 extern __m64 uX_ABI _uX_mm_hadd_pi32(__m64 /*Inmm_A*/, __m64 /*Inmm_B*/);
 extern __m64 uX_ABI _uX_mm_hadds_pi16(__m64 /*Inmm_A*/, __m64 /*Inmm_B*/);
-    uX_PACK_XMM
+uX_PACK_XMM
 #endif
 
-    // Horizontal Subtract: subtract pairs of adjacent words or double
-    // words. Each field in the result is the difference of two adjacent
-    // fields from the arguments, where the upper field is subtracted
-    // from the lower field. The lower result fields come from
-    // the first argument and the upper result fields come from
-    // the second argument. The "hsubs" forms saturate the signed
-    // subtraction rather than wrapping.
+	// Horizontal Subtract: subtract pairs of adjacent words or double
+	// words. Each field in the result is the difference of two adjacent
+	// fields from the arguments, where the upper field is subtracted
+	// from the lower field. The lower result fields come from
+	// the first argument and the upper result fields come from
+	// the second argument. The "hsubs" forms saturate the signed
+	// subtraction rather than wrapping.
 
-extern __m128i uX_ABI _uX_mm_hsub_epi16(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
+	extern __m128i uX_ABI _uX_mm_hsub_epi16(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_hsub_epi32(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_hsubs_epi16(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 
 #if defined(uX_X86)
-    uX_PACK_MM
+uX_PACK_MM
 extern __m64 uX_ABI _uX_mm_hsub_pi16(__m64 /*Inmm_A*/, __m64 /*Inmm_B*/);
 extern __m64 uX_ABI _uX_mm_hsub_pi32(__m64 /*Inmm_A*/, __m64 /*Inmm_B*/);
 extern __m64 uX_ABI _uX_mm_hsubs_pi16(__m64 /*Inmm_A*/, __m64 /*Inmm_B*/);
-    uX_PACK_XMM
+uX_PACK_XMM
 #endif
 
-    // Multiply unsigned bytes by signed bytes and sum the word
-    // results in pairs with saturation. Each byte of the first
-    // argument is zero-extended to a word field and each byte
-    // of the second argument is sign-extended to a word field,
-    // then each pair of words is multiplied together to give
-    // signed word intermediate results. Pairs of words from
-    // that result are added horizontally with saturation
-    // to give the final result.
+	// Multiply unsigned bytes by signed bytes and sum the word
+	// results in pairs with saturation. Each byte of the first
+	// argument is zero-extended to a word field and each byte
+	// of the second argument is sign-extended to a word field,
+	// then each pair of words is multiplied together to give
+	// signed word intermediate results. Pairs of words from
+	// that result are added horizontally with saturation
+	// to give the final result.
 
-extern __m128i uX_ABI _uX_mm_maddubs_epi16(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
+	extern __m128i uX_ABI _uX_mm_maddubs_epi16(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 
 #if defined(uX_X86)
-    uX_PACK_MM
+uX_PACK_MM
 extern __m64 uX_ABI _uX_mm_maddubs_pi16(__m64 /*Inmm_A*/, __m64 /*Inmm_B*/);
-    uX_PACK_XMM
+uX_PACK_XMM
 #endif
 
-    // Packed multiply high integers with round and scaling,
-    // {X,}MM2/m{128,64}(b) to {X,}MM1(a).
+	// Packed multiply high integers with round and scaling,
+	// {X,}MM2/m{128,64}(b) to {X,}MM1(a).
 
-extern __m128i uX_ABI _uX_mm_mulhrs_epi16(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
+	extern __m128i uX_ABI _uX_mm_mulhrs_epi16(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 
 #if defined(uX_X86)
-    uX_PACK_MM
+uX_PACK_MM
 extern __m64 uX_ABI _uX_mm_mulhrs_pi16(__m64 /*Inmm_A*/, __m64 /*Inmm_B*/);
-    uX_PACK_XMM
+uX_PACK_XMM
 #endif
 
-    // Packed shuffle bytes
-    // {X,}MM2/m{128,64}(b) by {X,}MM1(a).
+	// Packed shuffle bytes
+	// {X,}MM2/m{128,64}(b) by {X,}MM1(a).
 
-extern __m128i uX_ABI _uX_mm_shuffle_epi8(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
+	extern __m128i uX_ABI _uX_mm_shuffle_epi8(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 
 #if defined(uX_X86)
-    uX_PACK_MM
+uX_PACK_MM
 extern __m64 uX_ABI _uX_mm_shuffle_pi8(__m64 /*Inmm_A*/, __m64 /*Inmm_B*/);
-    uX_PACK_XMM
+uX_PACK_XMM
 #endif
 
-    // Packed byte, word, double word sign, {X,}MM2/m{128,64}(b) to
-    // {X,}MM1(a).
+	// Packed byte, word, double word sign, {X,}MM2/m{128,64}(b) to
+	// {X,}MM1(a).
 
-extern __m128i uX_ABI _uX_mm_sign_epi8(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
+	extern __m128i uX_ABI _uX_mm_sign_epi8(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_sign_epi16(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_sign_epi32(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 
 #if defined(uX_X86)
-    uX_PACK_MM
+uX_PACK_MM
 extern __m64 uX_ABI _uX_mm_sign_pi8(__m64 /*Inmm_A*/, __m64 /*Inmm_B*/);
 extern __m64 uX_ABI _uX_mm_sign_pi16(__m64 /*Inmm_A*/, __m64 /*Inmm_B*/);
 extern __m64 uX_ABI _uX_mm_sign_pi32(__m64 /*Inmm_A*/, __m64 /*Inmm_B*/);
-    uX_PACK_XMM
+uX_PACK_XMM
 #endif
 
-    // Packed align and shift right by n*8 bits,
-    // {X,}MM2/m{128,64}(b) to {X,}MM1(a).
+	// Packed align and shift right by n*8 bits,
+	// {X,}MM2/m{128,64}(b) to {X,}MM1(a).
 
-extern __m128i uX_ABI _uX_mm_alignr_epi8(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/, count_t const /*Inint_Count*/);
+	extern __m128i uX_ABI _uX_mm_alignr_epi8(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/, count_t const /*Inint_Count*/);
 
 #if defined(uX_X86)
-    uX_PACK_MM
+uX_PACK_MM
 extern __m64 uX_ABI _uX_mm_alignr_pi8(__m64 /*Inmm_A*/, __m64 /*Inmm_B*/, count_t const /*Inint_Count*/);
-    uX_PACK_XMM
+uX_PACK_XMM
 #endif
 
-    // Packed byte, word, double word absolute value,
-    // {X,}MM2/m{128,64}(b) to {X,}MM1(a).
+	// Packed byte, word, double word absolute value,
+	// {X,}MM2/m{128,64}(b) to {X,}MM1(a).
 
-extern __m128i uX_ABI _uX_mm_abs_epi8(__m128i /*Inxmm_A*/);
+	extern __m128i uX_ABI _uX_mm_abs_epi8(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_abs_epi16(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_abs_epi32(__m128i /*Inxmm_A*/);
 
 #if defined(uX_X86)
-    uX_PACK_MM
+uX_PACK_MM
 extern __m64 uX_ABI _uX_mm_abs_pi8(__m64 /*Inmm_A*/);
 extern __m64 uX_ABI _uX_mm_abs_pi16(__m64 /*Inmm_A*/);
 extern __m64 uX_ABI _uX_mm_abs_pi32(__m64 /*Inmm_A*/);
-    uX_PACK_XMM
+uX_PACK_XMM
 #endif
 
 uX_PACK_POP

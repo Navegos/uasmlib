@@ -1,22 +1,21 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-; / /                                                                               / /
-; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
-; / /                                                                               / /
-; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
-; / /    you may not use this file except in compliance with the License.           / /
-; / /    You may obtain a copy of the License at                                    / /
-; / /                                                                               / /
-; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
-; / /                                                                               / /
-; / /    Unless required by applicable law or agreed to in writing, software        / /
-; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
-; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
-; / /    See the License for the specific language governing permissions and        / /
-; / /    limitations under the License.                                             / /
-; / /                                                                               / /
+; / /																				/ /
+; / /			Copyright 2021 (c) Navegos QA - optimized library					/ /
+; / /																				/ /
+; / /	Licensed under the Apache License, Version 2.0 (the "License");				/ /
+; / /	you may not use this file except in compliance with the License.			/ /
+; / /	You may obtain a copy of the License at										/ /
+; / /																				/ /
+; / /		http://www.apache.org/licenses/LICENSE-2.0								/ /
+; / /																				/ /
+; / /	Unless required by applicable law or agreed to in writing, software			/ /
+; / /	distributed under the License is distributed on an "AS IS" BASIS,			/ /
+; / /	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.	/ /
+; / /	See the License for the specific language governing permissions and			/ /
+; / /	limitations under the License.												/ /
+; / /																				/ /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 */
@@ -89,7 +88,7 @@ uX_PACK_PUSH_YMM
  * FP, arithmetic
  */
 
-extern __m256 uX_ABI _uX_mm256_add_ss(__m256 /*Inymm_A*/, __m256 /*Inymm_B*/);
+	extern __m256 uX_ABI _uX_mm256_add_ss(__m256 /*Inymm_A*/, __m256 /*Inymm_B*/);
 extern __m256 uX_ABI _uX_mm256_add_ps(__m256 /*Inymm_A*/, __m256 /*Inymm_B*/);
 extern __m256 uX_ABI _uX_mm256_sub_ss(__m256 /*Inymm_A*/, __m256 /*Inymm_B*/);
 extern __m256 uX_ABI _uX_mm256_sub_ps(__m256 /*Inymm_A*/, __m256 /*Inymm_B*/);
@@ -185,7 +184,7 @@ uX_PACK_XMM
  * FP, comparison
  */
 
-extern __m128 uX_ABI _uX_mm_cmp_ps(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*/, count_t const /*Inint_CmpMask*/);
+	extern __m128 uX_ABI _uX_mm_cmp_ps(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*/, count_t const /*Inint_CmpMask*/);
 extern __m128 uX_ABI _uX_mm_cmp_ss(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*/, count_t const /*Inint_CmpMask*/);
 extern intbool_t uX_ABI _uX_mm_comi_ss(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*/, count_t const /*Inint_CmpMask*/);
 
@@ -199,7 +198,7 @@ uX_PACK_XMM
  * DP, comparison
  */
 
-extern __m128d uX_ABI _uX_mm_cmp_pd(__m128d /*Inxmm_A*/, __m128d, count_t const /*Inint_CmpMask*/);
+	extern __m128d uX_ABI _uX_mm_cmp_pd(__m128d /*Inxmm_A*/, __m128d, count_t const /*Inint_CmpMask*/);
 extern __m128d uX_ABI _uX_mm_cmp_sd(__m128d /*Inxmm_A*/, __m128d, count_t const /*Inint_CmpMask*/);
 extern intbool_t uX_ABI _uX_mm_comi_sd(__m128d /*Inxmm_A*/, __m128d /*Inxmm_B*/, count_t const /*Inint_CmpMask*/);
 
@@ -307,9 +306,9 @@ extern void uX_ABI _uX_mm256_zeroupper(void);
 extern __m256 uX_ABI _uX_mm256_set_ss(float /*Infloat_A*/);
 extern __m256 uX_ABI _uX_mm256_set_ps1(float /*Infloat_A*/);
 extern __m256 uX_ABI _uX_mm256_set_ps(float /*Infloat_7*/, float /*Infloat_6*/, float /*Infloat_5*/, float /*Infloat_4*/,
-                                      float /*Infloat_3*/, float /*Infloat_2*/, float /*Infloat_1*/, float /*Infloat_0*/);
+									  float /*Infloat_3*/, float /*Infloat_2*/, float /*Infloat_1*/, float /*Infloat_0*/);
 extern __m256 uX_ABI _uX_mm256_setr_ps(float /*Infloat_0*/, float /*Infloat_1*/, float /*Infloat_2*/, float /*Infloat_3*/,
-                                       float /*Infloat_4*/, float /*Infloat_5*/, float /*Infloat_6*/, float /*Infloat_7*/);
+									   float /*Infloat_4*/, float /*Infloat_5*/, float /*Infloat_6*/, float /*Infloat_7*/);
 
 extern __m256 uX_ABI _uX_mm256_setzero_ps(void);
 
@@ -329,7 +328,7 @@ extern __m256d uX_ABI _uX_mm256_setzero_pd(void);
 
 extern __m256d uX_ABI _uX_mm256_set_m128d(__m128d /*Inxmm_B*/, __m128d /*Inxmm_A*/);
 extern __m256d uX_ABI _uX_mm256_setr_m128d(__m128d /*Inxmm_A*/, __m128d /*Inxmm_B*/);
-    
+
 /*
  * FP, loads
  */
@@ -512,36 +511,36 @@ extern intbool_t uX_ABI _uX_mm256_testnzc_si256(__m256i /*Inymm_mask*/, __m256i 
 extern __m256i uX_ABI _uX_mm256_set_epi64(__m256i /*Inymm_Q1*/, __m256i /*Inymm_Q0*/);
 extern __m256i uX_ABI _uX_mm256_set_epi64x(int64_t /*Inint_Q3*/, int64_t /*Inint_Q2*/, int64_t /*Inint_Q1*/, int64_t /*Inint_Q0*/);
 extern __m256i uX_ABI _uX_mm256_set_epi32(int32_t /*Inint_D7*/, int32_t /*Inint_D6*/, int32_t /*Inint_D5*/, int32_t /*Inint_D4*/,
-                                          int32_t /*Inint_D3*/, int32_t /*Inint_D2*/, int32_t /*Inint_D1*/, int32_t /*Inint_D0*/);
+										  int32_t /*Inint_D3*/, int32_t /*Inint_D2*/, int32_t /*Inint_D1*/, int32_t /*Inint_D0*/);
 extern __m256i uX_ABI _uX_mm256_set_epi16(int16_t /*Inint_W15*/, int16_t /*Inint_W14*/, int16_t /*Inint_W13*/, int16_t /*Inint_W12*/,
-                                          int16_t /*Inint_W11*/, int16_t /*Inint_W10*/, int16_t /*Inint_W9*/, int16_t /*Inint_W8*/,
-                                          int16_t /*Inint_W7*/, int16_t /*Inint_W6*/, int16_t /*Inint_W5*/, int16_t /*Inint_W4*/,
-                                          int16_t /*Inint_W3*/, int16_t /*Inint_W2*/, int16_t /*Inint_W1*/, int16_t /*Inint_W0*/);
+										  int16_t /*Inint_W11*/, int16_t /*Inint_W10*/, int16_t /*Inint_W9*/, int16_t /*Inint_W8*/,
+										  int16_t /*Inint_W7*/, int16_t /*Inint_W6*/, int16_t /*Inint_W5*/, int16_t /*Inint_W4*/,
+										  int16_t /*Inint_W3*/, int16_t /*Inint_W2*/, int16_t /*Inint_W1*/, int16_t /*Inint_W0*/);
 extern __m256i uX_ABI _uX_mm256_set_epi8(int8_t /*Inint_B31*/, int8_t /*Inint_B30*/, int8_t /*Inint_B29*/, int8_t /*Inint_B28*/,
-                                         int8_t /*Inint_B27*/, int8_t /*Inint_B26*/, int8_t /*Inint_B25*/, int8_t /*Inint_B24*/,
-                                         int8_t /*Inint_B23*/, int8_t /*Inint_B22*/, int8_t /*Inint_B21*/, int8_t /*Inint_B20*/,
-                                         int8_t /*Inint_B19*/, int8_t /*Inint_B18*/, int8_t /*Inint_B17*/, int8_t /*Inint_B16*/,
-                                         int8_t /*Inint_B15*/, int8_t /*Inint_B14*/, int8_t /*Inint_B13*/, int8_t /*Inint_B12*/,
-                                         int8_t /*Inint_B11*/, int8_t /*Inint_B10*/, int8_t /*Inint_B9*/, int8_t /*Inint_B8*/,
-                                         int8_t /*Inint_B7*/, int8_t /*Inint_B6*/, int8_t /*Inint_B5*/, int8_t /*Inint_B4*/,
-                                         int8_t /*Inint_B3*/, int8_t /*Inint_B2*/, int8_t /*Inint_B1*/, int8_t /*Inint_B0*/);
+										 int8_t /*Inint_B27*/, int8_t /*Inint_B26*/, int8_t /*Inint_B25*/, int8_t /*Inint_B24*/,
+										 int8_t /*Inint_B23*/, int8_t /*Inint_B22*/, int8_t /*Inint_B21*/, int8_t /*Inint_B20*/,
+										 int8_t /*Inint_B19*/, int8_t /*Inint_B18*/, int8_t /*Inint_B17*/, int8_t /*Inint_B16*/,
+										 int8_t /*Inint_B15*/, int8_t /*Inint_B14*/, int8_t /*Inint_B13*/, int8_t /*Inint_B12*/,
+										 int8_t /*Inint_B11*/, int8_t /*Inint_B10*/, int8_t /*Inint_B9*/, int8_t /*Inint_B8*/,
+										 int8_t /*Inint_B7*/, int8_t /*Inint_B6*/, int8_t /*Inint_B5*/, int8_t /*Inint_B4*/,
+										 int8_t /*Inint_B3*/, int8_t /*Inint_B2*/, int8_t /*Inint_B1*/, int8_t /*Inint_B0*/);
 
 extern __m256i uX_ABI _uX_mm256_setr_epi64(__m256i /*Inymm_Q0*/, __m256i /*Inymm_Q1*/);
 extern __m256i uX_ABI _uX_mm256_setr_epi64x(int64_t /*Inint_Q0*/, int64_t /*Inint_Q1*/, int64_t /*Inint_Q2*/, int64_t /*Inint_Q3*/);
 extern __m256i uX_ABI _uX_mm256_setr_epi32(int32_t /*Inint_D0*/, int32_t /*Inint_D1*/, int32_t /*Inint_D2*/, int32_t /*Inint_D3*/,
-                                           int32_t /*Inint_D4*/, int32_t /*Inint_D5*/, int32_t /*Inint_D6*/, int32_t /*Inint_D7*/);
+										   int32_t /*Inint_D4*/, int32_t /*Inint_D5*/, int32_t /*Inint_D6*/, int32_t /*Inint_D7*/);
 extern __m256i uX_ABI _uX_mm256_setr_epi16(int16_t /*Inint_W0*/, int16_t /*Inint_W1*/, int16_t /*Inint_W2*/, int16_t /*Inint_W3*/,
-                                           int16_t /*Inint_W4*/, int16_t /*Inint_W5*/, int16_t /*Inint_W6*/, int16_t /*Inint_W7*/,
-                                           int16_t /*Inint_W8*/, int16_t /*Inint_W9*/, int16_t /*Inint_W10*/, int16_t /*Inint_W11*/,
-                                           int16_t /*Inint_W12*/, int16_t /*Inint_W13*/, int16_t /*Inint_W14*/, int16_t /*Inint_W15*/);
+										   int16_t /*Inint_W4*/, int16_t /*Inint_W5*/, int16_t /*Inint_W6*/, int16_t /*Inint_W7*/,
+										   int16_t /*Inint_W8*/, int16_t /*Inint_W9*/, int16_t /*Inint_W10*/, int16_t /*Inint_W11*/,
+										   int16_t /*Inint_W12*/, int16_t /*Inint_W13*/, int16_t /*Inint_W14*/, int16_t /*Inint_W15*/);
 extern __m256i uX_ABI _uX_mm256_setr_epi8(int8_t /*Inint_B0*/, int8_t /*Inint_B1*/, int8_t /*Inint_B2*/, int8_t /*Inint_B3*/,
-                                          int8_t /*Inint_B4*/, int8_t /*Inint_B5*/, int8_t /*Inint_B6*/, int8_t /*Inint_B7*/,
-                                          int8_t /*Inint_B8*/, int8_t /*Inint_B9*/, int8_t /*Inint_B10*/, int8_t /*Inint_B11*/,
-                                          int8_t /*Inint_B12*/, int8_t /*Inint_B13*/, int8_t /*Inint_B14*/, int8_t /*Inint_B15*/,
-                                          int8_t /*Inint_B16*/, int8_t /*Inint_B17*/, int8_t /*Inint_B18*/, int8_t /*Inint_B19*/,
-                                          int8_t /*Inint_B20*/, int8_t /*Inint_B21*/, int8_t /*Inint_B22*/, int8_t /*Inint_B23*/,
-                                          int8_t /*Inint_B24*/, int8_t /*Inint_B25*/, int8_t /*Inint_B26*/, int8_t /*Inint_B27*/,
-                                          int8_t /*Inint_B28*/, int8_t /*Inint_B29*/, int8_t /*Inint_B30*/, int8_t /*Inint_B31*/);
+										  int8_t /*Inint_B4*/, int8_t /*Inint_B5*/, int8_t /*Inint_B6*/, int8_t /*Inint_B7*/,
+										  int8_t /*Inint_B8*/, int8_t /*Inint_B9*/, int8_t /*Inint_B10*/, int8_t /*Inint_B11*/,
+										  int8_t /*Inint_B12*/, int8_t /*Inint_B13*/, int8_t /*Inint_B14*/, int8_t /*Inint_B15*/,
+										  int8_t /*Inint_B16*/, int8_t /*Inint_B17*/, int8_t /*Inint_B18*/, int8_t /*Inint_B19*/,
+										  int8_t /*Inint_B20*/, int8_t /*Inint_B21*/, int8_t /*Inint_B22*/, int8_t /*Inint_B23*/,
+										  int8_t /*Inint_B24*/, int8_t /*Inint_B25*/, int8_t /*Inint_B26*/, int8_t /*Inint_B27*/,
+										  int8_t /*Inint_B28*/, int8_t /*Inint_B29*/, int8_t /*Inint_B30*/, int8_t /*Inint_B31*/);
 
 extern __m256i uX_ABI _uX_mm256_set1_epi64(__m256i /*Inymm_Q*/);
 extern __m256i uX_ABI _uX_mm256_set1_epi64x(int64_t /*Inint_Q*/);
@@ -636,7 +635,7 @@ extern __m256i* uX_ABI _uX_ptr_moveur_mm256_epi32(__m256i /*Inymm_A*/, __m256i /
 extern __m256i* uX_ABI _uX_ptr_moveu1_mm256_epi32(__m256i /*Inymm_A*/);
 extern __m256i* uX_ABI _uX_ptr_move_mm256_si256(__m256i /*Inymm_A*/);
 extern __m256i* uX_ABI _uX_ptr_moveu_mm256_si256(__m256i /*Inymm_A*/);
-    
+
 /*
  * Cacheability support
  */
@@ -691,7 +690,7 @@ extern __m256i uX_ABI  _uX_mm256_undefined_si256(void);
 
 extern __m256i uX_ABI _uX_mm256_add_epi8(__m256i /*Inymm_A*/, __m256i /*Inymm_B*/);
 extern __m256i uX_ABI _uX_mm256_add_epi16(__m256i /*Inymm_A*/, __m256i /*Inymm_B*/);
-extern __m256i uX_ABI _uX_mm256_add_epi32(__m256i /*Inymm_A*/, __m256i /*Inymm_B*/);   
+extern __m256i uX_ABI _uX_mm256_add_epi32(__m256i /*Inymm_A*/, __m256i /*Inymm_B*/);
 extern __m256i uX_ABI _uX_mm256_add_epi64(__m256i /*Inymm_A*/, __m256i /*Inymm_B*/);
 
 extern __m256i uX_ABI _uX_mm256_adds_epi8(__m256i /*Inymm_A*/, __m256i /*Inymm_B*/);
@@ -768,7 +767,7 @@ extern __m256i uX_ABI _uX_mm256_cmpgt_epi32(__m256i /*Inymm_A*/, __m256i /*Inymm
 extern __m256i uX_ABI _uX_mm256_cmplt_epi8(__m256i /*Inymm_A*/, __m256i /*Inymm_B*/);
 extern __m256i uX_ABI _uX_mm256_cmplt_epi16(__m256i /*Inymm_A*/, __m256i /*Inymm_B*/);
 extern __m256i uX_ABI _uX_mm256_cmplt_epi32(__m256i /*Inymm_A*/, __m256i /*Inymm_B*/);
-    
+
 /*
  * Integer, converts
  */
@@ -790,7 +789,7 @@ extern int8_t uX_ABI _uX_mm256_cvteltsi256_epi8(__m256i /*Inymm_A*/, count_t con
 extern __m256i uX_ABI _uX_mm256_cvtsi64_si256(int64_t /*Inint_A*/);
 extern int64_t uX_ABI _uX_mm256_cvtsi256_si64(__m256i /*Inymm_A*/);
 #endif  /* defined (uX_X64) */
-    
+
 /*
  * Integer, misc
  */

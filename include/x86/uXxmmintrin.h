@@ -1,22 +1,21 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-; / /                                                                               / /
-; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
-; / /                                                                               / /
-; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
-; / /    you may not use this file except in compliance with the License.           / /
-; / /    You may obtain a copy of the License at                                    / /
-; / /                                                                               / /
-; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
-; / /                                                                               / /
-; / /    Unless required by applicable law or agreed to in writing, software        / /
-; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
-; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
-; / /    See the License for the specific language governing permissions and        / /
-; / /    limitations under the License.                                             / /
-; / /                                                                               / /
+; / /																				/ /
+; / /			Copyright 2021 (c) Navegos QA - optimized library					/ /
+; / /																				/ /
+; / /	Licensed under the Apache License, Version 2.0 (the "License");				/ /
+; / /	you may not use this file except in compliance with the License.			/ /
+; / /	You may obtain a copy of the License at										/ /
+; / /																				/ /
+; / /		http://www.apache.org/licenses/LICENSE-2.0								/ /
+; / /																				/ /
+; / /	Unless required by applicable law or agreed to in writing, software			/ /
+; / /	distributed under the License is distributed on an "AS IS" BASIS,			/ /
+; / /	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.	/ /
+; / /	See the License for the specific language governing permissions and			/ /
+; / /	limitations under the License.												/ /
+; / /																				/ /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 */
@@ -76,10 +75,10 @@
 /* from argument "a" of _uX_mm_shuffle_****_ps that will be     */
 /* places in fp1 of result. fp0 is the same for fp0 of */
 /* result                                              */
-/* const __m128 temp = _uX_MM_SHUFFLER_IM_PS(Inxmm_A, Inxmm_B, 0, 1, 2, 3); */
+/* const __m128 temp = _uX_MM_SHUFFLER_PS_IM(Inxmm_A, Inxmm_B, 0, 1, 2, 3); */
 /*******************************************************/
-#define _uX_MM_SHUFFLE_IM_PS(VA,VB,fp3,fp2,fp1,fp0) _uX_mm_shuffle_##fp3##fp2##fp1##fp0##_ps(VA,VB)
-#define _uX_MM_SHUFFLER_IM_PS(VA,VB,fp0,fp1,fp2,fp3) _uX_mm_shuffle_##fp3##fp2##fp1##fp0##_ps(VA,VB)
+#define _uX_MM_SHUFFLE_PS_IM(VA,VB,fp3,fp2,fp1,fp0) _uX_mm_shuffle_##fp3##fp2##fp1##fp0##_ps(VA,VB)
+#define _uX_MM_SHUFFLER_PS_IM(VA,VB,fp0,fp1,fp2,fp3) _uX_mm_shuffle_##fp3##fp2##fp1##fp0##_ps(VA,VB)
 
 /*******************************************************/
 /* MACRO for use _uX_mm_permute_****_ps().              */
@@ -90,10 +89,10 @@
 /* from argument "a" of _uX_mm_permute_****_ps that will be     */
 /* places in fp1 of result. fp0 is the same for fp0 of */
 /* result                                              */
-/* const __m128 temp = _uX_MM_PERMUTER_IM_PS(Inxmm_A, 0, 1, 2, 3); */
+/* const __m128 temp = _uX_MM_PERMUTER_PS_IM(Inxmm_A, 0, 1, 2, 3); */
 /*******************************************************/
-#define _uX_MM_PERMUTE_IM_PS(VA,fp3,fp2,fp1,fp0) _uX_mm_permute_##fp3##fp2##fp1##fp0##_ps(VA)
-#define _uX_MM_PERMUTER_IM_PS(VA,fp0,fp1,fp2,fp3) _uX_mm_permute_##fp3##fp2##fp1##fp0##_ps(VA)
+#define _uX_MM_PERMUTE_PS_IM(VA,fp3,fp2,fp1,fp0) _uX_mm_permute_##fp3##fp2##fp1##fp0##_ps(VA)
+#define _uX_MM_PERMUTER_PS_IM(VA,fp0,fp1,fp2,fp3) _uX_mm_permute_##fp3##fp2##fp1##fp0##_ps(VA)
 
 /*******************************************************/
 /* MACRO for use _uX_mm_cvtflt_*s().              */
@@ -104,10 +103,10 @@
 /* from argument "a" of _uX_mm_cvtflt_*s that will be     */
 /* places in fp1 of result. fp0 is the same for fp0 of */
 /* result                                              */
-/* const __m128 temp = _uX_MM_SETFLT_IM_PS(Inxmm_A, Infloat_B, 3); */
+/* const __m128 temp = _uX_MM_SETFLT_PS_IM(Inxmm_A, Infloat_B, 3); */
 /*******************************************************/
-#define _uX_MM_CVTFLT_IM_PS(VA,Infp,fp) _uX_mm_cvtflt_##fp##s(VA,Infp)
-#define _uX_MM_SETFLT_IM_PS(VA,Infp,fp) _uX_mm_cvtflt_##fp##s(VA,Infp)
+#define _uX_MM_CVTFLT_PS_IM(VA,Infp,fp) _uX_mm_cvtflt_##fp##s(VA,Infp)
+#define _uX_MM_SETFLT_PS_IM(VA,Infp,fp) _uX_mm_cvtflt_##fp##s(VA,Infp)
 
 /*******************************************************/
 /* MACRO for use _uX_mm_cvt*s_flt().              */
@@ -118,9 +117,9 @@
 /* from argument "a" of _uX_mm_cvt*s_flt that will be     */
 /* places in fp1 of result. fp0 is the same for fp0 of */
 /* result                                              */
-/* const float temp = _uX_MM_CVTPS_IM_FLT(Inxmm_A, 3); */
+/* const float temp = _uX_MM_CVTPS_FLT_IM(Inxmm_A, 3); */
 /*******************************************************/
-#define _uX_MM_CVTPS_IM_FLT(VA,fp) _uX_mm_cvt##fp##s_flt(VA)
+#define _uX_MM_CVTPS_FLT_IM(VA,fp) _uX_mm_cvt##fp##s_flt(VA)
 
 #ifdef uX_X86
 /*******************************************************/
@@ -164,19 +163,19 @@
 /* now holds column 0 of the original matrix, row1 now */
 /* holds column 1 of the original matrix, etc.         */
 /*******************************************************/
-#define _uX_MM_TRANSPOSE4_PS(row0, row1, row2, row3) {                  \
-            __m128 _Tmp3, _Tmp2, _Tmp1, _Tmp0;                          \
-                                                                        \
-            _Tmp0   = _uX_mm_shuffle_ps((row0), (row1), 0x44);          \
-            _Tmp2   = _uX_mm_shuffle_ps((row0), (row1), 0xEE);          \
-            _Tmp1   = _uX_mm_shuffle_ps((row2), (row3), 0x44);          \
-            _Tmp3   = _uX_mm_shuffle_ps((row2), (row3), 0xEE);          \
-                                                                        \
-            (row0) = _uX_mm_shuffle_ps(_Tmp0, _Tmp1, 0x88);             \
-            (row1) = _uX_mm_shuffle_ps(_Tmp0, _Tmp1, 0xDD);             \
-            (row2) = _uX_mm_shuffle_ps(_Tmp2, _Tmp3, 0x88);             \
-            (row3) = _uX_mm_shuffle_ps(_Tmp2, _Tmp3, 0xDD);             \
-        }
+#define _uX_MM_TRANSPOSE4_PS(row0, row1, row2, row3) {					\
+			__m128 _Tmp3, _Tmp2, _Tmp1, _Tmp0;							\
+																		\
+			_Tmp0	= _uX_mm_shuffle_ps((row0), (row1), 0x44);			\
+			_Tmp2	= _uX_mm_shuffle_ps((row0), (row1), 0xEE);			\
+			_Tmp1	= _uX_mm_shuffle_ps((row2), (row3), 0x44);			\
+			_Tmp3	= _uX_mm_shuffle_ps((row2), (row3), 0xEE);			\
+																		\
+			(row0)	= _uX_mm_shuffle_ps(_Tmp0, _Tmp1, 0x88);			\
+			(row1)	= _uX_mm_shuffle_ps(_Tmp0, _Tmp1, 0xDD);			\
+			(row2)	= _uX_mm_shuffle_ps(_Tmp2, _Tmp3, 0x88);			\
+			(row3)	= _uX_mm_shuffle_ps(_Tmp2, _Tmp3, 0xDD);			\
+		}
 
 /*******************************************************/
 /* MACRO for use _uX_mm_prefetch_*().               */
@@ -185,10 +184,10 @@
 #define _uX_MM_PREFETCH_IM(mem,sel) _uX_mm_prefetch_##sel##(mem)
 
 /* constants for use with _uX_mm_prefetch */
-#define _uX_MM_HINT_NTA    0
-#define _uX_MM_HINT_T0     1
-#define _uX_MM_HINT_T1     2
-#define _uX_MM_HINT_T2     3
+#define _uX_MM_HINT_NTA		0
+#define _uX_MM_HINT_T0		1
+#define _uX_MM_HINT_T1		2
+#define _uX_MM_HINT_T2		3
 // The values below are not yet supported.
 //#define _uX_MM_HINT_ENTA   4
 //#define _uX_MM_HINT_ET0    5
@@ -196,51 +195,51 @@
 //#define _uX_MM_HINT_ET2    7
 
 /* MACRO functions for setting and reading the MXCSR */
-#define _uX_MM_EXCEPT_MASK       0x003f
-#define _uX_MM_EXCEPT_INVALID    0x0001
-#define _uX_MM_EXCEPT_DENORM     0x0002
-#define _uX_MM_EXCEPT_DIV_ZERO   0x0004
-#define _uX_MM_EXCEPT_OVERFLOW   0x0008
-#define _uX_MM_EXCEPT_UNDERFLOW  0x0010
-#define _uX_MM_EXCEPT_INEXACT    0x0020
+#define _uX_MM_EXCEPT_MASK			0x003f
+#define _uX_MM_EXCEPT_INVALID		0x0001
+#define _uX_MM_EXCEPT_DENORM		0x0002
+#define _uX_MM_EXCEPT_DIV_ZERO		0x0004
+#define _uX_MM_EXCEPT_OVERFLOW		0x0008
+#define _uX_MM_EXCEPT_UNDERFLOW		0x0010
+#define _uX_MM_EXCEPT_INEXACT		0x0020
 
-#define _uX_MM_MASK_MASK         0x1f80
-#define _uX_MM_MASK_INVALID      0x0080
-#define _uX_MM_MASK_DENORM       0x0100
-#define _uX_MM_MASK_DIV_ZERO     0x0200
-#define _uX_MM_MASK_OVERFLOW     0x0400
-#define _uX_MM_MASK_UNDERFLOW    0x0800
-#define _uX_MM_MASK_INEXACT      0x1000
+#define _uX_MM_MASK_MASK			0x1f80
+#define _uX_MM_MASK_INVALID			0x0080
+#define _uX_MM_MASK_DENORM			0x0100
+#define _uX_MM_MASK_DIV_ZERO		0x0200
+#define _uX_MM_MASK_OVERFLOW		0x0400
+#define _uX_MM_MASK_UNDERFLOW		0x0800
+#define _uX_MM_MASK_INEXACT			0x1000
 
-#define _uX_MM_ROUND_MASK        0x6000
-#define _uX_MM_ROUND_NEAREST     0x0000
-#define _uX_MM_ROUND_DOWN        0x2000
-#define _uX_MM_ROUND_UP          0x4000
-#define _uX_MM_ROUND_TOWARD_ZERO 0x6000
+#define _uX_MM_ROUND_MASK			0x6000
+#define _uX_MM_ROUND_NEAREST		0x0000
+#define _uX_MM_ROUND_DOWN			0x2000
+#define _uX_MM_ROUND_UP				0x4000
+#define _uX_MM_ROUND_TOWARD_ZERO	0x6000
 
-#define _uX_MM_FLUSH_ZERO_MASK   0x8000
-#define _uX_MM_FLUSH_ZERO_ON     0x8000
-#define _uX_MM_FLUSH_ZERO_OFF    0x0000
+#define _uX_MM_FLUSH_ZERO_MASK		0x8000
+#define _uX_MM_FLUSH_ZERO_ON		0x8000
+#define _uX_MM_FLUSH_ZERO_OFF		0x0000
 
-#define _uX_MM_SET_EXCEPTION_STATE(mask)                               \
-            _uX_mm_setcsr((_uX_mm_getcsr() & ~_uX_MM_EXCEPT_MASK) | (mask))
-#define _uX_MM_GET_EXCEPTION_STATE()                                   \
-            (_uX_mm_getcsr() & _uX_MM_EXCEPT_MASK)
+#define _uX_MM_SET_EXCEPTION_STATE(mask)								\
+			_uX_mm_setcsr((_uX_mm_getcsr() & ~_uX_MM_EXCEPT_MASK) | (mask))
+#define _uX_MM_GET_EXCEPTION_STATE()									\
+			(_uX_mm_getcsr() & _uX_MM_EXCEPT_MASK)
 
-#define _uX_MM_SET_EXCEPTION_MASK(mask)                                \
-            _uX_mm_setcsr((_uX_mm_getcsr() & ~_uX_MM_MASK_MASK) | (mask))
-#define _uX_MM_GET_EXCEPTION_MASK()                                    \
-            (_uX_mm_getcsr() & _uX_MM_MASK_MASK)
+#define _uX_MM_SET_EXCEPTION_MASK(mask)									\
+			_uX_mm_setcsr((_uX_mm_getcsr() & ~_uX_MM_MASK_MASK) | (mask))
+#define _uX_MM_GET_EXCEPTION_MASK()										\
+			(_uX_mm_getcsr() & _uX_MM_MASK_MASK)
 
-#define _uX_MM_SET_ROUNDING_MODE(mode)                                 \
-            _uX_mm_setcsr((_uX_mm_getcsr() & ~_uX_MM_ROUND_MASK) | (mode))
-#define _uX_MM_GET_ROUNDING_MODE()                                     \
-            (_uX_mm_getcsr() & _uX_MM_ROUND_MASK)
+#define _uX_MM_SET_ROUNDING_MODE(mode)									\
+			_uX_mm_setcsr((_uX_mm_getcsr() & ~_uX_MM_ROUND_MASK) | (mode))
+#define _uX_MM_GET_ROUNDING_MODE()										\
+			(_uX_mm_getcsr() & _uX_MM_ROUND_MASK)
 
-#define _uX_MM_SET_FLUSH_ZERO_MODE(mode)                               \
-            _uX_mm_setcsr((_uX_mm_getcsr() & ~_uX_MM_FLUSH_ZERO_MASK) | (mode))
-#define _uX_MM_GET_FLUSH_ZERO_MODE()                                   \
-            (_uX_mm_getcsr() & _uX_MM_FLUSH_ZERO_MASK)
+#define _uX_MM_SET_FLUSH_ZERO_MODE(mode)								\
+			_uX_mm_setcsr((_uX_mm_getcsr() & ~_uX_MM_FLUSH_ZERO_MASK) | (mode))
+#define _uX_MM_GET_FLUSH_ZERO_MODE()									\
+			(_uX_mm_getcsr() & _uX_MM_FLUSH_ZERO_MASK)
 
 uX_EXTERNC_BEGIN
 uX_PACK_PUSH_XMM
@@ -404,7 +403,7 @@ extern __m128 uX_ABI _uX_mm_cvtsi64_ss(__m128 /*Inxmm_A*/, int64_t /*InInt_B*/);
 
 extern __m128 uX_ABI _uX_mm_shuffle_ps(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*/, count_t const /*Inint_Imm8*/);
 extern __m128 uX_ABI _uX_mm_permute_ps(__m128 /*Inxmm_A*/, count_t const /*Inint_Imm8*/);
-extern void uX_ABI _uX_mm_transpose4_ps(__m128 /*Inxmm_Row0*/, __m128 /*Inxmm_Row1*/, __m128 /*Inxmm_Row2*/, __m128 /*Inxmm_Row3*/);
+extern void uX_ABI _uX_mm_transpose4_ps(__m128& /*Inxmm_Row0*/, __m128& /*Inxmm_Row1*/, __m128& /*Inxmm_Row2*/, __m128& /*Inxmm_Row3*/);
 extern __m128 uX_ABI _uX_mm_unpackhi_ps(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*/);
 extern __m128 uX_ABI _uX_mm_unpacklo_ps(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*/);
 extern __m128 uX_ABI _uX_mm_movehl_ps(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*/);
@@ -420,7 +419,7 @@ uX_PACK_MM
 /*
  * Integer (MMX) extensions
  */
-extern int uX_ABI _uX_mm_pextrw(__m64 /*Inmm_A*/, count_t const /*Inint_Imm8*/);
+	extern int uX_ABI _uX_mm_pextrw(__m64 /*Inmm_A*/, count_t const /*Inint_Imm8*/);
 extern __m64 uX_ABI _uX_mm_pinsrw(__m64 /*Inmm_A*/, int32_t /*InInt_B*/, count_t const /*Inint_Imm8*/);
 extern __m64 uX_ABI _uX_mm_pmaxsw(__m64 /*Inmm_A*/, __m64 /*Inmm_B*/);
 extern __m64 uX_ABI _uX_mm_pmaxub(__m64 /*Inmm_A*/, __m64 /*Inmm_B*/);
@@ -445,7 +444,7 @@ uX_PACK_XMM
  * FP, sets
  */
 
-extern __m128 uX_ABI _uX_mm_set_ss(float /*Infloat_A*/);
+	extern __m128 uX_ABI _uX_mm_set_ss(float /*Infloat_A*/);
 extern __m128 uX_ABI _uX_mm_set_ps1(float /*Infloat_A*/);
 extern __m128 uX_ABI _uX_mm_set_ps(float /*Infloat_3*/, float /*Infloat_2*/, float /*Infloat_1*/, float /*Infloat_0*/);
 extern __m128 uX_ABI _uX_mm_setr_ps(float /*Infloat_0*/, float /*Infloat_1*/, float /*Infloat_2*/, float /*Infloat_3*/);
@@ -529,8 +528,8 @@ extern uint32_t uX_ABI _uX_mm_getcsr(void);
 extern void uX_ABI _uX_mm_setcsr(uint32_t /*InInt_A*/);
 
 #ifdef __ICL
-    //extern void* __cdecl _uX_mm_malloc(size_t _Siz, size_t _Al);
-    //extern void __cdecl _uX_mm_free(void *_P);
+	//extern void* __cdecl _uX_mm_malloc(size_t _Siz, size_t _Al);
+	//extern void __cdecl _uX_mm_free(void *_P);
 #endif  /* __ICL */
 
 uX_PACK_POP
@@ -553,45 +552,45 @@ uX_EXTERNC_END
 
 /* Alternate intrinsic names definition */
 #ifdef uX_X86
-#define _uX_mm_cvtps_pi32    _uX_mm_cvt_ps2pi
-#define _uX_mm_cvttps_pi32   _uX_mm_cvtt_ps2pi
-#define _uX_mm_cvtpi32_ps    _uX_mm_cvt_pi2ps
-#define _uX_mm_extract_pi16  _uX_mm_pextrw
-#define _uX_mm_insert_pi16   _uX_mm_pinsrw
-#define _uX_mm_max_pi16      _uX_mm_pmaxsw
-#define _uX_mm_max_pu8       _uX_mm_pmaxub
-#define _uX_mm_min_pi16      _uX_mm_pminsw
-#define _uX_mm_min_pu8       _uX_mm_pminub
-#define _uX_mm_movemask_pi8  _uX_mm_pmovmskb
-#define _uX_mm_mulhi_pu16    _uX_mm_pmulhuw
-#define _uX_mm_shuffle_pi16  _uX_mm_pshufw
-#define _uX_mm_maskmove_si64 _uX_mm_maskmovq
-#define _uX_mm_avg_pu8       _uX_mm_pavgb
-#define _uX_mm_avg_pu16      _uX_mm_pavgw
-#define _uX_mm_sad_pu8       _uX_mm_psadbw
+#define _uX_mm_cvtps_pi32		_uX_mm_cvt_ps2pi
+#define _uX_mm_cvttps_pi32		_uX_mm_cvtt_ps2pi
+#define _uX_mm_cvtpi32_ps		_uX_mm_cvt_pi2ps
+#define _uX_mm_extract_pi16		_uX_mm_pextrw
+#define _uX_mm_insert_pi16		_uX_mm_pinsrw
+#define _uX_mm_max_pi16			_uX_mm_pmaxsw
+#define _uX_mm_max_pu8			_uX_mm_pmaxub
+#define _uX_mm_min_pi16			_uX_mm_pminsw
+#define _uX_mm_min_pu8			_uX_mm_pminub
+#define _uX_mm_movemask_pi8		_uX_mm_pmovmskb
+#define _uX_mm_mulhi_pu16		_uX_mm_pmulhuw
+#define _uX_mm_shuffle_pi16		_uX_mm_pshufw
+#define _uX_mm_maskmove_si64	_uX_mm_maskmovq
+#define _uX_mm_avg_pu8			_uX_mm_pavgb
+#define _uX_mm_avg_pu16			_uX_mm_pavgw
+#define _uX_mm_sad_pu8			_uX_mm_psadbw
 #endif
 
-#define _uX_mm_cvtss_si32       _uX_mm_cvt_ss2si
-#define _uX_mm_cvttss_si32      _uX_mm_cvtt_ss2si
-#define _uX_mm_cvtsi32_ss       _uX_mm_cvt_si2ss
-#define _uX_mm_set1_ps          _uX_mm_set_ps1
-#define _uX_mm_cvtflt_ss        _uX_mm_set_ss
-#define _uX_mm_setelts_ps       _uX_mm_cvtflt_ps
-#define _uX_mm_cvtelts_flt      _uX_mm_cvtps_flt
-#define _uX_mm_load1_ps         _uX_mm_load_ps1
-#define _uX_mm_store1_ps        _uX_mm_store_ps1
-#define _uX_mm_storeu1_ps       _uX_mm_storeu_ps1
-#define _uX_mm_move1_ps         _uX_mm_move_ps1
-#define _uX_ptr_move1_mm_ps     _uX_ptr_move_mm_ps1
-#define _uX_ptr_moveu1_mm_ps    _uX_ptr_moveu_mm_ps1
+#define _uX_mm_cvtss_si32		_uX_mm_cvt_ss2si
+#define _uX_mm_cvttss_si32		_uX_mm_cvtt_ss2si
+#define _uX_mm_cvtsi32_ss		_uX_mm_cvt_si2ss
+#define _uX_mm_set1_ps			_uX_mm_set_ps1
+#define _uX_mm_cvtflt_ss		_uX_mm_set_ss
+#define _uX_mm_setelts_ps		_uX_mm_cvtflt_ps
+#define _uX_mm_cvtelts_flt		_uX_mm_cvtps_flt
+#define _uX_mm_load1_ps			_uX_mm_load_ps1
+#define _uX_mm_store1_ps		_uX_mm_store_ps1
+#define _uX_mm_storeu1_ps		_uX_mm_storeu_ps1
+#define _uX_mm_move1_ps			_uX_mm_move_ps1
+#define _uX_ptr_move1_mm_ps		_uX_ptr_move_mm_ps1
+#define _uX_ptr_moveu1_mm_ps	_uX_ptr_moveu_mm_ps1
 
-#define _uX_mm_set_0s           _uX_mm_cvtflt_0s
-#define _uX_mm_set_1s           _uX_mm_cvtflt_1s
-#define _uX_mm_set_2s           _uX_mm_cvtflt_2s
-#define _uX_mm_set_3s           _uX_mm_cvtflt_3s
+#define _uX_mm_set_0s			_uX_mm_cvtflt_0s
+#define _uX_mm_set_1s			_uX_mm_cvtflt_1s
+#define _uX_mm_set_2s			_uX_mm_cvtflt_2s
+#define _uX_mm_set_3s			_uX_mm_cvtflt_3s
 
-#define _uX_mm_null_ps          _uX_mm_setzero_ps()
-#define _uX_xmm_vecf_null       _uX_mm_null_ps
+#define _uX_mm_null_ps			_uX_mm_setzero_ps()
+#define _uX_xmm_vecf_null		_uX_mm_null_ps
 
 #ifdef uX_X86
 
@@ -608,7 +607,6 @@ uX_PACK_PUSH_XMM
 /*********************************************************/
 extern __m128 uX_ABI _uX_mm_cvtpi16_ps(__m64 /*_A*/);
 
-
 /***********************************************************/
 /*  NAME : _uX_mm_cvtpu16_ps                                  */
 /*  DESCRIPTION : Convert 4 16-bit unsigned integer values */
@@ -618,7 +616,6 @@ extern __m128 uX_ABI _uX_mm_cvtpi16_ps(__m64 /*_A*/);
 /*  RETURN : __m128 : (float)_A                             */
 /***********************************************************/
 extern __m128 uX_ABI _uX_mm_cvtpu16_ps(__m64 /*_A*/);
-
 
 /******************************************************/
 /*  NAME : _uX_mm_cvtps_pi16                             */
@@ -630,7 +627,6 @@ extern __m128 uX_ABI _uX_mm_cvtpu16_ps(__m64 /*_A*/);
 /******************************************************/
 extern __m64 uX_ABI _uX_mm_cvtps_pi16(__m128 /*_A*/);
 
-
 /******************************************************/
 /*  NAME : _uX_mm_cvtpi8_ps                              */
 /*  DESCRIPTION : Convert 4 8-bit integer values to 4 */
@@ -640,7 +636,6 @@ extern __m64 uX_ABI _uX_mm_cvtps_pi16(__m128 /*_A*/);
 /*  RETURN : __m128 : (float)_A                        */
 /******************************************************/
 extern __m128 uX_ABI _uX_mm_cvtpi8_ps(__m64 /*_A*/);
-
 
 /******************************************************/
 /*  NAME : _uX_mm_cvtpu8_ps                              */
@@ -653,7 +648,6 @@ extern __m128 uX_ABI _uX_mm_cvtpi8_ps(__m64 /*_A*/);
 /******************************************************/
 extern __m128 uX_ABI _uX_mm_cvtpu8_ps(__m64 /*_A*/);
 
-
 /******************************************************/
 /*  NAME : _uX_mm_cvtps_pi8                              */
 /*  DESCRIPTION : Convert 4 single-precision float    */
@@ -663,7 +657,6 @@ extern __m128 uX_ABI _uX_mm_cvtpu8_ps(__m64 /*_A*/);
 /*  RETURN : __m64 : (int8_t)_A                          */
 /******************************************************/
 extern __m64 uX_ABI _uX_mm_cvtps_pi8(__m128 /*_A*/);
-
 
 /******************************************************/
 /*  NAME : _uX_mm_cvtpi32x2_ps                           */

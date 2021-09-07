@@ -1,4 +1,3 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -89,77 +88,76 @@ class vecdouble4x4;
 typedef class uX_API vecuint8
 {
 public:
-    vecuint8()uX_default;
-    ~vecuint8()uX_default;
+	vecuint8()uX_default;
+	~vecuint8()uX_default;
 
 #ifdef uX_DEFAULT_CTOR_SUPPORT
-    vecuint8(const vecuint8&)uX_default;
-    vecuint8& uX_callconv operator=(const vecuint8&)uX_default;
+	vecuint8(const vecuint8&)uX_default;
+	vecuint8& uX_callconv operator=(const vecuint8&)uX_default;
 
-    vecuint8(vecuint8&&)uX_default;
-    vecuint8& uX_callconv operator=(vecuint8&&)uX_default;
+	vecuint8(vecuint8&&)uX_default;
+	vecuint8& uX_callconv operator=(vecuint8&&)uX_default;
 #else
-    vecuint8(const vecuint8& Invecuint8);
-    vecuint8& uX_callconv operator=(const vecuint8& Invecuint8);
+	vecuint8(const vecuint8& Invecuint8);
+	vecuint8& uX_callconv operator=(const vecuint8& Invecuint8);
 
-    vecuint8(vecuint8&& Invecuint8);
-    vecuint8& uX_callconv operator=(vecuint8&& Invecuint8);
+	vecuint8(vecuint8&& Invecuint8);
+	vecuint8& uX_callconv operator=(vecuint8&& Invecuint8);
 #endif
-    /**
-     * Constructor initialization from type __m128i.
-     *
-     * @param Inxmmi value to copy from.
-     */
-    uX_constexpr vecuint8(const __m128i Inxmmi) : m128_xmmi{Inxmmi} {}
+	/**
+	 * Constructor initialization from type __m128i.
+	 *
+	 * @param Inxmmi value to copy from.
+	 */
+	uX_constexpr vecuint8(const __m128i Inxmmi) : m128_xmmi{Inxmmi} {}
 
-    /** Type cast operator to convert to __m128i. */
-    operator __m128i() const;
+	/** Type cast operator to convert to __m128i. */
+	operator __m128i() const;
 
-    /**
-     * Assignment operator to convert from type __m128i.
-     *
-     * @param Inxmmi value to copy from.
-     */
-    vecuint8& uX_callconv operator=(const __m128i Inxmmi);
+	/**
+	 * Assignment operator to convert from type __m128i.
+	 *
+	 * @param Inxmmi value to copy from.
+	 */
+	vecuint8& uX_callconv operator=(const __m128i Inxmmi);
 
-    /**
-     * Constructor initialization from type unsigned __int8*.
-     *
-     * @param Inpint8 value to copy from.
-     */
-    uX_explicit vecuint8(uX_InReads(16) const unsigned __int8* Inpint8);
+	/**
+	 * Constructor initialization from type unsigned __int8*.
+	 *
+	 * @param Inpint8 value to copy from.
+	 */
+	uX_explicit vecuint8(uX_InReads(16) const unsigned __int8* Inpint8);
 
-    /** Type cast operator to convert to unsigned __int8*. */
-    /*operator unsigned __int8*() const;*/
+	/** Type cast operator to convert to unsigned __int8*. */
+	/*operator unsigned __int8*() const;*/
 
-    /**
-     * Assignment operator to convert from type unsigned __int8*.
-     *
-     * @param Inpint8 value to copy from.
-     */
-    vecuint8& uX_callconv operator=(uX_InReads(16) const unsigned __int8* Inpint8);
+	/**
+	 * Assignment operator to convert from type unsigned __int8*.
+	 *
+	 * @param Inpint8 value to copy from.
+	 */
+	vecuint8& uX_callconv operator=(uX_InReads(16) const unsigned __int8* Inpint8);
 
 protected:
 
 private:
-    union
-    {
-        __m128i                      m128_xmmi;
-        struct
-        {
-            unsigned     __int8 _0, _1, _2, _3,
-                                _4, _5, _6, _7,
-                              _8, _9, _10, _11,
-                            _12, _13, _14, _15;
-        };
-        unsigned __int8            m128_ub[16];
-    };
+	union
+	{
+		__m128i                      m128_xmmi;
+		struct
+		{
+			unsigned     __int8 _0, _1, _2, _3,
+				_4, _5, _6, _7,
+				_8, _9, _10, _11,
+				_12, _13, _14, _15;
+		};
+		unsigned __int8            m128_ub[16];
+	};
 
-    static uX_const uint32_t m128_xmm_size = 16;
-    static uX_const uint32_t m128_ui8_ptr_lenght = 16;
-    static uX_const uint32_t m128_ui8_ptr_size = 16;
-    static uX_const uint32_t m128_ui8_size = 1;
-
+	static uX_const uint32_t m128_xmm_size = 16;
+	static uX_const uint32_t m128_ui8_ptr_length = 16;
+	static uX_const uint32_t m128_ui8_ptr_size = 16;
+	static uX_const uint32_t m128_ui8_size = 1;
 }vecuint8_t;
 #endif // uX_SSE2
 

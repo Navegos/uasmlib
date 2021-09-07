@@ -1,4 +1,3 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -94,129 +93,128 @@ class vecdouble4x4;
 typedef class uX_API vecdouble4x3
 {
 public:
-    vecdouble4x3() uX_default;
-    ~vecdouble4x3() uX_default;
+	vecdouble4x3() uX_default;
+	~vecdouble4x3() uX_default;
 
-    vecdouble4x3(const vecdouble4x3&) uX_default;
-    vecdouble4x3& uX_callconv operator=(const vecdouble4x3&) uX_default;
+	vecdouble4x3(const vecdouble4x3&) uX_default;
+	vecdouble4x3& uX_callconv operator=(const vecdouble4x3&) uX_default;
 
-    vecdouble4x3(vecdouble4x3&&) uX_default;
-    vecdouble4x3& uX_callconv operator=(vecdouble4x3&&) uX_default;
+	vecdouble4x3(vecdouble4x3&&) uX_default;
+	vecdouble4x3& uX_callconv operator=(vecdouble4x3&&) uX_default;
 
-    /**
-     * Constructor initialization from 8 type __m128d.
-     *
-     * @param Inxmmd_0 value to copy from.
-     * @param Inxmmd_1 value to copy from.
-     * @param Inxmmd_2 value to copy from.
-     * @param Inxmmd_3 value to copy from.
-     * @param Inxmmd_4 value to copy from.
-     * @param Inxmmd_5 value to copy from.
-     * @param Inxmmd_6 value to copy from.
-     * @param Inxmmd_7 value to copy from.
-     */
-    vecdouble4x3(const __m128d Inxmmd_0, const __m128d Inxmmd_1, const __m128d Inxmmd_2, const __m128d Inxmmd_3,
-                 const __m128d Inxmmd_4, const __m128d Inxmmd_5, const __m128d Inxmmd_6, const __m128d Inxmmd_7) uX_noexcept;
+	/**
+	 * Constructor initialization from 8 type __m128d.
+	 *
+	 * @param Inxmmd_0 value to copy from.
+	 * @param Inxmmd_1 value to copy from.
+	 * @param Inxmmd_2 value to copy from.
+	 * @param Inxmmd_3 value to copy from.
+	 * @param Inxmmd_4 value to copy from.
+	 * @param Inxmmd_5 value to copy from.
+	 * @param Inxmmd_6 value to copy from.
+	 * @param Inxmmd_7 value to copy from.
+	 */
+	vecdouble4x3(const __m128d Inxmmd_0, const __m128d Inxmmd_1, const __m128d Inxmmd_2, const __m128d Inxmmd_3,
+				 const __m128d Inxmmd_4, const __m128d Inxmmd_5, const __m128d Inxmmd_6, const __m128d Inxmmd_7) uX_noexcept;
 
-    /**
-     * Constructor initialization from type __m128d*.
-     *
-     * @param Inpxmmd value to copy from.
-     * @param idxbegin pointer start index.
-     * @param idxend pointer end index.
-     * @warning No internall checks. Inpxmmd assumes 1*1 __m128d in the max range off 1*8.
-     */
-    uX_explicit vecdouble4x3(const __m128d* Inpxmmd, uint32_t idxbegin = 0, uint32_t idxend = m128_xmmd_ptr_lenght) uX_noexcept;
+	/**
+	 * Constructor initialization from type __m128d*.
+	 *
+	 * @param Inpxmmd value to copy from.
+	 * @param idxbegin pointer start index.
+	 * @param idxend pointer end index.
+	 * @warning No internall checks. Inpxmmd assumes 1*1 __m128d in the max range off 1*8.
+	 */
+	uX_explicit vecdouble4x3(const __m128d* Inpxmmd, uint32_t idxbegin = 0, uint32_t idxend = m128_xmmd_ptr_length) uX_noexcept;
 
-    /**
-     * Constructor initialization from 4x4 type doubles.
-     *
-     * @param Indouble_X0 value to copy from.
-     * @param Indouble_X1 value to copy from.
-     * @param Indouble_X2 value to copy from.
-     * @param Indouble_Y0 value to copy from.
-     * @param Indouble_Y1 value to copy from.
-     * @param Indouble_Y2 value to copy from.
-     * @param Indouble_Z0 value to copy from.
-     * @param Indouble_Z1 value to copy from.
-     * @param Indouble_Z2 value to copy from.
-     * @param Indouble_W0 value to copy from.
-     * @param Indouble_W1 value to copy from.
-     * @param Indouble_W2 value to copy from.
-     */
-    vecdouble4x3(const double Indouble_X0, const double Indouble_X1, const double Indouble_X2,
-                 const double Indouble_Y0, const double Indouble_Y1, const double Indouble_Y2,
-                 const double Indouble_Z0, const double Indouble_Z1, const double Indouble_Z2,
-                 const double Indouble_W0, const double Indouble_W1, const double Indouble_W2) uX_noexcept;
+	/**
+	 * Constructor initialization from 4x4 type doubles.
+	 *
+	 * @param Indouble_X0 value to copy from.
+	 * @param Indouble_X1 value to copy from.
+	 * @param Indouble_X2 value to copy from.
+	 * @param Indouble_Y0 value to copy from.
+	 * @param Indouble_Y1 value to copy from.
+	 * @param Indouble_Y2 value to copy from.
+	 * @param Indouble_Z0 value to copy from.
+	 * @param Indouble_Z1 value to copy from.
+	 * @param Indouble_Z2 value to copy from.
+	 * @param Indouble_W0 value to copy from.
+	 * @param Indouble_W1 value to copy from.
+	 * @param Indouble_W2 value to copy from.
+	 */
+	vecdouble4x3(const double Indouble_X0, const double Indouble_X1, const double Indouble_X2,
+				 const double Indouble_Y0, const double Indouble_Y1, const double Indouble_Y2,
+				 const double Indouble_Z0, const double Indouble_Z1, const double Indouble_Z2,
+				 const double Indouble_W0, const double Indouble_W1, const double Indouble_W2) uX_noexcept;
 
-    /**
-     * Constructor initialization from type double*.
-     *
-     * @param Inpdouble double pointer value to copy from.
-     * @param idxbegin pointer start index.
-     * @param idxend pointer end index.
-     * @warning No internall checks. Inpdouble assumes multiples off double in the max range off 4*3, last unused odd simd double element gets cleared.
-     */
-    uX_explicit vecdouble4x3(const double* Inpdouble, uint32_t idxbegin = 0, uint32_t idxend = m128_xmmd_ptr_lenght) uX_noexcept;
+	/**
+	 * Constructor initialization from type double*.
+	 *
+	 * @param Inpdouble double pointer value to copy from.
+	 * @param idxbegin pointer start index.
+	 * @param idxend pointer end index.
+	 * @warning No internall checks. Inpdouble assumes multiples off double in the max range off 4*3, last unused odd simd double element gets cleared.
+	 */
+	uX_explicit vecdouble4x3(const double* Inpdouble, uint32_t idxbegin = 0, uint32_t idxend = m128_xmmd_ptr_length) uX_noexcept;
 
-    /** Type cast operator to convert to __m128d*. */
-    /*operator __m128d*() const;*/ //security undesired
+	/** Type cast operator to convert to __m128d*. */
+	/*operator __m128d*() const;*/ //security undesired
 
-    /** Type cast operator to convert to double*. */
-    /*operator double*() const;*/ //security undesired
+	/** Type cast operator to convert to double*. */
+	/*operator double*() const;*/ //security undesired
 
-    /**
-     * Assignment operator to convert from type __m128d*.
-     *
-     * @param Inpxmmd value to copy from.
-     */
-    /*vecdouble4x3& uX_callconv operator=(const __m128d* Inpxmmd);*/ //security undesired
+	/**
+	 * Assignment operator to convert from type __m128d*.
+	 *
+	 * @param Inpxmmd value to copy from.
+	 */
+	/*vecdouble4x3& uX_callconv operator=(const __m128d* Inpxmmd);*/ //security undesired
 
-    /**
-     * Assignment operator to convert from type double*.
-     *
-     * @param Inpdouble value to copy from.
-     */
-    /*vecdouble4x3& uX_callconv operator=(const double* Inpdouble);*/ //security undesired
+	/**
+	 * Assignment operator to convert from type double*.
+	 *
+	 * @param Inpdouble value to copy from.
+	 */
+	/*vecdouble4x3& uX_callconv operator=(const double* Inpdouble);*/ //security undesired
 
 protected:
 
 private:
-    union
-    {
-        struct
-        {
-            __m128d         m128_xmmd_0;
-            __m128d         m128_xmmd_1;
-            __m128d         m128_xmmd_2;
-            __m128d         m128_xmmd_3;
-            __m128d         m128_xmmd_4;
-            __m128d         m128_xmmd_5;
-            __m128d         m128_xmmd_6;
-            __m128d         m128_xmmd_7;
-        };
-        __m128d            m128_xmmd[8];
-        struct
-        {
-            double        _11, _12, _13;
-            double        _21, _22, _23;
-            double        _31, _32, _33;
-            double        _41, _42, _43;
-        };
-        double            m128_dm[4][3];
-        double               m128_d[12];
-    };
+	union
+	{
+		struct
+		{
+			__m128d         m128_xmmd_0;
+			__m128d         m128_xmmd_1;
+			__m128d         m128_xmmd_2;
+			__m128d         m128_xmmd_3;
+			__m128d         m128_xmmd_4;
+			__m128d         m128_xmmd_5;
+			__m128d         m128_xmmd_6;
+			__m128d         m128_xmmd_7;
+		};
+		__m128d            m128_xmmd[8];
+		struct
+		{
+			double        _11, _12, _13;
+			double        _21, _22, _23;
+			double        _31, _32, _33;
+			double        _41, _42, _43;
+		};
+		double            m128_dm[4][3];
+		double               m128_d[12];
+	};
 
-    static uX_const uint32_t m128_xmmd_ptr_lenght   = 8;
-    static uX_const uint32_t m128_xmmd_ptr_size     = 128;
-    static uX_const uint32_t m128_xmmd_size         = 16;
-    static uX_const uint32_t m128_xmmd_elements     = 2;
-    static uX_const uint32_t m128_row_lenght        = 4;
-    static uX_const uint32_t m128_column_lenght     = 3;
-    static uX_const uint32_t m128_dbl_ptr_lenght    = 12;
-    static uX_const uint32_t m128_dbl_ptr_size      = 96;
-    static uX_const uint32_t m128_dbl_size          = 8;
-
+	static uX_const uint32_t m128_xmmd_ptr_length = 8;
+	static uX_const uint32_t m128_xmmd_ptr_size = 128;
+	static uX_const uint32_t m128_xmmd_size = 16;
+	static uX_const uint32_t m128_xmmd_elements = 2;
+	static uX_const uint32_t m128_row_length = 4;
+	static uX_const uint32_t m128_column_length = 3;
+	static uX_const uint32_t m128_dbl_ptr_length = 12;
+	static uX_const uint32_t m128_dbl_ptr_size = 96;
+	static uX_const uint32_t m128_dbl_size = 8;
 }vecdouble4x3_t;
 
 uX_PACK_POP
@@ -224,7 +222,6 @@ namespace_XMM_end
 namespace_uX_end
 
 #endif // uX_SSE2
-
 
 #endif // uX_SSE
 

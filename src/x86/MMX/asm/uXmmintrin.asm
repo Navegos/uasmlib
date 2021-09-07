@@ -1,24 +1,48 @@
 
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / /                                                                               / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
+; / /                                                                               / /
+; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
+; / /    you may not use this file except in compliance with the License.           / /
+; / /    You may obtain a copy of the License at                                    / /
+; / /                                                                               / /
+; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
+; / /                                                                               / /
+; / /    Unless required by applicable law or agreed to in writing, software        / /
+; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
+; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
+; / /    See the License for the specific language governing permissions and        / /
+; / /    limitations under the License.                                             / /
+; / /                                                                               / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
+option casemap:none
+include macrolib.inc
+include uXasm.inc
+
 ifndef __MIC__
 
-    include uXx86asm.inc
-    
-    .mmx
-    ;option arch:mmx
-    option evex:0
+.mmx
+option arch:sse
+option evex:0
 
 ifdef __X32__
 
-    .data?
+alignstackfieldproc
 
-    .data
+.data?
 
-    .const
+.data
 
-    .code
+.const
 
-    callconvopt
-    alignmmfieldproc
+.code
+
+callconvopt
+alignmmfieldproc
 
 procstart _uX_m_empty, callconv, voidarg, < >, < >, < >
         emms
@@ -26,22 +50,22 @@ procstart _uX_m_empty, callconv, voidarg, < >, < >, < >
 procend
 
 procstart _uX_m_from_int, callconv, mmword, < >, < >, _I:dword
-        movd            mm0,            rparam0
+        movd            mm0,            rp0()
         ret
 procend
 
 ;procstart _uX_m_from_int64, callconv, mmword, < >, < >, _I:qword
-;        movq            mm0,            rparam0
+;        movq            mm0,            rp0()
 ;        ret
 ;procend
 
 procstart _uX_m_to_int, callconv, dword, < >, < >, _M:mmword
-        movd            rreturn,            mm0
+        movd            rret(),            mm0
         ret
 procend
 
 ;procstart _uX_m_to_int64, callconv, qword, < >, < >,  _M:mmword
-;        movq            rreturn,            mm0
+;        movq            rret(),            mm0
 ;        ret
 ;procend
 
@@ -274,4 +298,4 @@ endif ;__X32__
 
 endif ;__MIC__
 
-    end
+end

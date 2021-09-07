@@ -1,4 +1,3 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -44,50 +43,50 @@ EXTERN_CC_BEGIN
 void uX_ABI printString(char const* const str)
 {
 #if uX_ANDROID
-    __android_log_print(ANDROID_LOG_INFO, "PrintString", "%s", str);
+	__android_log_print(ANDROID_LOG_INFO, "PrintString", "%s", str);
 #else
-    puts(str); // do not use printf here, since str can contain multiple % signs that will not be printed
+	puts(str); // do not use printf here, since str can contain multiple % signs that will not be printed
 #   if (defined(uX_WINDOWS_FAMILY) && (uX_WINDOWS_FAMILY >= 1))
-    OutputDebugStringA(str);
-    OutputDebugStringA("\n");
+	OutputDebugStringA(str);
+	OutputDebugStringA("\n");
 #   endif
 #endif
 }
 
 void uX_ABI asserthandler(char const* const Msg, char const* const Expr, char const* const File, int Line, bool& Ignore)
 {
-    uX_UNUSED(Ignore); // is used only in debug windows config
-    char buffer[1024];
+	uX_UNUSED(Ignore); // is used only in debug windows config
+	char buffer[1024];
 #if (defined(uX_WINDOWS_FAMILY) && (uX_WINDOWS_FAMILY >= 1))
-    sprintf_s(buffer, "%s(%d)%s : Assertion failed: %s\n", File, Line, Expr, Msg);
+	sprintf_s(buffer, "%s(%d)%s : Assertion failed: %s\n", File, Line, Expr, Msg);
 #else
-    sprintf(buffer, "%s(%d)%s : Assertion failed: %s\n", File, Line, Expr, Msg);
+	sprintf(buffer, "%s(%d)%s : Assertion failed: %s\n", File, Line, Expr, Msg);
 #endif
 #if uX_ANDROID
-    __android_log_print(ANDROID_LOG_INFO, "uX_asserthandler", "%s", buffer);
+	__android_log_print(ANDROID_LOG_INFO, "uX_asserthandler", "%s", buffer);
 #else
-    puts(buffer); // do not use printf here, since str can contain multiple % signs that will not be printed
+	puts(buffer); // do not use printf here, since str can contain multiple % signs that will not be printed
 #   if (defined(uX_WINDOWS_FAMILY) && (uX_WINDOWS_FAMILY >= 1))
-    OutputDebugStringA(buffer);
-    OutputDebugStringA("\n");
+	OutputDebugStringA(buffer);
+	OutputDebugStringA("\n");
 #   endif
 #endif
 #if (defined(uX_WINDOWS_FAMILY) && (uX_WINDOWS_FAMILY >= 1)) && (defined(uX_DEBUG) && (uX_DEBUG >= 1))
-    // _CrtDbgReport returns -1 on error, 1 on 'retry', 0 otherwise including 'Ignore'.
-    // Hitting 'abort' will terminate the process immediately.
-    int result = _CrtDbgReport(_CRT_ASSERT, File, Line, NULL, "%s", buffer);
-    int mode = _CrtSetReportMode(_CRT_ASSERT, _CRTDBG_REPORT_MODE);
-    Ignore = _CRTDBG_MODE_WNDW == mode && result == 0;
-    if (Ignore)
-        return;
-    __debugbreak();
+	// _CrtDbgReport returns -1 on error, 1 on 'retry', 0 otherwise including 'Ignore'.
+	// Hitting 'abort' will terminate the process immediately.
+	int result = _CrtDbgReport(_CRT_ASSERT, File, Line, NULL, "%s", buffer);
+	int mode = _CrtSetReportMode(_CRT_ASSERT, _CRTDBG_REPORT_MODE);
+	Ignore = _CRTDBG_MODE_WNDW == mode && result == 0;
+	if(Ignore)
+		return;
+	__debugbreak();
 #elif (defined(uX_WINDOWS_FAMILY) && (uX_WINDOWS_FAMILY >= 1))
-    __debugbreak();
-    /*
-    #elif uX_SWITCH
-            abort(buffer);*/
+	__debugbreak();
+	/*
+	#elif uX_SWITCH
+			abort(buffer);*/
 #else
-    abort();
+	abort();
 #endif
 }
 EXTERN_CC_END
@@ -95,46 +94,46 @@ EXTERN_CC_END
 EXTERN_CC_BEGIN
 class DefaultAssertHandler : public AssertHandler
 {
-    virtual void operator()(char const* const Msg, char const* const Expr, char const* const File, int Line, bool& Ignore)
-    {
-        asserthandler(Msg, Expr, File, Line, Ignore);
-        /*uX_UNUSED(Ignore); // is used only in debug windows config
-        char buffer[1024];
+	virtual void operator()(char const* const Msg, char const* const Expr, char const* const File, int Line, bool& Ignore)
+	{
+		asserthandler(Msg, Expr, File, Line, Ignore);
+		/*uX_UNUSED(Ignore); // is used only in debug windows config
+		char buffer[1024];
 #if (defined(uX_WINDOWS_FAMILY) && (uX_WINDOWS_FAMILY >= 1))
-        sprintf_s(buffer, "%s(%d)%s : Assertion failed: %s\n", File, Line, Expr, Msg);
+		sprintf_s(buffer, "%s(%d)%s : Assertion failed: %s\n", File, Line, Expr, Msg);
 #else
-        sprintf(buffer, "%s(%d)%s : Assertion failed: %s\n", File, Line, Expr, Msg);
+		sprintf(buffer, "%s(%d)%s : Assertion failed: %s\n", File, Line, Expr, Msg);
 #endif
-        uX::_internal::printString(buffer);
+		uX::_internal::printString(buffer);
 #if (defined(uX_WINDOWS_FAMILY) && (uX_WINDOWS_FAMILY >= 1)) && (defined(uX_DEBUG) && (uX_DEBUG >= 1))
-        // _CrtDbgReport returns -1 on error, 1 on 'retry', 0 otherwise including 'Ignore'.
-        // Hitting 'abort' will terminate the process immediately.
-        int result = _CrtDbgReport(_CRT_ASSERT, File, Line, NULL, "%s", buffer);
-        int mode = _CrtSetReportMode(_CRT_ASSERT, _CRTDBG_REPORT_MODE);
-        Ignore = _CRTDBG_MODE_WNDW == mode && result == 0;
-        if (Ignore)
-            return;
-        __debugbreak();
+		// _CrtDbgReport returns -1 on error, 1 on 'retry', 0 otherwise including 'Ignore'.
+		// Hitting 'abort' will terminate the process immediately.
+		int result = _CrtDbgReport(_CRT_ASSERT, File, Line, NULL, "%s", buffer);
+		int mode = _CrtSetReportMode(_CRT_ASSERT, _CRTDBG_REPORT_MODE);
+		Ignore = _CRTDBG_MODE_WNDW == mode && result == 0;
+		if (Ignore)
+			return;
+		__debugbreak();
 #elif (defined(uX_WINDOWS_FAMILY) && (uX_WINDOWS_FAMILY >= 1))
-        __debugbreak();
+		__debugbreak();
 / *
 #elif uX_SWITCH
-        abort(buffer);* /
+		abort(buffer);* /
 #else
-        abort();
+		abort();
 #endif*/
-    }
+	}
 
-    virtual void operator()(char const* const Msg, char const* const Expr, char const* const File, int Line)
-    {
-        char buffer[1024];
+	virtual void operator()(char const* const Msg, char const* const Expr, char const* const File, int Line)
+	{
+		char buffer[1024];
 #if (defined(uX_WINDOWS_FAMILY) && (uX_WINDOWS_FAMILY >= 1))
-        sprintf_s(buffer, "%s(%d)%s : Assertion failed: %s\n", File, Line, Expr, Msg);
+		sprintf_s(buffer, "%s(%d)%s : Assertion failed: %s\n", File, Line, Expr, Msg);
 #else
-        sprintf(buffer, "%s(%d)%s : Assertion failed: %s\n", File, Line, Expr, Msg);
+		sprintf(buffer, "%s(%d)%s : Assertion failed: %s\n", File, Line, Expr, Msg);
 #endif
-        printString(buffer);
-    }
+		printString(buffer);
+	}
 };
 
 DefaultAssertHandler sAssertHandler;
@@ -151,46 +150,46 @@ namespace
 {
 class DefaultAssertHandler : public uX::AssertHandler
 {
-    virtual void operator()(char const* const Msg, char const* const Expr, char const* const File, int Line, bool& Ignore)
-    {
-        uX::_internal::asserthandler(Msg, Expr, File, Line, Ignore);
-        / *uX_UNUSED(Ignore); // is used only in debug windows config
-        char buffer[1024];
+	virtual void operator()(char const* const Msg, char const* const Expr, char const* const File, int Line, bool& Ignore)
+	{
+		uX::_internal::asserthandler(Msg, Expr, File, Line, Ignore);
+		/ *uX_UNUSED(Ignore); // is used only in debug windows config
+		char buffer[1024];
 #if (defined(uX_WINDOWS_FAMILY) && (uX_WINDOWS_FAMILY >= 1))
-        sprintf_s(buffer, "%s(%d)%s : Assertion failed: %s\n", File, Line, Expr, Msg);
+		sprintf_s(buffer, "%s(%d)%s : Assertion failed: %s\n", File, Line, Expr, Msg);
 #else
-        sprintf(buffer, "%s(%d)%s : Assertion failed: %s\n", File, Line, Expr, Msg);
+		sprintf(buffer, "%s(%d)%s : Assertion failed: %s\n", File, Line, Expr, Msg);
 #endif
-        uX::_internal::printString(buffer);
+		uX::_internal::printString(buffer);
 #if (defined(uX_WINDOWS_FAMILY) && (uX_WINDOWS_FAMILY >= 1)) && (defined(uX_DEBUG) && (uX_DEBUG >= 1))
-        // _CrtDbgReport returns -1 on error, 1 on 'retry', 0 otherwise including 'Ignore'.
-        // Hitting 'abort' will terminate the process immediately.
-        int result = _CrtDbgReport(_CRT_ASSERT, File, Line, NULL, "%s", buffer);
-        int mode = _CrtSetReportMode(_CRT_ASSERT, _CRTDBG_REPORT_MODE);
-        Ignore = _CRTDBG_MODE_WNDW == mode && result == 0;
-        if (Ignore)
-            return;
-        __debugbreak();
+		// _CrtDbgReport returns -1 on error, 1 on 'retry', 0 otherwise including 'Ignore'.
+		// Hitting 'abort' will terminate the process immediately.
+		int result = _CrtDbgReport(_CRT_ASSERT, File, Line, NULL, "%s", buffer);
+		int mode = _CrtSetReportMode(_CRT_ASSERT, _CRTDBG_REPORT_MODE);
+		Ignore = _CRTDBG_MODE_WNDW == mode && result == 0;
+		if (Ignore)
+			return;
+		__debugbreak();
 #elif (defined(uX_WINDOWS_FAMILY) && (uX_WINDOWS_FAMILY >= 1))
-        __debugbreak();
+		__debugbreak();
 / *
 #elif uX_SWITCH
-        abort(buffer);* /
+		abort(buffer);* /
 #else
-        abort();
+		abort();
 #endif* /
-    }
+	}
 
-    virtual void operator()(char const* const Msg, char const* const Expr, char const* const File, int Line)
-    {
-        char buffer[1024];
+	virtual void operator()(char const* const Msg, char const* const Expr, char const* const File, int Line)
+	{
+		char buffer[1024];
 #if (defined(uX_WINDOWS_FAMILY) && (uX_WINDOWS_FAMILY >= 1))
-        sprintf_s(buffer, "%s(%d)%s : Assertion failed: %s\n", File, Line, Expr, Msg);
+		sprintf_s(buffer, "%s(%d)%s : Assertion failed: %s\n", File, Line, Expr, Msg);
 #else
-        sprintf(buffer, "%s(%d)%s : Assertion failed: %s\n", File, Line, Expr, Msg);
+		sprintf(buffer, "%s(%d)%s : Assertion failed: %s\n", File, Line, Expr, Msg);
 #endif
-        uX::_internal::printString(buffer);
-    }
+		uX::_internal::printString(buffer);
+	}
 };
 
 DefaultAssertHandler sAssertHandler;
@@ -202,12 +201,12 @@ EXTERN_CC_BEGIN
 uX_PACK_PUSH_STACK
 AssertHandler& uX_ABI GetAssertHandler()
 {
-    return *_internal::sAssertHandlerPtr;
+	return *_internal::sAssertHandlerPtr;
 }
 
 void uX_ABI SetAssertHandler(AssertHandler& Handler)
 {
-    _internal::sAssertHandlerPtr = &Handler;
+	_internal::sAssertHandlerPtr = &Handler;
 }
 uX_PACK_POP
 EXTERN_CC_END

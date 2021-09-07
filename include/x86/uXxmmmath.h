@@ -1,22 +1,21 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-; / /                                                                               / /
-; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
-; / /                                                                               / /
-; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
-; / /    you may not use this file except in compliance with the License.           / /
-; / /    You may obtain a copy of the License at                                    / /
-; / /                                                                               / /
-; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
-; / /                                                                               / /
-; / /    Unless required by applicable law or agreed to in writing, software        / /
-; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
-; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
-; / /    See the License for the specific language governing permissions and        / /
-; / /    limitations under the License.                                             / /
-; / /                                                                               / /
+; / /																				/ /
+; / /			Copyright 2021 (c) Navegos QA - optimized library					/ /
+; / /																				/ /
+; / /	Licensed under the Apache License, Version 2.0 (the "License");				/ /
+; / /	you may not use this file except in compliance with the License.			/ /
+; / /	You may obtain a copy of the License at										/ /
+; / /																				/ /
+; / /		http://www.apache.org/licenses/LICENSE-2.0								/ /
+; / /																				/ /
+; / /	Unless required by applicable law or agreed to in writing, software			/ /
+; / /	distributed under the License is distributed on an "AS IS" BASIS,			/ /
+; / /	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.	/ /
+; / /	See the License for the specific language governing permissions and			/ /
+; / /	limitations under the License.												/ /
+; / /																				/ /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 */
@@ -129,7 +128,6 @@ uX_PACK_POP
 namespace_DirectX_end
 #endif
 
-
 #ifndef uX_XMM_VECDOUBLE4x4_H
 #include "math/sse/uXxmmvecdouble4x4.h"
 #endif  /* uX_XMM_VECDOUBLE4x4_H */
@@ -162,7 +160,6 @@ namespace_DirectX_end
 #include "math/sse/uXxmmvecdouble.h"
 #endif  /* uX_XMM_VECDOUBLE_H */
 
-
 #ifndef uX_XMM_VECFLOAT4x4_H
 #include "math/sse/uXxmmvecfloat4x4.h"
 #endif  /* uX_XMM_VECFLOAT4x4_H */
@@ -194,7 +191,6 @@ namespace_DirectX_end
 #ifndef uX_XMM_VECFLOAT_H
 #include "math/sse/uXxmmvecfloat.h"
 #endif  /* uX_XMM_VECFLOAT_H */
-
 
 #endif // uX_SSE
 

@@ -2,7 +2,7 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / /                                                                               / /
-; / /             Copyright 2020 (c) Navegos QA - UASM assembly library             / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
 ; / /                                                                               / /
 ; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
 ; / /    you may not use this file except in compliance with the License.           / /
@@ -19,79 +19,81 @@
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
-    OPTION CASEMAP:NONE
-    include macrolib.inc
+option casemap:none
+include macrolib.inc
+include uXasm.inc
+
 ifndef __MIC__
 
-    include uXasm.inc
+.xmm
+option arch:sse
+option evex:0
 
-    .xmm
-    option arch:sse
-    option evex:0
+alignstackfieldproc
 
-    .data?
+.data?
 
-    .data
+.data
 
-    .const
+.const
 
-    alignsize_t
-    _m128extractpsjmptable isize_t  offset _m128extractps_0, offset _m128extractps_1, offset _m128extractps_2, offset _m128extractps_3
+    _m128extractpsjmptable label size_t
+    isize_t _m128extractps_0, _m128extractps_1, _m128extractps_2, _m128extractps_3
+
+    _m128iinsertepi8jmptable label size_t
+    isize_t _m128iinsertepi8_0, _m128iinsertepi8_1, _m128iinsertepi8_2, _m128iinsertepi8_3, _m128iinsertepi8_4
+    isize_t _m128iinsertepi8_5, _m128iinsertepi8_6, _m128iinsertepi8_7, _m128iinsertepi8_8, _m128iinsertepi8_9
+    isize_t _m128iinsertepi8_10, _m128iinsertepi8_11, _m128iinsertepi8_12, _m128iinsertepi8_13, _m128iinsertepi8_14
+    isize_t _m128iinsertepi8_15
+
+    _m128iinsertepi32jmptable label size_t
+    isize_t _m128iinsertepi32_0, _m128iinsertepi32_1, _m128iinsertepi32_2, _m128iinsertepi32_3
     
-    alignsize_t
-    _m128iinsertepi8jmptable isize_t    offset _m128iinsertepi8_0, offset _m128iinsertepi8_1, offset _m128iinsertepi8_2, offset _m128iinsertepi8_3, offset _m128iinsertepi8_4, \
-                                        offset _m128iinsertepi8_5, offset _m128iinsertepi8_6, offset _m128iinsertepi8_7, offset _m128iinsertepi8_8, offset _m128iinsertepi8_9, \
-                                        offset _m128iinsertepi8_10, offset _m128iinsertepi8_11, offset _m128iinsertepi8_12, offset _m128iinsertepi8_13, offset _m128iinsertepi8_14, \
-                                        offset _m128iinsertepi8_15
-
-    alignsize_t
-    _m128iinsertepi32jmptable isize_t   offset _m128iinsertepi32_0, offset _m128iinsertepi32_1, offset _m128iinsertepi32_2, offset _m128iinsertepi32_3
+    _m128iinsertepi64jmptable label size_t
+    isize_t _m128iinsertepi64_0, _m128iinsertepi64_1
     
-    alignsize_t
-    _m128iinsertepi64jmptable isize_t   offset _m128iinsertepi64_0, offset _m128iinsertepi64_1
+    _m128iextractepi8jmptable label size_t
+    isize_t _m128iextractepi8_0, _m128iextractepi8_1, _m128iextractepi8_2, _m128iextractepi8_3, _m128iextractepi8_4
+    isize_t _m128iextractepi8_5, _m128iextractepi8_6, _m128iextractepi8_7, _m128iextractepi8_8, _m128iextractepi8_9
+    isize_t _m128iextractepi8_10, _m128iextractepi8_11, _m128iextractepi8_12, _m128iextractepi8_13, _m128iextractepi8_14
+    isize_t _m128iextractepi8_15
+
+    _m128iextractepi32jmptable label size_t
+    isize_t _m128iextractepi32_0, _m128iextractepi32_1, _m128iextractepi32_2, _m128iextractepi32_3
     
-    alignsize_t
-    _m128iextractepi8jmptable isize_t   offset _m128iextractepi8_0, offset _m128iextractepi8_1, offset _m128iextractepi8_2, offset _m128iextractepi8_3, offset _m128iextractepi8_4, \
-                                        offset _m128iextractepi8_5, offset _m128iextractepi8_6, offset _m128iextractepi8_7, offset _m128iextractepi8_8, offset _m128iextractepi8_9, \
-                                        offset _m128iextractepi8_10, offset _m128iextractepi8_11, offset _m128iextractepi8_12, offset _m128iextractepi8_13, offset _m128iextractepi8_14, \
-                                        offset _m128iextractepi8_15
-
-    alignsize_t
-    _m128iextractepi32jmptable isize_t  offset _m128iextractepi32_0, offset _m128iextractepi32_1, offset _m128iextractepi32_2, offset _m128iextractepi32_3
+    _m128iextractepi64jmptable label size_t
+    isize_t _m128iextractepi64_0, _m128iextractepi64_1
     
-    alignsize_t
-    _m128iextractepi64jmptable isize_t  offset _m128iextractepi64_0, offset _m128iextractepi64_1
-    
-    alignsize_t
-    _m128droundpdjmptable isize_t   offset _m128droundpd_0, offset _m128droundpd_1, offset _m128droundpd_2, offset _m128droundpd_3, offset _m128droundpd_4, \
-                                    offset _m128droundpd_5, offset _m128droundpd_6, offset _m128droundpd_7, offset _m128droundpd_8, offset _m128droundpd_9, \
-                                    offset _m128droundpd_10, offset _m128droundpd_11, offset _m128droundpd_12
+    _m128droundpdjmptable label size_t
+    isize_t _m128droundpd_0, _m128droundpd_1, _m128droundpd_2, _m128droundpd_3, _m128droundpd_4
+    isize_t _m128droundpd_5, _m128droundpd_6, _m128droundpd_7, _m128droundpd_8, _m128droundpd_9
+    isize_t _m128droundpd_10, _m128droundpd_11, _m128droundpd_12
 
-    alignsize_t
-    _m128droundsdjmptable isize_t   offset _m128droundsd_0, offset _m128droundsd_1, offset _m128droundsd_2, offset _m128droundsd_3, offset _m128droundsd_4, \
-                                    offset _m128droundsd_5, offset _m128droundsd_6, offset _m128droundsd_7, offset _m128droundsd_8, offset _m128droundsd_9, \
-                                    offset _m128droundsd_10, offset _m128droundsd_11, offset _m128droundsd_12
+    _m128droundsdjmptable label size_t
+    isize_t _m128droundsd_0, _m128droundsd_1, _m128droundsd_2, _m128droundsd_3, _m128droundsd_4
+    isize_t _m128droundsd_5, _m128droundsd_6, _m128droundsd_7, _m128droundsd_8, _m128droundsd_9
+    isize_t _m128droundsd_10, _m128droundsd_11, _m128droundsd_12
 
-    alignsize_t
-    _m128roundpsjmptable isize_t    offset _m128roundps_0, offset _m128roundps_1, offset _m128roundps_2, offset _m128roundps_3, offset _m128roundps_4, \
-                                    offset _m128roundps_5, offset _m128roundps_6, offset _m128roundps_7, offset _m128roundps_8, offset _m128roundps_9, \
-                                    offset _m128roundps_10, offset _m128roundps_11, offset _m128roundps_12
+    _m128roundpsjmptable label size_t
+    isize_t _m128roundps_0, _m128roundps_1, _m128roundps_2, _m128roundps_3, _m128roundps_4
+    isize_t _m128roundps_5, _m128roundps_6, _m128roundps_7, _m128roundps_8, _m128roundps_9
+    isize_t _m128roundps_10, _m128roundps_11, _m128roundps_12
 
-    alignsize_t
-    _m128roundssjmptable isize_t    offset _m128roundss_0, offset _m128roundss_1, offset _m128roundss_2, offset _m128roundss_3, offset _m128roundss_4, \
-                                    offset _m128roundss_5, offset _m128roundss_6, offset _m128roundss_7, offset _m128roundss_8, offset _m128roundss_9, \
-                                    offset _m128roundss_10, offset _m128roundss_11, offset _m128roundss_12
+    _m128roundssjmptable label size_t
+    isize_t _m128roundss_0, _m128roundss_1, _m128roundss_2, _m128roundss_3, _m128roundss_4
+    isize_t _m128roundss_5, _m128roundss_6, _m128roundss_7, _m128roundss_8, _m128roundss_9
+    isize_t _m128roundss_10, _m128roundss_11, _m128roundss_12
 
-    externdef __m128i_flt_byte_even:__m128i
-    externdef __m128i_i64_0:__m128q
+externdef __m128i_flt_byte_even:__m128i
+externdef __m128i_i64_0:__m128q
 
-    externdef __uX_CPUFeatures_SSE41:dword
-    externdef __uX_CPUFeatures_AVX512DQ_VL:dword
+externdef __uX_CPUFeatures_SSE41:dword
+externdef __uX_CPUFeatures_AVX512DQ_VL:dword
 
-    .code
+.code
 
-    callconvopt
-    alignxmmfieldproc
+callconvopt
+alignxmmfieldproc
 
 ;******************
 ; Externs
@@ -233,7 +235,7 @@ procstart _uX_mm_mule_epi16, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm
         pmullw           xmm0,           xmm1
         ret
 procend
-    
+
 ;************************************
 ; Packed integer 32-bit multiplication
 ;************************************
@@ -293,8 +295,8 @@ procstart _uX_mm_mule_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm
         mul                                rp0()
         .endif
         movq               xmm2,           rret()
-        pshufd             xmm0,           xmm0,           shuffle4(0,1,2,3)
-        pshufd             xmm1,           xmm1,           shuffle4(0,1,2,3)
+        pshufd             xmm0,           xmm0,           shuffle4(1,0,3,2)
+        pshufd             xmm1,           xmm1,           shuffle4(1,0,3,2)
         movq               rret(),         xmm0
         movq               rp0(),          xmm1
         .if (rret() < 0 || rp0() < 0)
@@ -1540,4 +1542,4 @@ procend
 
 endif ;__MIC__
 
-    end
+end

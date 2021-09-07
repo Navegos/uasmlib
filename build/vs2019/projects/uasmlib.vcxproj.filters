@@ -332,18 +332,6 @@
     <ClCompile Include="..\..\..\src\uXmisc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble.cpp">
-      <Filter>Source Files\x86\SSE\math</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble1.cpp">
-      <Filter>Source Files\x86\SSE\math</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble2.cpp">
-      <Filter>Source Files\x86\SSE\math</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble3.cpp">
-      <Filter>Source Files\x86\SSE\math</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble3x3.cpp">
       <Filter>Source Files\x86\SSE\math</Filter>
     </ClCompile>
@@ -435,12 +423,6 @@
     <None Include="..\..\..\include\x86\math\sse\inline\uXxmmvecqword4.inl">
       <Filter>Header Files\x86\math\sse\inline</Filter>
     </None>
-    <None Include="..\..\..\src\x86\SSE\asm\uXxmmdata.inc">
-      <Filter>Source Files\x86\SSE\asm</Filter>
-    </None>
-    <None Include="..\..\..\src\x86\SSE\asm\uXxemmdata.inc">
-      <Filter>Source Files\x86\SSE\asm</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXemmintmisc.asm">
@@ -488,12 +470,6 @@
     <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmshuffleps.asm">
       <Filter>Source Files\x86\SSE\asm</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\MMX\asm\uXm64\uXmmintrin.asm">
-      <Filter>Source Files\x86\MMX\asm</Filter>
-    </UASM>
-    <UASM Include="..\..\..\src\x86\MMX\asm\uXm64\uXmmintshifts.asm">
-      <Filter>Source Files\x86\MMX\asm</Filter>
-    </UASM>
     <UASM Include="..\..\..\src\x86\asm\uXcpuid.asm">
       <Filter>Source Files\x86\asm</Filter>
     </UASM>
@@ -524,8 +500,14 @@
     <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmdata.asm">
       <Filter>Source Files\x86\SSE\asm</Filter>
     </UASM>
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXxemmdata.asm">
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXemmdata.asm">
       <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\MMX\asm\uXmmintrin.asm">
+      <Filter>Source Files\x86\MMX\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\MMX\asm\uXmmintshifts.asm">
+      <Filter>Source Files\x86\MMX\asm</Filter>
     </UASM>
   </ItemGroup>
   <ItemGroup>

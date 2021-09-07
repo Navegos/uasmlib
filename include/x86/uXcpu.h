@@ -1,22 +1,21 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-; / /                                                                               / /
-; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
-; / /                                                                               / /
-; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
-; / /    you may not use this file except in compliance with the License.           / /
-; / /    You may obtain a copy of the License at                                    / /
-; / /                                                                               / /
-; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
-; / /                                                                               / /
-; / /    Unless required by applicable law or agreed to in writing, software        / /
-; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
-; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
-; / /    See the License for the specific language governing permissions and        / /
-; / /    limitations under the License.                                             / /
-; / /                                                                               / /
+; / /																				/ /
+; / /			Copyright 2021 (c) Navegos QA - optimized library					/ /
+; / /																				/ /
+; / /	Licensed under the Apache License, Version 2.0 (the "License");				/ /
+; / /	you may not use this file except in compliance with the License.			/ /
+; / /	You may obtain a copy of the License at										/ /
+; / /																				/ /
+; / /		http://www.apache.org/licenses/LICENSE-2.0								/ /
+; / /																				/ /
+; / /	Unless required by applicable law or agreed to in writing, software			/ /
+; / /	distributed under the License is distributed on an "AS IS" BASIS,			/ /
+; / /	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.	/ /
+; / /	See the License for the specific language governing permissions and			/ /
+; / /	limitations under the License.												/ /
+; / /																				/ /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 */
@@ -464,461 +463,458 @@ namespace_uX_end
 /*
 class CPUFeatures
 {
-    CPUFeatures(void);
+	CPUFeatures(void);
 
 private:
 
 #if uX_X86_OR_X64_CPU
 
-    static unsigned __int32c eax = 0;
-    static unsigned __int32c ebx = 1;
-    static unsigned __int32c ecx = 2;
-    static unsigned __int32c edx = 3;
-    static unsigned __int32c alx = 4;
-    static __int32 CPUInfo[alx];
+	static unsigned __int32c eax = 0;
+	static unsigned __int32c ebx = 1;
+	static unsigned __int32c ecx = 2;
+	static unsigned __int32c edx = 3;
+	static unsigned __int32c alx = 4;
+	static __int32 CPUInfo[alx];
 
-    // Vendors
+	// Vendors
 
-    // Intel vendor string: "GenuineIntel"
-    static __int32 Genu_ebx;
-    static __int32 ineI_edx;
-    static __int32 ntel_ecx;
-    // AMD vendor strings: "AuthenticAMD", "AMDisbetter!", "AMD ISBETTER"
-    static __int32 Auth_ebx;
-    static __int32 enti_edx;
-    static __int32 cAMD_ecx;
-    static __int32 AMDi_ebx;
-    static __int32 sbet_edx;
-    static __int32 ter_ecx;
-    static __int32 AMD_ebx;
-    static __int32 ISBE_edx;
-    static __int32 TTER_ecx;
-    // VIA (Centaur) vendor strings: "CentaurHauls", "VIA VIA VIA "
-    static __int32 Cent_ebx;
-    static __int32 aurH_edx;
-    static __int32 auls_ecx;
-    static __int32 VIA_alx;
-    // Transmeta vendor strings: "GenuineTMx86", "TransmetaCPU"
-    static __int32 ineT_edx;
-    static __int32 Mx86_ecx;
-    static __int32 Tran_ebx;
-    static __int32 smet_ecx;
-    static __int32 aCPU_edx;
-    // Cyrix vendor string: "CyrixInstead"
-    static __int32 Cyri_ebx;
-    static __int32 xIns_edx;
-    static __int32 tead_ecx;
-    // Rise vendor string: "RiseRiseRise"
-    static __int32 Rise_alx;
-    // NSC vendor string: "Geode by NSC"
-    static __int32 Geod_ebx;
-    static __int32 e_by_edx;
-    static __int32 NSC_ecx;
-    // SiS vendor string: "SiS SiS SiS "
-    static __int32 SiS_alx;
-    // NexGen vendor string: "NexGenDriven"
-    static __int32 NexG_ebx;
-    static __int32 enDr_edx;
-    static __int32 iven_ecx;
-    // UMC vendor string: "UMC UMC UMC "
-    static __int32 UMC_alx;
-    // RDC vendor string: "Genuine  RDC"
-    static __int32 ine_edx;
-    static __int32 RDC_ecx;
-    // D&MP vendor string: "Vortex86 SoC"
-    static __int32 Vort_ebx;
-    static __int32 ex86_edx;
-    static __int32 SoC_ecx;
-    
+	// Intel vendor string: "GenuineIntel"
+	static __int32 Genu_ebx;
+	static __int32 ineI_edx;
+	static __int32 ntel_ecx;
+	// AMD vendor strings: "AuthenticAMD", "AMDisbetter!", "AMD ISBETTER"
+	static __int32 Auth_ebx;
+	static __int32 enti_edx;
+	static __int32 cAMD_ecx;
+	static __int32 AMDi_ebx;
+	static __int32 sbet_edx;
+	static __int32 ter_ecx;
+	static __int32 AMD_ebx;
+	static __int32 ISBE_edx;
+	static __int32 TTER_ecx;
+	// VIA (Centaur) vendor strings: "CentaurHauls", "VIA VIA VIA "
+	static __int32 Cent_ebx;
+	static __int32 aurH_edx;
+	static __int32 auls_ecx;
+	static __int32 VIA_alx;
+	// Transmeta vendor strings: "GenuineTMx86", "TransmetaCPU"
+	static __int32 ineT_edx;
+	static __int32 Mx86_ecx;
+	static __int32 Tran_ebx;
+	static __int32 smet_ecx;
+	static __int32 aCPU_edx;
+	// Cyrix vendor string: "CyrixInstead"
+	static __int32 Cyri_ebx;
+	static __int32 xIns_edx;
+	static __int32 tead_ecx;
+	// Rise vendor string: "RiseRiseRise"
+	static __int32 Rise_alx;
+	// NSC vendor string: "Geode by NSC"
+	static __int32 Geod_ebx;
+	static __int32 e_by_edx;
+	static __int32 NSC_ecx;
+	// SiS vendor string: "SiS SiS SiS "
+	static __int32 SiS_alx;
+	// NexGen vendor string: "NexGenDriven"
+	static __int32 NexG_ebx;
+	static __int32 enDr_edx;
+	static __int32 iven_ecx;
+	// UMC vendor string: "UMC UMC UMC "
+	static __int32 UMC_alx;
+	// RDC vendor string: "Genuine  RDC"
+	static __int32 ine_edx;
+	static __int32 RDC_ecx;
+	// D&MP vendor string: "Vortex86 SoC"
+	static __int32 Vort_ebx;
+	static __int32 ex86_edx;
+	static __int32 SoC_ecx;
 
-    
-    // Features
+	// Features
 
-    // Features in %ecx for level 1 
-    static __int32 ecx_SSE3;
-    static __int32 ecx_PCLMUL;
-    static __int32 ecx_DTES64;
-    static __int32 ecx_MONITOR;
-    static __int32 ecx_DSCPL;
-    static __int32 ecx_VMX;
-    static __int32 ecx_LZCNT;
-    static __int32 ecx_SMX;
-    static __int32 ecx_EIST;
-    static __int32 ecx_TM2;
-    static __int32 ecx_SSSE3;
-    static __int32 ecx_CNXTID;
-    static __int32 ecx_FMA;
-    static __int32 ecx_CMPXCHG16B;
-    static __int32 ecx_xTPR;
-    static __int32 ecx_PDCM;
-    static __int32 ecx_PCID;
-    static __int32 ecx_DCA;
-    static __int32 ecx_SSE41;
-    static __int32 ecx_SSE42;
-    static __int32 ecx_x2APIC;
-    static __int32 ecx_MOVBE;
-    static __int32 ecx_POPCNT;
-    static __int32 ecx_TSCDeadline;
-    static __int32 ecx_AES;
-    static __int32 ecx_XSAVE;
-    static __int32 ecx_OSXSAVE;
-    static __int32 ecx_AVX;
-    static __int32 ecx_F16C;
-    static __int32 ecx_RDRAND;
+	// Features in %ecx for level 1
+	static __int32 ecx_SSE3;
+	static __int32 ecx_PCLMUL;
+	static __int32 ecx_DTES64;
+	static __int32 ecx_MONITOR;
+	static __int32 ecx_DSCPL;
+	static __int32 ecx_VMX;
+	static __int32 ecx_LZCNT;
+	static __int32 ecx_SMX;
+	static __int32 ecx_EIST;
+	static __int32 ecx_TM2;
+	static __int32 ecx_SSSE3;
+	static __int32 ecx_CNXTID;
+	static __int32 ecx_FMA;
+	static __int32 ecx_CMPXCHG16B;
+	static __int32 ecx_xTPR;
+	static __int32 ecx_PDCM;
+	static __int32 ecx_PCID;
+	static __int32 ecx_DCA;
+	static __int32 ecx_SSE41;
+	static __int32 ecx_SSE42;
+	static __int32 ecx_x2APIC;
+	static __int32 ecx_MOVBE;
+	static __int32 ecx_POPCNT;
+	static __int32 ecx_TSCDeadline;
+	static __int32 ecx_AES;
+	static __int32 ecx_XSAVE;
+	static __int32 ecx_OSXSAVE;
+	static __int32 ecx_AVX;
+	static __int32 ecx_F16C;
+	static __int32 ecx_RDRAND;
 
-    // Features in %edx for level 1 /
-    static __int32 edx_FPU;
-    static __int32 edx_VME;
-    static __int32 edx_DE;
-    static __int32 edx_PSE;
-    static __int32 edx_TSC;
-    static __int32 edx_MSR;
-    static __int32 edx_PAE;
-    static __int32 edx_MCE;
-    static __int32 edx_CX8;
-    static __int32 edx_APIC;
-    static __int32 edx_SEP;
-    static __int32 edx_MTRR;
-    static __int32 edx_PGE;
-    static __int32 edx_MCA;
-    static __int32 edx_CMOV;
-    static __int32 edx_PAT;
-    static __int32 edx_PSE36;
-    static __int32 edx_PSN;
-    static __int32 edx_CLFSH;
-    static __int32 edx_DS;
-    static __int32 edx_ACPI;
-    static __int32 edx_MMX;
-    static __int32 edx_FXSR;
-    static __int32 edx_FXSAVE;
-    static __int32 edx_SSE;
-    static __int32 edx_SSE2;
-    static __int32 edx_SS;
-    static __int32 edx_HTT;
-    static __int32 edx_TM;
-    static __int32 edx_PBE;
+	// Features in %edx for level 1 /
+	static __int32 edx_FPU;
+	static __int32 edx_VME;
+	static __int32 edx_DE;
+	static __int32 edx_PSE;
+	static __int32 edx_TSC;
+	static __int32 edx_MSR;
+	static __int32 edx_PAE;
+	static __int32 edx_MCE;
+	static __int32 edx_CX8;
+	static __int32 edx_APIC;
+	static __int32 edx_SEP;
+	static __int32 edx_MTRR;
+	static __int32 edx_PGE;
+	static __int32 edx_MCA;
+	static __int32 edx_CMOV;
+	static __int32 edx_PAT;
+	static __int32 edx_PSE36;
+	static __int32 edx_PSN;
+	static __int32 edx_CLFSH;
+	static __int32 edx_DS;
+	static __int32 edx_ACPI;
+	static __int32 edx_MMX;
+	static __int32 edx_FXSR;
+	static __int32 edx_FXSAVE;
+	static __int32 edx_SSE;
+	static __int32 edx_SSE2;
+	static __int32 edx_SS;
+	static __int32 edx_HTT;
+	static __int32 edx_TM;
+	static __int32 edx_PBE;
 
-    // Extended Features 
+	// Extended Features
 
-    // %ecx 
-    static __int32 ecx_LAHF;
-    static __int32 ecx_ABM;
-    static __int32 ecx_SSE4A;
-    static __int32 ecx_PRFCHW;
-    static __int32 ecx_XOP;
-    static __int32 ecx_LWP;
-    static __int32 ecx_FMA4;
-    static __int32 ecx_TBM;
+	// %ecx
+	static __int32 ecx_LAHF;
+	static __int32 ecx_ABM;
+	static __int32 ecx_SSE4A;
+	static __int32 ecx_PRFCHW;
+	static __int32 ecx_XOP;
+	static __int32 ecx_LWP;
+	static __int32 ecx_FMA4;
+	static __int32 ecx_TBM;
 
-    // %edx 
-    static __int32 edx_MMXEXT;
-    static __int32 edx_LM;
-    static __int32 edx_3DNOWP;
-    static __int32 edx_3DNOWP;
+	// %edx
+	static __int32 edx_MMXEXT;
+	static __int32 edx_LM;
+	static __int32 edx_3DNOWP;
+	static __int32 edx_3DNOWP;
 
-    // Extended Features (%eax == 7) 
+	// Extended Features (%eax == 7)
 
-    // %ebx level 7 sub-leaf 0 
-    static __int32 ebx_FSGSBASE;
-    static __int32 ebx_BMI;
-    static __int32 ebx_HLE;
-    static __int32 ebx_AVX2;
-    static __int32 ebx_SMEP;
-    static __int32 ebx_BMI2;
-    static __int32 ebx_MOVSB;
-    static __int32 ebx_RTM;
-    static __int32 ebx_AVX512F;
-    static __int32 ebx_AVX512DQ;
-    static __int32 ebx_RDSEED;
-    static __int32 ebx_ADX;
-    static __int32 ebx_CLFLUSHOPT;
-    static __int32 ebx_AVX512PF;
-    static __int32 ebx_AVX512ER;
-    static __int32 ebx_AVX512CD;
-    static __int32 ebx_SHA;
-    static __int32 ebx_AVX512BW;
-    static __int32 ebx_AVX512VL;
+	// %ebx level 7 sub-leaf 0
+	static __int32 ebx_FSGSBASE;
+	static __int32 ebx_BMI;
+	static __int32 ebx_HLE;
+	static __int32 ebx_AVX2;
+	static __int32 ebx_SMEP;
+	static __int32 ebx_BMI2;
+	static __int32 ebx_MOVSB;
+	static __int32 ebx_RTM;
+	static __int32 ebx_AVX512F;
+	static __int32 ebx_AVX512DQ;
+	static __int32 ebx_RDSEED;
+	static __int32 ebx_ADX;
+	static __int32 ebx_CLFLUSHOPT;
+	static __int32 ebx_AVX512PF;
+	static __int32 ebx_AVX512ER;
+	static __int32 ebx_AVX512CD;
+	static __int32 ebx_SHA;
+	static __int32 ebx_AVX512BW;
+	static __int32 ebx_AVX512VL;
 
-    // %ecx 
-    static __int32 ecx_PREFETCHWT1;
+	// %ecx
+	static __int32 ecx_PREFETCHWT1;
 
-    // Extended State Enumeration Sub-leaf (%eax == 13, %ecx == 1) 
-    static __int32 ecx_XSAVEOPT;
-    static __int32 ecx_XSAVEC;
-    static __int32 ecx_XSAVES;
+	// Extended State Enumeration Sub-leaf (%eax == 13, %ecx == 1)
+	static __int32 ecx_XSAVEOPT;
+	static __int32 ecx_XSAVEC;
+	static __int32 ecx_XSAVES;
 
 public:
 
-    // detect if CPU Is AMD
-    static int uX_ABI is_AMD(void);
+	// detect if CPU Is AMD
+	static int uX_ABI is_AMD(void);
 
-    // detect if CPU Is Intel
-    static int uX_ABI is_Intel(void);
+	// detect if CPU Is Intel
+	static int uX_ABI is_Intel(void);
 
-    // detect if CPU supports the MMX instruction set
-    static int uX_ABI has_MMX(void);
+	// detect if CPU supports the MMX instruction set
+	static int uX_ABI has_MMX(void);
 
-    // detect if CPU supports the SSE1 instruction set
-    static int uX_ABI has_SSE(void);
+	// detect if CPU supports the SSE1 instruction set
+	static int uX_ABI has_SSE(void);
 
-    // detect if CPU supports the SSE2 instruction set
-    static int uX_ABI has_SSE2(void);
+	// detect if CPU supports the SSE2 instruction set
+	static int uX_ABI has_SSE2(void);
 
-    // detect if CPU supports the SSE3 instruction set
-    static int uX_ABI has_SSE3(void);
+	// detect if CPU supports the SSE3 instruction set
+	static int uX_ABI has_SSE3(void);
 
-    // detect if CPU supports the SSSE3 instruction set
-    static int uX_ABI has_SSSE3(void);
+	// detect if CPU supports the SSSE3 instruction set
+	static int uX_ABI has_SSSE3(void);
 
-    // detect if CPU supports the SSE4.1 instruction set
-    static int uX_ABI has_SSE41(void);
+	// detect if CPU supports the SSE4.1 instruction set
+	static int uX_ABI has_SSE41(void);
 
-    // detect if CPU supports the SSE4.2 instruction set
-    static int uX_ABI has_SSE42(void);
+	// detect if CPU supports the SSE4.2 instruction set
+	static int uX_ABI has_SSE42(void);
 
-    // detect if CPU supports the OSXSAVE instruction set
-    static int uX_ABI has_OSXSAVE(void);
+	// detect if CPU supports the OSXSAVE instruction set
+	static int uX_ABI has_OSXSAVE(void);
 
-    // detect if CPU supports the XGETBV_YMM instruction set
-    static int uX_ABI has_XGETBV_YMM(void);
+	// detect if CPU supports the XGETBV_YMM instruction set
+	static int uX_ABI has_XGETBV_YMM(void);
 
-    // detect if CPU supports the AVX instruction set
-    static int uX_ABI has_AVX(void);
+	// detect if CPU supports the AVX instruction set
+	static int uX_ABI has_AVX(void);
 
-    // detect if CPU supports the AVX2 instruction set
-    static int uX_ABI has_AVX2(void);
+	// detect if CPU supports the AVX2 instruction set
+	static int uX_ABI has_AVX2(void);
 
-    // detect if CPU supports the F16C instruction set
-    static int uX_ABI has_F16C(void);
+	// detect if CPU supports the F16C instruction set
+	static int uX_ABI has_F16C(void);
 
-    // detect if CPU supports the FMA3 instruction set
-    static int uX_ABI has_FMA3(void);
+	// detect if CPU supports the FMA3 instruction set
+	static int uX_ABI has_FMA3(void);
 
-    // detect if CPU supports the FMA4 instruction set
-    static int uX_ABI has_FMA4(void);
+	// detect if CPU supports the FMA4 instruction set
+	static int uX_ABI has_FMA4(void);
 
-    // detect if CPU supports the XOP instruction set
-    static int uX_ABI has_XOP(void);
+	// detect if CPU supports the XOP instruction set
+	static int uX_ABI has_XOP(void);
 
-    // detect if CPU supports the XGETBV_YMM instruction set
-    static int uX_ABI has_XGETBV_ZMM(void);
+	// detect if CPU supports the XGETBV_YMM instruction set
+	static int uX_ABI has_XGETBV_ZMM(void);
 
-    // detect if CPU supports the AVX-512 instruction set
-    static int uX_ABI has_AVX512F(void);
+	// detect if CPU supports the AVX-512 instruction set
+	static int uX_ABI has_AVX512F(void);
 #endif // uX_X86_OR_X64_CPU
 };*/
 
 /*
 class CPUFeatures
 {
-    // forward declarations
-    class CPUFeatures_Internal;
+	// forward declarations
+	class CPUFeatures_Internal;
 
 public:
 #if defined(uX_X86_OR_X64_CPU)
-    // getters
-    static std::string Vendor(void);
-    static std::string Brand(void);
+	// getters
+	static std::string Vendor(void);
+	static std::string Brand(void);
 
-    / * find supported instruction set
-    return value:
-    0           = 80386 instruction set
-    8  or above = MMX (MMX) supported by CPU (not testing for O.S. support)
-    10  or above = SSE (XMM) supported by CPU and operating system
-    20  or above = SSE2
-    30  or above = SSE3
-    31  or above = Supplementary SSE3 (SSSE3)
-    41  or above = SSE4.1
-    42  or above = SSE4.2
-    50  or above = AVX (YMM) supported by CPU and operating system
-    52  or above = AVX2
-    60  or above = AVX512 (ZMM) supported by CPU and operating system
-    * /
-    static __int32 available_simd(void);
+	/ * find supported instruction set
+	return value:
+	0           = 80386 instruction set
+	8  or above = MMX (MMX) supported by CPU (not testing for O.S. support)
+	10  or above = SSE (XMM) supported by CPU and operating system
+	20  or above = SSE2
+	30  or above = SSE3
+	31  or above = Supplementary SSE3 (SSSE3)
+	41  or above = SSE4.1
+	42  or above = SSE4.2
+	50  or above = AVX (YMM) supported by CPU and operating system
+	52  or above = AVX2
+	60  or above = AVX512 (ZMM) supported by CPU and operating system
+	* /
+	static __int32 available_simd(void);
 
-    static int uX_ABI has_SSE3(void);
-    static int uX_ABI has_PCLMULQDQ(void);
-    static int uX_ABI has_MONITOR(void);
-    static int uX_ABI has_SSSE3(void);
-    static int uX_ABI has_FMA(void);
-    static int uX_ABI has_CMPXCHG16B(void);
-    static int uX_ABI has_SSE41(void);
-    static int uX_ABI has_SSE42(void);
-    static int uX_ABI has_MOVBE(void);
-    static int uX_ABI has_POPCNT(void);
-    static int uX_ABI has_AES(void);
-    static int uX_ABI has_XSAVE(void);
-    static int uX_ABI has_OSXSAVE(void);
-    static int uX_ABI has_AVX(void);
-    static int uX_ABI has_F16C(void);
-    static int uX_ABI has_RDRAND(void);
-    static int uX_ABI has_FPU(void);
-    static int uX_ABI has_MSR(void);
-    static int uX_ABI has_CMPXCHG8B(void);
-    static int uX_ABI has_SEP(void);
-    static int uX_ABI has_CMOV(void);
-    static int uX_ABI has_CLFSH(void);
-    static int uX_ABI has_MMX(void);
-    static int uX_ABI has_FXSR(void);
-    static int uX_ABI has_SSE(void);
-    static int uX_ABI has_SSE2(void);
-    static int uX_ABI has_FSGSBASE(void);
-    static int uX_ABI has_BMI1(void);
-    static int uX_ABI has_HLE(void);
-    static int uX_ABI has_AVX2(void);
-    static int uX_ABI has_BMI2(void);
-    static int uX_ABI has_ERMS(void);
-    static int uX_ABI has_INVPCID(void);
-    static int uX_ABI has_RTM(void);
-    static int uX_ABI has_AVX512F(void);
-    static int uX_ABI has_AVX512DQ(void);
-    static int uX_ABI has_RDSEED(void);
-    static int uX_ABI has_ADX(void);
-    static int uX_ABI has_AVX512IFMA(void);
-    static int uX_ABI has_CLFLUSHOPT(void);
-    static int uX_ABI has_AVX512PF(void);
-    static int uX_ABI has_AVX512ER(void);
-    static int uX_ABI has_AVX512CD(void);
-    static int uX_ABI has_AVX512BW(void);
-    static int uX_ABI has_AVX512VL(void);
-    static int uX_ABI has_SHA(void);
-    static int uX_ABI has_PREFETCHWT1(void);
-    static int uX_ABI has_AVX512VBMI(void);
-    static int uX_ABI has_AVX512_VPOPCNTDQ(void);
-    static int uX_ABI has_AVX512_4VNNIW(void);
-    static int uX_ABI has_AVX512_4FMAPS(void);
-    static int uX_ABI has_LAHF(void);
-    static int uX_ABI has_LZCNT(void);
-    static int uX_ABI has_ABM(void);
-    static int uX_ABI has_SSE4a(void);
-    static int uX_ABI has_XOP(void);
-    static int uX_ABI has_FMA4(void);
-    static int uX_ABI has_TBM(void);
-    static int uX_ABI has_SYSCALL(void);
-    static int uX_ABI has_MMXEXT(void);
-    static int uX_ABI has_RDTSCP(void);
-    static int uX_ABI has_3DNOWEXT(void);
-    static int uX_ABI has_3DNOW(void);
+	static int uX_ABI has_SSE3(void);
+	static int uX_ABI has_PCLMULQDQ(void);
+	static int uX_ABI has_MONITOR(void);
+	static int uX_ABI has_SSSE3(void);
+	static int uX_ABI has_FMA(void);
+	static int uX_ABI has_CMPXCHG16B(void);
+	static int uX_ABI has_SSE41(void);
+	static int uX_ABI has_SSE42(void);
+	static int uX_ABI has_MOVBE(void);
+	static int uX_ABI has_POPCNT(void);
+	static int uX_ABI has_AES(void);
+	static int uX_ABI has_XSAVE(void);
+	static int uX_ABI has_OSXSAVE(void);
+	static int uX_ABI has_AVX(void);
+	static int uX_ABI has_F16C(void);
+	static int uX_ABI has_RDRAND(void);
+	static int uX_ABI has_FPU(void);
+	static int uX_ABI has_MSR(void);
+	static int uX_ABI has_CMPXCHG8B(void);
+	static int uX_ABI has_SEP(void);
+	static int uX_ABI has_CMOV(void);
+	static int uX_ABI has_CLFSH(void);
+	static int uX_ABI has_MMX(void);
+	static int uX_ABI has_FXSR(void);
+	static int uX_ABI has_SSE(void);
+	static int uX_ABI has_SSE2(void);
+	static int uX_ABI has_FSGSBASE(void);
+	static int uX_ABI has_BMI1(void);
+	static int uX_ABI has_HLE(void);
+	static int uX_ABI has_AVX2(void);
+	static int uX_ABI has_BMI2(void);
+	static int uX_ABI has_ERMS(void);
+	static int uX_ABI has_INVPCID(void);
+	static int uX_ABI has_RTM(void);
+	static int uX_ABI has_AVX512F(void);
+	static int uX_ABI has_AVX512DQ(void);
+	static int uX_ABI has_RDSEED(void);
+	static int uX_ABI has_ADX(void);
+	static int uX_ABI has_AVX512IFMA(void);
+	static int uX_ABI has_CLFLUSHOPT(void);
+	static int uX_ABI has_AVX512PF(void);
+	static int uX_ABI has_AVX512ER(void);
+	static int uX_ABI has_AVX512CD(void);
+	static int uX_ABI has_AVX512BW(void);
+	static int uX_ABI has_AVX512VL(void);
+	static int uX_ABI has_SHA(void);
+	static int uX_ABI has_PREFETCHWT1(void);
+	static int uX_ABI has_AVX512VBMI(void);
+	static int uX_ABI has_AVX512_VPOPCNTDQ(void);
+	static int uX_ABI has_AVX512_4VNNIW(void);
+	static int uX_ABI has_AVX512_4FMAPS(void);
+	static int uX_ABI has_LAHF(void);
+	static int uX_ABI has_LZCNT(void);
+	static int uX_ABI has_ABM(void);
+	static int uX_ABI has_SSE4a(void);
+	static int uX_ABI has_XOP(void);
+	static int uX_ABI has_FMA4(void);
+	static int uX_ABI has_TBM(void);
+	static int uX_ABI has_SYSCALL(void);
+	static int uX_ABI has_MMXEXT(void);
+	static int uX_ABI has_RDTSCP(void);
+	static int uX_ABI has_3DNOWEXT(void);
+	static int uX_ABI has_3DNOW(void);
 
-    static int uX_ABI has_enabled_XMM(void);
-    static int uX_ABI has_enabled_YMM(void);
-    static int uX_ABI has_enabled_ZMM(void);
+	static int uX_ABI has_enabled_XMM(void);
+	static int uX_ABI has_enabled_YMM(void);
+	static int uX_ABI has_enabled_ZMM(void);
 
+	/ * find supported instruction set
+	return value:
+	0           = 80386 instruction set
+	8  or above = MMX (MMX) supported by CPU (not testing for O.S. support)
+	10  or above = SSE (XMM) supported by CPU and operating system
+	20  or above = SSE2
+	30  or above = SSE3
+	31  or above = Supplementary SSE3 (SSSE3)
+	41  or above = SSE4.1
+	42  or above = SSE4.2
+	50  or above = AVX (YMM) supported by CPU and operating system
+	52  or above = AVX2
+	60  or above = AVX512 (ZMM) supported by CPU and operating system
+	* /
+	/ *extern __int32 uX_available_SIMD(void);
 
-    / * find supported instruction set
-    return value:
-    0           = 80386 instruction set
-    8  or above = MMX (MMX) supported by CPU (not testing for O.S. support)
-    10  or above = SSE (XMM) supported by CPU and operating system
-    20  or above = SSE2
-    30  or above = SSE3
-    31  or above = Supplementary SSE3 (SSSE3)
-    41  or above = SSE4.1
-    42  or above = SSE4.2
-    50  or above = AVX (YMM) supported by CPU and operating system
-    52  or above = AVX2
-    60  or above = AVX512 (ZMM) supported by CPU and operating system
-    * /
-    / *extern __int32 uX_available_SIMD(void);
+	bool has_SSE3(void);
+	bool has_PCLMULQDQ(void);
+	bool has_MONITOR(void);
+	bool has_SSSE3(void);
+	bool has_FMA(void);
+	bool has_CMPXCHG16B(void);
+	bool has_SSE41(void);
+	bool has_SSE42(void);
+	bool has_MOVBE(void);
+	bool has_POPCNT(void);
+	bool has_AES(void);
+	bool has_XSAVE(void);
+	bool has_OSXSAVE(void);
+	bool has_AVX(void);
+	bool has_F16C(void);
+	bool has_RDRAND(void);
+	bool has_FPU(void);
+	bool has_MSR(void);
+	bool has_CMPXCHG8B(void);
+	bool has_SEP(void);
+	bool has_CMOV(void);
+	bool has_CLFSH(void);
+	bool has_MMX(void);
+	bool has_FXSR(void);
+	bool has_SSE(void);
+	bool has_SSE2(void);
+	bool has_FSGSBASE(void);
+	bool has_BMI1(void);
+	bool has_HLE(void);
+	bool has_AVX2(void);
+	bool has_BMI2(void);
+	bool has_ERMS(void);
+	bool has_INVPCID(void);
+	bool has_RTM(void);
+	bool has_AVX512F(void);
+	bool has_AVX512DQ(void);
+	bool has_RDSEED(void);
+	bool has_ADX(void);
+	bool has_AVX512IFMA(void);
+	bool has_CLFLUSHOPT(void);
+	bool has_AVX512PF(void);
+	bool has_AVX512ER(void);
+	bool has_AVX512CD(void);
+	bool has_AVX512BW(void);
+	bool has_AVX512VL(void);
+	bool has_SHA(void);
+	bool has_PREFETCHWT1(void);
+	bool has_AVX512VBMI(void);
+	bool has_AVX512_VPOPCNTDQ(void);
+	bool has_AVX512_4VNNIW(void);
+	bool has_AVX512_4FMAPS(void);
+	bool has_LAHF(void);
+	bool has_LZCNT(void);
+	bool has_ABM(void);
+	bool has_SSE4a(void);
+	bool has_XOP(void);
+	bool has_FMA4(void);
+	bool has_TBM(void);
+	bool has_SYSCALL(void);
+	bool has_MMXEXT(void);
+	bool has_RDTSCP(void);
+	bool has_3DNOWEXT(void);
+	bool has_3DNOW(void);
 
-    bool has_SSE3(void);
-    bool has_PCLMULQDQ(void);
-    bool has_MONITOR(void);
-    bool has_SSSE3(void);
-    bool has_FMA(void);
-    bool has_CMPXCHG16B(void);
-    bool has_SSE41(void);
-    bool has_SSE42(void);
-    bool has_MOVBE(void);
-    bool has_POPCNT(void);
-    bool has_AES(void);
-    bool has_XSAVE(void);
-    bool has_OSXSAVE(void);
-    bool has_AVX(void);
-    bool has_F16C(void);
-    bool has_RDRAND(void);
-    bool has_FPU(void);
-    bool has_MSR(void);
-    bool has_CMPXCHG8B(void);
-    bool has_SEP(void);
-    bool has_CMOV(void);
-    bool has_CLFSH(void);
-    bool has_MMX(void);
-    bool has_FXSR(void);
-    bool has_SSE(void);
-    bool has_SSE2(void);
-    bool has_FSGSBASE(void);
-    bool has_BMI1(void);
-    bool has_HLE(void);
-    bool has_AVX2(void);
-    bool has_BMI2(void);
-    bool has_ERMS(void);
-    bool has_INVPCID(void);
-    bool has_RTM(void);
-    bool has_AVX512F(void);
-    bool has_AVX512DQ(void);
-    bool has_RDSEED(void);
-    bool has_ADX(void);
-    bool has_AVX512IFMA(void);
-    bool has_CLFLUSHOPT(void);
-    bool has_AVX512PF(void);
-    bool has_AVX512ER(void);
-    bool has_AVX512CD(void);
-    bool has_AVX512BW(void);
-    bool has_AVX512VL(void);
-    bool has_SHA(void);
-    bool has_PREFETCHWT1(void);
-    bool has_AVX512VBMI(void);
-    bool has_AVX512_VPOPCNTDQ(void);
-    bool has_AVX512_4VNNIW(void);
-    bool has_AVX512_4FMAPS(void);
-    bool has_LAHF(void);
-    bool has_LZCNT(void);
-    bool has_ABM(void);
-    bool has_SSE4a(void);
-    bool has_XOP(void);
-    bool has_FMA4(void);
-    bool has_TBM(void);
-    bool has_SYSCALL(void);
-    bool has_MMXEXT(void);
-    bool has_RDTSCP(void);
-    bool has_3DNOWEXT(void);
-    bool has_3DNOW(void);
-
-    bool has_enabled_XMM(void);
-    bool has_enabled_YMM(void);
-    bool has_enabled_ZMM(void);* /
-#endif 
+	bool has_enabled_XMM(void);
+	bool has_enabled_YMM(void);
+	bool has_enabled_ZMM(void);* /
+#endif
 
 private:
-    uX_constexpr CPUFeatures_Internal CPU_Rep;
+	uX_constexpr CPUFeatures_Internal CPU_Rep;
 
-    class CPUFeatures_Internal
-    {
-    public:
-        CPUFeatures_Internal(void);
-    #if defined(uX_X86_OR_X64_CPU)
-        __int32 nIds_;
-        __int32 nExIds_;
-        std::string vendor_;
-        std::string brand_;
-        bool isIntel_;
-        bool isAMD_;
-        bool hasXMM_;
-        bool hasYMM_;
-        bool hasZMM_;
-        __int32 nIntrinVers_;
-        std::bitset<32> f_1_ECX_;
-        std::bitset<32> f_1_EDX_;
-        std::bitset<32> f_7_EBX_;
-        std::bitset<32> f_7_ECX_;
-        std::bitset<32> f_7_EDX_;
-        std::bitset<32> f_81_ECX_;
-        std::bitset<32> f_81_EDX_;
-        std::vector<std::array<__int32, 4>> data_;
-        std::vector<std::array<__int32, 4>> extdata_;
-    #endif
-    };
+	class CPUFeatures_Internal
+	{
+	public:
+		CPUFeatures_Internal(void);
+	#if defined(uX_X86_OR_X64_CPU)
+		__int32 nIds_;
+		__int32 nExIds_;
+		std::string vendor_;
+		std::string brand_;
+		bool isIntel_;
+		bool isAMD_;
+		bool hasXMM_;
+		bool hasYMM_;
+		bool hasZMM_;
+		__int32 nIntrinVers_;
+		std::bitset<32> f_1_ECX_;
+		std::bitset<32> f_1_EDX_;
+		std::bitset<32> f_7_EBX_;
+		std::bitset<32> f_7_ECX_;
+		std::bitset<32> f_7_EDX_;
+		std::bitset<32> f_81_ECX_;
+		std::bitset<32> f_81_EDX_;
+		std::vector<std::array<__int32, 4>> data_;
+		std::vector<std::array<__int32, 4>> extdata_;
+	#endif
+	};
 };*/
 
 /*#if defined(uX_X86_OR_X64_CPU)
@@ -1006,7 +1002,7 @@ bool has_3DNOW(void);
 bool has_enabled_XMM(void);
 bool has_enabled_YMM(void);
 bool has_enabled_ZMM(void);
-#endif 
+#endif
 
 // Initialize static member data
 const CPUFeatures::CPUFeatures_Internal CPUFeatures::CPU_Rep;*/

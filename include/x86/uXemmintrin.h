@@ -1,22 +1,21 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-; / /                                                                               / /
-; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
-; / /                                                                               / /
-; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
-; / /    you may not use this file except in compliance with the License.           / /
-; / /    You may obtain a copy of the License at                                    / /
-; / /                                                                               / /
-; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
-; / /                                                                               / /
-; / /    Unless required by applicable law or agreed to in writing, software        / /
-; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
-; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
-; / /    See the License for the specific language governing permissions and        / /
-; / /    limitations under the License.                                             / /
-; / /                                                                               / /
+; / /																				/ /
+; / /			Copyright 2021 (c) Navegos QA - optimized library					/ /
+; / /																				/ /
+; / /	Licensed under the Apache License, Version 2.0 (the "License");				/ /
+; / /	you may not use this file except in compliance with the License.			/ /
+; / /	You may obtain a copy of the License at										/ /
+; / /																				/ /
+; / /		http://www.apache.org/licenses/LICENSE-2.0								/ /
+; / /																				/ /
+; / /	Unless required by applicable law or agreed to in writing, software			/ /
+; / /	distributed under the License is distributed on an "AS IS" BASIS,			/ /
+; / /	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.	/ /
+; / /	See the License for the specific language governing permissions and			/ /
+; / /	limitations under the License.												/ /
+; / /																				/ /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 */
@@ -62,10 +61,10 @@
 /* from argument "b" of _uX_mm_shuffle_**_pd that will be */
 /* placed in fp0 of result. fp0 is the same for fp0 in  */
 /* result                                               */
-/* const __m128d temp = _uX_MM_SHUFFLER_IM_PD(Inxmm_A, Inxmm_B, 0, 1); */
+/* const __m128d temp = _uX_MM_SHUFFLER_PD_IM(Inxmm_A, Inxmm_B, 0, 1); */
 /*******************************************************/
-#define _uX_MM_SHUFFLE_IM_PD(VA,VB,fp1,fp0) _uX_mm_shuffle_##fp1##fp0##_pd(VA,VB)
-#define _uX_MM_SHUFFLER_IM_PD(VA,VB,fp0,fp1) _uX_mm_shuffle_##fp1##fp0##_pd(VA,VB)
+#define _uX_MM_SHUFFLE_PD_IM(VA,VB,fp1,fp0) _uX_mm_shuffle_##fp1##fp0##_pd(VA,VB)
+#define _uX_MM_SHUFFLER_PD_IM(VA,VB,fp0,fp1) _uX_mm_shuffle_##fp1##fp0##_pd(VA,VB)
 
 /*******************************************************/
 /* MACRO for use _uX_mm_permute_**_pd().                */
@@ -73,10 +72,10 @@
 /* from argument "b" of _uX_mm_permute_**_pd that will be */
 /* placed in fp0 of result. fp0 is the same for fp0 in  */
 /* result                                               */
-/* const __m128d temp = _uX_MM_PERMUTER_IM_PD(Inxmm_A, 0, 1); */
+/* const __m128d temp = _uX_MM_PERMUTER_PD_IM(Inxmm_A, 0, 1); */
 /*******************************************************/
-#define _uX_MM_PERMUTE_IM_PD(VA,fp1,fp0) _uX_mm_permute_##fp1##fp0##_pd(VA)
-#define _uX_MM_PERMUTER_IM_PD(VA,fp0,fp1) _uX_mm_permute_##fp1##fp0##_pd(VA)
+#define _uX_MM_PERMUTE_PD_IM(VA,fp1,fp0) _uX_mm_permute_##fp1##fp0##_pd(VA)
+#define _uX_MM_PERMUTER_PD_IM(VA,fp0,fp1) _uX_mm_permute_##fp1##fp0##_pd(VA)
 
 /*******************************************************/
 /* MACRO for use _uX_mm_cvtdbl_*d().              */
@@ -87,10 +86,10 @@
 /* from argument "a" of _uX_mm_cvtdbl_*d that will be     */
 /* places in fp1 of result. fp0 is the same for fp0 of */
 /* result                                              */
-/* const __m128d temp = _uX_MM_SETDBL_IM_PD(Inxmm_A, Indouble_B, 1); */
+/* const __m128d temp = _uX_MM_SETDBL_PD_IM(Inxmm_A, Indouble_B, 1); */
 /*******************************************************/
-#define _uX_MM_CVTDBL_IM_PD(VA,Infp,fp) _uX_mm_cvtdbl_##fp##d(VA,Infp)
-#define _uX_MM_SETDBL_IM_PD(VA,Infp,fp) _uX_mm_cvtdbl_##fp##d(VA,Infp)
+#define _uX_MM_CVTDBL_PD_IM(VA,Infp,fp) _uX_mm_cvtdbl_##fp##d(VA,Infp)
+#define _uX_MM_SETDBL_PD_IM(VA,Infp,fp) _uX_mm_cvtdbl_##fp##d(VA,Infp)
 
 /*******************************************************/
 /* MACRO for use _uX_mm_cvt*d_dbl().              */
@@ -101,9 +100,9 @@
 /* from argument "a" of _uX_mm_cvt*d_dbl that will be     */
 /* places in fp1 of result. fp0 is the same for fp0 of */
 /* result                                              */
-/* const double temp = _uX_MM_CVTPD_IM_DBL(Inxmm_A, 1); */
+/* const double temp = _uX_MM_CVTPD_DBL_IM(Inxmm_A, 1); */
 /*******************************************************/
-#define _uX_MM_CVTPD_IM_DBL(VA,fp) _uX_mm_cvt##fp##d_dbl(VA)
+#define _uX_MM_CVTPD_DBL_IM(VA,fp) _uX_mm_cvt##fp##d_dbl(VA)
 
 /*
  * Integer, Macros
@@ -115,12 +114,16 @@
 /* const __m128i temp = _uX_MM_SLLI_SI128_IM(Inxmm_A, 3); */
 /*******************************************************/
 #define _uX_MM_SLLI_SI128_IM(VA,IMM) _uX_mm_slli_si128_##IMM##(VA)
+#define _uX_MM_SLLI_EPI8_IM(VA,IMM) _uX_mm_slli_epi8_##IMM##(VA)
 #define _uX_MM_SLLI_EPI16_IM(VA,IMM) _uX_mm_slli_epi16_##IMM##(VA)
 #define _uX_MM_SLLI_EPI32_IM(VA,IMM) _uX_mm_slli_epi32_##IMM##(VA)
 #define _uX_MM_SLLI_EPI64_IM(VA,IMM) _uX_mm_slli_epi64_##IMM##(VA)
+#define _uX_MM_SRAI_EPI8_IM(VA,IMM) _uX_mm_srai_epi8_##IMM##(VA)
 #define _uX_MM_SRAI_EPI16_IM(VA,IMM) _uX_mm_srai_epi16_##IMM##(VA)
 #define _uX_MM_SRAI_EPI32_IM(VA,IMM) _uX_mm_srai_epi32_##IMM##(VA)
+#define _uX_MM_SRAI_EPI64_IM(VA,IMM) _uX_mm_srai_epi64_##IMM##(VA)
 #define _uX_MM_SRLI_SI128_IM(VA,IMM) _uX_mm_srli_si128_##IMM##(VA)
+#define _uX_MM_SRLI_EPI8_IM(VA,IMM) _uX_mm_srli_epi8_##IMM##(VA)
 #define _uX_MM_SRLI_EPI16_IM(VA,IMM) _uX_mm_srli_epi16_##IMM##(VA)
 #define _uX_MM_SRLI_EPI32_IM(VA,IMM) _uX_mm_srli_epi32_##IMM##(VA)
 #define _uX_MM_SRLI_EPI64_IM(VA,IMM) _uX_mm_srli_epi64_##IMM##(VA)
@@ -145,10 +148,10 @@
 /* from argument "b" of _uX_mm_shuffle_epi64_** that will be     */
 /* places in it0 of result. it0 is the same for it0 of */
 /* result                                              */
-/* const __m128i temp = _uX_MM_SHUFFLE_EPI64R_IM(Inxmm_A, Inxmm_B, 0, 1); */
+/* const __m128i temp = _uX_MM_SHUFFLER_EPI64_IM(Inxmm_A, Inxmm_B, 0, 1); */
 /*******************************************************/
 #define _uX_MM_SHUFFLE_EPI64_IM(VA,it1,it0) _uX_mm_shuffle_epi64_##it1##it0##(VA)
-#define _uX_MM_SHUFFLE_EPI64R_IM(VA,it0,it1) _uX_mm_shuffle_epi64_##it1##it0##(VA)
+#define _uX_MM_SHUFFLER_EPI64_IM(VA,it0,it1) _uX_mm_shuffle_epi64_##it1##it0##(VA)
 
 /*******************************************************/
 /* MACRO for use _uX_mm_shuffle_epi32_****().               */
@@ -201,10 +204,10 @@
 /* from argument "a" of _uX_mm_cvtepi8_si128_* that will be     */
 /* places in fp1 of result. fp0 is the same for fp0 of */
 /* result                                              */
-/* const __m128i temp = _uX_MM_SETEPI8_IM_SI128(Inxmm_A, Inint8_a, 15); */
+/* const __m128i temp = _uX_MM_SETEPI8_SI128_IM(Inxmm_A, Inint8_a, 15); */
 /*******************************************************/
-#define _uX_MM_CVTEPI8_IM_SI128(VA,Inint,int8p) _uX_mm_cvtepi8_si128_##int8p##(VA,Inint)
-#define _uX_MM_SETEPI8_IM_SI128(VA,Inint,int8p) _uX_mm_cvtepi8_si128_##int8p##(VA,Inint)
+#define _uX_MM_CVTEPI8_SI128_IM(VA,Inint,int8p) _uX_mm_cvtepi8_si128_##int8p##(VA,Inint)
+#define _uX_MM_SETEPI8_SI128_IM(VA,Inint,int8p) _uX_mm_cvtepi8_si128_##int8p##(VA,Inint)
 
 /*******************************************************/
 /* MACRO for use _uX_mm_cvtsi128_epi8_*().              */
@@ -215,9 +218,9 @@
 /* from argument "a" of _uX_mm_cvtsi128_epi8_* that will be     */
 /* places in fp1 of result. fp0 is the same for fp0 of */
 /* result                                              */
-/* const int8_t temp = _uX_MM_CVTSI128_IM_EPI8(Inxmm_A, 15); */
+/* const int8_t temp = _uX_MM_CVTSI128_EPI8_IM(Inxmm_A, 15); */
 /*******************************************************/
-#define _uX_MM_CVTSI128_IM_EPI8(VA,int8p) _uX_mm_cvtsi128_epi8_##int8p##(VA)
+#define _uX_MM_CVTSI128_EPI8_IM(VA,int8p) _uX_mm_cvtsi128_epi8_##int8p##(VA)
 
 /*******************************************************/
 /* MACRO for use _uX_mm_cvtepi16_si128_*().              */
@@ -228,10 +231,10 @@
 /* from argument "a" of _uX_mm_cvtepi16_si128_* that will be     */
 /* places in fp1 of result. fp0 is the same for fp0 of */
 /* result                                              */
-/* const __m128i temp = _uX_MM_SETEPI16_IM_SI128(Inxmm_A, Inint16_a, 7); */
+/* const __m128i temp = _uX_MM_SETEPI16_SI128_IM(Inxmm_A, Inint16_a, 7); */
 /*******************************************************/
-#define _uX_MM_CVTEPI16_IM_SI128(VA,Inint,int16p) _uX_mm_cvtepi16_si128_##int16p##(VA,Inint)
-#define _uX_MM_SETEPI16_IM_SI128(VA,Inint,int16p) _uX_mm_cvtepi16_si128_##int16p##(VA,Inint)
+#define _uX_MM_CVTEPI16_SI128_IM(VA,Inint,int16p) _uX_mm_cvtepi16_si128_##int16p##(VA,Inint)
+#define _uX_MM_SETEPI16_SI128_IM(VA,Inint,int16p) _uX_mm_cvtepi16_si128_##int16p##(VA,Inint)
 
 /*******************************************************/
 /* MACRO for use _uX_mm_cvtsi128_epi16_*().              */
@@ -242,9 +245,9 @@
 /* from argument "a" of _uX_mm_cvtsi128_epi16_* that will be     */
 /* places in fp1 of result. fp0 is the same for fp0 of */
 /* result                                              */
-/* const int16_t temp = _uX_MM_CVTSI128_IM_EPI16(Inxmm_A, 15); */
+/* const int16_t temp = _uX_MM_CVTSI128_EPI16_IM(Inxmm_A, 15); */
 /*******************************************************/
-#define _uX_MM_CVTSI128_IM_EPI16(VA,int16p) _uX_mm_cvtsi128_epi16_##int16p##(VA)
+#define _uX_MM_CVTSI128_EPI16_IM(VA,int16p) _uX_mm_cvtsi128_epi16_##int16p##(VA)
 
 /*******************************************************/
 /* MACRO for use _uX_mm_cvtepi32_si128_*().              */
@@ -255,10 +258,10 @@
 /* from argument "a" of _uX_mm_cvtepi32_si128_* that will be     */
 /* places in fp1 of result. fp0 is the same for fp0 of */
 /* result                                              */
-/* const __m128i temp = _uX_MM_SETEPI32_IM_SI128(Inxmm_A, Inint32_a, 3); */
+/* const __m128i temp = _uX_MM_SETEPI32_SI128_IM(Inxmm_A, Inint32_a, 3); */
 /*******************************************************/
-#define _uX_MM_CVTEPI32_IM_SI128(VA,Inint,int32p) _uX_mm_cvtepi32_si128_##int32p##(VA,Inint)
-#define _uX_MM_SETEPI32_IM_SI128(VA,Inint,int32p) _uX_mm_cvtepi32_si128_##int32p##(VA,Inint)
+#define _uX_MM_CVTEPI32_SI128_IM(VA,Inint,int32p) _uX_mm_cvtepi32_si128_##int32p##(VA,Inint)
+#define _uX_MM_SETEPI32_SI128_IM(VA,Inint,int32p) _uX_mm_cvtepi32_si128_##int32p##(VA,Inint)
 
 /*******************************************************/
 /* MACRO for use _uX_mm_cvtsi128_epi32_*().              */
@@ -269,9 +272,9 @@
 /* from argument "a" of _uX_mm_cvtsi128_epi32_* that will be     */
 /* places in fp1 of result. fp0 is the same for fp0 of */
 /* result                                              */
-/* const int32_t temp = _uX_MM_CVTSI128_IM_EPI32(Inxmm_A, 7); */
+/* const int32_t temp = _uX_MM_CVTSI128_EPI32_IM(Inxmm_A, 7); */
 /*******************************************************/
-#define _uX_MM_CVTSI128_IM_EPI32(VA,int32p) _uX_mm_cvtsi128_epi32_##int32p##(VA)
+#define _uX_MM_CVTSI128_EPI32_IM(VA,int32p) _uX_mm_cvtsi128_epi32_##int32p##(VA)
 
 /*******************************************************/
 /* MACRO for use _uX_mm_cvtepi64_si128_*().              */
@@ -282,10 +285,10 @@
 /* from argument "a" of _uX_mm_cvtepi64_si128_* that will be     */
 /* places in fp1 of result. fp0 is the same for fp0 of */
 /* result                                              */
-/* const __m128i temp = _uX_MM_SETEPI64_IM_SI128(Inxmm_A, Inxmm_B, 1); */
+/* const __m128i temp = _uX_MM_SETEPI64_SI128_IM(Inxmm_A, Inxmm_B, 1); */
 /*******************************************************/
-#define _uX_MM_CVTEPI64_IM_SI128(VA,VB,int64p) _uX_mm_cvtepi64_si128_##int64p##(VA,VB)
-#define _uX_MM_SETEPI64_IM_SI128(VA,VB,int64p) _uX_mm_cvtepi64_si128_##int64p##(VA,VB)
+#define _uX_MM_CVTEPI64_SI128_IM(VA,VB,int64p) _uX_mm_cvtepi64_si128_##int64p##(VA,VB)
+#define _uX_MM_SETEPI64_SI128_IM(VA,VB,int64p) _uX_mm_cvtepi64_si128_##int64p##(VA,VB)
 
 /*******************************************************/
 /* MACRO for use _uX_mm_cvtsi128_epi64_*().              */
@@ -296,9 +299,9 @@
 /* from argument "a" of _uX_mm_cvtsi128_epi64_* that will be     */
 /* places in fp1 of result. fp0 is the same for fp0 of */
 /* result                                              */
-/* const __m128i temp = _uX_MM_CVTSI128_IM_EPI64(Inxmm_A, 1); */
+/* const __m128i temp = _uX_MM_CVTSI128_EPI64_IM(Inxmm_A, 1); */
 /*******************************************************/
-#define _uX_MM_CVTSI128_IM_EPI64(VA,int64p) _uX_mm_cvtsi128_epi64_##int64p##(VA)
+#define _uX_MM_CVTSI128_EPI64_IM(VA,int64p) _uX_mm_cvtsi128_epi64_##int64p##(VA)
 
 /*******************************************************/
 /* MACRO for use _uX_mm_cvtepi64x_si128_*().              */
@@ -309,10 +312,10 @@
 /* from argument "a" of _uX_mm_cvtepi64x_si128_* that will be     */
 /* places in fp1 of result. fp0 is the same for fp0 of */
 /* result                                              */
-/* const __m128i temp = _uX_MM_SETEPI64X_IM_SI128(Inxmm_A, Inint64_a, 1); */
+/* const __m128i temp = _uX_MM_SETEPI64X_SI128_IM(Inxmm_A, Inint64_a, 1); */
 /*******************************************************/
-#define _uX_MM_CVTEPI64X_IM_SI128(VA,Inint,int64p) _uX_mm_cvtepi64x_si128_##int64p##(VA,Inint)
-#define _uX_MM_SETEPI64X_IM_SI128(VA,Inint,int64p) _uX_mm_cvtepi64x_si128_##int64p##(VA,Inint)
+#define _uX_MM_CVTEPI64X_SI128_IM(VA,Inint,int64p) _uX_mm_cvtepi64x_si128_##int64p##(VA,Inint)
+#define _uX_MM_SETEPI64X_SI128_IM(VA,Inint,int64p) _uX_mm_cvtepi64x_si128_##int64p##(VA,Inint)
 
 /*******************************************************/
 /* MACRO for use _uX_mm_cvtsi128_epi64x_*().              */
@@ -323,9 +326,9 @@
 /* from argument "a" of _uX_mm_cvtsi128_epi64x_* that will be     */
 /* places in fp1 of result. fp0 is the same for fp0 of */
 /* result                                              */
-/* const int64_t temp = _uX_MM_CVTSI128_IM_EPI64X(Inxmm_A, 1); */
+/* const int64_t temp = _uX_MM_CVTSI128_EPI64X_IM(Inxmm_A, 1); */
 /*******************************************************/
-#define _uX_MM_CVTSI128_IM_EPI64X(VA,int64p) _uX_mm_cvtsi128_epi64x_##int64p##(VA)
+#define _uX_MM_CVTSI128_EPI64X_IM(VA,int64p) _uX_mm_cvtsi128_epi64x_##int64p##(VA)
 
 uX_EXTERNC_BEGIN
 uX_PACK_PUSH_XMM
@@ -580,6 +583,7 @@ uX_PACK_XMM
 #endif
 
 extern __m128i uX_ABI _uX_mm_add_epi64(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
+extern __m128i uX_ABI _uX_mm_add_sepi64(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_adds_epi8(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_adds_epi16(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_adds_epu8(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
@@ -610,6 +614,7 @@ extern __m64 uX_ABI _uX_mm_sub_si64(__m64 /*Inmm_A*/, __m64 /*Inmm_B*/);
 uX_PACK_XMM
 #endif
 extern __m128i uX_ABI _uX_mm_sub_epi64(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
+extern __m128i uX_ABI _uX_mm_sub_sepi64(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_subs_epi8(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_subs_epi16(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_subs_epu8(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
@@ -623,18 +628,28 @@ extern __m128i uX_ABI _uX_mm_and_si128(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/)
 extern __m128i uX_ABI _uX_mm_andnot_si128(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_or_si128(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_xor_si128(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
+extern __m128i uX_ABI _uX_mm_and_sepi64(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
+extern __m128i uX_ABI _uX_mm_andnot_sepi64(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
+extern __m128i uX_ABI _uX_mm_or_sepi64(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
+extern __m128i uX_ABI _uX_mm_xor_sepi64(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_not_epi8(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_not_epi16(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_not_epi32(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_not_epi64(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_not_sepi64(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_negate_epi8(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_negate_epi16(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_negate_epi32(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_negate_epi64(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_negate_sepi64(__m128i /*Inxmm_A*/);
 
 extern intbool_t uX_ABI _uX_mm_iand_si128(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern intbool_t uX_ABI _uX_mm_iandnot_si128(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern intbool_t uX_ABI _uX_mm_ior_si128(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
+extern intbool_t uX_ABI _uX_mm_iand_sepi64(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
+extern intbool_t uX_ABI _uX_mm_iandnot_sepi64(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
+extern intbool_t uX_ABI _uX_mm_ior_sepi64(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
+
 extern intbool_t uX_ABI _uX_mm_inot_epi8(__m128i /*Inxmm_A*/);
 extern intbool_t uX_ABI _uX_mm_inot_epi16(__m128i /*Inxmm_A*/);
 extern intbool_t uX_ABI _uX_mm_inot_epi32(__m128i /*Inxmm_A*/);
@@ -648,12 +663,14 @@ extern intbool_t uX_ABI _uX_mm_ihor_si128(__m128i /*Inxmm_A*/);
  */
 
 extern __m128i uX_ABI _uX_mm_slli_si128(__m128i /*Inxmm_A*/, count_t const /*Inint_Count*/);
+extern __m128i uX_ABI _uX_mm_slli_epi8(__m128i /*Inxmm_A*/, count_t const /*Inint_Count*/);
 extern __m128i uX_ABI _uX_mm_slli_epi16(__m128i /*Inxmm_A*/, count_t const /*Inint_Count*/);
 extern __m128i uX_ABI _uX_mm_sll_epi16(__m128i /*Inxmm_A*/, __m128i /*Inxmm_Count*/);
 extern __m128i uX_ABI _uX_mm_slli_epi32(__m128i /*Inxmm_A*/, count_t const /*Inint_Count*/);
 extern __m128i uX_ABI _uX_mm_sll_epi32(__m128i /*Inxmm_A*/, __m128i /*Inxmm_Count*/);
 extern __m128i uX_ABI _uX_mm_slli_epi64(__m128i /*Inxmm_A*/, count_t const /*Inint_Count*/);
 extern __m128i uX_ABI _uX_mm_sll_epi64(__m128i /*Inxmm_A*/, __m128i /*Inxmm_Count*/);
+extern __m128i uX_ABI _uX_mm_srai_epi8(__m128i /*Inxmm_A*/, count_t const /*Inint_Count*/);
 extern __m128i uX_ABI _uX_mm_srai_epi16(__m128i /*Inxmm_A*/, count_t const /*Inint_Count*/);
 extern __m128i uX_ABI _uX_mm_sra_epi16(__m128i /*Inxmm_A*/, __m128i /*Inxmm_Count*/);
 extern __m128i uX_ABI _uX_mm_srai_epi32(__m128i /*Inxmm_A*/, count_t const /*Inint_Count*/);
@@ -661,17 +678,20 @@ extern __m128i uX_ABI _uX_mm_sra_epi32(__m128i /*Inxmm_A*/, __m128i /*Inxmm_Coun
 extern __m128i uX_ABI _uX_mm_srai_epi64(__m128i /*Inxmm_A*/, count_t const /*Inint_Count*/);
 extern __m128i uX_ABI _uX_mm_sra_epi64(__m128i /*Inxmm_A*/, __m128i /*Inxmm_Count*/);
 extern __m128i uX_ABI _uX_mm_srli_si128(__m128i /*Inxmm_A*/, count_t const /*Inint_Count*/);
+extern __m128i uX_ABI _uX_mm_srli_epi8(__m128i /*Inxmm_A*/, count_t const /*Inint_Count*/);
 extern __m128i uX_ABI _uX_mm_srli_epi16(__m128i /*Inxmm_A*/, count_t const /*Inint_Count*/);
 extern __m128i uX_ABI _uX_mm_srl_epi16(__m128i /*Inxmm_A*/, __m128i /*Inxmm_Count*/);
 extern __m128i uX_ABI _uX_mm_srli_epi32(__m128i /*Inxmm_A*/, count_t const /*Inint_Count*/);
 extern __m128i uX_ABI _uX_mm_srl_epi32(__m128i /*Inxmm_A*/, __m128i /*Inxmm_Count*/);
 extern __m128i uX_ABI _uX_mm_srli_epi64(__m128i /*Inxmm_A*/, count_t const /*Inint_Count*/);
 extern __m128i uX_ABI _uX_mm_srl_epi64(__m128i /*Inxmm_A*/, __m128i /*Inxmm_Count*/);
+extern __m128i uX_ABI _uX_mm_rot_epi64(__m128i /*Inxmm_A*/, __m128i /*Inxmm_Count*/);
+extern __m128i uX_ABI _uX_mm_roti_epi64(__m128i /*Inxmm_A*/, count_t const /*Inint_Count*/);
 
 /*
  * Integer, comparisons
  */
-    
+
 /*
  * Packed integer 8-bit comparison, zeroing or filling with ones corresponding parts of result
  */
@@ -685,7 +705,7 @@ extern __m128i uX_ABI _uX_mm_cmpnlt_epi8(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*
 extern __m128i uX_ABI _uX_mm_cmpnle_epi8(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_cmpngt_epi8(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_cmpnge_epi8(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
-    
+
 /*
  * Packed integer 16-bit comparison, zeroing or filling with ones corresponding parts of result
  */
@@ -812,21 +832,21 @@ extern __m128i uX_ABI _uX_mm_set_epi64(__m128i /*Inxmm_Q1*/, __m128i /*Inxmm_Q0*
 extern __m128i uX_ABI _uX_mm_set_epi64x(int64_t /*Inint_Q1*/, int64_t /*Inint_Q0*/);
 extern __m128i uX_ABI _uX_mm_set_epi32(int32_t /*Inint_D3*/, int32_t /*Inint_D2*/, int32_t /*Inint_D1*/, int32_t /*Inint_D0*/);
 extern __m128i uX_ABI _uX_mm_set_epi16(int16_t /*Inint_W7*/, int16_t /*Inint_W6*/, int16_t /*Inint_W5*/, int16_t /*Inint_W4*/,
-                                       int16_t /*Inint_W3*/, int16_t /*Inint_W2*/, int16_t /*Inint_W1*/, int16_t /*Inint_W0*/);
+									   int16_t /*Inint_W3*/, int16_t /*Inint_W2*/, int16_t /*Inint_W1*/, int16_t /*Inint_W0*/);
 extern __m128i uX_ABI _uX_mm_set_epi8(int8_t /*Inint_B15*/, int8_t /*Inint_B14*/, int8_t /*Inint_B13*/, int8_t /*Inint_B12*/,
-                                      int8_t /*Inint_B11*/, int8_t /*Inint_B10*/, int8_t /*Inint_B9*/, int8_t /*Inint_B8*/,
-                                      int8_t /*Inint_B7*/, int8_t /*Inint_B6*/, int8_t /*Inint_B5*/, int8_t /*Inint_B4*/,
-                                      int8_t /*Inint_B3*/, int8_t /*Inint_B2*/, int8_t /*Inint_B1*/, int8_t /*Inint_B0*/);
+									  int8_t /*Inint_B11*/, int8_t /*Inint_B10*/, int8_t /*Inint_B9*/, int8_t /*Inint_B8*/,
+									  int8_t /*Inint_B7*/, int8_t /*Inint_B6*/, int8_t /*Inint_B5*/, int8_t /*Inint_B4*/,
+									  int8_t /*Inint_B3*/, int8_t /*Inint_B2*/, int8_t /*Inint_B1*/, int8_t /*Inint_B0*/);
 
 extern __m128i uX_ABI _uX_mm_setr_epi64(__m128i /*Inxmm_Q0*/, __m128i /*Inxmm_Q1*/);
 extern __m128i uX_ABI _uX_mm_setr_epi64x(int64_t /*Inint_Q0*/, int64_t /*Inint_Q1*/);
 extern __m128i uX_ABI _uX_mm_setr_epi32(int32_t /*Inint_D0*/, int32_t /*Inint_D1*/, int32_t /*Inint_D2*/, int32_t /*Inint_D3*/);
 extern __m128i uX_ABI _uX_mm_setr_epi16(int16_t /*Inint_W0*/, int16_t /*Inint_W1*/, int16_t /*Inint_W2*/, int16_t /*Inint_W3*/,
-                                        int16_t /*Inint_W4*/, int16_t /*Inint_W5*/, int16_t /*Inint_W6*/, int16_t /*Inint_W7*/);
+										int16_t /*Inint_W4*/, int16_t /*Inint_W5*/, int16_t /*Inint_W6*/, int16_t /*Inint_W7*/);
 extern __m128i uX_ABI _uX_mm_setr_epi8(int8_t /*Inint_B0*/, int8_t /*Inint_B1*/, int8_t /*Inint_B2*/, int8_t /*Inint_B3*/,
-                                       int8_t /*Inint_B4*/, int8_t /*Inint_B5*/, int8_t /*Inint_B6*/, int8_t /*Inint_B7*/,
-                                       int8_t /*Inint_B8*/, int8_t /*Inint_B9*/, int8_t /*Inint_B10*/, int8_t /*Inint_B11*/,
-                                       int8_t /*Inint_B12*/, int8_t /*Inint_B13*/, int8_t /*Inint_B14*/, int8_t /*Inint_B15*/);
+									   int8_t /*Inint_B4*/, int8_t /*Inint_B5*/, int8_t /*Inint_B6*/, int8_t /*Inint_B7*/,
+									   int8_t /*Inint_B8*/, int8_t /*Inint_B9*/, int8_t /*Inint_B10*/, int8_t /*Inint_B11*/,
+									   int8_t /*Inint_B12*/, int8_t /*Inint_B13*/, int8_t /*Inint_B14*/, int8_t /*Inint_B15*/);
 
 extern __m128i uX_ABI _uX_mm_set1_epi64(__m128i /*Inxmm_Q*/);
 extern __m128i uX_ABI _uX_mm_set1_epi64x(int64_t /*Inint_Q*/);
@@ -886,6 +906,7 @@ extern __m128i uX_ABI _uX_mm_mover_si128_epi64(__m128i /*Inxmm_A*/, __m128i /*In
 extern __m128i uX_ABI _uX_mm_mover_si128_epi64x(int64_t /*Inint_D*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_move_si128_epi32(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_mover_si128_epi32(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
+extern __m128i uX_ABI _uX_mm_mover_si128_epi32x(__m128i /*Inxmm_A*/, int32_t /*Inint_D*/);
 #if defined(uX_X86)
 extern __m128i uX_ABI _uX_mm_movpi64_epi64(__m64 /*Inmm_Q*/);
 extern __m64 uX_ABI _uX_mm_movepi64_pi64(__m128i /*Inxmm_Q*/);
@@ -990,7 +1011,16 @@ uX_EXTERNC_END
 #define _uX_mm_cvtelts_epi16    _uX_mm_cvtsi128_epi16
 #define _uX_mm_cvtelts_epi32    _uX_mm_cvtsi128_epi32
 #define _uX_mm_cvtelts_epi64    _uX_mm_cvtsi128_epi64
-#define _uX_mm_cvtelts_epi64x   _uX_mm_cvtsi128_epi64x
+#define _uX_mm_cvtelts_epi64x	_uX_mm_cvtsi128_epi64x
+
+#define _uX_mm_and_epi64		_uX_mm_and_si128
+#define _uX_mm_andnot_epi64		_uX_mm_andnot_si128
+#define _uX_mm_or_epi64			_uX_mm_or_si128
+#define _uX_mm_xor_epi64		_uX_mm_xor_si128
+
+#define _uX_mm_iand_epi64		_uX_mm_iand_si128
+#define _uX_mm_iandnot_epi64	_uX_mm_iandnot_si128
+#define _uX_mm_ior_epi64		_uX_mm_ior_si128
 
 #define _uX_mm_setelts_epi8_0   _uX_mm_cvtepi8_si128_0
 #define _uX_mm_setelts_epi8_1   _uX_mm_cvtepi8_si128_1

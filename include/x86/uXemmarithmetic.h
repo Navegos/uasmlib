@@ -1,22 +1,21 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-; / /                                                                               / /
-; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
-; / /                                                                               / /
-; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
-; / /    you may not use this file except in compliance with the License.           / /
-; / /    You may obtain a copy of the License at                                    / /
-; / /                                                                               / /
-; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
-; / /                                                                               / /
-; / /    Unless required by applicable law or agreed to in writing, software        / /
-; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
-; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
-; / /    See the License for the specific language governing permissions and        / /
-; / /    limitations under the License.                                             / /
-; / /                                                                               / /
+; / /																				/ /
+; / /			Copyright 2021 (c) Navegos QA - optimized library					/ /
+; / /																				/ /
+; / /	Licensed under the Apache License, Version 2.0 (the "License");				/ /
+; / /	you may not use this file except in compliance with the License.			/ /
+; / /	You may obtain a copy of the License at										/ /
+; / /																				/ /
+; / /		http://www.apache.org/licenses/LICENSE-2.0								/ /
+; / /																				/ /
+; / /	Unless required by applicable law or agreed to in writing, software			/ /
+; / /	distributed under the License is distributed on an "AS IS" BASIS,			/ /
+; / /	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.	/ /
+; / /	See the License for the specific language governing permissions and			/ /
+; / /	limitations under the License.												/ /
+; / /																				/ /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 */
@@ -48,10 +47,12 @@ extern __m128i uX_ABI _uX_mm_div_epi8(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_div_epi16(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_div_epi32(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_div_epi64(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
+extern __m128i uX_ABI _uX_mm_div_sepi64(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_div_epu8(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_div_epu16(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_div_epu32(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 extern __m128i uX_ABI _uX_mm_div_epu64(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
+extern __m128i uX_ABI _uX_mm_div_sepu64(__m128i /*Inxmm_A*/, __m128i /*Inxmm_B*/);
 
 /*
  * FLT Arithmetic
@@ -111,6 +112,7 @@ extern __m128 uX_ABI _uX_mm_polynomial2_ps(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*
 extern __m128 uX_ABI _uX_mm_polynomial2_ss(__m128 /*Inxmm_A*/, __m128 /*Inxmm_B*/, __m128 /*Inxmm_C*/, __m128 /*Inxmm_D*/);
 
 extern __m128 uX_ABI _uX_mm_sincostemplate_ps(__m128* /*OutPxmm_A*/, __m128 /*Inxmm_B*/, int /*Intint_SC*/);
+extern __m128 uX_ABI _uX_mm_sincostemplate_ss(__m128* /*OutPxmm_A*/, __m128 /*Inxmm_B*/, int /*Intint_SC*/);
 
 /*
  * DBL Arithmetic

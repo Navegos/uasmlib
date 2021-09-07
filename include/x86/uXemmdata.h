@@ -1,22 +1,21 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-; / /                                                                               / /
-; / /             Copyright 2021 (c) Navegos QA - UASM assembly library             / /
-; / /                                                                               / /
-; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
-; / /    you may not use this file except in compliance with the License.           / /
-; / /    You may obtain a copy of the License at                                    / /
-; / /                                                                               / /
-; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
-; / /                                                                               / /
-; / /    Unless required by applicable law or agreed to in writing, software        / /
-; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
-; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
-; / /    See the License for the specific language governing permissions and        / /
-; / /    limitations under the License.                                             / /
-; / /                                                                               / /
+; / /																				/ /
+; / /			Copyright 2021 (c) Navegos QA - optimized library					/ /
+; / /																				/ /
+; / /	Licensed under the Apache License, Version 2.0 (the "License");				/ /
+; / /	you may not use this file except in compliance with the License.			/ /
+; / /	You may obtain a copy of the License at										/ /
+; / /																				/ /
+; / /		http://www.apache.org/licenses/LICENSE-2.0								/ /
+; / /																				/ /
+; / /	Unless required by applicable law or agreed to in writing, software			/ /
+; / /	distributed under the License is distributed on an "AS IS" BASIS,			/ /
+; / /	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.	/ /
+; / /	See the License for the specific language governing permissions and			/ /
+; / /	limitations under the License.												/ /
+; / /																				/ /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 */
@@ -70,9 +69,9 @@ extern __m128i const __m128i_i8_0; //                __m128b, i8_0
 extern __m128i const __m128i_i8_1; //                __m128b, i8_1
 extern __m128i const __m128i_i8_neg0; //             __m128b, i8_neg0
 extern __m128i const __m128i_i8_neg1; //             __m128b, i8_neg1
-	
+
 	//;;int8 mask low;;
-	
+
 extern __m128i const __m128i_i8_0e_true; //         __m128b; // i8_true; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false
 extern __m128i const __m128i_i8_0e_false; //            __m128b; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false
 extern __m128i const __m128i_i8_0e_max; //          __m128b; // i8_max; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false; // i8_false
@@ -107,7 +106,7 @@ extern __m128i const __m128i_i16_1; //               __m128b, i16_1
 extern __m128i const __m128i_i16_neg0; //               __m128b, i16_neg0
 extern __m128i const __m128i_i16_neg1; //               __m128b, i16_neg1
 	//;;int16 mask low;;
-	
+
 extern __m128i const __m128i_i16_0e_true; //            __m128w; // i16_true; // i16_false; // i16_false; // i16_false; // i16_false; // i16_false; // i16_false; // i16_false
 extern __m128i const __m128i_i16_0e_false; //           __m128w; // i16_false; // i16_false; // i16_false; // i16_false; // i16_false; // i16_false; // i16_false; // i16_false
 extern __m128i const __m128i_i16_0e_max; //         __m128w; // i16_max; // i16_false; // i16_false; // i16_false; // i16_false; // i16_false; // i16_false; // i16_false
@@ -160,7 +159,7 @@ extern __m128i const __m128i_i32_select0101; //                __m128i, i32_fals
 extern __m128i const __m128i_i32_select1010; //                __m128i, i32_true, i32_false, i32_true, i32_false
 
 	//;;int32 mask low;;
-	
+
 extern __m128i const __m128i_i32_0e_true; //            __m128i; // i32_true; // i32_false; // i32_false; // i32_false
 extern __m128i const __m128i_i32_0e_false; //           __m128i; // i32_false; // i32_false; // i32_false; // i32_false
 extern __m128i const __m128i_i32_0e_max; //         __m128i; // i32_max; // i32_false; // i32_false; // i32_false
@@ -194,6 +193,7 @@ extern __m128i const __m128i_i64_0; //               __m128q, i64_0
 extern __m128i const __m128i_i64_1; //               __m128q, i64_1
 extern __m128i const __m128i_i64_neg0; //                __m128q, i64_neg0
 extern __m128i const __m128i_i64_neg1; //                __m128q, i64_neg1
+extern __m128i const __m128i_i64_rolmax; //                __m128q, 0x3f
 
 extern __m128i const __m128i_i64_select00; //                __m128q, i64_false, i64_false
 extern __m128i const __m128i_i64_select01; //                __m128q, i64_false, i64_true
@@ -201,7 +201,7 @@ extern __m128i const __m128i_i64_select10; //                __m128q, i64_true, 
 extern __m128i const __m128i_i64_select11; //                __m128q, i64_true, i64_true
 
 	//;;int64 mask low;;
-	
+
 extern __m128i const __m128i_i64_0e_true; //            __m128q; // i64_true; // i64_false
 extern __m128i const __m128i_i64_0e_false; //           __m128q; // i64_false; // i64_false
 extern __m128i const __m128i_i64_0e_max; //         __m128q; // i64_max; // i64_false
@@ -217,6 +217,7 @@ extern __m128i const __m128i_i64_0e_0; //            __m128q, i64_0, i64_false
 extern __m128i const __m128i_i64_0e_1; //            __m128q, i64_1, i64_false
 extern __m128i const __m128i_i64_0e_neg0; //             __m128q, i64_neg0, i64_false
 extern __m128i const __m128i_i64_0e_neg1; //             __m128q, i64_neg1, i64_false
+extern __m128i const __m128i_i64_0e_rolmax; //                __m128q, 0x3f
 
 	//;;float mask;;
 
@@ -238,7 +239,7 @@ extern __m128i const __m128i_flt_1lshl24; //            __m128i; // flt_1lshl24_
 extern __m128i const __m128i_flt_1lshl27; //            __m128i; // flt_1lshl27_msk
 extern __m128i const __m128i_flt_1lshl28; //            __m128i; // flt_1lshl28_msk
 extern __m128i const __m128i_flt_1lshl31; //            __m128i; // flt_1lshl31_msk
-	
+
 extern __m128i const __m128i_flt_neg1lshl3; //          __m128i; // flt_neg1lshl3_msk
 extern __m128i const __m128i_flt_neg1lshl4; //          __m128i; // flt_neg1lshl4_msk
 extern __m128i const __m128i_flt_neg1lshl7; //          __m128i; // flt_neg1lshl7_msk
@@ -254,11 +255,11 @@ extern __m128i const __m128i_flt_neg1lshl24; //     __m128i; // flt_neg1lshl24_m
 extern __m128i const __m128i_flt_neg1lshl27; //     __m128i; // flt_neg1lshl27_msk
 extern __m128i const __m128i_flt_neg1lshl28; //     __m128i; // flt_neg1lshl28_msk
 extern __m128i const __m128i_flt_neg1lshl31; //     __m128i; // flt_neg1lshl31_msk
-	
+
 extern __m128i const __m128i_flt_false; //              __m128i; // flt_false_msk
 extern __m128i const __m128i_flt_true; //               __m128i; // flt_true_msk
 extern __m128i const __m128i_flt_error; //              __m128i; // flt_error_msk
-	
+
 extern __m128i const __m128i_flt_magic; //              __m128i; // flt_magic_msk
 extern __m128i const __m128i_flt_sign; //               __m128i; // flt_sign_msk
 extern __m128i const __m128i_flt_invsign; //            __m128i; // flt_invsign_msk
@@ -398,7 +399,6 @@ extern __m128i const __m128i_flt_fixunsigned; //        __m128i; // flt_fixunsig
 extern __m128i const __m128i_flt_fixunsigned32; //      __m128i; // flt_fixunsigned32_msk
 extern __m128i const __m128i_flt_fixmaxi32; //          __m128i; // flt_fixmaxi32_msk
 extern __m128i const __m128i_flt_fixmaxu32; //          __m128i; // flt_fixmaxu32_msk
-		
 
 	//;;float mask low;;
 
@@ -420,7 +420,7 @@ extern __m128i const __m128i_flt_0e_1lshl24; //         __m128i; // flt_1lshl24_
 extern __m128i const __m128i_flt_0e_1lshl27; //         __m128i; // flt_1lshl27_msk; // flt_false_msk; // flt_false_msk; // flt_false_msk
 extern __m128i const __m128i_flt_0e_1lshl28; //         __m128i; // flt_1lshl28_msk; // flt_false_msk; // flt_false_msk; // flt_false_msk
 extern __m128i const __m128i_flt_0e_1lshl31; //         __m128i; // flt_1lshl31_msk; // flt_false_msk; // flt_false_msk; // flt_false_msk
-	
+
 extern __m128i const __m128i_flt_0e_neg1lshl3; //           __m128i; // flt_neg1lshl3_msk; // flt_false_msk; // flt_false_msk; // flt_false_msk
 extern __m128i const __m128i_flt_0e_neg1lshl4; //           __m128i; // flt_neg1lshl4_msk; // flt_false_msk; // flt_false_msk; // flt_false_msk
 extern __m128i const __m128i_flt_0e_neg1lshl7; //           __m128i; // flt_neg1lshl7_msk; // flt_false_msk; // flt_false_msk; // flt_false_msk
@@ -436,11 +436,11 @@ extern __m128i const __m128i_flt_0e_neg1lshl24; //          __m128i; // flt_neg1
 extern __m128i const __m128i_flt_0e_neg1lshl27; //          __m128i; // flt_neg1lshl27_msk; // flt_false_msk; // flt_false_msk; // flt_false_msk
 extern __m128i const __m128i_flt_0e_neg1lshl28; //          __m128i; // flt_neg1lshl28_msk; // flt_false_msk; // flt_false_msk; // flt_false_msk
 extern __m128i const __m128i_flt_0e_neg1lshl31; //          __m128i; // flt_neg1lshl31_msk; // flt_false_msk; // flt_false_msk; // flt_false_msk
-	
+
 extern __m128i const __m128i_flt_0e_false; //               __m128i; // flt_false_msk; // flt_false_msk; // flt_false_msk; // flt_false_msk
 extern __m128i const __m128i_flt_0e_true; //                __m128i; // flt_true_msk; // flt_false_msk; // flt_false_msk; // flt_false_msk
 extern __m128i const __m128i_flt_0e_error; //               __m128i; // flt_error_msk; // flt_false_msk; // flt_false_msk; // flt_false_msk
-	
+
 extern __m128i const __m128i_flt_0e_magic; //               __m128i; // flt_magic_msk; // flt_false_msk; // flt_false_msk; // flt_false_msk
 extern __m128i const __m128i_flt_0e_sign; //                __m128i; // flt_sign_msk; // flt_false_msk; // flt_false_msk; // flt_false_msk
 extern __m128i const __m128i_flt_0e_invsign; //         __m128i; // flt_invsign_msk; // flt_false_msk; // flt_false_msk; // flt_false_msk
@@ -642,161 +642,161 @@ extern __m128i const __m128i_flt_neginfinity; //                __m128i; // flt_
 
 namespace_DirectX
 	/*uX_GLOBAL_CONST XMVECTORF32 g_UShortMax = __m128_ushortmax;*/
-namespace_DirectX_end
+	namespace_DirectX_end
 
-namespace_uX
-namespace_XMM
+	namespace_uX
+	namespace_XMM
 
-namespace_XMM_end
-namespace_uX_end
+	namespace_XMM_end
+	namespace_uX_end
 
-/*
-# define g_XMSinCoefficients0
-# define g_XMSinCoefficients1
-# define g_XMCosCoefficients0
-# define g_XMCosCoefficients1
-# define g_XMTanCoefficients0
-# define g_XMTanCoefficients1
-# define g_XMTanCoefficients2
-# define g_XMArcCoefficients0
-# define g_XMArcCoefficients1
-# define g_XMATanCoefficients0
-# define g_XMATanCoefficients1
-# define g_XMATanEstCoefficients0
-# define g_XMATanEstCoefficients1
-# define g_XMTanEstCoefficients
-# define g_XMArcEstCoefficients
-# define g_XMPiConstants0
-# define g_XMIdentityR0
-# define g_XMIdentityR1
-# define g_XMIdentityR2
-# define g_XMIdentityR3
-# define g_XMNegIdentityR0
-# define g_XMNegIdentityR1
-# define g_XMNegIdentityR2
-# define g_XMNegIdentityR3
-# define g_XMNegativeZero
-# define g_XMNegate3
-# define g_XMMaskXY
-# define g_XMMask3
-# define g_XMMaskX
-# define g_XMMaskY
-# define g_XMMaskZ
-# define g_XMMaskW
-# define g_XMOne
-# define g_XMOne3
-# define g_XMZero
-# define g_XMTwo
-# define g_XMFour
-# define g_XMSix
-# define g_XMNegativeOne
-# define g_XMOneHalf
-# define g_XMNegativeOneHalf
-# define g_XMNegativeTwoPi
-# define g_XMNegativePi
-# define g_XMHalfPi
-# define g_XMPi
-# define g_XMReciprocalPi
-# define g_XMTwoPi
-# define g_XMReciprocalTwoPi
-# define g_XMEpsilon
-# define g_XMInfinity
-# define g_XMQNaN
-# define g_XMQNaNTest
-# define g_XMAbsMask
-# define g_XMFltMin
-# define g_XMFltMax
-# define g_XMNegOneMask
-# define g_XMMaskA8R8G8B8
-# define g_XMFlipA8R8G8B8
-# define g_XMFixAA8R8G8B8
-# define g_XMNormalizeA8R8G8B8
-# define g_XMMaskA2B10G10R10
-# define g_XMFlipA2B10G10R10
-# define g_XMFixAA2B10G10R10
-# define g_XMNormalizeA2B10G10R10
-# define g_XMMaskX16Y16
-# define g_XMFlipX16Y16
-# define g_XMFixX16Y16
-# define g_XMNormalizeX16Y16
-# define g_XMMaskX16Y16Z16W16
-# define g_XMFlipX16Y16Z16W16
-# define g_XMFixX16Y16Z16W16
-# define g_XMNormalizeX16Y16Z16W16
-# define g_XMNoFraction
-# define g_XMMaskByte
-# define g_XMNegateX
-# define g_XMNegateY
-# define g_XMNegateZ
-# define g_XMNegateW
-# define g_XMSelect0101
-# define g_XMSelect1010
-# define g_XMOneHalfMinusEpsilon
-# define g_XMSelect1000
-# define g_XMSelect1100
-# define g_XMSelect1110
-# define g_XMSelect1011
-# define g_XMFixupY16
-# define g_XMFixupY16W16
-# define g_XMFlipY
-# define g_XMFlipZ
-# define g_XMFlipW
-# define g_XMFlipYZ
-# define g_XMFlipZW
-# define g_XMFlipYW
-# define g_XMMaskDec4
-# define g_XMXorDec4
-# define g_XMAddUDec4
-# define g_XMAddDec4
-# define g_XMMulDec4
-# define g_XMMaskByte4
-# define g_XMXorByte4
-# define g_XMAddByte4
-# define g_XMFixUnsigned
-# define g_XMMaxInt
-# define g_XMMaxUInt
-# define g_XMUnsignedFix
-# define g_XMsrgbScale
-# define g_XMsrgbA
-# define g_XMsrgbA1
-# define g_XMExponentBias
-# define g_XMSubnormalExponent
-# define g_XMNumTrailing
-# define g_XMMinNormal
-# define g_XMNegInfinity
-# define g_XMNegQNaN
-# define g_XMBin128
-# define g_XMBinNeg150
-# define g_XM253
-# define g_XMExpEst1
-# define g_XMExpEst2
-# define g_XMExpEst3
-# define g_XMExpEst4
-# define g_XMExpEst5
-# define g_XMExpEst6
-# define g_XMExpEst7
-# define g_XMLogEst0
-# define g_XMLogEst1
-# define g_XMLogEst2
-# define g_XMLogEst3
-# define g_XMLogEst4
-# define g_XMLogEst5
-# define g_XMLogEst6
-# define g_XMLogEst7
-# define g_XMLgE
-# define g_XMInvLgE
-# define g_XMLg10
-# define g_XMInvLg10
-# define g_UByteMax
-# define g_ByteMin
-# define g_ByteMax
-# define g_ShortMin
-# define g_ShortMax
-# define g_UShortMax*/
+	/*
+	# define g_XMSinCoefficients0
+	# define g_XMSinCoefficients1
+	# define g_XMCosCoefficients0
+	# define g_XMCosCoefficients1
+	# define g_XMTanCoefficients0
+	# define g_XMTanCoefficients1
+	# define g_XMTanCoefficients2
+	# define g_XMArcCoefficients0
+	# define g_XMArcCoefficients1
+	# define g_XMATanCoefficients0
+	# define g_XMATanCoefficients1
+	# define g_XMATanEstCoefficients0
+	# define g_XMATanEstCoefficients1
+	# define g_XMTanEstCoefficients
+	# define g_XMArcEstCoefficients
+	# define g_XMPiConstants0
+	# define g_XMIdentityR0
+	# define g_XMIdentityR1
+	# define g_XMIdentityR2
+	# define g_XMIdentityR3
+	# define g_XMNegIdentityR0
+	# define g_XMNegIdentityR1
+	# define g_XMNegIdentityR2
+	# define g_XMNegIdentityR3
+	# define g_XMNegativeZero
+	# define g_XMNegate3
+	# define g_XMMaskXY
+	# define g_XMMask3
+	# define g_XMMaskX
+	# define g_XMMaskY
+	# define g_XMMaskZ
+	# define g_XMMaskW
+	# define g_XMOne
+	# define g_XMOne3
+	# define g_XMZero
+	# define g_XMTwo
+	# define g_XMFour
+	# define g_XMSix
+	# define g_XMNegativeOne
+	# define g_XMOneHalf
+	# define g_XMNegativeOneHalf
+	# define g_XMNegativeTwoPi
+	# define g_XMNegativePi
+	# define g_XMHalfPi
+	# define g_XMPi
+	# define g_XMReciprocalPi
+	# define g_XMTwoPi
+	# define g_XMReciprocalTwoPi
+	# define g_XMEpsilon
+	# define g_XMInfinity
+	# define g_XMQNaN
+	# define g_XMQNaNTest
+	# define g_XMAbsMask
+	# define g_XMFltMin
+	# define g_XMFltMax
+	# define g_XMNegOneMask
+	# define g_XMMaskA8R8G8B8
+	# define g_XMFlipA8R8G8B8
+	# define g_XMFixAA8R8G8B8
+	# define g_XMNormalizeA8R8G8B8
+	# define g_XMMaskA2B10G10R10
+	# define g_XMFlipA2B10G10R10
+	# define g_XMFixAA2B10G10R10
+	# define g_XMNormalizeA2B10G10R10
+	# define g_XMMaskX16Y16
+	# define g_XMFlipX16Y16
+	# define g_XMFixX16Y16
+	# define g_XMNormalizeX16Y16
+	# define g_XMMaskX16Y16Z16W16
+	# define g_XMFlipX16Y16Z16W16
+	# define g_XMFixX16Y16Z16W16
+	# define g_XMNormalizeX16Y16Z16W16
+	# define g_XMNoFraction
+	# define g_XMMaskByte
+	# define g_XMNegateX
+	# define g_XMNegateY
+	# define g_XMNegateZ
+	# define g_XMNegateW
+	# define g_XMSelect0101
+	# define g_XMSelect1010
+	# define g_XMOneHalfMinusEpsilon
+	# define g_XMSelect1000
+	# define g_XMSelect1100
+	# define g_XMSelect1110
+	# define g_XMSelect1011
+	# define g_XMFixupY16
+	# define g_XMFixupY16W16
+	# define g_XMFlipY
+	# define g_XMFlipZ
+	# define g_XMFlipW
+	# define g_XMFlipYZ
+	# define g_XMFlipZW
+	# define g_XMFlipYW
+	# define g_XMMaskDec4
+	# define g_XMXorDec4
+	# define g_XMAddUDec4
+	# define g_XMAddDec4
+	# define g_XMMulDec4
+	# define g_XMMaskByte4
+	# define g_XMXorByte4
+	# define g_XMAddByte4
+	# define g_XMFixUnsigned
+	# define g_XMMaxInt
+	# define g_XMMaxUInt
+	# define g_XMUnsignedFix
+	# define g_XMsrgbScale
+	# define g_XMsrgbA
+	# define g_XMsrgbA1
+	# define g_XMExponentBias
+	# define g_XMSubnormalExponent
+	# define g_XMNumTrailing
+	# define g_XMMinNormal
+	# define g_XMNegInfinity
+	# define g_XMNegQNaN
+	# define g_XMBin128
+	# define g_XMBinNeg150
+	# define g_XM253
+	# define g_XMExpEst1
+	# define g_XMExpEst2
+	# define g_XMExpEst3
+	# define g_XMExpEst4
+	# define g_XMExpEst5
+	# define g_XMExpEst6
+	# define g_XMExpEst7
+	# define g_XMLogEst0
+	# define g_XMLogEst1
+	# define g_XMLogEst2
+	# define g_XMLogEst3
+	# define g_XMLogEst4
+	# define g_XMLogEst5
+	# define g_XMLogEst6
+	# define g_XMLogEst7
+	# define g_XMLgE
+	# define g_XMInvLgE
+	# define g_XMLg10
+	# define g_XMInvLg10
+	# define g_UByteMax
+	# define g_ByteMin
+	# define g_ByteMax
+	# define g_ShortMin
+	# define g_ShortMax
+	# define g_UShortMax*/
 
-	//;;double mask;;
+		//;;double mask;;
 
-extern __m128i const __m128i_dbl_1lshl3; //         __m128q; // dbl_1lshl3_msk
+	extern __m128i const __m128i_dbl_1lshl3; //         __m128q; // dbl_1lshl3_msk
 extern __m128i const __m128i_dbl_1lshl4; //         __m128q; // dbl_1lshl4_msk
 extern __m128i const __m128i_dbl_1lshl7; //         __m128q; // dbl_1lshl7_msk
 extern __m128i const __m128i_dbl_1lshl8; //         __m128q; // dbl_1lshl8_msk
@@ -2054,7 +2054,7 @@ extern __m128d const __m128d_moongravity; //            __m128d; // dbl_moongrav
 extern __m128d const __m128d_plutogravity; //           __m128d; // dbl_plutogravity
 
 extern __m128d const __m128d_kmtoinch; //               __m128d; // dbl_kmtoinch
-extern __m128d const __m128d_kmtofeet; //               __m128d; // dbl_kmtofeet 
+extern __m128d const __m128d_kmtofeet; //               __m128d; // dbl_kmtofeet
 extern __m128d const __m128d_kmtoyards; //          __m128d; // dbl_kmtoyards
 extern __m128d const __m128d_kmtomiles; //          __m128d; // dbl_kmtomiles
 
@@ -3307,6 +3307,7 @@ extern __m128i uX_ABI _uX_mm_const_i64_0_si128(void); //               __m128q, 
 extern __m128i uX_ABI _uX_mm_const_i64_1_si128(void); //               __m128q, i64_1
 extern __m128i uX_ABI _uX_mm_const_i64_neg0_si128(void); //                __m128q, i64_neg0
 extern __m128i uX_ABI _uX_mm_const_i64_neg1_si128(void); //                __m128q, i64_neg1
+extern __m128i uX_ABI _uX_mm_const_i64_rolmax_si128(void); //                __m128q, 0x3f
 
 extern __m128i uX_ABI _uX_mm_const_i64_select00_si128(void); //                __m128q, i64_false, i64_false
 extern __m128i uX_ABI _uX_mm_const_i64_select01_si128(void); //                __m128q, i64_false, i64_true
@@ -3330,6 +3331,7 @@ extern __m128i uX_ABI _uX_mm_const_i64_0e_0_si128(void); //            __m128q, 
 extern __m128i uX_ABI _uX_mm_const_i64_0e_1_si128(void); //            __m128q, i64_1, i64_false
 extern __m128i uX_ABI _uX_mm_const_i64_0e_neg0_si128(void); //             __m128q, i64_neg0, i64_false
 extern __m128i uX_ABI _uX_mm_const_i64_0e_neg1_si128(void); //             __m128q, i64_neg1, i64_false
+extern __m128i uX_ABI _uX_mm_const_i64_0e_rolmax_si128(void); //             __m128q, 0x3f, i64_false
 
 	//;;float mask;;
 
@@ -3511,7 +3513,6 @@ extern __m128i uX_ABI _uX_mm_const_flt_fixunsigned_si128(void); //        __m128
 extern __m128i uX_ABI _uX_mm_const_flt_fixunsigned32_si128(void); //      __m128i; // flt_fixunsigned32_msk
 extern __m128i uX_ABI _uX_mm_const_flt_fixmaxi32_si128(void); //          __m128i; // flt_fixmaxi32_msk
 extern __m128i uX_ABI _uX_mm_const_flt_fixmaxu32_si128(void); //          __m128i; // flt_fixmaxu32_msk
-
 
 	//;;float mask low;;
 
@@ -3755,161 +3756,161 @@ extern __m128i uX_ABI _uX_mm_const_flt_neginfinity_si128(void); //              
 
 namespace_DirectX
 	/*uX_GLOBAL_CONST XMVECTORF32 g_UShortMax = __m128_ushortmax;*/
-namespace_DirectX_end
+	namespace_DirectX_end
 
-namespace_uX
-namespace_XMM
+	namespace_uX
+	namespace_XMM
 
-namespace_XMM_end
-namespace_uX_end
+	namespace_XMM_end
+	namespace_uX_end
 
-	/*
-	# define g_XMSinCoefficients0
-	# define g_XMSinCoefficients1
-	# define g_XMCosCoefficients0
-	# define g_XMCosCoefficients1
-	# define g_XMTanCoefficients0
-	# define g_XMTanCoefficients1
-	# define g_XMTanCoefficients2
-	# define g_XMArcCoefficients0
-	# define g_XMArcCoefficients1
-	# define g_XMATanCoefficients0
-	# define g_XMATanCoefficients1
-	# define g_XMATanEstCoefficients0
-	# define g_XMATanEstCoefficients1
-	# define g_XMTanEstCoefficients
-	# define g_XMArcEstCoefficients
-	# define g_XMPiConstants0
-	# define g_XMIdentityR0
-	# define g_XMIdentityR1
-	# define g_XMIdentityR2
-	# define g_XMIdentityR3
-	# define g_XMNegIdentityR0
-	# define g_XMNegIdentityR1
-	# define g_XMNegIdentityR2
-	# define g_XMNegIdentityR3
-	# define g_XMNegativeZero
-	# define g_XMNegate3
-	# define g_XMMaskXY
-	# define g_XMMask3
-	# define g_XMMaskX
-	# define g_XMMaskY
-	# define g_XMMaskZ
-	# define g_XMMaskW
-	# define g_XMOne
-	# define g_XMOne3
-	# define g_XMZero
-	# define g_XMTwo
-	# define g_XMFour
-	# define g_XMSix
-	# define g_XMNegativeOne
-	# define g_XMOneHalf
-	# define g_XMNegativeOneHalf
-	# define g_XMNegativeTwoPi
-	# define g_XMNegativePi
-	# define g_XMHalfPi
-	# define g_XMPi
-	# define g_XMReciprocalPi
-	# define g_XMTwoPi
-	# define g_XMReciprocalTwoPi
-	# define g_XMEpsilon
-	# define g_XMInfinity
-	# define g_XMQNaN
-	# define g_XMQNaNTest
-	# define g_XMAbsMask
-	# define g_XMFltMin
-	# define g_XMFltMax
-	# define g_XMNegOneMask
-	# define g_XMMaskA8R8G8B8
-	# define g_XMFlipA8R8G8B8
-	# define g_XMFixAA8R8G8B8
-	# define g_XMNormalizeA8R8G8B8
-	# define g_XMMaskA2B10G10R10
-	# define g_XMFlipA2B10G10R10
-	# define g_XMFixAA2B10G10R10
-	# define g_XMNormalizeA2B10G10R10
-	# define g_XMMaskX16Y16
-	# define g_XMFlipX16Y16
-	# define g_XMFixX16Y16
-	# define g_XMNormalizeX16Y16
-	# define g_XMMaskX16Y16Z16W16
-	# define g_XMFlipX16Y16Z16W16
-	# define g_XMFixX16Y16Z16W16
-	# define g_XMNormalizeX16Y16Z16W16
-	# define g_XMNoFraction
-	# define g_XMMaskByte
-	# define g_XMNegateX
-	# define g_XMNegateY
-	# define g_XMNegateZ
-	# define g_XMNegateW
-	# define g_XMSelect0101
-	# define g_XMSelect1010
-	# define g_XMOneHalfMinusEpsilon
-	# define g_XMSelect1000
-	# define g_XMSelect1100
-	# define g_XMSelect1110
-	# define g_XMSelect1011
-	# define g_XMFixupY16
-	# define g_XMFixupY16W16
-	# define g_XMFlipY
-	# define g_XMFlipZ
-	# define g_XMFlipW
-	# define g_XMFlipYZ
-	# define g_XMFlipZW
-	# define g_XMFlipYW
-	# define g_XMMaskDec4
-	# define g_XMXorDec4
-	# define g_XMAddUDec4
-	# define g_XMAddDec4
-	# define g_XMMulDec4
-	# define g_XMMaskByte4
-	# define g_XMXorByte4
-	# define g_XMAddByte4
-	# define g_XMFixUnsigned
-	# define g_XMMaxInt
-	# define g_XMMaxUInt
-	# define g_XMUnsignedFix
-	# define g_XMsrgbScale
-	# define g_XMsrgbA
-	# define g_XMsrgbA1
-	# define g_XMExponentBias
-	# define g_XMSubnormalExponent
-	# define g_XMNumTrailing
-	# define g_XMMinNormal
-	# define g_XMNegInfinity
-	# define g_XMNegQNaN
-	# define g_XMBin128
-	# define g_XMBinNeg150
-	# define g_XM253
-	# define g_XMExpEst1
-	# define g_XMExpEst2
-	# define g_XMExpEst3
-	# define g_XMExpEst4
-	# define g_XMExpEst5
-	# define g_XMExpEst6
-	# define g_XMExpEst7
-	# define g_XMLogEst0
-	# define g_XMLogEst1
-	# define g_XMLogEst2
-	# define g_XMLogEst3
-	# define g_XMLogEst4
-	# define g_XMLogEst5
-	# define g_XMLogEst6
-	# define g_XMLogEst7
-	# define g_XMLgE
-	# define g_XMInvLgE
-	# define g_XMLg10
-	# define g_XMInvLg10
-	# define g_UByteMax
-	# define g_ByteMin
-	# define g_ByteMax
-	# define g_ShortMin
-	# define g_ShortMax
-	# define g_UShortMax*/
+		/*
+		# define g_XMSinCoefficients0
+		# define g_XMSinCoefficients1
+		# define g_XMCosCoefficients0
+		# define g_XMCosCoefficients1
+		# define g_XMTanCoefficients0
+		# define g_XMTanCoefficients1
+		# define g_XMTanCoefficients2
+		# define g_XMArcCoefficients0
+		# define g_XMArcCoefficients1
+		# define g_XMATanCoefficients0
+		# define g_XMATanCoefficients1
+		# define g_XMATanEstCoefficients0
+		# define g_XMATanEstCoefficients1
+		# define g_XMTanEstCoefficients
+		# define g_XMArcEstCoefficients
+		# define g_XMPiConstants0
+		# define g_XMIdentityR0
+		# define g_XMIdentityR1
+		# define g_XMIdentityR2
+		# define g_XMIdentityR3
+		# define g_XMNegIdentityR0
+		# define g_XMNegIdentityR1
+		# define g_XMNegIdentityR2
+		# define g_XMNegIdentityR3
+		# define g_XMNegativeZero
+		# define g_XMNegate3
+		# define g_XMMaskXY
+		# define g_XMMask3
+		# define g_XMMaskX
+		# define g_XMMaskY
+		# define g_XMMaskZ
+		# define g_XMMaskW
+		# define g_XMOne
+		# define g_XMOne3
+		# define g_XMZero
+		# define g_XMTwo
+		# define g_XMFour
+		# define g_XMSix
+		# define g_XMNegativeOne
+		# define g_XMOneHalf
+		# define g_XMNegativeOneHalf
+		# define g_XMNegativeTwoPi
+		# define g_XMNegativePi
+		# define g_XMHalfPi
+		# define g_XMPi
+		# define g_XMReciprocalPi
+		# define g_XMTwoPi
+		# define g_XMReciprocalTwoPi
+		# define g_XMEpsilon
+		# define g_XMInfinity
+		# define g_XMQNaN
+		# define g_XMQNaNTest
+		# define g_XMAbsMask
+		# define g_XMFltMin
+		# define g_XMFltMax
+		# define g_XMNegOneMask
+		# define g_XMMaskA8R8G8B8
+		# define g_XMFlipA8R8G8B8
+		# define g_XMFixAA8R8G8B8
+		# define g_XMNormalizeA8R8G8B8
+		# define g_XMMaskA2B10G10R10
+		# define g_XMFlipA2B10G10R10
+		# define g_XMFixAA2B10G10R10
+		# define g_XMNormalizeA2B10G10R10
+		# define g_XMMaskX16Y16
+		# define g_XMFlipX16Y16
+		# define g_XMFixX16Y16
+		# define g_XMNormalizeX16Y16
+		# define g_XMMaskX16Y16Z16W16
+		# define g_XMFlipX16Y16Z16W16
+		# define g_XMFixX16Y16Z16W16
+		# define g_XMNormalizeX16Y16Z16W16
+		# define g_XMNoFraction
+		# define g_XMMaskByte
+		# define g_XMNegateX
+		# define g_XMNegateY
+		# define g_XMNegateZ
+		# define g_XMNegateW
+		# define g_XMSelect0101
+		# define g_XMSelect1010
+		# define g_XMOneHalfMinusEpsilon
+		# define g_XMSelect1000
+		# define g_XMSelect1100
+		# define g_XMSelect1110
+		# define g_XMSelect1011
+		# define g_XMFixupY16
+		# define g_XMFixupY16W16
+		# define g_XMFlipY
+		# define g_XMFlipZ
+		# define g_XMFlipW
+		# define g_XMFlipYZ
+		# define g_XMFlipZW
+		# define g_XMFlipYW
+		# define g_XMMaskDec4
+		# define g_XMXorDec4
+		# define g_XMAddUDec4
+		# define g_XMAddDec4
+		# define g_XMMulDec4
+		# define g_XMMaskByte4
+		# define g_XMXorByte4
+		# define g_XMAddByte4
+		# define g_XMFixUnsigned
+		# define g_XMMaxInt
+		# define g_XMMaxUInt
+		# define g_XMUnsignedFix
+		# define g_XMsrgbScale
+		# define g_XMsrgbA
+		# define g_XMsrgbA1
+		# define g_XMExponentBias
+		# define g_XMSubnormalExponent
+		# define g_XMNumTrailing
+		# define g_XMMinNormal
+		# define g_XMNegInfinity
+		# define g_XMNegQNaN
+		# define g_XMBin128
+		# define g_XMBinNeg150
+		# define g_XM253
+		# define g_XMExpEst1
+		# define g_XMExpEst2
+		# define g_XMExpEst3
+		# define g_XMExpEst4
+		# define g_XMExpEst5
+		# define g_XMExpEst6
+		# define g_XMExpEst7
+		# define g_XMLogEst0
+		# define g_XMLogEst1
+		# define g_XMLogEst2
+		# define g_XMLogEst3
+		# define g_XMLogEst4
+		# define g_XMLogEst5
+		# define g_XMLogEst6
+		# define g_XMLogEst7
+		# define g_XMLgE
+		# define g_XMInvLgE
+		# define g_XMLg10
+		# define g_XMInvLg10
+		# define g_UByteMax
+		# define g_ByteMin
+		# define g_ByteMax
+		# define g_ShortMin
+		# define g_ShortMax
+		# define g_UShortMax*/
 
-		//;;double mask;;
+			//;;double mask;;
 
-extern __m128i uX_ABI _uX_mm_const_dbl_1lshl3_si128(void); //         __m128q; // dbl_1lshl3_msk
+	extern __m128i uX_ABI _uX_mm_const_dbl_1lshl3_si128(void); //         __m128q; // dbl_1lshl3_msk
 extern __m128i uX_ABI _uX_mm_const_dbl_1lshl4_si128(void); //         __m128q; // dbl_1lshl4_msk
 extern __m128i uX_ABI _uX_mm_const_dbl_1lshl7_si128(void); //         __m128q; // dbl_1lshl7_msk
 extern __m128i uX_ABI _uX_mm_const_dbl_1lshl8_si128(void); //         __m128q; // dbl_1lshl8_msk
@@ -5167,7 +5168,7 @@ extern __m128d uX_ABI _uX_mm_const_moongravity_pd(void); //            __m128d; 
 extern __m128d uX_ABI _uX_mm_const_plutogravity_pd(void); //           __m128d; // dbl_plutogravity
 
 extern __m128d uX_ABI _uX_mm_const_kmtoinch_pd(void); //               __m128d; // dbl_kmtoinch
-extern __m128d uX_ABI _uX_mm_const_kmtofeet_pd(void); //               __m128d; // dbl_kmtofeet 
+extern __m128d uX_ABI _uX_mm_const_kmtofeet_pd(void); //               __m128d; // dbl_kmtofeet
 extern __m128d uX_ABI _uX_mm_const_kmtoyards_pd(void); //          __m128d; // dbl_kmtoyards
 extern __m128d uX_ABI _uX_mm_const_kmtomiles_pd(void); //          __m128d; // dbl_kmtomiles
 

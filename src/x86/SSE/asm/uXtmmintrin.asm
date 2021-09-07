@@ -1,39 +1,63 @@
 
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / /                                                                               / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
+; / /                                                                               / /
+; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
+; / /    you may not use this file except in compliance with the License.           / /
+; / /    You may obtain a copy of the License at                                    / /
+; / /                                                                               / /
+; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
+; / /                                                                               / /
+; / /    Unless required by applicable law or agreed to in writing, software        / /
+; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
+; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
+; / /    See the License for the specific language governing permissions and        / /
+; / /    limitations under the License.                                             / /
+; / /                                                                               / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
+option casemap:none
+include macrolib.inc
+include uXasm.inc
+
 ifndef __MIC__
 
-    include uXx86asm.inc
+.xmm
+option arch:sse
+option evex:0
 
-    .xmm
-    option arch:sse
-    option evex:0
+alignstackfieldproc
 
-    .data?
+.data?
 
-    .data
+.data
 
-    .const
-    
-        alignsize_t
-        _m128ialignrepi8jmptable isize_t    offset _m128ialignrepi8_0, offset _m128ialignrepi8_1, offset _m128ialignrepi8_2, offset _m128ialignrepi8_3, offset _m128ialignrepi8_4, \
-                                            offset _m128ialignrepi8_5, offset _m128ialignrepi8_6, offset _m128ialignrepi8_7, offset _m128ialignrepi8_8, offset _m128ialignrepi8_9, \
-                                            offset _m128ialignrepi8_10, offset _m128ialignrepi8_11, offset _m128ialignrepi8_12, offset _m128ialignrepi8_13, offset _m128ialignrepi8_14, \
-                                            offset _m128ialignrepi8_15, offset _m128ialignrepi8_16, offset _m128ialignrepi8_17, offset _m128ialignrepi8_18, offset _m128ialignrepi8_19, \
-                                            offset _m128ialignrepi8_20, offset _m128ialignrepi8_21, offset _m128ialignrepi8_22, offset _m128ialignrepi8_23, offset _m128ialignrepi8_24, \
-                                            offset _m128ialignrepi8_25, offset _m128ialignrepi8_26, offset _m128ialignrepi8_27, offset _m128ialignrepi8_28, offset _m128ialignrepi8_29, \
-                                            offset _m128ialignrepi8_30, offset _m128ialignrepi8_31, offset _m128ialignrepi8_32 
+.const
+
+    _m128ialignrepi8jmptable label size_t
+    isize_t _m128ialignrepi8_0, _m128ialignrepi8_1, _m128ialignrepi8_2, _m128ialignrepi8_3, _m128ialignrepi8_4
+    isize_t _m128ialignrepi8_5, _m128ialignrepi8_6, _m128ialignrepi8_7, _m128ialignrepi8_8, _m128ialignrepi8_9
+    isize_t _m128ialignrepi8_10, _m128ialignrepi8_11, _m128ialignrepi8_12, _m128ialignrepi8_13, _m128ialignrepi8_14
+    isize_t _m128ialignrepi8_15, _m128ialignrepi8_16, _m128ialignrepi8_17, _m128ialignrepi8_18, _m128ialignrepi8_19
+    isize_t _m128ialignrepi8_20, _m128ialignrepi8_21, _m128ialignrepi8_22, _m128ialignrepi8_23, _m128ialignrepi8_24
+    isize_t _m128ialignrepi8_25, _m128ialignrepi8_26, _m128ialignrepi8_27, _m128ialignrepi8_28, _m128ialignrepi8_29
+    isize_t _m128ialignrepi8_30, _m128ialignrepi8_31, _m128ialignrepi8_32 
 
 ifdef __X32__
-        alignsize_t
-        _m128ialignrpi8jmptable isize_t offset _m128ialignrpi8_0, offset _m128ialignrpi8_1, offset _m128ialignrpi8_2, offset _m128ialignrpi8_3, offset _m128ialignrpi8_4, \
-                                        offset _m128ialignrpi8_5, offset _m128ialignrpi8_6, offset _m128ialignrpi8_7, offset _m128ialignrpi8_8, offset _m128ialignrpi8_9, \
-                                        offset _m128ialignrpi8_10, offset _m128ialignrpi8_11, offset _m128ialignrpi8_12, offset _m128ialignrpi8_13, offset _m128ialignrpi8_14, \
-                                        offset _m128ialignrpi8_15, offset _m128ialignrpi8_16 
+    _m128ialignrpi8jmptable label size_t
+    isize_t _m128ialignrpi8_0, _m128ialignrpi8_1, _m128ialignrpi8_2, _m128ialignrpi8_3, _m128ialignrpi8_4
+    isize_t _m128ialignrpi8_5, _m128ialignrpi8_6, _m128ialignrpi8_7, _m128ialignrpi8_8, _m128ialignrpi8_9
+    isize_t _m128ialignrpi8_10, _m128ialignrpi8_11, _m128ialignrpi8_12, _m128ialignrpi8_13, _m128ialignrpi8_14
+    isize_t _m128ialignrpi8_15, _m128ialignrpi8_16 
 endif ;__X32__
 
-    .code
+.code
 
-    callconvopt
-    alignxmmfieldproc
+callconvopt
+alignxmmfieldproc
 
 ;************************************
 ; Horizontal Add:
@@ -47,7 +71,7 @@ procstart _uX_mm_hadd_epi32, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm
         phaddd          xmm0,           xmm1
         ret
 procend
-    
+
 procstart _uX_mm_hadds_epi16, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
         phaddsw         xmm0,           xmm1
         ret
@@ -363,22 +387,22 @@ procstart _uX_mm_alignr_epi8_32, callconv, xmmword, < >, < >, Inxmm_A:xmmword, I
 procend
 
 procstart _uX_mm_alignr_epi8, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword, Inint_Count:dword
-        push         rbase
-        .if((rparam2 < 0))
+        push         rbase()
+        .if((rp2() < 0))
         jmp         _m128ialignrepi8_end
         .endif
 
-        .if(rparam2 > 32)
+        .if(rp2() > 32)
         pxor            xmm0,           xmm0
         jmp         _m128ialignrepi8_end
         .endif
 
         ifdef __X32__
-        movzx           rbase,    byte ptr [rparam2]
-        jmp     dword ptr [_m128ialignrepi8jmptable+rbase*size_t_size]
+        movzx           rbase(),    byte ptr [rp2()]
+        jmp     dword ptr [_m128ialignrepi8jmptable+rbase()*size_t_size]
         else
-        lea             rbase,    qword ptr [_m128ialignrepi8jmptable]
-        mov             rbase,    qword ptr [rbase+rparam2*size_t_size]
+        lea             rbase(),    qword ptr [_m128ialignrepi8jmptable]
+        mov             rbase(),    qword ptr [rbase()+rp2()*size_t_size]
         jmp             rbx
         endif
 
@@ -483,7 +507,7 @@ procstart _uX_mm_alignr_epi8, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxm
         ;jmp         _m128ialignrepi8_end
 
         _m128ialignrepi8_end:
-        pop         rbase
+        pop         rbase()
         ret
 procend
 
@@ -575,18 +599,18 @@ procstart _uX_mm_alignr_pi8_16, callconv, mmword, < >, < >, Inmm_A:mmword, Inmm_
 procend
 
 procstart _uX_mm_alignr_pi8, callconv, mmword, < >, < >, Inmm_A:mmword, Inmm_B:mmword, Inint_Count:dword
-        push         rbase
-        .if((rparam2 < 0))
+        push         rbase()
+        .if((rp2() < 0))
         jmp         _m128ialignrpi8_end
         .endif
 
-        .if(rparam2 > 16)
+        .if(rp2() > 16)
         pxor            mm0,            mm0
         jmp         _m128ialignrpi8_end
         .endif
 
-        movzx           rbase,    byte ptr [rparam2]
-        jmp     dword ptr [_m128ialignrpi8jmptable+rbase*size_t_size]
+        movzx           rbase(),    byte ptr [rp2()]
+        jmp     dword ptr [_m128ialignrpi8jmptable+rbase()*size_t_size]
         
         _m128ialignrpi8_0 label size_t
         palignr         mm0,            mm1,            0
@@ -641,7 +665,7 @@ procstart _uX_mm_alignr_pi8, callconv, mmword, < >, < >, Inmm_A:mmword, Inmm_B:m
         ;jmp         _m128ialignrpi8_end
 
         _m128ialignrpi8_end:
-        pop         rbase
+        pop         rbase()
         ret
 procend
     alignxmmfieldproc
@@ -686,4 +710,4 @@ endif ;__X32__
 
 endif ;__MIC__
 
-    end
+end

@@ -26,7 +26,6 @@
     <None Include="..\..\..\include\x86\math\sse\inline\uXxmmvecqword4.inl" />
     <None Include="..\..\..\src\x86\AVX256\asm\uXavx256intrin.inc" />
     <None Include="..\..\..\src\x86\AVX256\asm\uXymmconstdata.inc" />
-    <None Include="..\..\..\src\x86\SSE\asm\uXxemmdata.inc" />
     <None Include="..\export\uasmlib-export_X32.def" />
     <UASM Include="..\..\..\src\x86\asm\uXcpuid.asm">
       <FileType>Document</FileType>
@@ -43,12 +42,8 @@
     <ClCompile Include="..\..\..\src\x86\AVX256\asm\uXimmintrin.asm" />
     <ClCompile Include="..\..\..\src\x86\AVX256\asm\uXimmblend.asm" />
     <ClCompile Include="..\..\..\src\x86\AVX256\asm\uXimmlegacy.asm" />
-    <UASM Include="..\..\..\src\x86\MMX\asm\uXm64\uXmmintrin.asm">
-      <FileType>Document</FileType>
-    </UASM>
-    <UASM Include="..\..\..\src\x86\MMX\asm\uXm64\uXmmintshifts.asm">
-      <FileType>Document</FileType>
-    </UASM>
+    <UASM Include="..\..\..\src\x86\MMX\asm\uXmmintrin.asm" />
+    <UASM Include="..\..\..\src\x86\MMX\asm\uXmmintshifts.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXemmintmisc.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXemmintshifts.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXemmintshuffle.asm" />
@@ -76,7 +71,7 @@
       <FileType>Document</FileType>
     </UASM>
     <UASM Include="..\..\..\src\x86\SSE\asm\uXemmarithmetic.asm" />
-    <UASM Include="..\..\..\src\x86\SSE\asm\uXxemmdata.asm" />
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXemmdata.asm" />
     <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmdata.asm">
       <FileType>Document</FileType>
     </UASM>
@@ -174,10 +169,6 @@
     <ClCompile Include="..\..\..\src\uasmlib.cpp" />
     <ClCompile Include="..\..\..\src\uXmisc.cpp" />
     <None Include="..\..\..\src\x86\SSE\uXymmstructs.cpp" />
-    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble.cpp" />
-    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble1.cpp" />
-    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble2.cpp" />
-    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble3.cpp" />
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble3x3.cpp" />
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble4x3.cpp" />
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble4x4.cpp" />
@@ -201,7 +192,6 @@
   <ItemGroup>
     <None Include="..\..\..\.gitignore" />
     <None Include="..\..\..\src\x86\asm\uXasm.inc" />
-    <None Include="..\..\..\src\x86\SSE\asm\uXxmmdata.inc" />
     <None Include="..\export\uasmlib-export_X64.def" />
   </ItemGroup>
   <ItemGroup>

@@ -1,105 +1,129 @@
 
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / /                                                                               / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
+; / /                                                                               / /
+; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
+; / /    you may not use this file except in compliance with the License.           / /
+; / /    You may obtain a copy of the License at                                    / /
+; / /                                                                               / /
+; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
+; / /                                                                               / /
+; / /    Unless required by applicable law or agreed to in writing, software        / /
+; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
+; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
+; / /    See the License for the specific language governing permissions and        / /
+; / /    limitations under the License.                                             / /
+; / /                                                                               / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
+option casemap:none
+include macrolib.inc
+include uXasm.inc
+
 ifndef __MIC__
 
-    include uXx86asm.inc
+.mmx
+option arch:sse
+option evex:0
 
-    .mmx
-    ;option arch:mmx
-    option evex:0
+ifdef __X32__
 
-ifndef __X64__
+alignstackfieldproc
 
-    .data?
+.data?
 
-    .data
+.data
 
-    .const
+.const
 
-        alignsize_t
-        m64sllipi16jmptable isize_t offset m64sllipi16_0, offset m64sllipi16_1, offset m64sllipi16_2, offset m64sllipi16_3, offset m64sllipi16_4, \
-                                    offset m64sllipi16_5, offset m64sllipi16_6, offset m64sllipi16_7, offset m64sllipi16_8, offset m64sllipi16_9, \
-                                    offset m64sllipi16_10, offset m64sllipi16_11, offset m64sllipi16_12, offset m64sllipi16_13, offset m64sllipi16_14, \
-                                    offset m64sllipi16_15           
-        
-        alignsize_t
-        m64sllipi32jmptable isize_t offset m64sllipi32_0, offset m64sllipi32_1, offset m64sllipi32_2, offset m64sllipi32_3, offset m64sllipi32_4, \
-                                    offset m64sllipi32_5, offset m64sllipi32_6, offset m64sllipi32_7, offset m64sllipi32_8, offset m64sllipi32_9, \
-                                    offset m64sllipi32_10, offset m64sllipi32_11, offset m64sllipi32_12, offset m64sllipi32_13, offset m64sllipi32_14, \
-                                    offset m64sllipi32_15, offset m64sllipi32_16, offset m64sllipi32_17, offset m64sllipi32_18, offset m64sllipi32_19, \
-                                    offset m64sllipi32_20, offset m64sllipi32_21, offset m64sllipi32_22, offset m64sllipi32_23, offset m64sllipi32_24, \
-                                    offset m64sllipi32_25, offset m64sllipi32_26, offset m64sllipi32_27, offset m64sllipi32_28, offset m64sllipi32_29, \
-                                    offset m64sllipi32_30, offset m64sllipi32_31
-        
-        alignsize_t
-        m64sllipi64jmptable isize_t offset m64sllipi64_0, offset m64sllipi64_1, offset m64sllipi64_2, offset m64sllipi64_3, offset m64sllipi64_4, \
-                                    offset m64sllipi64_5, offset m64sllipi64_6, offset m64sllipi64_7, offset m64sllipi64_8, offset m64sllipi64_9, \
-                                    offset m64sllipi64_10, offset m64sllipi64_11, offset m64sllipi64_12, offset m64sllipi64_13, offset m64sllipi64_14, \
-                                    offset m64sllipi64_15, offset m64sllipi64_16, offset m64sllipi64_17, offset m64sllipi64_18, offset m64sllipi64_19, \
-                                    offset m64sllipi64_20, offset m64sllipi64_21, offset m64sllipi64_22, offset m64sllipi64_23, offset m64sllipi64_24, \
-                                    offset m64sllipi64_25, offset m64sllipi64_26, offset m64sllipi64_27, offset m64sllipi64_28, offset m64sllipi64_29, \
-                                    offset m64sllipi64_30, offset m64sllipi64_31, offset m64sllipi64_32, offset m64sllipi64_33, offset m64sllipi64_34, \
-                                    offset m64sllipi64_35, offset m64sllipi64_36, offset m64sllipi64_37, offset m64sllipi64_38, offset m64sllipi64_39, \
-                                    offset m64sllipi64_40, offset m64sllipi64_41, offset m64sllipi64_42, offset m64sllipi64_43, offset m64sllipi64_44, \
-                                    offset m64sllipi64_45, offset m64sllipi64_46, offset m64sllipi64_47, offset m64sllipi64_48, offset m64sllipi64_49, \
-                                    offset m64sllipi64_50, offset m64sllipi64_51, offset m64sllipi64_52, offset m64sllipi64_53, offset m64sllipi64_54, \
-                                    offset m64sllipi64_55, offset m64sllipi64_56, offset m64sllipi64_57, offset m64sllipi64_58, offset m64sllipi64_59, \
-                                    offset m64sllipi64_60, offset m64sllipi64_61, offset m64sllipi64_62, offset m64sllipi64_63
-        
-        alignsize_t
-        m64sraipi16jmptable isize_t offset m64sraipi16_0, offset m64sraipi16_1, offset m64sraipi16_2, offset m64sraipi16_3, offset m64sraipi16_4, \
-                                    offset m64sraipi16_5, offset m64sraipi16_6, offset m64sraipi16_7, offset m64sraipi16_8, offset m64sraipi16_9, \
-                                    offset m64sraipi16_10, offset m64sraipi16_11, offset m64sraipi16_12, offset m64sraipi16_13, offset m64sraipi16_14, \
-                                    offset m64sraipi16_15           
-        
-        alignsize_t
-        m64sraipi32jmptable isize_t offset m64sraipi32_0, offset m64sraipi32_1, offset m64sraipi32_2, offset m64sraipi32_3, offset m64sraipi32_4, \
-                                    offset m64sraipi32_5, offset m64sraipi32_6, offset m64sraipi32_7, offset m64sraipi32_8, offset m64sraipi32_9, \
-                                    offset m64sraipi32_10, offset m64sraipi32_11, offset m64sraipi32_12, offset m64sraipi32_13, offset m64sraipi32_14, \
-                                    offset m64sraipi32_15, offset m64sraipi32_16, offset m64sraipi32_17, offset m64sraipi32_18, offset m64sraipi32_19, \
-                                    offset m64sraipi32_20, offset m64sraipi32_21, offset m64sraipi32_22, offset m64sraipi32_23, offset m64sraipi32_24, \
-                                    offset m64sraipi32_25, offset m64sraipi32_26, offset m64sraipi32_27, offset m64sraipi32_28, offset m64sraipi32_29, \
-                                    offset m64sraipi32_30, offset m64sraipi32_31
-        
-        alignsize_t
-        m64srlisi128jmptable isize_toffset m64srlisi128_0, offset m64srlisi128_1, offset m64srlisi128_2, offset m64srlisi128_3, offset m64srlisi128_4, \
-                                    offset m64srlisi128_5, offset m64srlisi128_6, offset m64srlisi128_7, offset m64srlisi128_8, offset m64srlisi128_9, \
-                                    offset m64srlisi128_10, offset m64srlisi128_11, offset m64srlisi128_12, offset m64srlisi128_13, offset m64srlisi128_14, \
-                                    offset m64srlisi128_15          
-        
-        alignsize_t
-        m64srlipi16jmptable isize_t offset m64srlipi16_0, offset m64srlipi16_1, offset m64srlipi16_2, offset m64srlipi16_3, offset m64srlipi16_4, \
-                                    offset m64srlipi16_5, offset m64srlipi16_6, offset m64srlipi16_7, offset m64srlipi16_8, offset m64srlipi16_9, \
-                                    offset m64srlipi16_10, offset m64srlipi16_11, offset m64srlipi16_12, offset m64srlipi16_13, offset m64srlipi16_14, \
-                                    offset m64srlipi16_15           
-        
-        alignsize_t
-        m64srlipi32jmptable isize_t offset m64srlipi32_0, offset m64srlipi32_1, offset m64srlipi32_2, offset m64srlipi32_3, offset m64srlipi32_4, \
-                                    offset m64srlipi32_5, offset m64srlipi32_6, offset m64srlipi32_7, offset m64srlipi32_8, offset m64srlipi32_9, \
-                                    offset m64srlipi32_10, offset m64srlipi32_11, offset m64srlipi32_12, offset m64srlipi32_13, offset m64srlipi32_14, \
-                                    offset m64srlipi32_15, offset m64srlipi32_16, offset m64srlipi32_17, offset m64srlipi32_18, offset m64srlipi32_19, \
-                                    offset m64srlipi32_20, offset m64srlipi32_21, offset m64srlipi32_22, offset m64srlipi32_23, offset m64srlipi32_24, \
-                                    offset m64srlipi32_25, offset m64srlipi32_26, offset m64srlipi32_27, offset m64srlipi32_28, offset m64srlipi32_29, \
-                                    offset m64srlipi32_30, offset m64srlipi32_31
-        
-        alignsize_t
-        m64srlipi64jmptable isize_t offset m64srlipi64_0, offset m64srlipi64_1, offset m64srlipi64_2, offset m64srlipi64_3, offset m64srlipi64_4, \
-                                    offset m64srlipi64_5, offset m64srlipi64_6, offset m64srlipi64_7, offset m64srlipi64_8, offset m64srlipi64_9, \
-                                    offset m64srlipi64_10, offset m64srlipi64_11, offset m64srlipi64_12, offset m64srlipi64_13, offset m64srlipi64_14, \
-                                    offset m64srlipi64_15, offset m64srlipi64_16, offset m64srlipi64_17, offset m64srlipi64_18, offset m64srlipi64_19, \
-                                    offset m64srlipi64_20, offset m64srlipi64_21, offset m64srlipi64_22, offset m64srlipi64_23, offset m64srlipi64_24, \
-                                    offset m64srlipi64_25, offset m64srlipi64_26, offset m64srlipi64_27, offset m64srlipi64_28, offset m64srlipi64_29, \
-                                    offset m64srlipi64_30, offset m64srlipi64_31, offset m64srlipi64_32, offset m64srlipi64_33, offset m64srlipi64_34, \
-                                    offset m64srlipi64_35, offset m64srlipi64_36, offset m64srlipi64_37, offset m64srlipi64_38, offset m64srlipi64_39, \
-                                    offset m64srlipi64_40, offset m64srlipi64_41, offset m64srlipi64_42, offset m64srlipi64_43, offset m64srlipi64_44, \
-                                    offset m64srlipi64_45, offset m64srlipi64_46, offset m64srlipi64_47, offset m64srlipi64_48, offset m64srlipi64_49, \
-                                    offset m64srlipi64_50, offset m64srlipi64_51, offset m64srlipi64_52, offset m64srlipi64_53, offset m64srlipi64_54, \
-                                    offset m64srlipi64_55, offset m64srlipi64_56, offset m64srlipi64_57, offset m64srlipi64_58, offset m64srlipi64_59, \
-                                    offset m64srlipi64_60, offset m64srlipi64_61, offset m64srlipi64_62, offset m64srlipi64_63
-        
-    .code
+        m64sllipi16jmptable label size_t
+        isize_t m64sllipi16_0, m64sllipi16_1, m64sllipi16_2, m64sllipi16_3, m64sllipi16_4
+        isize_t m64sllipi16_5, m64sllipi16_6, m64sllipi16_7, m64sllipi16_8, m64sllipi16_9
+        isize_t m64sllipi16_10, m64sllipi16_11, m64sllipi16_12, m64sllipi16_13, m64sllipi16_14
+        isize_t m64sllipi16_15           
 
-    callconvopt
-    alignmmfieldproc
+        m64sllipi32jmptable label size_t
+        isize_t m64sllipi32_0, m64sllipi32_1, m64sllipi32_2, m64sllipi32_3, m64sllipi32_4
+        isize_t m64sllipi32_5, m64sllipi32_6, m64sllipi32_7, m64sllipi32_8, m64sllipi32_9
+        isize_t m64sllipi32_10, m64sllipi32_11, m64sllipi32_12, m64sllipi32_13, m64sllipi32_14
+        isize_t m64sllipi32_15, m64sllipi32_16, m64sllipi32_17, m64sllipi32_18, m64sllipi32_19
+        isize_t m64sllipi32_20, m64sllipi32_21, m64sllipi32_22, m64sllipi32_23, m64sllipi32_24
+        isize_t m64sllipi32_25, m64sllipi32_26, m64sllipi32_27, m64sllipi32_28, m64sllipi32_29
+        isize_t m64sllipi32_30, m64sllipi32_31
+
+        m64sllipi64jmptable label size_t
+        isize_t m64sllipi64_0, m64sllipi64_1, m64sllipi64_2, m64sllipi64_3, m64sllipi64_4
+        isize_t m64sllipi64_5, m64sllipi64_6, m64sllipi64_7, m64sllipi64_8, m64sllipi64_9
+        isize_t m64sllipi64_10, m64sllipi64_11, m64sllipi64_12, m64sllipi64_13, m64sllipi64_14
+        isize_t m64sllipi64_15, m64sllipi64_16, m64sllipi64_17, m64sllipi64_18, m64sllipi64_19
+        isize_t m64sllipi64_20, m64sllipi64_21, m64sllipi64_22, m64sllipi64_23, m64sllipi64_24
+        isize_t m64sllipi64_25, m64sllipi64_26, m64sllipi64_27, m64sllipi64_28, m64sllipi64_29
+        isize_t m64sllipi64_30, m64sllipi64_31, m64sllipi64_32, m64sllipi64_33, m64sllipi64_34
+        isize_t m64sllipi64_35, m64sllipi64_36, m64sllipi64_37, m64sllipi64_38, m64sllipi64_39
+        isize_t m64sllipi64_40, m64sllipi64_41, m64sllipi64_42, m64sllipi64_43, m64sllipi64_44
+        isize_t m64sllipi64_45, m64sllipi64_46, m64sllipi64_47, m64sllipi64_48, m64sllipi64_49
+        isize_t m64sllipi64_50, m64sllipi64_51, m64sllipi64_52, m64sllipi64_53, m64sllipi64_54
+        isize_t m64sllipi64_55, m64sllipi64_56, m64sllipi64_57, m64sllipi64_58, m64sllipi64_59
+        isize_t m64sllipi64_60, m64sllipi64_61, m64sllipi64_62, m64sllipi64_63
+
+        m64sraipi16jmptable label size_t
+        isize_t m64sraipi16_0, m64sraipi16_1, m64sraipi16_2, m64sraipi16_3, m64sraipi16_4
+        isize_t m64sraipi16_5, m64sraipi16_6, m64sraipi16_7, m64sraipi16_8, m64sraipi16_9
+        isize_t m64sraipi16_10, m64sraipi16_11, m64sraipi16_12, m64sraipi16_13, m64sraipi16_14
+        isize_t m64sraipi16_15           
+
+        m64sraipi32jmptable label size_t
+        isize_t m64sraipi32_0, m64sraipi32_1, m64sraipi32_2, m64sraipi32_3, m64sraipi32_4
+        isize_t m64sraipi32_5, m64sraipi32_6, m64sraipi32_7, m64sraipi32_8, m64sraipi32_9
+        isize_t m64sraipi32_10, m64sraipi32_11, m64sraipi32_12, m64sraipi32_13, m64sraipi32_14
+        isize_t m64sraipi32_15, m64sraipi32_16, m64sraipi32_17, m64sraipi32_18, m64sraipi32_19
+        isize_t m64sraipi32_20, m64sraipi32_21, m64sraipi32_22, m64sraipi32_23, m64sraipi32_24
+        isize_t m64sraipi32_25, m64sraipi32_26, m64sraipi32_27, m64sraipi32_28, m64sraipi32_29
+        isize_t m64sraipi32_30, m64sraipi32_31
+
+        m64srlisi128jmptable label size_t
+        isize_tm64srlisi128_0, m64srlisi128_1, m64srlisi128_2, m64srlisi128_3, m64srlisi128_4
+        isize_t m64srlisi128_5, m64srlisi128_6, m64srlisi128_7, m64srlisi128_8, m64srlisi128_9
+        isize_t m64srlisi128_10, m64srlisi128_11, m64srlisi128_12, m64srlisi128_13, m64srlisi128_14
+        isize_t m64srlisi128_15          
+
+        m64srlipi16jmptable label size_t
+        isize_t m64srlipi16_0, m64srlipi16_1, m64srlipi16_2, m64srlipi16_3, m64srlipi16_4
+        isize_t m64srlipi16_5, m64srlipi16_6, m64srlipi16_7, m64srlipi16_8, m64srlipi16_9
+        isize_t m64srlipi16_10, m64srlipi16_11, m64srlipi16_12, m64srlipi16_13, m64srlipi16_14
+        isize_t m64srlipi16_15           
+
+        m64srlipi32jmptable label size_t
+        isize_t m64srlipi32_0, m64srlipi32_1, m64srlipi32_2, m64srlipi32_3, m64srlipi32_4
+        isize_t m64srlipi32_5, m64srlipi32_6, m64srlipi32_7, m64srlipi32_8, m64srlipi32_9
+        isize_t m64srlipi32_10, m64srlipi32_11, m64srlipi32_12, m64srlipi32_13, m64srlipi32_14
+        isize_t m64srlipi32_15, m64srlipi32_16, m64srlipi32_17, m64srlipi32_18, m64srlipi32_19
+        isize_t m64srlipi32_20, m64srlipi32_21, m64srlipi32_22, m64srlipi32_23, m64srlipi32_24
+        isize_t m64srlipi32_25, m64srlipi32_26, m64srlipi32_27, m64srlipi32_28, m64srlipi32_29
+        isize_t m64srlipi32_30, m64srlipi32_31
+
+        m64srlipi64jmptable label size_t
+        isize_t m64srlipi64_0, m64srlipi64_1, m64srlipi64_2, m64srlipi64_3, m64srlipi64_4
+        isize_t m64srlipi64_5, m64srlipi64_6, m64srlipi64_7, m64srlipi64_8, m64srlipi64_9
+        isize_t m64srlipi64_10, m64srlipi64_11, m64srlipi64_12, m64srlipi64_13, m64srlipi64_14
+        isize_t m64srlipi64_15, m64srlipi64_16, m64srlipi64_17, m64srlipi64_18, m64srlipi64_19
+        isize_t m64srlipi64_20, m64srlipi64_21, m64srlipi64_22, m64srlipi64_23, m64srlipi64_24
+        isize_t m64srlipi64_25, m64srlipi64_26, m64srlipi64_27, m64srlipi64_28, m64srlipi64_29
+        isize_t m64srlipi64_30, m64srlipi64_31, m64srlipi64_32, m64srlipi64_33, m64srlipi64_34
+        isize_t m64srlipi64_35, m64srlipi64_36, m64srlipi64_37, m64srlipi64_38, m64srlipi64_39
+        isize_t m64srlipi64_40, m64srlipi64_41, m64srlipi64_42, m64srlipi64_43, m64srlipi64_44
+        isize_t m64srlipi64_45, m64srlipi64_46, m64srlipi64_47, m64srlipi64_48, m64srlipi64_49
+        isize_t m64srlipi64_50, m64srlipi64_51, m64srlipi64_52, m64srlipi64_53, m64srlipi64_54
+        isize_t m64srlipi64_55, m64srlipi64_56, m64srlipi64_57, m64srlipi64_58, m64srlipi64_59
+        isize_t m64srlipi64_60, m64srlipi64_61, m64srlipi64_62, m64srlipi64_63
+
+.code
+
+callconvopt
+alignmmfieldproc
 
 procstart _uX_m_psllwi_0, callconv, mmword, < >, < >, Inmm_A:mmword
         psllw           mm0,            0
@@ -182,18 +206,18 @@ procstart _uX_m_psllwi_15, callconv, mmword, < >, < >, Inmm_A:mmword
 procend
 
 procstart _uX_m_psllwi, callconv, mmword, < >, < >, Inmm_A:mmword, Inint_Imm:dword
-        push         rbase
-        .if(rparam1 < 0)
+        push         rbase()
+        .if(rp1() < 0)
         jmp         m64sllipi16_end
         .endif
 
-        .if(rparam1 > 15)
+        .if(rp1() > 15)
         pxor          mm0,           mm0
         jmp         m64sllipi16_end
         .endif
 
-        movzx           rbase,    byte ptr [rparam1]
-        jmp     dword ptr [m64sllipi16jmptable+rbase*size_t_size]
+        movzx           rbase(),    byte ptr [rp1()]
+        jmp     dword ptr [m64sllipi16jmptable+rbase()*size_t_size]
 
         m64sllipi16_0 label size_t
         psllw           mm0,            0
@@ -245,7 +269,7 @@ procstart _uX_m_psllwi, callconv, mmword, < >, < >, Inmm_A:mmword, Inint_Imm:dwo
         ;jmp         m64sllipi16_end
 
         m64sllipi16_end:
-        pop         rbase
+        pop         rbase()
         ret
 procend
 
@@ -410,18 +434,18 @@ procstart _uX_m_pslldi_31, callconv, mmword, < >, < >, Inmm_A:mmword
 procend
 
 procstart _uX_m_pslldi, callconv, mmword, < >, < >, Inmm_A:mmword, Inint_Imm:dword
-        push         rbase
-        .if(rparam1 < 0)
+        push         rbase()
+        .if(rp1() < 0)
         jmp         m64sllipi32_end
         .endif
 
-        .if(rparam1 > 31)
+        .if(rp1() > 31)
         pxor          mm0,           mm0
         jmp         m64sllipi32_end
         .endif
 
-        movzx           rbase,    byte ptr [rparam1]
-        jmp     dword ptr [m64sllipi32jmptable+rbase*size_t_size]
+        movzx           rbase(),    byte ptr [rp1()]
+        jmp     dword ptr [m64sllipi32jmptable+rbase()*size_t_size]
 
         m64sllipi32_0 label size_t
         pslld           mm0,            0
@@ -521,7 +545,7 @@ procstart _uX_m_pslldi, callconv, mmword, < >, < >, Inmm_A:mmword, Inint_Imm:dwo
         ;jmp         m64sllipi32_end
 
         m64sllipi32_end:
-        pop         rbase
+        pop         rbase()
         ret
 procend
 
@@ -846,18 +870,18 @@ procstart _uX_m_psllqi_63, callconv, mmword, < >, < >, Inmm_A:mmword
 procend
 
 procstart _uX_m_psllqi, callconv, mmword, < >, < >, Inmm_A:mmword, Inint_Imm:dword
-        push         rbase
-        .if(rparam1 < 0)
+        push         rbase()
+        .if(rp1() < 0)
         jmp         m64sllipi64_end
         .endif
 
-        .if(rparam1 > 63)
+        .if(rp1() > 63)
         pxor          mm0,           mm0
         jmp         m64sllipi64_end
         .endif
 
-        movzx           rbase,    byte ptr [rparam1]
-        jmp     dword ptr [m64sllipi64jmptable+rbase*size_t_size]
+        movzx           rbase(),    byte ptr [rp1()]
+        jmp     dword ptr [m64sllipi64jmptable+rbase()*size_t_size]
 
         m64sllipi64_0 label size_t
         psllq           mm0,            0
@@ -1053,7 +1077,7 @@ procstart _uX_m_psllqi, callconv, mmword, < >, < >, Inmm_A:mmword, Inint_Imm:dwo
         ;jmp         m64sllipi64_end
 
         m64sllipi64_end:
-        pop         rbase
+        pop         rbase()
         ret
 procend
 
@@ -1138,18 +1162,18 @@ procstart _uX_m_psrawi_15, callconv, mmword, < >, < >, Inmm_A:mmword
 procend
 
 procstart _uX_m_psrawi, callconv, mmword, < >, < >, Inmm_A:mmword, Inint_Imm:dword
-        push         rbase
-        .if(rparam1 < 0)
+        push         rbase()
+        .if(rp1() < 0)
         jmp         m64sraipi16_end
         .endif
 
-        .if(rparam1 > 15)
+        .if(rp1() > 15)
         psraw           mm0,            15
         jmp         m64sraipi16_end
         .endif
 
-        movzx           rbase,    byte ptr [rparam1]
-        jmp     dword ptr [m64sraipi16jmptable+rbase*size_t_size]
+        movzx           rbase(),    byte ptr [rp1()]
+        jmp     dword ptr [m64sraipi16jmptable+rbase()*size_t_size]
 
         m64sraipi16_0 label size_t
         psraw           mm0,            0
@@ -1201,7 +1225,7 @@ procstart _uX_m_psrawi, callconv, mmword, < >, < >, Inmm_A:mmword, Inint_Imm:dwo
         ;jmp         m64sraipi16_end
 
         m64sraipi16_end:
-        pop         rbase
+        pop         rbase()
         ret
 procend
 
@@ -1366,18 +1390,18 @@ procstart _uX_m_psradi_31, callconv, mmword, < >, < >, Inmm_A:mmword
 procend
 
 procstart _uX_m_psradi, callconv, mmword, < >, < >, Inmm_A:mmword, Inint_Imm:dword
-        push         rbase
-        .if(rparam1 < 0)
+        push         rbase()
+        .if(rp1() < 0)
         jmp         m64sraipi32_end
         .endif
 
-        .if(rparam1 > 31)
+        .if(rp1() > 31)
         psrad           mm0,            31
         jmp         m64sraipi32_end
         .endif
 
-        movzx           rbase,    byte ptr [rparam1]
-        jmp     dword ptr [m64sraipi32jmptable+rbase*size_t_size]
+        movzx           rbase(),    byte ptr [rp1()]
+        jmp     dword ptr [m64sraipi32jmptable+rbase()*size_t_size]
 
         m64sraipi32_0 label size_t
         psrad           mm0,            0
@@ -1477,7 +1501,7 @@ procstart _uX_m_psradi, callconv, mmword, < >, < >, Inmm_A:mmword, Inint_Imm:dwo
         ;jmp         m64sraipi32_end
 
         m64sraipi32_end:
-        pop         rbase
+        pop         rbase()
         ret
 procend
 
@@ -1562,18 +1586,18 @@ procstart _uX_m_psrlwi_15, callconv, mmword, < >, < >, Inmm_A:mmword
 procend
 
 procstart _uX_m_psrlwi, callconv, mmword, < >, < >, Inmm_A:mmword, Inint_Imm:dword
-        push         rbase
-        .if(rparam1 < 0)
+        push         rbase()
+        .if(rp1() < 0)
         jmp         m64srlipi16_end
         .endif
 
-        .if(rparam1 > 15)
+        .if(rp1() > 15)
         pxor          mm0,           mm0
         jmp         m64srlipi16_end
         .endif
 
-        movzx           rbase,    byte ptr [rparam1]
-        jmp     dword ptr [m64srlipi16jmptable+rbase*size_t_size]
+        movzx           rbase(),    byte ptr [rp1()]
+        jmp     dword ptr [m64srlipi16jmptable+rbase()*size_t_size]
 
         m64srlipi16_0 label size_t
         psrlw           mm0,            0
@@ -1625,7 +1649,7 @@ procstart _uX_m_psrlwi, callconv, mmword, < >, < >, Inmm_A:mmword, Inint_Imm:dwo
         ;jmp         m64srlipi16_end
 
         m64srlipi16_end:
-        pop         rbase
+        pop         rbase()
         ret
 procend
 
@@ -1790,18 +1814,18 @@ procstart _uX_m_psrldi_31, callconv, mmword, < >, < >, Inmm_A:mmword
 procend
 
 procstart _uX_m_psrldi, callconv, mmword, < >, < >, Inmm_A:mmword, Inint_Imm:dword
-        push         rbase
-        .if(rparam1 < 0)
+        push         rbase()
+        .if(rp1() < 0)
         jmp         m64srlipi32_end
         .endif
 
-        .if(rparam1 > 31)
+        .if(rp1() > 31)
         pxor          mm0,           mm0
         jmp         m64srlipi32_end
         .endif
 
-        movzx           rbase,    byte ptr [rparam1]
-        jmp     dword ptr [m64srlipi32jmptable+rbase*size_t_size]
+        movzx           rbase(),    byte ptr [rp1()]
+        jmp     dword ptr [m64srlipi32jmptable+rbase()*size_t_size]
 
         m64srlipi32_0 label size_t
         psrld           mm0,            0
@@ -1901,7 +1925,7 @@ procstart _uX_m_psrldi, callconv, mmword, < >, < >, Inmm_A:mmword, Inint_Imm:dwo
         ;jmp         m64srlipi32_end
 
         m64srlipi32_end:
-        pop         rbase
+        pop         rbase()
         ret
 procend
 
@@ -2226,18 +2250,18 @@ procstart _uX_m_psrlqi_63, callconv, mmword, < >, < >, Inmm_A:mmword
 procend
 
 procstart _uX_m_psrlqi, callconv, mmword, < >, < >, Inmm_A:mmword, Inint_Imm:dword
-        push         rbase
-        .if(rparam1 < 0)
+        push         rbase()
+        .if(rp1() < 0)
         jmp         m64srlipi64_end
         .endif
 
-        .if(rparam1 > 63)
+        .if(rp1() > 63)
         pxor          mm0,           mm0
         jmp         m64srlipi64_end
         .endif
 
-        movzx           rbase,    byte ptr [rparam1]
-        jmp     dword ptr [m64srlipi64jmptable+rbase*size_t_size]
+        movzx           rbase(),    byte ptr [rp1()]
+        jmp     dword ptr [m64srlipi64jmptable+rbase()*size_t_size]
 
         m64srlipi64_0 label size_t
         psrlq           mm0,            0
@@ -2433,11 +2457,11 @@ procstart _uX_m_psrlqi, callconv, mmword, < >, < >, Inmm_A:mmword, Inint_Imm:dwo
         ;jmp         m64srlipi64_end
 
         m64srlipi64_end:
-        pop         rbase
+        pop         rbase()
         ret
 procend
 endif ;__X32__
 
 endif ;__MIC__
 
-    end
+end

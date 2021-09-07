@@ -1,25 +1,49 @@
 
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / /                                                                               / /
+; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
+; / /                                                                               / /
+; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
+; / /    you may not use this file except in compliance with the License.           / /
+; / /    You may obtain a copy of the License at                                    / /
+; / /                                                                               / /
+; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
+; / /                                                                               / /
+; / /    Unless required by applicable law or agreed to in writing, software        / /
+; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
+; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
+; / /    See the License for the specific language governing permissions and        / /
+; / /    limitations under the License.                                             / /
+; / /                                                                               / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
+option casemap:none
+include macrolib.inc
+include uXasm.inc
+
 ifndef __MIC__
 
-    include uXx86asm.inc
+.xmm
+option arch:sse
+option evex:0
 
-    .xmm
-    option arch:sse
-    option evex:0
+alignstackfieldproc
 
-    .data?
+.data?
 
-    .data
+.data
 
-    .const
+.const
 
-        alignsize_t
-        _m128dshufpdjmptable isize_t offset _m128dshufpd_0, offset _m128dshufpd_1, offset _m128dshufpd_2, offset _m128dshufpd_3
+    _m128dshufpdjmptable label size_t
+    isize_t _m128dshufpd_0, _m128dshufpd_1, _m128dshufpd_2, _m128dshufpd_3
 
-    .code
+.code
 
-    callconvopt 
-    alignxmmfieldproc
+callconvopt
+alignxmmfieldproc
 
 procstart _uX_mm_shuffle_00_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
         shufpd          xmm0,           xmm1,           0
@@ -42,17 +66,17 @@ procstart _uX_mm_shuffle_11_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, In
 procend
 
 procstart _uX_mm_shuffle_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword, Inint_Imm:dword
-        push         rbase
-        .if((rparam2 < 0) || (rparam2 > 3))
+        push         rbase()
+        .if((rp2() < 0) || (rp2() > 3))
         jmp         _m128dshufpd_end
         .endif
 
         ifdef __X32__
-        movzx       rbase,    byte ptr [rparam2]
-        jmp     dword ptr [_m128dshufpdjmptable+rbase*size_t_size]
+        movzx       rbase(),    byte ptr [rp2()]
+        jmp     dword ptr [_m128dshufpdjmptable+rbase()*size_t_size]
         else
-        lea         rbase,    qword ptr [_m128dshufpdjmptable]
-        mov         rbase,    qword ptr [rbase+rparam2*size_t_size]
+        lea         rbase(),    qword ptr [_m128dshufpdjmptable]
+        mov         rbase(),    qword ptr [rbase()+rp2()*size_t_size]
         jmp         rbx
         endif
 
@@ -70,10 +94,10 @@ procstart _uX_mm_shuffle_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm
         ;jmp         _m128dshufpd_end
 
         _m128dshufpd_end:
-        pop         rbase
+        pop         rbase()
         ret
 procend
 
 endif ;__MIC__
 
-    end
+end

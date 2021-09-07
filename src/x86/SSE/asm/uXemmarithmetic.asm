@@ -51,6 +51,11 @@ alignxmmfieldproc
 
 .const
 
+    v2ci xmmword_190,                           __m128q, 0x4338000000000000
+    v2ci xmmword_1A0,                           __m128q, 0x4000000000000000
+    v2ci xmmword_180,                           __m128q, 0x4000000000000200
+    v2ci xmmword_220,                           __m128q, 0x0
+
 externdef __m128_true:__m128i
 externdef __m128_false:__m128i
 externdef __m128_sign:__m128i
@@ -193,7 +198,7 @@ alignxmmfieldproc
 ; Integer Division
 ;******************
 
-.ERR <"TODO: Fix'me high pseudo">
+;.ERR <"TODO: Fix'me high pseudo">
 procstart _uX_mm_div_epi8, callconv, xmmword, < >, <uses xmm11 xmm13 xmm14 xmm15>, Inxmm_A:xmmword, Inxmm_B:xmmword
         movdqa          xmm5,           xmm0
         movdqa          xmm14,          xmm1
@@ -239,11 +244,12 @@ procstart _uX_mm_div_epi8, callconv, xmmword, < >, <uses xmm11 xmm13 xmm14 xmm15
         mulps           xmm13,          xmm1
         mulps           xmm11,          xmm15
         mulps           xmm5,           xmm3
-        pcmpeqb         xmm14,          __m128i_i8_false
+        movdqa          xmm4,           __m128i_i8_false
+        pcmpeqb         xmm14,          xmm4
         pmovmskb        eax,            xmm14
         test            eax,            eax
         jz              short _B1_3
-        B1_2:
+        _B1_2:
         mov             eax,            0
         div             al
         _B1_3:
@@ -268,11 +274,113 @@ procstart _uX_mm_div_epi16, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_
         ret
 procend
 
-procstart _uX_mm_div_epi32, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
+ifdef __x64__
+    ifdef __windows__
+        xmmdivepi32uses textequ <uses xmm6 xmm7 xmm8 xmm9>
+    else
+        xmmdivepi32uses textequ <uses xmm8 xmm9>
+    endif
+endif ;__x64__
+
+procstart _uX_mm_div_epi32, callconv, xmmword, < >, xmmdivepi32uses, Inxmm_A:xmmword, Inxmm_B:xmmword
+        .if (__uX_CPUFeatures_SSE41 == true)
+;var_48= xmmword ptr -48h
+;var_38= xmmword ptr -38h
+;var_28= xmmword ptr -28h
+;var_18= xmmword ptr -18h
+
+;sub     rsp, 68h
+;movaps  [rsp+68h+var_28], xmm6
+        movdqa          xmm6,           xmm1
+        movdqa          xmm1,           xmmword_190
+        movdqa          xmm3,           xmm1
+        pblendw         xmm3,           xmm6,       33h ; '3'
+        subpd           xmm3,           xmm1
+        cvtpd2ps        xmm2,           xmm3
+        rcpps           xmm5,           xmm2
+        pshufd          xmm4,           xmm6,       0B1h
+        pblendw         xmm4,           xmm1,       0CCh
+        subpd           xmm4,           xmm1
+        cvtps2pd        xmm2,           xmm5
+        cvtpd2ps        xmm5,           xmm4
+;movaps  [rsp+68h+var_48], xmm8
+        rcpps           xmm8,           xmm5
+;movaps  [rsp+68h+var_18], xmm9
+        movaps          xmm9,           xmm2
+        mulpd           xmm9,           xmm3
+        cvtps2pd        xmm5,           xmm8
+;movaps  [rsp+68h+var_38], xmm7
+        movaps          xmm7,           xmmword_1A0
+        movaps          xmm8,           xmm7
+        subpd           xmm8,           xmm9
+        movaps          xmm9,           xmm5
+        mulpd           xmm9,           xmm4
+        mulpd           xmm2,           xmm8
+        subpd           xmm7,           xmm9
+        mulpd           xmm3,           xmm2
+        mulpd           xmm5,           xmm7
+        pshufd          xmm7,           xmm0,       0B1h
+        movdqa          xmm8,           xmm1
+        pblendw         xmm8,           xmm0,       33h ; '3'
+        pblendw         xmm7,           xmm1,       0CCh
+        subpd           xmm8,           xmm1
+        subpd           xmm7,           xmm1
+        mulpd           xmm4,           xmm5
+        mulpd           xmm2,           xmm8
+        mulpd           xmm5,           xmm7
+        movaps          xmm0,           xmmword_180
+        movaps          xmm1,           xmm0
+        subpd           xmm1,           xmm3
+        subpd           xmm0,           xmm4
+        mulpd           xmm1,           xmm2
+        mulpd           xmm0,           xmm5
+        pcmpeqd         xmm6,           xmmword_220
+        pmovmskb        eax,            xmm6
+        test            eax,            eax
+        jz      short _B1_3
+        _B1_2:
+        mov             eax,            0
+        div             al
+        _B1_3:
+        movaps          xmm2,           xmmword_190
+        roundpd         xmm0,           xmm0,       3
+        roundpd         xmm1,           xmm1,       3
+        addpd           xmm0,           xmm2
+        addpd           xmm1,           xmm2
+        pshufd          xmm0,           xmm0,       0B1h
+;movaps  xmm6, [rsp+68h+var_28]
+;movaps  xmm7, [rsp+68h+var_38]
+;movaps  xmm8, [rsp+68h+var_48]
+;movaps  xmm9, [rsp+68h+var_18]
+        pblendw         xmm0,           xmm1,       33h ; '3'
+;add     rsp, 68h
+        .else
+        .endif
         ret
 procend
 
 procstart _uX_mm_div_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
+        movdqu  xmmword ptr [rp0()],    xmm0
+        mov         rret(),     qword ptr [rp0()]
+        movdqu  xmmword ptr [rp3()],    xmm1
+        cqo
+        idiv    qword ptr [rp3()]
+        movq        xmm0,       rret()
+        mov         rret(),     qword ptr [rp0()+8]
+        cqo
+        idiv    qword ptr [rp3()+8]
+        movq        xmm2,       rret()
+        unpcklpd    xmm0,       xmm2
+        ret
+procend
+
+procstart _uX_mm_div_sepi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
+        movdqu  xmmword ptr [rp0()],    xmm0
+        mov         rret(),     qword ptr [rp0()]
+        movdqu  xmmword ptr [rp3()],    xmm1
+        cqo
+        idiv    qword ptr [rp3()]
+        movq        xmm0,       rret()
         ret
 procend
 
@@ -289,6 +397,27 @@ procstart _uX_mm_div_epu32, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_
 procend
 
 procstart _uX_mm_div_epu64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
+        xor     edx, edx
+        movdqu  xmmword ptr [rp0()], xmm0
+        movdqu  xmmword ptr [rp3()], xmm1
+        mov     rret(), qword ptr [rp0()]
+        div     qword ptr [rp3()]
+        xor     edx,        edx
+        movq    xmm0,       rret()
+        mov          rret(), qword ptr [rp0()+8]
+        div     qword ptr [rp3()+8]
+        movq        xmm2,       rret()
+        unpcklpd    xmm0,      xmm2
+        ret
+procend
+
+procstart _uX_mm_div_sepu64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inxmm_B:xmmword
+        xor     edx, edx
+        movdqu  xmmword ptr [rp0()], xmm0
+        movdqu  xmmword ptr [rp3()], xmm1
+        mov     rret(), qword ptr [rp0()]
+        div     qword ptr [rp3()]
+        movq    xmm0,       rret()
         ret
 procend
 
@@ -1717,7 +1846,7 @@ procstart _uX_mm_iszeroorsubnormal_pd, callconv, xmmword, < >, < >, Inxmm_A:xmmw
         .if (__uX_CPUFeatures_SSE41 == true)
         pcmpeqq         xmm0,           xmm2
         .else
-        pcmpeqd         xmm0,           xmm2                       ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pcmpeqd         xmm0,           xmm2                                ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
         pshufd          xmm1,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
         pand            xmm0,           xmm1                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm0,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
@@ -1733,7 +1862,7 @@ procstart _uX_mm_iszeroorsubnormal_sd, callconv, xmmword, < >, < >, Inxmm_A:xmmw
         .if (__uX_CPUFeatures_SSE41 == true)
         pcmpeqq         xmm0,           xmm2
         .else
-        pcmpeqd         xmm0,           xmm2                    ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
+        pcmpeqd         xmm0,           xmm2                                ;_mm_cmpeq_epi32(a,b);              // 32 bit compares
         pshufd          xmm1,           xmm0,           shuffle4(2,3,0,1)   ;_mm_shuffle_epi32(com32,0xB1);     // swap low and high dwords shuffle
         pand            xmm0,           xmm1                                ;_mm_and_si128(com32,com32s);       // low & high
         psrad           xmm0,           31                                  ;_mm_srai_epi32(test,31);           // extend sign bit to 32 bits
@@ -1918,6 +2047,7 @@ procstart _uX_mm_abssat_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         ret
 procend
 
+ifdef __x64__
 procstart _uX_mm_scale_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inint_B:qword
         movq               xmm1,           rp1()
         pshufd             xmm1,           xmm1,           shuffle4(1,0,1,0)
@@ -1942,8 +2072,8 @@ procstart _uX_mm_scale_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword, Inin
         mul                                rp0()
         .endif
         movq               xmm2,           rret()
-        pshufd             xmm0,           xmm0,           shuffle4(0,1,2,3)
-        pshufd             xmm1,           xmm1,           shuffle4(0,1,2,3)
+        pshufd             xmm0,           xmm0,           shuffle4(1,0,3,2)
+        pshufd             xmm1,           xmm1,           shuffle4(1,0,3,2)
         movq               rret(),         xmm0
         movq               rp0(),          xmm1
         .if (rret() < 0 || rp0() < 0)
@@ -1980,7 +2110,7 @@ procstart _uX_mm_square_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         mul                                rp0()
         .endif
         movq                xmm2,           rret()
-        pshufd              xmm0,           xmm0,           shuffle4(0,1,2,3)
+        pshufd              xmm0,           xmm0,           shuffle4(1,0,3,2)
         movq                rret(),         xmm0
         movq                rp0(),          xmm0
         .if (rret() < 0 || rp0() < 0)
@@ -1994,6 +2124,7 @@ procstart _uX_mm_square_epi64, callconv, xmmword, < >, < >, Inxmm_A:xmmword
         .endif
         ret
 procend
+endif ;__x64__
 
 endif ;__MIC__
 

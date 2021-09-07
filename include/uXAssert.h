@@ -1,22 +1,21 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-; / /                                                                               / /
-; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
-; / /                                                                               / /
-; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
-; / /    you may not use this file except in compliance with the License.           / /
-; / /    You may obtain a copy of the License at                                    / /
-; / /                                                                               / /
-; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
-; / /                                                                               / /
-; / /    Unless required by applicable law or agreed to in writing, software        / /
-; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
-; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
-; / /    See the License for the specific language governing permissions and        / /
-; / /    limitations under the License.                                             / /
-; / /                                                                               / /
+; / /																				/ /
+; / /			Copyright 2021 (c) Navegos QA - optimized library					/ /
+; / /																				/ /
+; / /	Licensed under the Apache License, Version 2.0 (the "License");				/ /
+; / /	you may not use this file except in compliance with the License.			/ /
+; / /	You may obtain a copy of the License at										/ /
+; / /																				/ /
+; / /		http://www.apache.org/licenses/LICENSE-2.0								/ /
+; / /																				/ /
+; / /	Unless required by applicable law or agreed to in writing, software			/ /
+; / /	distributed under the License is distributed on an "AS IS" BASIS,			/ /
+; / /	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.	/ /
+; / /	See the License for the specific language governing permissions and			/ /
+; / /	limitations under the License.												/ /
+; / /																				/ /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 */
@@ -50,7 +49,7 @@ public: uX_TARGET_CPU_GPU uXCompileTimeAssert() {};
 };
 
 template <> class uXCompileTimeAssert<false>
-{    // generate compile-time error if false
+{	// generate compile-time error if false
 private: uX_TARGET_CPU_GPU uXCompileTimeAssert() {};
 };
 #endif //__cplusplus
@@ -88,10 +87,11 @@ uX_PACK_PUSH_STACK
 class AssertHandler
 {
 public:
-    virtual ~AssertHandler()
-    {}
-    virtual void uX_ABI operator()(char const* const Msg, char const* const Expr, char const* const File, int Line, bool& Ignore) = 0;
-    virtual void uX_ABI operator()(char const* const Msg, char const* const Expr, char const* const File, int Line) = 0;
+	virtual ~AssertHandler()
+	{
+	}
+	virtual void uX_ABI operator()(char const* const Msg, char const* const Expr, char const* const File, int Line, bool& Ignore) = 0;
+	virtual void uX_ABI operator()(char const* const Msg, char const* const Expr, char const* const File, int Line) = 0;
 };
 
 extern uX_API AssertHandler& uX_ABI GetAssertHandler();
@@ -108,20 +108,20 @@ EXTERN_CC_END
 #if uX_PS4 || uX_APPLE_FAMILY || (uX_CLANG && !uX_ARM)
 struct uXPackValidation
 {
-    char _;
-    long a;
+	char _;
+	long a;
 };
 #elif uX_ANDROID || (uX_CLANG && uX_ARM)
 struct uXPackValidation
 {
-    char _;
-    double a;
+	char _;
+	double a;
 };
 #else
 struct uXPackValidation
 {
-    char _;
-    long long a;
+	char _;
+	long long a;
 };
 #endif
 
@@ -141,44 +141,44 @@ namespace_uX_end
 #define uX_ST_ASSERTIF_MESSAGE(Expr, message) if(!Expr) { static_assert(false, uX_Stringer(message (Expr) file: __FILE__ line: __LINE__)); }
 
 #if uX_VC
-#define uX_code_analysis_assume(Expr)                                                                                   \
-    __analysis_assume(!!(Expr)) // This macro will be used to get rid of analysis warning messages if a uX_ASSERT is used
+#define uX_code_analysis_assume(Expr)																					\
+	__analysis_assume(!!(Expr)) // This macro will be used to get rid of analysis warning messages if a uX_ASSERT is used
 // to "guard" illegal mem access, for example.
 #else
 #define uX_code_analysis_assume(Expr)
 #endif
 
 #if (defined(uX_ENABLE_ASSERTS) && (uX_ENABLE_ASSERTS >= 1))
-#   define uX_assert_msg(Expr, Msg)                                                                             \
-    {                                                                                                           \
-        static bool _ignore = false;                                                                            \
-        ((void)((!!(Expr)) || (!_ignore &&                                                                      \
-        (uX::GetAssertHandler()(uX_Stringer(Msg), uX_Stringer(Expr), __FILE__, __LINE__, _ignore), false))));   \
-        uX_code_analysis_assume(Expr);                                                                          \
-    }
+#define uX_assert_msg(Expr, Msg)																				\
+	{																											\
+		static bool _ignore = false;																			\
+		((void)((!!(Expr)) || (!_ignore &&																		\
+		(uX::GetAssertHandler()(uX_Stringer(Msg), uX_Stringer(Expr), __FILE__, __LINE__, _ignore), false))));	\
+		uX_code_analysis_assume(Expr);																			\
+	}
 
-#   define uX_ensure_msg(Expr,Msg)                      ((!!(Expr)) || (uX::GetAssertHandler()(uX_Stringer(Msg), uX_Stringer(Expr), __FILE__, __LINE__), false))
-#   define uX_ensure_return_msg(Expr,Msg)               if(!(Expr)) { uX_assert_msg(Expr, Msg); return; }
-#   define uX_ensure_return_null_msg(Expr,Msg)          if(!(Expr)) { uX_assert_msg(Expr, Msg); return 0; }
-#   define uX_ensure_return_val_msg(Expr,Msg,Val)       if(!(Expr)) { uX_assert_msg(Expr, Msg); return Val; }
+#define uX_ensure_msg(Expr,Msg)						((!!(Expr)) || (uX::GetAssertHandler()(uX_Stringer(Msg), uX_Stringer(Expr), __FILE__, __LINE__), false))
+#define uX_ensure_return_msg(Expr,Msg)				if(!(Expr)) { uX_assert_msg(Expr, Msg); return; }
+#define uX_ensure_return_null_msg(Expr,Msg)			if(!(Expr)) { uX_assert_msg(Expr, Msg); return 0; }
+#define uX_ensure_return_val_msg(Expr,Msg,Val)		if(!(Expr)) { uX_assert_msg(Expr, Msg); return Val; }
 
-#   define uX_assert(Expr)                              uX_assert_msg(Expr, uX_Stringer(""))
-#   define uX_ensure(Expr)                              uX_ensure_msg(Expr, uX_Stringer(""))
-#   define uX_ensure_return(Expr)                       if(!(Expr)) { uX_assert(Expr); return; }
-#   define uX_ensure_return_null(Expr)                  if(!(Expr)) { uX_assert(Expr); return 0; }
-#   define uX_ensure_return_val(Expr,Val)               if(!(Expr)) { uX_assert(Expr); return Val; }
+#define uX_assert(Expr)								uX_assert_msg(Expr, uX_Stringer(""))
+#define uX_ensure(Expr)								uX_ensure_msg(Expr, uX_Stringer(""))
+#define uX_ensure_return(Expr)						if(!(Expr)) { uX_assert(Expr); return; }
+#define uX_ensure_return_null(Expr)					if(!(Expr)) { uX_assert(Expr); return 0; }
+#define uX_ensure_return_val(Expr,Val)				if(!(Expr)) { uX_assert(Expr); return Val; }
 #else
-#   define uX_assert_msg(Expr, Msg)                     ((void)0)
-#   define uX_ensure_msg(Expr,Msg)                      (!!(Expr))
-#   define uX_ensure_return_msg(Expr,Msg)               if(!(Expr)) { return; }
-#   define uX_ensure_return_null_msg(Expr,Msg)          if(!(Expr)) { return 0; }
-#   define uX_ensure_return_val_msg(Expr,Msg,Val)       if(!(Expr)) { return Val; }
+#define uX_assert_msg(Expr, Msg)						((void)0)
+#define uX_ensure_msg(Expr,Msg)						(!!(Expr))
+#define uX_ensure_return_msg(Expr,Msg)				if(!(Expr)) { return; }
+#define uX_ensure_return_null_msg(Expr,Msg)			if(!(Expr)) { return 0; }
+#define uX_ensure_return_val_msg(Expr,Msg,Val)		if(!(Expr)) { return Val; }
 
-#   define uX_assert(Expr)                              ((void)0)
-#   define uX_ensure(Expr)                              (!!(Expr))
-#   define uX_ensure_return(Expr)                       if(!(Expr)) { return; }
-#   define uX_ensure_return_null(Expr)                  if(!(Expr)) { return 0; }
-#   define uX_ensure_return_val(Expr,Val)               if(!(Expr)) { return Val; }
+#define uX_assert(Expr)								((void)0)
+#define uX_ensure(Expr)								(!!(Expr))
+#define uX_ensure_return(Expr)						if(!(Expr)) { return; }
+#define uX_ensure_return_null(Expr)					if(!(Expr)) { return 0; }
+#define uX_ensure_return_val(Expr,Val)				if(!(Expr)) { return Val; }
 #endif
 
 #endif // uX_ASSERT_H

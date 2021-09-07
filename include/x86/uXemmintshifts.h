@@ -1,22 +1,21 @@
-
 /*
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-; / /                                                                               / /
-; / /             Copyright 2021 (c) Navegos QA - optimized library                 / /
-; / /                                                                               / /
-; / /    Licensed under the Apache License, Version 2.0 (the "License");            / /
-; / /    you may not use this file except in compliance with the License.           / /
-; / /    You may obtain a copy of the License at                                    / /
-; / /                                                                               / /
-; / /        http://www.apache.org/licenses/LICENSE-2.0                             / /
-; / /                                                                               / /
-; / /    Unless required by applicable law or agreed to in writing, software        / /
-; / /    distributed under the License is distributed on an "AS IS" BASIS,          / /
-; / /    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   / /
-; / /    See the License for the specific language governing permissions and        / /
-; / /    limitations under the License.                                             / /
-; / /                                                                               / /
+; / /																				/ /
+; / /			Copyright 2021 (c) Navegos QA - optimized library					/ /
+; / /																				/ /
+; / /	Licensed under the Apache License, Version 2.0 (the "License");				/ /
+; / /	you may not use this file except in compliance with the License.			/ /
+; / /	You may obtain a copy of the License at										/ /
+; / /																				/ /
+; / /		http://www.apache.org/licenses/LICENSE-2.0								/ /
+; / /																				/ /
+; / /	Unless required by applicable law or agreed to in writing, software			/ /
+; / /	distributed under the License is distributed on an "AS IS" BASIS,			/ /
+; / /	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.	/ /
+; / /	See the License for the specific language governing permissions and			/ /
+; / /	limitations under the License.												/ /
+; / /																				/ /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ; / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 */
@@ -45,7 +44,7 @@ uX_PACK_PUSH_XMM
  * Integer, shifts
  */
 
-extern __m128i uX_ABI _uX_mm_slli_si128_0(__m128i /*Inxmm_A*/);
+	extern __m128i uX_ABI _uX_mm_slli_si128_0(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_slli_si128_1(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_slli_si128_2(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_slli_si128_3(__m128i /*Inxmm_A*/);
@@ -61,6 +60,15 @@ extern __m128i uX_ABI _uX_mm_slli_si128_12(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_slli_si128_13(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_slli_si128_14(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_slli_si128_15(__m128i /*Inxmm_A*/);
+
+extern __m128i uX_ABI _uX_mm_slli_epi8_0(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_slli_epi8_1(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_slli_epi8_2(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_slli_epi8_3(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_slli_epi8_4(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_slli_epi8_5(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_slli_epi8_6(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_slli_epi8_7(__m128i /*Inxmm_A*/);
 
 extern __m128i uX_ABI _uX_mm_slli_epi16_0(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_slli_epi16_1(__m128i /*Inxmm_A*/);
@@ -176,6 +184,15 @@ extern __m128i uX_ABI _uX_mm_slli_epi64_50(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_slli_epi64_61(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_slli_epi64_62(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_slli_epi64_63(__m128i /*Inxmm_A*/);
+
+extern __m128i uX_ABI _uX_mm_srai_epi8_0(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_srai_epi8_1(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_srai_epi8_2(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_srai_epi8_3(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_srai_epi8_4(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_srai_epi8_5(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_srai_epi8_6(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_srai_epi8_7(__m128i /*Inxmm_A*/);
 
 extern __m128i uX_ABI _uX_mm_srai_epi16_0(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_srai_epi16_1(__m128i /*Inxmm_A*/);
@@ -308,6 +325,15 @@ extern __m128i uX_ABI _uX_mm_srli_si128_12(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_srli_si128_13(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_srli_si128_14(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_srli_si128_15(__m128i /*Inxmm_A*/);
+
+extern __m128i uX_ABI _uX_mm_srli_epi8_0(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_srli_epi8_1(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_srli_epi8_2(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_srli_epi8_3(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_srli_epi8_4(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_srli_epi8_5(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_srli_epi8_6(__m128i /*Inxmm_A*/);
+extern __m128i uX_ABI _uX_mm_srli_epi8_7(__m128i /*Inxmm_A*/);
 
 extern __m128i uX_ABI _uX_mm_srli_epi16_0(__m128i /*Inxmm_A*/);
 extern __m128i uX_ABI _uX_mm_srli_epi16_1(__m128i /*Inxmm_A*/);
