@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -19,14 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\include\x86\math\sse\inline\uXxmmvecdouble1.inl" />
-    <None Include="..\..\..\include\x86\math\sse\inline\uXxmmvecdouble2.inl" />
-    <None Include="..\..\..\include\x86\math\sse\inline\uXxmmvecdouble3.inl" />
-    <None Include="..\..\..\include\x86\math\sse\inline\uXxmmvecdouble4.inl" />
-    <None Include="..\..\..\include\x86\math\sse\inline\uXxmmvecqword4.inl" />
+    <None Include="..\..\..\include\detail\host\x86\cpu.inl" />
     <None Include="..\..\..\src\x86\AVX256\asm\uXavx256intrin.inc" />
     <None Include="..\..\..\src\x86\AVX256\asm\uXymmconstdata.inc" />
-    <None Include="..\export\uasmlib-export_X32.def" />
     <UASM Include="..\..\..\src\x86\asm\uXcpuid.asm">
       <FileType>Document</FileType>
     </UASM>
@@ -38,7 +33,7 @@
     <UASM Include="..\..\..\src\x86\asm\uXxgetbv.asm" />
     <UASM Include="..\..\..\src\x86\asm\uXxsetbv.asm" />
     <ClCompile Include="..\..\..\src\uXassert.cpp" />
-    <ClCompile Include="..\..\..\src\uXlog.c" />
+    <ClCompile Include="..\..\..\src\uXlog.cpp" />
     <ClCompile Include="..\..\..\src\x86\AVX256\asm\uXymmconstdata.asm" />
     <ClCompile Include="..\..\..\src\x86\AVX256\asm\uXimmintrin.asm" />
     <ClCompile Include="..\..\..\src\x86\AVX256\asm\uXimmblend.asm" />
@@ -84,87 +79,18 @@
     <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmshuffleps.asm" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\include\detail\assert.h" />
+    <ClInclude Include="..\..\..\include\detail\basedefs.h" />
+    <ClInclude Include="..\..\..\include\detail\constants.h" />
+    <ClInclude Include="..\..\..\include\detail\exp.h" />
+    <ClInclude Include="..\..\..\include\detail\host\x86\cpu.h" />
+    <ClInclude Include="..\..\..\include\detail\log.h" />
+    <ClInclude Include="..\..\..\include\detail\misc.h" />
+    <ClInclude Include="..\..\..\include\detail\preprocessor.h" />
+    <ClInclude Include="..\..\..\include\detail\salprocess.h" />
+    <ClInclude Include="..\..\..\include\detail\types.h" />
+    <ClInclude Include="..\..\..\include\detail\vers.h" />
     <ClInclude Include="..\..\..\include\uasmlib.h" />
-    <ClInclude Include="..\..\..\include\uXassert.h" />
-    <ClInclude Include="..\..\..\include\uXbasedefs.h" />
-    <ClInclude Include="..\..\..\include\uXconstants.h" />
-    <ClInclude Include="..\..\..\include\uXexp.h" />
-    <ClInclude Include="..\..\..\include\uXlog.h" />
-    <ClInclude Include="..\..\..\include\uXmisc.h" />
-    <ClInclude Include="..\..\..\include\uXpreprocessor.h" />
-    <ClInclude Include="..\..\..\include\uXsalprocess.h" />
-    <ClInclude Include="..\..\..\include\uXtypes.h" />
-    <ClInclude Include="..\..\..\include\uXvers.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdouble.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdouble1.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdouble2.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdouble3.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdouble3x3.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdouble4.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdouble4x3.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdouble4x4.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdword1.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdword2.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdword3.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecdword4.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecfloat.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecfloat1.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecfloat2.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecfloat3.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecfloat3x3.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecfloat4.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecfloat4x3.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecfloat4x4.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecint16.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecint32.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecint64.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecint8.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecqword1.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecqword2.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecqword3.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecqword4.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecudword1.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecudword2.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecudword3.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecudword4.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecuint16.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecuint32.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecuint64.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecuint8.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecuqword1.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecuqword2.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecuqword3.h" />
-    <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecuqword4.h" />
-    <ClInclude Include="..\..\..\include\x86\uXemmarithmetic.h" />
-    <ClInclude Include="..\..\..\include\x86\uXemmdata.h" />
-    <ClInclude Include="..\..\..\include\x86\uXemmintmisc.h" />
-    <ClInclude Include="..\..\..\include\x86\uXemmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXemmintshifts.h" />
-    <ClInclude Include="..\..\..\include\x86\uXemmintshuffle.h" />
-    <ClInclude Include="..\..\..\include\x86\uXemmpermutepd.h" />
-    <ClInclude Include="..\..\..\include\x86\uXemmshufflepd.h" />
-    <ClInclude Include="..\..\..\include\x86\uXimmblend.h" />
-    <ClInclude Include="..\..\..\include\x86\uXimmcmp.h" />
-    <ClInclude Include="..\..\..\include\x86\uXimmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXmmintshifts.h" />
-    <ClInclude Include="..\..\..\include\x86\uXnmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXpmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXnmmcmpestr.h" />
-    <ClInclude Include="..\..\..\include\x86\uXsmmblend.h" />
-    <ClInclude Include="..\..\..\include\x86\uXsmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXxmmmath.h" />
-    <ClInclude Include="..\..\..\include\x86\uXtmmalignr.h" />
-    <ClInclude Include="..\..\..\include\x86\uXtmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXwmmaeskeyassist.h" />
-    <ClInclude Include="..\..\..\include\x86\uXwmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXcpu.h" />
-    <ClInclude Include="..\..\..\include\x86\uXintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXxmmdata.h" />
-    <ClInclude Include="..\..\..\include\x86\uXxmmintrin.h" />
-    <ClInclude Include="..\..\..\include\x86\uXxmmpermuteps.h" />
-    <ClInclude Include="..\..\..\include\x86\uXxmmpshufw.h" />
-    <ClInclude Include="..\..\..\include\x86\uXxmmshuffleps.h" />
     <ClInclude Include="..\..\resource\resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -193,16 +119,15 @@
   <ItemGroup>
     <None Include="..\..\..\.gitignore" />
     <None Include="..\..\..\src\x86\asm\uXasm.inc" />
-    <None Include="..\export\uasmlib-export_X64.def" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\resource\Resource.rc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{978B5680-3A03-4C76-A233-37615DBE61F5}</ProjectGuid>
+    <ProjectGuid>{EA9BB674-8C57-4387-90FC-4E459FC4CE4E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>uasmlib</RootNamespace>
+    <RootNamespace>uXdetail</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -234,7 +159,6 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\uasm.props" />
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
@@ -279,21 +203,21 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>__X32___;WIN32;_WIN32;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_MMX=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__X32___;WIN32;_WIN32;_EXPORTS;WINDOWS;_WINDOWS;BUILD_LIB;WITH_TBB=1;WITH_AMP=1;_USRDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <OmitFramePointers />
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../../../include;../../../include/x86;$(LIBRARIES_PATH)/oneTBB/Win32/vc16/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../include$(LIBRARIES_PATH)/oneTBB/Win32/vc16/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalOptions>/openmp:experimental %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/openmp:experimental /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile>$(SolutionDir)export\uasmlib-export_X32.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>$(SolutionDir)export\uXdetail-export_X32.def</ModuleDefinitionFile>
     </Link>
     <UASM>
       <PreprocessorDefinitions>EXTERNC_VECCALL;DEBUG;_DEBUG</PreprocessorDefinitions>
@@ -319,20 +243,20 @@ copy "$(OutDir)$(TargetName).pdb" "$(LIBRARIES_PATH)uasmlib/Win32/vc16/bin"</Com
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>__x64__;WIN64;_WIN64;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_MMX=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__x64__;WIN64;_WIN64;_EXPORTS;WINDOWS;_WINDOWS;BUILD_LIB;WITH_TBB=1;WITH_AMP=1;BUILD_AMP=1;_USRDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../../../include;../../../include/x86;$(LIBRARIES_PATH)/oneTBB/Win64/vc16/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../include$(LIBRARIES_PATH)/oneTBB/Win64/vc16/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalOptions>/openmp:experimental %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/openmp:experimental /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile>$(SolutionDir)export\uasmlib-export_X64.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>$(SolutionDir)export\uXdetail-export_X64.def</ModuleDefinitionFile>
     </Link>
     <UASM>
       <PreprocessorDefinitions>EXTERNC_VECCALL;DEBUG;_DEBUG</PreprocessorDefinitions>
@@ -356,11 +280,11 @@ copy "$(OutDir)$(TargetName).pdb" "$(LIBRARIES_PATH)uasmlib/Win64/vc16/bin"</Com
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>__X32___;WIN32;_WIN32;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_MMX=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__X32___;WIN32;_WIN32;_EXPORTS;WINDOWS;_WINDOWS;BUILD_LIB;WITH_TBB=1;WITH_AMP=1;_USRDLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DebugInformationFormat>None</DebugInformationFormat>
       <OmitFramePointers>true</OmitFramePointers>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../../../include;../../../include/x86;$(LIBRARIES_PATH)/oneTBB/Win32/vc16/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../include$(LIBRARIES_PATH)/oneTBB/Win32/vc16/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
@@ -368,12 +292,12 @@ copy "$(OutDir)$(TargetName).pdb" "$(LIBRARIES_PATH)uasmlib/Win64/vc16/bin"</Com
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalOptions>/openmp:experimental %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/openmp:experimental /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <ModuleDefinitionFile>$(SolutionDir)export\uasmlib-export_X32.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>$(SolutionDir)export\uXdetail-export_X32.def</ModuleDefinitionFile>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
     </Link>
@@ -400,10 +324,10 @@ xcopy "..\..\..\include" "$(LIBRARIES_PATH)uasmlib\Win32\vc16\include" /hisery</
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>__x64__;WIN64;_WIN64;_EXPORTS;WINDOWS;_WINDOWS;INTRIN_VERSION=60;INTEL_INTRIN=1;AMD_INTRIN=1;INTRIN_MMX=1;INTRIN_SSE=1;INTRIN_AVX256=1;INTRIN_AVX512=1;WITH_TBB=1;WITH_AMP=1;_USRDLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__x64__;WIN64;_WIN64;_EXPORTS;WINDOWS;_WINDOWS;BUILD_LIB;WITH_TBB=1;WITH_AMP=1;BUILD_AMP=1;_USRDLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DebugInformationFormat>None</DebugInformationFormat>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../../../include;../../../include/x86;$(LIBRARIES_PATH)/oneTBB/Win64/vc16/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../include$(LIBRARIES_PATH)/oneTBB/Win64/vc16/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
@@ -412,12 +336,12 @@ xcopy "..\..\..\include" "$(LIBRARIES_PATH)uasmlib\Win32\vc16\include" /hisery</
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalOptions>/openmp:experimental %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/openmp:experimental /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <ModuleDefinitionFile>$(SolutionDir)export\uasmlib-export_X64.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>$(SolutionDir)export\uXdetail-export_X64.def</ModuleDefinitionFile>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
     </Link>
@@ -440,6 +364,5 @@ xcopy "..\..\..\include" "$(LIBRARIES_PATH)uasmlib\Win64\vc16\include" /hisery</
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\uasm.targets" />
   </ImportGroup>
 </Project>

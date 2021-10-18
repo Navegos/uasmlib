@@ -306,6 +306,9 @@
     <ClInclude Include="..\..\..\include\x86\math\sse\uXxmmvecuqword4.h">
       <Filter>Header Files\x86\math\sse</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\uXlog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\uasmlib.cpp">
@@ -327,9 +330,6 @@
       <Filter>Source Files\x86</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\uXassert.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\uXmisc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble3x3.cpp">
@@ -385,6 +385,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecuint64.cpp">
       <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\uXlog.c">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

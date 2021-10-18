@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\x86">
+      <UniqueIdentifier>{1938e851-99e0-45c0-bd46-c6b2f9c28b7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\asm">
+      <UniqueIdentifier>{06b6b83b-83be-411a-ab45-c45b677dd1a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\asm\has">
+      <UniqueIdentifier>{7eb78262-6499-490c-a7df-a362a3cb494b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Def Files">
+      <UniqueIdentifier>{f1b8cb8e-8f1b-49e5-a64d-1cef5bba00cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\asm\notdone">
+      <UniqueIdentifier>{7f643c05-37b4-4102-b4cb-8d4eb037276b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\SSE">
+      <UniqueIdentifier>{9bf9fc85-8d28-43e0-bff8-a8d3c9cb85be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\SSE\asm">
+      <UniqueIdentifier>{1f8e79d3-4346-4fc8-b91e-2899e154b93c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\MMX">
+      <UniqueIdentifier>{c327a33d-5e66-4140-9760-8d4189cee1be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\MMX\asm">
+      <UniqueIdentifier>{0b09ca7a-3001-46ce-aa96-0db37f20d883}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\AVX256">
+      <UniqueIdentifier>{2bb31268-c3c2-4e2d-a3c1-28e493759007}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\AVX256\asm">
+      <UniqueIdentifier>{65e36f2d-ac6d-4aae-a135-9ffb1bc5b0aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\x86\SSE\math">
+      <UniqueIdentifier>{9209f439-19a3-41f2-90a2-5c30ea02bf93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\detail">
+      <UniqueIdentifier>{1ffeb9e0-44c2-44f7-9c1c-caaa78e71cc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\detail\host">
+      <UniqueIdentifier>{5a5e4708-4167-46f9-a767-05b9b8630475}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\detail\host\x86">
+      <UniqueIdentifier>{9e0689dc-a8ba-4745-979c-31adc32782aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\detail\device">
+      <UniqueIdentifier>{594be26f-ce70-42e5-b339-a1c014bcf9a4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\resource\resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\uasmlib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\detail\assert.h">
+      <Filter>Header Files\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\detail\basedefs.h">
+      <Filter>Header Files\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\detail\constants.h">
+      <Filter>Header Files\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\detail\exp.h">
+      <Filter>Header Files\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\detail\log.h">
+      <Filter>Header Files\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\detail\misc.h">
+      <Filter>Header Files\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\detail\preprocessor.h">
+      <Filter>Header Files\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\detail\salprocess.h">
+      <Filter>Header Files\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\detail\types.h">
+      <Filter>Header Files\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\detail\vers.h">
+      <Filter>Header Files\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\detail\host\x86\cpu.h">
+      <Filter>Header Files\detail\host\x86</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\uasmlib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\AVX256\asm\uXymmconstdata.asm">
+      <Filter>Source Files\x86\AVX256\asm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\AVX256\asm\uXimmintrin.asm">
+      <Filter>Source Files\x86\AVX256\asm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\AVX256\asm\uXimmblend.asm">
+      <Filter>Source Files\x86\AVX256\asm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\AVX256\asm\uXimmlegacy.asm">
+      <Filter>Source Files\x86\AVX256\asm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\uXcpu.cpp">
+      <Filter>Source Files\x86</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\uXassert.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble3x3.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble4x3.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecdouble4x4.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat1.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat2.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat3.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat3x3.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat4x3.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecfloat4x4.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecint8.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecint16.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecint32.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecint64.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecuin16.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecuint8.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecuint32.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\x86\SSE\math\uXxmmvecuint64.cpp">
+      <Filter>Source Files\x86\SSE\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\uXlog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\.gitignore" />
+    <None Include="..\..\..\README.md" />
+    <None Include="..\..\..\src\x86\AVX256\asm\uXavx256intrin.inc">
+      <Filter>Source Files\x86\AVX256\asm</Filter>
+    </None>
+    <None Include="..\..\..\src\x86\AVX256\asm\uXymmconstdata.inc">
+      <Filter>Source Files\x86\AVX256\asm</Filter>
+    </None>
+    <None Include="..\..\..\src\x86\asm\uXasm.inc">
+      <Filter>Source Files\x86\asm</Filter>
+    </None>
+    <None Include="..\..\..\src\x86\SSE\uXymmstructs.cpp">
+      <Filter>Source Files\x86\AVX256</Filter>
+    </None>
+    <None Include="..\..\..\include\detail\host\x86\cpu.inl">
+      <Filter>Header Files\detail\host\x86</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXemmintmisc.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXemmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXemmintshifts.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXemmintshuffle.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXemmpermutepd.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXemmshufflepd.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXnmmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXpmmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXsmmblend.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXsmmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXtmmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXwmmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmintrin.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmpermuteps.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmshuffleps.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\asm\uXcpuid.asm">
+      <Filter>Source Files\x86\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\asm\uXcpuidex.asm">
+      <Filter>Source Files\x86\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\asm\uXdll.asm">
+      <Filter>Source Files\x86\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\asm\uXxgetbv.asm">
+      <Filter>Source Files\x86\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\asm\uXxsetbv.asm">
+      <Filter>Source Files\x86\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmpshufw.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\asm\uXcpua.asm">
+      <Filter>Source Files\x86\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXemmarithmetic.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\asm\uXmemcpy.asm">
+      <Filter>Source Files\x86\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXxmmdata.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\SSE\asm\uXemmdata.asm">
+      <Filter>Source Files\x86\SSE\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\MMX\asm\uXmmintrin.asm">
+      <Filter>Source Files\x86\MMX\asm</Filter>
+    </UASM>
+    <UASM Include="..\..\..\src\x86\MMX\asm\uXmmintshifts.asm">
+      <Filter>Source Files\x86\MMX\asm</Filter>
+    </UASM>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\resource\Resource.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

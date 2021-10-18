@@ -1,0 +1,85 @@
+{
+	"folders": [
+		{
+			"name": "uXcore",
+			"path": "core"
+		},
+		{
+			"name": "uXsse",
+			"path": "host/sse"
+		},
+		{
+			"name": "uXsse2",
+			"path": "host/sse2"
+		},
+		{
+			"name": "uXsse3",
+			"path": "host/sse3"
+		},
+		{
+			"name": "uXssse3"",
+			"path": "host/ssse3"
+		},
+		{
+			"name": "uXsse41",
+			"path": "host/sse41"
+		},
+		{
+			"name": "uXsse42",
+			"path": "host/sse42"
+		},
+		{
+			"name": "uXsse4a",
+			"path": "host/sse4a"
+		},
+		{
+			"name": "uXavx",
+			"path": "host/avx"
+		},
+		{
+			"name": "uXavx2",
+			"path": "host/avx2"
+		},
+		{
+			"name": "uXavx512",
+			"path": "host/avx512"
+		},
+		{
+			"name": "uXamp",
+			"path": "device/amp"
+		},
+		{
+			"name": "uXcuda",
+			"path": "device/cuda"
+		},
+		{
+			"name": "uXhip",
+			"path": "device/hip"
+		},
+		{
+			"name": "uXhlsl",
+			"path": "device/hlsl"
+		},
+		{
+			"name": "uXmetal",
+			"path": "device/metal"
+		},
+		{
+			"name": "uXopencl",
+			"path": "device/opencl"
+		},
+		{
+			"name": "uXsycl",
+			"path": "device/sycl"
+		},
+		{
+			"name": "uXvulkan",
+			"path": "device/vulkan"
+		},
+		{
+			"name": "uXlib",
+			"path": "uXlib"
+		}
+	],
+	"settings": {}
+}

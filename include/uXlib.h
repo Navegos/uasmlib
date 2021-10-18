@@ -22,8 +22,8 @@
 
 #pragma once
 
-#ifndef UASM_LIB_H
-#define UASM_LIB_H 1
+#ifndef uX_LIB_H
+#define uX_LIB_H 1
 
 /**
  * \defgroup UASMLIB optimized library
@@ -59,9 +59,9 @@
  * To use these functions and types include the header file \p uasmlib.h in your program
  */
 
-#ifndef uX_BASEDEFS_H
-#include "./detail/basedefs.h"
-#endif  /* uX_BASEDEFS_H */
+#ifndef uX_TYPES_H
+#include "../../core/include/uXtypes.h"
+#endif  /* uX_TYPES_H */
 
 /**
  * \ingroup uX_NAMESPACE
@@ -115,9 +115,9 @@ namespace_uX
 	uX_EXTERNC_END
 
 #ifdef uX_X86_OR_X64_CPU
-/*#include "x86/uXcpu.h"
-#include "x86/uXintrin.h"
-#include "x86/uXxmmmath.h"*/
+#include "../../core/include/x86/uXcpu.h"
+//#include "x86/uXintrin.h"
+//#include "x86/uXxmmmath.h"
 #endif
 
-#endif // UASM_LIB_H
+#endif // uX_LIB_H

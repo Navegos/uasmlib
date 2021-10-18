@@ -313,7 +313,7 @@ PREDEFINED             =
 EXPAND_AS_DEFINED      = uX_noexcept \
                          uX_constexpr \
                          uX_default \
-                         uX_ABI \
+                         uX_abi \
                          uX_const
 SKIP_FUNCTION_MACROS   = YES
 #---------------------------------------------------------------------------
